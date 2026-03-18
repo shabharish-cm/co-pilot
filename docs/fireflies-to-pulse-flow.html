@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fireflies → Customer Pulse Pipeline</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0a0a0a;
+      --white:   #fffbf0;
+      --yellow:  #ffe135;
+      --coral:   #ff5c5c;
+      --cyan:    #00d4d4;
+      --green:   #00c853;
+      --purple:  #b388ff;
+      --shadow:  5px 5px 0px var(--black);
+      --shadow-lg: 8px 8px 0px var(--black);
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      min-height: 100vh;
+      padding: 48px 32px;
+    }
+
+    /* ── Header ────────────────────────────────────────────────── */
+    .page-header {
+      max-width: 1100px;
+      margin: 0 auto 48px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border: 2px solid var(--black);
+      box-shadow: 3px 3px 0 var(--black);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      border-bottom: 4px solid var(--black);
+      padding-bottom: 12px;
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    /* ── Legend ────────────────────────────────────────────────── */
+    .legend {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      border: 2px solid var(--black);
+      padding: 6px 14px;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .legend-dot {
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--black);
+      flex-shrink: 0;
+    }
+
+    /* ── Diagram card ──────────────────────────────────────────── */
+    .diagram-card {
+      max-width: 1100px;
+      margin: 0 auto;
+      border: 3px solid var(--black);
+      box-shadow: var(--shadow-lg);
+      background: #fff;
+      padding: 40px 32px;
+      overflow-x: auto;
+    }
+
+    .mermaid {
+      min-width: 700px;
+    }
+
+    /* ── Mermaid node overrides via CSS ────────────────────────── */
+    /* Slack sources */
+    .mermaid .slack rect,
+    .mermaid .slack polygon     { fill: var(--cyan)   !important; stroke: var(--black) !important; stroke-width: 2.5px !important; }
+    /* GitHub Actions / workflow */
+    .mermaid .workflow rect     { fill: var(--yellow) !important; stroke: var(--black) !important; stroke-width: 2.5px !important; }
+    /* Processing steps */
+    .mermaid .process rect      { fill: #fff          !important; stroke: var(--black) !important; stroke-width: 2.5px !important; }
+    /* Fireflies API */
+    .mermaid .api rect,
+    .mermaid .api polygon       { fill: var(--coral)  !important; stroke: var(--black) !important; stroke-width: 2.5px !important; }
+    /* Storage */
+    .mermaid .storage rect,
+    .mermaid .storage cylinder  { fill: var(--green)  !important; stroke: var(--black) !important; stroke-width: 2.5px !important; }
+    /* AI / output */
+    .mermaid .ai rect           { fill: var(--purple) !important; stroke: var(--black) !important; stroke-width: 2.5px !important; }
+    /* Decision diamond */
+    .mermaid .decision rect,
+    .mermaid .decision polygon  { fill: var(--yellow) !important; stroke: var(--black) !important; stroke-width: 2.5px !important; }
+
+    /* Bold node labels */
+    .mermaid .label,
+    .mermaid text               { font-family: 'Space Grotesk', sans-serif !important; font-weight: 700 !important; }
+
+    /* Edge labels */
+    .mermaid .edgeLabel         { background: var(--white) !important; border: 1.5px solid var(--black) !important; padding: 2px 6px !important; font-weight: 700 !important; font-size: 12px !important; }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    footer {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: #888;
+      border-top: 2px solid var(--black);
+      padding-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="badge">System Architecture</div>
+    <h1>Fireflies → Customer Pulse Pipeline</h1>
+    <p class="subtitle">How customer call transcripts travel from Slack into the weekly PM digest</p>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#00d4d4"></div>Slack / External Source</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ffe135"></div>GitHub Actions Workflow</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ffffff"></div>Processing Step</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ff5c5c"></div>Fireflies API</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#00c853"></div>File Storage (Repo)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#b388ff"></div>AI / Claude Output</div>
+  </div>
+
+  <div class="diagram-card">
+    <div class="mermaid">
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#ffffff",
+    "primaryBorderColor": "#0a0a0a",
+    "primaryTextColor": "#0a0a0a",
+    "lineColor": "#0a0a0a",
+    "secondaryColor": "#ffe135",
+    "tertiaryColor": "#00d4d4",
+    "edgeLabelBackground": "#fffbf0",
+    "fontSize": "14px",
+    "fontFamily": "Space Grotesk, sans-serif"
+  }
+}}%%
+flowchart TD
+
+  %% ── Sources ─────────────────────────────────────────────────────────
+  FF(["🤖 Fireflies Bot\nrecords calls"]):::slack
+  CS["📢 Slack\ncs-call-summary"]:::slack
+  DS["📢 Slack\ndemo-summary"]:::slack
+
+  FF -->|"posts summary\n+ URL"| CS
+  FF -->|"posts summary\n+ URL"| DS
+
+  %% ── Trigger ──────────────────────────────────────────────────────────
+  CRON["⏰ GitHub Actions\nDaily Fireflies Sync\n1:00 AM IST"]:::workflow
+
+  CS -->|"previous day\nmessages"| CRON
+  DS -->|"previous day\nmessages"| CRON
+
+  %% ── Slack fetch ──────────────────────────────────────────────────────
+  FETCH["SlackClient\ngetChannelMessages()"]:::process
+  CRON --> FETCH
+
+  %% ── ID extraction ────────────────────────────────────────────────────
+  EXTRACT["extractFirefliesIds()\nregex: fireflies.ai/view/﹤ID﹥"]:::process
+  FETCH -->|"raw Slack\nmessages"| EXTRACT
+
+  %% ── Fireflies API ────────────────────────────────────────────────────
+  FFAPI(["🔥 Fireflies\nGraphQL API\ntranscript(id:)"]):::api
+  EXTRACT -->|"unique\ntranscript IDs"| FFAPI
+
+  %% ── Access check ─────────────────────────────────────────────────────
+  GATE{"Transcript\naccessible?"}:::process
+  FFAPI -->|"response"| GATE
+  GATE -->|"No — API key\nlacks access"| SKIP["⚠️ log warning\nskip transcript"]:::process
+
+  %% ── Normalize ────────────────────────────────────────────────────────
+  NORM["mapFirefliesTranscript()\nnormalize + deduplicate"]:::process
+  GATE -->|"Yes"| NORM
+
+  %% ── Storage ──────────────────────────────────────────────────────────
+  RAW[("pulse/raw/\nYYYY-MM-DD-fireflies.json\nfull API payload")]:::storage
+  NORMALIZED[("pulse/normalized/\nYYYY-MM-DD-transcripts.json\ntitle · participants · summary · transcript")]:::storage
+  INDEX[("state/\ntranscript_index.json\nday → file pointer")]:::storage
+
+  NORM --> RAW
+  NORM --> NORMALIZED
+  NORM --> INDEX
+
+  %% ── Weekly Pulse ─────────────────────────────────────────────────────
+  PULSE["🗓️ /pulse command\nThursdays\nreads last 7 days"]:::workflow
+  NORMALIZED -->|"week's\ntranscripts"| PULSE
+
+  AI["✨ Claude Sonnet\ntheme extraction\npain points · quotes\naction items"]:::ai
+  PULSE --> AI
+
+  WEEKLY[("pulse/weekly/\nYYYY-WXX.md\nweekly digest")]:::storage
+  MASTER[("pulse/master/\ncustomer-pulse-master.md\nrunning record")]:::storage
+
+  AI --> WEEKLY
+  AI -->|"append"| MASTER
+
+  %% ── Downstream ───────────────────────────────────────────────────────
+  RESEARCH["🔍 /research command\nevidence from transcripts"]:::ai
+  NORMALIZED -->|"on demand"| RESEARCH
+
+  PRD["📄 PRDs/\ndiscovery.md + research.md"]:::storage
+  RESEARCH --> PRD
+  MASTER -->|"recurring pain\npoints"| RESEARCH
+
+  %% ── Styles ───────────────────────────────────────────────────────────
+  classDef slack    fill:#00d4d4,stroke:#0a0a0a,stroke-width:2.5px,color:#0a0a0a,font-weight:700
+  classDef workflow fill:#ffe135,stroke:#0a0a0a,stroke-width:2.5px,color:#0a0a0a,font-weight:700
+  classDef process  fill:#ffffff,stroke:#0a0a0a,stroke-width:2.5px,color:#0a0a0a,font-weight:700
+  classDef api      fill:#ff5c5c,stroke:#0a0a0a,stroke-width:2.5px,color:#0a0a0a,font-weight:700
+  classDef storage  fill:#00c853,stroke:#0a0a0a,stroke-width:2.5px,color:#0a0a0a,font-weight:700
+  classDef ai       fill:#b388ff,stroke:#0a0a0a,stroke-width:2.5px,color:#0a0a0a,font-weight:700
+    </div>
+  </div>
+
+  <footer>
+    PM Co-Pilot · CultureMonkey · Generated March 2026
+  </footer>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      flowchart: {
+        curve: 'basis',
+        padding: 24,
+        nodeSpacing: 48,
+        rankSpacing: 56,
+        useMaxWidth: true,
+      },
+      securityLevel: 'loose',
+    });
+  </script>
+
+</body>
+</html>
