@@ -1,32 +1,123 @@
 # Routing And Scoring Logic
 
-## Todoist Routing
+---
 
-Priority order:
+## Todoist Section Routing
 
-1. Route to `Effy` when `effy` appears anywhere in the request.
-2. Route to `CS Requests` when a CS team member appears in the requestor or title.
-3. Route to `Engg asks` when an engineering team member appears in the requestor or title.
-4. Route to `Features` when feature keywords appear.
-5. Route using labels as fallback: `follow-up` to `CS Requests`, `engineering` to `Engg asks`.
-6. Default to `Features` with `defaulted` confidence.
+### Sections (project_id: `6g8q49QQxHrFxRFx`)
 
-If CS and engineering signals are both present, keep the higher-priority winner and record the losing match in diagnostics.
+| Section Name | Section ID | Order |
+|-------------|------------|-------|
+| Features | `6g8x4JxwH876pgGQ` | 1 |
+| CS Requests | `6g8x4HVHxpWVfVHQ` | 2 |
+| Engg asks | `6g8x4MgXR2q68fgQ` | 3 |
+| effy | `6g9QcvpjJw2cFmCx` | 4 |
+
+Team membership is defined in `context/system/team-list.md`.
+
+---
+
+### Routing Algorithm
+
+Evaluate signals in strict priority order. Stop at the first match.
+
+**Priority 1 — Effy keyword**
+- If the word `effy` appears anywhere in the task title or notes (case-insensitive)
+- → Route to **effy** (`6g9QcvpjJw2cFmCx`)
+
+**Priority 2 — CS team member detected**
+- If a CS team member name or alias appears in the task title, requestor field, or notes
+- CS members: KN, Karthik Rao, Karthik, Gowtham, Yugi
+- → Route to **CS Requests** (`6g8x4HVHxpWVfVHQ`)
+- Confidence: `matched`
+
+**Priority 3 — Engineering team member detected**
+- If an Engg team member name or alias appears in the task title, requestor field, or notes
+- Engg members: Dhamo, Sam, Saran, Nandha, Krishna
+- → Route to **Engg asks** (`6g8x4MgXR2q68fgQ`)
+- Confidence: `matched`
+
+**Priority 4 — Feature keywords detected**
+- If the task contains product or feature intent keywords (e.g. "build", "design", "feature", "PRD", "spec", "roadmap")
+- → Route to **Features** (`6g8x4JxwH876pgGQ`)
+- Confidence: `inferred`
+
+**Priority 5 — Label fallback**
+- If the task has label `follow-up` → **CS Requests**
+- If the task has label `engineering` → **Engg asks**
+- Confidence: `label-inferred`
+
+**Priority 6 — Default**
+- → Route to **Features** (`6g8x4JxwH876pgGQ`)
+- Confidence: `defaulted`
+
+---
+
+### Conflict Resolution
+
+If both CS and Engg signals are detected in the same task:
+- CS wins (higher priority)
+- Record the losing Engg match in diagnostics output
+- Example: `"share mockup to KN and Saran"` → CS Requests wins; Engg match logged
+
+---
+
+### Routing Examples
+
+| Task title | Detected signal | Section routed | Confidence |
+|-----------|----------------|---------------|------------|
+| `share mockup to KN` | KN = CS member | CS Requests | matched |
+| `review API contract with Dhamo` | Dhamo = Engg member | Engg asks | matched |
+| `effy onboarding flow` | "effy" keyword | effy | matched |
+| `share mockup to KN and Saran` | KN = CS wins, Saran = Engg (logged) | CS Requests | matched |
+| `Q2 roadmap planning` | feature keywords | Features | inferred |
+| `follow up on demo` | label: follow-up | CS Requests | label-inferred |
+| `check analytics numbers` | no signal | Features | defaulted |
+
+---
+
+### Implementation Notes
+
+- Team lookup must read from `context/system/team-list.md` at runtime — do not hardcode names in service code.
+- Section IDs must be read from a config constant, not hardcoded inline.
+- All routing decisions must be logged with: `{ task, matchedRule, sectionId, sectionName, confidence, competingMatch? }`
+- When Claude runs `/add` and routing confidence is `inferred` or `defaulted`, show the routing decision to the user before creating the task and allow override.
+
+---
 
 ## Value-Effort Scoring
 
-Value dimensions:
-- revenue influence
-- account importance
-- frequency across calls
-- retention impact
-- strategic alignment
+### Value Dimensions
 
-Effort dimensions:
-- implementation complexity
-- cross-team dependency
-- architecture impact
-- data or model dependency
-- UI or UX complexity
+| Dimension | Description |
+|-----------|-------------|
+| Revenue influence | Does this help win, expand, or retain paying accounts? |
+| Account importance | Is the requestor a strategic or high-value account? |
+| Frequency across calls | How many calls/transcripts mention this pain or request? |
+| Retention impact | Would solving this reduce churn or prevent escalation? |
+| Strategic alignment | Does this map to a current OKR or roadmap theme? |
 
-Effort is always marked as estimated until explicitly validated.
+### Effort Dimensions
+
+| Dimension | Description |
+|-----------|-------------|
+| Implementation complexity | Lines of logic, API surface, data model changes |
+| Cross-team dependency | Requires design, data, infra, or external team input |
+| Architecture impact | Touches core platform, auth, or data pipelines |
+| Data or model dependency | Requires ML, analytics infra, or schema migration |
+| UI or UX complexity | New patterns, multi-state flows, or accessibility work |
+
+Effort is always marked as **estimated** until explicitly validated by engineering.
+
+### Scoring Output Format
+
+```
+Value: [H/M/L]  Effort: [H/M/L]  Placement: [Quick Win | Invest | Reconsider | Strategic Bet]
+Evidence basis: [transcript-backed | inferred | labeled by requestor]
+```
+
+Quadrant mapping:
+- High Value + Low Effort → **Quick Win**
+- High Value + High Effort → **Strategic Bet**
+- Low Value + Low Effort → **Reconsider**
+- Low Value + High Effort → **Avoid / Defer**

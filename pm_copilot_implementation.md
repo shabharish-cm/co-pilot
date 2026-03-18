@@ -1075,49 +1075,89 @@ Repository logs, workflows, and code must show that only `weekly-customer-pulse.
 ### Scenario A — Todoist unavailable during morning sync
 Expected result:
 - workflow logs an error
-- marks Todoist source as failed/stale
-- preserves prior valid state where appropriate
-- does not generate fake success data
+- marks Todoist source as `failed` in `state/last_sync.json`
+- preserves prior valid `state/current_day.json` with a staleness marker
+- does not generate fake success data or an empty task list
 
 ### Scenario B — Google Calendar returns no meetings
 Expected result:
 - sync completes successfully
-- state shows empty meetings array
-- no failure unless API itself failed
+- `state/current_day.json` shows `todayMeetings: []`
+- no failure unless the API call itself returned an error status
 
 ### Scenario C — Fireflies pagination spans multiple pages
 Expected result:
-- all pages are fetched
-- transcript count matches expected total if available
-- normalized output contains deduplicated records
+- all pages are fetched before writing output
+- transcript count in `state/transcript_index.json` matches expected total if the API provides it
+- normalized output contains deduplicated records (no duplicate `transcriptId`)
 
-### Scenario D — Weekly pulse digest detects recurrence
+### Scenario D — `/pulse` run on Thursday — recurrence detected
 Expected result:
-- weekly pulse digest compares the current Thu-Wed window against pulse master history
-- recurring requests are explicitly marked with prior-week references
-- value-effort matrix placement is present for request/problem items
+- `/pulse` reads `pulse/normalized/` for the Thu–Wed window from local repo files
+- Sonnet analysis phase identifies recurring requests by comparing against `pulse/master/customer-pulse-master.md`
+- recurring requests are explicitly marked with prior-week references (e.g. `↩ also raised in 2026-W11`)
+- value-effort matrix placement is present for all request and problem items
+- Haiku writes the final `pulse/weekly/YYYY-WW-customer-pulse.md`
+- `pulse/master/customer-pulse-master.md` is appended with the new week entry
+- No GitHub Action is involved; no Anthropic API key required in CI
 
-### Scenario E — `/morning` run before morning sync
+### Scenario E — `/pulse` run when no normalized transcripts exist for the window
 Expected result:
-- Claude clearly states stale or missing sync state
-- it may still operate from last available cached state if present
-- it must not pretend data is fresh
+- command states clearly that no transcript files were found for the Thu–Wed window
+- does not fabricate pulse data
+- suggests running the Fireflies sync first
 
-### Scenario F — `/wireframe` run before PRD exists
+### Scenario F — `/morning` run before morning sync has completed
+Expected result:
+- Claude reads `state/last_sync.json` and detects stale or missing `morningSync` timestamp
+- displays a staleness banner (e.g. `Data last synced: 18h ago — may not reflect today`)
+- may still produce a digest from last available cached state
+- must not present stale data as current
+
+### Scenario G — `/wireframe` run before PRD exists
 Expected result:
 - command fails closed
-- tells user which prerequisite artifact is missing
+- explicitly names which prerequisite artifact is missing (e.g. `PRDs/feature-name/prd.md not found`)
+- does not generate partial output
 
-### Scenario G — ambiguous `/done` task selection
+### Scenario H — ambiguous `/done` task selection
 Expected result:
-- command asks user to disambiguate or confirm
-- no accidental completion occurs
+- command presents matching tasks and asks user to confirm the right one
+- no task is completed until user confirms
+- if zero matches found, says so clearly rather than failing silently
 
-### Scenario H — Model routing enforcement
+### Scenario I — `/add` with CS team member in task title
+Input: `/add "share mockup to KN"`
 Expected result:
-- digest and PRD artifacts are written by Haiku
-- reasoning/research/analysis steps run on Sonnet
-- weekly pulse workflow logs show Sonnet analysis phase before Haiku writing phase
+- `task-routing.service.ts` reads `context/system/team-list.md`
+- matches "KN" as CS member → routes to **CS Requests** (`6g8x4HVHxpWVfVHQ`)
+- confidence: `matched` — no confirmation prompt needed
+- task created in Todoist under CS Requests section
+- routing decision logged: `{ rule: 'cs-member', match: 'KN', sectionId: '6g8x4HVHxpWVfVHQ', confidence: 'matched' }`
+
+### Scenario J — `/add` with both CS and Engg signals in title
+Input: `/add "share mockup to KN and Saran"`
+Expected result:
+- both CS (KN) and Engg (Saran) signals detected
+- CS wins (higher priority)
+- task routed to **CS Requests**
+- Engg match logged in diagnostics: `{ competingMatch: { rule: 'engg-member', match: 'Saran' } }`
+- routing shown to user before creating
+
+### Scenario K — `/add` with no team signal, no feature keywords
+Input: `/add "check analytics numbers"`
+Expected result:
+- no team member match, no feature keywords
+- routed to **Features** with confidence: `defaulted`
+- Claude shows routing decision and asks for confirmation before creating task
+
+### Scenario L — Model routing enforcement
+Expected result:
+- `/morning` and `/eod` digest text is drafted by Haiku
+- `/prd` final document is drafted by Haiku
+- `/research` and `/jtbd` reasoning runs on Sonnet
+- `/pulse` shows Sonnet analysis phase completing before Haiku write phase begins
+- no workflow silently uses a model other than what is declared in its command file
 
 ---
 
@@ -1137,9 +1177,10 @@ Build:
 - `morning-sync.yml`
 - `evening-sync.yml`
 - `daily-fireflies-sync.yml`
-- `weekly-customer-pulse.yml`
 - raw snapshot writing
 - canonical state writing
+
+Note: There is no `weekly-customer-pulse.yml`. Thursday pulse is handled by `/pulse` as a Claude cron task, not a GitHub Action.
 
 ## Phase 3 — Task manager CLI
 Build:
@@ -1181,7 +1222,7 @@ Build:
 1. Remove every Jira and Trello reference from code, docs, config, schemas, and workflows.
 2. Reuse the existing Claude skills already present in `.claude/Skills/`.
 3. Add or update command instruction files under `.claude/commands/` rather than duplicating role files.
-4. Keep GitHub Actions non-AI except for `weekly-customer-pulse.yml`.
+4. Keep all GitHub Actions non-AI. The Thursday customer pulse runs as a Claude cron task (`/pulse`), not a GitHub Action — no `ANTHROPIC_API_KEY` in CI.
 5. Store all synced state in repository files.
 6. Make Claude workflows consume repository state and write durable artifacts back into the repo.
 7. Route model usage explicitly:
@@ -1190,6 +1231,8 @@ Build:
 8. Treat HTML/CSS wireframes as real deliverables, not optional prose.
 9. Fail closed when prerequisites are missing.
 10. Prefer explicitness over cleverness in task operations and workflow state.
+11. Section routing must read team membership from `context/system/team-list.md` at runtime — do not hardcode names or section IDs in service code.
+12. Show routing decision to user before creating a task when confidence is `inferred` or `defaulted`.
 
 ---
 
@@ -1197,11 +1240,11 @@ Build:
 
 This final design is intentionally narrower and stronger than the previous version.
 
-It removes unnecessary systems, keeps a strict AI boundary with one explicit weekly exception, reuses the Claude skill assets that already exist, and cleanly separates:
+It removes unnecessary systems, keeps GitHub Actions entirely non-AI (no API key in CI), reuses the Claude skill assets that already exist, and cleanly separates:
 
-- **daily non-AI sync work** from
-- **scheduled weekly customer pulse AI synthesis** from
-- **interactive Claude reasoning and artifact generation**
+- **daily non-AI sync work** (GitHub Actions) from
+- **scheduled weekly customer pulse AI synthesis** (Claude cron task, local repo reads) from
+- **interactive Claude reasoning and artifact generation** (commands on demand)
 
 That separation is what makes this implementable, testable, and maintainable.
 
