@@ -19,11 +19,11 @@ function optional(key: string, fallback: string): string {
 
 export const ENV = {
   todoist: {
-    apiToken:   required('TODOIST_API_TOKEN'),
+    apiToken:   optional('TODOIST_API_TOKEN', ''),
     projectId:  optional('TODOIST_PROJECT_ID', '6g8q49QQxHrFxRFx'),
   },
   gcal: {
-    serviceAccountJson: required('GCAL_SERVICE_ACCOUNT_JSON'),
+    serviceAccountJson: optional('GCAL_SERVICE_ACCOUNT_JSON', ''),
     calendarId:         optional('GCAL_CALENDAR_ID', 'primary'),
   },
   fireflies: {
