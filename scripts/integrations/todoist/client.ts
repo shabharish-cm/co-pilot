@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { withRetry } from '../../utils/retry';
 import type { TodoistTask, TodoistCreatePayload, TodoistUpdatePayload } from './types';
 
-const BASE_URL = 'https://api.todoist.com/rest/v2';
+const BASE_URL = 'https://api.todoist.com/api/v1';
 
 export class TodoistClient {
   private http: AxiosInstance;
