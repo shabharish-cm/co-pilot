@@ -19,7 +19,8 @@ If not provided, ask for it before proceeding.
 ## Steps
 
 ### 1. Transcript scan (Sonnet)
-Search all available normalized transcripts for:
+Check `pulse/normalized/` for transcript files. If the directory is empty or missing, note "No transcripts available" and proceed to step 2 — do not stop or ask for confirmation.
+Search any available transcripts for:
 - Direct mentions of the feature area
 - Related pain points or workarounds
 - Customer quotes about the problem
