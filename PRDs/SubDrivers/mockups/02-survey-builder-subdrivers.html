@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Survey Builder — Sub-driver Assignment | CultureMonkey</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-sizing: border-box; }
+    body { background: #f4f6f9; margin: 0; overflow: hidden; }
+    .fluid-container { display: flex; height: 100vh; overflow: hidden; }
+
+    /* Sidebar */
+    .sidebar-container { width: 220px; min-width: 220px; background: #fff; border-right: 1px solid #e8ecf0; display: flex; flex-direction: column; overflow-y: auto; }
+    .sidemenu-icon { padding: 8px 14px; border-bottom: 1px solid #e8ecf0; cursor: pointer; color: #718096; font-size: 12px; }
+    .user-details { padding: 14px 14px 10px; border-bottom: 1px solid #e8ecf0; }
+    .company-logo { width: 40px; height: 40px; border-radius: 6px; background: #5DCE97; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 16px; }
+    .company-name { font-weight: 600; font-size: 13px; margin-top: 6px; color: #2d3748; }
+    .user-name { font-size: 12px; color: #718096; }
+    .sub-admin-det { font-size: 11px; margin-top: 2px; }
+    .cm-green { color: #5DCE97; }
+    .grey { color: #718096; }
+    .dropdown-divider { margin: 6px 0; border-top: 1px solid #e8ecf0; }
+    .menu { flex: 1; padding: 8px 0; }
+    .menu ul { list-style: none; margin: 0; padding: 0; }
+    .menu-link { display: block; text-decoration: none !important; color: #4a5568; }
+    .menu-link li { padding: 8px 14px; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.15s; }
+    .menu-link li:hover { background: #f0fdf4; color: #5DCE97; }
+    .menu-link.active li { background: #e6f9f1; color: #5DCE97; border-left: 3px solid #5DCE97; font-weight: 500; }
+    .s-sidebar__nav-section { padding: 12px 14px 4px; font-size: 10px; font-weight: 700; color: #a0aec0; letter-spacing: 0.8px; text-transform: uppercase; cursor: default; }
+
+    /* Top nav */
+    .content-root { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .top-nav { background: #fff; border-bottom: 1px solid #e8ecf0; padding: 8px 20px; display: flex; align-items: center; justify-content: flex-end; min-height: 48px; }
+    .avatar-circle { width: 32px; height: 32px; border-radius: 50%; background: #5DCE97; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 600; }
+    .app-root { flex: 1; overflow-y: auto; }
+
+    /* Survey builder nav tabs (wizard steps) */
+    .survey-wizard-tabs { background: #fff; border-bottom: 1px solid #e8ecf0; padding: 0 20px; display: flex; align-items: center; gap: 0; }
+    .wizard-tab { padding: 12px 20px; font-size: 13px; cursor: pointer; color: #718096; border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap; }
+    .wizard-tab:hover { color: #5DCE97; }
+    .wizard-tab.active { color: #5DCE97; border-bottom-color: #5DCE97; font-weight: 500; }
+    .wizard-tab .tab-num { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; color: #718096; font-size: 11px; font-weight: 600; margin-right: 6px; }
+    .wizard-tab.active .tab-num { background: #5DCE97; color: #fff; }
+    .wizard-tab.done .tab-num { background: #c6f6d5; color: #276749; }
+
+    /* Survey header bar */
+    .survey-header-bar { background: #fff; border-bottom: 1px solid #e8ecf0; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .survey-title-area { display: flex; flex-direction: column; }
+    .survey-name { font-size: 16px; font-weight: 600; color: #2d3748; }
+    .survey-meta { font-size: 11px; color: #718096; margin-top: 2px; }
+    .survey-actions { display: flex; gap: 8px; }
+
+    /* Settings nav (graph-filter-nav style) */
+    .settings-nav { display: flex; list-style: none; padding: 0; margin: 0; background: #fff; border-bottom: 1px solid #e8ecf0; overflow-x: auto; }
+    .settings-nav .nav-item { padding: 10px 18px; cursor: pointer; color: #718096; font-size: 13px; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.15s; }
+    .settings-nav .nav-item:hover { color: #5DCE97; }
+    .settings-nav .nav-item.active { color: #5DCE97; border-bottom-color: #5DCE97; font-weight: 500; }
+
+    /* Question list */
+    .questions-container { padding: 16px 20px; }
+    .section-header { font-size: 12px; font-weight: 700; color: #a0aec0; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; padding: 0 4px; }
+
+    /* Question item card */
+    .question-item {
+      background: #fff; border: 1px solid #e8ecf0; border-radius: 8px;
+      margin-bottom: 10px; padding: 12px 16px;
+      display: flex; align-items: flex-start; gap: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: box-shadow 0.15s;
+    }
+    .question-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .q-drag { color: #cbd5e0; cursor: grab; margin-top: 3px; flex-shrink: 0; }
+    .q-body { flex: 1; }
+    .q-text { font-size: 13px; color: #2d3748; margin-bottom: 6px; line-height: 1.5; }
+    .q-badges { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .badge-qtype { font-size: 10px; padding: 2px 7px; border-radius: 3px; background: #e2e8f0; color: #4a5568; font-weight: 500; }
+    .badge-driver { font-size: 10px; padding: 2px 8px; border-radius: 10px; background: #e6f9f1; color: #276749; font-weight: 500; }
+    .badge-subdriver { font-size: 10px; padding: 2px 8px; border-radius: 10px; background: #e9f0ff; color: #2b6cb0; font-weight: 500; }
+    .badge-warn { font-size: 10px; padding: 2px 8px; border-radius: 10px; background: #fffbeb; color: #744210; border: 1px solid #fbd38d; font-weight: 500; }
+    .q-actions { display: flex; gap: 4px; align-items: flex-start; flex-shrink: 0; }
+    .btn-q-action { border: none; background: none; padding: 4px 7px; border-radius: 4px; cursor: pointer; color: #718096; font-size: 13px; transition: all 0.15s; }
+    .btn-q-action:hover { background: #f0f4f8; }
+    .btn-q-action.edit:hover { color: #3182ce; background: #ebf4ff; }
+    .btn-q-action.del:hover { color: #e53e3e; background: #fff5f5; }
+
+    /* Bottom action bar */
+    .add-question-bar { padding: 12px 20px; background: #fff; border-top: 1px solid #e8ecf0; display: flex; gap: 10px; align-items: center; position: sticky; bottom: 0; }
+
+    /* Modal */
+    .modal-content { border-radius: 8px; border: none; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+    .modal-header { border-bottom: 1px solid #e8ecf0; padding: 16px 20px; }
+    .modal-title { font-size: 13px; font-weight: 600; color: #2d3748; text-transform: uppercase; letter-spacing: 0.4px; }
+    .modal-body { padding: 20px; }
+    .modal-footer { border-top: 1px solid #e8ecf0; padding: 12px 20px; }
+    .form-label { font-size: 12px; font-weight: 600; color: #4a5568; margin-bottom: 4px; display: block; }
+    .form-control { font-size: 13px; border-color: #e2e8f0; border-radius: 4px; }
+    .form-control:focus { border-color: #5DCE97; box-shadow: 0 0 0 0.2rem rgba(93,206,151,0.2); }
+    .custom-select { font-size: 13px; border-color: #e2e8f0; border-radius: 4px; }
+    .btn-primary { background: #5DCE97; border-color: #5DCE97; font-size: 13px; }
+    .btn-primary:hover { background: #48bb84; border-color: #48bb84; }
+    .btn-secondary { font-size: 13px; }
+    .general-description { font-size: 12px; color: #718096; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #f0f4f8; }
+
+    /* Rating display */
+    .rating-display { display: flex; gap: 8px; margin: 12px 0; }
+    .rating-box { width: 36px; height: 36px; border: 2px solid #5DCE97; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: #5DCE97; }
+    .rating-label { display: flex; justify-content: space-between; font-size: 11px; color: #718096; }
+
+    /* Sub-driver conditional note */
+    .subdriver-note { background: #f0fff4; border: 1px solid #c6f6d5; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #276749; display: flex; gap: 8px; align-items: flex-start; margin-top: 4px; }
+    .no-gutter { margin-left: 0; margin-right: 0; }
+    .no-gutter > [class*="col-"] { padding-left: 0; padding-right: 0; }
+  </style>
+</head>
+<body>
+
+<div class="fluid-container">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <div class="sidebar-container">
+    <div class="sidemenu-icon">
+      <span style="display:flex;align-items:center;gap:4px;font-size:12px;">
+        <i class="fa fa-angle-double-left"></i> Collapse
+      </span>
+    </div>
+    <div class="user-details">
+      <div class="company-logo">AC</div>
+      <div class="company-name">Acme Corp</div>
+      <div class="user-name">Caesar User</div>
+      <div class="sub-admin-det"><span class="grey">Logged in as: </span><span class="cm-green">Shabharish V</span></div>
+      <div class="dropdown-divider"></div>
+      <div class="sub-admin-det"><span class="cm-green">Active Employees: 687/700</span></div>
+    </div>
+    <div class="menu">
+      <ul>
+        <a class="menu-link" href="#"><li><i class="fa fa-home"></i>Dashboard</li></a>
+        <a class="menu-link" href="#"><li><i class="fas fa-sitemap"></i>Org Hierarchy</li></a>
+        <li class="s-sidebar__nav-section">LISTEN</li>
+        <a class="menu-link" href="#"><li><i class="fa fa-clone"></i>Templates</li></a>
+        <a class="menu-link active" href="#"><li><i class="fa fa-paint-brush"></i>Surveys</li></a>
+        <a class="menu-link" href="#"><li><i class="fas fa-heartbeat"></i>Pulse</li></a>
+        <li class="s-sidebar__nav-section">ANALYSE</li>
+        <a class="menu-link" href="#"><li><i class="fas fa-chart-line"></i>Reports</li></a>
+        <li class="s-sidebar__nav-section">GENERAL</li>
+        <a class="menu-link" href="#"><li><i class="fa fa-cog"></i>Settings</li></a>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ MAIN ═══ -->
+  <div class="content-root">
+    <div class="top-nav">
+      <ul class="navbar-nav flex-row" style="gap:12px;list-style:none;margin:0;padding:0;">
+        <li><a href="#"><i class="fa fa-cog" style="color:#718096;font-size:16px;"></i></a></li>
+        <li><div class="avatar-circle">CU</div></li>
+      </ul>
+    </div>
+
+    <div class="app-root">
+
+      <!-- Survey header bar -->
+      <div class="survey-header-bar">
+        <div class="survey-title-area">
+          <div class="survey-name">Q1 2025 Engagement Survey</div>
+          <div class="survey-meta"><span class="badge" style="background:#fffbeb;color:#744210;font-size:10px;border:1px solid #fbd38d;">Draft</span> &nbsp; 24 questions &nbsp;·&nbsp; Created Jan 12, 2025</div>
+        </div>
+        <div class="survey-actions">
+          <button class="btn btn-sm btn-secondary">Preview</button>
+          <button class="btn btn-sm btn-primary">Publish Survey</button>
+        </div>
+      </div>
+
+      <!-- Wizard tabs (Overview / Questions / Participants / Schedule / Review) -->
+      <div class="survey-wizard-tabs">
+        <div class="wizard-tab done"><span class="tab-num">✓</span>Overview</div>
+        <div class="wizard-tab active"><span class="tab-num">2</span>Questions</div>
+        <div class="wizard-tab"><span class="tab-num">3</span>Participants</div>
+        <div class="wizard-tab"><span class="tab-num">4</span>Schedule</div>
+        <div class="wizard-tab"><span class="tab-num">5</span>Review</div>
+      </div>
+
+      <!-- Section nav (graph-filter-nav style) -->
+      <ul class="settings-nav">
+        <li class="nav-item active">All Questions</li>
+        <li class="nav-item">Standard Questions</li>
+        <li class="nav-item">eNPS Question</li>
+        <li class="nav-item">Open-ended Questions</li>
+      </ul>
+
+      <!-- Questions list -->
+      <div class="questions-container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="section-header mb-0">Section 1 — Engagement Core</div>
+          <div style="font-size:12px;color:#718096;">
+            <span style="color:#e53e3e;font-size:11px;"><i class="fas fa-exclamation-circle"></i></span>
+            2 questions missing sub-driver assignment
+          </div>
+        </div>
+
+        <!-- Q1 — Has driver + sub-driver -->
+        <div class="question-item">
+          <i class="fas fa-grip-vertical q-drag"></i>
+          <div class="q-body">
+            <div class="q-text">I have the freedom to decide how to approach my work and responsibilities.</div>
+            <div class="q-badges">
+              <span class="badge-qtype">Rating</span>
+              <span class="badge-driver"><i class="fas fa-tag"></i> Autonomy</span>
+              <span class="badge-subdriver"><i class="fas fa-layer-group"></i> Decision-Making Freedom</span>
+            </div>
+          </div>
+          <div class="q-actions">
+            <button class="btn-q-action edit" onclick="openQuestionModal(1)" title="Edit question"><i class="fa fa-pen"></i></button>
+            <button class="btn-q-action del" title="Remove question"><i class="fa fa-minus-circle"></i></button>
+          </div>
+        </div>
+
+        <!-- Q2 — Has driver + sub-driver -->
+        <div class="question-item">
+          <i class="fas fa-grip-vertical q-drag"></i>
+          <div class="q-body">
+            <div class="q-text">I feel a strong sense of ownership over the projects and outcomes I contribute to.</div>
+            <div class="q-badges">
+              <span class="badge-qtype">Rating</span>
+              <span class="badge-driver"><i class="fas fa-tag"></i> Autonomy</span>
+              <span class="badge-subdriver"><i class="fas fa-layer-group"></i> Ownership &amp; Accountability</span>
+            </div>
+          </div>
+          <div class="q-actions">
+            <button class="btn-q-action edit" onclick="openQuestionModal(2)" title="Edit question"><i class="fa fa-pen"></i></button>
+            <button class="btn-q-action del"><i class="fa fa-minus-circle"></i></button>
+          </div>
+        </div>
+
+        <!-- Q3 — Has driver but NO sub-driver (warning) -->
+        <div class="question-item" style="border-color:#fbd38d;">
+          <i class="fas fa-grip-vertical q-drag"></i>
+          <div class="q-body">
+            <div class="q-text">My manager provides regular, constructive feedback that helps me improve.</div>
+            <div class="q-badges">
+              <span class="badge-qtype">Rating</span>
+              <span class="badge-driver"><i class="fas fa-tag"></i> Leadership</span>
+              <span class="badge-warn"><i class="fas fa-exclamation-triangle"></i> No sub-driver assigned</span>
+            </div>
+          </div>
+          <div class="q-actions">
+            <button class="btn-q-action edit" onclick="openQuestionModal(3)" title="Edit question — assign sub-driver" style="color:#d69e2e;"><i class="fa fa-pen"></i></button>
+            <button class="btn-q-action del"><i class="fa fa-minus-circle"></i></button>
+          </div>
+        </div>
+
+        <!-- Q4 — Has driver + sub-driver -->
+        <div class="question-item">
+          <i class="fas fa-grip-vertical q-drag"></i>
+          <div class="q-body">
+            <div class="q-text">I feel my workplace provides the tools and resources needed to do my job well.</div>
+            <div class="q-badges">
+              <span class="badge-qtype">Rating</span>
+              <span class="badge-driver"><i class="fas fa-tag"></i> Work Environment</span>
+              <span class="badge-subdriver"><i class="fas fa-layer-group"></i> Tools &amp; Resources</span>
+            </div>
+          </div>
+          <div class="q-actions">
+            <button class="btn-q-action edit" onclick="openQuestionModal(4)"><i class="fa fa-pen"></i></button>
+            <button class="btn-q-action del"><i class="fa fa-minus-circle"></i></button>
+          </div>
+        </div>
+
+        <!-- Q5 — Driver only, no sub-driver (custom driver Innovation) -->
+        <div class="question-item" style="border-color:#fbd38d;">
+          <i class="fas fa-grip-vertical q-drag"></i>
+          <div class="q-body">
+            <div class="q-text">My team actively encourages experimentation and learning from failure.</div>
+            <div class="q-badges">
+              <span class="badge-qtype">Rating</span>
+              <span class="badge-driver"><i class="fas fa-tag"></i> Innovation Culture</span>
+              <span class="badge-warn"><i class="fas fa-exclamation-triangle"></i> No sub-driver assigned</span>
+            </div>
+          </div>
+          <div class="q-actions">
+            <button class="btn-q-action edit" onclick="openQuestionModal(5)" style="color:#d69e2e;"><i class="fa fa-pen"></i></button>
+            <button class="btn-q-action del"><i class="fa fa-minus-circle"></i></button>
+          </div>
+        </div>
+
+        <!-- Q6 — Open-ended, no driver/sub-driver needed -->
+        <div class="question-item">
+          <i class="fas fa-grip-vertical q-drag"></i>
+          <div class="q-body">
+            <div class="q-text">What is one thing the company could do to improve your day-to-day experience?</div>
+            <div class="q-badges">
+              <span class="badge-qtype">Free Text</span>
+            </div>
+          </div>
+          <div class="q-actions">
+            <button class="btn-q-action edit" onclick="openQuestionModal(6)"><i class="fa fa-pen"></i></button>
+            <button class="btn-q-action del"><i class="fa fa-minus-circle"></i></button>
+          </div>
+        </div>
+
+        <!-- Add question bar -->
+        <div class="add-question-bar mt-2" style="position:static;border-top:none;background:transparent;padding:0;">
+          <button class="btn btn-sm btn-outline-secondary" onclick="openQuestionModal(0)">
+            <i class="fas fa-plus"></i> Add Custom Question
+          </button>
+          <button class="btn btn-sm btn-outline-secondary">
+            <i class="fas fa-book-open"></i> Add from Question Bank
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /app-root -->
+  </div><!-- /content-root -->
+</div><!-- /fluid-container -->
+
+
+<!-- ══ Modal: Add / Edit Question ══ -->
+<div class="modal fade question-container" id="custom-new-question-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content modal-question">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalQTitle">ADD YOUR OWN QUESTION</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body container">
+        <div class="row">
+          <div class="col-md-12 no-gutter general-description">Question details</div>
+
+          <!-- Question text -->
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="form-label bootstrap_mandatory">Question <span class="text-danger">*</span></label>
+              <input class="form-control" type="text" id="qtext" placeholder="e.g. I have the freedom to decide how to approach my work.">
+            </div>
+          </div>
+
+          <!-- Left column: type, scale, display -->
+          <div class="col-md-6 p-0">
+            <div class="col-md-11">
+              <div class="form-group">
+                <label class="form-label bootstrap_mandatory">Question Type <span class="text-danger">*</span></label>
+                <select class="form-control custom-select" id="qtype" onchange="onTypeChange()">
+                  <option value="">Select</option>
+                  <option value="rating" selected>Rating</option>
+                  <option value="single">Single Select</option>
+                  <option value="multi">Multiple Select</option>
+                  <option value="text">Free Text</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-11" id="scaleGroup">
+              <div class="form-group">
+                <label class="form-label bootstrap_mandatory">Scale of Rating <span class="text-danger">*</span></label>
+                <select class="form-control custom-select">
+                  <option value="1" selected>Agreement</option>
+                  <option value="2">Satisfaction</option>
+                  <option value="3">Quality</option>
+                  <option value="4">Frequency</option>
+                  <option value="5">Performance</option>
+                  <option value="6">Importance</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Driver dropdown -->
+            <div class="col-md-11" id="driverGroup">
+              <div class="form-group">
+                <label class="form-label bootstrap_mandatory">Driver <span class="text-danger">*</span></label>
+                <select class="form-control custom-select" id="driverSelect" onchange="onDriverChange()">
+                  <option value="">Select driver</option>
+                  <option value="autonomy">Autonomy</option>
+                  <option value="workenv">Work Environment</option>
+                  <option value="leadership" selected>Leadership</option>
+                  <option value="innovation">Innovation Culture</option>
+                  <option value="dei">Diversity &amp; Inclusion</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Sub-driver dropdown (conditional) -->
+            <div class="col-md-11" id="subdriverGroup">
+              <div class="form-group">
+                <label class="form-label">Sub-driver <span style="color:#718096;font-weight:400;">(optional)</span></label>
+                <select class="form-control custom-select" id="subdriverSelect">
+                  <option value="">Select sub-driver</option>
+                  <option value="vision">Vision &amp; Direction</option>
+                  <option value="access">Accessibility &amp; Approachability</option>
+                  <option value="feedback" selected>Feedback &amp; Coaching</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column: rating preview -->
+          <div class="col-md-6" id="ratingPreviewCol">
+            <div class="rating-display">
+              <div class="rating-box">1</div>
+              <div class="rating-box">2</div>
+              <div class="rating-box">3</div>
+              <div class="rating-box">4</div>
+              <div class="rating-box">5</div>
+            </div>
+            <div class="rating-label">
+              <span>Strongly disagree</span>
+              <span>Strongly agree</span>
+            </div>
+            <!-- Live Driver → Sub-driver breadcrumb -->
+            <div id="breadcrumbPreview" style="margin-top:20px;padding:10px 14px;background:#f8fffe;border:1px solid #c6f6d5;border-radius:6px;font-size:12px;">
+              <div style="color:#718096;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Score will be attributed to</div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <span style="background:#e6f9f1;color:#276749;padding:3px 10px;border-radius:10px;font-weight:600;">Leadership</span>
+                <i class="fas fa-chevron-right" style="color:#a0aec0;font-size:10px;"></i>
+                <span style="background:#e9f0ff;color:#2b6cb0;padding:3px 10px;border-radius:10px;font-weight:600;" id="bcSubdriver">Feedback &amp; Coaching</span>
+              </div>
+              <div style="color:#a0aec0;font-size:11px;margin-top:6px;">Overall Score → Leadership → Feedback &amp; Coaching</div>
+            </div>
+          </div>
+
+        </div><!-- /row -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" onclick="$('#custom-new-question-modal').modal('hide')">Save Question</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  var driverSubdrivers = {
+    autonomy: ['Decision-Making Freedom', 'Ownership & Accountability', 'Flexibility & Work Arrangements'],
+    workenv: ['Physical Workspace', 'Tools & Resources', 'Safety & Wellbeing'],
+    leadership: ['Vision & Direction', 'Accessibility & Approachability', 'Feedback & Coaching'],
+    innovation: ['Idea Generation', 'Experimentation & Risk-Taking'],
+    dei: []
+  };
+
+  var driverNames = {
+    autonomy: 'Autonomy', workenv: 'Work Environment',
+    leadership: 'Leadership', innovation: 'Innovation Culture', dei: 'Diversity & Inclusion'
+  };
+
+  function openQuestionModal(qnum) {
+    document.getElementById('modalQTitle').textContent = qnum === 0 ? 'ADD YOUR OWN QUESTION' : 'EDIT QUESTION';
+    $('#custom-new-question-modal').modal('show');
+  }
+
+  function onDriverChange() {
+    var sel = document.getElementById('driverSelect').value;
+    var sdSelect = document.getElementById('subdriverSelect');
+    var subgroup = document.getElementById('subdriverGroup');
+    var bc = document.getElementById('breadcrumbPreview');
+
+    sdSelect.innerHTML = '<option value="">Select sub-driver</option>';
+    if (sel && driverSubdrivers[sel]) {
+      var subs = driverSubdrivers[sel];
+      if (subs.length > 0) {
+        subs.forEach(function(s) {
+          var opt = document.createElement('option');
+          opt.value = s.toLowerCase().replace(/\s/g,'-');
+          opt.textContent = s;
+          sdSelect.appendChild(opt);
+        });
+        subgroup.style.display = 'block';
+        // update breadcrumb
+        bc.querySelector('span:first-child').textContent = driverNames[sel];
+        document.getElementById('bcSubdriver').textContent = 'Select sub-driver';
+        bc.style.display = 'block';
+      } else {
+        subgroup.style.display = 'none';
+        bc.style.display = 'none';
+      }
+    } else {
+      subgroup.style.display = 'none';
+      bc.style.display = 'none';
+    }
+  }
+
+  function onTypeChange() {
+    var val = document.getElementById('qtype').value;
+    var showDriver = (val === 'rating');
+    document.getElementById('driverGroup').style.display = showDriver ? 'block' : 'none';
+    document.getElementById('subdriverGroup').style.display = showDriver ? 'block' : 'none';
+    document.getElementById('scaleGroup').style.display = showDriver ? 'block' : 'none';
+    document.getElementById('ratingPreviewCol').style.display = showDriver ? 'block' : 'none';
+  }
+</script>
+</body>
+</html>

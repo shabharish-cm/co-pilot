@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roles — CultureMonkey</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-green: #55ce97;
+    --brand-green-dark: #4cb485;
+    --sidebar-bg: #F8FDFA;
+    --page-bg: #ffffff;
+    --light-gray: #f7f7f7;
+    --text-default: #373A3C;
+    --text-muted: #6c757d;
+    --border-gray: #CAD1D7;
+    --table-border: #e7ebee;
+    --hover-bg: #e9eeed;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --success: #28a745;
+    --info-blue: #3471db;
+    --driver-tag-green: #ddece6;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; font-size: 15.5px; color: var(--text-default); background: var(--page-bg); margin: 0; }
+
+  /* TOP NAV */
+  .top-nav {
+    height: 60px; background: var(--sidebar-bg); border-bottom: 1px solid var(--table-border);
+    display: flex; align-items: center; padding: 0 1.5rem; position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  }
+  .top-nav .nav-toggle { font-size: 1.1rem; color: var(--text-muted); cursor: pointer; margin-right: 1rem; }
+  .top-nav .search-wrap { flex: 1; max-width: 40vw; position: relative; }
+  .top-nav .search-wrap input {
+    width: 100%; height: 36px; border: 1px solid var(--border-gray); border-radius: 3px;
+    padding: 0 1rem 0 2.5rem; font-size: 14px; font-family: inherit; background: #fff;
+  }
+  .top-nav .search-wrap .fa-search { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 13px; }
+  .top-nav .nav-right { margin-left: auto; display: flex; align-items: center; gap: 1.25rem; }
+  .top-nav .nav-right .nav-icon { color: var(--text-muted); font-size: 1rem; cursor: pointer; }
+  .top-nav .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--brand-green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 250px; background: var(--sidebar-bg); border-right: 1px solid var(--table-border);
+    position: fixed; top: 60px; left: 0; bottom: 0; overflow-y: auto; z-index: 90;
+  }
+  .sidebar-top { padding: 1.25rem 1rem 1rem; border-bottom: 1px solid var(--table-border); }
+  .sidebar-logo { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+  .sidebar-logo img { max-height: 32px; }
+  .sidebar-logo-text { font-size: 20px; font-weight: 500; color: var(--text-default); }
+  .sidebar-role-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; background: var(--driver-tag-green); color: var(--brand-green-dark); padding: 2px 8px; border-radius: 3px; display: inline-block; margin-bottom: 0.5rem; }
+  .sidebar-stats { font-size: 12px; color: var(--text-muted); }
+  .sidebar-stats span { display: block; }
+  .sidebar-stats strong { color: var(--brand-green); }
+
+  .nav-section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); padding: 1rem 1rem 0.35rem; letter-spacing: 0.06em; }
+  .nav-item { display: flex; align-items: center; gap: 0.65rem; padding: 8px 13px; cursor: pointer; color: var(--text-default); font-size: 14px; text-decoration: none; transition: background 0.15s; }
+  .nav-item:hover { background: var(--hover-bg); color: var(--text-default); text-decoration: none; }
+  .nav-item.active { background: var(--brand-green); color: #fff; }
+  .nav-item.active .nav-icon-item { color: #fff; }
+  .nav-icon-item { width: 18px; text-align: center; color: var(--brand-green); font-size: 0.9rem; }
+  .nav-item.active .nav-icon-item { color: #fff; }
+
+  /* MAIN */
+  .main-content { margin-left: 250px; margin-top: 60px; padding: 2rem; min-height: calc(100vh - 60px); }
+
+  /* BREADCRUMB */
+  .page-breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .page-breadcrumb a { color: var(--brand-green); text-decoration: none; }
+  .page-breadcrumb a:hover { text-decoration: underline; }
+  .page-title { font-size: 32px; font-weight: 300; color: var(--text-default); margin-bottom: 1.5rem; }
+
+  /* CONTENT BODY */
+  .content-body { background: #fff; border-radius: 3px; box-shadow: 0 6px 13px 2px rgba(0,0,0,0.1); padding: 2rem; }
+
+  /* STATE SWITCHER (demo only) */
+  .demo-switcher { background: #fff8e6; border: 1px solid #ffe082; border-radius: 3px; padding: 0.6rem 1rem; margin-bottom: 1.5rem; font-size: 13px; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .demo-switcher strong { color: #856404; margin-right: 0.5rem; }
+  .demo-btn { font-size: 12px; padding: 3px 12px; border-radius: 3px; border: 1px solid var(--border-gray); background: #fff; cursor: pointer; font-family: inherit; }
+  .demo-btn.active-demo { background: var(--brand-green); color: #fff; border-color: var(--brand-green); }
+
+  /* SECTION HEADERS */
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--table-border); }
+  .section-title { font-size: 16px; font-weight: 500; color: var(--text-default); display: flex; align-items: center; gap: 0.5rem; }
+  .section-title .badge-count { font-size: 11px; background: var(--light-gray); color: var(--text-muted); padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+
+  /* SYSTEM ROLES TABLE */
+  .roles-table { width: 100%; border-collapse: collapse; }
+  .roles-table th { font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); padding: 10px 12px; background: var(--light-gray); border-bottom: 1px solid var(--table-border); letter-spacing: 0.04em; }
+  .roles-table td { padding: 14px 12px; border-bottom: 1px solid var(--table-border); vertical-align: middle; font-size: 14px; }
+  .roles-table tr:last-child td { border-bottom: none; }
+  .roles-table tr:hover td { background: #fafafa; }
+  .role-name-cell strong { font-size: 14px; font-weight: 500; display: block; }
+  .role-name-cell span { font-size: 12px; color: var(--text-muted); }
+
+  /* BADGES */
+  .badge-scope { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.03em; }
+  .badge-scope.global { background: #e3f1fb; color: #1a6a9e; }
+  .badge-scope.reporting { background: #fff3cd; color: #856404; }
+  .badge-scope.demographic { background: var(--driver-tag-green); color: #1a6a4a; }
+  .badge-system { font-size: 11px; background: #f0f0f0; color: var(--text-muted); padding: 2px 8px; border-radius: 3px; font-weight: 600; }
+
+  .permission-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chip { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+  .chip-view { background: #e3f1fb; color: #1a6a9e; }
+  .chip-edit { background: #e6f4ec; color: #1a6a4a; }
+  .chip-more { background: var(--light-gray); color: var(--text-muted); }
+
+  .user-count { font-size: 13px; font-weight: 500; color: var(--text-default); }
+  .last-modified { font-size: 12px; color: var(--text-muted); }
+
+  /* ACTION BUTTONS */
+  .action-btns { display: flex; gap: 6px; }
+  .btn-action { font-size: 12px; padding: 4px 10px; border-radius: 3px; border: 1px solid var(--border-gray); background: #fff; cursor: pointer; font-family: inherit; color: var(--text-default); transition: all 0.15s; }
+  .btn-action:hover { background: var(--light-gray); }
+  .btn-action.btn-delete { color: var(--danger); border-color: #f5c6cb; }
+  .btn-action.btn-delete:hover { background: #fff5f5; }
+  .lock-icon { color: var(--text-muted); font-size: 12px; }
+
+  /* PRIMARY BUTTON */
+  .btn-primary-cm { background: var(--brand-green); color: #fff; border: none; padding: 0.5rem 1.25rem; border-radius: 3px; font-family: inherit; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; box-shadow: 0 3px 4px 0 rgba(0,0,0,0.1); transition: background 0.15s; display: inline-flex; align-items: center; gap: 0.4rem; }
+  .btn-primary-cm:hover { background: var(--brand-green-dark); }
+
+  /* EMPTY STATE */
+  .empty-state { text-align: center; padding: 3.5rem 2rem; }
+  .empty-state .empty-icon { width: 80px; height: 80px; background: var(--driver-tag-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
+  .empty-state .empty-icon i { font-size: 2rem; color: var(--brand-green); }
+  .empty-state h5 { font-size: 18px; font-weight: 500; color: var(--text-default); margin-bottom: 0.5rem; }
+  .empty-state p { font-size: 14px; color: var(--text-muted); max-width: 380px; margin: 0 auto 1.5rem; line-height: 1.6; }
+
+  /* LOADING SKELETON */
+  .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 3px; }
+  @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  .skel-row td { padding: 16px 12px; }
+  .skel-line { height: 14px; width: 80%; }
+  .skel-line-sm { height: 12px; width: 50%; margin-top: 5px; }
+  .skel-badge { height: 20px; width: 70px; display: inline-block; }
+  .skel-chips { display: flex; gap: 4px; }
+  .skel-chip { height: 18px; width: 55px; }
+
+  /* DELETE BLOCKED ALERT */
+  .delete-blocked-alert { background: #fff5f5; border: 1px solid #f5c6cb; border-radius: 3px; padding: 0.75rem 1rem; margin-top: 0.5rem; font-size: 13px; color: #721c24; display: flex; align-items: flex-start; gap: 0.5rem; }
+  .delete-blocked-alert i { margin-top: 2px; color: var(--danger); }
+
+  /* CONFIRMATION MODAL */
+  .modal-backdrop-custom { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; display: none; align-items: center; justify-content: center; }
+  .modal-backdrop-custom.show { display: flex; }
+  .modal-box { background: #fff; border-radius: 4px; width: 440px; box-shadow: 0 0 50px 0 rgba(0,0,0,0.1); overflow: hidden; }
+  .modal-hdr { padding: 1.25rem 1.5rem; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: space-between; }
+  .modal-hdr h5 { font-size: 16px; font-weight: 500; margin: 0; }
+  .modal-close { background: none; border: none; font-size: 1.25rem; color: var(--text-muted); cursor: pointer; }
+  .modal-bdy { padding: 1.5rem; font-size: 14px; color: var(--text-default); line-height: 1.6; }
+  .modal-ftr { padding: 1rem 1.5rem; border-top: 1px solid #e0e0e0; display: flex; justify-content: flex-end; gap: 0.75rem; box-shadow: 0 -3px 13px 0 rgba(0,0,0,0.08); }
+  .btn-cancel { background: var(--light-gray); border: 1px solid var(--border-gray); border-radius: 3px; padding: 0.5rem 1.25rem; font-family: inherit; font-size: 13px; cursor: pointer; color: var(--text-default); }
+  .btn-danger-cm { background: var(--danger); color: #fff; border: none; border-radius: 3px; padding: 0.5rem 1.25rem; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+  /* TOAST */
+  .toast-wrap { position: fixed; top: 1.25rem; right: 1.5rem; z-index: 300; display: none; }
+  .toast-wrap.show { display: block; animation: slideInRight 0.3s ease; }
+  .toast-box { background: #fff; border-left: 4px solid var(--success); border-radius: 3px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 0.85rem 1.25rem; min-width: 280px; display: flex; align-items: center; gap: 0.75rem; font-size: 14px; }
+  .toast-box i { color: var(--success); font-size: 1rem; }
+  @keyframes slideInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+  .section-gap { margin-top: 2.5rem; }
+
+  /* HIGHLIGHT ROW */
+  .highlight-delete td { background: #fff5f5 !important; }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <span class="nav-toggle"><i class="fas fa-bars"></i></span>
+  <div class="search-wrap">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Search surveys, reports, employees...">
+  </div>
+  <div class="nav-right">
+    <span class="nav-icon"><i class="fas fa-globe"></i></span>
+    <span class="nav-icon"><i class="fas fa-cog"></i></span>
+    <span class="nav-icon"><i class="fas fa-question-circle"></i></span>
+    <div class="avatar">SA</div>
+  </div>
+</nav>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-top">
+    <div class="sidebar-logo">
+      <div style="width:32px;height:32px;background:var(--brand-green);border-radius:4px;display:flex;align-items:center;justify-content:center;">
+        <i class="fas fa-leaf" style="color:#fff;font-size:14px;"></i>
+      </div>
+      <span class="sidebar-logo-text">Acme Corp</span>
+    </div>
+    <div class="sidebar-role-badge">Super Admin</div>
+    <div class="sidebar-stats">
+      <span>Active Employees: <strong>2,840</strong></span>
+      <span>Active Managers: <strong>186</strong></span>
+    </div>
+  </div>
+
+  <div class="nav-section-label">Listen</div>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-clone"></i></span> Templates</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-paint-brush"></i></span> Surveys</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-heartbeat"></i></span> Pulse</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-space-shuttle"></i></span> Lifecycle</a>
+
+  <div class="nav-section-label">Analyse</div>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-chart-line"></i></span> Reports</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-chart-bar"></i></span> Comment Analytics</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-download"></i></span> Reports Panel</a>
+
+  <div class="nav-section-label">Insights</div>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-chalkboard-teacher"></i></span> Manager Statistics</a>
+
+  <div class="nav-section-label">Act</div>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-list"></i></span> Actions</a>
+
+  <div class="nav-section-label">General</div>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-envelope-open-text"></i></span> Email Templates</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-broadcast-tower"></i></span> Integrations</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-users"></i></span> Employees</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-user-tie"></i></span> Managers</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-crown"></i></span> Administrators</a>
+  <a class="nav-item active" href="#"><span class="nav-icon-item"><i class="fas fa-shield-alt"></i></span> Roles</a>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+  <div class="page-breadcrumb">
+    <a href="#">Settings</a> / <span>Roles</span>
+  </div>
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="page-title mb-0">Roles &amp; Permissions</h1>
+  </div>
+
+  <!-- DEMO SWITCHER -->
+  <div class="demo-switcher">
+    <strong>🎛 Demo State:</strong>
+    <button class="demo-btn active-demo" onclick="setState('populated')">Populated List</button>
+    <button class="demo-btn" onclick="setState('empty')">Empty State</button>
+    <button class="demo-btn" onclick="setState('loading')">Loading</button>
+    <button class="demo-btn" onclick="setState('delete-blocked')">Delete Blocked</button>
+  </div>
+
+  <div class="content-body" id="mainContent">
+
+    <!-- SYSTEM ROLES SECTION -->
+    <div class="section-header">
+      <div class="section-title">
+        <i class="fas fa-lock" style="color:var(--text-muted);font-size:14px;"></i>
+        System Roles
+        <span class="badge-count">5</span>
+      </div>
+      <span style="font-size:12px;color:var(--text-muted);"><i class="fas fa-info-circle"></i> System roles cannot be edited or deleted</span>
+    </div>
+
+    <table class="roles-table mb-4" id="systemRolesTable">
+      <thead>
+        <tr>
+          <th style="width:22%">Role Name</th>
+          <th style="width:16%">Scope</th>
+          <th style="width:32%">Module Access</th>
+          <th style="width:12%">Users</th>
+          <th style="width:18%">Last Modified</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="role-name-cell"><strong>Super Admin</strong><span>Full platform access</span></div></td>
+          <td><span class="badge-scope global">Global</span></td>
+          <td><div class="permission-chips"><span class="chip chip-edit">All Modules</span></div></td>
+          <td><span class="user-count">3</span></td>
+          <td><span class="last-modified"><i class="fas fa-lock lock-icon"></i> System role</span></td>
+        </tr>
+        <tr>
+          <td><div class="role-name-cell"><strong>Sub-Admin</strong><span>Broad access, scope per user</span></div></td>
+          <td><span class="badge-scope demographic">Per-User Scope</span></td>
+          <td><div class="permission-chips"><span class="chip chip-edit">Surveys</span><span class="chip chip-edit">Reports</span><span class="chip chip-view">Actions</span><span class="chip chip-more">+4 more</span></div></td>
+          <td><span class="user-count">14</span></td>
+          <td><span class="last-modified"><i class="fas fa-lock lock-icon"></i> System role</span></td>
+        </tr>
+        <tr>
+          <td><div class="role-name-cell"><strong>Admin-Manager</strong><span>Hybrid admin + manager</span></div></td>
+          <td><span class="badge-scope reporting">Reporting Mgr</span></td>
+          <td><div class="permission-chips"><span class="chip chip-edit">Surveys</span><span class="chip chip-view">Reports</span><span class="chip chip-more">+3 more</span></div></td>
+          <td><span class="user-count">22</span></td>
+          <td><span class="last-modified"><i class="fas fa-lock lock-icon"></i> System role</span></td>
+        </tr>
+        <tr>
+          <td><div class="role-name-cell"><strong>Manager</strong><span>Reporting hierarchy only</span></div></td>
+          <td><span class="badge-scope reporting">Reporting Mgr</span></td>
+          <td><div class="permission-chips"><span class="chip chip-view">Reports</span><span class="chip chip-view">Actions</span></div></td>
+          <td><span class="user-count">186</span></td>
+          <td><span class="last-modified"><i class="fas fa-lock lock-icon"></i> System role</span></td>
+        </tr>
+        <tr>
+          <td><div class="role-name-cell"><strong>Report-View-Only</strong><span>Read-only reports access</span></div></td>
+          <td><span class="badge-scope global">Global</span></td>
+          <td><div class="permission-chips"><span class="chip chip-view">Reports</span></div></td>
+          <td><span class="user-count">8</span></td>
+          <td><span class="last-modified"><i class="fas fa-lock lock-icon"></i> System role</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- CUSTOM ROLES SECTION -->
+    <div class="section-header section-gap">
+      <div class="section-title">
+        <i class="fas fa-shield-alt" style="color:var(--brand-green);font-size:14px;"></i>
+        Custom Roles
+        <span class="badge-count" id="customRoleCount">4</span>
+      </div>
+      <button class="btn-primary-cm" onclick="window.location.href='settings__role-builder.html'">
+        <i class="fas fa-plus"></i> Create Role
+      </button>
+    </div>
+
+    <!-- POPULATED STATE -->
+    <div id="statePopulated">
+      <table class="roles-table">
+        <thead>
+          <tr>
+            <th style="width:22%">Role Name</th>
+            <th style="width:16%">Scope</th>
+            <th style="width:28%">Module Access</th>
+            <th style="width:10%">Users</th>
+            <th style="width:12%">Last Modified</th>
+            <th style="width:12%">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="role-name-cell"><strong>HRBP Viewer</strong><span>Dashboard, reports &amp; analytics</span></div></td>
+            <td><span class="badge-scope global">Global</span></td>
+            <td><div class="permission-chips"><span class="chip chip-view">Dashboard</span><span class="chip chip-view">Reports</span><span class="chip chip-view">Comment Analytics</span><span class="chip chip-more">+1 more</span></div></td>
+            <td><span class="user-count">7</span></td>
+            <td><span class="last-modified">Mar 8, 2026</span></td>
+            <td>
+              <div class="action-btns">
+                <button class="btn-action" onclick="window.location.href='settings__role-builder.html'"><i class="fas fa-pen"></i> Edit</button>
+                <button class="btn-action"><i class="fas fa-copy"></i></button>
+                <button class="btn-action btn-delete" onclick="showDeleteModal('HRBP Viewer', 7)"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="role-name-cell"><strong>Regional HR Lead</strong><span>India &amp; APAC scope</span></div></td>
+            <td><span class="badge-scope demographic">India, APAC</span></td>
+            <td><div class="permission-chips"><span class="chip chip-edit">Surveys</span><span class="chip chip-edit">Reports</span><span class="chip chip-edit">Actions</span></div></td>
+            <td><span class="user-count">4</span></td>
+            <td><span class="last-modified">Mar 5, 2026</span></td>
+            <td>
+              <div class="action-btns">
+                <button class="btn-action" onclick="window.location.href='settings__role-builder.html'"><i class="fas fa-pen"></i> Edit</button>
+                <button class="btn-action"><i class="fas fa-copy"></i></button>
+                <button class="btn-action btn-delete" onclick="showDeleteModal('Regional HR Lead', 4)"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="role-name-cell"><strong>Executive Viewer</strong><span>C-suite read-only overview</span></div></td>
+            <td><span class="badge-scope global">Global</span></td>
+            <td><div class="permission-chips"><span class="chip chip-view">Dashboard</span><span class="chip chip-view">Lifecycle Analytics</span><span class="chip chip-view">Snapshots</span></div></td>
+            <td><span class="user-count">2</span></td>
+            <td><span class="last-modified">Feb 28, 2026</span></td>
+            <td>
+              <div class="action-btns">
+                <button class="btn-action" onclick="window.location.href='settings__role-builder.html'"><i class="fas fa-pen"></i> Edit</button>
+                <button class="btn-action"><i class="fas fa-copy"></i></button>
+                <button class="btn-action btn-delete" onclick="showDeleteModal('Executive Viewer', 2)"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr id="auditRow">
+            <td><div class="role-name-cell"><strong>Survey Auditor</strong><span>Read-only survey review</span></div></td>
+            <td><span class="badge-scope global">Global</span></td>
+            <td><div class="permission-chips"><span class="chip chip-view">Surveys</span></div></td>
+            <td><span class="user-count">0</span></td>
+            <td><span class="last-modified">Feb 14, 2026</span></td>
+            <td>
+              <div class="action-btns">
+                <button class="btn-action" onclick="window.location.href='settings__role-builder.html'"><i class="fas fa-pen"></i> Edit</button>
+                <button class="btn-action"><i class="fas fa-copy"></i></button>
+                <button class="btn-action btn-delete" onclick="showDeleteModal('Survey Auditor', 0)"><i class="fas fa-trash"></i></button>
+              </div>
+              <div id="deleteBlockedMsg" style="display:none;" class="delete-blocked-alert mt-2">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>Cannot delete — this role has active users. <a href="#" style="color:var(--danger);font-weight:500;">Reassign users first</a>.</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div id="stateEmpty" style="display:none;">
+      <div class="empty-state">
+        <div class="empty-icon"><i class="fas fa-shield-alt"></i></div>
+        <h5>No custom roles yet</h5>
+        <p>Create a custom role to give your HR team members precisely the right level of access — no more, no less.</p>
+        <button class="btn-primary-cm" onclick="window.location.href='settings__role-builder.html'"><i class="fas fa-plus"></i> Create Your First Role</button>
+      </div>
+    </div>
+
+    <!-- LOADING STATE -->
+    <div id="stateLoading" style="display:none;">
+      <table class="roles-table">
+        <thead>
+          <tr>
+            <th style="width:22%">Role Name</th>
+            <th style="width:16%">Scope</th>
+            <th style="width:28%">Module Access</th>
+            <th style="width:10%">Users</th>
+            <th style="width:12%">Last Modified</th>
+            <th style="width:12%">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="skel-row" style="border-bottom:1px solid var(--table-border);" aria-hidden="true">
+            <td><div class="skeleton skel-line"></div><div class="skeleton skel-line-sm mt-1"></div></td>
+            <td><div class="skeleton skel-badge"></div></td>
+            <td><div class="skel-chips"><div class="skeleton skel-chip"></div><div class="skeleton skel-chip"></div><div class="skeleton skel-chip"></div></div></td>
+            <td><div class="skeleton" style="height:14px;width:24px;"></div></td>
+            <td><div class="skeleton skel-line-sm"></div></td>
+            <td><div class="skeleton" style="height:28px;width:100%;"></div></td>
+          </tr>
+          <tr class="skel-row" style="border-bottom:1px solid var(--table-border);" aria-hidden="true">
+            <td><div class="skeleton skel-line" style="width:70%;"></div><div class="skeleton skel-line-sm mt-1"></div></td>
+            <td><div class="skeleton skel-badge"></div></td>
+            <td><div class="skel-chips"><div class="skeleton skel-chip"></div><div class="skeleton skel-chip"></div></div></td>
+            <td><div class="skeleton" style="height:14px;width:24px;"></div></td>
+            <td><div class="skeleton skel-line-sm"></div></td>
+            <td><div class="skeleton" style="height:28px;width:100%;"></div></td>
+          </tr>
+          <tr class="skel-row" aria-hidden="true">
+            <td><div class="skeleton skel-line" style="width:60%;"></div><div class="skeleton skel-line-sm mt-1"></div></td>
+            <td><div class="skeleton skel-badge"></div></td>
+            <td><div class="skel-chips"><div class="skeleton skel-chip"></div><div class="skeleton skel-chip" style="width:70px;"></div><div class="skeleton skel-chip"></div></div></td>
+            <td><div class="skeleton" style="height:14px;width:24px;"></div></td>
+            <td><div class="skeleton skel-line-sm"></div></td>
+            <td><div class="skeleton" style="height:28px;width:100%;"></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /content-body -->
+</main>
+
+<!-- DELETE CONFIRMATION MODAL -->
+<div class="modal-backdrop-custom" id="deleteModal" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <h5 id="deleteModalTitle"><i class="fas fa-exclamation-triangle" style="color:var(--danger);margin-right:6px;"></i> Delete Role</h5>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+    </div>
+    <div class="modal-bdy">
+      <p>Are you sure you want to delete the role <strong id="deleteRoleName">"Survey Auditor"</strong>?</p>
+      <p style="margin-bottom:0;">This action cannot be undone. Ensure all users have been reassigned before deleting.</p>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-danger-cm" onclick="confirmDelete()"><i class="fas fa-trash mr-1"></i> Delete Role</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-wrap" id="toast">
+  <div class="toast-box"><i class="fas fa-check-circle"></i> <span id="toastMsg">Role deleted successfully.</span></div>
+</div>
+
+<script>
+  let pendingDeleteRole = '';
+  let pendingDeleteCount = 0;
+
+  function setState(state) {
+    document.querySelectorAll('.demo-btn').forEach(b => b.classList.remove('active-demo'));
+    event.target.classList.add('active-demo');
+    document.getElementById('statePopulated').style.display = 'none';
+    document.getElementById('stateEmpty').style.display = 'none';
+    document.getElementById('stateLoading').style.display = 'none';
+    document.getElementById('deleteBlockedMsg').style.display = 'none';
+    document.getElementById('auditRow').classList.remove('highlight-delete');
+    document.getElementById('customRoleCount').textContent = '4';
+
+    if (state === 'populated') {
+      document.getElementById('statePopulated').style.display = 'block';
+      document.getElementById('customRoleCount').textContent = '4';
+    } else if (state === 'empty') {
+      document.getElementById('stateEmpty').style.display = 'block';
+      document.getElementById('customRoleCount').textContent = '0';
+    } else if (state === 'loading') {
+      document.getElementById('stateLoading').style.display = 'block';
+    } else if (state === 'delete-blocked') {
+      document.getElementById('statePopulated').style.display = 'block';
+      document.getElementById('auditRow').classList.add('highlight-delete');
+      document.getElementById('deleteBlockedMsg').style.display = 'flex';
+    }
+  }
+
+  function showDeleteModal(name, count) {
+    pendingDeleteRole = name;
+    pendingDeleteCount = count;
+    document.getElementById('deleteRoleName').textContent = '"' + name + '"';
+    document.getElementById('deleteModal').classList.add('show');
+  }
+
+  function closeModal() {
+    document.getElementById('deleteModal').classList.remove('show');
+  }
+
+  function confirmDelete() {
+    closeModal();
+    showToast('Role "' + pendingDeleteRole + '" has been deleted.');
+  }
+
+  function showToast(msg) {
+    document.getElementById('toastMsg').textContent = msg;
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  document.getElementById('deleteModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
+</body>
+</html>

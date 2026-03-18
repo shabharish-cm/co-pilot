@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Administrator — CultureMonkey</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-green:#55ce97;--brand-green-dark:#4cb485;--sidebar-bg:#F8FDFA;
+    --light-gray:#f7f7f7;--text-default:#373A3C;--text-muted:#6c757d;
+    --border-gray:#CAD1D7;--table-border:#e7ebee;--hover-bg:#e9eeed;
+    --danger:#dc3545;--warning:#ffc107;--driver-tag-green:#ddece6;--info-blue:#3471db;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:var(--text-default);background:#fff;margin:0;}
+
+  /* ANNOUNCEMENT BANNER */
+  .ann-banner{background:#FFFFF0;border-bottom:1px solid #e8e870;padding:7px 1.25rem;font-size:12.5px;color:#555;display:flex;align-items:center;gap:.6rem;position:fixed;top:0;left:0;right:0;z-index:110;}
+  .ann-banner a{color:var(--info-blue);}
+  .ann-banner .ar{margin-left:auto;display:flex;align-items:center;gap:.6rem;}
+  .btn-switch{background:var(--brand-green);color:#fff;border:none;padding:5px 12px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;font-family:inherit;}
+
+  /* SIDEBAR */
+  .sidebar{width:158px;background:var(--sidebar-bg);border-right:1px solid var(--table-border);position:fixed;top:37px;left:0;bottom:0;overflow-y:auto;z-index:90;}
+  .sb-top{padding:.9rem .7rem .7rem;border-bottom:1px solid var(--table-border);}
+  .sb-company{font-size:14px;font-weight:600;color:var(--text-default);margin-bottom:1px;}
+  .sb-user{font-size:12px;font-weight:500;}
+  .sb-role{font-size:11px;color:var(--text-muted);}
+  .sb-role a{color:var(--info-blue);}
+  .sb-stat{font-size:11px;display:block;margin-top:2px;}
+  .sb-stat strong{color:var(--brand-green);}
+  .sb-stat.mt{color:var(--text-muted);}
+  .nav-sec{font-size:10px;font-weight:700;text-transform:uppercase;color:var(--text-muted);padding:.8rem .7rem .2rem;letter-spacing:.06em;}
+  .ni{display:flex;align-items:center;gap:.45rem;padding:6px .7rem;cursor:pointer;color:var(--text-default);font-size:12.5px;text-decoration:none;transition:background .15s;}
+  .ni:hover{background:var(--hover-bg);color:var(--text-default);text-decoration:none;}
+  .ni.active{background:var(--brand-green);color:#fff;}
+  .ni-ic{width:15px;text-align:center;color:var(--text-muted);font-size:.75rem;}
+  .ni.active .ni-ic{color:#fff;}
+  .beta{font-size:9px;background:#f0f0f0;color:var(--text-muted);padding:1px 4px;border-radius:2px;font-weight:700;text-transform:uppercase;}
+  .ni-collapse{font-size:11px;color:var(--text-muted);padding:6px .7rem;display:flex;align-items:center;gap:3px;cursor:pointer;}
+
+  /* MAIN */
+  .main{margin-left:158px;margin-top:37px;padding-bottom:72px;}
+
+  /* DEMO */
+  .demo{background:#fff8e6;border:1px solid #ffe082;padding:.5rem 1.25rem;font-size:12.5px;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+  .demo strong{color:#856404;}
+  .db{font-size:12px;padding:2px 10px;border-radius:3px;border:1px solid var(--border-gray);background:#fff;cursor:pointer;font-family:inherit;}
+  .db.on{background:var(--brand-green);color:#fff;border-color:var(--brand-green);}
+
+  /* BACK + TITLE */
+  .back-bar{padding:.5rem 1.25rem;}
+  .back-lnk{color:var(--info-blue);font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:3px;}
+  .back-lnk:hover{text-decoration:underline;color:var(--info-blue);}
+  .pg-title{font-size:26px;font-weight:300;margin:0;padding:.15rem 1.25rem 1rem;}
+
+  /* SUCCESS */
+  .success-msg{background:#e6f4ec;border:1px solid #b2dfce;border-radius:3px;padding:.85rem 1.1rem;margin:.5rem 1.25rem 0;display:flex;align-items:center;gap:.6rem;font-size:13px;color:#1a5c3a;}
+  .success-msg i{color:#28a745;}
+
+  /* SECTION CARD */
+  .scard{background:#fff;border:1px solid var(--table-border);margin:0 1.25rem 1.1rem;border-radius:3px;overflow:hidden;}
+  .scard-hdr{display:flex;align-items:center;justify-content:space-between;padding:8px 1rem;background:var(--light-gray);border-bottom:1px solid var(--table-border);}
+  .scard-hdr h4{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-default);margin:0;}
+  .gdpr{font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:3px;}
+
+  /* FORM GRID */
+  .fgrid{padding:1.1rem 1rem;display:grid;grid-template-columns:1fr 1fr;gap:.95rem 1.25rem;}
+  .ff{display:flex;flex-direction:column;}
+  .ff.s2{grid-column:span 2;}
+  .ff label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-default);margin-bottom:4px;}
+  .ff label .req{color:var(--danger);}
+  .fi{height:36px;border:1px solid var(--border-gray);border-radius:3px;padding:0 .7rem;font-family:inherit;font-size:13.5px;color:var(--text-default);background:#fff;outline:none;transition:border-color .15s;width:100%;}
+  .fi:focus{border-color:var(--brand-green);box-shadow:0 0 0 2px rgba(85,206,151,.15);}
+  .fi.wi{padding-left:2rem;}
+  .iw{position:relative;}
+  .ii{position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:12px;pointer-events:none;}
+  select.fi{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M0 0l4.5 5 4.5-5z' fill='%236c757d'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .65rem center;padding-right:1.75rem;}
+  .rg{display:flex;align-items:center;gap:1rem;height:36px;}
+  .rl{display:flex;align-items:center;gap:4px;font-size:13.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-default);cursor:pointer;}
+  .rl input[type=radio]{accent-color:var(--brand-green);width:13px;height:13px;cursor:pointer;}
+
+  /* ROLE TYPE */
+  .role-sel{height:36px;border:1px solid var(--border-gray);border-radius:3px;padding:0 1.75rem 0 .7rem;font-family:inherit;font-size:13.5px;color:var(--text-default);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M0 0l4.5 5 4.5-5z' fill='%236c757d'/%3E%3C/svg%3E") no-repeat right .65rem center;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none;width:100%;transition:border-color .15s;}
+  .role-sel:focus{border-color:var(--brand-green);box-shadow:0 0 0 2px rgba(85,206,151,.15);}
+  .scope-box{margin-top:5px;background:var(--driver-tag-green);border:1px solid #b2dfce;border-radius:3px;padding:7px 9px;font-size:12px;color:#1a5c3a;display:flex;align-items:flex-start;gap:5px;}
+  .scope-box i{color:var(--brand-green-dark);margin-top:1px;flex-shrink:0;}
+  .scope-box.warn{background:#fff3cd;border-color:#ffc107;color:#856404;}
+  .scope-box.warn i{color:#856404;}
+
+  /* BOTTOM BAR */
+  .bot-bar{position:fixed;bottom:0;left:158px;right:0;background:#fff;border-top:1px solid var(--table-border);padding:.75rem 1.25rem;display:flex;align-items:center;gap:.85rem;z-index:90;}
+  .btn-create{background:var(--brand-green);color:#fff;border:none;padding:.55rem 1.4rem;border-radius:3px;font-family:inherit;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;box-shadow:0 3px 4px rgba(0,0,0,.1);transition:background .15s;}
+  .btn-create:hover{background:var(--brand-green-dark);}
+  .btn-cxl{background:none;border:1px solid var(--border-gray);padding:.55rem 1.1rem;border-radius:3px;font-family:inherit;font-size:13px;color:var(--text-default);cursor:pointer;}
+  .btn-cxl:hover{background:var(--light-gray);}
+
+  /* TOAST */
+  .tw{position:fixed;top:.85rem;right:1.25rem;z-index:300;display:none;}
+  .tw.show{display:block;animation:si .3s ease;}
+  .tb{background:#fff;border-left:4px solid #28a745;border-radius:3px;box-shadow:0 4px 16px rgba(0,0,0,.12);padding:.7rem 1.1rem;min-width:270px;display:flex;align-items:center;gap:.6rem;font-size:13px;}
+  .tb i{color:#28a745;}
+  @keyframes si{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
+</style>
+</head>
+<body>
+
+<div class="ann-banner">
+  <span style="font-size:15px;">🌈</span>
+  <span>Gender diversity in leadership has positive impact on profitability. <a href="#">Click here</a> for leadership diversity in Acme - test cipla.</span>
+  <div class="ar">
+    <button class="btn-switch">Switch to Candidate</button>
+    <i class="fas fa-cog" style="color:var(--text-muted);cursor:pointer;font-size:13px;"></i>
+    <div style="width:26px;height:26px;border-radius:50%;background:var(--brand-green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;cursor:pointer;">CU</div>
+  </div>
+</div>
+
+<aside class="sidebar">
+  <div class="sb-top">
+    <div class="sb-company">Acme - test cipla</div>
+    <div class="sb-user">Caesar User</div>
+    <div class="sb-role">Logged in as: <a href="#">Shabharish V</a></div>
+    <span class="sb-stat"><strong>Active Employees: 687/700</strong></span>
+    <span class="sb-stat mt">Active Managers: 115</span>
+  </div>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-home"></i></span> Dashboard</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-sitemap"></i></span> Org Hierarchy</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-chart-pie"></i></span> Lifecycle Analytics</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-camera-retro"></i></span> Snapshots <span class="beta">beta</span></a>
+  <div class="nav-sec">Listen</div>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fa fa-clone"></i></span> Templates</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fa fa-paint-brush"></i></span> Surveys</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-heartbeat"></i></span> Pulse</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-space-shuttle"></i></span> Lifecycle</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-broadcast-tower"></i></span> Channels</a>
+  <div class="nav-sec">Analyse</div>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-chart-line"></i></span> Reports</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-file-export"></i></span> Report Builder</a>
+  <div class="ni-collapse"><i class="fas fa-chevron-left" style="font-size:9px;"></i> Collapse</div>
+</aside>
+
+<main class="main">
+  <div class="demo">
+    <strong>🎛 Demo:</strong>
+    <button class="db on" onclick="setMode('blank',event)">Blank Form</button>
+    <button class="db" onclick="setMode('system',event)">System Role Selected</button>
+    <button class="db" onclick="setMode('custom',event)">Custom Role Selected</button>
+    <button class="db" onclick="setMode('filled',event)">Fully Filled</button>
+  </div>
+
+  <div class="back-bar"><a href="#" class="back-lnk"><i class="fas fa-chevron-left" style="font-size:10px;"></i> Admin List</a></div>
+  <h1 class="pg-title">Administrators</h1>
+
+  <div class="success-msg" id="successMsg" style="display:none;">
+    <i class="fas fa-check-circle"></i>
+    <span>Administrator created. Invite sent to <strong id="iEmail"></strong> with <strong id="iRole"></strong> access.</span>
+  </div>
+
+  <!-- PERSONAL DETAILS -->
+  <div class="scard">
+    <div class="scard-hdr">
+      <h4>Personal Details</h4>
+      <span class="gdpr"><i class="fas fa-user-shield"></i> GDPR</span>
+    </div>
+    <div class="fgrid">
+      <div class="ff"><label>First Name <span class="req">*</span></label><input type="text" class="fi" id="fn"></div>
+      <div class="ff"><label>Last Name</label><input type="text" class="fi" id="ln"></div>
+      <div class="ff"><label>Date of Birth <span class="req">*</span></label><input type="date" class="fi" id="dob"></div>
+      <div class="ff"><label>Phone Number</label><div class="iw"><i class="fas fa-phone ii"></i><input type="tel" class="fi wi"></div></div>
+      <div class="ff"><label>Gender <span class="req">*</span></label>
+        <div class="rg">
+          <label class="rl"><input type="radio" name="gender" value="f" checked> Female</label>
+          <label class="rl"><input type="radio" name="gender" value="m"> Male</label>
+          <label class="rl"><input type="radio" name="gender" value="o"> Other</label>
+        </div>
+      </div>
+      <div class="ff"><label>Type</label>
+        <select class="fi"><option value=""></option><option>Full-time</option><option>Part-time</option><option>Contractor</option><option>Intern</option></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMPLOYEE DETAILS -->
+  <div class="scard">
+    <div class="scard-hdr">
+      <h4>Employee Details</h4>
+      <span class="gdpr"><i class="fas fa-user-shield"></i> GDPR</span>
+    </div>
+    <div class="fgrid">
+      <div class="ff"><label>Employee ID <span class="req">*</span></label><input type="text" class="fi" id="eid"></div>
+      <div class="ff"><label>Email Address <span class="req">*</span></label><div class="iw"><i class="fas fa-envelope ii"></i><input type="email" class="fi wi" id="em"></div></div>
+
+      <div class="ff"><label>Base</label>
+        <select class="fi"><option value=""></option><option>Mumbai</option><option>Bangalore</option><option>Delhi</option><option>Singapore</option><option>London</option></select>
+      </div>
+
+      <!-- ROLE TYPE — the key new field -->
+      <div class="ff">
+        <label>Role Type</label>
+        <select class="role-sel" id="rt" onchange="handleRole(this)">
+          <option value=""></option>
+          <optgroup label="System Roles">
+            <option value="sub_admin">Sub-Admin</option>
+            <option value="admin_manager">Admin-Manager</option>
+            <option value="report_view_only">Report-View-Only</option>
+          </optgroup>
+          <optgroup label="Custom Roles">
+            <option value="hrbp_viewer">HRBP Viewer</option>
+            <option value="regional_hr_lead">Regional HR Lead</option>
+            <option value="executive_viewer">Executive Viewer</option>
+            <option value="survey_auditor">Survey Auditor</option>
+          </optgroup>
+        </select>
+        <div class="scope-box" id="sb" style="display:none;">
+          <i class="fas fa-info-circle"></i>
+          <span id="sbt"></span>
+        </div>
+      </div>
+
+      <div class="ff"><label>Joining Date</label><input type="date" class="fi"></div>
+      <div class="ff"><label>Reporting Manager</label>
+        <select class="fi"><option value="">Search By Manager Name/Email</option><option>Priya Kapoor</option><option>Sonia Verma</option></select>
+      </div>
+
+      <div class="ff s2"><label>Business Group</label>
+        <select class="fi"><option value="">Select</option><option>Enterprise</option><option>SMB</option><option>Govt &amp; PSU</option><option>BFSI</option></select>
+      </div>
+
+      <div class="ff"><label>Team</label>
+        <select class="fi"><option value="142">142</option><option>Engineering</option><option>Product</option><option>HR</option></select>
+      </div>
+      <div class="ff"><label>Designation <span class="req">*</span></label><input type="text" class="fi" id="des"></div>
+
+      <div class="ff"><label>Sub Team</label>
+        <select class="fi"><option value="">Select</option><option>Frontend</option><option>Backend</option><option>Data</option></select>
+      </div>
+      <div class="ff"><label>Business Unit</label>
+        <select class="fi"><option value="">Select</option><option>India</option><option>APAC</option><option>EMEA</option><option>North America</option></select>
+      </div>
+
+      <div class="ff"><label>Location</label>
+        <select class="fi"><option value="">Select</option><option selected>Agartala</option><option>Mumbai</option><option>Bangalore</option><option>Delhi</option></select>
+      </div>
+      <div class="ff"><label>Timezone</label>
+        <select class="fi"><option selected>(GMT-12:00) International Date Line West</option><option>(GMT+5:30) India Standard Time</option><option>(GMT+0:00) UTC</option></select>
+      </div>
+
+      <div class="ff"><label>Salary Per Annum</label><input type="number" class="fi" value="0"></div>
+      <div class="ff"><label>Question Language</label>
+        <select class="fi"><option value="">None</option><option>English</option><option>Hindi</option><option>Tamil</option></select>
+      </div>
+
+      <div class="ff"><label>Job Status <i class="fas fa-question-circle" style="font-size:10px;color:var(--text-muted);margin-left:2px;"></i></label>
+        <select class="fi"><option value=""></option><option>Active</option><option>On Leave</option><option>Resigned</option></select>
+      </div>
+    </div>
+  </div>
+  <div style="height:10px;"></div>
+</main>
+
+<div class="bot-bar">
+  <button class="btn-create" onclick="doCreate()">Create Administrator</button>
+  <button class="btn-cxl">Cancel</button>
+</div>
+
+<div class="tw" id="tw"><div class="tb"><i class="fas fa-check-circle"></i><span id="tm"></span></div></div>
+
+<script>
+const crd={
+  hrbp_viewer:{name:'HRBP Viewer',scope:'Global',mods:'Dashboard, Reports, Comment Analytics, Manager Statistics'},
+  regional_hr_lead:{name:'Regional HR Lead',scope:'India, APAC (Fixed Demographic)',mods:'Surveys (Edit), Reports, Actions (Edit)'},
+  executive_viewer:{name:'Executive Viewer',scope:'Global',mods:'Dashboard, Lifecycle Analytics, Snapshots'},
+  survey_auditor:{name:'Survey Auditor',scope:'Global',mods:'Surveys (View only)'},
+};
+function handleRole(s){
+  const v=s.value,box=document.getElementById('sb'),txt=document.getElementById('sbt');
+  box.className='scope-box';
+  if(crd[v]){
+    const r=crd[v];
+    txt.innerHTML='<strong>'+r.name+'</strong>: Scope is <strong>'+r.scope+'</strong>. Modules: '+r.mods+'. No additional scope configuration needed.';
+    box.style.display='flex';
+  }else if(v==='sub_admin'){
+    txt.innerHTML='<strong>Sub-Admin</strong>: Broad access. Data scope is configured per-user after invite.';
+    box.className='scope-box warn';box.style.display='flex';
+  }else{box.style.display='none';}
+}
+function setMode(m,e){
+  document.querySelectorAll('.db').forEach(b=>b.classList.remove('on'));e.target.classList.add('on');
+  document.getElementById('successMsg').style.display='none';
+  ['fn','ln','em','eid','des'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('rt').value='';document.getElementById('sb').style.display='none';
+  if(m==='system'){document.getElementById('rt').value='sub_admin';handleRole(document.getElementById('rt'));}
+  else if(m==='custom'){document.getElementById('rt').value='hrbp_viewer';handleRole(document.getElementById('rt'));}
+  else if(m==='filled'){
+    document.getElementById('fn').value='Rahul';document.getElementById('ln').value='Sharma';
+    document.getElementById('em').value='rahul.sharma@acme.com';document.getElementById('eid').value='EMP-4821';
+    document.getElementById('des').value='HR Business Partner';
+    document.getElementById('rt').value='hrbp_viewer';handleRole(document.getElementById('rt'));
+  }
+}
+function doCreate(){
+  const em=document.getElementById('em').value||'user@acme.com';
+  const rt=document.getElementById('rt');const rn=rt.options[rt.selectedIndex]?.text||'Sub-Admin';
+  document.getElementById('iEmail').textContent=em;document.getElementById('iRole').textContent=rn;
+  document.getElementById('successMsg').style.display='flex';
+  toast('Administrator created. Invite sent to '+em+'.');window.scrollTo(0,0);
+}
+function toast(m){document.getElementById('tm').textContent=m;const t=document.getElementById('tw');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
+</script>
+</body>
+</html>

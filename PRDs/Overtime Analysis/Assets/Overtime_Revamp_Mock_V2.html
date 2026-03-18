@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overtime Analysis Suite – Mockups (Driver Bar Grouped by Driver)</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .tab-active { border-bottom: 2px solid #10b981; color: #059669; }
+    .tab-inactive { border-bottom: 2px solid transparent; color: #64748b; }
+    .tab-inactive:hover { color: #334155; }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    .fade-in { animation: fadeIn 0.25s ease-out forwards; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-actions button { transition: transform 0.08s ease; }
+    .section-actions button:active { transform: scale(0.98); }
+
+    .hint { border-left: 3px solid #10b981; }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 h-screen overflow-hidden flex flex-col">
+  <!-- TOP NAVIGATION (Global) -->
+  <nav class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 flex-shrink-0 z-30">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-white font-bold">C</div>
+      <span class="font-semibold text-lg tracking-tight text-slate-800">CultureMonkey</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 text-sm text-slate-500">
+        <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-medium">SA</div>
+        <span>Super Admin</span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="flex-1 flex overflow-hidden relative">
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-white border-r border-slate-200 flex-col hidden md:flex flex-shrink-0">
+      <div class="p-4 space-y-1">
+        <div class="px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-md cursor-pointer flex items-center gap-3">
+          <i data-lucide="layout-dashboard" class="w-4 h-4"></i> <span class="text-sm font-medium">Dashboard</span>
+        </div>
+        <div class="px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-md cursor-pointer flex items-center gap-3">
+          <i data-lucide="bar-chart-2" class="w-4 h-4"></i> <span class="text-sm font-medium">Surveys</span>
+        </div>
+        <div class="mt-6 mb-2 px-3 text-xs font-bold text-slate-400 uppercase">Analyse</div>
+        <div class="px-3 py-2 bg-emerald-50 text-emerald-700 rounded-md cursor-pointer flex items-center gap-3 font-medium">
+          <i data-lucide="file-bar-chart" class="w-4 h-4"></i> <span class="text-sm">Reports</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- VIEW 1: REPORTS LIST (Entry Point) -->
+    <main id="view-reports" class="flex-1 overflow-y-auto bg-slate-50 p-8 w-full">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-3 mb-6">
+          <div>
+            <h1 class="text-2xl font-bold text-slate-800">Reports</h1>
+            <p class="text-sm text-slate-500 mt-1">Select <span class="font-semibold">4 or more</span> completed surveys to compare survey iterations over time.</p>
+          </div>
+          <button id="btn-analyze-entry" onclick="openConfigModal()" disabled
+            class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white px-5 py-2.5 rounded-lg font-medium shadow-sm transition-all">
+            <i data-lucide="trending-up" class="w-4 h-4"></i>
+            Analyse Overtime
+          </button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-slate-50 border-b border-slate-200">
+              <tr>
+                <th class="py-4 px-6 w-12"><input type="checkbox" disabled class="rounded border-slate-300"></th>
+                <th class="py-4 px-6 text-xs font-bold text-slate-500 uppercase">Survey Name</th>
+                <th class="py-4 px-6 text-xs font-bold text-slate-500 uppercase">Status</th>
+                <th class="py-4 px-6 text-xs font-bold text-slate-500 uppercase">Participation</th>
+                <th class="py-4 px-6 text-xs font-bold text-slate-500 uppercase">Survey Period</th>
+                <th class="py-4 px-6 text-xs font-bold text-slate-500 uppercase">eNPS</th>
+              </tr>
+            </thead>
+            <tbody id="reports-table-body" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 text-xs text-slate-500">
+          <span class="font-semibold text-slate-600">Mock note:</span> This demo preselects 4 surveys so charts show at least 4 survey runs.
+        </div>
+      </div>
+    </main>
+
+    <!-- VIEW 2: OVERTIME ANALYSIS DASHBOARD -->
+    <main id="view-dashboard" class="hidden flex-1 overflow-y-auto bg-slate-50 w-full relative">
+      <!-- Header -->
+      <header class="bg-white border-b border-slate-200 px-8 py-5 flex justify-between items-center sticky top-0 z-20">
+        <div class="flex items-center gap-3">
+          <button onclick="backToReports()" class="p-1 hover:bg-slate-100 rounded-full text-slate-400 hover:text-slate-600 transition-colors">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+          </button>
+          <div>
+            <h1 class="text-2xl font-bold text-slate-800">Overtime Analysis</h1>
+            <div class="mt-1 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded border border-slate-200"><span class="font-semibold">Compare:</span> <span id="hdr-anchor">—</span></span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded border border-slate-200"><span class="font-semibold">With:</span> <span id="hdr-with">—</span></span>
+              <span id="hdr-enps-note" class="hidden px-2 py-1 bg-amber-50 text-amber-800 rounded border border-amber-200">Some selected surveys do not include eNPS and are excluded.</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <button onclick="openConfigModal()" class="flex items-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-4 py-2 rounded-lg font-medium shadow-sm transition-all text-sm">
+            <i data-lucide="settings-2" class="w-4 h-4"></i>
+            Configure Analysis
+          </button>
+          <button onclick="toggleModal('downloadModal')" class="flex items-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-4 py-2 rounded-lg font-medium shadow-sm transition-all text-sm">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            Download Report
+          </button>
+        </div>
+      </header>
+
+      <!-- Tabs + Perspective Controls -->
+      <div class="px-8 pt-6 max-w-7xl mx-auto">
+        <div class="border-b border-slate-200 flex flex-col md:flex-row justify-between items-end gap-4">
+          <nav class="flex gap-6" aria-label="Tabs">
+            <button onclick="switchTab('overtime')" id="tab-overtime" class="tab-active py-4 px-1 text-sm font-medium transition-colors">Overtime</button>
+            <button onclick="switchTab('focusPoints')" id="tab-focusPoints" class="tab-inactive py-4 px-1 text-sm font-medium transition-colors">Focus Points</button>
+          </nav>
+
+          <div id="perspective-controls" class="pb-3 flex items-center gap-3">
+            <div class="bg-slate-100 p-1 rounded-lg flex">
+              <button onclick="setPerspective('survey')" id="btn-persp-survey" class="px-3 py-1.5 text-xs font-medium rounded-md bg-white shadow-sm text-slate-800 transition-all">Survey Comparison</button>
+              <button onclick="setPerspective('time')" id="btn-persp-time" class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-500 hover:text-slate-700 transition-all">Time Trend</button>
+            </div>
+
+            <div id="time-period-selector" class="hidden relative">
+              <select id="time-trend-select" onchange="updateCharts()" class="appearance-none bg-white border border-slate-200 text-slate-700 text-xs font-medium rounded-lg pl-3 pr-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer shadow-sm">
+                <option value="monthly">Monthly</option>
+                <option value="quarterly">Quarterly</option>
+                <option value="annual">Annual</option>
+              </select>
+              <i data-lucide="chevron-down" class="absolute right-2 top-2 w-3 h-3 text-slate-500 pointer-events-none"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard content -->
+      <div class="px-8 py-8 max-w-7xl mx-auto space-y-8 pb-24">
+
+        <!-- SUMMARY SECTION (downloadable) -->
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6" id="sec-summary">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-bold text-slate-800">Summary</h2>
+              <p class="text-sm text-slate-500 mt-1">Anchor survey compared to the selected historical set.</p>
+            </div>
+            <div class="section-actions flex items-center gap-2">
+              <button onclick="downloadSectionAsImage('sec-summary')" class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50">
+                <i data-lucide="image-down" class="w-4 h-4"></i>
+                Download as Image
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-5 grid grid-cols-1 md:grid-cols-4 gap-6">
+            <!-- Engagement Card -->
+            <div class="bg-white p-5 rounded-xl border border-slate-200">
+              <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">Engagement Score</div>
+              <div class="flex items-end gap-3">
+                <span class="text-3xl font-bold text-slate-800">7.8</span>
+                <div class="flex items-center text-sm font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded mb-1">
+                  <i data-lucide="arrow-up" class="w-3 h-3 mr-0.5"></i> 0.4
+                </div>
+              </div>
+              <p class="text-xs text-slate-400 mt-2">vs Selected Avg (7.4)</p>
+            </div>
+
+            <!-- Participation Card -->
+            <div class="bg-white p-5 rounded-xl border border-slate-200">
+              <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">Participation Rate</div>
+              <div class="flex items-end gap-3">
+                <span class="text-3xl font-bold text-slate-800">84%</span>
+                <div class="flex items-center text-sm font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded mb-1">
+                  <i data-lucide="arrow-up" class="w-3 h-3 mr-0.5"></i> 2%
+                </div>
+              </div>
+              <p class="text-xs text-slate-400 mt-2">vs Selected Avg (82%)</p>
+            </div>
+
+            <!-- eNPS Card (conditional) -->
+            <div id="card-enps" class="bg-white p-5 rounded-xl border border-slate-200">
+              <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">eNPS Score</div>
+              <div class="flex items-end gap-3">
+                <span class="text-3xl font-bold text-slate-800">+42</span>
+                <div class="flex items-center text-sm font-medium text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded mb-1">
+                  <i data-lucide="arrow-down" class="w-3 h-3 mr-0.5"></i> 5
+                </div>
+              </div>
+              <p class="text-xs text-slate-400 mt-2">vs Selected Avg (+47)</p>
+            </div>
+
+            <!-- Sentiment Card (conditional) -->
+            <div id="card-sentiment" class="bg-white p-5 rounded-xl border border-slate-200">
+              <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-3">Sentiment Breakdown</div>
+              <div class="mb-2">
+                <div class="flex justify-between text-[10px] text-slate-500 mb-1">
+                  <span>Current</span>
+                  <span>Promoters / Neutrals / Detractors</span>
+                </div>
+                <div class="flex h-3 w-full rounded-full overflow-hidden">
+                  <div class="bg-emerald-400 w-[60%]" title="Promoters: 60%"></div>
+                  <div class="bg-slate-300 w-[28%]" title="Neutrals: 28%"></div>
+                  <div class="bg-rose-400 w-[12%]" title="Detractors: 12%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-[10px] text-slate-500 mb-1">
+                  <span>Selected Avg</span>
+                  <span>Aggregated</span>
+                </div>
+                <div class="flex h-3 w-full rounded-full overflow-hidden opacity-60">
+                  <div class="bg-emerald-400 w-[65%]" title="Promoters: 65%"></div>
+                  <div class="bg-slate-300 w-[25%]" title="Neutrals: 25%"></div>
+                  <div class="bg-rose-400 w-[10%]" title="Detractors: 10%"></div>
+                </div>
+              </div>
+              <div class="flex justify-between mt-3 text-[10px] text-slate-400">
+                <div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-emerald-400"></div> Promoters</div>
+                <div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-slate-300"></div> Neutrals</div>
+                <div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-rose-400"></div> Detractors</div>
+              </div>
+            </div>
+
+            <div id="no-enps-inline" class="hidden md:col-span-4 mt-2">
+              <div class="hint bg-amber-50 border border-amber-200 text-amber-900 p-3 rounded-lg text-sm">
+                <span class="font-semibold">Note:</span> The selected anchor survey does not include eNPS. eNPS comparisons and sentiment breakdown are hidden.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB CONTENT: OVERTIME -->
+        <div id="content-overtime" class="space-y-8 fade-in">
+
+          <!-- Engagement Chart (downloadable) -->
+          <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6" id="sec-eng">
+            <div class="flex justify-between items-start mb-6">
+              <div>
+                <h3 id="title-engagement" class="text-lg font-bold text-slate-800">Engagement Survey Comparison</h3>
+                <p class="text-sm text-slate-500 mt-1">Y-axis fixed: 0–10</p>
+              </div>
+              <div class="section-actions flex items-center gap-2">
+                <button onclick="downloadSectionAsImage('sec-eng')" class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50">
+                  <i data-lucide="image-down" class="w-4 h-4"></i>
+                  Download as Image
+                </button>
+              </div>
+            </div>
+            <div class="h-80 w-full relative">
+              <canvas id="chartEngagement"></canvas>
+            </div>
+          </section>
+
+          <!-- eNPS Chart (conditional + downloadable) -->
+          <section id="sec-enps" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div class="flex justify-between items-start mb-6">
+              <div>
+                <h3 id="title-enps" class="text-lg font-bold text-slate-800">eNPS Comparison</h3>
+                <p class="text-sm text-slate-500 mt-1">Tooltip includes Promoters / Neutrals / Detractors</p>
+              </div>
+              <div class="section-actions flex items-center gap-2">
+                <button onclick="downloadSectionAsImage('sec-enps')" class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50">
+                  <i data-lucide="image-down" class="w-4 h-4"></i>
+                  Download as Image
+                </button>
+              </div>
+            </div>
+            <div id="enps-note" class="hidden mb-4 text-xs text-amber-800 bg-amber-50 border border-amber-200 px-3 py-2 rounded-lg">
+              Some selected surveys do not include eNPS and are excluded from eNPS comparisons.
+            </div>
+            <div class="h-80 w-full relative">
+              <canvas id="chartEnps"></canvas>
+            </div>
+          </section>
+
+          <!-- Driver Scores (downloadable + fixed bar design) -->
+          <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6" id="sec-drivers">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+              <div>
+                <h3 class="text-lg font-bold text-slate-800">Driver Scores</h3>
+                <p class="text-sm text-slate-500 mt-1">
+                  <span class="font-semibold">Line:</span> each driver trends across survey runs •
+                  <span class="font-semibold">Bar:</span> x-axis = drivers, each bar = a survey run (4+) • optional benchmark adds a 5th bar
+                </p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2">
+                <div id="driver-view-toggle" class="flex bg-slate-100 rounded-lg p-1">
+                  <button onclick="toggleDriverView('line')" id="btn-driver-line" class="px-3 py-1.5 text-xs font-medium rounded-md bg-white shadow-sm text-slate-800 transition-all">Line</button>
+                  <button onclick="toggleDriverView('bar')" id="btn-driver-bar" class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-500 hover:text-slate-700 transition-all">Bar</button>
+                </div>
+
+                <!-- Bar-specific controls: benchmark only -->
+                <div id="driver-bar-controls" class="hidden items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
+                  <label class="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                    <input id="chk-benchmark" type="checkbox" class="rounded text-emerald-500 focus:ring-emerald-500" onchange="updateCharts()" />
+                    Show Benchmark
+                  </label>
+
+                  <select id="benchmark-type" class="bg-white border border-slate-200 text-slate-700 text-xs font-medium rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500" onchange="updateCharts()">
+                    <option value="org">Org Benchmark</option>
+                    <option value="customer">Customer Benchmark</option>
+                    <option value="external">Industry Benchmark</option>
+                  </select>
+                </div>
+
+                <button onclick="downloadSectionAsImage('sec-drivers')" class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50">
+                  <i data-lucide="image-down" class="w-4 h-4"></i>
+                  Download as Image
+                </button>
+              </div>
+            </div>
+
+            <div class="h-96 w-full relative">
+              <canvas id="chartDrivers"></canvas>
+            </div>
+          </section>
+
+          <!-- Question-wise Overtime (downloadable) -->
+          <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6" id="sec-questions">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+              <div>
+                <h3 class="text-lg font-bold text-slate-800">Question-wise Overtime</h3>
+                <p class="text-sm text-slate-500 mt-1">Common questions across selected surveys • Y-axis fixed: 0–10</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="downloadSectionAsImage('sec-questions')" class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50">
+                  <i data-lucide="image-down" class="w-4 h-4"></i>
+                  Download as Image
+                </button>
+              </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 mb-4">
+              <div class="md:w-1/2">
+                <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Select Question</label>
+                <select id="select-question" class="w-full p-2.5 bg-white border border-slate-200 rounded-lg text-slate-700 outline-none focus:ring-2 focus:ring-emerald-500 transition-shadow" onchange="updateCharts()">
+                  <option value="q1">I see myself working here in 1 year</option>
+                  <option value="q2">My manager supports my growth</option>
+                  <option value="q3">I have the tools I need to do my job</option>
+                </select>
+              </div>
+            </div>
+            <div id="questions-empty" class="hidden mb-4 text-sm text-slate-600 bg-slate-50 border border-slate-200 px-4 py-3 rounded-lg">
+              No common questions found across selected surveys.
+            </div>
+
+            <div class="h-80 w-full relative">
+              <canvas id="chartQuestions"></canvas>
+            </div>
+          </section>
+        </div>
+
+        <!-- TAB CONTENT: FOCUS POINTS -->
+        <div id="content-focusPoints" class="hidden space-y-6 fade-in">
+          <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden" id="sec-focus">
+            <div class="p-6 border-b border-slate-200 flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-lg font-bold text-slate-800">Focus Points</h3>
+                <p class="text-sm text-slate-500 mt-1">Derived from selected dimensions + anonymity thresholds. Click a cell to drill down.</p>
+              </div>
+              <div class="section-actions">
+                <button onclick="downloadSectionAsImage('sec-focus')" class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50">
+                  <i data-lucide="image-down" class="w-4 h-4"></i>
+                  Download as Image
+                </button>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead class="bg-slate-50 border-b border-slate-200">
+                  <tr>
+                    <th class="py-4 px-6 text-xs font-bold text-slate-500 uppercase tracking-wider">Driver</th>
+                    <th class="py-4 px-6 text-xs font-bold text-slate-500 uppercase tracking-wider">Dimension</th>
+                    <th class="py-4 px-6 text-xs font-bold text-emerald-600 uppercase tracking-wider">Outperforming (vs History)</th>
+                    <th class="py-4 px-6 text-xs font-bold text-rose-600 uppercase tracking-wider">Underperforming (vs History)</th>
+                  </tr>
+                </thead>
+                <tbody id="focus-points-body" class="divide-y divide-slate-100"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: CONFIGURATION (Multi-step) -->
+  <div id="modal-config" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full flex flex-col max-h-[90vh]">
+      <div class="px-6 py-5 border-b border-slate-100 flex justify-between items-center">
+        <h2 class="text-xl font-bold text-slate-800" id="config-title">Configure Survey Comparison</h2>
+        <button onclick="closeConfigModal()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <div class="p-6 flex-1 overflow-y-auto">
+        <!-- STEP 1 -->
+        <div id="config-step-1" class="space-y-6">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Compare (Anchor Survey)</label>
+            <select id="select-anchor" onchange="updateEnpsAvailabilityNote()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-700 outline-none focus:ring-2 focus:ring-emerald-500 transition-shadow"></select>
+            <p class="text-xs text-slate-500 mt-1.5">This survey is the primary focus of the analysis.</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Compare With (Historical Context)</label>
+            <div id="container-historical" class="space-y-2 max-h-48 overflow-y-auto border border-slate-200 rounded-lg p-3 bg-slate-50"></div>
+            <p class="text-xs text-slate-500 mt-1.5">Select at least 3 historical surveys (total 4+ runs recommended).</p>
+          </div>
+
+          <div id="modal-enps-note" class="hidden text-xs text-amber-800 bg-amber-50 border border-amber-200 px-3 py-2 rounded-lg">
+            Anchor survey does not include eNPS. eNPS sections will be hidden.
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="config-step-2" class="hidden space-y-6">
+          <div>
+            <h3 class="text-sm font-bold text-slate-800 mb-3 uppercase tracking-wide">Select Dimensions</h3>
+            <div id="attributes-grid" class="grid grid-cols-2 gap-3 h-64 overflow-y-auto pr-2 border border-slate-200 rounded-lg p-4 bg-slate-50/20"></div>
+            <p class="text-xs text-slate-500 mt-2">These dimensions drive Focus Points, drilldowns, and exports.</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Anonymity Threshold</label>
+            <div class="flex items-center gap-3">
+              <input id="anon-threshold" type="number" value="5" class="w-24 p-2.5 bg-white border border-slate-300 rounded-lg text-slate-700 focus:ring-2 focus:ring-emerald-500 outline-none" />
+              <span class="text-sm text-slate-500">Minimum responses required per segment.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 rounded-b-xl flex justify-between items-center">
+        <button id="btn-config-back" onclick="prevConfigStep()" class="hidden text-slate-500 hover:text-slate-800 text-sm font-medium px-3 py-2">Back</button>
+        <div class="flex-1"></div>
+        <button id="btn-config-next" onclick="nextConfigStep()" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-lg font-medium shadow-sm transition-all">Next</button>
+        <button id="btn-config-analyze" onclick="runAnalysis()" class="hidden bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-lg font-medium shadow-sm transition-all">Analyse</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRILL DOWN MODAL (simple placeholder) -->
+  <div id="modal-drilldown" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full">
+      <div class="flex justify-between items-center p-6 border-b border-slate-100">
+        <h2 class="text-lg font-bold text-slate-800">Focus Point Drilldown</h2>
+        <button onclick="toggleModal('modal-drilldown')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div class="p-6 text-sm text-slate-600">
+        Modal content intentionally minimal in this mock. (Real product keeps existing drilldown UX.)
+      </div>
+      <div class="p-4 border-t border-slate-100 flex justify-end">
+        <button onclick="toggleModal('modal-drilldown')" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOWNLOAD MODAL -->
+  <div id="downloadModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl max-w-md w-full">
+      <div class="flex justify-between items-center p-5 border-b border-slate-100">
+        <h2 class="text-lg font-bold text-slate-800">Download Report</h2>
+        <button onclick="toggleModal('downloadModal')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="p-6 space-y-5">
+        <p class="text-sm text-slate-500">Only metric and timeframe are configurable. Dimensions inherit from your analysis setup.</p>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Metric</label>
+          <select class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-slate-700 outline-none focus:ring-2 focus:ring-emerald-500">
+            <option>Engagement Score</option>
+            <option>eNPS (incl. Promoters/Neutrals/Detractors)</option>
+            <option>Driver Scores</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Timeframe</label>
+          <select class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-slate-700 outline-none focus:ring-2 focus:ring-emerald-500">
+            <option>Monthly</option>
+            <option>Quarterly</option>
+            <option>Yearly</option>
+            <option>By Survey</option>
+          </select>
+        </div>
+      </div>
+      <div class="p-4 bg-slate-50 rounded-b-xl flex gap-3 justify-end border-t border-slate-100">
+        <button onclick="toggleModal('downloadModal')" class="px-4 py-2 text-slate-600 font-medium hover:bg-white hover:text-slate-800 rounded-lg">Cancel</button>
+        <button onclick="toggleModal('downloadModal')" class="px-4 py-2 bg-emerald-500 text-white font-medium rounded-lg hover:bg-emerald-600 shadow-sm">Download</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -------------------------------------------------------------
+    // Data (minimum 4 completed surveys selected for demo)
+    // -------------------------------------------------------------
+
+    const DRIVERS = ['Autonomy','Growth','Management','Wellbeing','Alignment'];
+
+    const SURVEYS = [
+      { id: 1, ts: 202512, name: 'Culture Survey Q4 2025', status: 'Completed', part: '85%', period: 'Dec 2025', responseCount: 450, eng: 7.8, enps: 42, hasEnps: true,
+        enpsBreakdown: { p: 60, n: 28, d: 12 },
+        driverScores: { Autonomy: 7.6, Growth: 7.2, Management: 7.4, Wellbeing: 6.8, Alignment: 8.3 },
+        questionScores: { q1: 7.8, q2: 7.5, q3: 7.6 }
+      },
+      { id: 2, ts: 202509, name: 'Culture Survey Q3 2025', status: 'Completed', part: '82%', period: 'Sep 2025', responseCount: 420, eng: 7.5, enps: 47, hasEnps: true,
+        enpsBreakdown: { p: 65, n: 25, d: 10 },
+        driverScores: { Autonomy: 7.1, Growth: 6.9, Management: 7.6, Wellbeing: 6.3, Alignment: 8.0 },
+        questionScores: { q1: 7.4, q2: 7.1, q3: 7.2 }
+      },
+      { id: 3, ts: 202506, name: 'Culture Survey Q2 2025', status: 'Completed', part: '79%', period: 'Jun 2025', responseCount: 390, eng: 7.4, enps: 38, hasEnps: true,
+        enpsBreakdown: { p: 58, n: 30, d: 12 },
+        driverScores: { Autonomy: 7.0, Growth: 6.8, Management: 7.7, Wellbeing: 6.2, Alignment: 7.9 },
+        questionScores: { q1: 7.3, q2: 6.9, q3: 7.0 }
+      },
+      { id: 4, ts: 202503, name: 'Culture Survey Q1 2025', status: 'Completed', part: '80%', period: 'Mar 2025', responseCount: 380, eng: 7.3, enps: null, hasEnps: false,
+        driverScores: { Autonomy: 6.9, Growth: 6.7, Management: 7.8, Wellbeing: 6.1, Alignment: 7.7 },
+        questionScores: { q1: 7.1, q2: 6.8, q3: 6.9 }
+      },
+      { id: 6, ts: 202410, name: 'Culture Survey Q4 2024', status: 'Completed', part: '76%', period: 'Oct 2024', responseCount: 340, eng: 7.2, enps: 30, hasEnps: true,
+        enpsBreakdown: { p: 55, n: 32, d: 13 },
+        driverScores: { Autonomy: 6.8, Growth: 6.6, Management: 7.4, Wellbeing: 6.0, Alignment: 7.6 },
+        questionScores: { q1: 7.0, q2: 6.7, q3: 6.8 }
+      }
+    ];
+
+    // Benchmarks as values PER DRIVER (so it can render as a full extra bar per driver)
+    const BENCHMARKS = {
+      org:      { Autonomy: 7.2, Growth: 6.9, Management: 7.5, Wellbeing: 6.5, Alignment: 8.1 },
+      customer: { Autonomy: 7.0, Growth: 6.7, Management: 7.3, Wellbeing: 6.2, Alignment: 7.9 },
+      external: { Autonomy: 7.3, Growth: 7.0, Management: 7.6, Wellbeing: 6.6, Alignment: 8.2 }
+    };
+
+    const TIME_TRENDS = {
+      monthly: {
+        labels: ['Jul 24','Aug 24','Sep 24','Oct 24','Nov 24','Dec 24','Jan 25','Feb 25','Mar 25','Apr 25','May 25','Jun 25','Jul 25','Aug 25','Sep 25'],
+        engagement: [7.2,7.3,7.5,7.6,7.7,7.8,7.8,7.9,8.0,7.9,7.8,7.9,8.0,8.1,8.2],
+        enps: [35,36,40,41,41,42,43,44,45,44,43,44,45,46,48],
+        responses: [120,130,420,340,150,450,160,170,380,180,190,390,200,210,420]
+      },
+      quarterly: {
+        labels: ['Q1 2024','Q2 2024','Q3 2024','Q4 2024','Q1 2025','Q2 2025','Q3 2025'],
+        engagement: [7.0,7.1,7.2,7.6,7.3,7.4,7.5],
+        enps: [30,32,35,40,36,38,47],
+        responses: [360,340,350,500,380,390,420]
+      },
+      annual: {
+        labels: ['2023','2024','2025'],
+        engagement: [6.9,7.3,7.6],
+        enps: [28,36,42],
+        responses: [480,1550,1200]
+      }
+    };
+
+    const FOCUS_POINTS_DATA = [
+      { driver: 'Work Environment', dim: 'Team', out: 'Operations (+11.8%)', outScore: 7.6, under: 'Quality Assurance (-10.1%)', underScore: 6.2 },
+      { driver: 'Rewards', dim: 'Manager', out: 'Ajay Singh (+13.8%)', outScore: 7.4, under: 'Rohit Gupta (-9.4%)', underScore: 5.8 },
+      { driver: 'Growth & Development', dim: 'Base Location', out: 'Bengaluru (+5.9%)', outScore: 7.2, under: 'Chennai (-4.2%)', underScore: 6.6 }
+    ];
+
+    // --------------------------
+    // State
+    // --------------------------
+
+    // Preselect 4 surveys by default (all completed)
+    let selectedSurveyIds = [6, 4, 3, 1];
+
+    let currentPerspective = 'survey';
+    let driverView = 'line';
+    let anchorId = null;
+    let compareIds = [];
+
+    const chartInstances = { eng: null, enps: null, drv: null, q: null };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderReportsList();
+      populateAttributesGrid();
+      syncAnalyzeButton();
+    });
+
+    function renderReportsList() {
+      const tbody = document.getElementById('reports-table-body');
+      tbody.innerHTML = SURVEYS.map(s => {
+        const checked = selectedSurveyIds.includes(s.id) ? 'checked' : '';
+        const enpsBadge = s.hasEnps
+          ? '<span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-1 rounded">Yes</span>'
+          : '<span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-100 px-2 py-1 rounded">No</span>';
+
+        return `
+          <tr class="hover:bg-slate-50 transition-colors border-b border-slate-50 last:border-none">
+            <td class="py-4 px-6">
+              <input type="checkbox" ${checked}
+                onchange="toggleSurveySelection(${s.id})"
+                class="w-4 h-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-500 cursor-pointer" />
+            </td>
+            <td class="py-4 px-6 font-medium text-slate-800">${s.name}</td>
+            <td class="py-4 px-6">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">Completed</span>
+            </td>
+            <td class="py-4 px-6 text-slate-600">${s.part}</td>
+            <td class="py-4 px-6 text-slate-600 text-sm">${s.period}</td>
+            <td class="py-4 px-6">${enpsBadge}</td>
+          </tr>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    function syncAnalyzeButton() {
+      document.getElementById('btn-analyze-entry').disabled = selectedSurveyIds.length < 4;
+    }
+
+    function toggleSurveySelection(id) {
+      if (selectedSurveyIds.includes(id)) selectedSurveyIds = selectedSurveyIds.filter(x => x !== id);
+      else selectedSurveyIds.push(id);
+
+      syncAnalyzeButton();
+    }
+
+    function openConfigModal() {
+      document.getElementById('modal-config').classList.remove('hidden');
+      document.getElementById('config-step-1').classList.remove('hidden');
+      document.getElementById('config-step-2').classList.add('hidden');
+      document.getElementById('btn-config-back').classList.add('hidden');
+      document.getElementById('btn-config-next').classList.remove('hidden');
+      document.getElementById('btn-config-analyze').classList.add('hidden');
+      document.getElementById('config-title').innerText = 'Configure Survey Comparison';
+
+      populateConfigDropdowns();
+      updateEnpsAvailabilityNote();
+      lucide.createIcons();
+    }
+
+    function closeConfigModal() {
+      document.getElementById('modal-config').classList.add('hidden');
+    }
+
+    function populateConfigDropdowns() {
+      const selectedSurveys = SURVEYS
+        .filter(s => selectedSurveyIds.includes(s.id))
+        .sort((a,b) => a.ts - b.ts);
+
+      // Default anchor = most recent selected
+      const anchorSelect = document.getElementById('select-anchor');
+      anchorSelect.innerHTML = selectedSurveys.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+      anchorSelect.value = selectedSurveys[selectedSurveys.length - 1]?.id ?? selectedSurveys[0]?.id;
+
+      const historyContainer = document.getElementById('container-historical');
+      historyContainer.innerHTML = selectedSurveys.map(s => `
+        <label class="flex items-center justify-between gap-2 cursor-pointer">
+          <span class="flex items-center gap-2">
+            <input type="checkbox" checked value="${s.id}" class="rounded text-emerald-500 focus:ring-emerald-500" onchange="updateEnpsAvailabilityNote()" />
+            <span class="text-sm text-slate-700">${s.name}</span>
+          </span>
+          <span class="text-[11px] ${s.hasEnps ? 'text-emerald-700' : 'text-amber-700'}">${s.hasEnps ? 'eNPS: Yes' : 'eNPS: No'}</span>
+        </label>
+      `).join('');
+    }
+
+    function updateEnpsAvailabilityNote() {
+      const aId = Number(document.getElementById('select-anchor')?.value || 0);
+      if (!aId) return;
+      const anchor = SURVEYS.find(s => s.id === aId);
+      document.getElementById('modal-enps-note').classList.toggle('hidden', !!anchor?.hasEnps);
+    }
+
+    function nextConfigStep() {
+      document.getElementById('config-step-1').classList.add('hidden');
+      document.getElementById('config-step-2').classList.remove('hidden');
+      document.getElementById('btn-config-back').classList.remove('hidden');
+      document.getElementById('btn-config-next').classList.add('hidden');
+      document.getElementById('btn-config-analyze').classList.remove('hidden');
+      document.getElementById('config-title').innerText = 'Select Analysis Dimensions';
+      lucide.createIcons();
+    }
+
+    function prevConfigStep() {
+      document.getElementById('config-step-2').classList.add('hidden');
+      document.getElementById('config-step-1').classList.remove('hidden');
+      document.getElementById('btn-config-back').classList.add('hidden');
+      document.getElementById('btn-config-next').classList.remove('hidden');
+      document.getElementById('btn-config-analyze').classList.add('hidden');
+      document.getElementById('config-title').innerText = 'Configure Survey Comparison';
+      lucide.createIcons();
+    }
+
+    function runAnalysis() {
+      anchorId = Number(document.getElementById('select-anchor').value);
+
+      const checks = Array.from(document.querySelectorAll('#container-historical input[type="checkbox"]'));
+      const chosen = checks.filter(c => c.checked).map(c => Number(c.value));
+
+      compareIds = chosen.filter(id => id !== anchorId);
+
+      closeConfigModal();
+
+      document.getElementById('view-reports').classList.add('hidden');
+      document.getElementById('view-dashboard').classList.remove('hidden');
+
+      const anchor = SURVEYS.find(s => s.id === anchorId);
+      const withNames = compareIds.map(id => SURVEYS.find(s => s.id === id)?.name).filter(Boolean);
+
+      document.getElementById('hdr-anchor').innerText = anchor?.name || '—';
+      document.getElementById('hdr-with').innerText = withNames.length ? withNames.join(', ') : '—';
+
+      const anyCompareNoEnps = compareIds
+        .map(id => SURVEYS.find(s => s.id === id))
+        .some(s => s && !s.hasEnps);
+
+      document.getElementById('hdr-enps-note').classList.toggle('hidden', !(anchor?.hasEnps && anyCompareNoEnps));
+      document.getElementById('enps-note').classList.toggle('hidden', !(anchor?.hasEnps && anyCompareNoEnps));
+
+      setEnpsVisibility(!!anchor?.hasEnps);
+
+      renderFocusPointsTable();
+      updateCharts();
+      lucide.createIcons();
+    }
+
+    function setEnpsVisibility(show) {
+      document.getElementById('sec-enps').classList.toggle('hidden', !show);
+      document.getElementById('card-enps').classList.toggle('hidden', !show);
+      document.getElementById('card-sentiment').classList.toggle('hidden', !show);
+      document.getElementById('no-enps-inline').classList.toggle('hidden', show);
+
+      if (!show && chartInstances.enps) {
+        chartInstances.enps.destroy();
+        chartInstances.enps = null;
+      }
+    }
+
+    function backToReports() {
+      document.getElementById('view-dashboard').classList.add('hidden');
+      document.getElementById('view-reports').classList.remove('hidden');
+    }
+
+    function switchTab(tab) {
+      if (tab === 'overtime') {
+        document.getElementById('tab-overtime').classList.replace('tab-inactive', 'tab-active');
+        document.getElementById('tab-focusPoints').classList.replace('tab-active', 'tab-inactive');
+        document.getElementById('content-overtime').classList.remove('hidden');
+        document.getElementById('content-focusPoints').classList.add('hidden');
+        document.getElementById('perspective-controls').classList.remove('invisible');
+      } else {
+        document.getElementById('tab-overtime').classList.replace('tab-active', 'tab-inactive');
+        document.getElementById('tab-focusPoints').classList.replace('tab-inactive', 'tab-active');
+        document.getElementById('content-overtime').classList.add('hidden');
+        document.getElementById('content-focusPoints').classList.remove('hidden');
+        document.getElementById('perspective-controls').classList.add('invisible');
+      }
+    }
+
+    function setPerspective(type) {
+      currentPerspective = type;
+      const btnSurvey = document.getElementById('btn-persp-survey');
+      const btnTime = document.getElementById('btn-persp-time');
+      const timeSelector = document.getElementById('time-period-selector');
+      const driverToggle = document.getElementById('driver-view-toggle');
+
+      if (type === 'survey') {
+        btnSurvey.classList.add('bg-white','shadow-sm','text-slate-800');
+        btnSurvey.classList.remove('text-slate-500');
+        btnTime.classList.remove('bg-white','shadow-sm','text-slate-800');
+        btnTime.classList.add('text-slate-500');
+        timeSelector.classList.add('hidden');
+        driverToggle.classList.remove('hidden');
+      } else {
+        btnTime.classList.add('bg-white','shadow-sm','text-slate-800');
+        btnTime.classList.remove('text-slate-500');
+        btnSurvey.classList.remove('bg-white','shadow-sm','text-slate-800');
+        btnSurvey.classList.add('text-slate-500');
+        timeSelector.classList.remove('hidden');
+        driverToggle.classList.add('hidden');
+      }
+
+      document.getElementById('driver-bar-controls').classList.add('hidden');
+      updateCharts();
+      lucide.createIcons();
+    }
+
+    function toggleDriverView(type) {
+      driverView = type;
+      const btnLine = document.getElementById('btn-driver-line');
+      const btnBar = document.getElementById('btn-driver-bar');
+
+      if (type === 'line') {
+        btnLine.classList.add('bg-white','shadow-sm','text-slate-800');
+        btnBar.classList.remove('bg-white','shadow-sm','text-slate-800');
+        btnBar.classList.add('text-slate-500');
+        document.getElementById('driver-bar-controls').classList.add('hidden');
+      } else {
+        btnBar.classList.add('bg-white','shadow-sm','text-slate-800');
+        btnLine.classList.remove('bg-white','shadow-sm','text-slate-800');
+        btnLine.classList.add('text-slate-500');
+        document.getElementById('driver-bar-controls').classList.remove('hidden');
+      }
+
+      updateCharts();
+      lucide.createIcons();
+    }
+
+    function getAnalysisSurveys() {
+      if (!anchorId) return [];
+      const anchor = SURVEYS.find(s => s.id === anchorId);
+      const history = compareIds.map(id => SURVEYS.find(s => s.id === id)).filter(Boolean);
+      const all = [...history, anchor].sort((a,b) => a.ts - b.ts);
+      return { anchor, history, all };
+    }
+
+    function updateCharts() {
+      if (chartInstances.eng) chartInstances.eng.destroy();
+      if (chartInstances.enps) chartInstances.enps.destroy();
+      if (chartInstances.drv) chartInstances.drv.destroy();
+      if (chartInstances.q) chartInstances.q.destroy();
+
+      if (!anchorId) return;
+
+      const { anchor, all } = getAnalysisSurveys();
+      const labelsBySurvey = all.map(s => s.name);
+
+      // --------------------
+      // Engagement
+      // --------------------
+      const ctxEng = document.getElementById('chartEngagement').getContext('2d');
+
+      if (currentPerspective === 'survey') {
+        document.getElementById('title-engagement').innerText = 'Engagement Survey Comparison';
+        chartInstances.eng = new Chart(ctxEng, {
+          type: 'line',
+          data: {
+            labels: labelsBySurvey,
+            datasets: [{
+              label: 'Engagement Score',
+              data: all.map(s => s.eng),
+              borderColor: '#10b981',
+              backgroundColor: 'rgba(16, 185, 129, 0.08)',
+              fill: true,
+              tension: 0.35,
+              pointRadius: 5,
+              pointBackgroundColor: '#fff',
+              pointBorderColor: '#10b981',
+              pointBorderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { y: { min: 0, max: 10, ticks: { stepSize: 1 } } },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  title: (items) => labelsBySurvey[items[0].dataIndex],
+                  label: (item) => `Score: ${item.formattedValue}`,
+                  afterBody: (items) => {
+                    const row = all[items[0].dataIndex];
+                    return [`Responses: ${row.responseCount}`, `Period: ${row.period}`];
+                  }
+                }
+              }
+            }
+          }
+        });
+      } else {
+        const period = document.getElementById('time-trend-select').value;
+        const data = TIME_TRENDS[period] || TIME_TRENDS.monthly;
+        document.getElementById('title-engagement').innerText = 'Engagement Time Trend';
+        chartInstances.eng = new Chart(ctxEng, {
+          type: 'line',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: 'Engagement',
+              data: data.engagement,
+              borderColor: '#10b981',
+              backgroundColor: 'rgba(16, 185, 129, 0.06)',
+              fill: true,
+              tension: 0.28,
+              pointRadius: 3
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { y: { min: 0, max: 10, ticks: { stepSize: 1 } } },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  title: (items) => `Time bucket: ${data.labels[items[0].dataIndex]}`,
+                  label: (item) => `Score: ${item.formattedValue}`,
+                  afterBody: (items) => {
+                    const idx = items[0].dataIndex;
+                    return [`Responses: ${data.responses[idx]}`];
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // --------------------
+      // eNPS (conditional)
+      // --------------------
+      if (anchor.hasEnps && !document.getElementById('sec-enps').classList.contains('hidden')) {
+        const ctxEnps = document.getElementById('chartEnps').getContext('2d');
+
+        if (currentPerspective === 'survey') {
+          document.getElementById('title-enps').innerText = 'eNPS Comparison';
+          const enpsAll = all.filter(s => s.hasEnps && typeof s.enps === 'number');
+          const enpsLabels = enpsAll.map(s => s.name);
+
+          chartInstances.enps = new Chart(ctxEnps, {
+            type: 'line',
+            data: {
+              labels: enpsLabels,
+              datasets: [{
+                label: 'eNPS',
+                data: enpsAll.map(s => s.enps),
+                borderColor: '#6366f1',
+                backgroundColor: 'rgba(99, 102, 241, 0.08)',
+                fill: true,
+                tension: 0.35,
+                pointRadius: 5,
+                pointBackgroundColor: '#fff',
+                pointBorderColor: '#6366f1',
+                pointBorderWidth: 2
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: { y: { min: -100, max: 100, ticks: { stepSize: 20 } } },
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  callbacks: {
+                    title: (items) => enpsLabels[items[0].dataIndex],
+                    label: (item) => `eNPS: ${item.formattedValue}`,
+                    afterBody: (items) => {
+                      const row = enpsAll[items[0].dataIndex];
+                      const b = row.enpsBreakdown || { p: 60, n: 28, d: 12 };
+                      return [`Promoters: ${b.p}%`, `Neutrals: ${b.n}%`, `Detractors: ${b.d}%`, `Responses: ${row.responseCount}`];
+                    }
+                  }
+                }
+              }
+            }
+          });
+        } else {
+          const period = document.getElementById('time-trend-select').value;
+          const data = TIME_TRENDS[period] || TIME_TRENDS.monthly;
+          document.getElementById('title-enps').innerText = 'eNPS Time Trend';
+
+          chartInstances.enps = new Chart(ctxEnps, {
+            type: 'line',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'eNPS',
+                data: data.enps,
+                borderColor: '#6366f1',
+                tension: 0.28,
+                pointRadius: 3
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: { y: { min: -100, max: 100, ticks: { stepSize: 20 } } },
+              plugins: { legend: { display: false } }
+            }
+          });
+        }
+      }
+
+      // --------------------
+      // Drivers
+      // --------------------
+      const ctxDrv = document.getElementById('chartDrivers').getContext('2d');
+
+      if (currentPerspective === 'survey') {
+        if (driverView === 'line') {
+          // Multi-line: each driver is a dataset, x-axis is survey runs
+          chartInstances.drv = new Chart(ctxDrv, {
+            type: 'line',
+            data: {
+              labels: labelsBySurvey,
+              datasets: DRIVERS.map((d, idx) => ({
+                label: d,
+                data: all.map(s => s.driverScores?.[d] ?? null),
+                borderColor: ['#10b981','#3b82f6','#f59e0b','#8b5cf6','#f43f5e'][idx % 5],
+                tension: 0.3,
+                pointRadius: 4
+              }))
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: { y: { min: 0, max: 10, ticks: { stepSize: 1 } } },
+              plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10 } },
+                tooltip: {
+                  callbacks: {
+                    title: (items) => labelsBySurvey[items[0].dataIndex],
+                    afterBody: (items) => {
+                      const row = all[items[0].dataIndex];
+                      return [`Responses: ${row.responseCount}`, `Period: ${row.period}`];
+                    }
+                  }
+                }
+              }
+            }
+          });
+        } else {
+          // GROUPED BAR (requested):
+          // x-axis = drivers
+          // each dataset = a survey run (minimum 4)
+          // optional benchmark adds an additional dataset (fifth bar per driver)
+
+          const showBenchmark = document.getElementById('chk-benchmark').checked;
+          const benchmarkType = document.getElementById('benchmark-type').value;
+
+          const surveyDatasets = all.map((s, i) => {
+            const isAnchor = s.id === anchor.id;
+            return {
+              label: s.name,
+              data: DRIVERS.map(d => s.driverScores?.[d] ?? null),
+              backgroundColor: isAnchor ? 'rgba(16,185,129,0.9)' : `rgba(148,163,184,${0.75 - (i * 0.08)})`,
+              borderRadius: 8,
+              borderWidth: 0
+            };
+          });
+
+          if (showBenchmark) {
+            surveyDatasets.push({
+              label: `Benchmark (${benchmarkType})`,
+              data: DRIVERS.map(d => BENCHMARKS[benchmarkType]?.[d] ?? null),
+              backgroundColor: 'rgba(15,23,42,0.25)',
+              borderRadius: 8,
+              borderWidth: 0
+            });
+          }
+
+          chartInstances.drv = new Chart(ctxDrv, {
+            type: 'bar',
+            data: {
+              labels: DRIVERS,
+              datasets: surveyDatasets
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: { min: 0, max: 10, ticks: { stepSize: 1 } },
+                x: { ticks: { maxRotation: 0, minRotation: 0 } }
+              },
+              plugins: {
+                legend: {
+                  position: 'top',
+                  align: 'end',
+                  labels: { boxWidth: 14, boxHeight: 10 }
+                },
+                tooltip: {
+                  callbacks: {
+                    // Title = driver
+                    title: (items) => `Driver: ${items[0].label}`,
+                    // Label = dataset (survey) score
+                    label: (item) => `${item.dataset.label}: ${item.formattedValue}`,
+                    afterBody: (items) => {
+                      const item = items[0];
+                      const isBenchmark = item.dataset.label.startsWith('Benchmark');
+                      if (isBenchmark) return [`Type: ${benchmarkType}`];
+
+                      const surveyName = item.dataset.label;
+                      const s = all.find(x => x.name === surveyName);
+                      if (!s) return [];
+
+                      const isAnchor = s.id === anchor.id;
+                      return [
+                        `Period: ${s.period}`,
+                        `Responses: ${s.responseCount}`,
+                        isAnchor ? 'Anchor Survey: Yes' : 'Anchor Survey: No'
+                      ];
+                    }
+                  }
+                }
+              }
+            }
+          });
+        }
+      } else {
+        // Time trend drivers (aggregated view)
+        const period = document.getElementById('time-trend-select').value;
+        const data = TIME_TRENDS[period] || TIME_TRENDS.monthly;
+        const len = data.labels.length;
+        const gen = (base) => Array.from({ length: len }, (_, i) => Number((base + Math.sin(i/2)*0.2 + (Math.random()*0.2-0.1)).toFixed(1)));
+
+        chartInstances.drv = new Chart(ctxDrv, {
+          type: 'line',
+          data: {
+            labels: data.labels,
+            datasets: [
+              { label: 'Autonomy', data: gen(7.2), borderColor: '#10b981', tension: 0.3, pointRadius: 2 },
+              { label: 'Management', data: gen(7.4), borderColor: '#3b82f6', tension: 0.3, pointRadius: 2 },
+              { label: 'Growth', data: gen(6.9), borderColor: '#f59e0b', tension: 0.3, pointRadius: 2 }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { y: { min: 0, max: 10, ticks: { stepSize: 1 } } },
+            plugins: { legend: { position: 'bottom' } }
+          }
+        });
+      }
+
+      // --------------------
+      // Question-wise
+      // --------------------
+      const ctxQ = document.getElementById('chartQuestions').getContext('2d');
+      const questionId = document.getElementById('select-question').value;
+      document.getElementById('questions-empty').classList.add('hidden');
+
+      chartInstances.q = new Chart(ctxQ, {
+        type: 'line',
+        data: {
+          labels: labelsBySurvey,
+          datasets: [{
+            label: 'Question Score',
+            data: all.map(s => s.questionScores?.[questionId] ?? null),
+            borderColor: '#10b981',
+            backgroundColor: 'rgba(16, 185, 129, 0.08)',
+            fill: true,
+            tension: 0.35,
+            pointRadius: 5,
+            pointBackgroundColor: '#fff',
+            pointBorderColor: '#10b981',
+            pointBorderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: { y: { min: 0, max: 10, ticks: { stepSize: 1 } } },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                title: (items) => labelsBySurvey[items[0].dataIndex],
+                label: (item) => `Score: ${item.formattedValue}`,
+                afterBody: (items) => {
+                  const row = all[items[0].dataIndex];
+                  const qText = document.querySelector('#select-question option:checked')?.textContent || '';
+                  return [`Question: ${qText}`, `Responses: ${Math.round(row.responseCount * 0.4)}`];
+                }
+              }
+            }
+          }
+        }
+      });
+
+      lucide.createIcons();
+    }
+
+    function renderFocusPointsTable() {
+      const tbody = document.getElementById('focus-points-body');
+      tbody.innerHTML = FOCUS_POINTS_DATA.map(row => `
+        <tr class="hover:bg-slate-50 transition-colors border-b border-slate-50 last:border-none">
+          <td class="py-4 px-6 font-medium text-slate-700">${row.driver}</td>
+          <td class="py-4 px-6"><span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold">${row.dim}</span></td>
+          <td class="py-4 px-6 cursor-pointer group" onclick="toggleModal('modal-drilldown')">
+            <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-600 inline-flex items-center gap-1">
+              ${row.out.split('(')[0].trim()}
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-emerald-500"></i>
+            </div>
+            <div class="text-xs text-emerald-600 font-medium">${row.out.match(/\(([^)]+)\)/)[1]} • Score: ${row.outScore}</div>
+          </td>
+          <td class="py-4 px-6 cursor-pointer group" onclick="toggleModal('modal-drilldown')">
+            <div class="text-sm font-bold text-slate-800 group-hover:text-rose-600 inline-flex items-center gap-1">
+              ${row.under.split('(')[0].trim()}
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-rose-500"></i>
+            </div>
+            <div class="text-xs text-rose-600 font-medium">${row.under.match(/\(([^)]+)\)/)[1]} • Score: ${row.underScore}</div>
+          </td>
+        </tr>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function populateAttributesGrid() {
+      const container = document.getElementById('attributes-grid');
+      const attributes = [
+        'Team','Region','Manager','Business Unit','Base Location','Country','Gender','Employee Type','Tenure Band','Performance Rating',
+        'Work Mode','Department','Sub-Department','Cost Center','Job Level','Generation','Joining Quarter','Project Code','Dietary Preference','Shift Timing'
+      ];
+
+      container.innerHTML = attributes.map(attr => `
+        <label class="flex items-center gap-2 p-2.5 border border-slate-200 rounded-md cursor-pointer hover:bg-white hover:shadow-sm transition-all bg-white">
+          <input type="checkbox" class="text-emerald-500 rounded focus:ring-emerald-500 shrink-0" ${['Team','Region','Manager','Business Unit','Base Location'].includes(attr) ? 'checked' : ''} />
+          <span class="text-sm font-medium text-slate-700 truncate" title="${attr}">${attr}</span>
+        </label>
+      `).join('');
+    }
+
+    function toggleModal(id) {
+      const el = document.getElementById(id);
+      if (el.classList.contains('hidden')) el.classList.remove('hidden');
+      else el.classList.add('hidden');
+    }
+
+    function downloadSectionAsImage(sectionId) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-6 right-6 bg-slate-900 text-white text-sm px-4 py-2 rounded-lg shadow-lg z-[9999]';
+      toast.textContent = `Downloaded ${sectionId} as PNG (mock)`;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 1400);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Settings — Drivers & Sub-drivers | CultureMonkey</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-sizing: border-box; }
+    body { background: #f4f6f9; margin: 0; overflow: hidden; }
+
+    /* ── Layout ── */
+    .fluid-container { display: flex; height: 100vh; overflow: hidden; }
+
+    /* ── Sidebar ── */
+    .sidebar-container {
+      width: 220px; min-width: 220px; background: #fff;
+      border-right: 1px solid #e8ecf0; display: flex; flex-direction: column;
+      overflow-y: auto;
+    }
+    .sidemenu-icon { padding: 8px 14px; border-bottom: 1px solid #e8ecf0; cursor: pointer; color: #718096; font-size: 12px; }
+    .s-menu { display: flex; align-items: center; gap: 4px; }
+    .user-details { padding: 16px 14px 10px; border-bottom: 1px solid #e8ecf0; }
+    .company-logo img { width: 40px; height: 40px; border-radius: 6px; }
+    .company-name { font-weight: 600; font-size: 13px; margin-top: 6px; color: #2d3748; }
+    .user-name { font-size: 12px; color: #718096; }
+    .sub-admin-det { font-size: 11px; margin-top: 2px; }
+    .cm-green { color: #5DCE97; }
+    .grey { color: #718096; }
+    .dropdown-divider { margin: 6px 0; border-top: 1px solid #e8ecf0; }
+    .menu { flex: 1; padding: 8px 0; }
+    .menu ul { list-style: none; margin: 0; padding: 0; }
+    .menu-link { display: block; text-decoration: none !important; color: #4a5568; }
+    .menu-link li { padding: 8px 14px; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 8px; color: #4a5568; transition: all 0.15s; }
+    .menu-link li:hover { background: #f0fdf4; color: #5DCE97; }
+    .menu-link.active li { background: #e6f9f1; color: #5DCE97; border-left: 3px solid #5DCE97; font-weight: 500; }
+    .s-sidebar__nav-section { padding: 12px 14px 4px; font-size: 10px; font-weight: 700; color: #a0aec0; letter-spacing: 0.8px; text-transform: uppercase; cursor: default; }
+
+    /* ── Main content ── */
+    .content-root { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .top-nav { background: #fff; border-bottom: 1px solid #e8ecf0; padding: 8px 20px; display: flex; align-items: center; justify-content: flex-end; min-height: 48px; }
+    .avatar-circle { width: 32px; height: 32px; border-radius: 50%; background: #5DCE97; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 600; cursor: pointer; }
+    .app-root { flex: 1; overflow-y: auto; }
+    .content-header { background: #fff; border-bottom: 1px solid #e8ecf0; padding: 16px 20px 12px; }
+    .header-text { font-size: 18px; font-weight: 600; color: #2d3748; display: block; }
+    .header-description { font-size: 13px; color: #718096; margin-top: 4px; display: block; }
+
+    /* ── Settings layout ── */
+    .settings-container { display: flex; }
+    .sub-sidebar { width: 200px; min-width: 200px; background: #fff; border-right: 1px solid #e8ecf0; }
+    .sub-sidebar ul { list-style: none; padding: 0; margin: 0; }
+    .sub-sidebar-header { padding: 14px 16px 8px; font-size: 10px; font-weight: 700; color: #a0aec0; letter-spacing: 0.8px; text-transform: uppercase; }
+    .sub-sidebar a { text-decoration: none !important; display: block; color: #4a5568; }
+    .sub-sidebar a li { padding: 9px 16px; font-size: 13px; cursor: pointer; transition: all 0.15s; }
+    .sub-sidebar a li:hover { background: #f0fdf4; color: #5DCE97; }
+    .sub-sidebar a.active li { background: #e6f9f1; color: #5DCE97; border-left: 3px solid #5DCE97; font-weight: 500; padding-left: 13px; }
+    .sub-sidebar-toggle-btn { padding: 9px 16px; cursor: pointer; color: #4a5568; font-size: 13px; }
+    .nested-menu { list-style: none; padding: 0; margin: 0; background: #fafafa; }
+    .nested-menu a li { padding-left: 28px !important; font-size: 12px; }
+    .settings-container-content { flex: 1; background: #f4f6f9; overflow-y: auto; height: calc(100vh - 132px); }
+    .settings-container-content > .card-header { background: #fff; border-bottom: 1px solid #e8ecf0; font-size: 15px; font-weight: 600; color: #2d3748; padding: 14px 20px; border-radius: 0; }
+
+    /* ── Info banner ── */
+    .info-banner { background: #fffbeb; border: 1px solid #fbd38d; border-radius: 6px; padding: 10px 14px; font-size: 12px; color: #744210; margin: 16px 20px 0; display: flex; align-items: flex-start; gap: 8px; }
+
+    /* ── Driver block ── */
+    .driver-block { background: #fff; border: 1px solid #e8ecf0; border-radius: 8px; margin: 12px 20px 0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .driver-row { display: flex; align-items: center; padding: 10px 14px; border-bottom: 1px solid transparent; cursor: pointer; transition: background 0.15s; gap: 8px; }
+    .driver-row:hover { background: #fafbfc; }
+    .driver-row.expanded { background: #f8fffe; border-bottom-color: #e8ecf0; }
+    .driver-chevron { color: #a0aec0; width: 16px; text-align: center; transition: transform 0.2s; flex-shrink: 0; font-size: 12px; }
+    .driver-chevron.open { transform: rotate(90deg); }
+    .view-form { flex: 1; }
+    .driver-name-input { width: 100%; border: 1px solid #e2e8f0; border-radius: 4px; padding: 5px 10px; font-size: 13px; color: #2d3748; background: #f9fafb; }
+    .driver-name-input:disabled { background: #f9fafb; color: #4a5568; cursor: default; }
+    .driver-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; }
+    .badge-default { background: #e6f9f1; color: #276749; }
+    .badge-custom { background: #ebf4ff; color: #2b6cb0; }
+    .subdriver-count { font-size: 11px; color: #718096; white-space: nowrap; flex-shrink: 0; }
+    .subdriver-count i { color: #5DCE97; }
+    .driver-actions { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
+    .edit-buttons, .del-buttons { border: none; background: none; padding: 5px 7px; border-radius: 4px; cursor: pointer; color: #718096; transition: all 0.15s; font-size: 13px; }
+    .edit-buttons:hover { color: #3182ce; background: #ebf4ff; }
+    .del-buttons:hover { color: #e53e3e; background: #fff5f5; }
+    .disabled-link { opacity: 0.35; cursor: not-allowed !important; pointer-events: none; }
+
+    /* ── Sub-driver rows ── */
+    .subdriver-list { background: #f8fffe; padding: 6px 0; }
+    .subdriver-item { display: flex; align-items: center; padding: 7px 14px 7px 42px; border-bottom: 1px solid #f0f4f8; gap: 8px; }
+    .subdriver-item:last-of-type { border-bottom: none; }
+    .drag-handle { color: #cbd5e0; cursor: grab; font-size: 12px; flex-shrink: 0; }
+    .subdriver-name-input { flex: 1; border: 1px solid #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 12px; color: #4a5568; background: #fff; }
+    .subdriver-name-input:disabled { background: #fafafa; }
+    .subdriver-actions { display: flex; gap: 2px; flex-shrink: 0; }
+    .subdriver-add-btn { display: flex; align-items: center; padding: 8px 14px 8px 42px; cursor: pointer; color: #5DCE97; font-size: 12px; gap: 6px; transition: background 0.15s; }
+    .subdriver-add-btn:hover { background: #f0fdf4; }
+    .subdriver-empty { padding: 12px 42px; font-size: 12px; color: #a0aec0; font-style: italic; }
+
+    /* ── Add driver ── */
+    .add-driver-row { display: flex; align-items: center; padding: 11px 20px; margin: 12px 20px 20px; background: #fff; border: 1px dashed #5DCE97; border-radius: 8px; cursor: pointer; color: #5DCE97; font-size: 13px; gap: 8px; transition: background 0.15s; }
+    .add-driver-row:hover { background: #f0fdf4; }
+
+    /* ── Modals ── */
+    .modal-content { border-radius: 8px; border: none; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+    .modal-header { border-bottom: 1px solid #e8ecf0; padding: 16px 20px; }
+    .modal-title { font-size: 13px; font-weight: 600; color: #2d3748; text-transform: uppercase; letter-spacing: 0.4px; }
+    .modal-body { padding: 20px; }
+    .modal-footer { border-top: 1px solid #e8ecf0; padding: 12px 20px; }
+    label.form-label { font-size: 12px; font-weight: 600; color: #4a5568; margin-bottom: 4px; }
+    .form-control { font-size: 13px; border-color: #e2e8f0; border-radius: 4px; }
+    .form-control:focus { border-color: #5DCE97; box-shadow: 0 0 0 0.2rem rgba(93,206,151,0.2); }
+    .btn-primary { background: #5DCE97; border-color: #5DCE97; font-size: 13px; }
+    .btn-primary:hover { background: #48bb84; border-color: #48bb84; }
+    .btn-secondary { font-size: 13px; }
+    .btn-danger { font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<div class="fluid-container">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <div class="sidebar-container">
+    <div class="sidemenu-icon">
+      <span class="s-menu pl-1">
+        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+        <span class="collapse-text"> Collapse</span>
+      </span>
+    </div>
+    <div class="user-details">
+      <div class="company-logo">
+        <img src="https://app.cmstaging.in/logos/test_cipla.png" onerror="this.style='width:40px;height:40px;background:#5DCE97;border-radius:6px;display:block;'">
+      </div>
+      <div class="company-name">Acme Corp</div>
+      <div class="user-name">Caesar User</div>
+      <div class="sub-admin-det"><span class="grey">Logged in as: </span><span class="cm-green">Shabharish V</span></div>
+      <div class="dropdown-divider"></div>
+      <div class="sub-admin-det"><span class="cm-green">Active Employees: 687/700</span></div>
+      <div class="sub-admin-det"><span class="grey">Active Managers: 115</span></div>
+    </div>
+    <div class="menu">
+      <ul>
+        <a class="menu-link" href="#"><li><i class="fa fa-home"></i>Dashboard</li></a>
+        <a class="menu-link" href="#"><li><i class="fas fa-sitemap"></i>Org Hierarchy</li></a>
+        <li class="s-sidebar__nav-section">LISTEN</li>
+        <a class="menu-link" href="#"><li><i class="fa fa-clone"></i>Templates</li></a>
+        <a class="menu-link" href="#"><li><i class="fa fa-paint-brush"></i>Surveys</li></a>
+        <a class="menu-link" href="#"><li><i class="fas fa-heartbeat"></i>Pulse</li></a>
+        <li class="s-sidebar__nav-section">ANALYSE</li>
+        <a class="menu-link" href="#"><li><i class="fas fa-chart-line"></i>Reports</li></a>
+        <li class="s-sidebar__nav-section">GENERAL</li>
+        <a class="menu-link active" href="#"><li><i class="fa fa-cog"></i>Settings</li></a>
+        <a class="menu-link" href="#"><li><i class="fa fa-users"></i>Employees</li></a>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <div class="content-root">
+    <div class="top-nav">
+      <ul class="navbar-nav flex-row" style="gap:12px;list-style:none;margin:0;padding:0;">
+        <li class="nav-item"><a href="#"><i class="fa fa-cog" style="color:#718096;font-size:16px;"></i></a></li>
+        <li class="nav-item"><div class="avatar-circle">CU</div></li>
+      </ul>
+    </div>
+
+    <div class="app-root">
+      <!-- Page header -->
+      <div class="container-fluid px-0">
+        <div class="row no-gutter content-header">
+          <div class="col-12 no-gutter px-4 py-3">
+            <span class="header-text">Settings</span>
+            <span class="header-description">Manage your account settings and modules in one place.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings layout -->
+      <div class="d-flex settings-container">
+
+        <!-- Sub-sidebar -->
+        <div class="sub-sidebar">
+          <ul>
+            <li class="sub-sidebar-header">Settings</li>
+            <a href="#"><li>General</li></a>
+            <a href="#" class="active"><li>Drivers</li></a>
+            <a href="#"><li>Languages</li></a>
+            <li class="sub-sidebar-toggle-btn d-flex justify-content-between align-items-center">
+              <span>Demographics</span><span class="arrow">▾</span>
+            </li>
+            <ul class="nested-menu">
+              <a href="#"><li>Teams</li></a>
+              <a href="#"><li>Sub Teams</li></a>
+              <a href="#"><li>Locations</li></a>
+            </ul>
+            <a href="#"><li>Mails</li></a>
+            <a href="#"><li>Integrations</li></a>
+            <a href="#"><li>Advanced</li></a>
+            <a href="#"><li>Heatmap Settings</li></a>
+          </ul>
+        </div>
+
+        <!-- Content card -->
+        <div class="settings-container-content card" style="border:none;border-radius:0;">
+          <div class="card-header">
+            Drivers
+          </div>
+
+          <!-- Info banner -->
+          <div class="info-banner">
+            <i class="fas fa-info-circle" style="color:#d69e2e;margin-top:2px;flex-shrink:0;"></i>
+            <div>
+              <strong>Sub-drivers group related survey questions under a driver.</strong>
+              Default drivers have curated sub-drivers — these are read-only. Custom drivers support fully editable sub-drivers. Sub-driver assignment to individual questions is managed per survey in the Survey Builder.
+            </div>
+          </div>
+
+          <!-- DRIVER LIST -->
+
+          <!-- 1. Autonomy — Default, expanded -->
+          <div class="driver-block">
+            <div class="driver-row expanded" onclick="toggleDriver('autonomy')">
+              <i class="fas fa-chevron-right driver-chevron open" id="ch-autonomy"></i>
+              <div class="view-form">
+                <input type="text" class="driver-name-input" value="Autonomy" disabled>
+              </div>
+              <span class="driver-badge badge-default">Default</span>
+              <span class="subdriver-count"><i class="fas fa-layer-group"></i> 3 sub-drivers</span>
+              <div class="driver-actions">
+                <div class="edit-buttons disabled-link"><i class="fa fa-pen"></i></div>
+                <div class="del-buttons disabled-link"><i class="fa fa-minus-circle"></i></div>
+              </div>
+            </div>
+            <div id="sd-autonomy" class="subdriver-list">
+              <div class="subdriver-item">
+                <i class="fas fa-grip-vertical drag-handle"></i>
+                <input type="text" class="subdriver-name-input" value="Decision-Making Freedom" disabled>
+                <div class="subdriver-actions">
+                  <div class="edit-buttons disabled-link" style="font-size:12px;"><i class="fa fa-pen"></i></div>
+                </div>
+              </div>
+              <div class="subdriver-item">
+                <i class="fas fa-grip-vertical drag-handle"></i>
+                <input type="text" class="subdriver-name-input" value="Ownership &amp; Accountability" disabled>
+                <div class="subdriver-actions">
+                  <div class="edit-buttons disabled-link" style="font-size:12px;"><i class="fa fa-pen"></i></div>
+                </div>
+              </div>
+              <div class="subdriver-item">
+                <i class="fas fa-grip-vertical drag-handle"></i>
+                <input type="text" class="subdriver-name-input" value="Flexibility &amp; Work Arrangements" disabled>
+                <div class="subdriver-actions">
+                  <div class="edit-buttons disabled-link" style="font-size:12px;"><i class="fa fa-pen"></i></div>
+                </div>
+              </div>
+              <div class="subdriver-add-btn disabled-link" style="opacity:0.4;cursor:not-allowed;">
+                <i class="fas fa-plus-circle"></i> Add sub-driver (read-only for default drivers)
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Work Environment — Default, collapsed -->
+          <div class="driver-block">
+            <div class="driver-row" onclick="toggleDriver('workenv')">
+              <i class="fas fa-chevron-right driver-chevron" id="ch-workenv"></i>
+              <div class="view-form"><input type="text" class="driver-name-input" value="Work Environment" disabled></div>
+              <span class="driver-badge badge-default">Default</span>
+              <span class="subdriver-count"><i class="fas fa-layer-group"></i> 3 sub-drivers</span>
+              <div class="driver-actions">
+                <div class="edit-buttons disabled-link"><i class="fa fa-pen"></i></div>
+                <div class="del-buttons disabled-link"><i class="fa fa-minus-circle"></i></div>
+              </div>
+            </div>
+            <div id="sd-workenv" class="subdriver-list" style="display:none;">
+              <div class="subdriver-item"><i class="fas fa-grip-vertical drag-handle"></i><input type="text" class="subdriver-name-input" value="Physical Workspace" disabled><div class="subdriver-actions"><div class="edit-buttons disabled-link" style="font-size:12px;"><i class="fa fa-pen"></i></div></div></div>
+              <div class="subdriver-item"><i class="fas fa-grip-vertical drag-handle"></i><input type="text" class="subdriver-name-input" value="Tools &amp; Resources" disabled><div class="subdriver-actions"><div class="edit-buttons disabled-link" style="font-size:12px;"><i class="fa fa-pen"></i></div></div></div>
+              <div class="subdriver-item"><i class="fas fa-grip-vertical drag-handle"></i><input type="text" class="subdriver-name-input" value="Safety &amp; Wellbeing" disabled><div class="subdriver-actions"><div class="edit-buttons disabled-link" style="font-size:12px;"><i class="fa fa-pen"></i></div></div></div>
+            </div>
+          </div>
+
+          <!-- 3. Leadership — Default, collapsed -->
+          <div class="driver-block">
+            <div class="driver-row" onclick="toggleDriver('leadership')">
+              <i class="fas fa-chevron-right driver-chevron" id="ch-leadership"></i>
+              <div class="view-form"><input type="text" class="driver-name-input" value="Leadership" disabled></div>
+              <span class="driver-badge badge-default">Default</span>
+              <span class="subdriver-count"><i class="fas fa-layer-group"></i> 3 sub-drivers</span>
+              <div class="driver-actions">
+                <div class="edit-buttons disabled-link"><i class="fa fa-pen"></i></div>
+                <div class="del-buttons disabled-link"><i class="fa fa-minus-circle"></i></div>
+              </div>
+            </div>
+            <div id="sd-leadership" class="subdriver-list" style="display:none;">
+              <div class="subdriver-item"><i class="fas fa-grip-vertical drag-handle"></i><input type="text" class="subdriver-name-input" value="Vision &amp; Direction" disabled></div>
+              <div class="subdriver-item"><i class="fas fa-grip-vertical drag-handle"></i><input type="text" class="subdriver-name-input" value="Accessibility &amp; Approachability" disabled></div>
+              <div class="subdriver-item"><i class="fas fa-grip-vertical drag-handle"></i><input type="text" class="subdriver-name-input" value="Feedback &amp; Coaching" disabled></div>
+            </div>
+          </div>
+
+          <!-- 4. Innovation Culture — Custom, expanded, has sub-drivers -->
+          <div class="driver-block">
+            <div class="driver-row expanded" onclick="toggleDriver('innovation')">
+              <i class="fas fa-chevron-right driver-chevron open" id="ch-innovation"></i>
+              <div class="view-form"><input type="text" class="driver-name-input" value="Innovation Culture" disabled></div>
+              <span class="driver-badge badge-custom">Custom</span>
+              <span class="subdriver-count"><i class="fas fa-layer-group"></i> 2 sub-drivers</span>
+              <div class="driver-actions">
+                <div class="edit-buttons" onclick="event.stopPropagation();$('#editDriverModal').modal('show')" title="Edit driver name"><i class="fa fa-pen"></i></div>
+                <div class="del-buttons" onclick="event.stopPropagation();$('#deleteDriverModal').modal('show')" title="Delete driver"><i class="fa fa-minus-circle"></i></div>
+              </div>
+            </div>
+            <div id="sd-innovation" class="subdriver-list">
+              <div class="subdriver-item">
+                <i class="fas fa-grip-vertical drag-handle"></i>
+                <input type="text" class="subdriver-name-input" value="Idea Generation" disabled>
+                <div class="subdriver-actions">
+                  <div class="edit-buttons" onclick="event.stopPropagation();$('#editSubdriverModal').modal('show')" style="font-size:12px;" title="Edit"><i class="fa fa-pen"></i></div>
+                  <div class="del-buttons" onclick="event.stopPropagation();$('#deleteSubdriverModal').modal('show')" style="font-size:12px;" title="Delete"><i class="fa fa-minus-circle"></i></div>
+                </div>
+              </div>
+              <div class="subdriver-item">
+                <i class="fas fa-grip-vertical drag-handle"></i>
+                <input type="text" class="subdriver-name-input" value="Experimentation &amp; Risk-Taking" disabled>
+                <div class="subdriver-actions">
+                  <div class="edit-buttons" onclick="event.stopPropagation();$('#editSubdriverModal').modal('show')" style="font-size:12px;"><i class="fa fa-pen"></i></div>
+                  <div class="del-buttons" onclick="event.stopPropagation();$('#deleteSubdriverModal').modal('show')" style="font-size:12px;"><i class="fa fa-minus-circle"></i></div>
+                </div>
+              </div>
+              <div class="subdriver-add-btn" onclick="$('#addSubdriverModal').modal('show')">
+                <i class="fas fa-plus-circle"></i> Add sub-driver
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. DEI — Custom, collapsed, NO sub-drivers yet -->
+          <div class="driver-block">
+            <div class="driver-row" onclick="toggleDriver('dei')">
+              <i class="fas fa-chevron-right driver-chevron" id="ch-dei"></i>
+              <div class="view-form"><input type="text" class="driver-name-input" value="Diversity &amp; Inclusion" disabled></div>
+              <span class="driver-badge badge-custom">Custom</span>
+              <div class="driver-actions">
+                <div class="edit-buttons" onclick="event.stopPropagation();$('#editDriverModal').modal('show')"><i class="fa fa-pen"></i></div>
+                <div class="del-buttons" onclick="event.stopPropagation();$('#deleteDriverModal').modal('show')"><i class="fa fa-minus-circle"></i></div>
+              </div>
+            </div>
+            <div id="sd-dei" class="subdriver-list" style="display:none;">
+              <div class="subdriver-empty">No sub-drivers yet. Add one to start grouping questions under this driver.</div>
+              <div class="subdriver-add-btn" onclick="$('#addSubdriverModal').modal('show')">
+                <i class="fas fa-plus-circle"></i> Add sub-driver
+              </div>
+            </div>
+          </div>
+
+          <!-- Add driver -->
+          <div class="add-driver-row" onclick="$('#addDriverModal').modal('show')">
+            <i class="fas fa-plus-circle"></i> Add new custom driver
+          </div>
+
+        </div><!-- /settings-container-content -->
+      </div><!-- /settings-container -->
+    </div><!-- /app-root -->
+  </div><!-- /content-root -->
+</div><!-- /fluid-container -->
+
+
+<!-- ══ Modal: Add Sub-driver ══ -->
+<div class="modal fade" id="addSubdriverModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">ADD SUB-DRIVER</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Driver</label>
+          <input type="text" class="form-control" value="Innovation Culture" disabled>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Sub-driver Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" placeholder="e.g. Psychological Safety" id="newSubName">
+          <small class="form-text text-muted">2–50 characters. Should clearly describe the theme being measured.</small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" onclick="$('#addSubdriverModal').modal('hide')">Add Sub-driver</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Modal: Edit Sub-driver ══ -->
+<div class="modal fade" id="editSubdriverModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">EDIT SUB-DRIVER</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Sub-driver Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" value="Idea Generation">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" onclick="$('#editSubdriverModal').modal('hide')">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Modal: Delete Sub-driver ══ -->
+<div class="modal fade" id="deleteSubdriverModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom-color:#fed7d7;">
+        <h5 class="modal-title" style="color:#c53030;">DELETE SUB-DRIVER</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <strong>"Idea Generation"</strong>?</p>
+        <div style="background:#fff5f5;border:1px solid #fed7d7;border-radius:6px;padding:10px 14px;font-size:12px;color:#742a2a;">
+          <i class="fas fa-exclamation-triangle"></i>&nbsp;
+          Questions assigned to this sub-driver in active surveys will revert to driver-level (no sub-driver). Historical data is preserved.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-danger" onclick="$('#deleteSubdriverModal').modal('hide')">Delete Sub-driver</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Modal: Add Driver ══ -->
+<div class="modal fade" id="addDriverModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">ADD NEW CUSTOM DRIVER</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Driver Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" placeholder="e.g. Customer Orientation">
+          <small class="form-text text-muted">You can add sub-drivers after creating the driver.</small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" onclick="$('#addDriverModal').modal('hide')">Add Driver</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Modal: Edit Driver ══ -->
+<div class="modal fade" id="editDriverModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">EDIT DRIVER</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Driver Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" value="Innovation Culture">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" onclick="$('#editDriverModal').modal('hide')">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Modal: Delete Driver ══ -->
+<div class="modal fade" id="deleteDriverModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom-color:#fed7d7;">
+        <h5 class="modal-title" style="color:#c53030;">DELETE DRIVER</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <strong>"Innovation Culture"</strong> driver?</p>
+        <div style="background:#fff5f5;border:1px solid #fed7d7;border-radius:6px;padding:10px 14px;font-size:12px;color:#742a2a;">
+          <i class="fas fa-exclamation-triangle"></i>&nbsp;
+          All sub-drivers and question assignments under this driver will also be removed from future surveys.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-danger" onclick="$('#deleteDriverModal').modal('hide')">Delete Driver</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  function toggleDriver(id) {
+    var list = document.getElementById('sd-' + id);
+    var chevron = document.getElementById('ch-' + id);
+    var row = chevron.closest('.driver-row');
+    if (!list) return;
+    var hidden = (list.style.display === 'none');
+    list.style.display = hidden ? 'block' : 'none';
+    chevron.classList.toggle('open', hidden);
+    row.classList.toggle('expanded', hidden);
+  }
+</script>
+</body>
+</html>

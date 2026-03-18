@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Survey Builder v2</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body { font-family:'Inter',sans-serif; }
+  .branch-line::before { content:''; position:absolute; left:-16px; top:-12px; bottom:50%; width:1px; background:#c7d2fe; }
+  .branch-line::after  { content:''; position:absolute; left:-16px; top:50%; width:14px; height:1px; background:#c7d2fe; }
+  .child-line::before  { content:''; position:absolute; left:-14px; top:0; bottom:50%; width:1px; background:#e0e7ff; }
+  .child-line::after   { content:''; position:absolute; left:-14px; top:50%; width:12px; height:1px; background:#e0e7ff; }
+  .fade-in { animation:fi .15s ease; }
+  @keyframes fi { from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none} }
+  .tooltip-host:hover .tooltip-body { display:block!important; }
+  .popover-z { z-index:200; }
+</style>
+</head>
+<body class="bg-[#f4f6f8] text-sm text-slate-800 pb-20">
+<div id="app"></div>
+<script>
+// ── CONSTANTS ──────────────────────────────────────────────────────────────────
+const ATTRS = [
+  {id:'dept',  name:'Department', values:['Engineering','Product','Sales','Marketing','HR','Finance']},
+  {id:'loc',   name:'Location',   values:['India','USA','UK','Remote','Singapore']},
+  {id:'role',  name:'Role',       values:['Manager','IC','Director','VP']},
+  {id:'tenure',name:'Tenure',     values:['0–1 Year','1–3 Years','3–5 Years','5+ Years']},
+  {id:'wfmode',name:'Work Mode',  values:['Remote','Hybrid','On-site']},
+  {id:'buddy', name:'Buddy Assigned',values:['Yes','No']},
+];
+const DRIVERS = ['Select','Autonomy','Communication','Growth & Development','Innovation','Leadership','Management','Recognition','Wellbeing','Work Environment'];
+const CHILD_Q_TYPES = ['Free Text','Rating','Single Select','Multiple Select'];
+const SCALE_TYPES = ['Agreement','Satisfaction','Frequency','Importance','Likelihood'];
+const SCALE_DISPLAYS = ['Default','Emoji','Stars','Numeric only'];
+const GREEN = 'bg-[#6dc28e] hover:bg-[#5db37e] text-white';
+
+// make a child question stub
+function mkChild(extra) {
+  return { id: Date.now() + Math.random(), childType:'Free Text', text:'', required:false, scaleType:'Agreement', scaleDisplay:'Default', ...extra };
+}
+// make a rating branch stub
+function mkRatingBranch(min,max) {
+  return { id: Date.now() + Math.random(), min, max, children:[ mkChild({text:'Could you tell us more about why you gave this rating?'}) ] };
+}
+
+// ── STATE ──────────────────────────────────────────────────────────────────────
+const state = {
+  scenario:1, showScenarios:true, activeTab:'builder',
+  modalOpen:false, confirmOpen:false, confirmTarget:null,
+
+  sections:[
+    { id:1, title:'Management Effectiveness', expanded:true, showRules:true, hasRules:true, showPreview:false,
+      rule:{attr:'Department',op:'is in',vals:['Sales','Product']}, previewSel:{Department:'Engineering'}, zeroMatch:false,
+      questions:[
+        { id:'q1', text:'How clearly does your manager communicate role expectations?',
+          type:'rating', driver:'Management', shown:294, mandatory:true,
+          branches:[{ id:'b1', trigger:'Rating 1–4', children:[{id:'c1',childType:'Free Text',text:'What specific communication gaps have you noticed?',required:false,scaleType:'Agreement',scaleDisplay:'Default'}] }]
+        },
+        { id:'q2', text:'My manager actively supports my professional growth.',
+          type:'rating', driver:'Management', shown:294, mandatory:false,
+          branches:[
+            { id:'b2', trigger:'Rating 1–6', children:[
+              {id:'c2',childType:'Single Select',text:'What type of support are you missing most?',required:true,scaleType:'Agreement',scaleDisplay:'Default'},
+              {id:'c3',childType:'Free Text',text:'Describe what better support would look like for you.',required:false,scaleType:'Agreement',scaleDisplay:'Default'},
+            ]},
+            { id:'b3', trigger:'Rating 7–10', children:[{id:'c4',childType:'Free Text',text:'What specific support has been most valuable?',required:false,scaleType:'Agreement',scaleDisplay:'Default'}] }
+          ]
+        },
+        { id:'q3', text:'How often does your manager provide meaningful feedback?',
+          type:'single', driver:'Management', shown:294, mandatory:false,
+          options:['Weekly','Monthly','Rarely','Never'],
+          branches:[{ id:'b4', trigger:'Option: Rarely / Never', children:[{id:'c5',childType:'Free Text',text:'What barriers prevent regular feedback in your team?',required:false,scaleType:'Agreement',scaleDisplay:'Default'}] }]
+        },
+      ]
+    },
+    { id:2, title:'Work Environment', expanded:false, showRules:false, hasRules:false, showPreview:false,
+      rule:{attr:'Department',op:'is in',vals:[]}, previewSel:{}, zeroMatch:false,
+      questions:[
+        { id:'q4', text:'What challenges most impact your day-to-day productivity?',
+          type:'multi', driver:'Work Environment', shown:350, mandatory:false,
+          options:['Too many meetings','Unclear priorities','Tooling issues','Noise/distractions'],
+          branches:[{ id:'b5', trigger:'Option: Tooling issues', children:[{id:'c6',childType:'Free Text',text:'Please describe the tooling challenges in more detail.',required:false,scaleType:'Agreement',scaleDisplay:'Default'}] }]
+        },
+        { id:'q5', text:'I feel my workload is consistently manageable.', type:'rating', driver:'Wellbeing', shown:350, mandatory:false, branches:[] },
+      ]
+    },
+    { id:3, title:'Remote Work Experience', expanded:false, showRules:false, hasRules:true, showPreview:false,
+      rule:{attr:'Work Mode',op:'is in',vals:['Remote']}, previewSel:{'Work Mode':'On-site'}, zeroMatch:false,
+      questions:[
+        { id:'q6', text:'How effective is your remote setup for enabling focused work?',
+          type:'rating', driver:'Work Environment', shown:74, mandatory:false,
+          branches:[
+            { id:'b6', trigger:'Rating 1–4', children:[
+              {id:'c7',childType:'Multiple Select',text:'What are the biggest barriers to your remote productivity?',required:false,scaleType:'Agreement',scaleDisplay:'Default'},
+              {id:'c8',childType:'Rating',text:'How would you rate the company support for remote work?',required:false,scaleType:'Satisfaction',scaleDisplay:'Default'},
+            ]},
+            { id:'b7', trigger:'Rating 8–10', children:[{id:'c9',childType:'Free Text',text:'What aspect of your remote setup works best?',required:false,scaleType:'Agreement',scaleDisplay:'Default'}] }
+          ]
+        },
+      ]
+    },
+  ],
+
+  // Modal
+  qText:'How supported do you feel by {{manager_name}} in your current role?',
+  qType:'rating', qMandatory:false, qScaleType:'Agreement', qScaleDisplay:'Default',
+  showQRule:false, showPlaceholders:false, placeholderTarget:null,
+  ratingBranches:[ mkRatingBranch(0,6) ],
+  options:[
+    {id:1,text:'Very Satisfied', followUp:false, children:[]},
+    {id:2,text:'Neutral',        followUp:false, children:[]},
+    {id:3,text:'Dissatisfied',   followUp:true,  children:[mkChild({text:'What could we do differently to improve this?'})]},
+  ],
+  gcWarnings:{},
+};
+
+// ── HELPERS ────────────────────────────────────────────────────────────────────
+const sec = id => state.sections.find(s=>s.id===id);
+
+// ── ACTIONS ────────────────────────────────────────────────────────────────────
+window.switchScenario = id => {
+  state.scenario=id; state.modalOpen=false; state.confirmOpen=false;
+  if(id===1){ state.activeTab='builder'; state.sections[0].expanded=true; state.sections[0].showRules=true; state.sections[0].showPreview=false; }
+  if(id===2){ state.activeTab='builder'; state.modalOpen=true; state.qType='rating'; state.showPlaceholders=false;
+    state.ratingBranches=[ mkRatingBranch(0,6) ]; }
+  if(id===3){ state.activeTab='builder'; state.modalOpen=true; state.qType='multi'; state.showPlaceholders=false; }
+  if(id===4){ state.activeTab='builder'; state.modalOpen=true; state.showPlaceholders=true; state.placeholderTarget='main'; }
+  if(id===5){ state.activeTab='builder'; state.sections[0].showRules=true; state.sections[0].showPreview=true; state.sections[0].expanded=true; state.sections[0].zeroMatch=true; }
+  if(id===6){ state.activeTab='csv'; }
+  render();
+};
+window.toggleScenarios = () => { state.showScenarios=!state.showScenarios; render(); };
+window.setTab = t => { state.activeTab=t; render(); };
+
+window.addSection = () => {
+  state.sections.push({id:Date.now(),title:'New Section',expanded:true,showRules:false,hasRules:false,showPreview:false,rule:{attr:'Department',op:'is in',vals:[]},previewSel:{},zeroMatch:false,questions:[]});
+  render();
+};
+window.updateSecTitle = (id,v) => { sec(id).title=v; render(); };
+window.toggleSecExpand = id => { const s=sec(id); s.expanded=!s.expanded; render(); };
+window.toggleSecRules = id => { const s=sec(id); s.showRules=!s.showRules; s.expanded=true; render(); };
+window.toggleSecPreview = id => { const s=sec(id); s.showPreview=!s.showPreview; render(); };
+
+window.removeSectionRule = id => {
+  const s=sec(id);
+  const hasBranches=(s.questions||[]).some(q=>(q.branches||[]).length>0);
+  if(hasBranches){ state.confirmOpen=true; state.confirmTarget=id; render(); return; }
+  doRemoveRule(id);
+};
+window.confirmRemove = id => { doRemoveRule(id); state.confirmOpen=false; state.confirmTarget=null; render(); };
+window.cancelConfirm = () => { state.confirmOpen=false; state.confirmTarget=null; render(); };
+function doRemoveRule(id){ const s=sec(id); s.showRules=false; s.hasRules=false; s.rule={attr:'Department',op:'is in',vals:[]}; }
+
+// Modal
+window.openModal=()=>{ state.modalOpen=true; render(); };
+window.closeModal=()=>{ state.modalOpen=false; render(); };
+window.setQType=t=>{ state.qType=t; render(); };
+window.setQText=v=>{ state.qText=v; render(); };
+window.toggleQRule=v=>{ state.showQRule=v; render(); };
+window.toggleMandatory=()=>{ state.qMandatory=!state.qMandatory; render(); };
+window.setQScale=(k,v)=>{ if(k==='type') state.qScaleType=v; else state.qScaleDisplay=v; render(); };
+
+window.handlePlaceholder=t=>{ if(state.placeholderTarget===t&&state.showPlaceholders){state.showPlaceholders=false;state.placeholderTarget=null;}else{state.showPlaceholders=true;state.placeholderTarget=t;} render(); };
+window.insertToken=(attrName,target)=>{ const tk='{{'+attrName.toLowerCase().replace(/ /g,'_')+'}}'; if(target==='main') state.qText+=tk; state.showPlaceholders=false; state.placeholderTarget=null; render(); };
+
+// ── Rating branch actions ──────────────────────────────────────────────────────
+window.addRatingBranch=()=>{ if(state.ratingBranches.length<3){ state.ratingBranches.push(mkRatingBranch(7,8)); render(); } };
+window.removeRatingBranch=id=>{ state.ratingBranches=state.ratingBranches.filter(b=>b.id!==id); render(); };
+window.updateRatingBranch=(id,k,v)=>{ const b=state.ratingBranches.find(b=>b.id===id); if(b) b[k]=v; render(); };
+
+// ── Child question actions (rating branches) ──────────────────────────────────
+window.addChildToRatingBranch=bid=>{ const b=state.ratingBranches.find(b=>b.id===bid); if(b){ b.children.push(mkChild()); render(); } };
+window.removeChildFromRatingBranch=(bid,cid)=>{ const b=state.ratingBranches.find(b=>b.id===bid); if(b){ b.children=b.children.filter(c=>c.id!==cid); render(); } };
+window.updateChildInRatingBranch=(bid,cid,k,v)=>{ const b=state.ratingBranches.find(b=>b.id===bid); if(b){ const c=b.children.find(c=>c.id===cid); if(c) c[k]=v; } render(); };
+
+// ── Child question actions (option branches) ──────────────────────────────────
+window.addChildToOption=oid=>{ const o=state.options.find(o=>o.id===oid); if(o){ o.children.push(mkChild()); render(); } };
+window.removeChildFromOption=(oid,cid)=>{ const o=state.options.find(o=>o.id===oid); if(o){ o.children=o.children.filter(c=>c.id!==cid); render(); } };
+window.updateChildInOption=(oid,cid,k,v)=>{ const o=state.options.find(o=>o.id===oid); if(o){ const c=o.children.find(c=>c.id===cid); if(c) c[k]=v; } render(); };
+
+// ── Option follow-up actions ──────────────────────────────────────────────────
+window.toggleOptionFU=id=>{ const max=state.qType==='multi'?1:3; const active=state.options.filter(o=>o.followUp).length; state.options=state.options.map(o=>{ if(!o.followUp&&active>=max) return o; const on=o.id===id?!o.followUp:o.followUp; if(on&&!o.children.length) return {...o,followUp:on,children:[mkChild()]}; return {...o,followUp:on}; }); render(); };
+
+window.toggleGCWarning=bid=>{ state.gcWarnings[bid]=!state.gcWarnings[bid]; render(); };
+
+// ── TEMPLATES ──────────────────────────────────────────────────────────────────
+
+function ratingScalePreview(scaleType) {
+  const labels = {
+    Agreement:  ['Strongly disagree','Strongly agree'],
+    Satisfaction:['Very dissatisfied','Very satisfied'],
+    Frequency:  ['Never','Always'],
+    Importance: ['Not important','Extremely important'],
+    Likelihood: ['Very unlikely','Very likely'],
+  };
+  const lbl = labels[scaleType] || labels.Agreement;
+  return `<div class="mt-3">
+    <div class="flex gap-1">
+      <div class="flex-1 rounded text-white text-center py-2 font-bold text-sm" style="background:#d32f2f">1</div>
+      <div class="flex-1 rounded text-white text-center py-2 font-bold text-sm" style="background:#e64a19">2</div>
+      <div class="flex-1 rounded text-white text-center py-2 font-bold text-sm" style="background:#f9a825">3</div>
+      <div class="flex-1 rounded text-white text-center py-2 font-bold text-sm" style="background:#aed136">4</div>
+      <div class="flex-1 rounded text-white text-center py-2 font-bold text-sm" style="background:#388e3c">5</div>
+    </div>
+    <div class="flex justify-between text-xs text-slate-500 mt-1.5">
+      <span>${lbl[0]}</span><span>${lbl[1]}</span>
+    </div>
+  </div>`;
+}
+
+function ratingFields(scaleType, scaleDisplay, onScaleType, onScaleDisplay) {
+  return `<div class="grid grid-cols-2 gap-4 mt-3">
+    <div>
+      <label class="block text-xs font-bold text-slate-600 uppercase mb-1.5">Scale of Rating <span class="text-red-500">*</span></label>
+      <select onchange="${onScaleType}" class="w-full border border-slate-300 rounded px-3 py-2 text-sm outline-none focus:border-emerald-400">
+        ${SCALE_TYPES.map(t=>`<option ${t===scaleType?'selected':''}>${t}</option>`).join('')}
+      </select>
+    </div>
+    <div>
+      <label class="block text-xs font-bold text-slate-600 uppercase mb-1.5">Scale Display Type <span class="text-red-500">*</span></label>
+      <select onchange="${onScaleDisplay}" class="w-full border border-slate-300 rounded px-3 py-2 text-sm outline-none focus:border-emerald-400">
+        ${SCALE_DISPLAYS.map(t=>`<option ${t===scaleDisplay?'selected':''}>${t}</option>`).join('')}
+      </select>
+    </div>
+  </div>
+  ${ratingScalePreview(scaleType)}`;
+}
+
+function placeholderPopover(target, posClass) {
+  posClass = posClass||'right-0 top-11';
+  return `<div class="absolute ${posClass} w-64 bg-white border border-slate-200 rounded-lg shadow-2xl overflow-hidden fade-in popover-z">
+    <div class="bg-slate-50 border-b px-3 py-2 flex items-center gap-2">
+      <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400"></i>
+      <input type="text" placeholder="Search attributes…" class="bg-transparent outline-none text-xs w-full"/>
+    </div>
+    <div class="max-h-40 overflow-y-auto divide-y divide-slate-50">
+      ${ATTRS.map(a=>`<div onclick="window.insertToken('${a.name}','${target}')" class="px-3 py-2 hover:bg-emerald-50 cursor-pointer flex justify-between items-center group">
+        <div>
+          <div class="text-xs font-medium text-slate-700 group-hover:text-emerald-700">${a.name}</div>
+          <div class="text-[10px] font-mono text-slate-400">{{${a.name.toLowerCase().replace(/ /g,'_')}}}</div>
+        </div>
+        <i data-lucide="plus" class="w-3.5 h-3.5 text-emerald-500 opacity-0 group-hover:opacity-100"></i>
+      </div>`).join('')}
+    </div>
+    <div class="bg-slate-50 border-t px-3 py-2">
+      <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Fallback Text</label>
+      <input type="text" placeholder="e.g. your team" class="w-full border border-slate-200 rounded px-2 py-1 text-xs outline-none focus:border-emerald-400"/>
+      <p class="text-[10px] text-slate-400 mt-1">Shown if employee lacks this attribute.</p>
+    </div>
+  </div>`;
+}
+
+function scoringNotice() {
+  return `<div class="flex items-start gap-2 bg-amber-50 border border-amber-200 rounded px-3 py-2 mt-3">
+    <i data-lucide="info" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5"></i>
+    <p class="text-xs text-amber-800 leading-snug"><strong>Branch questions are diagnostic</strong> — they collect qualitative context but do <em>not</em> contribute to driver scores.</p>
+  </div>`;
+}
+
+// ── CHILD QUESTION CARD (inside a branch) ────────────────────────────────────
+function buildChildCard(c, idx, onTypeChange, onTextChange, onScaleTypeChange, onScaleDisplayChange, onRequiredChange, onRemove) {
+  const isRating = c.childType === 'Rating';
+  return `<div class="relative ml-5 child-line fade-in">
+    <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wide flex items-center gap-1">
+          <i data-lucide="message-square" class="w-3.5 h-3.5"></i> Child Question ${idx+1}
+        </span>
+        <button onclick="${onRemove}" class="text-slate-400 hover:text-red-500 transition-colors p-0.5"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+      </div>
+
+      <!-- child type -->
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-[10px] font-bold text-slate-500 uppercase">Type:</span>
+        <select onchange="${onTypeChange}" class="border border-slate-200 rounded px-2 py-1 text-xs outline-none focus:border-emerald-400 bg-white">
+          ${CHILD_Q_TYPES.map(t=>`<option ${t===c.childType?'selected':''}>${t}</option>`).join('')}
+        </select>
+        ${isRating?'<span class="text-[10px] italic text-slate-400 ml-1">Score saved for subdriver analysis (not scored this release)</span>':''}
+      </div>
+
+      <!-- question text -->
+      <div class="mb-3">
+        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Question Text <span class="text-red-500">*</span></label>
+        <input type="text" value="${c.text||''}" oninput="${onTextChange}"
+          placeholder="Enter follow-up question…"
+          class="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:border-emerald-500 outline-none"/>
+      </div>
+
+      ${isRating ? `<!-- rating scale fields -->
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mt-2">
+        ${ratingFields(c.scaleType||'Agreement', c.scaleDisplay||'Default', onScaleTypeChange, onScaleDisplayChange)}
+        <div class="mt-3 flex items-start gap-2">
+          <i data-lucide="tag" class="w-3.5 h-3.5 text-slate-400 mt-0.5 shrink-0"></i>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-400 uppercase">Driver Tag <span class="normal-case font-normal">(optional)</span></label>
+            <select disabled class="border border-slate-200 bg-white rounded px-2 py-1 text-xs text-slate-400 mt-0.5 outline-none w-52">
+              <option>— saved for future subdriver analysis —</option>
+            </select>
+          </div>
+        </div>
+      </div>` : ''}
+
+      <!-- mandatory -->
+      <div class="mt-3 flex items-center gap-2">
+        <input type="checkbox" id="req-${c.id}" ${c.required?'checked':''} onchange="${onRequiredChange}" class="accent-emerald-500"/>
+        <label for="req-${c.id}" class="text-xs text-slate-600 cursor-pointer">Mandatory response</label>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── CANVAS QUESTION CARD ──────────────────────────────────────────────────────
+function buildQCard(q) {
+  const ICONS = {rating:'bar-chart-2',single:'check-square',multi:'check-square',freetext:'align-left'};
+  const LABELS = {rating:'Rating',single:'Single Select',multi:'Multiple Select',freetext:'Free Text'};
+  const hasToken = q.text&&q.text.includes('{{');
+  const displayText = hasToken
+    ? q.text.replace(/\{\{(\w+)\}\}/g,'<span class="bg-amber-100 text-amber-800 font-mono text-[11px] px-1 rounded border border-amber-200">{{$1}}</span>')
+    : q.text;
+
+  const branchCards = (q.branches||[]).map(b=>{
+    const gcOpen = !!state.gcWarnings[b.id];
+    const childSummary = b.children && b.children.length
+      ? b.children.map(c=>`<div class="flex items-center gap-1.5 text-[12px] text-slate-600 mt-1">
+          <i data-lucide="corner-down-right" class="w-3 h-3 text-indigo-300 shrink-0"></i>
+          <span class="bg-indigo-50 text-indigo-700 text-[10px] px-1.5 py-0.5 rounded mr-1">${c.childType}</span>
+          <span class="truncate">${c.text||'(untitled)'}</span>
+          ${c.required?'<span class="text-[9px] bg-red-50 text-red-500 border border-red-100 px-1 rounded ml-auto shrink-0">Req</span>':''}
+        </div>`).join('')
+      : '';
+    return `<div class="relative ml-8 mt-2 pl-0 branch-line fade-in">
+      <div class="bg-indigo-50/60 border border-indigo-100 rounded-md px-4 py-3 hover:bg-indigo-50 transition-colors">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <i data-lucide="corner-down-right" class="w-3.5 h-3.5 text-indigo-400 shrink-0"></i>
+              <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-wide">${b.trigger}</span>
+              ${(b.children||[]).length?`<span class="text-[10px] bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded">${b.children.length} child question${b.children.length>1?'s':''}</span>`:''}
+            </div>
+            ${childSummary}
+          </div>
+          <div class="flex items-center gap-1 shrink-0">
+            <button onclick="window.toggleGCWarning('${b.id}')" title="Add sub-branch" class="p-1.5 rounded border border-transparent hover:border-indigo-200 hover:bg-indigo-100 text-indigo-300 hover:text-indigo-600 transition-colors">
+              <i data-lucide="git-branch" class="w-3.5 h-3.5"></i>
+            </button>
+            <button class="p-1.5 rounded hover:bg-white text-slate-400 hover:text-slate-600"><i data-lucide="pencil" class="w-3.5 h-3.5"></i></button>
+            <button class="p-1.5 rounded hover:bg-red-50 text-slate-400 hover:text-red-500"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+          </div>
+        </div>
+        ${gcOpen?`<div class="mt-2 bg-amber-50 border border-amber-200 rounded px-3 py-2 text-xs text-amber-800 flex items-start gap-2 fade-in">
+          <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5"></i>
+          <span>Branch questions cannot have further branches. To capture more detail, add additional child questions within this branch range.</span>
+        </div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div class="bg-white border border-slate-200 rounded-md shadow-sm hover:shadow-md transition-shadow">
+    <div class="flex items-start gap-3 px-5 py-4">
+      <i data-lucide="grip-vertical" class="w-4 h-4 text-slate-300 mt-0.5 cursor-grab shrink-0"></i>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-1.5 mb-2">
+              <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded flex items-center gap-1">
+                <i data-lucide="${ICONS[q.type]||'help-circle'}" class="w-3 h-3"></i> ${LABELS[q.type]||q.type}
+              </span>
+              <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-medium">${q.driver}</span>
+              ${q.mandatory?'<span class="text-[10px] bg-red-50 text-red-500 border border-red-100 px-1.5 py-0.5 rounded">Mandatory</span>':''}
+              ${hasToken?'<span class="text-[10px] bg-amber-50 text-amber-700 border border-amber-200 px-1.5 py-0.5 rounded flex items-center gap-1"><i data-lucide="puzzle" class="w-3 h-3"></i> Placeholder</span>':''}
+              ${(q.branches&&q.branches.length)?`<span class="text-[10px] bg-indigo-50 text-indigo-700 border border-indigo-100 px-1.5 py-0.5 rounded flex items-center gap-1"><i data-lucide="git-branch" class="w-3 h-3"></i> ${q.branches.length} branch${q.branches.length>1?'es':''}</span>`:''}
+            </div>
+            <p class="text-[14px] text-slate-700 leading-snug">${displayText}</p>
+            <div class="mt-2 text-[11px] text-slate-400 flex items-center gap-1">
+              <i data-lucide="eye" class="w-3 h-3"></i> Shown to <strong class="text-slate-600 ml-0.5">${q.shown}</strong> eligible employees
+            </div>
+          </div>
+          <div class="flex items-center gap-1 shrink-0">
+            <button onclick="window.openModal()" class="text-[10px] font-bold text-indigo-600 bg-indigo-50 border border-indigo-200 px-2 py-1 rounded hover:bg-indigo-100 transition-colors flex items-center gap-1">
+              <i data-lucide="git-branch" class="w-3 h-3"></i> Branch
+            </button>
+            <button class="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-slate-600"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+            <button class="p-1.5 rounded hover:bg-red-50 text-slate-400 hover:text-red-500"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    ${branchCards?`<div class="px-5 pb-4">${branchCards}</div>`:''}
+  </div>`;
+}
+
+// ── SECTION CARD ──────────────────────────────────────────────────────────────
+function buildSection(s) {
+  const ruleValBadges = (s.rule.vals||[]).map(v=>`<span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-0.5 rounded flex items-center gap-1">${v} <i data-lucide="x" class="w-3 h-3 cursor-pointer"></i></span>`).join('');
+
+  const rulesPanel = s.showRules ? `
+  <div class="bg-indigo-50/50 border-b border-slate-200 px-6 py-5 fade-in">
+    <div class="flex items-center justify-between mb-3">
+      <div class="flex items-center gap-2">
+        <h4 class="text-sm font-semibold text-slate-800">Section Visibility Rules</h4>
+        <span class="text-[11px] bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded">AND logic · 1 rule per section (MVP)</span>
+      </div>
+      <button onclick="window.toggleSecPreview(${s.id})" class="text-xs px-3 py-1.5 rounded-full border flex items-center gap-1.5 transition-colors ${s.showPreview?'bg-amber-50 text-amber-700 border-amber-200':'bg-white text-slate-600 border-slate-300 hover:bg-slate-100'}">
+        <i data-lucide="eye" class="w-3.5 h-3.5"></i> Preview for Segment
+      </button>
+    </div>
+    <div class="bg-white p-3 rounded border border-indigo-100 shadow-sm flex items-center gap-3 flex-wrap">
+      <span class="text-xs font-medium text-slate-400 uppercase">IF</span>
+      <select class="border border-slate-300 rounded px-3 py-1.5 text-sm w-40 outline-none focus:border-emerald-400">${ATTRS.map(a=>`<option ${a.name===s.rule.attr?'selected':''}>${a.name}</option>`).join('')}</select>
+      <select class="border border-slate-300 rounded px-3 py-1.5 text-sm w-32 outline-none focus:border-emerald-400">
+        <option ${s.rule.op==='is in'?'selected':''}>is in</option>
+        <option ${s.rule.op==='is not in'?'selected':''}>is not in</option>
+        <option ${s.rule.op==='equals'?'selected':''}>equals</option>
+      </select>
+      <div class="flex-1 flex flex-wrap gap-1.5 items-center border border-slate-300 rounded p-1.5 min-h-[38px] bg-white">
+        ${ruleValBadges}
+        <input type="text" placeholder="Add value…" class="outline-none text-sm w-24 bg-transparent px-1"/>
+      </div>
+      <button onclick="window.removeSectionRule(${s.id})" class="text-slate-400 hover:text-red-500 p-1 rounded"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+    </div>
+    ${s.zeroMatch?`<div class="mt-3 bg-amber-50 border border-amber-200 rounded px-4 py-2.5 flex items-center gap-2 text-xs text-amber-800 fade-in">
+      <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-500 shrink-0"></i>
+      <span><strong>Warning:</strong> The configured rule matches <strong>0 eligible employees</strong>. No one will see this section.</span>
+    </div>`:''}
+    ${s.showPreview?`<div class="mt-4 bg-white border border-amber-200 rounded-lg p-4 shadow-sm fade-in">
+      <div class="flex items-center gap-2 mb-3">
+        <i data-lucide="eye" class="w-4 h-4 text-amber-600"></i>
+        <h5 class="text-sm font-semibold text-slate-800">Preview for Employee Type</h5>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        ${ATTRS.slice(0,4).map(a=>`<div><label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">${a.name}</label>
+          <select class="border border-slate-300 rounded px-2 py-1.5 text-xs w-36 outline-none focus:border-emerald-400">
+            <option value="">— Any —</option>
+            ${a.values.map(v=>`<option ${(s.previewSel[a.name]===v)?'selected':''}>${v}</option>`).join('')}
+          </select></div>`).join('')}
+      </div>
+      <div class="mt-3 px-4 py-2.5 rounded border ${s.id===3?'bg-red-50 border-red-200 text-red-700':'bg-emerald-50 border-emerald-200 text-emerald-800'} text-sm font-medium flex items-center gap-2">
+        ${s.id===3?'<i data-lucide="eye-off" class="w-4 h-4"></i> This section would <strong class="ml-1">NOT</strong> be shown — Work Mode: On-site does not match the rule.':'<i data-lucide="check-circle-2" class="w-4 h-4"></i> This section <strong class="ml-1">WOULD</strong> be shown — Department: Sales matches the rule.'}
+      </div>
+    </div>`:''}
+  </div>` : '';
+
+  const collapsedBadge = (!s.showRules&&s.hasRules&&s.rule.vals.length) ? `
+  <div class="px-5 py-2 bg-indigo-50/40 border-b border-indigo-100 flex items-center gap-2 cursor-pointer hover:bg-indigo-50" onclick="window.toggleSecRules(${s.id})">
+    <span class="w-2 h-2 rounded-full bg-indigo-500 shrink-0"></span>
+    <span class="text-xs font-medium text-indigo-700">Rules Active · ${s.rule.attr}: ${s.rule.vals.join(', ')}</span>
+    <span class="text-[10px] text-indigo-400 ml-auto font-bold uppercase tracking-wider">Edit</span>
+  </div>` : '';
+
+  const questions = s.questions||[];
+  const questionsHTML = s.expanded&&questions.length ? `<div class="px-5 py-3 space-y-3">${questions.map(q=>buildQCard(q)).join('')}</div>` : '';
+  const addRow = s.expanded ? `
+  <div class="px-5 pb-5 pt-2 border-t border-slate-100 space-y-1.5">
+    <button class="text-blue-500 font-bold text-xs uppercase flex items-center hover:text-blue-600 tracking-wide"><i data-lucide="plus" class="w-3.5 h-3.5 mr-1"></i> Add Question from Library</button>
+    <button onclick="window.openModal()" class="text-blue-500 font-bold text-xs uppercase flex items-center hover:text-blue-600 tracking-wide"><i data-lucide="plus" class="w-3.5 h-3.5 mr-1"></i> Add Custom Question</button>
+  </div>` : '';
+
+  return `<div class="bg-white rounded-md border border-slate-200 shadow-sm overflow-visible mb-4">
+    <div class="flex items-center justify-between px-4 py-3 bg-slate-50 border-b border-slate-200 rounded-t-md">
+      <div class="flex items-center gap-2 flex-1 cursor-pointer" onclick="window.toggleSecExpand(${s.id})">
+        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform ${s.expanded?'':'rotate-[-90deg]'}"></i>
+        <input id="st-${s.id}" type="text" value="${s.title}" oninput="window.updateSecTitle(${s.id},this.value)" onclick="event.stopPropagation()"
+          class="font-semibold text-slate-700 text-sm bg-transparent outline-none hover:bg-white focus:bg-white px-1 rounded w-80"/>
+        ${questions.length?`<span class="text-[11px] text-slate-400">${questions.length} question${questions.length>1?'s':''}</span>`:''}
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="event.stopPropagation();window.toggleSecRules(${s.id})" class="text-xs px-3 py-1.5 rounded-full border transition-colors flex items-center gap-1 ${s.showRules?'bg-indigo-50 text-indigo-700 border-indigo-200 font-medium':'bg-white text-slate-600 border-slate-300 hover:bg-slate-100'}">
+          <i data-lucide="filter" class="w-3.5 h-3.5"></i> ${s.showRules?'Hide Rules':(s.hasRules?'Edit Rules':'+ Add Rules')}
+        </button>
+        <button class="p-1.5 rounded hover:bg-red-50 text-slate-400 hover:text-red-500"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+      </div>
+    </div>
+    ${collapsedBadge}${rulesPanel}${questionsHTML}${addRow}
+  </div>`;
+}
+
+// ── MODAL ──────────────────────────────────────────────────────────────────────
+function buildModal() {
+  const isSel = state.qType==='single'||state.qType==='multi';
+  const maxFU = state.qType==='multi'?1:3;
+  const activeFU = state.options.filter(o=>o.followUp).length;
+  const hasToken = state.qText.includes('{{');
+
+  // Option rows
+  const optRows = state.options.map(o => {
+    const disabled = !o.followUp&&activeFU>=maxFU;
+    return `<div class="flex items-center gap-3">
+      <i data-lucide="grip-vertical" class="w-4 h-4 text-slate-300 cursor-grab shrink-0"></i>
+      <input type="text" value="${o.text}" readonly class="flex-1 border border-slate-300 rounded px-3 py-2 text-sm bg-white outline-none"/>
+      <button onclick="window.toggleOptionFU(${o.id})" ${disabled?'disabled':''}
+        class="p-1.5 rounded flex items-center gap-1 text-xs border transition-colors ${o.followUp?'bg-indigo-50 border-indigo-200 text-indigo-700 font-bold':'bg-white border-slate-200 text-slate-400 hover:bg-slate-50'} ${disabled?'opacity-40 cursor-not-allowed':''}">
+        <i data-lucide="git-branch" class="w-3.5 h-3.5"></i>${o.followUp?' Branch':''}
+      </button>
+      <button class="text-slate-400 hover:text-red-500 p-1"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>`;
+  }).join('');
+
+  // Option branch cards (each with multiple child question cards)
+  const optFUCards = state.options.filter(o=>o.followUp).map(o => {
+    const childCards = (o.children||[]).map((c,ci) => buildChildCard(
+      c, ci,
+      `window.updateChildInOption(${o.id},${c.id},'childType',this.value)`,
+      `window.updateChildInOption(${o.id},${c.id},'text',this.value)`,
+      `window.updateChildInOption(${o.id},${c.id},'scaleType',this.value)`,
+      `window.updateChildInOption(${o.id},${c.id},'scaleDisplay',this.value)`,
+      `window.updateChildInOption(${o.id},${c.id},'required',this.checked)`,
+      `window.removeChildFromOption(${o.id},${c.id})`
+    )).join('');
+    return `<div class="bg-white border border-indigo-200 rounded-lg p-4 shadow-sm relative mt-2 fade-in">
+      <div class="absolute -top-3 left-4 bg-indigo-100 text-indigo-800 border border-indigo-200 text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1 uppercase tracking-wide">
+        <i data-lucide="corner-down-right" class="w-3 h-3"></i> Triggered when: <span class="font-mono bg-white px-1 ml-1 text-indigo-600 rounded">${o.text}</span>
+      </div>
+      <div class="mt-4">
+        <div class="space-y-4">${childCards}</div>
+        <button onclick="window.addChildToOption(${o.id})" class="mt-3 text-xs font-bold text-indigo-600 flex items-center gap-1 hover:underline">
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add Another Child Question
+        </button>
+      </div>
+      <div class="mt-3 pt-3 border-t border-slate-100 flex justify-end">
+        <button onclick="window.toggleOptionFU(${o.id})" class="text-xs text-red-500 hover:underline flex items-center gap-1"><i data-lucide="trash-2" class="w-3 h-3"></i> Remove Branch</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Rating branch cards (each with multiple child question cards)
+  const ratingCards = state.ratingBranches.map((b,bi) => {
+    const childCards = (b.children||[]).map((c,ci) => buildChildCard(
+      c, ci,
+      `window.updateChildInRatingBranch(${b.id},${c.id},'childType',this.value)`,
+      `window.updateChildInRatingBranch(${b.id},${c.id},'text',this.value)`,
+      `window.updateChildInRatingBranch(${b.id},${c.id},'scaleType',this.value)`,
+      `window.updateChildInRatingBranch(${b.id},${c.id},'scaleDisplay',this.value)`,
+      `window.updateChildInRatingBranch(${b.id},${c.id},'required',this.checked)`,
+      `window.removeChildFromRatingBranch(${b.id},${c.id})`
+    )).join('');
+    return `<div class="bg-white border border-indigo-200 rounded-lg p-4 shadow-sm relative fade-in">
+      <!-- range badge -->
+      <div class="absolute -top-3 left-4 bg-indigo-100 text-indigo-800 border border-indigo-200 px-3 py-0.5 rounded flex items-center gap-2 shadow-sm">
+        <span class="text-[10px] font-bold uppercase">If rating is</span>
+        <select class="text-xs font-mono bg-white border border-indigo-200 rounded outline-none py-0.5 px-1 w-12" onchange="window.updateRatingBranch(${b.id},'min',+this.value)">
+          ${[0,1,2,3,4,5,6,7,8,9,10].map(n=>`<option ${b.min==n?'selected':''}>${n}</option>`).join('')}
+        </select>
+        <span class="text-[10px] font-bold uppercase">to</span>
+        <select class="text-xs font-mono bg-white border border-indigo-200 rounded outline-none py-0.5 px-1 w-12" onchange="window.updateRatingBranch(${b.id},'max',+this.value)">
+          ${[0,1,2,3,4,5,6,7,8,9,10].map(n=>`<option ${b.max==n?'selected':''}>${n}</option>`).join('')}
+        </select>
+      </div>
+      <!-- child questions -->
+      <div class="mt-5">
+        <div class="space-y-4">${childCards}</div>
+        <button onclick="window.addChildToRatingBranch(${b.id})" class="mt-3 text-xs font-bold text-indigo-600 flex items-center gap-1 hover:underline">
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add Another Child Question
+        </button>
+      </div>
+      <div class="mt-3 pt-3 border-t border-slate-100 flex justify-end">
+        <button onclick="window.removeRatingBranch(${b.id})" class="text-xs text-red-500 hover:underline flex items-center gap-1"><i data-lucide="trash-2" class="w-3 h-3"></i> Remove Range</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div class="fixed inset-0 bg-slate-900/50 flex items-center justify-center z-50 p-4" onclick="event.target===this&&window.closeModal()">
+  <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[92vh] flex flex-col overflow-hidden">
+
+    <!-- header -->
+    <div class="flex justify-between items-center px-6 py-4 border-b border-slate-100 bg-slate-50 rounded-t-xl">
+      <div>
+        <h2 class="text-sm font-bold text-slate-700 uppercase tracking-wide">Add Your Own Question</h2>
+        <p class="text-[11px] text-slate-500 mt-0.5">Configure question, visibility rules, and branching logic</p>
+      </div>
+      <button onclick="window.closeModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-full hover:bg-slate-100"><i data-lucide="x" class="w-5 h-5"></i></button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-8 space-y-7">
+
+      <!-- Question details -->
+      <div>
+        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Question Details</h3>
+
+        <!-- question text -->
+        <div class="mb-4 relative">
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Question <span class="text-red-500">*</span></label>
+          <div class="relative">
+            <input id="main-q" type="text" value="${state.qText}" oninput="window.setQText(this.value)"
+              class="w-full border border-slate-300 rounded px-3 py-2.5 text-sm pr-10 focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"/>
+            <button onclick="window.handlePlaceholder('main')" title="Insert placeholder"
+              class="absolute right-2 top-2 p-1 rounded border transition-colors ${state.showPlaceholders&&state.placeholderTarget==='main'?'bg-indigo-100 border-indigo-200 text-indigo-700':'bg-slate-100 border-slate-200 text-slate-400 hover:bg-slate-200'}">
+              <i data-lucide="code" class="w-3.5 h-3.5"></i>
+            </button>
+            ${state.showPlaceholders&&state.placeholderTarget==='main'?placeholderPopover('main','right-0 top-11'):''}
+          </div>
+          ${hasToken?`<div class="mt-2 flex items-center gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-3 py-1.5">
+            <i data-lucide="puzzle" class="w-3.5 h-3.5 text-amber-500"></i> Contains placeholders — employees see personalised versions.
+          </div>`:''}
+        </div>
+
+        <!-- type + driver -->
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Question Type <span class="text-red-500">*</span></label>
+            <select onchange="window.setQType(this.value)" class="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:ring-1 focus:ring-emerald-500 outline-none">
+              <option value="rating" ${state.qType==='rating'?'selected':''}>Rating</option>
+              <option value="single" ${state.qType==='single'?'selected':''}>Single Select</option>
+              <option value="multi"  ${state.qType==='multi' ?'selected':''}>Multiple Select</option>
+              <option value="freetext" disabled>Free Text (no branching)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Driver <span class="text-red-500">*</span></label>
+            <select class="w-full border border-slate-300 rounded px-3 py-2 text-sm outline-none focus:border-emerald-400">
+              ${DRIVERS.map(d=>`<option>${d}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+
+        <!-- Rating-specific parent fields (matching prod UI) -->
+        ${state.qType==='rating'?`
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4">
+          ${ratingFields(state.qScaleType, state.qScaleDisplay, "window.setQScale('type',this.value)", "window.setQScale('display',this.value)")}
+        </div>`:''}
+
+        <!-- options for select types -->
+        ${isSel?`<div class="bg-slate-50 p-4 rounded-lg border border-slate-100 mb-4">
+          <div class="flex justify-between items-end mb-3">
+            <label class="text-xs font-bold text-slate-700 uppercase">Answer Options</label>
+            <span class="text-[11px] text-amber-700 bg-amber-50 px-2 py-1 rounded border border-amber-200 flex items-center gap-1">
+              <i data-lucide="info" class="w-3 h-3"></i>
+              ${state.qType==='multi'?'Follow-up for <strong class="ml-0.5">one option only</strong> (multi-select)':'Max 3 follow-ups (single select)'}
+            </span>
+          </div>
+          <div class="space-y-2">${optRows}</div>
+          <button class="text-blue-500 text-xs font-bold mt-3 flex items-center hover:underline uppercase tracking-wide"><i data-lucide="plus" class="w-4 h-4 mr-1"></i> Add Option</button>
+        </div>`:''}
+
+        <!-- mandatory + order -->
+        <div class="flex items-center gap-6">
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" ${state.qMandatory?'checked':''} onclick="window.toggleMandatory()" class="accent-emerald-500 w-4 h-4"/> Mark this question as mandatory
+          </label>
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" class="accent-emerald-500 w-4 h-4"/> Enable comments for this question
+          </label>
+        </div>
+      </div>
+
+      <!-- Settings row -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Order</label>
+          <input type="text" placeholder="e.g. 1" class="w-full border border-slate-300 rounded px-3 py-2 text-sm outline-none focus:border-emerald-400"/>
+          <p class="text-[10px] text-slate-400 mt-1">Order of this question inside its section</p>
+        </div>
+        <div>
+          <label class="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase mb-2 mt-5">
+            <input type="checkbox" class="accent-emerald-500"/> Enable skip answer
+          </label>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Skip Answer Text</label>
+            <input type="text" value="Question not applicable" class="w-full border border-slate-300 rounded px-3 py-2 text-sm outline-none focus:border-emerald-400"/>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-slate-100"/>
+
+      <!-- Visibility Rules -->
+      <div>
+        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Visibility Rules</h3>
+        <div class="bg-slate-50 border border-slate-200 rounded p-3 flex gap-3">
+          <i data-lucide="layers" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+          <div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Inherited from Section</div>
+            <div class="text-sm text-slate-700">Department is in <span class="font-mono bg-white border border-slate-200 px-1 rounded text-xs mx-1">Sales, Product</span></div>
+          </div>
+        </div>
+        ${state.showQRule?`<div class="bg-white p-3 rounded border border-indigo-200 shadow-sm ml-6 mt-2 relative fade-in">
+          <div class="absolute -top-[11px] left-3 bg-white border border-indigo-200 text-indigo-600 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase">AND</div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <select class="border border-slate-300 rounded px-2 py-1.5 text-xs w-32 outline-none focus:border-emerald-500">${ATTRS.map(a=>`<option>${a.name}</option>`).join('')}</select>
+            <select class="border border-slate-300 rounded px-2 py-1.5 text-xs w-28 outline-none focus:border-emerald-500"><option>is in</option><option>equals</option></select>
+            <div class="flex-1 flex flex-wrap gap-1 items-center border border-slate-300 rounded p-1.5 min-h-[34px]">
+              <span class="bg-indigo-100 text-indigo-800 text-[10px] px-1.5 py-0.5 rounded flex items-center gap-1">Manager <i data-lucide="x" class="w-3 h-3"></i></span>
+              <input type="text" placeholder="Add value…" class="outline-none text-xs w-20 bg-transparent px-1"/>
+            </div>
+            <button onclick="window.toggleQRule(false)" class="text-slate-400 hover:text-red-500 p-1"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+          </div>
+        </div>`:`<button onclick="window.toggleQRule(true)" class="text-blue-500 text-xs font-bold flex items-center hover:underline uppercase tracking-wide mt-2 ml-1"><i data-lucide="plus" class="w-4 h-4 mr-1"></i> Add Question-level Rule (AND)</button>`}
+      </div>
+
+      <hr class="border-slate-100"/>
+
+      <!-- Branching -->
+      <div class="pb-4">
+        <div class="flex items-center justify-between mb-1">
+          <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Branch Questions</h3>
+          <span class="text-[11px] text-slate-400">Each range / option can have multiple child questions</span>
+        </div>
+        ${scoringNotice()}
+        <div class="mt-5">
+          ${state.qType==='rating'?`
+          <div class="bg-indigo-50/30 border border-indigo-100 rounded-lg p-5">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h4 class="font-semibold text-slate-800 text-sm flex items-center gap-2"><i data-lucide="git-branch" class="w-4 h-4 text-indigo-500"></i> Rating-Range Branches</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Add one or more child questions per range. Ranges must not overlap. Max 3 ranges.</p>
+              </div>
+              ${state.ratingBranches.length<3?`<button onclick="window.addRatingBranch()" class="text-xs font-bold bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded hover:bg-indigo-50 flex items-center gap-1"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add Range</button>`:''}
+            </div>
+            <div class="space-y-6">
+              ${state.ratingBranches.length===0?'<div class="text-center py-6 bg-white border border-dashed border-indigo-200 rounded text-slate-400 text-sm">No branches yet. Click "Add Range" to start.</div>':ratingCards}
+            </div>
+          </div>`:`
+          <div class="bg-indigo-50/30 border border-indigo-100 rounded-lg p-5">
+            <h4 class="font-semibold text-slate-800 text-sm flex items-center gap-2 mb-1"><i data-lucide="git-branch" class="w-4 h-4 text-indigo-500"></i> Option-Based Branches</h4>
+            <p class="text-xs text-slate-500 mb-3">Click the branch icon next to an option above to configure follow-ups. Each option can have multiple child questions.
+              ${state.qType==='multi'?'<strong class="text-amber-700 ml-1">Multi-select: only one option may trigger a branch.</strong>':''}</p>
+            ${activeFU===0?'<div class="text-center py-6 bg-white border border-dashed border-slate-200 rounded text-slate-400 text-sm">No branches configured.</div>':`<div class="space-y-4">${optFUCards}</div>`}
+          </div>`}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <div class="bg-slate-50 border-t border-slate-200 px-6 py-4 flex items-center gap-3 rounded-b-xl">
+      <button class="${GREEN} px-6 py-2.5 rounded text-xs font-bold uppercase tracking-wide shadow-sm">Add a Question</button>
+      <button onclick="window.closeModal()" class="bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 px-6 py-2.5 rounded text-xs font-bold uppercase tracking-wide">Close</button>
+      <span class="ml-auto text-[11px] text-slate-400 flex items-center gap-1"><i data-lucide="info" class="w-3.5 h-3.5"></i> Branch questions do not affect driver scores</span>
+    </div>
+  </div>
+</div>`;
+}
+
+// ── CONFIRM DIALOG ─────────────────────────────────────────────────────────────
+function buildConfirm() {
+  const id = state.confirmTarget;
+  return `<div class="fixed inset-0 bg-slate-900/40 flex items-center justify-center z-[70]">
+  <div class="bg-white rounded-xl shadow-2xl p-6 w-[420px] fade-in">
+    <div class="flex items-start gap-3 mb-4">
+      <div class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0"><i data-lucide="alert-triangle" class="w-5 h-5 text-red-500"></i></div>
+      <div>
+        <h3 class="font-bold text-slate-800 mb-1">Remove Section Rule?</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">This section contains branch questions. Removing the visibility rule will make the entire section visible to all employees, including all branch question chains.</p>
+      </div>
+    </div>
+    <div class="flex gap-3 justify-end mt-5">
+      <button onclick="window.cancelConfirm()" class="px-4 py-2 border border-slate-300 rounded text-sm font-medium hover:bg-slate-50">Cancel</button>
+      <button onclick="window.confirmRemove(${id})" class="px-4 py-2 bg-red-500 text-white rounded text-sm font-medium hover:bg-red-600">Remove Rule</button>
+    </div>
+  </div>
+</div>`;
+}
+
+// ── CSV TAB ─────────────────────────────────────────────────────────────────────
+function buildCSV() {
+  return `<div class="bg-white rounded-md border border-slate-200 shadow-sm overflow-hidden">
+  <div class="p-5 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
+    <div><h3 class="font-bold text-slate-800">Review Import Data</h3>
+      <p class="text-xs text-slate-500 mt-1">Found 5 rows · Fix errors before importing. <a href="#" class="text-blue-500 hover:underline">Download template</a></p>
+    </div>
+    <div class="flex gap-3">
+      <button class="px-4 py-2 border border-slate-300 rounded text-xs font-medium hover:bg-slate-50">Cancel</button>
+      <button class="px-4 py-2 bg-slate-300 text-white rounded text-xs font-bold cursor-not-allowed opacity-60">Import 0 Valid Rows</button>
+    </div>
+  </div>
+  <div class="px-5 py-2.5 bg-red-50 border-b border-red-100 flex items-center gap-2 text-xs text-red-700">
+    <i data-lucide="alert-circle" class="w-4 h-4 text-red-500"></i>
+    <strong>2 errors found.</strong> Hover error cells for details.
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full text-left text-[11px] border-collapse">
+      <thead><tr class="bg-slate-100 text-slate-500 font-bold uppercase tracking-wider border-b border-slate-200 text-[10px]">
+        <th class="px-3 py-2.5 pl-5">#</th><th class="px-3 py-2.5">row_type</th><th class="px-3 py-2.5">id</th><th class="px-3 py-2.5">parent_id</th>
+        <th class="px-3 py-2.5 w-48">question_text / title</th><th class="px-3 py-2.5">section_rules</th><th class="px-3 py-2.5">question_rule</th>
+        <th class="px-3 py-2.5">trigger_type</th><th class="px-3 py-2.5">trigger_values</th><th class="px-3 py-2.5">child_question_type</th><th class="px-3 py-2.5">driver</th>
+      </tr></thead>
+      <tbody class="text-slate-700 divide-y divide-slate-100">
+        <tr class="hover:bg-slate-50"><td class="px-3 py-2.5 pl-5 text-slate-400">1</td><td class="px-3 py-2.5"><span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-mono">SECTION</span></td><td class="px-3 py-2.5 font-mono">sec_01</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 font-medium">Management</td><td class="px-3 py-2.5 font-mono text-emerald-700 text-[10px]">Department:IN:Sales</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td></tr>
+        <tr class="hover:bg-slate-50"><td class="px-3 py-2.5 pl-5 text-slate-400">2</td><td class="px-3 py-2.5"><span class="bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-mono">QUESTION</span></td><td class="px-3 py-2.5 font-mono">q_01</td><td class="px-3 py-2.5 font-mono text-slate-600">sec_01</td><td class="px-3 py-2.5">How clearly does your manager communicate?</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 font-mono text-[10px]">Role:EQ:Manager</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-emerald-700">Management</td></tr>
+        <tr class="bg-red-50/40">
+          <td class="px-3 py-2.5 pl-5"><span class="text-red-500 font-bold">3</span></td><td class="px-3 py-2.5"><span class="bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-mono">BRANCH</span></td><td class="px-3 py-2.5 font-mono">b_01</td>
+          <td class="px-3 py-2.5"><div class="tooltip-host relative inline-block"><div class="flex items-center gap-1 border border-red-400 bg-red-100 text-red-800 px-1.5 py-0.5 rounded cursor-help font-mono text-[10px]"><i data-lucide="alert-circle" class="w-3 h-3"></i> q_99</div><div class="tooltip-body hidden absolute bottom-full mb-1.5 bg-slate-800 text-white text-xs py-1.5 px-3 rounded whitespace-nowrap z-20">Invalid parent_id: question 'q_99' does not exist.</div></div></td>
+          <td class="px-3 py-2.5">What gaps have you noticed?</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 font-mono text-[10px]">RATING_RANGE</td><td class="px-3 py-2.5 font-mono text-[10px]">1-4</td><td class="px-3 py-2.5 font-mono text-[10px] text-indigo-600">Free Text</td><td class="px-3 py-2.5 text-slate-400">—</td>
+        </tr>
+        <tr class="bg-red-50/40">
+          <td class="px-3 py-2.5 pl-5"><span class="text-red-500 font-bold">4</span></td><td class="px-3 py-2.5"><span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-mono">SECTION</span></td><td class="px-3 py-2.5 font-mono">sec_02</td><td class="px-3 py-2.5 text-slate-400">—</td>
+          <td class="px-3 py-2.5 font-medium">Onboarding</td>
+          <td class="px-3 py-2.5"><div class="tooltip-host relative inline-block"><div class="flex items-center gap-1 border border-red-400 bg-red-100 text-red-800 px-1.5 py-0.5 rounded cursor-help font-mono text-[10px]"><i data-lucide="alert-circle" class="w-3 h-3"></i> BuddyStatus:EQ:Yes</div><div class="tooltip-body hidden absolute bottom-full mb-1.5 bg-slate-800 text-white text-xs py-1.5 px-3 rounded whitespace-nowrap z-20">Unknown attr 'BuddyStatus'. Did you mean 'Buddy Assigned'?</div></div></td>
+          <td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td>
+        </tr>
+        <tr class="hover:bg-slate-50"><td class="px-3 py-2.5 pl-5 text-slate-400">5</td><td class="px-3 py-2.5"><span class="bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-mono">BRANCH</span></td><td class="px-3 py-2.5 font-mono">b_02</td><td class="px-3 py-2.5 font-mono text-slate-600">q_01</td><td class="px-3 py-2.5">What support are you missing?</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 text-slate-400">—</td><td class="px-3 py-2.5 font-mono text-[10px]">RATING_RANGE</td><td class="px-3 py-2.5 font-mono text-[10px]">1-6</td><td class="px-3 py-2.5 font-mono text-[10px] text-indigo-600">Single Select</td><td class="px-3 py-2.5 text-slate-400">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="px-5 py-3 bg-slate-50 border-t border-slate-100">
+    <p class="text-[11px] text-slate-400 flex flex-wrap items-center gap-1">
+      <i data-lucide="info" class="w-3.5 h-3.5"></i> New columns:
+      <code class="font-mono bg-white px-1 rounded border border-slate-200">trigger_type</code>
+      <code class="font-mono bg-white px-1 rounded border border-slate-200">trigger_values</code>
+      <code class="font-mono bg-white px-1 rounded border border-slate-200">child_question_type</code>
+      <code class="font-mono bg-white px-1 rounded border border-slate-200">section_rules</code>
+    </p>
+  </div>
+</div>`;
+}
+
+// ── SCENARIO SWITCHER ──────────────────────────────────────────────────────────
+function buildSwitcher() {
+  const items = [
+    {id:1,label:'Section Rules + Canvas'},
+    {id:2,label:'Rating Branch Modal (multi-child)'},
+    {id:3,label:'Multi-Select Branches'},
+    {id:4,label:'Placeholder Tokens'},
+    {id:5,label:'Segment Preview + Zero-match'},
+    {id:6,label:'CSV Import'},
+  ];
+  return `<div class="fixed top-4 right-4 z-[60] bg-white shadow-xl rounded-lg border border-slate-200 w-60 overflow-hidden">
+  <div class="bg-slate-50 px-3 py-2.5 flex justify-between items-center cursor-pointer hover:bg-slate-100" onclick="window.toggleScenarios()">
+    <h3 class="font-bold text-xs uppercase text-slate-500 tracking-wider">UX Scenarios</h3>
+    <i data-lucide="${state.showScenarios?'chevron-up':'chevron-down'}" class="w-4 h-4 text-slate-400"></i>
+  </div>
+  ${state.showScenarios?`<div class="p-2 border-t border-slate-100 space-y-0.5">
+    ${items.map(s=>`<button onclick="window.switchScenario(${s.id})" class="w-full text-left px-2.5 py-2 rounded text-xs transition-colors ${state.scenario===s.id?'bg-emerald-50 text-emerald-700 font-semibold':'hover:bg-slate-50 text-slate-600'}">
+      <span class="text-slate-400 mr-1.5 font-mono">${s.id}.</span>${s.label}
+    </button>`).join('')}
+  </div>`:''}
+</div>`;
+}
+
+// ── MAIN APP ───────────────────────────────────────────────────────────────────
+function buildApp() {
+  const builderContent = `<div class="space-y-0">
+    ${state.sections.map(s=>buildSection(s)).join('')}
+    <div onclick="window.addSection()" class="bg-white border-2 border-dashed border-slate-200 rounded text-center py-5 text-xs font-bold text-slate-400 hover:text-emerald-600 hover:border-emerald-300 hover:bg-emerald-50 uppercase cursor-pointer transition-colors mt-4 flex items-center justify-center gap-2">
+      <i data-lucide="plus" class="w-4 h-4"></i> Add a New Section
+    </div>
+  </div>`;
+
+  return `
+  ${buildSwitcher()}
+  <div class="bg-white border-b border-slate-200 px-8 py-4">
+    <div class="flex items-center text-blue-500 font-medium text-xs mb-3 cursor-pointer hover:underline"><i data-lucide="chevron-left" class="w-4 h-4 mr-1"></i> Survey List</div>
+    <h1 class="text-2xl text-slate-700 font-light">Annual Engagement Survey 2026</h1>
+  </div>
+  <div class="max-w-5xl mx-auto mt-6 px-4">
+    <div class="bg-white rounded-md shadow-sm border border-slate-100 flex items-center px-6 py-3.5 mb-6 text-sm">
+      <div class="flex items-center gap-2 text-slate-400"><div class="w-6 h-6 rounded-full flex items-center justify-center text-xs bg-slate-200 font-bold">1</div>Basic Settings</div>
+      <i data-lucide="chevron-right" class="w-4 h-4 mx-4 text-slate-300"></i>
+      <div class="flex items-center gap-2 text-slate-800 font-semibold"><div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:#6dc28e">2</div>Questions</div>
+      <i data-lucide="chevron-right" class="w-4 h-4 mx-4 text-slate-300"></i>
+      <div class="flex items-center gap-2 text-slate-400"><div class="w-6 h-6 rounded-full flex items-center justify-center text-xs bg-slate-200 font-bold">3</div>Audience</div>
+      <i data-lucide="chevron-right" class="w-4 h-4 mx-4 text-slate-300"></i>
+      <div class="flex items-center gap-2 text-slate-400"><div class="w-6 h-6 rounded-full flex items-center justify-center text-xs bg-slate-200 font-bold">4</div>Schedule</div>
+    </div>
+    <div class="flex justify-between items-end mb-5">
+      <div>
+        <h2 class="text-lg font-semibold text-slate-800">Step 2: Survey Questions</h2>
+        <p class="text-xs text-slate-500 mt-1">Add sections, configure visibility rules, and set up branching logic.</p>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="window.setTab('csv')" class="px-4 py-2 rounded font-bold text-xs border flex items-center gap-1.5 transition-colors ${state.activeTab==='csv'?'bg-slate-800 text-white border-slate-800':'bg-white text-slate-600 border-slate-300 hover:bg-slate-50'}">
+          <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> CSV Import <span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded text-[9px] font-bold ml-1">Beta</span>
+        </button>
+        <button onclick="window.setTab('builder')" class="px-4 py-2 rounded font-bold text-xs transition-colors ${state.activeTab==='builder'?'bg-[#6dc28e] hover:bg-[#5db37e] text-white':'bg-white text-[#6dc28e] border border-[#6dc28e] hover:bg-emerald-50'}">
+          Import Questions
+        </button>
+      </div>
+    </div>
+    ${state.activeTab==='builder' ? builderContent : buildCSV()}
+    <div class="flex justify-between mt-8">
+      <button class="px-5 py-2.5 border border-slate-300 rounded text-sm font-medium hover:bg-slate-50 flex items-center gap-2"><i data-lucide="chevron-left" class="w-4 h-4"></i> Back: Basic Settings</button>
+      <button class="px-6 py-2.5 bg-[#6dc28e] hover:bg-[#5db37e] text-white rounded text-sm font-bold uppercase tracking-wide shadow-sm flex items-center gap-2">Save &amp; Continue <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+    </div>
+  </div>
+  ${state.modalOpen ? buildModal() : ''}
+  ${state.confirmOpen ? buildConfirm() : ''}
+  `;
+}
+
+// ── RENDER ─────────────────────────────────────────────────────────────────────
+function render() {
+  const ae=document.activeElement, aid=ae?ae.id:null;
+  let ss=null, se=null;
+  if(ae&&(ae.tagName==='INPUT'||ae.tagName==='TEXTAREA')){ ss=ae.selectionStart; se=ae.selectionEnd; }
+  document.getElementById('app').innerHTML = buildApp();
+  lucide.createIcons();
+  if(aid){ const el=document.getElementById(aid); if(el){ el.focus(); if(ss!==null) try{el.setSelectionRange(ss,se);}catch(e){} } }
+}
+
+window.onload = () => render();
+</script>
+</body>
+</html>

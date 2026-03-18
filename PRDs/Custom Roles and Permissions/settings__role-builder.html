@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Role — CultureMonkey</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-green: #55ce97;
+    --brand-green-dark: #4cb485;
+    --sidebar-bg: #F8FDFA;
+    --page-bg: #ffffff;
+    --light-gray: #f7f7f7;
+    --text-default: #373A3C;
+    --text-muted: #6c757d;
+    --border-gray: #CAD1D7;
+    --table-border: #e7ebee;
+    --hover-bg: #e9eeed;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --driver-tag-green: #ddece6;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; font-size: 15.5px; color: var(--text-default); background: var(--page-bg); margin: 0; }
+
+  /* TOP NAV */
+  .top-nav { height: 60px; background: var(--sidebar-bg); border-bottom: 1px solid var(--table-border); display: flex; align-items: center; padding: 0 1.5rem; position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+  .top-nav .nav-toggle { font-size: 1.1rem; color: var(--text-muted); cursor: pointer; margin-right: 1rem; }
+  .top-nav .search-wrap { flex: 1; max-width: 40vw; position: relative; }
+  .top-nav .search-wrap input { width: 100%; height: 36px; border: 1px solid var(--border-gray); border-radius: 3px; padding: 0 1rem 0 2.5rem; font-size: 14px; font-family: inherit; background: #fff; }
+  .top-nav .search-wrap .fa-search { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 13px; }
+  .top-nav .nav-right { margin-left: auto; display: flex; align-items: center; gap: 1.25rem; }
+  .top-nav .nav-right .nav-icon { color: var(--text-muted); font-size: 1rem; cursor: pointer; }
+  .top-nav .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--brand-green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+  /* SIDEBAR */
+  .sidebar { width: 250px; background: var(--sidebar-bg); border-right: 1px solid var(--table-border); position: fixed; top: 60px; left: 0; bottom: 0; overflow-y: auto; z-index: 90; }
+  .sidebar-top { padding: 1.25rem 1rem 1rem; border-bottom: 1px solid var(--table-border); }
+  .sidebar-logo { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+  .sidebar-logo-text { font-size: 20px; font-weight: 500; color: var(--text-default); }
+  .sidebar-role-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; background: var(--driver-tag-green); color: var(--brand-green-dark); padding: 2px 8px; border-radius: 3px; display: inline-block; margin-bottom: 0.5rem; }
+  .sidebar-stats { font-size: 12px; color: var(--text-muted); }
+  .sidebar-stats span { display: block; }
+  .sidebar-stats strong { color: var(--brand-green); }
+  .nav-section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); padding: 1rem 1rem 0.35rem; letter-spacing: 0.06em; }
+  .nav-item { display: flex; align-items: center; gap: 0.65rem; padding: 8px 13px; cursor: pointer; color: var(--text-default); font-size: 14px; text-decoration: none; transition: background 0.15s; }
+  .nav-item:hover { background: var(--hover-bg); color: var(--text-default); text-decoration: none; }
+  .nav-item.active { background: var(--brand-green); color: #fff; }
+  .nav-icon-item { width: 18px; text-align: center; color: var(--brand-green); font-size: 0.9rem; }
+  .nav-item.active .nav-icon-item { color: #fff; }
+
+  /* MAIN */
+  .main-content { margin-left: 250px; margin-top: 60px; padding: 2rem; min-height: calc(100vh - 60px); }
+  .page-breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .page-breadcrumb a { color: var(--brand-green); text-decoration: none; }
+  .page-title { font-size: 32px; font-weight: 300; color: var(--text-default); margin-bottom: 0; }
+  .page-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+  /* DEMO SWITCHER */
+  .demo-switcher { background: #fff8e6; border: 1px solid #ffe082; border-radius: 3px; padding: 0.6rem 1rem; margin-bottom: 1.5rem; font-size: 13px; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .demo-switcher strong { color: #856404; }
+  .demo-btn { font-size: 12px; padding: 3px 12px; border-radius: 3px; border: 1px solid var(--border-gray); background: #fff; cursor: pointer; font-family: inherit; }
+  .demo-btn.active-demo { background: var(--brand-green); color: #fff; border-color: var(--brand-green); }
+
+  /* WARNING BANNER */
+  .warning-banner { background: #fff3cd; border: 1px solid #ffc107; border-radius: 3px; padding: 0.85rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 0.75rem; font-size: 14px; color: #856404; }
+  .warning-banner i { margin-top: 2px; color: #856404; flex-shrink: 0; }
+
+  /* FORM LAYOUT */
+  .form-card { background: #fff; border-radius: 3px; box-shadow: 0 6px 13px 2px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+  .form-card-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--table-border); display: flex; align-items: center; gap: 0.75rem; background: var(--light-gray); }
+  .form-card-header .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--brand-green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .form-card-header h3 { font-size: 16px; font-weight: 500; margin: 0; }
+  .form-card-header p { font-size: 13px; color: var(--text-muted); margin: 2px 0 0; }
+  .form-card-body { padding: 1.5rem; }
+
+  /* FORM CONTROLS */
+  .form-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 0.4rem; display: block; }
+  .form-input { height: 48px; border: 1px solid var(--border-gray); border-radius: 4px; padding: 0 1rem; font-family: inherit; font-size: 15px; width: 100%; outline: none; color: var(--text-default); transition: border 0.15s, box-shadow 0.15s; }
+  .form-input:focus { border-color: var(--brand-green); box-shadow: 0 0 0 3px rgba(85,206,151,0.15); }
+  .form-textarea { border: 1px solid var(--border-gray); border-radius: 4px; padding: 0.75rem 1rem; font-family: inherit; font-size: 15px; width: 100%; outline: none; color: var(--text-default); resize: vertical; min-height: 80px; transition: border 0.15s; }
+  .form-textarea:focus { border-color: var(--brand-green); box-shadow: 0 0 0 3px rgba(85,206,151,0.15); }
+  .char-count { font-size: 12px; color: var(--text-muted); text-align: right; margin-top: 4px; }
+  .help-text { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
+
+  /* MODULE PERMISSIONS MATRIX */
+  .module-group-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); padding: 1rem 0 0.5rem; border-bottom: 1px solid var(--table-border); margin-bottom: 0.25rem; }
+  .module-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+  .module-row:last-child { border-bottom: none; }
+  .module-name { flex: 1; font-size: 14px; color: var(--text-default); display: flex; align-items: center; gap: 0.5rem; }
+  .module-name .mod-icon { width: 20px; text-align: center; color: var(--text-muted); font-size: 13px; }
+  .module-name.locked { color: var(--text-muted); }
+  .locked-badge { font-size: 10px; background: #f0f0f0; color: var(--text-muted); padding: 1px 6px; border-radius: 10px; font-weight: 600; text-transform: uppercase; }
+
+  /* THREE-STATE TOGGLE */
+  .toggle-group { display: flex; border: 1px solid var(--border-gray); border-radius: 3px; overflow: hidden; }
+  .toggle-opt { padding: 5px 14px; font-size: 12px; font-weight: 500; cursor: pointer; background: #fff; color: var(--text-muted); border: none; border-right: 1px solid var(--border-gray); font-family: inherit; transition: all 0.15s; white-space: nowrap; }
+  .toggle-opt:last-child { border-right: none; }
+  .toggle-opt:hover:not(:disabled) { background: var(--hover-bg); }
+  .toggle-opt.active-none { background: var(--light-gray); color: var(--text-muted); font-weight: 600; }
+  .toggle-opt.active-view { background: #e3f1fb; color: #1a6a9e; font-weight: 600; }
+  .toggle-opt.active-edit { background: var(--driver-tag-green); color: #1a6a4a; font-weight: 600; }
+  .toggle-opt:disabled { background: #f5f5f5; color: #ccc; cursor: not-allowed; }
+
+  /* DATA SCOPE RADIO CARDS */
+  .scope-cards { display: flex; gap: 1rem; }
+  .scope-card { flex: 1; border: 2px solid var(--border-gray); border-radius: 4px; padding: 1.25rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: flex-start; gap: 1rem; }
+  .scope-card:hover { border-color: var(--brand-green); background: #f8fefb; }
+  .scope-card.selected { border-color: var(--brand-green); background: #f0fdf7; }
+  .scope-card .scope-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; }
+  .scope-card.selected .scope-icon { background: var(--driver-tag-green); color: var(--brand-green-dark); }
+  .scope-card:not(.selected) .scope-icon { background: var(--light-gray); color: var(--text-muted); }
+  .scope-card-body h6 { font-size: 14px; font-weight: 600; margin: 0 0 3px; color: var(--text-default); }
+  .scope-card-body p { font-size: 12px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+  .scope-radio { width: 16px; height: 16px; border: 2px solid var(--border-gray); border-radius: 50%; flex-shrink: 0; margin-top: 2px; position: relative; }
+  .scope-card.selected .scope-radio { border-color: var(--brand-green); }
+  .scope-card.selected .scope-radio::after { content: ''; width: 8px; height: 8px; background: var(--brand-green); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+  /* DEMOGRAPHIC MULTI-SELECT */
+  .demo-select-area { margin-top: 1rem; padding: 1rem; background: var(--light-gray); border-radius: 3px; border: 1px dashed var(--border-gray); }
+  .demo-select-area .ds-label { font-size: 13px; font-weight: 600; color: var(--text-default); margin-bottom: 0.75rem; }
+  .demo-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; min-height: 34px; }
+  .demo-tag { background: #fff; border: 1px solid var(--brand-green); color: var(--brand-green-dark); font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 5px; }
+  .demo-tag .rm-tag { cursor: pointer; font-size: 10px; color: var(--text-muted); }
+  .demo-tag .rm-tag:hover { color: var(--danger); }
+  .demo-add-row { display: flex; gap: 0.5rem; }
+  .demo-add-row select { flex: 1; height: 36px; border: 1px solid var(--border-gray); border-radius: 3px; font-family: inherit; font-size: 13px; padding: 0 0.75rem; background: #fff; }
+  .demo-add-row button { height: 36px; padding: 0 1rem; background: var(--brand-green); color: #fff; border: none; border-radius: 3px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
+
+  /* SURVEY RESTRICTION TOGGLE */
+  .restriction-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; }
+  .restriction-info h6 { font-size: 15px; font-weight: 500; margin: 0 0 4px; }
+  .restriction-info p { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+  .toggle-switch { position: relative; display: inline-block; width: 48px; height: 26px; flex-shrink: 0; margin-top: 2px; }
+  .toggle-switch input { opacity: 0; width: 0; height: 0; }
+  .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .3s; border-radius: 34px; }
+  .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+  input:checked + .slider { background-color: var(--brand-green); }
+  input:checked + .slider:before { transform: translateX(22px); }
+
+  /* SAVE BAR */
+  .save-bar { background: #fff; border-top: 1px solid var(--table-border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: flex-end; gap: 0.75rem; position: sticky; bottom: 0; box-shadow: 0 -3px 13px 0 rgba(0,0,0,0.08); }
+  .btn-cancel { background: var(--light-gray); border: 1px solid var(--border-gray); border-radius: 3px; padding: 0.6rem 1.5rem; font-family: inherit; font-size: 13px; cursor: pointer; color: var(--text-default); font-weight: 500; }
+  .btn-primary-cm { background: var(--brand-green); color: #fff; border: none; padding: 0.6rem 1.5rem; border-radius: 3px; font-family: inherit; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; box-shadow: 0 3px 4px 0 rgba(0,0,0,0.1); transition: background 0.15s; display: inline-flex; align-items: center; gap: 0.4rem; }
+  .btn-primary-cm:hover:not(:disabled) { background: var(--brand-green-dark); }
+  .btn-primary-cm:disabled { background: #b2e4ce; cursor: not-allowed; box-shadow: none; }
+
+  /* VALIDATION */
+  .validation-hint { font-size: 12px; color: var(--danger); margin-top: 5px; display: none; }
+  .form-input.error { border-color: var(--danger); }
+
+  /* TOAST */
+  .toast-wrap { position: fixed; top: 1.25rem; right: 1.5rem; z-index: 300; display: none; }
+  .toast-wrap.show { display: block; animation: slideInRight 0.3s ease; }
+  .toast-box { background: #fff; border-left: 4px solid #28a745; border-radius: 3px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 0.85rem 1.25rem; min-width: 280px; display: flex; align-items: center; gap: 0.75rem; font-size: 14px; }
+  .toast-box i { color: #28a745; font-size: 1rem; }
+  @keyframes slideInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <span class="nav-toggle"><i class="fas fa-bars"></i></span>
+  <div class="search-wrap"><i class="fas fa-search"></i><input type="text" placeholder="Search surveys, reports, employees..."></div>
+  <div class="nav-right">
+    <span class="nav-icon"><i class="fas fa-globe"></i></span>
+    <span class="nav-icon"><i class="fas fa-cog"></i></span>
+    <span class="nav-icon"><i class="fas fa-question-circle"></i></span>
+    <div class="avatar">SA</div>
+  </div>
+</nav>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-top">
+    <div class="sidebar-logo">
+      <div style="width:32px;height:32px;background:var(--brand-green);border-radius:4px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-leaf" style="color:#fff;font-size:14px;"></i></div>
+      <span class="sidebar-logo-text">Acme Corp</span>
+    </div>
+    <div class="sidebar-role-badge">Super Admin</div>
+    <div class="sidebar-stats"><span>Active Employees: <strong>2,840</strong></span><span>Active Managers: <strong>186</strong></span></div>
+  </div>
+  <div class="nav-section-label">Listen</div>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-clone"></i></span> Templates</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-paint-brush"></i></span> Surveys</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-heartbeat"></i></span> Pulse</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-space-shuttle"></i></span> Lifecycle</a>
+  <div class="nav-section-label">Analyse</div>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-chart-line"></i></span> Reports</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-chart-bar"></i></span> Comment Analytics</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-download"></i></span> Reports Panel</a>
+  <div class="nav-section-label">Insights</div>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-chalkboard-teacher"></i></span> Manager Statistics</a>
+  <div class="nav-section-label">Act</div>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-list"></i></span> Actions</a>
+  <div class="nav-section-label">General</div>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-envelope-open-text"></i></span> Email Templates</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-broadcast-tower"></i></span> Integrations</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-users"></i></span> Employees</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fas fa-user-tie"></i></span> Managers</a>
+  <a class="nav-item" href="#"><span class="nav-icon-item"><i class="fa fa-crown"></i></span> Administrators</a>
+  <a class="nav-item active" href="#"><span class="nav-icon-item"><i class="fas fa-shield-alt"></i></span> Roles</a>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+  <div class="page-breadcrumb"><a href="settings__roles-list.html">Settings</a> / <a href="settings__roles-list.html">Roles</a> / <span id="pageMode">Create Role</span></div>
+  <div class="d-flex align-items-center justify-content-between">
+    <div>
+      <h1 class="page-title" id="pageTitleH1">Create Custom Role</h1>
+      <p class="page-subtitle">Define permissions, data scope and survey access for this role.</p>
+    </div>
+  </div>
+
+  <!-- DEMO SWITCHER -->
+  <div class="demo-switcher">
+    <strong>🎛 Demo State:</strong>
+    <button class="demo-btn active-demo" onclick="setMode('create')">Create Mode</button>
+    <button class="demo-btn" onclick="setMode('edit')">Edit (Active Users Warning)</button>
+    <button class="demo-btn" onclick="setMode('prefilled')">Pre-filled Example</button>
+  </div>
+
+  <!-- EDIT WARNING BANNER (hidden by default) -->
+  <div class="warning-banner" id="editWarning" style="display:none;">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>This role is currently assigned to <strong>7 users</strong>. Any permission changes will take effect immediately for all assigned users.</span>
+  </div>
+
+  <!-- SECTION 1: ROLE IDENTITY -->
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="step-num">1</div>
+      <div>
+        <h3>Role Identity</h3>
+        <p>Name and describe this role so it's easy to find and assign.</p>
+      </div>
+    </div>
+    <div class="form-card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <label class="form-label" for="roleName">Role Name <span style="color:var(--danger);">*</span></label>
+          <input type="text" id="roleName" class="form-input" placeholder="e.g. HRBP Viewer, Regional HR Lead" maxlength="60" oninput="updateCharCount(this); validateForm();">
+          <div class="d-flex justify-content-between">
+            <span class="validation-hint" id="nameError">Role name is required.</span>
+            <span class="char-count" id="charCount">0 / 60</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="roleDesc">Description <span style="color:var(--text-muted);font-weight:400;text-transform:none;font-size:11px;">(optional)</span></label>
+          <textarea id="roleDesc" class="form-textarea" placeholder="Briefly describe who this role is for and what they can do..."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: MODULE PERMISSIONS -->
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="step-num">2</div>
+      <div>
+        <h3>Module Permissions</h3>
+        <p>Set per-module access. Selecting View+Edit automatically includes View. Removing View removes Edit.</p>
+      </div>
+    </div>
+    <div class="form-card-body" id="permMatrix">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+
+  <!-- SECTION 3: DATA SCOPE -->
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="step-num">3</div>
+      <div>
+        <h3>Data Scope</h3>
+        <p>Define what data this role can see across all permitted modules.</p>
+      </div>
+    </div>
+    <div class="form-card-body">
+      <div class="scope-cards" role="radiogroup" aria-label="Data Scope">
+        <div class="scope-card selected" id="scopeGlobal" onclick="selectScope('global')" role="radio" aria-checked="true" tabindex="0">
+          <div class="scope-radio"></div>
+          <div class="scope-icon"><i class="fas fa-globe"></i></div>
+          <div class="scope-card-body">
+            <h6>Global</h6>
+            <p>Full org data — no demographic filters applied.</p>
+          </div>
+        </div>
+        <div class="scope-card" id="scopeReporting" onclick="selectScope('reporting')" role="radio" aria-checked="false" tabindex="0">
+          <div class="scope-radio"></div>
+          <div class="scope-icon"><i class="fas fa-sitemap"></i></div>
+          <div class="scope-card-body">
+            <h6>Reporting Manager</h6>
+            <p>Data filtered to this user's direct and indirect reports.</p>
+          </div>
+        </div>
+        <div class="scope-card" id="scopeFixed" onclick="selectScope('fixed')" role="radio" aria-checked="false" tabindex="0">
+          <div class="scope-radio"></div>
+          <div class="scope-icon"><i class="fas fa-filter"></i></div>
+          <div class="scope-card-body">
+            <h6>Fixed Demographic</h6>
+            <p>Restrict to specific Teams, BUs, Locations, or Business Groups.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fixed Demographic Reveal -->
+      <div id="demoSelectArea" class="demo-select-area" style="display:none;">
+        <div class="ds-label">Select demographics for this role's data scope:</div>
+        <div class="demo-tags" id="demoTags" aria-live="polite">
+          <!-- Filled dynamically -->
+        </div>
+        <div class="demo-add-row">
+          <select id="demoType">
+            <option value="">Select type...</option>
+            <option value="team">Team</option>
+            <option value="bu">Business Unit</option>
+            <option value="location">Location</option>
+            <option value="bg">Business Group</option>
+          </select>
+          <select id="demoValue">
+            <option value="">Select value...</option>
+          </select>
+          <button onclick="addDemo()">+ Add</button>
+        </div>
+        <p class="help-text mt-2"><i class="fas fa-info-circle"></i> At least one demographic must be selected when using Fixed Demographic scope.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: SURVEY ACCESS RESTRICTION -->
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="step-num">4</div>
+      <div>
+        <h3>Survey Access Restriction</h3>
+        <p>Optionally limit this role to only surveys explicitly shared with it.</p>
+      </div>
+    </div>
+    <div class="form-card-body">
+      <div class="restriction-row">
+        <div class="restriction-info">
+          <h6>Restrict to shared surveys only</h6>
+          <p>When enabled, users with this role will only see surveys that have been explicitly shared with this role in the Survey Builder. If no surveys have been shared, they will see an empty state.</p>
+        </div>
+        <label class="toggle-switch" aria-label="Restrict to shared surveys only">
+          <input type="checkbox" id="surveyRestrict" onchange="validateForm()">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div id="surveyRestrictHint" style="display:none;margin-top:1rem;" class="warning-banner">
+        <i class="fas fa-info-circle"></i>
+        <span>Survey restriction is <strong>on</strong>. You'll need to share specific surveys with this role in the Survey Builder → Settings → Access &amp; Visibility before users can see any data.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY SAVE BAR -->
+  <div class="save-bar">
+    <span id="saveHint" style="font-size:12px;color:var(--text-muted);margin-right:auto;"></span>
+    <a href="settings__roles-list.html" class="btn-cancel">Cancel</a>
+    <button class="btn-primary-cm" id="saveBtn" disabled onclick="saveRole()">
+      <i class="fas fa-check"></i> <span id="saveBtnText">Save Role</span>
+    </button>
+  </div>
+</main>
+
+<!-- TOAST -->
+<div class="toast-wrap" id="toast">
+  <div class="toast-box"><i class="fas fa-check-circle"></i> <span id="toastMsg">Role saved successfully.</span></div>
+</div>
+
+<script>
+  // ---- DATA ----
+  const demoOptions = {
+    team: ['Engineering', 'Product', 'Sales', 'Marketing', 'HR', 'Finance', 'Customer Success'],
+    bu: ['India', 'APAC', 'EMEA', 'North America', 'LATAM'],
+    location: ['Mumbai', 'Bangalore', 'Singapore', 'London', 'New York', 'Dubai'],
+    bg: ['Enterprise', 'SMB', 'Govt & PSU', 'BFSI']
+  };
+
+  const moduleGroups = [
+    { label: 'Main', modules: [
+      { name: 'Dashboard', icon: 'fa-home', editAvailable: false },
+    ]},
+    { label: 'Listen', modules: [
+      { name: 'Surveys', icon: 'fa-paint-brush', editAvailable: true },
+      { name: 'Pulse', icon: 'fa-heartbeat', editAvailable: true },
+      { name: 'Lifecycle', icon: 'fa-space-shuttle', editAvailable: true },
+      { name: 'Channels', icon: 'fa-broadcast-tower', editAvailable: true },
+    ]},
+    { label: 'Analyse', modules: [
+      { name: 'Reports', icon: 'fa-chart-line', editAvailable: false },
+      { name: 'Comment Analytics', icon: 'fa-chart-bar', editAvailable: false },
+      { name: 'Report Builder', icon: 'fa-file-export', editAvailable: false },
+      { name: 'Reports Panel', icon: 'fa-download', editAvailable: false },
+    ]},
+    { label: 'Insights', modules: [
+      { name: 'Lifecycle Analytics', icon: 'fa-chart-pie', editAvailable: false },
+      { name: 'Snapshots', icon: 'fa-camera-retro', editAvailable: false },
+      { name: 'Manager Statistics', icon: 'fa-chalkboard-teacher', editAvailable: false },
+    ]},
+    { label: 'Act', modules: [
+      { name: 'Actions', icon: 'fa-list', editAvailable: true },
+    ]},
+    { label: 'General (Locked)', modules: [
+      { name: 'Employees', icon: 'fa-users', locked: true },
+      { name: 'Managers', icon: 'fa-user-tie', locked: true },
+      { name: 'Administrators', icon: 'fa-crown', locked: true },
+      { name: 'Integrations', icon: 'fa-broadcast-tower', editAvailable: true },
+    ]},
+  ];
+
+  const permState = {}; // module name → 'none' | 'view' | 'edit'
+
+  function renderMatrix() {
+    const el = document.getElementById('permMatrix');
+    el.innerHTML = '';
+    moduleGroups.forEach(group => {
+      const gl = document.createElement('div');
+      gl.className = 'module-group-label';
+      gl.textContent = group.label;
+      el.appendChild(gl);
+
+      group.modules.forEach(mod => {
+        if (!permState[mod.name]) permState[mod.name] = 'none';
+        const row = document.createElement('div');
+        row.className = 'module-row';
+        const cur = permState[mod.name];
+
+        if (mod.locked) {
+          row.innerHTML = `
+            <div class="module-name locked">
+              <span class="mod-icon"><i class="fas ${mod.icon}"></i></span>
+              ${mod.name}
+              <span class="locked-badge">Super Admin Only</span>
+            </div>
+            <div class="toggle-group" aria-disabled="true">
+              <button class="toggle-opt active-none" disabled>None</button>
+              <button class="toggle-opt" disabled>View</button>
+              <button class="toggle-opt" disabled>View + Edit</button>
+            </div>`;
+        } else if (!mod.editAvailable) {
+          row.innerHTML = `
+            <div class="module-name">
+              <span class="mod-icon"><i class="fas ${mod.icon}"></i></span>
+              ${mod.name}
+            </div>
+            <div class="toggle-group" role="group" aria-label="${mod.name} permission">
+              <button class="toggle-opt ${cur==='none'?'active-none':''}" onclick="setPermView('${mod.name}','none',this)">None</button>
+              <button class="toggle-opt ${cur==='view'||cur==='edit'?'active-view':''}" onclick="setPermView('${mod.name}','view',this)">View</button>
+              <button class="toggle-opt" disabled title="View-only module — no edit action available">View + Edit</button>
+            </div>`;
+        } else {
+          row.innerHTML = `
+            <div class="module-name">
+              <span class="mod-icon"><i class="fas ${mod.icon}"></i></span>
+              ${mod.name}
+            </div>
+            <div class="toggle-group" role="group" aria-label="${mod.name} permission">
+              <button class="toggle-opt ${cur==='none'?'active-none':''}" onclick="setPermView('${mod.name}','none',this)">None</button>
+              <button class="toggle-opt ${cur==='view'?'active-view':''}" onclick="setPermView('${mod.name}','view',this)">View</button>
+              <button class="toggle-opt ${cur==='edit'?'active-edit':''}" onclick="setPermView('${mod.name}','edit',this)">View + Edit</button>
+            </div>`;
+        }
+        el.appendChild(row);
+      });
+    });
+  }
+
+  function setPermView(modName, val, btn) {
+    permState[modName] = val;
+    const group = btn.closest('.toggle-group');
+    group.querySelectorAll('.toggle-opt').forEach(b => {
+      b.classList.remove('active-none','active-view','active-edit');
+    });
+    if (val === 'none') btn.classList.add('active-none');
+    else if (val === 'view') btn.classList.add('active-view');
+    else if (val === 'edit') btn.classList.add('active-edit');
+    validateForm();
+  }
+
+  // DATA SCOPE
+  let currentScope = 'global';
+  let demographics = [];
+
+  function selectScope(scope) {
+    currentScope = scope;
+    ['global','reporting','fixed'].forEach(s => {
+      const el = document.getElementById('scope' + s.charAt(0).toUpperCase() + s.slice(1));
+      el.classList.toggle('selected', s === scope);
+      el.setAttribute('aria-checked', s === scope ? 'true' : 'false');
+    });
+    document.getElementById('demoSelectArea').style.display = scope === 'fixed' ? 'block' : 'none';
+    validateForm();
+  }
+
+  function updateDemoOptions() {
+    const type = document.getElementById('demoType').value;
+    const sel = document.getElementById('demoValue');
+    sel.innerHTML = '<option value="">Select value...</option>';
+    if (type && demoOptions[type]) {
+      demoOptions[type].forEach(v => {
+        const o = document.createElement('option');
+        o.value = v; o.textContent = v;
+        sel.appendChild(o);
+      });
+    }
+  }
+
+  function addDemo() {
+    const type = document.getElementById('demoType').value;
+    const val = document.getElementById('demoValue').value;
+    if (!type || !val) return;
+    const key = type + ':' + val;
+    if (demographics.find(d => d.key === key)) return;
+    demographics.push({ key, type, val });
+    renderDemoTags();
+    validateForm();
+  }
+
+  function renderDemoTags() {
+    const container = document.getElementById('demoTags');
+    container.innerHTML = '';
+    demographics.forEach((d, i) => {
+      const tag = document.createElement('div');
+      tag.className = 'demo-tag';
+      const typeLabel = {team:'Team',bu:'BU',location:'Location',bg:'Business Group'}[d.type];
+      tag.innerHTML = `<span style="color:var(--text-muted);font-size:10px;">${typeLabel}:</span> ${d.val} <span class="rm-tag" onclick="removeDemo(${i})" aria-label="Remove ${d.val}">×</span>`;
+      container.appendChild(tag);
+    });
+  }
+
+  function removeDemo(i) {
+    demographics.splice(i, 1);
+    renderDemoTags();
+    validateForm();
+  }
+
+  document.getElementById('demoType').addEventListener('change', updateDemoOptions);
+
+  // VALIDATION
+  function validateForm() {
+    const name = document.getElementById('roleName').value.trim();
+    const hasPermission = Object.values(permState).some(v => v !== 'none');
+    const scopeOk = currentScope !== 'fixed' || demographics.length > 0;
+
+    let hint = '';
+    if (!name) hint = 'Enter a role name to continue.';
+    else if (!hasPermission) hint = 'Grant at least one module permission.';
+    else if (!scopeOk) hint = 'Add at least one demographic for Fixed Demographic scope.';
+
+    document.getElementById('saveHint').textContent = hint;
+    document.getElementById('saveBtn').disabled = !(!hint);
+  }
+
+  function updateCharCount(el) {
+    document.getElementById('charCount').textContent = el.value.length + ' / 60';
+  }
+
+  document.getElementById('surveyRestrict').addEventListener('change', function() {
+    document.getElementById('surveyRestrictHint').style.display = this.checked ? 'flex' : 'none';
+  });
+
+  function saveRole() {
+    showToast('Role "' + document.getElementById('roleName').value + '" saved successfully.');
+    setTimeout(() => { window.location.href = 'settings__roles-list.html'; }, 2000);
+  }
+
+  function showToast(msg) {
+    document.getElementById('toastMsg').textContent = msg;
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  // MODE SWITCHING
+  function setMode(mode) {
+    document.querySelectorAll('.demo-btn').forEach(b => b.classList.remove('active-demo'));
+    event.target.classList.add('active-demo');
+
+    document.getElementById('editWarning').style.display = 'none';
+
+    if (mode === 'create') {
+      document.getElementById('pageMode').textContent = 'Create Role';
+      document.getElementById('pageTitleH1').textContent = 'Create Custom Role';
+      document.getElementById('saveBtnText').textContent = 'Save Role';
+      // Reset
+      Object.keys(permState).forEach(k => permState[k] = 'none');
+      document.getElementById('roleName').value = '';
+      document.getElementById('roleDesc').value = '';
+      document.getElementById('charCount').textContent = '0 / 60';
+      demographics = []; renderDemoTags();
+      selectScope('global');
+      renderMatrix();
+      validateForm();
+    } else if (mode === 'edit') {
+      document.getElementById('pageMode').textContent = 'Edit Role';
+      document.getElementById('pageTitleH1').textContent = 'Edit: HRBP Viewer';
+      document.getElementById('saveBtnText').textContent = 'Save Changes';
+      document.getElementById('editWarning').style.display = 'flex';
+      document.getElementById('roleName').value = 'HRBP Viewer';
+      document.getElementById('roleDesc').value = 'For HRBPs who need read-only access to reports, dashboards and analytics.';
+      updateCharCount(document.getElementById('roleName'));
+      permState['Dashboard'] = 'view';
+      permState['Reports'] = 'view';
+      permState['Comment Analytics'] = 'view';
+      permState['Manager Statistics'] = 'view';
+      selectScope('global');
+      renderMatrix();
+      validateForm();
+    } else if (mode === 'prefilled') {
+      document.getElementById('pageMode').textContent = 'Create Role';
+      document.getElementById('pageTitleH1').textContent = 'Create Custom Role';
+      document.getElementById('saveBtnText').textContent = 'Save Role';
+      document.getElementById('roleName').value = 'Regional HR Lead - India';
+      document.getElementById('roleDesc').value = 'Full Surveys, Reports and Actions access, scoped to India and APAC geographies.';
+      updateCharCount(document.getElementById('roleName'));
+      permState['Surveys'] = 'edit';
+      permState['Reports'] = 'view';
+      permState['Actions'] = 'edit';
+      selectScope('fixed');
+      demographics = [
+        { key: 'location:Mumbai', type: 'location', val: 'Mumbai' },
+        { key: 'location:Bangalore', type: 'location', val: 'Bangalore' },
+        { key: 'bu:India', type: 'bu', val: 'India' },
+        { key: 'bu:APAC', type: 'bu', val: 'APAC' },
+      ];
+      renderDemoTags();
+      renderMatrix();
+      validateForm();
+    }
+  }
+
+  // Init
+  renderMatrix();
+  validateForm();
+</script>
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Survey — Settings — CultureMonkey</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand-green:#55ce97;--brand-green-dark:#4cb485;--sidebar-bg:#F8FDFA;
+    --light-gray:#f7f7f7;--text-default:#373A3C;--text-muted:#6c757d;
+    --border-gray:#CAD1D7;--table-border:#e7ebee;--hover-bg:#e9eeed;
+    --danger:#dc3545;--warning:#ffc107;--driver-tag-green:#ddece6;--info-blue:#3471db;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:var(--text-default);background:#fff;margin:0;}
+
+  /* ANN BANNER */
+  .ann{background:#FFFFF0;border-bottom:1px solid #e8e870;padding:7px 1.25rem;font-size:12.5px;display:flex;align-items:center;gap:.6rem;position:fixed;top:0;left:0;right:0;z-index:110;}
+  .ann a{color:var(--info-blue);}
+  .ann .ar{margin-left:auto;display:flex;align-items:center;gap:.6rem;}
+  .btn-switch{background:var(--brand-green);color:#fff;border:none;padding:5px 12px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;font-family:inherit;}
+
+  /* SIDEBAR */
+  .sidebar{width:158px;background:var(--sidebar-bg);border-right:1px solid var(--table-border);position:fixed;top:37px;left:0;bottom:0;overflow-y:auto;z-index:90;}
+  .sb-top{padding:.9rem .7rem .7rem;border-bottom:1px solid var(--table-border);}
+  .sb-co{font-size:14px;font-weight:600;}
+  .sb-u{font-size:12px;font-weight:500;}
+  .sb-r{font-size:11px;color:var(--text-muted);}
+  .sb-r a{color:var(--info-blue);}
+  .sb-st{font-size:11px;display:block;margin-top:2px;}
+  .sb-st strong{color:var(--brand-green);}
+  .sb-st.m{color:var(--text-muted);}
+  .nav-sec{font-size:10px;font-weight:700;text-transform:uppercase;color:var(--text-muted);padding:.8rem .7rem .2rem;letter-spacing:.06em;}
+  .ni{display:flex;align-items:center;gap:.45rem;padding:6px .7rem;cursor:pointer;color:var(--text-default);font-size:12.5px;text-decoration:none;transition:background .15s;}
+  .ni:hover{background:var(--hover-bg);color:var(--text-default);text-decoration:none;}
+  .ni.active{background:var(--brand-green);color:#fff;}
+  .ni-ic{width:15px;text-align:center;color:var(--text-muted);font-size:.75rem;}
+  .ni.active .ni-ic{color:#fff;}
+  .beta{font-size:9px;background:#f0f0f0;color:var(--text-muted);padding:1px 4px;border-radius:2px;font-weight:700;text-transform:uppercase;}
+  .ni-collapse{font-size:11px;color:var(--text-muted);padding:6px .7rem;display:flex;align-items:center;gap:3px;cursor:pointer;}
+
+  /* MAIN */
+  .main{margin-left:158px;margin-top:37px;padding-bottom:20px;}
+
+  /* DEMO */
+  .demo{background:#fff8e6;border:1px solid #ffe082;padding:.5rem 1.25rem;font-size:12.5px;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+  .demo strong{color:#856404;}
+  .db{font-size:12px;padding:2px 10px;border-radius:3px;border:1px solid var(--border-gray);background:#fff;cursor:pointer;font-family:inherit;}
+  .db.on{background:var(--brand-green);color:#fff;border-color:var(--brand-green);}
+
+  /* BACK / SAVE FLOATING BAR */
+  .float-bar{display:flex;align-items:center;justify-content:space-between;padding:.55rem 1.25rem;border-bottom:1px solid var(--table-border);background:#fff;position:sticky;top:0;z-index:80;}
+  .btn-back-fl{background:none;border:1px solid var(--border-gray);padding:.4rem 1rem;border-radius:3px;font-family:inherit;font-size:12.5px;color:var(--text-default);cursor:pointer;display:flex;align-items:center;gap:4px;}
+  .btn-back-fl:hover{background:var(--light-gray);}
+  .btn-back-fl i{font-size:10px;}
+  .btn-sc{background:var(--brand-green);color:#fff;border:none;padding:.4rem 1.1rem;border-radius:3px;font-family:inherit;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;box-shadow:0 3px 4px rgba(0,0,0,.1);display:flex;align-items:center;gap:4px;}
+  .btn-sc:hover{background:var(--brand-green-dark);}
+  .btn-sc i{font-size:10px;}
+
+  /* BACK LINK (Survey List) */
+  .survey-back{padding:.5rem 1.25rem;}
+  .survey-back a{color:var(--info-blue);font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:3px;}
+  .survey-back a:hover{text-decoration:underline;}
+
+  /* PAGE TITLE */
+  .pg-title{font-size:26px;font-weight:300;margin:0;padding:.1rem 1.25rem .75rem;}
+
+  /* WIZARD STEPS */
+  .wizard{padding:.6rem 1.25rem;border-bottom:1px solid var(--table-border);display:flex;align-items:center;gap:0;background:#fff;}
+  .wstep{display:flex;align-items:center;gap:.35rem;font-size:13px;}
+  .wnum{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+  .wnum.done{background:var(--brand-green);color:#fff;}
+  .wnum.active-step{background:var(--brand-green);color:#fff;}
+  .wnum.inactive{background:#e0e0e0;color:var(--text-muted);}
+  .wlabel{font-size:13px;}
+  .wlabel.active-step{color:var(--brand-green);font-weight:600;border-bottom:2px solid var(--brand-green);padding-bottom:2px;}
+  .wlabel.inactive{color:var(--text-muted);}
+  .warrow{margin:0 .6rem;color:var(--border-gray);font-size:11px;}
+
+  /* CONTENT AREA */
+  .content{padding:1.25rem 1.25rem;}
+
+  /* STEP HEADER */
+  .step-hdr{margin-bottom:1.1rem;}
+  .step-hdr h3{font-size:17px;font-weight:400;margin:0 0 2px;}
+  .step-hdr p{font-size:12.5px;color:var(--text-muted);margin:0;}
+
+  /* SETTINGS SECTION */
+  .sset{margin-bottom:1.5rem;}
+  .sset-title{font-size:15px;font-weight:400;margin-bottom:.1rem;color:var(--text-default);}
+  .sset-desc{font-size:12px;color:var(--text-muted);margin-bottom:.65rem;line-height:1.5;}
+  .sset-desc a{color:var(--danger);}
+  .sset hr{border:none;border-top:1px solid var(--table-border);margin:1.25rem 0;}
+
+  /* CHECKBOX GROUP */
+  .chk-lbl{display:flex;align-items:flex-start;gap:.5rem;margin-bottom:.35rem;font-size:13px;cursor:pointer;line-height:1.5;}
+  .chk-lbl input[type=checkbox]{accent-color:var(--brand-green);margin-top:2px;width:14px;height:14px;cursor:pointer;flex-shrink:0;}
+  .chk-lbl i-label{font-style:italic;color:var(--text-muted);}
+
+  /* RADIO */
+  .rg{display:flex;align-items:center;gap:1rem;margin-top:.25rem;}
+  .rl{display:flex;align-items:center;gap:4px;font-size:13px;cursor:pointer;}
+  .rl input[type=radio]{accent-color:var(--brand-green);cursor:pointer;}
+
+  /* INPUT */
+  .fi{border:1px solid var(--border-gray);border-radius:3px;padding:.35rem .7rem;font-family:inherit;font-size:13.5px;color:var(--text-default);background:#fff;outline:none;transition:border-color .15s;}
+  .fi:focus{border-color:var(--brand-green);box-shadow:0 0 0 2px rgba(85,206,151,.15);}
+  select.fi{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M0 0l4.5 5 4.5-5z' fill='%236c757d'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center;padding-right:1.75rem;}
+
+  /* TOGGLE */
+  .ts{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0;}
+  .ts input{opacity:0;width:0;height:0;}
+  .sl{position:absolute;cursor:pointer;inset:0;background-color:#ccc;transition:.3s;border-radius:34px;}
+  .sl:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background-color:#fff;transition:.3s;border-radius:50%;}
+  input:checked+.sl{background-color:var(--brand-green);}
+  input:checked+.sl:before{transform:translateX(20px);}
+
+  /* ===== ACCESS & VISIBILITY CARD ===== */
+  .av-card{border:2px solid var(--brand-green);border-radius:4px;overflow:hidden;margin-bottom:1.5rem;}
+  .av-hdr{background:#f0fdf7;border-bottom:2px solid var(--brand-green);padding:.85rem 1.1rem;display:flex;align-items:center;gap:.6rem;}
+  .av-hdr-info h5{font-size:14px;font-weight:600;color:var(--brand-green-dark);margin:0 0 1px;}
+  .av-hdr-info p{font-size:12px;color:var(--text-muted);margin:0;}
+  .new-badge{font-size:10px;background:var(--driver-tag-green);color:var(--brand-green-dark);padding:1px 7px;border-radius:3px;font-weight:700;text-transform:uppercase;margin-left:auto;}
+  .av-body{padding:1rem 1.1rem;}
+
+  /* TOGGLE ROW */
+  .toggle-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1.25rem;margin-bottom:.75rem;}
+  .tr-info h6{font-size:14px;font-weight:500;margin:0 0 3px;}
+  .tr-info p{font-size:12.5px;color:var(--text-muted);margin:0;line-height:1.5;max-width:460px;}
+
+  /* ROLE PICKER */
+  .rp-wrap{border:1px solid var(--border-gray);border-radius:3px;overflow:hidden;margin-top:.85rem;}
+  .rp-hdr{display:flex;align-items:center;justify-content:space-between;padding:.6rem .85rem;background:var(--light-gray);border-bottom:1px solid var(--table-border);}
+  .rp-hdr span{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted);}
+  .rp-search{display:flex;align-items:center;gap:.4rem;border:1px solid var(--border-gray);border-radius:3px;padding:0 .6rem;height:30px;background:#fff;}
+  .rp-search input{border:none;outline:none;font-family:inherit;font-size:12.5px;width:160px;}
+  .rp-search i{color:var(--text-muted);font-size:11px;}
+  .rp-list{max-height:260px;overflow-y:auto;}
+  .rp-item{display:flex;align-items:center;justify-content:space-between;padding:10px .85rem;border-bottom:1px solid var(--table-border);cursor:pointer;transition:background .1s;}
+  .rp-item:last-child{border-bottom:none;}
+  .rp-item:hover{background:#f8fefb;}
+  .rp-item.sel{background:#f0fdf7;}
+  .rp-item.dis{opacity:.45;cursor:default;}
+  .rp-item.dis:hover{background:transparent;}
+  .rp-left{display:flex;align-items:flex-start;gap:.65rem;}
+  .rp-ic{width:32px;height:32px;border-radius:50%;background:var(--driver-tag-green);color:var(--brand-green-dark);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
+  .rp-ic.dis-ic{background:#f0f0f0;color:var(--text-muted);}
+  .rp-name{font-size:13.5px;font-weight:500;}
+  .rtag{font-size:10px;font-weight:700;background:#fff3cd;color:#856404;padding:1px 5px;border-radius:8px;text-transform:uppercase;margin-left:5px;}
+  .ntag{font-size:10px;color:var(--text-muted);margin-left:4px;}
+  .rp-meta{font-size:11.5px;color:var(--text-muted);margin-top:1px;}
+  .chk-circ{width:20px;height:20px;border-radius:50%;border:2px solid var(--border-gray);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;}
+  .chk-circ.on{border-color:var(--brand-green);background:var(--brand-green);}
+  .chk-circ.on::after{content:'✓';font-size:10px;color:#fff;font-weight:700;}
+
+  /* SELECTED SUMMARY */
+  .rp-sum{padding:.75rem .85rem;background:var(--light-gray);border-top:1px solid var(--table-border);}
+  .rp-sum-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted);margin-bottom:.4rem;}
+  .pills{display:flex;flex-wrap:wrap;gap:.35rem;}
+  .pill{background:#fff;border:1px solid var(--brand-green);color:var(--brand-green-dark);font-size:12px;font-weight:500;padding:3px 9px;border-radius:14px;display:flex;align-items:center;gap:4px;}
+  .pill .px{cursor:pointer;color:var(--text-muted);font-size:10px;}
+  .pill .px:hover{color:var(--danger);}
+  .no-sel{font-size:12.5px;color:var(--text-muted);font-style:italic;}
+
+  /* INFO CALLOUT */
+  .ic{background:#fff3cd;border:1px solid var(--warning);border-radius:3px;padding:.75rem .9rem;font-size:12.5px;color:#856404;display:flex;align-items:flex-start;gap:.5rem;margin-top:.85rem;}
+  .ic i{margin-top:2px;flex-shrink:0;}
+  .ic a{color:#856404;font-weight:600;}
+
+  /* OFF STATE */
+  .off-info{font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:.5rem;padding:.35rem 0;}
+
+  /* GENERIC SETTINGS BLOCK */
+  .gsec{margin-bottom:1.5rem;}
+  .gsec-title{font-size:16px;font-weight:400;margin-bottom:.25rem;}
+  .gsec-desc{font-size:12.5px;color:var(--text-muted);margin-bottom:.6rem;line-height:1.5;}
+  .gsec-desc a{color:var(--danger);}
+  .divider{border:none;border-top:1px solid var(--table-border);margin:1.5rem 0;}
+
+  /* TOAST */
+  .tw{position:fixed;top:.85rem;right:1.25rem;z-index:300;display:none;}
+  .tw.show{display:block;animation:si .3s ease;}
+  .tb{background:#fff;border-left:4px solid #28a745;border-radius:3px;box-shadow:0 4px 16px rgba(0,0,0,.12);padding:.7rem 1.1rem;min-width:270px;display:flex;align-items:center;gap:.6rem;font-size:13px;}
+  .tb i{color:#28a745;}
+  @keyframes si{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
+</style>
+</head>
+<body>
+
+<!-- ANN BANNER -->
+<div class="ann">
+  <span style="font-size:15px;">🌈</span>
+  <span>Gender diversity in leadership has positive impact on profitability. <a href="#">Click here</a> for leadership diversity in Acme - test cipla.</span>
+  <div class="ar">
+    <button class="btn-switch">Switch to Candidate</button>
+    <i class="fas fa-cog" style="color:var(--text-muted);cursor:pointer;font-size:13px;"></i>
+    <div style="width:26px;height:26px;border-radius:50%;background:var(--brand-green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;cursor:pointer;">CU</div>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-top">
+    <div class="sb-co">Acme - test cipla</div>
+    <div class="sb-u">Caesar User</div>
+    <div class="sb-r">Logged in as: <a href="#">Shabharish V</a></div>
+    <span class="sb-st"><strong>Active Employees: 687/700</strong></span>
+    <span class="sb-st m">Active Managers: 115</span>
+  </div>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-home"></i></span> Dashboard</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-sitemap"></i></span> Org Hierarchy</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-chart-pie"></i></span> Lifecycle Analytics</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-camera-retro"></i></span> Snapshots <span class="beta">beta</span></a>
+  <div class="nav-sec">Listen</div>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fa fa-clone"></i></span> Templates</a>
+  <a class="ni active" href="#"><span class="ni-ic"><i class="fa fa-paint-brush"></i></span> Surveys</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-heartbeat"></i></span> Pulse</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-space-shuttle"></i></span> Lifecycle</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-broadcast-tower"></i></span> Channels</a>
+  <div class="nav-sec">Analyse</div>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-chart-line"></i></span> Reports</a>
+  <a class="ni" href="#"><span class="ni-ic"><i class="fas fa-file-export"></i></span> Report Builder</a>
+  <div class="ni-collapse"><i class="fas fa-chevron-left" style="font-size:9px;"></i> Collapse</div>
+</aside>
+
+<main class="main">
+  <!-- DEMO SWITCHER -->
+  <div class="demo">
+    <strong>🎛 Demo:</strong>
+    <button class="db on" onclick="setMode(false,event)">Restriction OFF (default)</button>
+    <button class="db" onclick="setMode(true,event)">Restriction ON — roles selected</button>
+    <button class="db" onclick="setMode('empty',event)">Restriction ON — no roles yet</button>
+  </div>
+
+  <!-- SURVEY LIST BACK -->
+  <div class="survey-back"><a href="#"><i class="fas fa-chevron-left" style="font-size:10px;"></i> Survey List</a></div>
+  <h1 class="pg-title">New Survey</h1>
+
+  <!-- WIZARD STEPS -->
+  <div class="wizard">
+    <div class="wstep">
+      <div class="wnum done">1</div>
+      <span class="wlabel" style="color:var(--text-muted);">Basic</span>
+    </div>
+    <span class="warrow"><i class="fas fa-chevron-right"></i></span>
+    <div class="wstep">
+      <div class="wnum inactive">2</div>
+      <span class="wlabel inactive">Questions</span>
+    </div>
+    <span class="warrow"><i class="fas fa-chevron-right"></i></span>
+    <div class="wstep">
+      <div class="wnum inactive">3</div>
+      <span class="wlabel inactive">Audience</span>
+    </div>
+    <span class="warrow"><i class="fas fa-chevron-right"></i></span>
+    <div class="wstep">
+      <div class="wnum active-step">4</div>
+      <span class="wlabel active-step">Settings</span>
+    </div>
+  </div>
+
+  <!-- FLOATING BACK / SAVE -->
+  <div class="float-bar">
+    <button class="btn-back-fl"><i class="fas fa-chevron-left"></i> Back to Survey Templates</button>
+    <button class="btn-sc" onclick="doSave()">Save &amp; Continue <i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <div class="content">
+    <div class="step-hdr">
+      <h3>Step 4: Survey Settings</h3>
+      <p>Configure survey mode, identity, question settings and access controls.</p>
+    </div>
+
+    <!-- Survey Mode -->
+    <div class="gsec">
+      <div class="gsec-title">Survey Mode</div>
+      <div class="gsec-desc">Choose the survey mode as test to enable survey deletion after launch. <a href="#">Surveys not marked as test surveys cannot be deleted.</a></div>
+      <label class="chk-lbl"><input type="checkbox"> Mark as test survey</label>
+    </div>
+
+    <!-- Identity Settings -->
+    <div class="gsec">
+      <div class="gsec-title">Identity Settings</div>
+      <div class="gsec-desc">If you choose Anonymous, no employee data will be revealed. <a href="#">For Non-anonymous, the admins can view the employee responses.</a></div>
+      <div class="rg">
+        <label class="rl"><input type="radio" name="identity" value="anon" checked> Anonymous</label>
+        <label class="rl"><input type="radio" name="identity" value="non"> Non-Anonymous</label>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- QR Only -->
+    <div class="gsec">
+      <div class="gsec-title">QR-only Survey</div>
+      <div class="gsec-desc">No notifications or reminders will be sent. <a href="#">Participants can access via direct link or QR code.</a></div>
+      <label class="chk-lbl"><input type="checkbox"> QR-only survey (no notifications)</label>
+    </div>
+
+    <!-- Question Settings -->
+    <div class="gsec">
+      <div class="gsec-title">Question Settings</div>
+      <label class="chk-lbl"><input type="checkbox" checked> Add eNPS to this survey</label>
+      <label class="chk-lbl"><input type="checkbox"> Add custom NPS question — <em>How likely are you to recommend your Manager to others?</em></label>
+      <label class="chk-lbl"><input type="checkbox"> Add custom NPS question — <em>how would promote your manager?</em></label>
+      <label class="chk-lbl"><input type="checkbox"> Add custom NPS question — <em>How would you promote your team</em></label>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:.35rem;padding-left:1.35rem;">
+        Placement of the NPS questions: 
+        <label class="rl" style="display:inline-flex;margin-left:.5rem;"><input type="radio" name="nps_pos" value="top"> Top</label>
+        <label class="rl" style="display:inline-flex;margin-left:.75rem;"><input type="radio" name="nps_pos" value="bot" checked> Bottom</label>
+      </div>
+      <label class="chk-lbl" style="margin-top:.35rem;"><input type="checkbox"> Disable feedback</label>
+    </div>
+
+    <!-- Question Language -->
+    <div class="gsec">
+      <div class="gsec-title">Question Language Settings</div>
+      <div class="gsec-desc">Create multilingual surveys to connect with your employees in their native languages. Languages will be listed for selection in the survey to capture each employee's preferred language.<br><a href="#" style="color:var(--danger);">Showing the same question in English and in a regional language will increase the survey's form length</a></div>
+      <label class="chk-lbl"><input type="checkbox"> Multilingual</label>
+      <label class="chk-lbl" style="padding-left:1.2rem;"><input type="checkbox" disabled> Show Default Question (in English)</label>
+    </div>
+
+    <!-- Driver Settings -->
+    <div class="gsec">
+      <div class="gsec-title">Driver Settings</div>
+      <div class="gsec-desc">Choose to create survey across CultureMonkey default drivers or <a href="#" style="color:var(--info-blue);">custom drivers</a>.<br><a href="#" style="color:var(--danger);">We recommend using default drivers for better analysis. Mix of default and custom drivers are not allowed.</a></div>
+      <div class="rg">
+        <label class="rl"><input type="radio" name="driver" value="def" checked> Default</label>
+        <label class="rl"><input type="radio" name="driver" value="cust"> Custom</label>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ===== ACCESS & VISIBILITY ===== -->
+    <div class="av-card">
+      <div class="av-hdr">
+        <i class="fas fa-shield-alt" style="color:var(--brand-green);font-size:15px;flex-shrink:0;"></i>
+        <div class="av-hdr-info">
+          <h5>Access &amp; Visibility</h5>
+          <p>Control which custom roles can view this survey and its reports.</p>
+        </div>
+        <span class="new-badge">New</span>
+      </div>
+      <div class="av-body">
+        <!-- Toggle -->
+        <div class="toggle-row">
+          <div class="tr-info">
+            <h6>Restrict access to specific roles</h6>
+            <p>When enabled, only users assigned to the selected roles will see this survey in their list and can access its reports. All other admins with Reports access are unaffected.</p>
+          </div>
+          <label class="ts" aria-label="Restrict access to specific roles">
+            <input type="checkbox" id="rt" onchange="handleToggle()">
+            <span class="sl"></span>
+          </label>
+        </div>
+
+        <!-- Role Picker (shown when ON) -->
+        <div id="rp" style="display:none;">
+          <div class="rp-wrap">
+            <div class="rp-hdr">
+              <span>Select roles to grant access</span>
+              <div class="rp-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="rsearch" placeholder="Search roles..." oninput="filterRoles(this.value)">
+              </div>
+            </div>
+            <div class="rp-list" id="rl"></div>
+            <div class="rp-sum">
+              <div class="rp-sum-label">Selected roles (<span id="sc">0</span>)</div>
+              <div class="pills" id="pills"></div>
+            </div>
+          </div>
+
+          <div class="ic">
+            <i class="fas fa-info-circle"></i>
+            <span>Default and custom roles appear here. <a href="settings__roles-list.html">Manage roles →</a></span>
+          </div>
+        </div>
+
+        <!-- OFF state -->
+        <div id="off-info" class="off-info">
+          <i class="fas fa-globe" style="color:var(--brand-green);"></i>
+          All admins and custom role users with Reports access can view this survey (subject to their data scope). Enable restriction above to limit to specific roles.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- BOTTOM FLOATING BAR (mirrors top) -->
+  <div class="float-bar" style="border-top:1px solid var(--table-border);border-bottom:none;position:static;">
+    <button class="btn-back-fl"><i class="fas fa-chevron-left"></i> Back to Survey Templates</button>
+    <button class="btn-sc" onclick="doSave()">Save &amp; Continue <i class="fas fa-chevron-right"></i></button>
+  </div>
+</main>
+
+<div class="tw" id="tw"><div class="tb"><i class="fas fa-check-circle"></i><span id="tm"></span></div></div>
+
+<script>
+const roles=[
+  {id:1,name:'HRBP Viewer',restr:true,scope:'Global',mods:'Dashboard, Reports, Comment Analytics',users:7},
+  {id:2,name:'Regional HR Lead',restr:true,scope:'India, APAC',mods:'Surveys (Edit), Reports, Actions',users:4},
+  {id:3,name:'Survey Auditor',restr:true,scope:'Global',mods:'Surveys (View only)',users:0},
+  {id:4,name:'Executive Viewer',restr:false,scope:'Global',mods:'Dashboard, Lifecycle Analytics, Snapshots',users:2},
+];
+let sel=new Set();
+
+function renderRoles(f){
+  const c=document.getElementById('rl');c.innerHTML='';
+  const list=roles.filter(r=>!f||r.name.toLowerCase().includes(f.toLowerCase()));
+  if(!list.length){c.innerHTML='<div style="padding:1.25rem;text-align:center;color:var(--text-muted);font-size:13px;">No roles match your search.</div>';return;}
+  list.forEach(r=>{
+    const s=sel.has(r.id),d=!r.restr;
+    const el=document.createElement('div');
+    el.className='rp-item'+(s?' sel':'')+(d?' dis':'');
+    if(!d)el.onclick=()=>toggle(r.id);
+    el.innerHTML=`
+      <div class="rp-left">
+        <div class="rp-ic${d?' dis-ic':''}"><i class="fas fa-shield-alt"></i></div>
+        <div>
+          <div class="rp-name">${r.name}${r.restr?'<span class="rtag">Survey Restricted</span>':'<span class="ntag">No restriction</span>'}</div>
+          <div class="rp-meta"><strong>Scope:</strong> ${r.scope} &nbsp;·&nbsp; <strong>Modules:</strong> ${r.mods} &nbsp;·&nbsp; ${r.users} user${r.users!==1?'s':''}</div>
+        </div>
+      </div>
+      <div class="chk-circ${s?' on':''}"></div>`;
+    c.appendChild(el);
+  });
+}
+
+function toggle(id){
+  sel.has(id)?sel.delete(id):sel.add(id);
+  renderRoles(document.getElementById('rsearch').value);
+  renderPills();
+}
+
+function renderPills(){
+  const c=document.getElementById('pills');c.innerHTML='';
+  document.getElementById('sc').textContent=sel.size;
+  if(!sel.size){c.innerHTML='<span class="no-sel">No roles selected yet.</span>';return;}
+  sel.forEach(id=>{
+    const r=roles.find(x=>x.id===id);if(!r)return;
+    const p=document.createElement('div');p.className='pill';
+    p.innerHTML=`<i class="fas fa-shield-alt" style="font-size:9px;"></i>${r.name}<span class="px" onclick="toggle(${r.id})" aria-label="Remove ${r.name}">×</span>`;
+    c.appendChild(p);
+  });
+}
+
+function filterRoles(q){renderRoles(q);}
+
+function handleToggle(){
+  const on=document.getElementById('rt').checked;
+  document.getElementById('rp').style.display=on?'block':'none';
+  document.getElementById('off-info').style.display=on?'none':'flex';
+}
+
+function setMode(m,e){
+  document.querySelectorAll('.db').forEach(b=>b.classList.remove('on'));e.target.classList.add('on');
+  sel.clear();
+  if(m===false){
+    document.getElementById('rt').checked=false;
+    document.getElementById('rp').style.display='none';
+    document.getElementById('off-info').style.display='flex';
+  }else if(m===true){
+    document.getElementById('rt').checked=true;
+    document.getElementById('rp').style.display='block';
+    document.getElementById('off-info').style.display='none';
+    sel.add(1);sel.add(2);
+    renderRoles();renderPills();
+  }else{
+    document.getElementById('rt').checked=true;
+    document.getElementById('rp').style.display='block';
+    document.getElementById('off-info').style.display='none';
+    renderRoles();renderPills();
+  }
+}
+
+function doSave(){toast('Settings saved for "Custom Survey 11 Mar 26".');}
+function toast(m){document.getElementById('tm').textContent=m;const t=document.getElementById('tw');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+
+renderRoles();renderPills();
+</script>
+</body>
+</html>
