@@ -31,11 +31,21 @@ export async function runEveningSync(): Promise<void> {
   try {
     const todoist = new TodoistClient(ENV.todoist.apiToken);
 
-    // Completed today
-    const sinceISO = dayStartUTC(today, tz).toISOString();
-    const untilISO = dayEndUTC(today, tz).toISOString();
-    const completedRaw = await todoist.getCompletedTasks(ENV.todoist.projectId, sinceISO, untilISO);
-    state.completedToday = completedRaw.map(t => mapTodoistTask(t, today));
+    // Completed today (Pro-only endpoint — gracefully skip on free plan)
+    try {
+      const sinceISO = dayStartUTC(today, tz).toISOString();
+      const untilISO = dayEndUTC(today, tz).toISOString();
+      const completedRaw = await todoist.getCompletedTasks(ENV.todoist.projectId, sinceISO, untilISO);
+      state.completedToday = completedRaw.map(t => mapTodoistTask(t, today));
+    } catch (err: any) {
+      const status = err?.response?.status;
+      if (status === 410 || status === 403) {
+        logger.warn('Completed tasks endpoint unavailable (Todoist free plan) — skipping', { status });
+        state.completedToday = [];
+      } else {
+        throw err; // unexpected error — let outer catch handle it
+      }
+    }
 
     // Still open
     const openRaw = await todoist.getActiveTasks(ENV.todoist.projectId);
