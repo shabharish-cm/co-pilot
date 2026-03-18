@@ -23,10 +23,8 @@ export const ENV = {
     projectId:  optional('TODOIST_PROJECT_ID', '6g8q49QQxHrFxRFx'),
   },
   gcal: {
-    clientId:     required('GCAL_CLIENT_ID'),
-    clientSecret: required('GCAL_CLIENT_SECRET'),
-    refreshToken: required('GCAL_REFRESH_TOKEN'),
-    calendarId:   optional('GCAL_CALENDAR_ID', 'primary'),
+    serviceAccountJson: required('GCAL_SERVICE_ACCOUNT_JSON'),
+    calendarId:         optional('GCAL_CALENDAR_ID', 'primary'),
   },
   fireflies: {
     apiKey: required('FIREFLIES_API_KEY'),

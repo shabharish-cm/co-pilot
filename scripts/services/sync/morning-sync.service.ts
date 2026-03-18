@@ -67,10 +67,8 @@ export async function runMorningSync(): Promise<void> {
   // ── Google Calendar ──────────────────────────────────────────────────────
   try {
     const gcal = new GCalClient({
-      clientId:     ENV.gcal.clientId,
-      clientSecret: ENV.gcal.clientSecret,
-      refreshToken: ENV.gcal.refreshToken,
-      calendarId:   ENV.gcal.calendarId,
+      serviceAccountJson: JSON.parse(ENV.gcal.serviceAccountJson),
+      calendarId:         ENV.gcal.calendarId,
     });
     const timeMin = dayStartUTC(today, tz).toISOString();
     const timeMax = dayEndUTC(today, tz).toISOString();

@@ -25,13 +25,11 @@ jobs:
       - name: Run morning sync
         run: npm run sync:morning
         env:
-          TODOIST_API_TOKEN:  ${{ secrets.TODOIST_API_TOKEN }}
-          GCAL_CLIENT_ID:     ${{ secrets.GCAL_CLIENT_ID }}
-          GCAL_CLIENT_SECRET: ${{ secrets.GCAL_CLIENT_SECRET }}
-          GCAL_REFRESH_TOKEN: ${{ secrets.GCAL_REFRESH_TOKEN }}
-          GCAL_CALENDAR_ID:   ${{ secrets.GCAL_CALENDAR_ID }}
-          TODOIST_PROJECT_ID: ${{ secrets.TODOIST_PROJECT_ID }}
-          TIMEZONE:           Asia/Kolkata
+          TODOIST_API_TOKEN:        ${{ secrets.TODOIST_API_TOKEN }}
+          GCAL_SERVICE_ACCOUNT_JSON: ${{ secrets.GCAL_SERVICE_ACCOUNT_JSON }}
+          GCAL_CALENDAR_ID:         ${{ secrets.GCAL_CALENDAR_ID }}
+          TODOIST_PROJECT_ID:       ${{ secrets.TODOIST_PROJECT_ID }}
+          TIMEZONE:                 Asia/Kolkata
 
       - name: Commit updated state
         run: |
