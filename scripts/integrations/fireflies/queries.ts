@@ -1,5 +1,5 @@
 export const TRANSCRIPT_BY_ID_QUERY = `
-  query Transcript($id: String!) {
+  query GetTranscriptById($id: ID!) {
     transcript(id: $id) {
       id
       title

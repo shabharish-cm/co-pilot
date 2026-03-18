@@ -64,9 +64,14 @@ export async function runDailyFirefliesSync(): Promise<void> {
     const rawTranscripts = (
       await Promise.all(
         firefliesIds.map(async id => {
-          const t = await fireflies.getTranscriptById(id);
-          if (!t) logger.warn('Transcript not found or inaccessible', { id });
-          return t;
+          try {
+            const t = await fireflies.getTranscriptById(id);
+            if (!t) logger.warn('Transcript not found', { id });
+            return t;
+          } catch (err) {
+            logger.warn('Transcript fetch failed — skipping', { id, error: String(err) });
+            return null;
+          }
         }),
       )
     ).filter((t): t is NonNullable<typeof t> => t !== null);

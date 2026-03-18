@@ -35,6 +35,6 @@ jobs:
         run: |
           git config user.name  "pm-copilot-bot"
           git config user.email "bot@pm-copilot"
-          git add pulse/raw/ pulse/normalized/ state/transcript_index.json state/last_sync.json
+          git add pulse/raw/ pulse/normalized/ pulse/weekly/ state/transcript_index.json state/last_sync.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "chore: fireflies sync $(date -u +%Y-%m-%d)"
-          git push
+          git diff HEAD origin/master --quiet || git push
