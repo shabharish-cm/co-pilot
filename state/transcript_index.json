@@ -1,4 +1,11 @@
 {
-  "lastUpdatedAt": null,
-  "entries": []
+  "lastUpdatedAt": "2026-03-18T12:29:51.845Z",
+  "entries": [
+    {
+      "dayKey": "2026-03-17",
+      "filePath": "/home/runner/work/co-pilot/co-pilot/pulse/normalized/2026-03-17-transcripts.json",
+      "transcriptCount": 0,
+      "fetchedAt": "2026-03-18T12:29:51.845Z"
+    }
+  ]
 }
