@@ -2,9 +2,9 @@
   "date": "2026-03-18",
   "timezone": "Asia/Kolkata",
   "lastMorningSyncAt": "2026-03-18T11:15:42.736Z",
-  "lastEveningSyncAt": "2026-03-18T15:30:00.378Z",
+  "lastEveningSyncAt": "2026-03-18T16:45:08.731Z",
   "sourceStatus": {
-    "todoist": "failed",
+    "todoist": "fresh",
     "googleCalendar": "fresh"
   },
   "openTasks": [
@@ -22,6 +22,17 @@
     {
       "id": "6g9wjqRfhhHJQ84x",
       "content": "Customer Pulse - Generate requirements from Feedback",
+      "due": "2026-03-19",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
+    },
+    {
+      "id": "6gC358jQm385w2vx",
+      "content": "Backfill 6-month Fireflies transcripts via Slack export",
       "due": "2026-03-19",
       "priority": 1,
       "labels": [],
@@ -64,6 +75,17 @@
     {
       "id": "6g9wjqRfhhHJQ84x",
       "content": "Customer Pulse - Generate requirements from Feedback",
+      "due": "2026-03-19",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
+    },
+    {
+      "id": "6gC358jQm385w2vx",
+      "content": "Backfill 6-month Fireflies transcripts via Slack export",
       "due": "2026-03-19",
       "priority": 1,
       "labels": [],
