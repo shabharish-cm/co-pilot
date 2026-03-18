@@ -7,8 +7,8 @@ This document defines the final implementation plan for a **personal PM Copilot*
 - **Node.js**
 - **TypeScript**
 - **Markdown-first storage**
-- **GitHub Actions** for scheduled data sync only
-- **Claude Code / Claude Cowork** for all AI-assisted reasoning and artifact generation
+- **GitHub Actions** for scheduled sync and weekly pulse orchestration
+- **Claude Code / Claude Cowork** for AI-assisted reasoning and artifact generation
 
 This revamp removes **Jira** and **Trello** from scope entirely and consolidates the design around the systems that actually matter for the stated objectives:
 
@@ -32,17 +32,21 @@ The document is designed to be implementation-ready for Codex or an engineering 
 2. Evening GitHub Action to fetch:
    - tasks completed that day
    - tasks due in the upcoming days
-3. Thursday GitHub Action to fetch:
-   - Fireflies transcripts for the previous week
-4. A Node.js task manager that can create and update Todoist tasks
-5. Claude command instructions for daily execution workflows such as `/morning`
-6. Claude-driven research workflow to:
+3. Daily GitHub Action to fetch:
+   - Fireflies transcripts for the previous day
+4. Thursday scheduled Claude pulse digest action to:
+   - read normalized transcripts from previous Thursday through Wednesday
+   - update weekly pulse digest and pulse master document
+   - detect recurring requests using prior pulse history
+5. A Node.js task manager that can create and update Todoist tasks
+6. Claude command instructions for daily execution workflows such as `/morning`
+7. Claude-driven research workflow to:
    - review Fireflies transcripts
    - research competition and public discussions
    - determine Job To Be Done
-7. Claude-driven PRD generation workflow
-8. Claude-driven HTML/CSS wireframe generation workflow
-9. Repository-backed memory and context persistence
+8. Claude-driven PRD generation workflow
+9. Claude-driven HTML/CSS wireframe generation workflow
+10. Repository-backed memory and context persistence
 
 ### Explicitly out of scope
 
@@ -51,7 +55,7 @@ The following are **removed from scope** and must not appear in architecture, fo
 - Jira
 - Trello
 - Any cross-system feature request reconciliation involving Jira/Trello
-- Any GitHub Action that calls Claude, Anthropic APIs, or other LLM services
+- Any GitHub Action other than the weekly pulse digest workflow that calls Claude, Anthropic APIs, or other LLM services
 
 ---
 
@@ -59,16 +63,16 @@ The following are **removed from scope** and must not appear in architecture, fo
 
 ## 3.1 Claude usage boundary
 
-**Claude services must run only inside Claude Code or Claude Cowork.**
+**Default rule: GitHub Actions are non-AI.**
 
-This is the most important implementation constraint.
+One explicit exception is allowed: a Thursday `weekly-customer-pulse.yml` workflow may invoke Claude to generate the weekly customer pulse digest and update the pulse master document.
 
 ### Therefore:
 
-- **GitHub Actions may not call Claude**
-- **GitHub Actions may not call Anthropic APIs**
-- **GitHub Actions may not generate digests, JTBDs, PRDs, summaries, research, or wireframes using AI**
-- **GitHub Actions are limited to fetch, normalize, validate, cache, and persist operations**
+- **Morning, evening, and daily Fireflies transcript sync actions may not call Claude**
+- **Only `weekly-customer-pulse.yml` may call Claude/Anthropic APIs**
+- **No GitHub Action may generate JTBDs, PRDs, broad research, or wireframes using AI**
+- **All non-pulse sync actions are limited to fetch, normalize, validate, cache, and persist operations**
 
 ### GitHub Actions are allowed to:
 
@@ -79,6 +83,7 @@ This is the most important implementation constraint.
 - write repository state files
 - update freshness metadata
 - open PRs or commit updated state if desired
+- run Thursday pulse digest orchestration that reads cached normalized transcripts and updates pulse artifacts via Claude
 
 ### Claude Code / Cowork are allowed to:
 
@@ -101,13 +106,14 @@ If this boundary gets blurred, the system will quietly become a mess with a nice
 |---|---|---|
 | Morning scheduled list of open tasks and scheduled calls | `morning-sync.yml` fetches Todoist + Google Calendar and writes canonical daily state | Covered |
 | Evening scheduled list of completed tasks and upcoming tasks | `evening-sync.yml` fetches completed tasks + due-soon tasks and updates state | Covered |
-| Thursday scheduled Fireflies transcript sync | `weekly-fireflies-sync.yml` fetches previous week transcripts and normalizes them | Covered |
+| Daily Fireflies transcript sync | `daily-fireflies-sync.yml` fetches previous day transcripts and normalizes them | Covered |
+| Thursday scheduled customer pulse digest | `weekly-customer-pulse.yml` invokes Claude on cached normalized transcripts from Thu-Wed and updates pulse outputs | Covered |
 | Task manager from Claude Code/Cowork | Node.js CLI + Claude command wrappers for create/update/complete flows | Covered |
 | Daily digest slash command like `/morning` | Claude command reads cached state and generates human digest | Covered |
 | Research competition + transcripts + public discussions + JTBD | Claude research workflow using synced files + public web research within Claude environment only | Covered |
 | Write PRD | Claude PRD workflow with approvals and artifact writing | Covered |
 | Design HTML/CSS wireframes | Claude design workflow outputs wireframe artifacts from approved PRD | Covered |
-| No AI in GitHub Actions | Explicit hard boundary and guardrails | Covered |
+| AI usage in GitHub Actions is tightly constrained | Only `weekly-customer-pulse.yml` may invoke Claude; all other workflows remain non-AI | Covered |
 
 ---
 
@@ -222,6 +228,8 @@ pulse/
   raw/
   normalized/
   weekly/
+  master/
+    customer-pulse-master.md
 
 PRDs/
   <feature-name>/
@@ -276,7 +284,8 @@ scripts/
     sync/
       morning-sync.service.ts
       evening-sync.service.ts
-      weekly-fireflies-sync.service.ts
+      daily-fireflies-sync.service.ts
+      weekly-customer-pulse.service.ts
     task-manager/
       task-manager.service.ts
       task-routing.service.ts
@@ -319,7 +328,8 @@ scripts/
 Collect external data on a schedule and persist it locally for Claude workflows.
 
 ### Important constraint
-This layer is **non-AI**.
+This layer is **non-AI by default**.
+The only allowed AI exception is the Thursday customer pulse digest workflow.
 
 ### Responsibilities
 - fetch data
@@ -335,6 +345,7 @@ This layer is **non-AI**.
 - deriving JTBD
 - generating PRDs
 - generating HTML/CSS wireframes
+- invoking Claude from any workflow except `weekly-customer-pulse.yml`
 
 ---
 
@@ -400,13 +411,13 @@ If Todoist inbox sections are used, routing logic should remain in `task-routing
 ## 8.4 Fireflies Transcript Sync Module
 
 ### Purpose
-Sync meetings from the previous week so Claude can later analyze them.
+Sync meetings from the previous day so customer pulse analysis always has fresh inputs.
 
-### Weekly behavior
-Every Thursday, fetch transcripts for the previous calendar week.
+### Daily behavior
+Run every day and fetch transcripts for the previous calendar day.
 
 ### The sync job must:
-- compute previous week start and end dates
+- compute previous-day start and end timestamps in the configured timezone
 - fetch transcript metadata and transcript content where available
 - handle pagination
 - store raw payloads
@@ -414,8 +425,8 @@ Every Thursday, fetch transcripts for the previous calendar week.
 - update transcript index metadata
 
 ### Output files
-- `pulse/raw/YYYY-WW-fireflies.json`
-- `pulse/normalized/YYYY-WW-transcripts.json`
+- `pulse/raw/YYYY-MM-DD-fireflies.json`
+- `pulse/normalized/YYYY-MM-DD-transcripts.json`
 - `state/transcript_index.json`
 
 ### Normalized transcript fields
@@ -428,11 +439,35 @@ Each transcript record should include:
 - `transcriptText`
 - `sourceUrl`
 - `fetchedAt`
-- `weekKey`
+- `sourceDay`
 
 ---
 
-## 8.5 Claude Daily Digest Module
+## 8.5 Customer Pulse Weekly Digest Module
+
+### Purpose
+Generate a weekly customer pulse digest and maintain a running pulse master document.
+
+### Schedule
+Every Thursday, trigger a scheduled Claude workflow that uses cached normalized transcripts.
+
+### Weekly window
+Use normalized transcripts from the previous Thursday through the current Wednesday.
+
+### The weekly digest job must:
+- collect normalized transcript files for the Thu-Wed window
+- load the existing `pulse/master/customer-pulse-master.md`
+- classify findings into the three required trackers:
+  - new feature requests
+  - problems with existing features
+  - what customers love about the platform
+- score each request/problem item in a value-effort matrix
+- detect recurring requests by comparing with prior weeks in the pulse master
+- write the new weekly digest and append/update the pulse master
+
+---
+
+## 8.6 Claude Daily Digest Module
 
 ### Purpose
 Generate the human-readable work digest from cached state.
@@ -464,7 +499,7 @@ The sync job must never pre-generate them using AI.
 
 ---
 
-## 8.6 Product Discovery and Research Module
+## 8.7 Product Discovery and Research Module
 
 ### Purpose
 Turn transcripts, notes, and public signals into a structured product discovery flow.
@@ -511,7 +546,7 @@ It must not be executed in GitHub Actions.
 
 ---
 
-## 8.7 PRD Generation Module
+## 8.8 PRD Generation Module
 
 ### Purpose
 Generate structured product requirements only after discovery inputs exist.
@@ -553,7 +588,7 @@ The command should fail closed unless these artifacts exist and are non-empty:
 
 ---
 
-## 8.8 HTML/CSS Wireframe Module
+## 8.9 HTML/CSS Wireframe Module
 
 ### Purpose
 Generate practical UI wireframes from the approved PRD.
@@ -636,10 +671,17 @@ Behavior:
 - persist local state update after remote success
 
 ## 9.7 `/pulse`
-Purpose: review latest synced weekly transcript digest inputs.
+Purpose: generate or review weekly customer pulse output from cached transcript data.
 
 Behavior:
-- read from `pulse/normalized/` and `pulse/weekly/`
+- read from `pulse/normalized/`, `pulse/weekly/`, and `pulse/master/customer-pulse-master.md`
+- for weekly runs, use normalized transcripts from previous Thursday through Wednesday
+- classify findings into:
+  - new feature requests
+  - problems with existing features
+  - what customers love about the platform
+- apply value-effort scoring for request/problem items
+- compare with prior pulse master entries to flag recurring requests
 - do not fetch Fireflies live unless explicitly requested and supported manually
 
 ## 9.8 `/research`
@@ -706,37 +748,55 @@ Writes:
     "ranAt": "2026-03-17T13:00:00Z",
     "status": "success"
   },
-  "weeklyFirefliesSync": {
-    "ranAt": "2026-03-17T01:00:00Z",
+  "dailyFirefliesSync": {
+    "ranAt": "2026-03-18T01:00:00Z",
     "status": "success",
-    "weekKey": "2026-W11"
+    "dayKey": "2026-03-17"
+  },
+  "weeklyCustomerPulseDigest": {
+    "ranAt": "2026-03-19T02:30:00Z",
+    "status": "success",
+    "weekKey": "2026-W12",
+    "windowStart": "2026-03-12",
+    "windowEnd": "2026-03-18"
   }
 }
 ```
 
-## 10.3 `pulse/normalized/YYYY-WW-transcripts.json`
+## 10.3 `pulse/normalized/YYYY-MM-DD-transcripts.json`
 
 ```json
 {
-  "weekKey": "2026-W11",
-  "generatedAt": "2026-03-17T01:15:00Z",
+  "dayKey": "2026-03-17",
+  "generatedAt": "2026-03-18T01:15:00Z",
   "transcripts": [
     {
       "transcriptId": "ff_123",
       "meetingTitle": "Customer feedback sync",
-      "meetingDate": "2026-03-12T09:00:00Z",
+      "meetingDate": "2026-03-17T09:00:00Z",
       "participants": ["A", "B"],
       "summary": "Customer asked for more flexible workflow rules",
       "transcriptText": "...",
       "sourceUrl": "https://...",
-      "fetchedAt": "2026-03-17T01:10:00Z",
-      "weekKey": "2026-W11"
+      "fetchedAt": "2026-03-18T01:10:00Z",
+      "sourceDay": "2026-03-17"
     }
   ]
 }
 ```
 
-## 10.4 PRD workflow state
+## 10.4 `pulse/master/customer-pulse-master.md`
+
+Expected structure (Markdown):
+- one section per `weekKey`
+- three mandatory tracker subsections:
+  - new feature requests
+  - problems with existing features
+  - what customers love
+- value-effort matrix placement for request/problem items
+- recurring-request markers with references to prior `weekKey` entries
+
+## 10.5 PRD workflow state
 
 ```json
 {
@@ -784,11 +844,11 @@ Writes:
 - generate EOD narrative summary
 - perform AI carry-forward reasoning
 
-## 11.3 `weekly-fireflies-sync.yml`
+## 11.3 `daily-fireflies-sync.yml`
 
 ### Responsibilities
-- run every Thursday
-- fetch previous week Fireflies transcripts
+- run every day
+- fetch previous-day Fireflies transcripts
 - handle pagination
 - write raw and normalized transcript files
 - update transcript index and sync metadata
@@ -798,12 +858,31 @@ Writes:
 - cluster pain points with Claude
 - generate JTBD or product recommendations
 
+## 11.4 `weekly-customer-pulse.yml`
+
+### Responsibilities
+- run every Thursday
+- read normalized transcripts covering previous Thursday through Wednesday
+- invoke Claude to generate `pulse/weekly/YYYY-WW-customer-pulse.md`
+- update `pulse/master/customer-pulse-master.md` with this week’s findings
+- classify points into:
+  - new feature requests
+  - problems with existing features
+  - what customers love about the platform
+- apply value-effort matrix scoring to request/problem items
+- compare against pulse master history to flag recurring requests
+- update weekly pulse sync metadata in `state/last_sync.json`
+
+### Must not do
+- fetch live Fireflies data directly (use cached normalized transcript files only)
+- generate JTBD, PRD, or wireframe artifacts
+
 ---
 
 ## 12. Guardrails
 
 ## 12.1 AI boundary guardrail
-No AI execution in CI. Ever.
+AI execution in CI is allowed only in `weekly-customer-pulse.yml`.
 
 ## 12.2 File ownership guardrail
 Each generated artifact must have a single canonical path.
@@ -812,7 +891,8 @@ Each generated artifact must have a single canonical path.
 Suggested thresholds:
 - morning/evening daily state stale after 12 hours
 - calendar/task digest warning after 24 hours
-- weekly transcript sync stale after 8 days
+- daily transcript sync stale after 36 hours
+- weekly customer pulse digest stale after 8 days
 - PRD review warning after 30 days without update
 
 ## 12.4 Command safety guardrail
@@ -823,6 +903,13 @@ Research, JTBD, and PRD outputs must distinguish between:
 - transcript-backed evidence
 - public-discussion evidence
 - inferred recommendations
+
+Weekly customer pulse outputs must always include:
+- new feature requests
+- problems with existing features
+- what customers love about the platform
+- value-effort matrix placement for request/problem items
+- explicit recurring-request markers where recurrence is detected
 
 ## 12.6 Approval guardrail
 The workflow must not silently move from JTBD to PRD without required approvals where approvals are part of the chosen flow.
@@ -849,15 +936,27 @@ A successful evening run must:
 - record tasks due in next 3 days
 - update sync timestamps
 
-## 13.3 Weekly transcript sync acceptance
-A successful Thursday run must:
-- fetch previous week transcripts
+## 13.3 Daily transcript sync acceptance
+A successful daily run must:
+- fetch previous-day transcripts
 - handle pagination
 - write raw payload
 - write normalized transcript file
 - update transcript index
 
-## 13.4 Task manager acceptance
+## 13.4 Weekly customer pulse digest acceptance
+A successful Thursday run must:
+- use normalized transcript files from previous Thursday through Wednesday
+- create `pulse/weekly/YYYY-WW-customer-pulse.md`
+- update `pulse/master/customer-pulse-master.md`
+- include sections for:
+  - new feature requests
+  - problems with existing features
+  - what customers love about the platform
+- include value-effort matrix placement for request/problem items
+- mark recurring requests based on prior pulse master history
+
+## 13.5 Task manager acceptance
 The Node.js task manager must:
 - create a Todoist task
 - update an existing task
@@ -865,16 +964,17 @@ The Node.js task manager must:
 - handle API errors gracefully
 - avoid corrupting local state when remote actions fail
 
-## 13.5 Claude command acceptance
+## 13.6 Claude command acceptance
 - `/morning` produces digest from cached state
 - `/eod` produces summary from cached state
+- `/pulse` can generate the weekly pulse output from cached normalized transcripts and existing pulse history
 - `/research` writes research artifact
 - `/jtbd` writes JTBD artifact
 - `/prd` writes PRD artifact
 - `/wireframe` writes HTML/CSS artifact
 
-## 13.6 Architecture compliance acceptance
-Repository logs, workflows, and code must show that no GitHub Action invokes Claude or Anthropic services.
+## 13.7 Architecture compliance acceptance
+Repository logs, workflows, and code must show that only `weekly-customer-pulse.yml` may invoke Claude or Anthropic services.
 
 ---
 
@@ -899,18 +999,24 @@ Expected result:
 - transcript count matches expected total if available
 - normalized output contains deduplicated records
 
-### Scenario D — `/morning` run before morning sync
+### Scenario D — Weekly pulse digest detects recurrence
+Expected result:
+- weekly pulse digest compares the current Thu-Wed window against pulse master history
+- recurring requests are explicitly marked with prior-week references
+- value-effort matrix placement is present for request/problem items
+
+### Scenario E — `/morning` run before morning sync
 Expected result:
 - Claude clearly states stale or missing sync state
 - it may still operate from last available cached state if present
 - it must not pretend data is fresh
 
-### Scenario E — `/wireframe` run before PRD exists
+### Scenario F — `/wireframe` run before PRD exists
 Expected result:
 - command fails closed
 - tells user which prerequisite artifact is missing
 
-### Scenario F — ambiguous `/done` task selection
+### Scenario G — ambiguous `/done` task selection
 Expected result:
 - command asks user to disambiguate or confirm
 - no accidental completion occurs
@@ -932,7 +1038,8 @@ Build:
 Build:
 - `morning-sync.yml`
 - `evening-sync.yml`
-- `weekly-fireflies-sync.yml`
+- `daily-fireflies-sync.yml`
+- `weekly-customer-pulse.yml`
 - raw snapshot writing
 - canonical state writing
 
@@ -975,7 +1082,7 @@ Build:
 1. Remove every Jira and Trello reference from code, docs, config, schemas, and workflows.
 2. Reuse the existing Claude skills already present in `.claude/Skills/`.
 3. Add or update command instruction files under `.claude/commands/` rather than duplicating role files.
-4. Keep GitHub Actions strictly non-AI.
+4. Keep GitHub Actions non-AI except for `weekly-customer-pulse.yml`.
 5. Store all synced state in repository files.
 6. Make Claude workflows consume repository state and write durable artifacts back into the repo.
 7. Treat HTML/CSS wireframes as real deliverables, not optional prose.
@@ -988,11 +1095,11 @@ Build:
 
 This final design is intentionally narrower and stronger than the previous version.
 
-It removes unnecessary systems, tightens the AI boundary, reuses the Claude skill assets that already exist, and cleanly separates:
+It removes unnecessary systems, keeps a strict AI boundary with one explicit weekly exception, reuses the Claude skill assets that already exist, and cleanly separates:
 
-- **scheduled sync work** from
-- **Claude reasoning work** from
-- **artifact generation work**
+- **daily non-AI sync work** from
+- **scheduled weekly customer pulse AI synthesis** from
+- **interactive Claude reasoning and artifact generation**
 
 That separation is what makes this implementable, testable, and maintainable.
 
