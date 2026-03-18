@@ -16,10 +16,12 @@ export class TodoistClient {
 
   async getActiveTasks(projectId: string): Promise<TodoistTask[]> {
     return withRetry(async () => {
-      const res = await this.http.get<TodoistTask[]>('/tasks', {
+      const res = await this.http.get<{ results: TodoistTask[] } | TodoistTask[]>('/tasks', {
         params: { project_id: projectId },
       });
-      return res.data;
+      // API v1 wraps results; fall back to flat array for compatibility
+      const data = res.data as any;
+      return Array.isArray(data) ? data : (data.results ?? []);
     }, {}, 'todoist:getActiveTasks');
   }
 
