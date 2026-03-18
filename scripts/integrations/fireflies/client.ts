@@ -14,22 +14,28 @@ export class FirefliesClient {
 
   async getTranscriptById(id: string): Promise<FirefliesTranscript | null> {
     return withRetry(async () => {
-      const res = await axios.post<FirefliesSingleResponse>(
-        ENDPOINT,
-        { query: TRANSCRIPT_BY_ID_QUERY, variables: { id } },
-        {
-          headers: {
-            Authorization: `Bearer ${this.apiKey}`,
-            'Content-Type': 'application/json',
+      try {
+        const res = await axios.post<FirefliesSingleResponse>(
+          ENDPOINT,
+          { query: TRANSCRIPT_BY_ID_QUERY, variables: { id } },
+          {
+            headers: {
+              Authorization: `Bearer ${this.apiKey}`,
+              'Content-Type': 'application/json',
+            },
           },
-        },
-      );
+        );
 
-      if (res.data.errors?.length) {
-        throw new Error(`Fireflies API error: ${res.data.errors[0].message}`);
+        if (res.data.errors?.length) {
+          throw new Error(`Fireflies API error: ${res.data.errors[0].message}`);
+        }
+
+        return res.data.data?.transcript ?? null;
+      } catch (err: any) {
+        // 400 = bad request (e.g. slug ID, unsupported format) — no point retrying
+        if (err?.response?.status === 400) return null;
+        throw err;
       }
-
-      return res.data.data?.transcript ?? null;
     }, { maxAttempts: 3 }, `fireflies:getTranscriptById:${id}`);
   }
 

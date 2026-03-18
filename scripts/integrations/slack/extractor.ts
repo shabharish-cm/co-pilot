@@ -7,6 +7,15 @@ import type { SlackMessage } from './types';
 const FIREFLIES_URL_RE = /https:\/\/app\.fireflies\.ai\/view\/([\w-]+)/g;
 
 /**
+ * Fireflies transcript UUIDs are lowercase alphanumeric, 20-30 chars, no uppercase.
+ * Slug-style share links (e.g. "CultureMonkey-Survey-Launch") contain uppercase letters
+ * or title-cased words — the GraphQL API rejects these with 400.
+ */
+function isTranscriptId(id: string): boolean {
+  return /^[a-z0-9][a-z0-9-]{10,}$/.test(id);
+}
+
+/**
  * Extract all unique Fireflies transcript IDs from a list of Slack messages.
  * Searches message text, attachment text/title_link, and block element URLs.
  */
@@ -39,7 +48,7 @@ export function extractFirefliesIds(messages: SlackMessage[]): string[] {
       const re = new RegExp(FIREFLIES_URL_RE.source, 'g');
       let match: RegExpExecArray | null;
       while ((match = re.exec(text)) !== null) {
-        ids.add(match[1]);
+        if (isTranscriptId(match[1])) ids.add(match[1]);
       }
     }
   }
