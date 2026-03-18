@@ -4,8 +4,8 @@
     "status": "success"
   },
   "eveningSync": {
-    "ranAt": null,
-    "status": null
+    "ranAt": "2026-03-18T15:25:37.878Z",
+    "status": "failed"
   },
   "dailyFirefliesSync": {
     "ranAt": "2026-03-18T12:29:51.845Z",

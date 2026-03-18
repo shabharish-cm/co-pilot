@@ -1,12 +1,7 @@
 {
   "date": "2026-03-18",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-18T11:15:42.736Z",
-  "lastEveningSyncAt": "2026-03-18T15:25:37.878Z",
-  "sourceStatus": {
-    "todoist": "failed",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-18T15:25:37.878Z",
+  "completedToday": [],
   "openTasks": [
     {
       "id": "6g9gQ3XFRQxFrRfQ",
@@ -59,7 +54,6 @@
       "isOverdue": false
     }
   ],
-  "completedToday": [],
   "dueSoon": [
     {
       "id": "6g9wjqRfhhHJQ84x",
@@ -100,10 +94,5 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false
     }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-18-morning.md",
-    "eod": null
-  }
+  ]
 }
