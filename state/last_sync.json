@@ -1,0 +1,22 @@
+{
+  "morningSync": {
+    "ranAt": null,
+    "status": null
+  },
+  "eveningSync": {
+    "ranAt": null,
+    "status": null
+  },
+  "dailyFirefliesSync": {
+    "ranAt": null,
+    "status": null,
+    "dayKey": null
+  },
+  "weeklyCustomerPulseDigest": {
+    "ranAt": null,
+    "status": null,
+    "weekKey": null,
+    "windowStart": null,
+    "windowEnd": null
+  }
+}

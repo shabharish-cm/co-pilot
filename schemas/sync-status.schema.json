@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LastSync",
+  "type": "object",
+  "required": ["morningSync", "eveningSync", "dailyFirefliesSync", "weeklyCustomerPulseDigest"],
+  "properties": {
+    "morningSync":    { "$ref": "#/definitions/syncEntry" },
+    "eveningSync":    { "$ref": "#/definitions/syncEntry" },
+    "dailyFirefliesSync": {
+      "allOf": [{ "$ref": "#/definitions/syncEntry" }],
+      "properties": { "dayKey": { "type": "string" } }
+    },
+    "weeklyCustomerPulseDigest": {
+      "allOf": [{ "$ref": "#/definitions/syncEntry" }],
+      "properties": {
+        "weekKey":     { "type": "string" },
+        "windowStart": { "type": "string" },
+        "windowEnd":   { "type": "string" }
+      }
+    }
+  },
+  "definitions": {
+    "syncEntry": {
+      "type": "object",
+      "required": ["ranAt", "status"],
+      "properties": {
+        "ranAt":  { "type": ["string", "null"] },
+        "status": { "type": ["string", "null"], "enum": ["success", "failed", "skipped", null] },
+        "error":  { "type": "string" }
+      }
+    }
+  }
+}

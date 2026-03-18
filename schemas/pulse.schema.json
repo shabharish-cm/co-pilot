@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PulseWeek",
+  "type": "object",
+  "required": ["weekKey", "windowStart", "windowEnd", "generatedAt", "featureRequests", "existingProblems", "customersLove"],
+  "properties": {
+    "weekKey":       { "type": "string" },
+    "windowStart":   { "type": "string" },
+    "windowEnd":     { "type": "string" },
+    "generatedAt":   { "type": "string" },
+    "featureRequests": { "type": "array" },
+    "existingProblems": { "type": "array" },
+    "customersLove": { "type": "array" }
+  }
+}

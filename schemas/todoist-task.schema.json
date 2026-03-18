@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TaskRecord",
+  "type": "object",
+  "required": ["id", "content", "priority", "labels", "projectId", "isOverdue", "url"],
+  "properties": {
+    "id":          { "type": "string" },
+    "content":     { "type": "string" },
+    "description": { "type": "string" },
+    "due":         { "type": ["string", "null"] },
+    "priority":    { "type": "integer", "enum": [1, 2, 3, 4] },
+    "labels":      { "type": "array", "items": { "type": "string" } },
+    "sectionId":   { "type": "string" },
+    "sectionName": { "type": "string" },
+    "projectId":   { "type": "string" },
+    "isOverdue":   { "type": "boolean" },
+    "url":         { "type": "string" }
+  }
+}

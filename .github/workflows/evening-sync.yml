@@ -1,0 +1,38 @@
+name: Evening Sync
+
+on:
+  schedule:
+    # 7:00 PM IST = 13:30 UTC
+    - cron: '30 13 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Run evening sync
+        run: npm run sync:evening
+        env:
+          TODOIST_API_TOKEN:  ${{ secrets.TODOIST_API_TOKEN }}
+          TODOIST_PROJECT_ID: ${{ secrets.TODOIST_PROJECT_ID }}
+          TIMEZONE:           Asia/Kolkata
+
+      - name: Commit updated state
+        run: |
+          git config user.name  "pm-copilot-bot"
+          git config user.email "bot@pm-copilot"
+          git add state/current_day.json state/last_sync.json daily/raw/
+          git diff --staged --quiet || git commit -m "chore: evening sync $(date -u +%Y-%m-%d)"
+          git push

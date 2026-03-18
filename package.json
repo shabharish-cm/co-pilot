@@ -1,0 +1,38 @@
+{
+  "name": "pm-copilot",
+  "version": "1.0.0",
+  "description": "Personal PM Copilot — task sync, transcript analysis, and product discovery workflows",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "sync:morning": "tsx scripts/services/sync/morning-sync.service.ts",
+    "sync:evening": "tsx scripts/services/sync/evening-sync.service.ts",
+    "sync:fireflies": "tsx scripts/services/sync/daily-fireflies-sync.service.ts",
+    "task": "tsx scripts/cli/index.ts",
+    "validate:schemas": "tsx scripts/utils/validation.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "axios": "^1.7.9",
+    "axios-retry": "^4.5.0",
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
+    "dotenv": "^16.4.7",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

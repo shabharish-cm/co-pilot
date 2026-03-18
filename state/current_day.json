@@ -1,0 +1,46 @@
+{
+  "date": "2026-03-18",
+  "timezone": "Asia/Kolkata",
+  "lastMorningSyncAt": "2026-03-18T09:01:58.143Z",
+  "lastEveningSyncAt": null,
+  "sourceStatus": {
+    "todoist": "fresh",
+    "googleCalendar": "fresh"
+  },
+  "openTasks": [
+    {
+      "id": "1",
+      "content": "Write PRD for reporting",
+      "priority": 1,
+      "labels": [],
+      "projectId": "proj1",
+      "isOverdue": false,
+      "url": ""
+    },
+    {
+      "id": "2",
+      "content": "Write PRD for analytics",
+      "priority": 1,
+      "labels": [],
+      "projectId": "proj1",
+      "isOverdue": false,
+      "url": ""
+    },
+    {
+      "id": "3",
+      "content": "Review API contract",
+      "priority": 1,
+      "labels": [],
+      "projectId": "proj1",
+      "isOverdue": false,
+      "url": ""
+    }
+  ],
+  "completedToday": [],
+  "dueSoon": [],
+  "todayMeetings": [],
+  "digestPaths": {
+    "morning": null,
+    "eod": null
+  }
+}

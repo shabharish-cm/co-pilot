@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PRDWorkflowState",
+  "type": "object",
+  "required": ["feature", "currentStage", "approvals", "lastUpdated"],
+  "properties": {
+    "feature":      { "type": "string" },
+    "currentStage": { "type": "string", "enum": ["discovery", "research", "jtbd", "validation", "prd", "wireframe", "shipped"] },
+    "approvals": {
+      "type": "object",
+      "required": ["jtbd", "research", "validation", "prd"],
+      "properties": {
+        "jtbd":       { "type": "boolean" },
+        "research":   { "type": "boolean" },
+        "validation": { "type": "boolean" },
+        "prd":        { "type": "boolean" }
+      }
+    },
+    "lastUpdated": { "type": "string" }
+  }
+}
