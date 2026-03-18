@@ -98,6 +98,24 @@ One explicit exception is allowed: a Thursday `weekly-customer-pulse.yml` workfl
 
 If this boundary gets blurred, the system will quietly become a mess with a nicer README. Don’t do that.
 
+## 3.2 Claude model routing policy
+
+Use explicit model routing for predictability and cost control:
+
+- **Claude Haiku** for writing outputs:
+  - daily digests (`/morning`, `/eod`)
+  - weekly customer pulse digest write-up
+  - PRD drafting (`/prd`)
+- **Claude Sonnet** for reasoning-heavy work:
+  - prioritization and decision support
+  - transcript interpretation and pattern analysis
+  - customer pulse classification and recurrence detection
+  - research synthesis and JTBD reasoning
+
+When a workflow contains both reasoning and writing, run it as two phases:
+1. Sonnet performs analysis and produces structured intermediate notes.
+2. Haiku turns approved notes into the final written artifact.
+
 ---
 
 ## 4. Business Objectives to Solution Mapping
@@ -110,6 +128,7 @@ If this boundary gets blurred, the system will quietly become a mess with a nice
 | Thursday scheduled customer pulse digest | `weekly-customer-pulse.yml` invokes Claude on cached normalized transcripts from Thu-Wed and updates pulse outputs | Covered |
 | Task manager from Claude Code/Cowork | Node.js CLI + Claude command wrappers for create/update/complete flows | Covered |
 | Daily digest slash command like `/morning` | Claude command reads cached state and generates human digest | Covered |
+| Model routing consistency | Haiku writes PRDs/digests; Sonnet handles reasoning/research/analysis | Covered |
 | Research competition + transcripts + public discussions + JTBD | Claude research workflow using synced files + public web research within Claude environment only | Covered |
 | Write PRD | Claude PRD workflow with approvals and artifact writing | Covered |
 | Design HTML/CSS wireframes | Claude design workflow outputs wireframe artifacts from approved PRD | Covered |
@@ -145,6 +164,11 @@ Every major recommendation should be traceable to:
 - transcript evidence
 - previous product context
 - public discussion research
+
+### 5.7 Explicit model assignment
+- Haiku is the default writer for PRDs and digest artifacts.
+- Sonnet is the default model for reasoning, research, and analysis tasks.
+- Command and workflow instructions must declare the intended model role to avoid silent drift.
 
 ---
 
@@ -451,6 +475,10 @@ Generate a weekly customer pulse digest and maintain a running pulse master docu
 ### Schedule
 Every Thursday, trigger a scheduled Claude workflow that uses cached normalized transcripts.
 
+### Model usage
+- Sonnet for transcript analysis, clustering, recurrence detection, and value-effort placement
+- Haiku for writing the final weekly digest text and pulse master updates
+
 ### Weekly window
 Use normalized transcripts from the previous Thursday through the current Wednesday.
 
@@ -493,6 +521,10 @@ Reads repository state and produces:
 These digests are **generated only in Claude Code/Cowork**.
 The sync job must never pre-generate them using AI.
 
+### Model usage
+- Use Haiku to draft digest output text.
+- Use Sonnet only if intermediate reasoning is needed before digest drafting.
+
 ### Output paths
 - `daily/digests/YYYY-MM-DD-morning.md`
 - `daily/digests/YYYY-MM-DD-eod.md`
@@ -518,6 +550,9 @@ At least one of the following:
 ### Important execution rule
 Public discussion research must happen **inside Claude Code/Cowork only**.
 It must not be executed in GitHub Actions.
+
+### Model usage
+- Use Sonnet for research synthesis, evidence interpretation, and analytical reasoning.
 
 ### Recommended command split
 - `/research` → collects and writes evidence-backed market and discussion research
@@ -553,6 +588,10 @@ Generate structured product requirements only after discovery inputs exist.
 
 ### Command
 `/prd`
+
+### Model usage
+- Use Sonnet for requirement reasoning, tradeoff analysis, and structure planning.
+- Use Haiku to draft and format the final PRD artifact.
 
 ### Preconditions
 The command should fail closed unless these artifacts exist and are non-empty:
@@ -626,6 +665,10 @@ Wireframes should be based on the PRD and UX patterns, not invented product logi
 ## 9.1 `/morning`
 Purpose: generate the daily morning digest from cached daily state.
 
+Model:
+- Haiku for final digest drafting.
+- Sonnet only for optional intermediate reasoning.
+
 Reads:
 - `state/current_day.json`
 - latest daily raw snapshot if needed
@@ -637,11 +680,18 @@ Writes:
 ## 9.2 `/eod`
 Purpose: generate end-of-day summary and carry-forward recommendations.
 
+Model:
+- Haiku for final digest drafting.
+- Sonnet only for optional intermediate reasoning.
+
 Writes:
 - `daily/digests/YYYY-MM-DD-eod.md`
 
 ## 9.3 `/now`
 Purpose: show focused next actions, not a giant guilt dump.
+
+Model:
+- Sonnet.
 
 Behavior:
 - surface 5 to 7 tasks max
@@ -651,6 +701,9 @@ Behavior:
 ## 9.4 `/add`
 Purpose: create a new Todoist task.
 
+Model:
+- Sonnet for inference/disambiguation when needed.
+
 Behavior:
 - validate task title
 - infer due date/priority if provided
@@ -659,6 +712,9 @@ Behavior:
 ## 9.5 `/update`
 Purpose: update Todoist task metadata.
 
+Model:
+- Sonnet for ambiguity handling and change reasoning.
+
 Behavior:
 - show before/after when important fields change
 - require confirmation for ambiguous changes
@@ -666,12 +722,19 @@ Behavior:
 ## 9.6 `/done`
 Purpose: complete a Todoist task.
 
+Model:
+- Sonnet for ambiguity handling.
+
 Behavior:
 - confirm when task match is ambiguous
 - persist local state update after remote success
 
 ## 9.7 `/pulse`
 Purpose: generate or review weekly customer pulse output from cached transcript data.
+
+Model:
+- Sonnet for transcript analysis, recurrence detection, and value-effort reasoning.
+- Haiku for final weekly pulse write-up text.
 
 Behavior:
 - read from `pulse/normalized/`, `pulse/weekly/`, and `pulse/master/customer-pulse-master.md`
@@ -687,11 +750,17 @@ Behavior:
 ## 9.8 `/research`
 Purpose: produce evidence-backed research from transcripts, prior context, competitors, and public discussion.
 
+Model:
+- Sonnet.
+
 Writes:
 - `PRDs/<feature-name>/research.md`
 
 ## 9.9 `/jtbd`
 Purpose: generate candidate Jobs To Be Done from approved problem inputs and research.
+
+Model:
+- Sonnet.
 
 Writes:
 - `PRDs/<feature-name>/jtbd.md`
@@ -699,11 +768,18 @@ Writes:
 ## 9.10 `/prd`
 Purpose: generate the feature PRD after discovery approval.
 
+Model:
+- Sonnet for planning/analysis.
+- Haiku for final PRD drafting.
+
 Writes:
 - `PRDs/<feature-name>/prd.md`
 
 ## 9.11 `/wireframe`
 Purpose: generate HTML/CSS wireframes from an approved PRD.
+
+Model:
+- Sonnet.
 
 Writes:
 - `PRDs/<feature-name>/wireframes/index.html`
@@ -873,6 +949,10 @@ Expected structure (Markdown):
 - compare against pulse master history to flag recurring requests
 - update weekly pulse sync metadata in `state/last_sync.json`
 
+### Model execution contract
+- Sonnet performs analysis and produces structured findings.
+- Haiku writes the final digest and pulse master narrative text from those findings.
+
 ### Must not do
 - fetch live Fireflies data directly (use cached normalized transcript files only)
 - generate JTBD, PRD, or wireframe artifacts
@@ -916,6 +996,11 @@ The workflow must not silently move from JTBD to PRD without required approvals 
 
 ## 12.7 Scope guardrail
 No hidden reintroduction of Jira or Trello in code, docs, workflows, or future placeholders in v1.
+
+## 12.8 Model routing guardrail
+- Digests and PRDs must be written by Haiku.
+- Reasoning, research, and analysis tasks must run on Sonnet.
+- Mixed workflows must preserve Sonnet-first analysis and Haiku-final-writing sequencing.
 
 ---
 
@@ -976,6 +1061,13 @@ The Node.js task manager must:
 ## 13.7 Architecture compliance acceptance
 Repository logs, workflows, and code must show that only `weekly-customer-pulse.yml` may invoke Claude or Anthropic services.
 
+## 13.8 Model routing acceptance
+- `/morning` and `/eod` use Haiku for final digest writing.
+- `/prd` uses Haiku for final PRD drafting.
+- `/research` and `/jtbd` use Sonnet for reasoning and analysis.
+- `/pulse` uses Sonnet for analysis and Haiku for final digest-style write-up.
+- `weekly-customer-pulse.yml` shows Sonnet analysis followed by Haiku final digest/master writing.
+
 ---
 
 ## 14. QA Test Scenarios
@@ -1021,6 +1113,12 @@ Expected result:
 - command asks user to disambiguate or confirm
 - no accidental completion occurs
 
+### Scenario H — Model routing enforcement
+Expected result:
+- digest and PRD artifacts are written by Haiku
+- reasoning/research/analysis steps run on Sonnet
+- weekly pulse workflow logs show Sonnet analysis phase before Haiku writing phase
+
 ---
 
 ## 15. Build Phases
@@ -1054,6 +1152,7 @@ Build:
 - `.claude/commands/*.md` files
 - command-to-skill references
 - artifact path conventions
+- model routing metadata for Haiku vs Sonnet execution
 
 ## Phase 5 — Discovery and PRD workflow
 Build:
@@ -1085,9 +1184,12 @@ Build:
 4. Keep GitHub Actions non-AI except for `weekly-customer-pulse.yml`.
 5. Store all synced state in repository files.
 6. Make Claude workflows consume repository state and write durable artifacts back into the repo.
-7. Treat HTML/CSS wireframes as real deliverables, not optional prose.
-8. Fail closed when prerequisites are missing.
-9. Prefer explicitness over cleverness in task operations and workflow state.
+7. Route model usage explicitly:
+   - Haiku for writing PRDs and digests
+   - Sonnet for reasoning, research, and analysis
+8. Treat HTML/CSS wireframes as real deliverables, not optional prose.
+9. Fail closed when prerequisites are missing.
+10. Prefer explicitness over cleverness in task operations and workflow state.
 
 ---
 
