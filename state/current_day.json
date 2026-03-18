@@ -1,7 +1,7 @@
 {
   "date": "2026-03-18",
   "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-18T10:46:35.109Z",
+  "lastMorningSyncAt": "2026-03-18T11:15:42.736Z",
   "lastEveningSyncAt": null,
   "sourceStatus": {
     "todoist": "fresh",
@@ -14,7 +14,9 @@
       "due": null,
       "priority": 1,
       "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
       "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false
     },
     {
@@ -23,7 +25,9 @@
       "due": "2026-03-19",
       "priority": 1,
       "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false
     },
     {
@@ -31,8 +35,13 @@
       "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
       "due": "2026-03-19",
       "priority": 2,
-      "labels": ["follow-up", "research"],
+      "labels": [
+        "follow-up",
+        "research"
+      ],
+      "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false
     },
     {
@@ -40,13 +49,58 @@
       "content": "Evaluate value of Post-Launch Survey Editing (Guardrailed) - new feature in validation",
       "due": "2026-03-19",
       "priority": 2,
-      "labels": ["product", "research"],
+      "labels": [
+        "product",
+        "research"
+      ],
+      "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false
     }
   ],
   "completedToday": [],
-  "dueSoon": [],
+  "dueSoon": [
+    {
+      "id": "6g9wjqRfhhHJQ84x",
+      "content": "Customer Pulse - Generate requirements from Feedback",
+      "due": "2026-03-19",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
+    },
+    {
+      "id": "6g9RjjJX748JQh7x",
+      "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
+      "due": "2026-03-19",
+      "priority": 2,
+      "labels": [
+        "follow-up",
+        "research"
+      ],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
+    },
+    {
+      "id": "6g9RjjmgpCmXX5Rx",
+      "content": "Evaluate value of Post-Launch Survey Editing (Guardrailed) - new feature in validation",
+      "due": "2026-03-19",
+      "priority": 2,
+      "labels": [
+        "product",
+        "research"
+      ],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
+    }
+  ],
   "todayMeetings": [],
   "digestPaths": {
     "morning": "daily/digests/2026-03-18-morning.md",
