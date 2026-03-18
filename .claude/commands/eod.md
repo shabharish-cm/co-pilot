@@ -7,6 +7,9 @@ Generate an end-of-day summary and carry-forward recommendations from cached sta
 - **Haiku** for final digest drafting.
 - **Sonnet** only if reasoning is needed to detect missed commitments or blockers.
 
+## Step 0 — Sync repo
+Run `git pull` to ensure local state reflects the latest Action-committed data before reading any files.
+
 ## Inputs (read from repo — do not fetch live)
 1. `state/current_day.json` — completed tasks, open tasks, due-soon tasks
 
@@ -34,3 +37,11 @@ Top 3–5 tasks to prioritize tomorrow, based on due date, priority, and carry-f
 ## Output File
 Write to: `daily/digests/YYYY-MM-DD-eod.md`
 Update `state/current_day.json` → `digestPaths.eod`.
+
+## Step — Commit and push
+After writing the digest and updating `state/current_day.json`, run:
+```
+git add daily/digests/YYYY-MM-DD-eod.md state/current_day.json
+git commit -m "digest: eod YYYY-MM-DD"
+git push
+```

@@ -16,6 +16,9 @@ Run every Thursday (Claude cron task). Can also be run manually.
 3. `state/transcript_index.json` — to identify available files
 4. `context/system/routing-and-scoring.md` — value-effort scoring dimensions
 
+## Step 0 — Sync repo
+Run `git pull` to ensure local transcript and pulse files are up to date before reading.
+
 ## Step 1 — Determine window
 Compute the previous Thursday through Wednesday window (7 days ending last Wednesday).
 Identify all normalized transcript files within that window from `state/transcript_index.json`.
@@ -56,6 +59,14 @@ Append the new week entry to `pulse/master/customer-pulse-master.md` following t
 Update `state/last_sync.json` → `weeklyCustomerPulseDigest` with:
 ```json
 { "ranAt": "<iso>", "status": "success", "weekKey": "YYYY-WW", "windowStart": "...", "windowEnd": "..." }
+```
+
+## Step 7 — Commit and push
+After writing the digest, updating the pulse master, and updating `state/last_sync.json`, run:
+```
+git add pulse/weekly/YYYY-WW-customer-pulse.md pulse/master/customer-pulse-master.md state/last_sync.json
+git commit -m "digest: weekly pulse YYYY-WW"
+git push
 ```
 
 ## Rules

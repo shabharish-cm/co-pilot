@@ -7,6 +7,9 @@ Generate a human-readable morning digest from cached repository state. Do not fe
 - **Haiku** for final digest drafting.
 - **Sonnet** only if intermediate reasoning is needed (e.g. conflict detection across tasks and meetings).
 
+## Step 0 — Sync repo
+Run `git pull` to ensure local state reflects the latest Action-committed data before reading any files.
+
 ## Inputs (read from repo — do not fetch live)
 1. `state/current_day.json` — tasks, meetings, sync timestamps
 2. `state/last_sync.json` — freshness metadata
@@ -42,6 +45,14 @@ Flag any scheduling pressure: e.g. back-to-back meetings that compress task time
 ## Output File
 Write the digest to: `daily/digests/YYYY-MM-DD-morning.md`
 Update `state/current_day.json` → `digestPaths.morning` with the written path.
+
+## Step — Commit and push
+After writing the digest and updating `state/current_day.json`, run:
+```
+git add daily/digests/YYYY-MM-DD-morning.md state/current_day.json
+git commit -m "digest: morning YYYY-MM-DD"
+git push
+```
 
 ## Rules
 - Do not invent task data not present in the state file.
