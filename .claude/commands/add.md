@@ -25,8 +25,12 @@ If confidence is `matched`: proceed automatically.
 If confidence is `inferred` or `defaulted`: ask for confirmation before creating.
 
 ## After Create
-- Call `npm run task add "<title>" [due:...] [p:...]` or equivalent CLI.
-- Confirm creation with task ID and Todoist URL.
+Run exactly:
+```
+npm run task add "<title>" [due:"<date>"] [p:<1-4>]
+```
+Example: `npm run task add "Review KN mockup" due:"tomorrow" p:3`
+- Confirm creation with task ID and section name.
 
 ## Rules
 - Do not create tasks without at least a title.

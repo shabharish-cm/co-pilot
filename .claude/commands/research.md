@@ -1,47 +1,43 @@
 # /research — Product Research
 
 ## Purpose
-Produce evidence-backed research for a feature by combining transcript evidence, prior product context, competitor patterns, and public discussion.
+Produce evidence-backed research for a feature. Complete without interruption — do not pause for confirmation at any point.
 
 ## Model
-- **Sonnet** throughout. No background agents — all steps run sequentially.
+- **Sonnet** throughout. All steps sequential. No background agents.
 
 ## Inputs
-1. `pulse/normalized/` — transcript files (read the most recent 4–8 weeks)
-2. `context/business/business_profile.md` — product and company context
+1. `pulse/normalized/` — transcript files (most recent 4–8 weeks)
+2. `context/business/business_profile.md` — product context
 3. `PRDs/<feature-name>/discovery.md` — if it exists, read it first
 4. Any user-provided notes or constraints passed inline
 
 ## Precondition
-Feature name must be provided: `/research <feature-name>`
-If not provided, ask for it before proceeding.
+Feature name must be provided. If missing, ask once then stop.
 
-Create `PRDs/<feature-name>/` directory if it does not exist. Do not run Bash to check — just write the output file and the directory will be created.
+## Steps — run fully in sequence
 
-## Steps — run fully in sequence, do not parallelize
-
-### 1. Read context
+### 1. Read context (no web calls)
 - Read `context/business/business_profile.md`
 - Read `PRDs/<feature-name>/discovery.md` if it exists
-- Incorporate any inline user-provided constraints or notes
+- Note any user-provided inline constraints
 
-### 2. Transcript scan
-- Glob `pulse/normalized/*.json` or `pulse/normalized/*.md`
-- If empty or missing: note "No transcripts available" in the output and continue — do not stop
-- If present: scan for mentions of the feature area, pain points, workarounds, and customer quotes
+### 2. Transcript scan (no web calls)
+- Glob `pulse/normalized/*.json` and `pulse/normalized/*.md`
+- If empty: note "No transcripts available" and continue — do not stop
+- If present: extract pain points, workarounds, and customer quotes relevant to the feature
 
-### 3. Web research (WebSearch + WebFetch)
-Search sequentially — do not use background agents:
-- Reddit (r/humanresources, r/ProductManagement, r/sysadmin) for user frustrations
-- G2, Capterra, Trustpilot reviews of competitors in this space
-- Competitor help centers, changelogs, or release notes
-Cite source URLs for every finding.
+### 3. Web research — maximum 3 searches total
+Do exactly 3 searches, each broad enough to cover multiple angles in one query. Do not loop or retry:
 
-### 4. Competitor analysis (WebSearch)
-Pick 2–3 direct competitors. Find how they handle (or fail to handle) the problem space.
+**Search 1:** Competitor help centers + how they handle this feature area
+**Search 2:** User frustrations on Reddit/G2/Capterra about this problem space
+**Search 3:** Industry solutions or workarounds for the core technical/UX constraint
 
-### 5. Write output
-Write to `PRDs/<feature-name>/research.md` — do not run any Bash commands before or after writing.
+Collect findings. Do not search more than 3 times.
+
+### 4. Write output immediately
+Do not run any Bash commands. Write directly to `PRDs/<feature-name>/research.md`.
 
 ## Output structure
 ```
@@ -49,9 +45,9 @@ Write to `PRDs/<feature-name>/research.md` — do not run any Bash commands befo
 
 ## Problem Framing
 ## Evidence from Transcripts
-(transcript-backed | cite IDs, or "No transcripts available")
+(cite transcript IDs, or "No transcripts available")
 ## Evidence from Public Discussions
-(source URLs required)
+(source URLs for every finding)
 ## Competitor Patterns
 ## Recurring Complaints or Workarounds
 ## Confidence Rating
@@ -60,8 +56,9 @@ Write to `PRDs/<feature-name>/research.md` — do not run any Bash commands befo
 ```
 
 ## Rules
-- All steps sequential — no background agents, no parallel tool calls
-- Do not run Bash at any point
+- Max 3 web searches — no exceptions
+- No Bash commands at any point
+- No background agents
+- No mid-run confirmations — complete and write the file
 - Distinguish: transcript-backed / public-discussion / inferred
-- Do not fabricate quotes — cite real IDs or URLs
-- Do not ask for confirmation mid-run — complete all steps and write the file
+- No fabricated quotes

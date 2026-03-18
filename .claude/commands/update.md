@@ -11,7 +11,7 @@ Update task metadata: content, due date, priority, or labels.
 2. If query matches multiple tasks, present options and ask for disambiguation.
 3. Show a before/after diff of the proposed change.
 4. Require confirmation before applying for any change to content, due, or priority.
-5. Call `npm run task update <taskId> [field:value ...]`.
+5. Run: `npm run task update <taskId> [content:"<text>"] [due:"<date>"] [p:<1-4>]`
 
 ## Rules
 - Never apply an update if the task cannot be unambiguously identified.
