@@ -9,31 +9,40 @@
   },
   "openTasks": [
     {
-      "id": "1",
-      "content": "Write PRD for reporting",
+      "id": "6g9gQ3XFRQxFrRfQ",
+      "content": "Confirm Display Name feature ETA with Karthik Rao",
+      "due": null,
       "priority": 1,
       "labels": [],
-      "projectId": "proj1",
-      "isOverdue": false,
-      "url": ""
+      "sectionName": "CS Requests",
+      "isOverdue": false
     },
     {
-      "id": "2",
-      "content": "Write PRD for analytics",
+      "id": "6g9wjqRfhhHJQ84x",
+      "content": "Customer Pulse - Generate requirements from Feedback",
+      "due": "2026-03-19",
       "priority": 1,
       "labels": [],
-      "projectId": "proj1",
-      "isOverdue": false,
-      "url": ""
+      "sectionName": "CM",
+      "isOverdue": false
     },
     {
-      "id": "3",
-      "content": "Review API contract",
-      "priority": 1,
-      "labels": [],
-      "projectId": "proj1",
-      "isOverdue": false,
-      "url": ""
+      "id": "6g9RjjJX748JQh7x",
+      "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
+      "due": "2026-03-19",
+      "priority": 2,
+      "labels": ["follow-up", "research"],
+      "sectionName": "Features",
+      "isOverdue": false
+    },
+    {
+      "id": "6g9RjjmgpCmXX5Rx",
+      "content": "Evaluate value of Post-Launch Survey Editing (Guardrailed) - new feature in validation",
+      "due": "2026-03-19",
+      "priority": 2,
+      "labels": ["product", "research"],
+      "sectionName": "Features",
+      "isOverdue": false
     }
   ],
   "completedToday": [],
