@@ -27,7 +27,7 @@ export const ENV = {
     calendarId:         optional('GCAL_CALENDAR_ID', 'primary'),
   },
   fireflies: {
-    apiKey: required('FIREFLIES_API_KEY'),
+    apiKey: optional('FIREFLIES_API_KEY', ''),
   },
   timezone: optional('TIMEZONE', 'Asia/Kolkata'),
 } as const;
