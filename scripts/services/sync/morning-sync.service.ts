@@ -42,6 +42,9 @@ export async function runMorningSync(): Promise<void> {
     state.digestPaths = { morning: null, eod: null };
   }
 
+  // Always reset claude_completed_today.json at morning sync — fresh slate each day
+  writeJSON(PATHS.state.claudeCompletedToday, { date: today, tasks: [] });
+
   const syncResult: LastSync = lastSync ?? {
     morningSync:    { ranAt: null, status: null },
     eveningSync:    { ranAt: null, status: null },

@@ -10,7 +10,8 @@ export const PATHS = {
     dir:             path.join(ROOT, 'state'),
     currentDay:      path.join(ROOT, 'state', 'current_day.json'),
     lastSync:        path.join(ROOT, 'state', 'last_sync.json'),
-    transcriptIndex: path.join(ROOT, 'state', 'transcript_index.json'),
+    transcriptIndex:       path.join(ROOT, 'state', 'transcript_index.json'),
+    claudeCompletedToday:  path.join(ROOT, 'state', 'claude_completed_today.json'),
   },
 
   // Daily

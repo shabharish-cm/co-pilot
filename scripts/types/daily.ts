@@ -10,6 +10,18 @@ export interface TaskRecord {
   projectId: string;
   isOverdue: boolean;
   url: string;
+  completedVia?: 'claude' | 'manual';  // set on completedToday entries
+  completedAt?: string;                // ISO datetime, set on completedToday entries
+}
+
+/** Written by task-manager whenever a task is completed via Claude. Reset each morning. */
+export interface ClaudeCompletedLog {
+  date: string;           // YYYY-MM-DD
+  tasks: Array<{
+    id: string;
+    content: string;
+    completedAt: string;  // ISO datetime
+  }>;
 }
 
 export interface MeetingRecord {

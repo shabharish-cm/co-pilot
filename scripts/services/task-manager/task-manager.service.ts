@@ -5,7 +5,7 @@ import { mapTodoistTask } from '../../integrations/todoist/mapper';
 import { readJSON, writeJSON } from '../../utils/file';
 import { todayKey, isoNow } from '../../utils/date';
 import { logger } from '../../utils/logger';
-import type { TaskRecord, CurrentDay } from '../../types/daily';
+import type { TaskRecord, CurrentDay, ClaudeCompletedLog } from '../../types/daily';
 import type { TodoistCreatePayload, TodoistUpdatePayload } from '../../integrations/todoist/types';
 
 export interface CreateTaskOptions {
@@ -80,9 +80,34 @@ export async function updateTask(taskId: string, opts: UpdateTaskOptions): Promi
 }
 
 export async function completeTask(taskId: string): Promise<void> {
-  const client = getClient();
+  const client  = getClient();
+  const tz      = ENV.timezone;
+  const today   = todayKey(tz);
+
+  // Capture task content before closing it
+  const state   = readJSON<CurrentDay>(PATHS.state.currentDay);
+  const task    = state?.openTasks.find(t => t.id === taskId);
+
   await client.completeTask(taskId);
   logger.info('Task completed', { id: taskId });
+
+  // Record in claude_completed_today.json so evening sync can flag it
+  const log = readJSON<ClaudeCompletedLog>(PATHS.state.claudeCompletedToday)
+    ?? { date: today, tasks: [] };
+
+  // Reset if it's a new day
+  if (log.date !== today) {
+    log.date  = today;
+    log.tasks = [];
+  }
+
+  log.tasks.push({
+    id:          taskId,
+    content:     task?.content ?? taskId,
+    completedAt: isoNow(),
+  });
+  writeJSON(PATHS.state.claudeCompletedToday, log);
+
   await refreshState();
 }
 
