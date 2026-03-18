@@ -10,7 +10,7 @@ import { GCalClient } from '../../integrations/gcal/client';
 import { mapTodoistTask } from '../../integrations/todoist/mapper';
 import { mapGCalEvent } from '../../integrations/gcal/mapper';
 import { readJSON, writeJSON } from '../../utils/file';
-import { todayKey, dayStartUTC, dayEndUTC, isoNow } from '../../utils/date';
+import { todayKey, dayStartUTC, dayEndUTC, dueSoonCutoff, isoNow } from '../../utils/date';
 import { logger } from '../../utils/logger';
 import type { CurrentDay, LastSync } from '../../types/daily';
 
@@ -54,8 +54,9 @@ export async function runMorningSync(): Promise<void> {
     const todoist = new TodoistClient(ENV.todoist.apiToken);
     const rawTasks = await todoist.getActiveTasks(ENV.todoist.projectId);
     const tasks = rawTasks.map(t => mapTodoistTask(t, today));
-    state.openTasks   = tasks.filter(t => !t.isOverdue);
-    // isOverdue tasks stay in openTasks too so /morning can surface them
+    const cutoff = dueSoonCutoff(tz);
+    state.openTasks = tasks;
+    state.dueSoon   = tasks.filter(t => t.due && t.due <= cutoff && !t.isOverdue);
     state.sourceStatus.todoist = 'fresh';
     logger.info('Todoist fetched', { count: tasks.length });
   } catch (err) {
