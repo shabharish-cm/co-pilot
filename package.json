@@ -4,7 +4,7 @@
   "description": "Personal PM Copilot — task sync, transcript analysis, and product discovery workflows",
   "private": true,
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "sync:morning": "tsx scripts/services/sync/morning-sync.service.ts",
