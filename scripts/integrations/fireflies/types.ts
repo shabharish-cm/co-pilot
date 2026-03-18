@@ -21,3 +21,10 @@ export interface FirefliesListResponse {
   };
   errors?: Array<{ message: string }>;
 }
+
+export interface FirefliesSingleResponse {
+  data: {
+    transcript: FirefliesTranscript | null;
+  };
+  errors?: Array<{ message: string }>;
+}

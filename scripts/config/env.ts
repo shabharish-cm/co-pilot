@@ -29,5 +29,10 @@ export const ENV = {
   fireflies: {
     apiKey: optional('FIREFLIES_API_KEY', ''),
   },
+  slack: {
+    botToken:                 optional('SLACK_BOT_TOKEN', ''),
+    csCallSummaryChannelId:   optional('SLACK_CS_CALL_SUMMARY_CHANNEL_ID', ''),
+    demoSummaryChannelId:     optional('SLACK_DEMO_SUMMARY_CHANNEL_ID', ''),
+  },
   timezone: optional('TIMEZONE', 'Asia/Kolkata'),
 } as const;

@@ -25,8 +25,11 @@ jobs:
       - name: Run Fireflies sync
         run: npm run sync:fireflies
         env:
-          FIREFLIES_API_KEY:  ${{ secrets.FIREFLIES_API_KEY }}
-          TIMEZONE:           Asia/Kolkata
+          FIREFLIES_API_KEY:                   ${{ secrets.FIREFLIES_API_KEY }}
+          SLACK_BOT_TOKEN:                     ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CS_CALL_SUMMARY_CHANNEL_ID:    ${{ secrets.SLACK_CS_CALL_SUMMARY_CHANNEL_ID }}
+          SLACK_DEMO_SUMMARY_CHANNEL_ID:       ${{ secrets.SLACK_DEMO_SUMMARY_CHANNEL_ID }}
+          TIMEZONE:                            Asia/Kolkata
 
       - name: Commit transcript data
         run: |
