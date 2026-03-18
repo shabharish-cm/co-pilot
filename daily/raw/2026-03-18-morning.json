@@ -1,12 +1,6 @@
 {
   "date": "2026-03-18",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-18T09:38:04.154Z",
-  "lastEveningSyncAt": null,
-  "sourceStatus": {
-    "todoist": "failed",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-18T09:38:04.154Z",
   "openTasks": [
     {
       "id": "1",
@@ -36,11 +30,5 @@
       "url": ""
     }
   ],
-  "completedToday": [],
-  "dueSoon": [],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": null,
-    "eod": null
-  }
+  "todayMeetings": []
 }
