@@ -6,12 +6,13 @@
 
 ### Sections (project_id: `6g8q49QQxHrFxRFx`)
 
-| Section Name | Section ID | Order |
-|-------------|------------|-------|
-| Features | `6g8x4JxwH876pgGQ` | 1 |
-| CS Requests | `6g8x4HVHxpWVfVHQ` | 2 |
-| Engg asks | `6g8x4MgXR2q68fgQ` | 3 |
-| effy | `6g9QcvpjJw2cFmCx` | 4 |
+| Section Name | Section ID | Order | Purpose |
+|-------------|------------|-------|---------|
+| Features | `6g8x4JxwH876pgGQ` | 1 | Feature requests and product work |
+| CS Requests | `6g8x4HVHxpWVfVHQ` | 2 | Requests from CS team members |
+| Engg asks | `6g8x4MgXR2q68fgQ` | 3 | Asks from Engineering team members |
+| effy | `6g9QcvpjJw2cFmCx` | 4 | effy-related tasks |
+| CM | `6g9wjjpVgppgxJwQ` | 5 | Org-level CultureMonkey internal tasks — initiatives, pulse, strategy, cross-team work |
 
 Team membership is defined in `context/system/team-list.md`.
 
@@ -37,17 +38,24 @@ Evaluate signals in strict priority order. Stop at the first match.
 - → Route to **Engg asks** (`6g8x4MgXR2q68fgQ`)
 - Confidence: `matched`
 
-**Priority 4 — Feature keywords detected**
+**Priority 4 — CM org keywords detected**
+- If the task contains org-level initiative keywords: "initiative", "pulse initiative", "quick wins", "org", "platform strategy", "customer pulse", "feedback analysis", "product strategy"
+- These are internal CultureMonkey tasks — not customer requests, not engineering asks, not feature builds
+- → Route to **CM** (`6g9wjjpVgppgxJwQ`)
+- Confidence: `inferred`
+
+**Priority 5 — Feature keywords detected**
 - If the task contains product or feature intent keywords (e.g. "build", "design", "feature", "PRD", "spec", "roadmap")
 - → Route to **Features** (`6g8x4JxwH876pgGQ`)
 - Confidence: `inferred`
 
-**Priority 5 — Label fallback**
+**Priority 6 — Label fallback**
 - If the task has label `follow-up` → **CS Requests**
 - If the task has label `engineering` → **Engg asks**
+- If the task has label `cm` → **CM**
 - Confidence: `label-inferred`
 
-**Priority 6 — Default**
+**Priority 7 — Default**
 - → Route to **Features** (`6g8x4JxwH876pgGQ`)
 - Confidence: `defaulted`
 
@@ -70,8 +78,11 @@ If both CS and Engg signals are detected in the same task:
 | `review API contract with Dhamo` | Dhamo = Engg member | Engg asks | matched |
 | `effy onboarding flow` | "effy" keyword | effy | matched |
 | `share mockup to KN and Saran` | KN = CS wins, Saran = Engg (logged) | CS Requests | matched |
+| `customer pulse initiative kickoff` | CM keyword: "pulse initiative" | CM | inferred |
+| `gather quick wins from feedback` | CM keyword: "quick wins" | CM | inferred |
 | `Q2 roadmap planning` | feature keywords | Features | inferred |
 | `follow up on demo` | label: follow-up | CS Requests | label-inferred |
+| `org strategy review` | CM keyword: "org" | CM | inferred |
 | `check analytics numbers` | no signal | Features | defaulted |
 
 ---

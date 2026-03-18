@@ -106,4 +106,45 @@ describe('routeTask', () => {
     expect(routeTask('share mockup to KN').sectionName).toBe('CS Requests');
     expect(routeTask('share mockup to Kn').sectionName).toBe('CS Requests');
   });
+
+  // CM section — org-level tasks
+  test('routes "customer pulse initiative" to CM', () => {
+    const result = routeTask('customer pulse initiative kickoff');
+    expect(result.sectionName).toBe('CM');
+    expect(result.rule).toBe('cm-keyword');
+    expect(result.confidence).toBe('inferred');
+  });
+
+  test('routes "quick wins" task to CM', () => {
+    const result = routeTask('gather quick wins from feedback analysis');
+    expect(result.sectionName).toBe('CM');
+  });
+
+  test('routes "initiative" task to CM', () => {
+    const result = routeTask('Q2 feedback initiative planning');
+    expect(result.sectionName).toBe('CM');
+  });
+
+  test('CM keyword takes priority over feature keywords', () => {
+    // "customer pulse initiative" contains no feature keyword but is org-level
+    const result = routeTask('customer pulse initiative');
+    expect(result.sectionName).toBe('CM');
+  });
+
+  test('CM label routes to CM section when no keyword matches', () => {
+    const result = routeTask('prep for Thursday meeting', ['cm']);
+    expect(result.sectionName).toBe('CM');
+    expect(result.confidence).toBe('label-inferred');
+  });
+
+  test('CS member still beats CM keyword', () => {
+    // Team member signals override org keywords
+    const result = routeTask('initiative review with KN');
+    expect(result.sectionName).toBe('CS Requests');
+  });
+
+  test('CM section ID is correct', () => {
+    const result = routeTask('customer pulse initiative');
+    expect(result.sectionId).toBe('6g9wjjpVgppgxJwQ');
+  });
 });

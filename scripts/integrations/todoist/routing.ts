@@ -24,6 +24,16 @@ const FEATURE_KEYWORDS = [
   'roadmap', 'wireframe', 'prototype', 'ux', 'ui',
 ];
 
+/**
+ * CM section keywords — org-level internal tasks that are neither customer
+ * requests nor engineering asks. E.g. customer pulse initiative, quick wins
+ * analysis, org processes, cross-team initiatives.
+ */
+const CM_KEYWORDS = [
+  'initiative', 'pulse initiative', 'quick wins', 'org', 'platform strategy',
+  'customer pulse', 'feedback analysis', 'product strategy',
+];
+
 /** Parse context/system/team-list.md into CS and Engg alias arrays. */
 function loadTeamList(): TeamList {
   try {
@@ -107,7 +117,19 @@ export function routeTask(title: string, labels: string[] = []): RoutingResult {
     };
   }
 
-  // Priority 4 — feature keywords
+  // Priority 4 — CM org keywords (before feature keywords — org tasks are not features)
+  const cmHit = CM_KEYWORDS.find(kw => lowerTitle.includes(kw));
+  if (cmHit) {
+    return {
+      sectionId:   TODOIST_SECTIONS.cm.id,
+      sectionName: TODOIST_SECTIONS.cm.name,
+      rule:        'cm-keyword',
+      confidence:  'inferred',
+      match:       cmHit,
+    };
+  }
+
+  // Priority 5 — feature keywords
   const featureHit = FEATURE_KEYWORDS.find(kw => lowerTitle.includes(kw));
   if (featureHit) {
     return {
@@ -119,7 +141,7 @@ export function routeTask(title: string, labels: string[] = []): RoutingResult {
     };
   }
 
-  // Priority 5 — label fallback
+  // Priority 6 — label fallback
   const lowerLabels = labels.map(l => l.toLowerCase());
   if (lowerLabels.includes('follow-up')) {
     return { sectionId: TODOIST_SECTIONS.csRequests.id, sectionName: TODOIST_SECTIONS.csRequests.name, rule: 'label-follow-up', confidence: 'label-inferred' };
@@ -127,8 +149,11 @@ export function routeTask(title: string, labels: string[] = []): RoutingResult {
   if (lowerLabels.includes('engineering')) {
     return { sectionId: TODOIST_SECTIONS.enggAsks.id, sectionName: TODOIST_SECTIONS.enggAsks.name, rule: 'label-engineering', confidence: 'label-inferred' };
   }
+  if (lowerLabels.includes('cm')) {
+    return { sectionId: TODOIST_SECTIONS.cm.id, sectionName: TODOIST_SECTIONS.cm.name, rule: 'label-cm', confidence: 'label-inferred' };
+  }
 
-  // Priority 6 — default
+  // Priority 7 — default
   return {
     sectionId:   TODOIST_SECTIONS.features.id,
     sectionName: TODOIST_SECTIONS.features.name,

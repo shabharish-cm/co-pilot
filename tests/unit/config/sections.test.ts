@@ -4,11 +4,12 @@
 import { TODOIST_SECTIONS } from '../../../scripts/config/sections';
 
 describe('TODOIST_SECTIONS registry', () => {
-  test('all four sections are present', () => {
+  test('all five sections are present', () => {
     expect(TODOIST_SECTIONS.features).toBeDefined();
     expect(TODOIST_SECTIONS.csRequests).toBeDefined();
     expect(TODOIST_SECTIONS.enggAsks).toBeDefined();
     expect(TODOIST_SECTIONS.effy).toBeDefined();
+    expect(TODOIST_SECTIONS.cm).toBeDefined();
   });
 
   test('section IDs match known values', () => {
@@ -16,6 +17,7 @@ describe('TODOIST_SECTIONS registry', () => {
     expect(TODOIST_SECTIONS.csRequests.id).toBe('6g8x4HVHxpWVfVHQ');
     expect(TODOIST_SECTIONS.enggAsks.id).toBe('6g8x4MgXR2q68fgQ');
     expect(TODOIST_SECTIONS.effy.id).toBe('6g9QcvpjJw2cFmCx');
+    expect(TODOIST_SECTIONS.cm.id).toBe('6g9wjjpVgppgxJwQ');
   });
 
   test('section names match known values', () => {
@@ -23,6 +25,7 @@ describe('TODOIST_SECTIONS registry', () => {
     expect(TODOIST_SECTIONS.csRequests.name).toBe('CS Requests');
     expect(TODOIST_SECTIONS.enggAsks.name).toBe('Engg asks');
     expect(TODOIST_SECTIONS.effy.name).toBe('effy');
+    expect(TODOIST_SECTIONS.cm.name).toBe('CM');
   });
 
   test('all IDs are unique', () => {
