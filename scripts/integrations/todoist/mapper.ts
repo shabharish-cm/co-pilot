@@ -20,6 +20,7 @@ export function mapTodoistTask(raw: TodoistTask, todayKey: string): TaskRecord {
     sectionName: raw.section_id ? (SECTION_ID_TO_NAME[raw.section_id] ?? 'Unknown') : undefined,
     projectId:   raw.project_id,
     isOverdue,
-    url:         raw.url,
+    // Completed-task APIs may omit `url`; fallback keeps downstream contract stable.
+    url:         raw.url ?? `https://todoist.com/showTask?id=${raw.id}`,
   };
 }

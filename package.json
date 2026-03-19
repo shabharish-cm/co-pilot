@@ -11,6 +11,7 @@
     "sync:evening": "tsx scripts/services/sync/evening-sync.service.ts",
     "sync:fireflies": "tsx scripts/services/sync/daily-fireflies-sync.service.ts",
     "backfill:transcripts": "tsx scripts/backfill/backfill-transcripts.ts",
+    "backfill:from-export": "tsx scripts/backfill/backfill-from-export.ts",
     "task": "tsx scripts/cli/index.ts",
     "validate:schemas": "tsx scripts/utils/validation.ts",
     "test": "jest",

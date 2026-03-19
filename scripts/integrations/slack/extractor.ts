@@ -1,18 +1,24 @@
 import type { SlackMessage } from './types';
 
 /**
- * Matches https://app.fireflies.ai/view/<id>
- * The ID is alphanumeric with possible hyphens.
+ * Matches https://app.fireflies.ai/view/<slug>::<uuid> or /view/<uuid>
+ *
+ * Fireflies URLs have two formats:
+ *   - New: /view/CultureMonkey-Employee-Engagement::01kksxxx8zxk5e8tbj1qty36nw
+ *   - Old: /view/01kkvpkkz9m73054vca25d1vft
+ *
+ * Capture group 1 is the UUID (after :: if present, otherwise the whole segment).
+ * [\w-] does not include ':', so the slug stops cleanly before ::.
  */
-const FIREFLIES_URL_RE = /https:\/\/app\.fireflies\.ai\/view\/([\w-]+)/g;
+const FIREFLIES_URL_RE = /https:\/\/app\.fireflies\.ai\/view\/(?:[\w-]+::)?([\w-]+)/g;
 
 /**
- * Fireflies transcript UUIDs are lowercase alphanumeric, 20-30 chars, no uppercase.
- * Slug-style share links (e.g. "CultureMonkey-Survey-Launch") contain uppercase letters
- * or title-cased words — the GraphQL API rejects these with 400.
+ * Fireflies transcript IDs are ULIDs: alphanumeric, 20-30 chars.
+ * Slack posts them in UPPERCASE; the API accepts lowercase.
+ * Accept both — callers must normalize to lowercase before API calls.
  */
 function isTranscriptId(id: string): boolean {
-  return /^[a-z0-9][a-z0-9-]{10,}$/.test(id);
+  return /^[a-zA-Z0-9][a-zA-Z0-9-]{10,}$/.test(id);
 }
 
 /**
@@ -48,6 +54,7 @@ export function extractFirefliesIds(messages: SlackMessage[]): string[] {
       const re = new RegExp(FIREFLIES_URL_RE.source, 'g');
       let match: RegExpExecArray | null;
       while ((match = re.exec(text)) !== null) {
+        // Preserve original case — Fireflies GraphQL API requires uppercase ULIDs
         if (isTranscriptId(match[1])) ids.add(match[1]);
       }
     }

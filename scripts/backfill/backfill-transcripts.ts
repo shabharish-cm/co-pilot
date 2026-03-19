@@ -28,9 +28,10 @@ import type { FirefliesTranscript } from '../integrations/fireflies/types';
 
 // ── Config ────────────────────────────────────────────────────────────────────
 
-const DAYS_BACK      = parseDaysArg() ?? 90;
-const RATE_LIMIT_MS  = 400;   // delay between Fireflies API calls
-const TZ             = ENV.timezone;
+const DAYS_BACK          = parseDaysArg() ?? 90;
+const RATE_LIMIT_MS      = 400;   // delay between Fireflies API calls
+const SLACK_INTER_CALL_MS = 1500; // delay between Slack API calls → ~40 req/min (limit: 50)
+const TZ                 = ENV.timezone;
 
 function parseDaysArg(): number | null {
   const idx = process.argv.indexOf('--days');
@@ -105,11 +106,16 @@ async function run(): Promise<void> {
       continue;
     }
 
-    // Fetch Slack messages for this day across all channels
+    // Fetch Slack messages for this day — sequential across channels to avoid
+    // hitting the Slack Tier-3 rate limit (50 req/min). With SLACK_INTER_CALL_MS
+    // between each call we stay at ~40 req/min for a 2-channel backfill.
     const { oldest, latest } = dayWindow(dayKey);
-    const allMessages = (
-      await Promise.all(channelIds.map(id => slack.getChannelMessages(id, oldest, latest)))
-    ).flat();
+    const allMessages: import('../integrations/slack/types').SlackMessage[] = [];
+    for (const channelId of channelIds) {
+      await sleep(SLACK_INTER_CALL_MS);
+      const msgs = await slack.getChannelMessages(channelId, oldest, latest);
+      allMessages.push(...msgs);
+    }
 
     const ids = extractFirefliesIds(allMessages);
 

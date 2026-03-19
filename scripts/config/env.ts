@@ -1,7 +1,8 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-dotenv.config({ path: path.resolve(__dirname, '..', '..', '.env') });
+// override: true ensures .env always wins over shell environment variables
+dotenv.config({ path: path.resolve(__dirname, '..', '..', '.env'), override: true });
 
 function required(key: string): string {
   const val = process.env[key];

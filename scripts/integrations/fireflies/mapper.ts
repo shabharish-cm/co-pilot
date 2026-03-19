@@ -17,7 +17,9 @@ export function mapFirefliesTranscript(raw: FirefliesTranscript, sourceDay: stri
     meetingDate,
     participants:   raw.participants ?? [],
     summary,
-    transcriptText: raw.transcript ?? '',
+    transcriptText: (raw.sentences ?? [])
+      .map(s => `${s.speaker_name}: ${s.raw_text}`)
+      .join('\n'),
     sourceUrl:      raw.meeting_link ?? '',
     fetchedAt:      isoNow(),
     sourceDay,

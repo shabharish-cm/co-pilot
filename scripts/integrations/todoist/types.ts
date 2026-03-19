@@ -16,8 +16,8 @@ export interface TodoistTask {
   labels: string[];
   section_id: string | null;
   project_id: string;
-  url: string;
-  is_completed: boolean;
+  url?: string;
+  is_completed?: boolean;
   completed_at?: string | null;
 }
 

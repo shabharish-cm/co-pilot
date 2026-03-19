@@ -27,10 +27,27 @@ export class TodoistClient {
 
   async getCompletedTasks(projectId: string, since: string, until: string): Promise<TodoistTask[]> {
     return withRetry(async () => {
-      const res = await this.http.get<{ items: TodoistTask[] }>('https://api.todoist.com/sync/v9/items/completed/get_all', {
-        params: { project_id: projectId, since, until },
-      });
-      return res.data.items ?? [];
+      const all: TodoistTask[] = [];
+      let cursor: string | undefined;
+
+      do {
+        const res = await this.http.get<{ items: TodoistTask[]; next_cursor?: string | null }>(
+          '/tasks/completed/by_completion_date',
+          {
+            params: {
+              project_id: projectId,
+              since,
+              until,
+              ...(cursor ? { cursor } : {}),
+            },
+          },
+        );
+
+        all.push(...(res.data.items ?? []));
+        cursor = res.data.next_cursor ?? undefined;
+      } while (cursor);
+
+      return all;
     }, {}, 'todoist:getCompletedTasks');
   }
 

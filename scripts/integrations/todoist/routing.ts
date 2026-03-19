@@ -30,8 +30,12 @@ const FEATURE_KEYWORDS = [
  * analysis, org processes, cross-team initiatives.
  */
 const CM_KEYWORDS = [
+  // Org-level strategic tasks
   'initiative', 'pulse initiative', 'quick wins', 'org', 'platform strategy',
   'customer pulse', 'feedback analysis', 'product strategy',
+  // Copilot infrastructure tasks (backfill, sync, digest, transcript pipeline)
+  'backfill', 'transcript', 'fireflies', 'copilot', 'morning sync',
+  'evening sync', 'digest', 'slack export', 'daily sync',
 ];
 
 /** Parse context/system/team-list.md into CS and Engg alias arrays. */

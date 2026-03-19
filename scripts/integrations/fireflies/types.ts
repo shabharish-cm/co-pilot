@@ -10,7 +10,12 @@ export interface FirefliesTranscript {
     notes?: string;
     keywords?: string[];
   };
-  transcript?: string;
+  sentences?: Array<{
+    index: number;
+    speaker_name: string;
+    raw_text: string;
+    start_time: number;
+  }>;
   fireflies_users?: string[];
   meeting_link?: string;
 }
