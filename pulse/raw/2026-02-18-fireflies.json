@@ -1,0 +1,4029 @@
+{
+  "dayKey": "2026-02-18",
+  "fetchedAt": "2026-03-19T05:41:19.153Z",
+  "source": "backfill-date-range",
+  "transcripts": [
+    {
+      "id": "01KH3DH14NZ16MP150S4AKD7PR",
+      "title": "Weekly Culture Monkey/Yahoo Implementation Mtg.",
+      "date": 1771428900000,
+      "participants": [
+        "sanya.lamba@yahooinc.com",
+        "gowtham@culturemonkey.io",
+        "charlie.trinco@yahooinc.com",
+        "kate.burk@yahooinc.com",
+        "patrick.briscoe@yahooinc.com",
+        "karthik.n@culturemonkey.io",
+        "siva@culturemonkey.io",
+        "yugi@culturemonkey.io",
+        "dayna.matusek@yahooinc.com",
+        "sunil@culturemonkey.io",
+        "praneesh.jayaraj@yahooinc.com",
+        "scott.domes@yahooinc.com",
+        "shabharish.v@culturemonkey.io",
+        "karthik.rao@culturemonkey.io",
+        "yug@culturemonkey.io"
+      ],
+      "summary": {
+        "overview": "- **Successful survey launch confirmed:** 5-day survey data loaded first; 30-day data follows. 90-day survey deferred due to API issues.  \n- **Manual audit reports created:** Ensuring survey participation is tracked and verified against Workday data weekly for data health.  \n- **Pulse survey planned for April:** Enhancement prioritization in progress; effort estimates from Yugi’s team needed by tomorrow.  \n- **Reminder frequency reduced:** Limit to one follow-up per survey; aim for better participant engagement by reducing annoyances.  \n- **Dashboard enhancements requested:** Need for date filtering and cleaner driver visibility; updates on feasibility and timelines to follow.  \n- **Survey links remain active:** Participants can respond anytime; reminders adjusted for 14-day open response window.",
+        "action_items": "\n**Yugi P**\nLoad 30-day survey file shortly after call completion (05:29)\nProvide level of effort estimates for 2026 pulse survey feature enhancements by next morning (14:00)\nEnable CSV download option next to lifecycle analytics graphs after this call (29:40)\n\n**Karthik N**\nConfirm ability to restrict survey reminders to one reminder at 7 days and limit survey reminder period to 14 days instead of 30 days, and provide confirmation on feasibility this week (24:38)\nInvestigate and update on feasibility and roadmap for date range filter in lifecycle analytics dashboards (34:55)\n\n**Scott Domes**\nFollow up on 30-day survey file loading status on or before February 18 or 19 (07:42)\nTrack and audit survey response data weekly post-deployment for accuracy and report results to senior management (08:50)\n\n**Kate Burk**\nCollaborate with Scott on sub-admin access adjustments and support Lisa on project closeout (11:30)\n\n**Charlie Trinco**\nLead internal prioritization discussion for pulse survey enhancement features informed by Culture Monkey level of effort estimates due tomorrow (12:15)\n",
+        "notes": "## **Survey Launch and Data Loading**\n\nThe onboarding surveys for the 5-day and 30-day periods are live, with data loading and audit processes underway to ensure accuracy.\n\n- **Successful survey launch and phased data loading confirmed** (07:59)  \n    - The 5-day survey data was loaded first, with the 30-day data scheduled immediately after the call.  \n    - Manual data gathering was necessary to address system issues, successfully handled by Sonia and Kate.  \n    - The 90-day survey data was deferred due to employees exceeding the threshold because of API downtime, pending internal discussion on inclusion.  \n    - Management was already informed about the reversed launch order compared to the engagement survey.\n\n- **Audit approach designed to verify survey participation** (08:54)  \n    - Audit reports will be built manually since automated reports are not available, capturing who received and responded to surveys.  \n    - Data will be compared against Workday records to ensure completeness.  \n    - This auditing will be done weekly, with 100% participation indicating good data health to senior management.  \n    - The confidential past survey data is securely stored in a private repository.\n\n- **Clarified survey thresholds and inclusion criteria** (06:22)  \n    - Employees above the 90-day threshold are currently excluded from the 90-day survey due to timing issues.  \n    - Pulse surveys will include employees within the last 3 to 6 months, ensuring new employees are captured appropriately.  \n    - The team decided to proceed with sending only 5-day and 30-day surveys for now, pending further internal alignment.\n\n- **Project completion status and minor pending items** (11:13)  \n    - The onboarding survey launch project is effectively 99% complete with only sub-admin access controls remaining.  \n    - Sonia and Kate are monitoring lifecycle analytics and dashboards for further insights and training needs.\n\n## **2026 Pulse Survey Planning and Enhancement Prioritization**\n\nPreparation for the 2026 pulse survey is in progress, focusing on evaluating tool enhancements by prioritizing effort and feasibility for an April launch.\n\n- **Pulse survey targeted for April with enhancement evaluation underway** (12:16)  \n    - Charlie emphasized the need to balance enhancement priorities against available time and effort estimates.  \n    - The team is awaiting effort estimates from Yugi’s team to finalize which enhancements can be realistically delivered.  \n    - Effort estimates will be provided by the next morning to inform leadership prioritization discussions.\n\n- **Clear definitions for enhancement status to guide decisions** (14:43)  \n    - Accepted features are confirmed feasible, rejected ones are not possible currently, with some pending further discussion.  \n    - Scott clarified that internal notes (columns H, L, M, N) are for team alignment and not part of Culture Monkey’s evaluation.  \n    - Only the top 24 enhancement requests are under Culture Monkey’s review; remaining items require internal priority setting.\n\n- **Level of effort estimates critical for realistic planning** (13:10)  \n    - Charlie stressed that some high-priority enhancements may be deprioritized if effort exceeds available time.  \n    - Yugi committed to delivering detailed time estimates, enabling leadership to make informed trade-offs.  \n    - The team acknowledged some variability in estimates but expects them to be stable enough for planning.\n\n- **No open questions from Culture Monkey before estimates delivery** (16:34)  \n    - Yugi confirmed no additional clarifications needed before providing estimates.  \n    - This ensures smooth handoff and alignment for the next phase of prioritization and scheduling.\n\n## **Survey Reminder and Participation Management**\n\nAdjustments to survey reminder frequency and participation tracking aim to improve employee experience and data quality.\n\n- **Proposal to reduce survey reminders to a single follow-up** (22:36)  \n    - Kate and Sonia suggested limiting reminders to one per survey, sent on day seven after initial delivery.  \n    - This contrasts with the current default of weekly reminders up to 30 days, which may annoy participants.  \n    - The team agreed a 14-day open response window with a single reminder fits employee engagement better.\n\n- **Survey links remain active indefinitely but reminders will be adjusted** (24:38)  \n    - Karthik clarified that survey links do not expire, allowing employees to respond at any time.  \n    - The team will explore technical feasibility to limit reminders to 14 days as requested.  \n    - Confirmation of these changes is expected within the current week.\n\n- **Parallel surveys may cause overlapping reminders** (21:05)  \n    - Employees receiving the 5-day survey become eligible for the 30-day survey by day 30, triggering overlapping notifications.  \n    - Sonia raised concerns about potential survey fatigue due to simultaneous survey reminders.  \n    - The reminder adjustment aims to mitigate this by reducing frequency and improving participant experience.\n\n- **Participation and silent participant tracking clarified** (19:20)  \n    - Silent participants are those who have not yet responded, counted from survey launch onward.  \n    - Surveys remain open for 14 days with reminders sent weekly until 30 days, after which reminders stop but participants remain counted.  \n    - This ongoing participation tracking helps maintain data completeness and highlights non-responders effectively.\n\n## **Lifecycle Analytics and Dashboard Enhancements**\n\nThe team reviewed current lifecycle analytics capabilities and requested improvements for date filtering and driver visibility.\n\n- **Current dashboards show rolling 7-day participation with limited date filtering** (18:33)  \n    - Yugi explained lifecycle analytics dashboards display only the last 7 days of survey participation by default.  \n    - Total participation data covering the entire survey period is available via report exports.  \n    - Sonia requested ability to filter dashboard data by custom date ranges to track trends over time.\n\n- **Limitations on applying date filters due to continuous survey nature** (30:20)  \n    - Karthik noted filtering is complicated because participant addition dates and submission dates differ.  \n    - Applying date filters can cause mismatches in scores since surveys run continuously with rolling responses.  \n    - Despite this, the team agreed date filtering is important for monthly and quarterly trend analysis.\n\n- **Export capabilities and confidential reports support deeper analysis** (29:14)  \n    - Dashboards allow CSV exports of engagement scores, participation rates, and eNPS but not all driver scores.  \n    - Confidential reports provide detailed monthly trend data used by some customers for deeper insights.  \n    - Sonia stressed the need to extend export and filtering options to all survey questions for fuller analysis.\n\n- **Dashboard driver cleanup feature planned but timeline pending** (33:55)  \n    - The team agreed to add an option to uncheck unused custom drivers to keep dashboards cleaner.  \n    - This feature is accepted but delivery depends on effort estimates from Culture Monkey.  \n    - Updates on timeline and implementation will follow alongside other enhancement planning.\n\n- **Industry benchmark settings confirmed as account-wide consistent** (33:02)  \n    - Benchmark comparisons use the same industry settings as the engagement survey across the entire account.  \n    - This consistency helps with meaningful interpretation of scores and trends.\n\n- **Next steps include investigating date filter feasibility and dashboard improvements** (34:55)  \n    - Karthik initiated an internal inquiry on adding date range filters to lifecycle analytics dashboards.  \n    - The team will provide updates on roadmap feasibility and prioritize this based on user needs.  \n    - Sonia emphasized the importance of these features for team reporting autonomy and insight generation.",
+        "keywords": [
+          "Lifecycle Analytics",
+          "Pulse Survey",
+          "Survey Reminders",
+          "Dashboard Enhancements",
+          "Level of Effort",
+          "Onboarding Surveys"
+        ]
+      },
+      "sentences": [
+        {
+          "index": 0,
+          "speaker_name": "Karthik N",
+          "raw_text": "It.",
+          "start_time": 0.16
+        },
+        {
+          "index": 1,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Hey, Charlie.",
+          "start_time": 43.21
+        },
+        {
+          "index": 2,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Glad you could attend.",
+          "start_time": 44.01
+        },
+        {
+          "index": 3,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I assume you have some questions on that file.",
+          "start_time": 50.17
+        },
+        {
+          "index": 4,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Of course, of course.",
+          "start_time": 56.26
+        },
+        {
+          "index": 5,
+          "speaker_name": "Karthik N",
+          "raw_text": "I did the same.",
+          "start_time": 60.82
+        },
+        {
+          "index": 6,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 76.74
+        },
+        {
+          "index": 7,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Good morning.",
+          "start_time": 79.56
+        },
+        {
+          "index": 8,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So, Charlie, didn't you just go to the beach and then you went to skiing or something or.",
+          "start_time": 130.86
+        },
+        {
+          "index": 9,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I thought you went.",
+          "start_time": 137.1
+        },
+        {
+          "index": 10,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I thought you went to an island or something not too long ago.",
+          "start_time": 138.62
+        },
+        {
+          "index": 11,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Oh, gosh, I wish I did.",
+          "start_time": 141.82
+        },
+        {
+          "index": 12,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Florida, Louisiana, and then yeah, just in.",
+          "start_time": 143.9
+        },
+        {
+          "index": 13,
+          "speaker_name": "Kate Burk",
+          "raw_text": "Colorado.",
+          "start_time": 147.7
+        },
+        {
+          "index": 14,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Excited to be.",
+          "start_time": 153.5
+        },
+        {
+          "index": 15,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Kind of like being home or.",
+          "start_time": 154.26
+        },
+        {
+          "index": 16,
+          "speaker_name": "Karthik N",
+          "raw_text": "Trying.",
+          "start_time": 159.48
+        },
+        {
+          "index": 17,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Trying to stay home.",
+          "start_time": 159.96
+        },
+        {
+          "index": 18,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It was a.",
+          "start_time": 162.04
+        },
+        {
+          "index": 19,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It was a good time to get out of here.",
+          "start_time": 162.56
+        },
+        {
+          "index": 20,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Like, the weather's been unusually poor for this time of year.",
+          "start_time": 163.96
+        },
+        {
+          "index": 21,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Usually once January's done, we're like, yes, bring on the pollen.",
+          "start_time": 167.96
+        },
+        {
+          "index": 22,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I think we don't record in Ireland and UK.",
+          "start_time": 173
+        },
+        {
+          "index": 23,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So every day of 2026, it's rained.",
+          "start_time": 176.04
+        },
+        {
+          "index": 24,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Really?",
+          "start_time": 179.4
+        },
+        {
+          "index": 25,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Every single day.",
+          "start_time": 180.12
+        },
+        {
+          "index": 26,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Oh, and it's cold.",
+          "start_time": 181.57
+        },
+        {
+          "index": 27,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's the worst.",
+          "start_time": 184.21
+        },
+        {
+          "index": 28,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And the doctors are like, get some walk.",
+          "start_time": 186.13
+        },
+        {
+          "index": 29,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Get some walk.",
+          "start_time": 187.57
+        },
+        {
+          "index": 30,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I'm like, how do I go?",
+          "start_time": 188.13
+        },
+        {
+          "index": 31,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So I had to get, like, a.",
+          "start_time": 190.45
+        },
+        {
+          "index": 32,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Walking pad thing in the house, and.",
+          "start_time": 191.49
+        },
+        {
+          "index": 33,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I'm walking on that now.",
+          "start_time": 192.89
+        },
+        {
+          "index": 34,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Sonia, I keep.",
+          "start_time": 196.37
+        },
+        {
+          "index": 35,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is.",
+          "start_time": 197.329
+        },
+        {
+          "index": 36,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is the band Amble A M B E L?",
+          "start_time": 197.65
+        },
+        {
+          "index": 37,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that big in Ireland or.",
+          "start_time": 200.49
+        },
+        {
+          "index": 38,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "No, not really.",
+          "start_time": 201.69
+        },
+        {
+          "index": 39,
+          "speaker_name": "Scott Domes",
+          "raw_text": "No.",
+          "start_time": 203.17
+        },
+        {
+          "index": 40,
+          "speaker_name": "Karthik N",
+          "raw_text": "All right.",
+          "start_time": 203.97
+        },
+        {
+          "index": 41,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Have you been to Mary's publisher?",
+          "start_time": 206.53
+        },
+        {
+          "index": 42,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay.",
+          "start_time": 209.47
+        },
+        {
+          "index": 43,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Have you been to Mary's Pub?",
+          "start_time": 209.95
+        },
+        {
+          "index": 44,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "No, I haven't.",
+          "start_time": 211.55
+        },
+        {
+          "index": 45,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Nope.",
+          "start_time": 213.63
+        },
+        {
+          "index": 46,
+          "speaker_name": "Scott Domes",
+          "raw_text": "These damn musical bands, they make us think, like, everything.",
+          "start_time": 215.47
+        },
+        {
+          "index": 47,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And everyone's been to these places, and here, it's just a song.",
+          "start_time": 220.27
+        },
+        {
+          "index": 48,
+          "speaker_name": "Karthik N",
+          "raw_text": "All right.",
+          "start_time": 223.15
+        },
+        {
+          "index": 49,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Karthik, how are you?",
+          "start_time": 224.51
+        },
+        {
+          "index": 50,
+          "speaker_name": "Karthik N",
+          "raw_text": "Good, Scott.",
+          "start_time": 229.23
+        },
+        {
+          "index": 51,
+          "speaker_name": "Karthik N",
+          "raw_text": "How are you guys?",
+          "start_time": 230.03
+        },
+        {
+          "index": 52,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah, I'm just sending Yugi, so let me see if he's in.",
+          "start_time": 232.67
+        },
+        {
+          "index": 53,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 238.07
+        },
+        {
+          "index": 54,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Kate, did you do anything fun over the weekend?",
+          "start_time": 246.31
+        },
+        {
+          "index": 55,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Monday off?",
+          "start_time": 251.75
+        },
+        {
+          "index": 56,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "No, I survived because it was just.",
+          "start_time": 254.63
+        },
+        {
+          "index": 57,
+          "speaker_name": "Kate Burk",
+          "raw_text": "Me home with the kids.",
+          "start_time": 258.03
+        },
+        {
+          "index": 58,
+          "speaker_name": "Kate Burk",
+          "raw_text": "We had a.",
+          "start_time": 261.03
+        },
+        {
+          "index": 59,
+          "speaker_name": "Kate Burk",
+          "raw_text": "What we called it a lazy day.",
+          "start_time": 261.67
+        },
+        {
+          "index": 60,
+          "speaker_name": "Kate Burk",
+          "raw_text": "And we got to alternate who was picking what movie to watch or what show to watch.",
+          "start_time": 263.54
+        },
+        {
+          "index": 61,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So that's fantastic.",
+          "start_time": 267.78
+        },
+        {
+          "index": 62,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "We coasted.",
+          "start_time": 269.54
+        },
+        {
+          "index": 63,
+          "speaker_name": "Kate Burk",
+          "raw_text": "Hopefully it's a core memory for them, you know, the day we stayed home from school.",
+          "start_time": 270.82
+        },
+        {
+          "index": 64,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So cool.",
+          "start_time": 275.94
+        },
+        {
+          "index": 65,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's what we strive for, right?",
+          "start_time": 276.82
+        },
+        {
+          "index": 66,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Those core memories.",
+          "start_time": 278.38
+        },
+        {
+          "index": 67,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right.",
+          "start_time": 280.9
+        },
+        {
+          "index": 68,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 283.54
+        },
+        {
+          "index": 69,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So we did go live.",
+          "start_time": 285.38
+        },
+        {
+          "index": 70,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Let's just recap.",
+          "start_time": 287.54
+        },
+        {
+          "index": 71,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I put this together just so when I got back on Tuesday, there were so many things that went back and forth.",
+          "start_time": 288.46
+        },
+        {
+          "index": 72,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So I'll start here and just make sure that we're all aligned.",
+          "start_time": 296.86
+        },
+        {
+          "index": 73,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Bring the call back here.",
+          "start_time": 301.02
+        },
+        {
+          "index": 74,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Show my screen.",
+          "start_time": 303.9
+        },
+        {
+          "index": 75,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, so we did go live with the 53090.",
+          "start_time": 304.9
+        },
+        {
+          "index": 76,
+          "speaker_name": "Scott Domes",
+          "raw_text": "There were some issues with our previous system, but it looks like Sonia and Kate worked together well, identified those people, and they were loaded in the system at least from the five day.",
+          "start_time": 309.82
+        },
+        {
+          "index": 77,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Do we.",
+          "start_time": 322.78
+        },
+        {
+          "index": 78,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And were the 30 day loaded as of yesterday?",
+          "start_time": 323.34
+        },
+        {
+          "index": 79,
+          "speaker_name": "Scott Domes",
+          "raw_text": "They were not.",
+          "start_time": 327.34
+        },
+        {
+          "index": 80,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes.",
+          "start_time": 329.42
+        },
+        {
+          "index": 81,
+          "speaker_name": "Yugi P",
+          "raw_text": "So it will be loaded shortly after this call.",
+          "start_time": 329.98
+        },
+        {
+          "index": 82,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 333.82
+        },
+        {
+          "index": 83,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It'll be loaded shortly after this call.",
+          "start_time": 334.26
+        },
+        {
+          "index": 84,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 336.3
+        },
+        {
+          "index": 85,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah.",
+          "start_time": 336.78
+        },
+        {
+          "index": 86,
+          "speaker_name": "Yugi P",
+          "raw_text": "The confirmation in the group as well.",
+          "start_time": 337.34
+        },
+        {
+          "index": 87,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So there were so many emails going back and forth.",
+          "start_time": 339.34
+        },
+        {
+          "index": 88,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I put this together just so that we could follow along.",
+          "start_time": 341.34
+        },
+        {
+          "index": 89,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We did shut down.",
+          "start_time": 344.44
+        },
+        {
+          "index": 90,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We did turn off Glint.",
+          "start_time": 345.56
+        },
+        {
+          "index": 91,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yes.",
+          "start_time": 347.24
+        },
+        {
+          "index": 92,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Thumbs up, Sonya.",
+          "start_time": 347.88
+        },
+        {
+          "index": 93,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 351.96
+        },
+        {
+          "index": 94,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We turned on cm.",
+          "start_time": 352.76
+        },
+        {
+          "index": 95,
+          "speaker_name": "Scott Domes",
+          "raw_text": "No issues there.",
+          "start_time": 354.08
+        },
+        {
+          "index": 96,
+          "speaker_name": "Scott Domes",
+          "raw_text": "There was that manual data gathering that had to take place.",
+          "start_time": 355.48
+        },
+        {
+          "index": 97,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Again, thank you, Kate and Sonya on that.",
+          "start_time": 358.6
+        },
+        {
+          "index": 98,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It was loaded for the five day.",
+          "start_time": 361.92
+        },
+        {
+          "index": 99,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Do we not have any 90 day that we're going to go after?",
+          "start_time": 363.64
+        },
+        {
+          "index": 100,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Kate on that file?",
+          "start_time": 366.36
+        },
+        {
+          "index": 101,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I saw 5 and 30, but not 90.",
+          "start_time": 369.76
+        },
+        {
+          "index": 102,
+          "speaker_name": "Kate Burk",
+          "raw_text": "I gotta be honest, Sonia was really saving my butt on that one.",
+          "start_time": 373.62
+        },
+        {
+          "index": 103,
+          "speaker_name": "Kate Burk",
+          "raw_text": "Sonia, did you.",
+          "start_time": 377.86
+        },
+        {
+          "index": 104,
+          "speaker_name": "Kate Burk",
+          "raw_text": "I mean, what were you planning for that?",
+          "start_time": 378.98
+        },
+        {
+          "index": 105,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "The 91 strike, they're already above the 90 day threshold.",
+          "start_time": 382.74
+        },
+        {
+          "index": 106,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Now they're at 110, 120, like, because.",
+          "start_time": 385.62
+        },
+        {
+          "index": 107,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "If we think about the calculations, API was shut for like two and a half, three weeks.",
+          "start_time": 389.62
+        },
+        {
+          "index": 108,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So those people technically now would be like 110 days or 100 days.",
+          "start_time": 394.46
+        },
+        {
+          "index": 109,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Do we want to capture that feedback is what was the logic behind not including them?",
+          "start_time": 398.44
+        },
+        {
+          "index": 110,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And we know we have the pulse.",
+          "start_time": 404.2
+        },
+        {
+          "index": 111,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Coming in a couple of months.",
+          "start_time": 405.28
+        },
+        {
+          "index": 112,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Do we want to capture them there?",
+          "start_time": 406.12
+        },
+        {
+          "index": 113,
+          "speaker_name": "Kate Burk",
+          "raw_text": "Well, I guess that's a good question to talk about internally.",
+          "start_time": 408.84
+        },
+        {
+          "index": 114,
+          "speaker_name": "Kate Burk",
+          "raw_text": "I don't have a problem with sending that out, but if you feel like the employee pulse survey is going to come soon anyway and they would be at the threshold where they would be receiving that survey point, then maybe we don't.",
+          "start_time": 413.52
+        },
+        {
+          "index": 115,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah.",
+          "start_time": 431.49
+        },
+        {
+          "index": 116,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Just quickly, Charlie, do you remember was it last six months?",
+          "start_time": 431.93
+        },
+        {
+          "index": 117,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Anybody who's.",
+          "start_time": 435.65
+        },
+        {
+          "index": 118,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "In terms of the con, the threshold.",
+          "start_time": 436.53
+        },
+        {
+          "index": 119,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "For the pulse and the engagement survey.",
+          "start_time": 438.29
+        },
+        {
+          "index": 120,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Scott, was it anybody who's joined in the last three months or.",
+          "start_time": 440.25
+        },
+        {
+          "index": 121,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Six months?",
+          "start_time": 443.57
+        },
+        {
+          "index": 122,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Three months.",
+          "start_time": 444.05
+        },
+        {
+          "index": 123,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I think 93 months.",
+          "start_time": 444.53
+        },
+        {
+          "index": 124,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So, yeah, they'll definitely be included in their case.",
+          "start_time": 446.85
+        },
+        {
+          "index": 125,
+          "speaker_name": "Kate Burk",
+          "raw_text": "Okay, then I think let's just have it sit with the 5 and 30.",
+          "start_time": 449.5
+        },
+        {
+          "index": 126,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 456.3
+        },
+        {
+          "index": 127,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right, so we have that file.",
+          "start_time": 457.58
+        },
+        {
+          "index": 128,
+          "speaker_name": "Scott Domes",
+          "raw_text": "They'll load it here.",
+          "start_time": 458.9
+        },
+        {
+          "index": 129,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Let me add that as our next item.",
+          "start_time": 460.02
+        },
+        {
+          "index": 130,
+          "speaker_name": "Scott Domes",
+          "raw_text": "There's so many messages going back and forth.",
+          "start_time": 463.26
+        },
+        {
+          "index": 131,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I appreciate everyone working together.",
+          "start_time": 465.459
+        },
+        {
+          "index": 132,
+          "speaker_name": "Scott Domes",
+          "raw_text": "30 day will be loaded after call today.",
+          "start_time": 470.06
+        },
+        {
+          "index": 133,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Let's see.",
+          "start_time": 477.7
+        },
+        {
+          "index": 134,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yugi.",
+          "start_time": 478.22
+        },
+        {
+          "index": 135,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So we'll follow that up to 18.",
+          "start_time": 479.86
+        },
+        {
+          "index": 136,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right, let's put a due date of 219 on that then if you're going to say you'll have it done by.",
+          "start_time": 484.58
+        },
+        {
+          "index": 137,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Or we'll put 218 and we'll follow up on that tomorrow.",
+          "start_time": 489.66
+        },
+        {
+          "index": 138,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right.",
+          "start_time": 493.06
+        },
+        {
+          "index": 139,
+          "speaker_name": "Scott Domes",
+          "raw_text": "The other thing I wanted to make sure is that we're auditing.",
+          "start_time": 494.1
+        },
+        {
+          "index": 140,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So the way that we're going to audit and Yugi, you told me that you can't have any automated reports right now.",
+          "start_time": 497.86
+        },
+        {
+          "index": 141,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So we are doing report builder.",
+          "start_time": 504.5
+        },
+        {
+          "index": 142,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We're going to grab the first 31st weekend.",
+          "start_time": 508.07
+        },
+        {
+          "index": 143,
+          "speaker_name": "Scott Domes",
+          "raw_text": "3.",
+          "start_time": 511.59
+        },
+        {
+          "index": 144,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Oh, there it is.",
+          "start_time": 511.83
+        },
+        {
+          "index": 145,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It's now there.",
+          "start_time": 512.67
+        },
+        {
+          "index": 146,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Awesome.",
+          "start_time": 514.23
+        },
+        {
+          "index": 147,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So we'll grab this report, the will download this.",
+          "start_time": 514.87
+        },
+        {
+          "index": 148,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That'll show us everybody that the report was sent to and whether they answered yes or no.",
+          "start_time": 520.31
+        },
+        {
+          "index": 149,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And we'll compare it against workday data.",
+          "start_time": 525.23
+        },
+        {
+          "index": 150,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Does that make sense?",
+          "start_time": 528.07
+        },
+        {
+          "index": 151,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I know it makes sense on our side.",
+          "start_time": 529.19
+        },
+        {
+          "index": 152,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Does that make sense on your side, Yugi?",
+          "start_time": 530.87
+        },
+        {
+          "index": 153,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes.",
+          "start_time": 534.41
+        },
+        {
+          "index": 154,
+          "speaker_name": "Yugi P",
+          "raw_text": "God, that makes sense.",
+          "start_time": 534.65
+        },
+        {
+          "index": 155,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah.",
+          "start_time": 535.73
+        },
+        {
+          "index": 156,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 536.25
+        },
+        {
+          "index": 157,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that how you would you have done it or your clients have done it?",
+          "start_time": 536.77
+        },
+        {
+          "index": 158,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Something similar, yes.",
+          "start_time": 541.37
+        },
+        {
+          "index": 159,
+          "speaker_name": "Yugi P",
+          "raw_text": "So other customers have filtered out by date of submission.",
+          "start_time": 543.61
+        },
+        {
+          "index": 160,
+          "speaker_name": "Yugi P",
+          "raw_text": "So that's something in which they track it on a unique way.",
+          "start_time": 549.77
+        },
+        {
+          "index": 161,
+          "speaker_name": "Yugi P",
+          "raw_text": "So the one which you did right now is pretty unique.",
+          "start_time": 552.81
+        },
+        {
+          "index": 162,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Date of submission.",
+          "start_time": 557.77
+        },
+        {
+          "index": 163,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Can you explain a little bit further?",
+          "start_time": 558.77
+        },
+        {
+          "index": 164,
+          "speaker_name": "Yugi P",
+          "raw_text": "You know, we capture the date of the employee at which they submit the survey through a separate column called date of submission.",
+          "start_time": 563.15
+        },
+        {
+          "index": 165,
+          "speaker_name": "Yugi P",
+          "raw_text": "So other customers know, kind of track using that as well.",
+          "start_time": 574.19
+        },
+        {
+          "index": 166,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that a report on your side?",
+          "start_time": 578.59
+        },
+        {
+          "index": 167,
+          "speaker_name": "Yugi P",
+          "raw_text": "No, it's available in the confidential report, the one which you take an export of.",
+          "start_time": 581.15
+        },
+        {
+          "index": 168,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Oh, okay.",
+          "start_time": 587.08
+        },
+        {
+          "index": 169,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yeah.",
+          "start_time": 588.2
+        },
+        {
+          "index": 170,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So still the same report.",
+          "start_time": 588.84
+        },
+        {
+          "index": 171,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Exactly.",
+          "start_time": 590.6
+        },
+        {
+          "index": 172,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yeah.",
+          "start_time": 591.28
+        },
+        {
+          "index": 173,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, that's fine.",
+          "start_time": 591.6
+        },
+        {
+          "index": 174,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yes, that's what we plan on doing.",
+          "start_time": 593.16
+        },
+        {
+          "index": 175,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right, all right, so we will do that from our standpoint.",
+          "start_time": 595.48
+        },
+        {
+          "index": 176,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We'll do that week one, week two, week three, if it's 100% across the board, we'll consider it in good working order and we'll report that up to our senior management that the data is being captured.",
+          "start_time": 600
+        },
+        {
+          "index": 177,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We've already talked with our senior management letting them know that it's kind of reverse order than what we did for the engagement where we'll start capturing data and then we'll work with you guys on the dashboards.",
+          "start_time": 610.68
+        },
+        {
+          "index": 178,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 621.43
+        },
+        {
+          "index": 179,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I do have.",
+          "start_time": 621.99
+        },
+        {
+          "index": 180,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We are.",
+          "start_time": 623.51
+        },
+        {
+          "index": 181,
+          "speaker_name": "Scott Domes",
+          "raw_text": "One line item on here is capturing past data.",
+          "start_time": 624.31
+        },
+        {
+          "index": 182,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Sonya's doing that.",
+          "start_time": 628.31
+        },
+        {
+          "index": 183,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It's very highly confidential data, so that's being stored in a.",
+          "start_time": 629.39
+        },
+        {
+          "index": 184,
+          "speaker_name": "Scott Domes",
+          "raw_text": "In a private repository.",
+          "start_time": 633.31
+        },
+        {
+          "index": 185,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And then what I'd like to do today is one of the things I'd like to do is go through the dashboards at the end where they stand today, what issues we're already seeing or have questions around and have a quote unquote, quick training on that.",
+          "start_time": 635.03
+        },
+        {
+          "index": 186,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right.",
+          "start_time": 649.48
+        },
+        {
+          "index": 187,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But I know there are other people on the call and I won't bogart everyone's time here, so as it goes through for our project plan, confirm the onboarding surveys are launched.",
+          "start_time": 650.36
+        },
+        {
+          "index": 188,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I think this is complete.",
+          "start_time": 665.8
+        },
+        {
+          "index": 189,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I think our project plan from the initial is done.",
+          "start_time": 667.04
+        },
+        {
+          "index": 190,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Are we agreed there we're up and running?",
+          "start_time": 669.52
+        },
+        {
+          "index": 191,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes.",
+          "start_time": 672.72
+        },
+        {
+          "index": 192,
+          "speaker_name": "Yugi P",
+          "raw_text": "God.",
+          "start_time": 673.12
+        },
+        {
+          "index": 193,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yeah.",
+          "start_time": 673.48
+        },
+        {
+          "index": 194,
+          "speaker_name": "Yugi P",
+          "raw_text": "All these service are up and running as of now.",
+          "start_time": 673.72
+        },
+        {
+          "index": 195,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Sub admin.",
+          "start_time": 676.32
+        },
+        {
+          "index": 196,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So the only thing is this sub admin.",
+          "start_time": 677.04
+        },
+        {
+          "index": 197,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Kate, you and I talked about that.",
+          "start_time": 679.2
+        },
+        {
+          "index": 198,
+          "speaker_name": "Scott Domes",
+          "raw_text": "You'll get a call, go in there.",
+          "start_time": 680.64
+        },
+        {
+          "index": 199,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We've already turned these off.",
+          "start_time": 682.32
+        },
+        {
+          "index": 200,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So I will say this project is 99% complete.",
+          "start_time": 683.6
+        },
+        {
+          "index": 201,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, thank you.",
+          "start_time": 688.48
+        },
+        {
+          "index": 202,
+          "speaker_name": "Scott Domes",
+          "raw_text": "There.",
+          "start_time": 690.24
+        },
+        {
+          "index": 203,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Now I will turn it over to.",
+          "start_time": 692
+        },
+        {
+          "index": 204,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I don't know what that is.",
+          "start_time": 694.56
+        },
+        {
+          "index": 205,
+          "speaker_name": "Scott Domes",
+          "raw_text": "A ticket.",
+          "start_time": 695.44
+        },
+        {
+          "index": 206,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I'll shut down my screen right now and I will turn it over to Kate.",
+          "start_time": 696.16
+        },
+        {
+          "index": 207,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Sonny, anything from your side before I turn it over to Charlie?",
+          "start_time": 703.64
+        },
+        {
+          "index": 208,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "No, I think we're good.",
+          "start_time": 710
+        },
+        {
+          "index": 209,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Just in terms of.",
+          "start_time": 711.28
+        },
+        {
+          "index": 210,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I think the lifecycle analytics and the dashboards would love to just understand a little more on that front.",
+          "start_time": 712.64
+        },
+        {
+          "index": 211,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yeah, yeah, we'll do that at the end.",
+          "start_time": 718.16
+        },
+        {
+          "index": 212,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I'm going to let Charlie talk and we'll jump right into it.",
+          "start_time": 720.56
+        },
+        {
+          "index": 213,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Totally agree.",
+          "start_time": 722.8
+        },
+        {
+          "index": 214,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Thank you.",
+          "start_time": 723.94
+        },
+        {
+          "index": 215,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Anything else?",
+          "start_time": 725.62
+        },
+        {
+          "index": 216,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, Charlie, over to you.",
+          "start_time": 728.1
+        },
+        {
+          "index": 217,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, just had a couple of questions.",
+          "start_time": 732.18
+        },
+        {
+          "index": 218,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So, jogging everyone's memory, we're turning our attention now to the 2026 pulse survey.",
+          "start_time": 736.1
+        },
+        {
+          "index": 219,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We're going to try and land this in April.",
+          "start_time": 742.66
+        },
+        {
+          "index": 220,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "With that in mind, we did have a list of enhancements that we wanted out of the culture monkey tool toward the end of last year.",
+          "start_time": 745.3
+        },
+        {
+          "index": 221,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And so in carrying those over, we wanted to evaluate which of these were doable at all.",
+          "start_time": 755.07
+        },
+        {
+          "index": 222,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Which looks like has been indicated in column J with an accepted or rejected.",
+          "start_time": 761.63
+        },
+        {
+          "index": 223,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And we'll dive a little bit into what's pending discussion.",
+          "start_time": 765.67
+        },
+        {
+          "index": 224,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But the other thing that we were looking to have in order to inform our prior prioritization of these remaining enhancements was the level of effort.",
+          "start_time": 769.63
+        },
+        {
+          "index": 225,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So I guess first question for Yugi and Karthik is do we have the level of effort it takes for these enhancements?",
+          "start_time": 779.17
+        },
+        {
+          "index": 226,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes, Charlie, but my team was actually requesting for the priorities of all these tasks.",
+          "start_time": 790.21
+        },
+        {
+          "index": 227,
+          "speaker_name": "Yugi P",
+          "raw_text": "So once we get the priority from your side, my team would be happy to fill in this column as well.",
+          "start_time": 796.53
+        },
+        {
+          "index": 228,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So just coming back a little bit to what we were talking about last week.",
+          "start_time": 803.57
+        },
+        {
+          "index": 229,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yuhee.",
+          "start_time": 806.25
+        },
+        {
+          "index": 230,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So we need to have a prioritization conversation with our leadership team.",
+          "start_time": 806.81
+        },
+        {
+          "index": 231,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And in order to inform that conversation, we need an idea of how long some of these items are going to take.",
+          "start_time": 812.19
+        },
+        {
+          "index": 232,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Given the example, if we ask for, we say it's high priority for us to adjust overall to my team's overall.",
+          "start_time": 817.47
+        },
+        {
+          "index": 233,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And if you tell us that takes eight weeks, we don't have eight weeks.",
+          "start_time": 827.47
+        },
+        {
+          "index": 234,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So that's going to tell us that we cannot prioritize that this time around.",
+          "start_time": 830.51
+        },
+        {
+          "index": 235,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Which is why we were asking for level of effort last week when we spoke.",
+          "start_time": 835.39
+        },
+        {
+          "index": 236,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay, okay, understood, Understood.",
+          "start_time": 840.11
+        },
+        {
+          "index": 237,
+          "speaker_name": "Yugi P",
+          "raw_text": "I'll get these columns filled and given to you by tomorrow morning, your time.",
+          "start_time": 842.59
+        },
+        {
+          "index": 238,
+          "speaker_name": "Yugi P",
+          "raw_text": "Does that work for you?",
+          "start_time": 848.43
+        },
+        {
+          "index": 239,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yep.",
+          "start_time": 850.19
+        },
+        {
+          "index": 240,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yep.",
+          "start_time": 850.71
+        },
+        {
+          "index": 241,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Tomorrow morning would be great.",
+          "start_time": 851.07
+        },
+        {
+          "index": 242,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Other consideration, just as I was thinking through it, Yugi, is level of effort isn't going to change.",
+          "start_time": 852.75
+        },
+        {
+          "index": 243,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Well, you tell me.",
+          "start_time": 857.63
+        },
+        {
+          "index": 244,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But I'm sure depending on capacity and all that there are a couple of factors, but level of effort generally isn't going to change a lot.",
+          "start_time": 859.07
+        },
+        {
+          "index": 245,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So we understand that there is some, like, wiggle room in these estimates and we'll keep that in mind.",
+          "start_time": 866.11
+        },
+        {
+          "index": 246,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But that's going to be really helpful for us in informing that conversation.",
+          "start_time": 872.93
+        },
+        {
+          "index": 247,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So, yeah, by tomorrow morning, I'll look out for that update.",
+          "start_time": 876.57
+        },
+        {
+          "index": 248,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, go for it, Scott.",
+          "start_time": 880.05
+        },
+        {
+          "index": 249,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I just want to try to understand what does accepted, rejected and pending discussion mean?",
+          "start_time": 883.17
+        },
+        {
+          "index": 250,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Can you just explain that a little bit more?",
+          "start_time": 887.89
+        },
+        {
+          "index": 251,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It seems straightforward, but I'd rather hear it from you.",
+          "start_time": 893.41
+        },
+        {
+          "index": 252,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yes.",
+          "start_time": 896.36
+        },
+        {
+          "index": 253,
+          "speaker_name": "Yugi P",
+          "raw_text": "So the pending discussion is wherein discussions are pending from culture monkey side.",
+          "start_time": 896.76
+        },
+        {
+          "index": 254,
+          "speaker_name": "Yugi P",
+          "raw_text": "We still have one or two rounds of discussion left to decide whether we are able to do this item or not.",
+          "start_time": 903
+        },
+        {
+          "index": 255,
+          "speaker_name": "Yugi P",
+          "raw_text": "Rejected refers to, you know, it's not feasible at this moment within culture monkey.",
+          "start_time": 909.64
+        },
+        {
+          "index": 256,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 916.92
+        },
+        {
+          "index": 257,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And.",
+          "start_time": 918.36
+        },
+        {
+          "index": 258,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Except it means that it is something that you can change.",
+          "start_time": 918.68
+        },
+        {
+          "index": 259,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Paying discussion.",
+          "start_time": 921.65
+        },
+        {
+          "index": 260,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes.",
+          "start_time": 922.45
+        },
+        {
+          "index": 261,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 922.89
+        },
+        {
+          "index": 262,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And this is.",
+          "start_time": 924.77
+        },
+        {
+          "index": 263,
+          "speaker_name": "Scott Domes",
+          "raw_text": "This is.",
+          "start_time": 925.49
+        },
+        {
+          "index": 264,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I'll be quiet after this.",
+          "start_time": 926.37
+        },
+        {
+          "index": 265,
+          "speaker_name": "Scott Domes",
+          "raw_text": "This is more of a suggestion.",
+          "start_time": 927.97
+        },
+        {
+          "index": 266,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Please ignore.",
+          "start_time": 933.01
+        },
+        {
+          "index": 267,
+          "speaker_name": "Scott Domes",
+          "raw_text": "H, L, M, N. That is our own notes that we're talking about internally on.",
+          "start_time": 933.89
+        },
+        {
+          "index": 268,
+          "speaker_name": "Scott Domes",
+          "raw_text": "On getting our head straight on align, our internal alignment.",
+          "start_time": 940.29
+        },
+        {
+          "index": 269,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But it still goes back to exactly what Charlie said.",
+          "start_time": 944.13
+        },
+        {
+          "index": 270,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We.",
+          "start_time": 946.69
+        },
+        {
+          "index": 271,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We're relying on that effort to finalize our final thoughts.",
+          "start_time": 947.05
+        },
+        {
+          "index": 272,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Right.",
+          "start_time": 951.22
+        },
+        {
+          "index": 273,
+          "speaker_name": "Scott Domes",
+          "raw_text": "This is us like preparing to get your information so we can have that discussion internally.",
+          "start_time": 952.02
+        },
+        {
+          "index": 274,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So sorry, Charlie, just back to you.",
+          "start_time": 957.06
+        },
+        {
+          "index": 275,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "No, that's perfect.",
+          "start_time": 960.98
+        },
+        {
+          "index": 276,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yugi, any questions from your side that we can help with before you go back to the team to get those estimates?",
+          "start_time": 962.26
+        },
+        {
+          "index": 277,
+          "speaker_name": "Yugi P",
+          "raw_text": "Just a quick minute, Charlie.",
+          "start_time": 969.94
+        },
+        {
+          "index": 278,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Just a.",
+          "start_time": 971.98
+        },
+        {
+          "index": 279,
+          "speaker_name": "Yugi P",
+          "raw_text": "Not at the moment.",
+          "start_time": 994.91
+        },
+        {
+          "index": 280,
+          "speaker_name": "Yugi P",
+          "raw_text": "I've just reviewed the list.",
+          "start_time": 996.51
+        },
+        {
+          "index": 281,
+          "speaker_name": "Yugi P",
+          "raw_text": "I don't think there's anything pending from your side as well.",
+          "start_time": 998.19
+        },
+        {
+          "index": 282,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, sounds good.",
+          "start_time": 1001.49
+        },
+        {
+          "index": 283,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We'll look out for those estimates tomorrow morning.",
+          "start_time": 1002.41
+        },
+        {
+          "index": 284,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Sonia, Scott, anything else top of mind for you both on this?",
+          "start_time": 1005.01
+        },
+        {
+          "index": 285,
+          "speaker_name": "Scott Domes",
+          "raw_text": "This is.",
+          "start_time": 1010.77
+        },
+        {
+          "index": 286,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I'm just putting an example.",
+          "start_time": 1011.49
+        },
+        {
+          "index": 287,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's what you're looking for from him, right?",
+          "start_time": 1012.57
+        },
+        {
+          "index": 288,
+          "speaker_name": "Scott Domes",
+          "raw_text": "10 business, 30 business days.",
+          "start_time": 1014.37
+        },
+        {
+          "index": 289,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's.",
+          "start_time": 1016.37
+        },
+        {
+          "index": 290,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's what we're trying to get from your side.",
+          "start_time": 1016.849
+        },
+        {
+          "index": 291,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right.",
+          "start_time": 1019.09
+        },
+        {
+          "index": 292,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 1023.33
+        },
+        {
+          "index": 293,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "All right, thank you.",
+          "start_time": 1024.53
+        },
+        {
+          "index": 294,
+          "speaker_name": "Scott Domes",
+          "raw_text": "The only other thing, Charlie, it looks like they stopped right where they went down the line 24.",
+          "start_time": 1028.86
+        },
+        {
+          "index": 295,
+          "speaker_name": "Scott Domes",
+          "raw_text": "They didn't go all the way down.",
+          "start_time": 1035.3
+        },
+        {
+          "index": 296,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Do you see that?",
+          "start_time": 1036.94
+        },
+        {
+          "index": 297,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Correct.",
+          "start_time": 1038.46
+        },
+        {
+          "index": 298,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yeah.",
+          "start_time": 1039.06
+        },
+        {
+          "index": 299,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Reason being was we only identified the top 24 as pending culture monkeys attention because the rest of them were ones that we needed to chat through as a team and make sure that they were a priority for us.",
+          "start_time": 1039.38
+        },
+        {
+          "index": 300,
+          "speaker_name": "Scott Domes",
+          "raw_text": "What's your expectation?",
+          "start_time": 1053.91
+        },
+        {
+          "index": 301,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Justice 24 then.",
+          "start_time": 1055.19
+        },
+        {
+          "index": 302,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah.",
+          "start_time": 1056.95
+        },
+        {
+          "index": 303,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay.",
+          "start_time": 1057.67
+        },
+        {
+          "index": 304,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Just making sure.",
+          "start_time": 1058.55
+        },
+        {
+          "index": 305,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Awesome.",
+          "start_time": 1061.03
+        },
+        {
+          "index": 306,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Any.",
+          "start_time": 1063.59
+        },
+        {
+          "index": 307,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Anything else there?",
+          "start_time": 1063.95
+        },
+        {
+          "index": 308,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Sonia, Kate, Karthik, Yugi.",
+          "start_time": 1065.27
+        },
+        {
+          "index": 309,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 1069.51
+        },
+        {
+          "index": 310,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Nothing else.",
+          "start_time": 1070.55
+        },
+        {
+          "index": 311,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 1072.07
+        },
+        {
+          "index": 312,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right.",
+          "start_time": 1074.39
+        },
+        {
+          "index": 313,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I can to look at the dashboards.",
+          "start_time": 1075.99
+        },
+        {
+          "index": 314,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I can see her or Sonia if you'd like to.",
+          "start_time": 1078.27
+        },
+        {
+          "index": 315,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Sarah, it's up to you.",
+          "start_time": 1079.95
+        },
+        {
+          "index": 316,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Happy to.",
+          "start_time": 1082.95
+        },
+        {
+          "index": 317,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 1083.91
+        },
+        {
+          "index": 318,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yes.",
+          "start_time": 1084.71
+        },
+        {
+          "index": 319,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Let me share my screen here.",
+          "start_time": 1085.27
+        },
+        {
+          "index": 320,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So did I have a couple of questions and we can walk through that.",
+          "start_time": 1088.31
+        },
+        {
+          "index": 321,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "There you sign.",
+          "start_time": 1092.79
+        },
+        {
+          "index": 322,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I'm sure there are a couple of.",
+          "start_time": 1093.99
+        },
+        {
+          "index": 323,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Ways to get this data there.",
+          "start_time": 1095.07
+        },
+        {
+          "index": 324,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So in terms of the life cycle here, correct me for assumption is wrong.",
+          "start_time": 1097.03
+        },
+        {
+          "index": 325,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Like we are here able to see the 35 participants.",
+          "start_time": 1101.51
+        },
+        {
+          "index": 326,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So is this all the participants that the five day survey has now been sent out to within the tool?",
+          "start_time": 1106.15
+        },
+        {
+          "index": 327,
+          "speaker_name": "Yugi P",
+          "raw_text": "Just the last seven days.",
+          "start_time": 1113.36
+        },
+        {
+          "index": 328,
+          "speaker_name": "Yugi P",
+          "raw_text": "Not the entire list.",
+          "start_time": 1115.44
+        },
+        {
+          "index": 329,
+          "speaker_name": "Yugi P",
+          "raw_text": "But I mean since we launched last week.",
+          "start_time": 1116.56
+        },
+        {
+          "index": 330,
+          "speaker_name": "Yugi P",
+          "raw_text": "It's just showing me.",
+          "start_time": 1118.8
+        },
+        {
+          "index": 331,
+          "speaker_name": "Yugi P",
+          "raw_text": "I know.",
+          "start_time": 1119.64
+        },
+        {
+          "index": 332,
+          "speaker_name": "Yugi P",
+          "raw_text": "List as of now.",
+          "start_time": 1120.08
+        },
+        {
+          "index": 333,
+          "speaker_name": "Yugi P",
+          "raw_text": "But as and time progress you just see the latest seven day rolling.",
+          "start_time": 1120.92
+        },
+        {
+          "index": 334,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Seven days but not.",
+          "start_time": 1125.84
+        },
+        {
+          "index": 335,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay.",
+          "start_time": 1126.96
+        },
+        {
+          "index": 336,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And if we were to go ahead.",
+          "start_time": 1127.4
+        },
+        {
+          "index": 337,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And get the of course data from.",
+          "start_time": 1128.72
+        },
+        {
+          "index": 338,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "The start of time, we'll go to the report builder as Scott showed us.",
+          "start_time": 1131.76
+        },
+        {
+          "index": 339,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Correct.",
+          "start_time": 1135.36
+        },
+        {
+          "index": 340,
+          "speaker_name": "Karthik N",
+          "raw_text": "Exactly.",
+          "start_time": 1135.68
+        },
+        {
+          "index": 341,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yeah.",
+          "start_time": 1136.16
+        },
+        {
+          "index": 342,
+          "speaker_name": "Scott Domes",
+          "raw_text": "What is that?",
+          "start_time": 1137.6
+        },
+        {
+          "index": 343,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Total participation.",
+          "start_time": 1138.16
+        },
+        {
+          "index": 344,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that last seven days as well or is that history?",
+          "start_time": 1139.44
+        },
+        {
+          "index": 345,
+          "speaker_name": "Yugi P",
+          "raw_text": "Total participation is the overall which dates back from the time from the date of survey launch.",
+          "start_time": 1144.8
+        },
+        {
+          "index": 346,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 1150
+        },
+        {
+          "index": 347,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So you'll still be able to see it there and then they have it.",
+          "start_time": 1150.88
+        },
+        {
+          "index": 348,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, that's great.",
+          "start_time": 1155.12
+        },
+        {
+          "index": 349,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Got it.",
+          "start_time": 1156.08
+        },
+        {
+          "index": 350,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "What does the silent participants mean?",
+          "start_time": 1156.72
+        },
+        {
+          "index": 351,
+          "speaker_name": "Yugi P",
+          "raw_text": "Silent participants are people who haven't responded to the survey yet.",
+          "start_time": 1160.56
+        },
+        {
+          "index": 352,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay, let's say they've added five days or seven days back but they've not responded still.",
+          "start_time": 1166.07
+        },
+        {
+          "index": 353,
+          "speaker_name": "Scott Domes",
+          "raw_text": "This real quick.",
+          "start_time": 1174.39
+        },
+        {
+          "index": 354,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Sorry.",
+          "start_time": 1175.11
+        },
+        {
+          "index": 355,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, yeah, sure.",
+          "start_time": 1175.67
+        },
+        {
+          "index": 356,
+          "speaker_name": "Scott Domes",
+          "raw_text": "On our side as well.",
+          "start_time": 1177.67
+        },
+        {
+          "index": 357,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Oh, how do you start recording?",
+          "start_time": 1180.39
+        },
+        {
+          "index": 358,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Manage recording.",
+          "start_time": 1185.59
+        },
+        {
+          "index": 359,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, it's recording now.",
+          "start_time": 1191.89
+        },
+        {
+          "index": 360,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Sorry.",
+          "start_time": 1193.09
+        },
+        {
+          "index": 361,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That silent participation are those who haven't responded yet.",
+          "start_time": 1193.45
+        },
+        {
+          "index": 362,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that in totality or is that the past seven days?",
+          "start_time": 1197.97
+        },
+        {
+          "index": 363,
+          "speaker_name": "Yugi P",
+          "raw_text": "From the beginning, sir.",
+          "start_time": 1203.65
+        },
+        {
+          "index": 364,
+          "speaker_name": "Scott Domes",
+          "raw_text": "From the beginning.",
+          "start_time": 1205.81
+        },
+        {
+          "index": 365,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And these surveys only stay open for 14 days.",
+          "start_time": 1206.93
+        },
+        {
+          "index": 366,
+          "speaker_name": "Yugi P",
+          "raw_text": "They would be reminded only up till 30 days from the time they've been added to the survey.",
+          "start_time": 1212.21
+        },
+        {
+          "index": 367,
+          "speaker_name": "Yugi P",
+          "raw_text": "But after that they won't be reminded.",
+          "start_time": 1217.05
+        },
+        {
+          "index": 368,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And they'll still remain as a silent participant after that.",
+          "start_time": 1219.32
+        },
+        {
+          "index": 369,
+          "speaker_name": "Scott Domes",
+          "raw_text": "14 days or do they drop off?",
+          "start_time": 1223
+        },
+        {
+          "index": 370,
+          "speaker_name": "Yugi P",
+          "raw_text": "There's no count of 14 days or so.",
+          "start_time": 1226.44
+        },
+        {
+          "index": 371,
+          "speaker_name": "Yugi P",
+          "raw_text": "What I mentioned is let's say they've been added to the survey today.",
+          "start_time": 1228.6
+        },
+        {
+          "index": 372,
+          "speaker_name": "Yugi P",
+          "raw_text": "Right.",
+          "start_time": 1232.76
+        },
+        {
+          "index": 373,
+          "speaker_name": "Yugi P",
+          "raw_text": "They'll be reminded every Friday up until the 30th day of being added to the seven.",
+          "start_time": 1233.48
+        },
+        {
+          "index": 374,
+          "speaker_name": "Yugi P",
+          "raw_text": "After that they won't be reminded, but they'll still be a part of the survey.",
+          "start_time": 1240.44
+        },
+        {
+          "index": 375,
+          "speaker_name": "Scott Domes",
+          "raw_text": "They'll still be part of the total participation.",
+          "start_time": 1245.71
+        },
+        {
+          "index": 376,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But will they be part of that silent participation count?",
+          "start_time": 1248.99
+        },
+        {
+          "index": 377,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yes, they will.",
+          "start_time": 1253.07
+        },
+        {
+          "index": 378,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So this is an ongoing item.",
+          "start_time": 1255.07
+        },
+        {
+          "index": 379,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes.",
+          "start_time": 1258.91
+        },
+        {
+          "index": 380,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So I could get that just by looking at total participation too, Sonia.",
+          "start_time": 1259.79
+        },
+        {
+          "index": 381,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Right, that's true.",
+          "start_time": 1264.79
+        },
+        {
+          "index": 382,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Exactly.",
+          "start_time": 1265.95
+        },
+        {
+          "index": 383,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "We can do that.",
+          "start_time": 1266.43
+        },
+        {
+          "index": 384,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "But I'm curious, where did that 30 days come from?",
+          "start_time": 1267.19
+        },
+        {
+          "index": 385,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yugi?",
+          "start_time": 1269.51
+        },
+        {
+          "index": 386,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "The reason I ask that is because.",
+          "start_time": 1270.61
+        },
+        {
+          "index": 387,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "If you think about the journey of.",
+          "start_time": 1272.57
+        },
+        {
+          "index": 388,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "The surveys, if somebody's received five day.",
+          "start_time": 1275.93
+        },
+        {
+          "index": 389,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Survey, which is fifth day from the.",
+          "start_time": 1278.61
+        },
+        {
+          "index": 390,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Date of joining, by the 30th day, they will get eligible for a 30 day onboarding survey.",
+          "start_time": 1280.53
+        },
+        {
+          "index": 391,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Aren't we sending conflicting reminders and stuff to them then?",
+          "start_time": 1287.33
+        },
+        {
+          "index": 392,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes, Sonia, they will be added to the 30 day survey parallel.",
+          "start_time": 1292.61
+        },
+        {
+          "index": 393,
+          "speaker_name": "Yugi P",
+          "raw_text": "It's not like if they are a part of one survey, they won't be a part of another.",
+          "start_time": 1296.45
+        },
+        {
+          "index": 394,
+          "speaker_name": "Yugi P",
+          "raw_text": "So it's not like that.",
+          "start_time": 1299.85
+        },
+        {
+          "index": 395,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So even.",
+          "start_time": 1301.13
+        },
+        {
+          "index": 396,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "No.",
+          "start_time": 1303.37
+        },
+        {
+          "index": 397,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And Kate, just help me out here in terms of the reminders.",
+          "start_time": 1304.01
+        },
+        {
+          "index": 398,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Didn't we agree on 40 day, 14.",
+          "start_time": 1307.69
+        },
+        {
+          "index": 399,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Days window, not 30 days?",
+          "start_time": 1309.49
+        },
+        {
+          "index": 400,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah.",
+          "start_time": 1311.69
+        },
+        {
+          "index": 401,
+          "speaker_name": "Kate Burk",
+          "raw_text": "And just one reminder.",
+          "start_time": 1312.05
+        },
+        {
+          "index": 402,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And just one reminder, right?",
+          "start_time": 1313.61
+        },
+        {
+          "index": 403,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, yeah, Yogi, that's something that we may want to look at because I.",
+          "start_time": 1315.13
+        },
+        {
+          "index": 404,
+          "speaker_name": "Kate Burk",
+          "raw_text": "Wasn'T aware that it was going to be a weekly reminder.",
+          "start_time": 1320.41
+        },
+        {
+          "index": 405,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah.",
+          "start_time": 1323.06
+        },
+        {
+          "index": 406,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And also just thinking from an employee.",
+          "start_time": 1323.62
+        },
+        {
+          "index": 407,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Perspective and experience as well, like if.",
+          "start_time": 1325.38
+        },
+        {
+          "index": 408,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I received my five day, another parallel survey, 30 day, I think we lose interest and participation there.",
+          "start_time": 1327.5
+        },
+        {
+          "index": 409,
+          "speaker_name": "Yugi P",
+          "raw_text": "Just to clear things off.",
+          "start_time": 1337.86
+        },
+        {
+          "index": 410,
+          "speaker_name": "Yugi P",
+          "raw_text": "So what exact mechanism are you looking forward to?",
+          "start_time": 1340.1
+        },
+        {
+          "index": 411,
+          "speaker_name": "Yugi P",
+          "raw_text": "Like the default is what I said.",
+          "start_time": 1342.7
+        },
+        {
+          "index": 412,
+          "speaker_name": "Yugi P",
+          "raw_text": "But I just want to hear your thoughts on this.",
+          "start_time": 1344.5
+        },
+        {
+          "index": 413,
+          "speaker_name": "Yugi P",
+          "raw_text": "So what is the actual mechanism?",
+          "start_time": 1347.54
+        },
+        {
+          "index": 414,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I have it as an action.",
+          "start_time": 1350.49
+        },
+        {
+          "index": 415,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I'll mark it down and we'll sign it.",
+          "start_time": 1351.33
+        },
+        {
+          "index": 416,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yes, Kate, go ahead.",
+          "start_time": 1354.73
+        },
+        {
+          "index": 417,
+          "speaker_name": "Kate Burk",
+          "raw_text": "Yeah, just instead of the reminder going out every Friday for the 30 day window, so for essentially four reminders, only have one reminder go out if not completed within two weeks of initial send.",
+          "start_time": 1356.09
+        },
+        {
+          "index": 418,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yeah.",
+          "start_time": 1372.57
+        },
+        {
+          "index": 419,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So it remains open for two weeks.",
+          "start_time": 1373.05
+        },
+        {
+          "index": 420,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "For that person, not 30 days.",
+          "start_time": 1374.57
+        },
+        {
+          "index": 421,
+          "speaker_name": "Yugi P",
+          "raw_text": "So all the surveys would have to be, you know, let's say they receive the reminders only for 14 days.",
+          "start_time": 1380.69
+        },
+        {
+          "index": 422,
+          "speaker_name": "Yugi P",
+          "raw_text": "Is that what you're looking for?",
+          "start_time": 1387.17
+        },
+        {
+          "index": 423,
+          "speaker_name": "Yugi P",
+          "raw_text": "And not a 30 day count.",
+          "start_time": 1390.05
+        },
+        {
+          "index": 424,
+          "speaker_name": "Yugi P",
+          "raw_text": "Right.",
+          "start_time": 1391.41
+        },
+        {
+          "index": 425,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So what we're trying to say is that I get the Surveillance today.",
+          "start_time": 1395.01
+        },
+        {
+          "index": 426,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "That surveillance should be valid and active for the next 14 days.",
+          "start_time": 1398.93
+        },
+        {
+          "index": 427,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So I have 14 days to answer the survey, but we only need one reminder to be sent on the seventh day.",
+          "start_time": 1403.74
+        },
+        {
+          "index": 428,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I wouldn't say Friday, because if somebody, for example, receives a survey on a Thursday, no point getting a reminder on a Friday.",
+          "start_time": 1411.98
+        },
+        {
+          "index": 429,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So can we set it up in a way that the person gets the reminder on the seventh day and that's it?",
+          "start_time": 1417.58
+        },
+        {
+          "index": 430,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Is that Kate?",
+          "start_time": 1422.46
+        },
+        {
+          "index": 431,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Is that okay?",
+          "start_time": 1423.54
+        },
+        {
+          "index": 432,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yes.",
+          "start_time": 1425.42
+        },
+        {
+          "index": 433,
+          "speaker_name": "Karthik N",
+          "raw_text": "I'll jump in here.",
+          "start_time": 1429.03
+        },
+        {
+          "index": 434,
+          "speaker_name": "Karthik N",
+          "raw_text": "So, see, the survey link does not expire, so it.",
+          "start_time": 1430.23
+        },
+        {
+          "index": 435,
+          "speaker_name": "Karthik N",
+          "raw_text": "It will be active even if the person is not answering the survey for the five days or 30 days.",
+          "start_time": 1436.03
+        },
+        {
+          "index": 436,
+          "speaker_name": "Karthik N",
+          "raw_text": "That's something that's default.",
+          "start_time": 1444.629
+        },
+        {
+          "index": 437,
+          "speaker_name": "Karthik N",
+          "raw_text": "But what we can check with the team is that instead of us continuously sending reminders for the 30 days, we can just limit it to the 14 days like you mentioned.",
+          "start_time": 1446.39
+        },
+        {
+          "index": 438,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1457.6
+        },
+        {
+          "index": 439,
+          "speaker_name": "Karthik N",
+          "raw_text": "So say someone is added to a survey on a Tuesday.",
+          "start_time": 1458
+        },
+        {
+          "index": 440,
+          "speaker_name": "Karthik N",
+          "raw_text": "On seventh day, there is one reminder.",
+          "start_time": 1464.4
+        },
+        {
+          "index": 441,
+          "speaker_name": "Karthik N",
+          "raw_text": "And there won't be any other reminders after that.",
+          "start_time": 1466.6
+        },
+        {
+          "index": 442,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1469.76
+        },
+        {
+          "index": 443,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that's where the begins.",
+          "start_time": 1470.24
+        },
+        {
+          "index": 444,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah.",
+          "start_time": 1472.64
+        },
+        {
+          "index": 445,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Got it.",
+          "start_time": 1478.24
+        },
+        {
+          "index": 446,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So can we get a confirmation on that?",
+          "start_time": 1478.96
+        },
+        {
+          "index": 447,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "If that's something we can apply asap?",
+          "start_time": 1480.64
+        },
+        {
+          "index": 448,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, that's something that we can check with the team this week.",
+          "start_time": 1484.9
+        },
+        {
+          "index": 449,
+          "speaker_name": "Karthik N",
+          "raw_text": "Along with the rest of the updates that Yugi mentioned, we can also bring that update.",
+          "start_time": 1488.98
+        },
+        {
+          "index": 450,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That invite stays open how long in perpetuity.",
+          "start_time": 1494.02
+        },
+        {
+          "index": 451,
+          "speaker_name": "Kate Burk",
+          "raw_text": "I think it's open until they submit it or they're no longer an employee, it sounds like.",
+          "start_time": 1498.459
+        },
+        {
+          "index": 452,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that right?",
+          "start_time": 1505.06
+        },
+        {
+          "index": 453,
+          "speaker_name": "Karthik N",
+          "raw_text": "That's Craig's call.",
+          "start_time": 1507.3
+        },
+        {
+          "index": 454,
+          "speaker_name": "Karthik N",
+          "raw_text": "Because Lifecycle service is continuously running, even if they move to a different stage, they can still answer the previous survey.",
+          "start_time": 1509.34
+        },
+        {
+          "index": 455,
+          "speaker_name": "Karthik N",
+          "raw_text": "That's the default setup that we have.",
+          "start_time": 1515.3
+        },
+        {
+          "index": 456,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Oh, because it's a lifecycle.",
+          "start_time": 1516.86
+        },
+        {
+          "index": 457,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 1518.26
+        },
+        {
+          "index": 458,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Our engagement survey links have a dent.",
+          "start_time": 1519.58
+        },
+        {
+          "index": 459,
+          "speaker_name": "Karthik N",
+          "raw_text": "No, that's.",
+          "start_time": 1523.9
+        },
+        {
+          "index": 460,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah, that's different.",
+          "start_time": 1524.78
+        },
+        {
+          "index": 461,
+          "speaker_name": "Karthik N",
+          "raw_text": "So engagement surveys, any custom service that you create, they always have an expiry date.",
+          "start_time": 1525.86
+        },
+        {
+          "index": 462,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah.",
+          "start_time": 1531.22
+        },
+        {
+          "index": 463,
+          "speaker_name": "Scott Domes",
+          "raw_text": "You had me scared there.",
+          "start_time": 1531.5
+        },
+        {
+          "index": 464,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 1532.78
+        },
+        {
+          "index": 465,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Oh, my.",
+          "start_time": 1535.67
+        },
+        {
+          "index": 466,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I had a mini heart attack.",
+          "start_time": 1536.87
+        },
+        {
+          "index": 467,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, so, Sonia, I know I'm not.",
+          "start_time": 1540.15
+        },
+        {
+          "index": 468,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I think you don't have anything after this.",
+          "start_time": 1543.31
+        },
+        {
+          "index": 469,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I have a hard stop that I need to jump to.",
+          "start_time": 1545.19
+        },
+        {
+          "index": 470,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yep.",
+          "start_time": 1548.39
+        },
+        {
+          "index": 471,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Do you want to continue with them and I could watch this later on?",
+          "start_time": 1548.91
+        },
+        {
+          "index": 472,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, that's perfect.",
+          "start_time": 1552.47
+        },
+        {
+          "index": 473,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And the only other thing I wanted to get feedback on was the dashboards, how the new drivers are messing up that, that, that, that dashboard.",
+          "start_time": 1554.07
+        },
+        {
+          "index": 474,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah.",
+          "start_time": 1567.29
+        },
+        {
+          "index": 475,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Because it was clean.",
+          "start_time": 1569.93
+        },
+        {
+          "index": 476,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I thought it would be clean after we said we're only going to show one announce coming up, but go ahead and walk through all the other stuff and then I'll watch this afterwards.",
+          "start_time": 1570.89
+        },
+        {
+          "index": 477,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Thank you.",
+          "start_time": 1581.45
+        },
+        {
+          "index": 478,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Great.",
+          "start_time": 1582.33
+        },
+        {
+          "index": 479,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Thank you.",
+          "start_time": 1582.81
+        },
+        {
+          "index": 480,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So thanks Yugi Karthik.",
+          "start_time": 1583.41
+        },
+        {
+          "index": 481,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So we just real quickly then going.",
+          "start_time": 1584.81
+        },
+        {
+          "index": 482,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "To the service here.",
+          "start_time": 1587.04
+        },
+        {
+          "index": 483,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And thanks to Karthik for quickly answering these surveys.",
+          "start_time": 1591.04
+        },
+        {
+          "index": 484,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So they're not active, they are published.",
+          "start_time": 1597.12
+        },
+        {
+          "index": 485,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So that's fine.",
+          "start_time": 1599.16
+        },
+        {
+          "index": 486,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So if we take the example of this one dashboard, which is your first week at Yahoo.",
+          "start_time": 1600.88
+        },
+        {
+          "index": 487,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Five day survey in terms of if.",
+          "start_time": 1606.24
+        },
+        {
+          "index": 488,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I were to look at the report, Sorry, so I'm not able to get a dashboard view for the lifecycle service.",
+          "start_time": 1610.68
+        },
+        {
+          "index": 489,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Is that correct?",
+          "start_time": 1617.5
+        },
+        {
+          "index": 490,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "It's only populated for the engagement surveys.",
+          "start_time": 1618.22
+        },
+        {
+          "index": 491,
+          "speaker_name": "Yugi P",
+          "raw_text": "Exactly, Sonia.",
+          "start_time": 1621.74
+        },
+        {
+          "index": 492,
+          "speaker_name": "Yugi P",
+          "raw_text": "But you can see the specific scores in the lifecycle analytics.",
+          "start_time": 1623.18
+        },
+        {
+          "index": 493,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, got it.",
+          "start_time": 1626.54
+        },
+        {
+          "index": 494,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, so that's where we can see that.",
+          "start_time": 1628.02
+        },
+        {
+          "index": 495,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, that makes sense.",
+          "start_time": 1629.98
+        },
+        {
+          "index": 496,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And then you can access reports either from here or you can just simply.",
+          "start_time": 1631.9
+        },
+        {
+          "index": 497,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Go to reports here.",
+          "start_time": 1636.94
+        },
+        {
+          "index": 498,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Is that correct?",
+          "start_time": 1638.68
+        },
+        {
+          "index": 499,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes.",
+          "start_time": 1640.12
+        },
+        {
+          "index": 500,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah.",
+          "start_time": 1640.68
+        },
+        {
+          "index": 501,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, got it.",
+          "start_time": 1641.08
+        },
+        {
+          "index": 502,
+          "speaker_name": "Yugi P",
+          "raw_text": "And then heat map.",
+          "start_time": 1643.8
+        },
+        {
+          "index": 503,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, got it.",
+          "start_time": 1646.64
+        },
+        {
+          "index": 504,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And this is where you can get the heat map.",
+          "start_time": 1648.36
+        },
+        {
+          "index": 505,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, that makes perfect sense.",
+          "start_time": 1650.08
+        },
+        {
+          "index": 506,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And again we're not able to see.",
+          "start_time": 1651.88
+        },
+        {
+          "index": 507,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Anything here because of I think the.",
+          "start_time": 1653.04
+        },
+        {
+          "index": 508,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Confidentiality threshold not met.",
+          "start_time": 1655.04
+        },
+        {
+          "index": 509,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Which is fine.",
+          "start_time": 1657.16
+        },
+        {
+          "index": 510,
+          "speaker_name": "Yugi P",
+          "raw_text": "So if you specific survey on the all drop down you can click on specific heat maps as well.",
+          "start_time": 1657.92
+        },
+        {
+          "index": 511,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Got it, got it, got it.",
+          "start_time": 1664.21
+        },
+        {
+          "index": 512,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, got it.",
+          "start_time": 1665.13
+        },
+        {
+          "index": 513,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Now what I would be interested to.",
+          "start_time": 1665.97
+        },
+        {
+          "index": 514,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "See is the date range.",
+          "start_time": 1667.61
+        },
+        {
+          "index": 515,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So for instance, this is like an.",
+          "start_time": 1669.97
+        },
+        {
+          "index": 516,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Aggregated view of all the surveys up until now.",
+          "start_time": 1671.45
+        },
+        {
+          "index": 517,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "It's just been a week, less than a week.",
+          "start_time": 1673.93
+        },
+        {
+          "index": 518,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So that makes sense.",
+          "start_time": 1675.85
+        },
+        {
+          "index": 519,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "But if I were to go in.",
+          "start_time": 1677.01
+        },
+        {
+          "index": 520,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Here, say for example first week at Yahoo.",
+          "start_time": 1678.21
+        },
+        {
+          "index": 521,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And under, sorry, under reports, if I.",
+          "start_time": 1682.21
+        },
+        {
+          "index": 522,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Were to quickly go life cycle and.",
+          "start_time": 1684.85
+        },
+        {
+          "index": 523,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "If I want to pick a date range, how can I do that?",
+          "start_time": 1688.25
+        },
+        {
+          "index": 524,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Like I'm only interested to see for the last one month.",
+          "start_time": 1691.73
+        },
+        {
+          "index": 525,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "For example, if the survey has been running for a year.",
+          "start_time": 1695.17
+        },
+        {
+          "index": 526,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "How do I do that?",
+          "start_time": 1697.81
+        },
+        {
+          "index": 527,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay, let me just quickly check this.",
+          "start_time": 1701.73
+        },
+        {
+          "index": 528,
+          "speaker_name": "Karthik N",
+          "raw_text": "Sania, can you go to Life Cycle analytics?",
+          "start_time": 1706.05
+        },
+        {
+          "index": 529,
+          "speaker_name": "Karthik N",
+          "raw_text": "So see there is a date range that you can choose in the Lifecycle analytics.",
+          "start_time": 1708.93
+        },
+        {
+          "index": 530,
+          "speaker_name": "Karthik N",
+          "raw_text": "If you go to the reports under Lifecycle analytics, however it only gives you the overall score, the ENPS and the engagement score.",
+          "start_time": 1716.05
+        },
+        {
+          "index": 531,
+          "speaker_name": "Karthik N",
+          "raw_text": "So if you choose this drop down on the top.",
+          "start_time": 1726.15
+        },
+        {
+          "index": 532,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1728.03
+        },
+        {
+          "index": 533,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Right.",
+          "start_time": 1730.71
+        },
+        {
+          "index": 534,
+          "speaker_name": "Karthik N",
+          "raw_text": "So if you choose, you have the option to choose month, week, etc.",
+          "start_time": 1731.11
+        },
+        {
+          "index": 535,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that's, that's the score.",
+          "start_time": 1737.19
+        },
+        {
+          "index": 536,
+          "speaker_name": "Karthik N",
+          "raw_text": "And we can also give you these scores as an CSP export.",
+          "start_time": 1738.95
+        },
+        {
+          "index": 537,
+          "speaker_name": "Karthik N",
+          "raw_text": "So although it does not have the exact driver scores, it just has the engagement score, the participation rate and enps.",
+          "start_time": 1744.05
+        },
+        {
+          "index": 538,
+          "speaker_name": "Karthik N",
+          "raw_text": "This can be downloaded as a CSP if you want.",
+          "start_time": 1750.97
+        },
+        {
+          "index": 539,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay.",
+          "start_time": 1754.45
+        },
+        {
+          "index": 540,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So it's only restricted to engagement score.",
+          "start_time": 1755.01
+        },
+        {
+          "index": 541,
+          "speaker_name": "Karthik N",
+          "raw_text": "And if you scroll.",
+          "start_time": 1757.41
+        },
+        {
+          "index": 542,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah, if you scroll down yes.",
+          "start_time": 1758.37
+        },
+        {
+          "index": 543,
+          "speaker_name": "Karthik N",
+          "raw_text": "So this one has a similar thing as well.",
+          "start_time": 1761.73
+        },
+        {
+          "index": 544,
+          "speaker_name": "Karthik N",
+          "raw_text": "So this can also be downloaded as a CSV file.",
+          "start_time": 1765.33
+        },
+        {
+          "index": 545,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yugi can enable that download option which typically shows right next to this graph.",
+          "start_time": 1768.77
+        },
+        {
+          "index": 546,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay, so on the top you will have a download option which we will download right after this call.",
+          "start_time": 1775.8
+        },
+        {
+          "index": 547,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Got it.",
+          "start_time": 1780.92
+        },
+        {
+          "index": 548,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Like, I'll be honest with you, I think we'd want it to be extended for all the questions.",
+          "start_time": 1781.48
+        },
+        {
+          "index": 549,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "If you think about it like not.",
+          "start_time": 1786.72
+        },
+        {
+          "index": 550,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Just the engagement in the enps, we'd.",
+          "start_time": 1788.8
+        },
+        {
+          "index": 551,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Want to get visibility into the scores within a date range for other drivers as well.",
+          "start_time": 1791.08
+        },
+        {
+          "index": 552,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Because I'm not too sure if it's.",
+          "start_time": 1796.56
+        },
+        {
+          "index": 553,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "These two data points are alone are going to be super helpful.",
+          "start_time": 1798.59
+        },
+        {
+          "index": 554,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So what are the options there?",
+          "start_time": 1802.35
+        },
+        {
+          "index": 555,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Like if, for instance, there could be like a filter in here and I don't see a filter here actually guys like, you know, within the normal dashboards, within reports, we usually have those filters.",
+          "start_time": 1804.99
+        },
+        {
+          "index": 556,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Right by L2 L3.",
+          "start_time": 1816.23
+        },
+        {
+          "index": 557,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Is that something we can perhaps enable.",
+          "start_time": 1818.51
+        },
+        {
+          "index": 558,
+          "speaker_name": "Karthik N",
+          "raw_text": "Here, that we have it within the individual reports?",
+          "start_time": 1820.79
+        },
+        {
+          "index": 559,
+          "speaker_name": "Karthik N",
+          "raw_text": "Sanya.",
+          "start_time": 1825.85
+        },
+        {
+          "index": 560,
+          "speaker_name": "Karthik N",
+          "raw_text": "So even if you go to the main dashboard, you won't have have it here.",
+          "start_time": 1826.45
+        },
+        {
+          "index": 561,
+          "speaker_name": "Karthik N",
+          "raw_text": "So because if you go into the reports, you would have it here.",
+          "start_time": 1830.53
+        },
+        {
+          "index": 562,
+          "speaker_name": "Karthik N",
+          "raw_text": "Second thing, why we didn't have like a date filter, especially for the heat maps, like for the life cycle, is because it's a continuously running survey and the scores are like very much changing.",
+          "start_time": 1833.21
+        },
+        {
+          "index": 563,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1846.21
+        },
+        {
+          "index": 564,
+          "speaker_name": "Karthik N",
+          "raw_text": "So if you apply a filter, say I'll, I'll give one scenario here.",
+          "start_time": 1846.53
+        },
+        {
+          "index": 565,
+          "speaker_name": "Karthik N",
+          "raw_text": "Say for example, someone is getting added to the survey by end of this month.",
+          "start_time": 1850.53
+        },
+        {
+          "index": 566,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah.",
+          "start_time": 1856.82
+        },
+        {
+          "index": 567,
+          "speaker_name": "Karthik N",
+          "raw_text": "But they are answering in March.",
+          "start_time": 1857.46
+        },
+        {
+          "index": 568,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1860.74
+        },
+        {
+          "index": 569,
+          "speaker_name": "Karthik N",
+          "raw_text": "So when you apply a filter, say a monthly filter, so do we consider the person getting added to the survey as the date or do we take the submission date as the date?",
+          "start_time": 1862.02
+        },
+        {
+          "index": 570,
+          "speaker_name": "Karthik N",
+          "raw_text": "So there's going to be some mismatch of the scores when you apply.",
+          "start_time": 1875.26
+        },
+        {
+          "index": 571,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "That's something that we have to then cope up with because it should always.",
+          "start_time": 1879.75
+        },
+        {
+          "index": 572,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Fit in the submission.",
+          "start_time": 1882.95
+        },
+        {
+          "index": 573,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And that's the reason we say that we want to keep the survey and.",
+          "start_time": 1883.91
+        },
+        {
+          "index": 574,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "The reminders for the next 14 days.",
+          "start_time": 1886.59
+        },
+        {
+          "index": 575,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So that it makes sense.",
+          "start_time": 1888.35
+        },
+        {
+          "index": 576,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "But from my experience, I know from.",
+          "start_time": 1889.99
+        },
+        {
+          "index": 577,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "What the team is used to seeing.",
+          "start_time": 1892.31
+        },
+        {
+          "index": 578,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "As well, that date range filter is going to be super important because the.",
+          "start_time": 1893.79
+        },
+        {
+          "index": 579,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Idea behind doing this service is to.",
+          "start_time": 1899.15
+        },
+        {
+          "index": 580,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "You know, sort of, of course also gauge the effectiveness of these programs, etc.",
+          "start_time": 1900.59
+        },
+        {
+          "index": 581,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And we'd want to keep a track of trending, how that's trending, you know, say month over a month, quarter over quarter.",
+          "start_time": 1904.19
+        },
+        {
+          "index": 582,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So I can take it.",
+          "start_time": 1910.34
+        },
+        {
+          "index": 583,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah, that's absolutely understandable.",
+          "start_time": 1912.82
+        },
+        {
+          "index": 584,
+          "speaker_name": "Karthik N",
+          "raw_text": "But that's.",
+          "start_time": 1914.46
+        },
+        {
+          "index": 585,
+          "speaker_name": "Karthik N",
+          "raw_text": "So the the raw data has this information.",
+          "start_time": 1915.46
+        },
+        {
+          "index": 586,
+          "speaker_name": "Karthik N",
+          "raw_text": "The only thing is dashboard, we didn't have a date filter for this particular reason.",
+          "start_time": 1917.94
+        },
+        {
+          "index": 587,
+          "speaker_name": "Karthik N",
+          "raw_text": "Again, we.",
+          "start_time": 1922.82
+        },
+        {
+          "index": 588,
+          "speaker_name": "Karthik N",
+          "raw_text": "We are also revamping this so we can revisit this again.",
+          "start_time": 1923.58
+        },
+        {
+          "index": 589,
+          "speaker_name": "Karthik N",
+          "raw_text": "But the confidential report that Scott mentioned, where it has.",
+          "start_time": 1927.46
+        },
+        {
+          "index": 590,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yeah, so that's, that's the one.",
+          "start_time": 1932.5
+        },
+        {
+          "index": 591,
+          "speaker_name": "Karthik N",
+          "raw_text": "A couple of our customers who are using a month on month trend.",
+          "start_time": 1935.65
+        },
+        {
+          "index": 592,
+          "speaker_name": "Karthik N",
+          "raw_text": "A trend.",
+          "start_time": 1939.33
+        },
+        {
+          "index": 593,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1939.85
+        },
+        {
+          "index": 594,
+          "speaker_name": "Karthik N",
+          "raw_text": "So they usually take confidential data and complete it.",
+          "start_time": 1940.21
+        },
+        {
+          "index": 595,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, got it.",
+          "start_time": 1944.05
+        },
+        {
+          "index": 596,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay.",
+          "start_time": 1945.17
+        },
+        {
+          "index": 597,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, I think again would want to discuss it with the team then how.",
+          "start_time": 1945.49
+        },
+        {
+          "index": 598,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Can we see that in the dashboard as well?",
+          "start_time": 1948.01
+        },
+        {
+          "index": 599,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Because not everybody is going to have access to that confidential data.",
+          "start_time": 1949.65
+        },
+        {
+          "index": 600,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So it all goes back one team putting together the insights every month versus.",
+          "start_time": 1952.61
+        },
+        {
+          "index": 601,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Us relying on the dashboards that we.",
+          "start_time": 1957.25
+        },
+        {
+          "index": 602,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Really want to do.",
+          "start_time": 1959.25
+        },
+        {
+          "index": 603,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Right.",
+          "start_time": 1960.53
+        },
+        {
+          "index": 604,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, so that makes sense.",
+          "start_time": 1961.25
+        },
+        {
+          "index": 605,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Just moving on your questions, I think this makes sense.",
+          "start_time": 1964.4
+        },
+        {
+          "index": 606,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "We're able to see the comments there, which is fine.",
+          "start_time": 1967.68
+        },
+        {
+          "index": 607,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "In terms of the benchmark here again, I think Kate had a similar question there as well.",
+          "start_time": 1972.08
+        },
+        {
+          "index": 608,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "What industry are we benchmarking against?",
+          "start_time": 1976.88
+        },
+        {
+          "index": 609,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So is it the same that.",
+          "start_time": 1980.96
+        },
+        {
+          "index": 610,
+          "speaker_name": "Karthik N",
+          "raw_text": "It's the same because it's an account wide thing that we are doing.",
+          "start_time": 1982.88
+        },
+        {
+          "index": 611,
+          "speaker_name": "Karthik N",
+          "raw_text": "Sania.",
+          "start_time": 1987.6
+        },
+        {
+          "index": 612,
+          "speaker_name": "Karthik N",
+          "raw_text": "So the benchmark industry is set by account wise.",
+          "start_time": 1988.16
+        },
+        {
+          "index": 613,
+          "speaker_name": "Karthik N",
+          "raw_text": "So whatever we did for the engagement survey, it's going to be the same industry.",
+          "start_time": 1991.12
+        },
+        {
+          "index": 614,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, got it.",
+          "start_time": 1994.56
+        },
+        {
+          "index": 615,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "That makes sense.",
+          "start_time": 1995.56
+        },
+        {
+          "index": 616,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Cool.",
+          "start_time": 1997.2
+        },
+        {
+          "index": 617,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, I think that's about it for.",
+          "start_time": 1998.16
+        },
+        {
+          "index": 618,
+          "speaker_name": "Karthik N",
+          "raw_text": "The.",
+          "start_time": 2000.12
+        },
+        {
+          "index": 619,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Life cycle surveys.",
+          "start_time": 2002.32
+        },
+        {
+          "index": 620,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And again we're able to see the data for 30 days and I'm assuming then when we have like more than 5 responses we'll be able to see another report here populated for 90 days service, correct?",
+          "start_time": 2003.8
+        },
+        {
+          "index": 621,
+          "speaker_name": "Karthik N",
+          "raw_text": "That's correct.",
+          "start_time": 2014.48
+        },
+        {
+          "index": 622,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, got it.",
+          "start_time": 2015.6
+        },
+        {
+          "index": 623,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Sounds good.",
+          "start_time": 2018.17
+        },
+        {
+          "index": 624,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And just last one from my end that's got just quickly indicated on this one.",
+          "start_time": 2018.81
+        },
+        {
+          "index": 625,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So I suppose we were waiting for the first survey to be wrapped up.",
+          "start_time": 2025.61
+        },
+        {
+          "index": 626,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Before this could be fixed.",
+          "start_time": 2029.29
+        },
+        {
+          "index": 627,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So do we have like an ETA on that one?",
+          "start_time": 2032.25
+        },
+        {
+          "index": 628,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, I think this is part of the features that list that Charlie also mentioned.",
+          "start_time": 2035.37
+        },
+        {
+          "index": 629,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yuki.",
+          "start_time": 2041.37
+        },
+        {
+          "index": 630,
+          "speaker_name": "Karthik N",
+          "raw_text": "So this is also part of the features discussion that we had, right?",
+          "start_time": 2042.67
+        },
+        {
+          "index": 631,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes, Karthik.",
+          "start_time": 2047.71
+        },
+        {
+          "index": 632,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yeah, it's been agreed upon as well.",
+          "start_time": 2048.67
+        },
+        {
+          "index": 633,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah.",
+          "start_time": 2050.75
+        },
+        {
+          "index": 634,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we have an update on this.",
+          "start_time": 2051.47
+        },
+        {
+          "index": 635,
+          "speaker_name": "Karthik N",
+          "raw_text": "I don't know.",
+          "start_time": 2054.27
+        },
+        {
+          "index": 636,
+          "speaker_name": "Karthik N",
+          "raw_text": "This has been accepted by the team.",
+          "start_time": 2055.15
+        },
+        {
+          "index": 637,
+          "speaker_name": "Karthik N",
+          "raw_text": "Like we are going to have an option to uncheck all the unused drivers, these custom drivers from here.",
+          "start_time": 2056.83
+        },
+        {
+          "index": 638,
+          "speaker_name": "Karthik N",
+          "raw_text": "So you will have only the drivers that is being used in the dashboard.",
+          "start_time": 2062.87
+        },
+        {
+          "index": 639,
+          "speaker_name": "Karthik N",
+          "raw_text": "So the timeline update will come along with the effort.",
+          "start_time": 2068.11
+        },
+        {
+          "index": 640,
+          "speaker_name": "Karthik N",
+          "raw_text": "So I know Charlie has asked for the efforts involved.",
+          "start_time": 2070.99
+        },
+        {
+          "index": 641,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that will define the timeline for this feature.",
+          "start_time": 2074.7
+        },
+        {
+          "index": 642,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay, I think that makes perfect sense.",
+          "start_time": 2079.5
+        },
+        {
+          "index": 643,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Cool.",
+          "start_time": 2082.3
+        },
+        {
+          "index": 644,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, I think that is it from my end and I think again would love an update then there Karthik as well in terms of that date range filter because and talk on behalf of the team that's going to be really.",
+          "start_time": 2082.7
+        },
+        {
+          "index": 645,
+          "speaker_name": "Karthik N",
+          "raw_text": "Important to have in there and and so as we speak I just dropped a note in our internal channel as well for the team to see what's the feasibility and what roadmap we have for the deepline filter.",
+          "start_time": 2095.42
+        },
+        {
+          "index": 646,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Right.",
+          "start_time": 2109.03
+        },
+        {
+          "index": 647,
+          "speaker_name": "Karthik N",
+          "raw_text": "So I will keep you posted on that.",
+          "start_time": 2109.43
+        },
+        {
+          "index": 648,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Okay cool.",
+          "start_time": 2111.75
+        },
+        {
+          "index": 649,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Sounds good.",
+          "start_time": 2112.63
+        },
+        {
+          "index": 650,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah I guess that is it from my end.",
+          "start_time": 2113.15
+        },
+        {
+          "index": 651,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Anything else you'd like to add here?",
+          "start_time": 2115.59
+        },
+        {
+          "index": 652,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Anything we're missing?",
+          "start_time": 2116.95
+        },
+        {
+          "index": 653,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "But again like I think Lifecycle analytics is going to be an important section for us to look at.",
+          "start_time": 2117.79
+        },
+        {
+          "index": 654,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "All these stats make sense.",
+          "start_time": 2122.55
+        },
+        {
+          "index": 655,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Sense and again we can dive into.",
+          "start_time": 2123.81
+        },
+        {
+          "index": 656,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "The individual reports from here.",
+          "start_time": 2126.57
+        },
+        {
+          "index": 657,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah I think perfect.",
+          "start_time": 2129.73
+        },
+        {
+          "index": 658,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Cool.",
+          "start_time": 2133.97
+        },
+        {
+          "index": 659,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Great.",
+          "start_time": 2134.41
+        },
+        {
+          "index": 660,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Thank you.",
+          "start_time": 2134.69
+        },
+        {
+          "index": 661,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Thanks guys for your help.",
+          "start_time": 2135.05
+        },
+        {
+          "index": 662,
+          "speaker_name": "Karthik N",
+          "raw_text": "Thank you.",
+          "start_time": 2138.29
+        },
+        {
+          "index": 663,
+          "speaker_name": "Karthik N",
+          "raw_text": "Thank you.",
+          "start_time": 2138.69
+        }
+      ],
+      "meeting_link": "https://meet.google.com/qgp-oyuw-tux"
+    }
+  ]
+}

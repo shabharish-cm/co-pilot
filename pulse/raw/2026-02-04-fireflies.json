@@ -1,0 +1,224 @@
+{
+  "dayKey": "2026-02-04",
+  "fetchedAt": "2026-03-19T05:41:19.149Z",
+  "source": "backfill-date-range",
+  "transcripts": [
+    {
+      "id": "01KGKKPBT7BKDV3G44R38BBAJD",
+      "title": "Yahoo requirements",
+      "date": 1770190200000,
+      "participants": [
+        "shabharish.v@culturemonkey.io",
+        "dhamodharan@culturemonkey.io"
+      ],
+      "summary": {
+        "overview": "- **Candidate Status Updates:** Status updates trigger only after final recruitment stage and assessment passes, improving accuracy.\n\n- **Attribute Mapping:** Linking specific attributes like \"date of joining\" to hiring stages enhances precision and reduces errors.\n\n- **Workflow Timing Rules:** Triggers are scheduled to avoid same-day updates, ensuring smooth candidate management and preventing overlap.\n\n- **System Integration Priority:** Mapping recruitment attributes to employee systems unifies data handling and reduces discrepancies post-hiring.\n\n- **Validation for Data Consistency:** Implementing validations safeguards against conflicts during updates, enhancing system integrity and trust.",
+        "action_items": "\n**Dhamodharan M**\nDefine and implement field value updates related to recruitment stages based on assessment passing criteria (01:47)\nEstablish the triggering mechanism for updates on candidate date of joining including timing rules and limitations (04:27)\nComplete detailed mapping and key mapping for candidate data fields including date of joining and related attributes (08:09)\n\n**Shabharish V**\nProvide exact attribute names and conditions required for candidate data fields such as date of joining and hiring manager details (02:49)\nAlign recruitment process requirements with employee module standards ensuring similarity and consistency (09:05)\n",
+        "notes": "## **Recruitment Process Enhancements**\n\nThe team focused on refining candidate status tracking and attribute updates to improve recruitment accuracy and timeliness.\n\n- **Decision to trigger candidate status updates based on joining dates and assessment results** was clarified by **Dhamodharan M**, confirming updates occur only after the last recruitment stage and upon passing assessments (01:47)\n    - This ensures candidates are only advanced when fully qualified, reducing errors in status reporting\n    - The approach supports better alignment with hiring managers’ expectations on candidate readiness\n    - Implementation involves automated triggers on candidate data fields like date of joining\n    - Expected impact includes faster, more reliable updates that improve recruiter and manager coordination\n\n- **Shabharish V** emphasized the need to map exact attributes like \"date of joining\" and link them to specific hiring stages for precision (03:08)\n    - This attribute-level control allows daily updates tied directly to candidate progress\n    - It enhances tracking granularity, enabling proactive status changes and alerts\n    - The system will reflect real-time candidate movement through recruitment phases\n    - This method aims to reduce manual errors and improve reporting accuracy\n\n## **Attribute and Field Mapping for Candidate Data**\n\nA detailed approach to attribute configuration was established to support recruitment workflow automation.\n\n- **Agreement on key attribute mappings** such as stage-specific fields and candidate dates was reached to mirror employee module standards, as noted by **Shabharish V** (09:05)\n    - Aligning candidate attributes with existing employee data structures simplifies integration and maintenance\n    - This consistency supports smoother data flows from recruitment to onboarding systems\n    - The design reduces complexity for developers and users by reusing proven attribute frameworks\n    - Expected outcome is more scalable and maintainable recruitment data management\n\n- **Dhamodharan M** confirmed the need to handle limitations on same-day updates and timing triggers for attribute changes (04:27)\n    - This safeguards against premature or duplicate status changes within tight time windows\n    - The rule enforces a minimum time gap, improving data integrity\n    - It ensures system triggers only fire under valid conditions, reducing false updates\n    - This constraint aids in maintaining clean candidate records and audit trails\n\n## **Workflow Timing and Trigger Rules**\n\nClarification of timing rules ensures recruitment automation aligns with business realities and candidate schedules.\n\n- **The team agreed on scheduling triggers to avoid same-day conflicts**, with updates spaced by days as per **Dhamodharan M**’s explanation (04:27)\n    - This prevents multiple conflicting updates on critical dates like joining day\n    - It allows systems to batch or sequence updates logically\n    - The timing rules support smoother candidate pipeline management without overload\n    - This approach reduces operational errors and support tickets\n\n- **Discussions around week-based triggers** focused on grouping updates by calendar weeks for reporting and operational ease, highlighted by both speakers around (07:18) and (08:09)\n    - Weekly grouping facilitates easier tracking of hiring trends and workload distribution\n    - This method supports better planning for hiring manager reviews and recruiter efforts\n    - It aligns with payroll and onboarding schedules for consistency\n    - Expected benefit includes clearer visibility into recruitment cycles for leadership\n\n## **System Integration and Data Consistency**\n\nEnsuring candidate data consistency across modules was prioritized to maintain system reliability and user confidence.\n\n- **Mapping candidate recruitment attributes to employee system attributes** was endorsed to unify data handling, as stressed by **Shabharish V** (09:05)\n    - This reduces discrepancies between candidate and employee records post-hiring\n    - It simplifies data migration and reporting across HR systems\n    - The unified schema supports better analytics and compliance tracking\n    - The integration lowers maintenance complexity and error rates\n\n- **The team identified key limitations and planned validations** to prevent data conflicts during attribute updates, following **Dhamodharan M**’s input (04:27)\n    - Validations ensure only valid data changes propagate between systems\n    - This protects against data corruption and incorrect hiring status displays\n    - The process includes triggers and rules for escalation if anomalies occur\n    - These safeguards enhance overall system trustworthiness and audit readiness",
+        "keywords": [
+          "recruitment stages",
+          "field updates",
+          "candidate date of joining",
+          "attribute mapping",
+          "data triggers",
+          "employee module"
+        ]
+      },
+      "sentences": [
+        {
+          "index": 0,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Floats.",
+          "start_time": 47.29
+        },
+        {
+          "index": 1,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Like field value update.",
+          "start_time": 104.12
+        },
+        {
+          "index": 2,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Okay.",
+          "start_time": 107.64
+        },
+        {
+          "index": 3,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "If passed through assessment.",
+          "start_time": 128.84
+        },
+        {
+          "index": 4,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Yes Last recruitment stage.",
+          "start_time": 130.52
+        },
+        {
+          "index": 5,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Attributes.",
+          "start_time": 169.61
+        },
+        {
+          "index": 6,
+          "speaker_name": "Shabharish V",
+          "raw_text": "The field name attribute name of great.",
+          "start_time": 174.97
+        },
+        {
+          "index": 7,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Ah.",
+          "start_time": 187.57
+        },
+        {
+          "index": 8,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Okay.",
+          "start_time": 187.73
+        },
+        {
+          "index": 9,
+          "speaker_name": "Shabharish V",
+          "raw_text": "In the field the exact attributes in the stage in the condition.",
+          "start_time": 188.09
+        },
+        {
+          "index": 10,
+          "speaker_name": "Shabharish V",
+          "raw_text": "So over time in the field on the particular candidate.",
+          "start_time": 200.93
+        },
+        {
+          "index": 11,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay so date of joining.",
+          "start_time": 242.35
+        },
+        {
+          "index": 12,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Daily and then the candidate date of joining today respective hiring manager.",
+          "start_time": 258.43
+        },
+        {
+          "index": 13,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Piano candidate for the debt of joining in rather APM.",
+          "start_time": 267.8
+        },
+        {
+          "index": 14,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Upon the date of joining trigger or apply today.",
+          "start_time": 277.48
+        },
+        {
+          "index": 15,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Even 3 days update Panido means.",
+          "start_time": 295.04
+        },
+        {
+          "index": 16,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Okay.",
+          "start_time": 308.32
+        },
+        {
+          "index": 17,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Mar.",
+          "start_time": 320.33
+        },
+        {
+          "index": 18,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Nothing.",
+          "start_time": 375.23
+        },
+        {
+          "index": 19,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "So in the limitations now.",
+          "start_time": 402.69
+        },
+        {
+          "index": 20,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "On the same day except.",
+          "start_time": 429.09
+        },
+        {
+          "index": 21,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Suppose.",
+          "start_time": 438.67
+        },
+        {
+          "index": 22,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Okay in the group play.",
+          "start_time": 442.99
+        },
+        {
+          "index": 23,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Okay.",
+          "start_time": 457.96
+        },
+        {
+          "index": 24,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "March first week.",
+          "start_time": 479.56
+        },
+        {
+          "index": 25,
+          "speaker_name": "Shabharish V",
+          "raw_text": "So third week.",
+          "start_time": 483.48
+        },
+        {
+          "index": 26,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "In the details in the mapping and the key mapping.",
+          "start_time": 489.02
+        },
+        {
+          "index": 27,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Okay.",
+          "start_time": 513.57
+        },
+        {
+          "index": 28,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Okay.",
+          "start_time": 543.4
+        },
+        {
+          "index": 29,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Similar to employee module.",
+          "start_time": 545.88
+        },
+        {
+          "index": 30,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Requirements.",
+          "start_time": 555.24
+        },
+        {
+          "index": 31,
+          "speaker_name": "Dhamodharan M",
+          "raw_text": "Sarah.",
+          "start_time": 569.09
+        }
+      ],
+      "meeting_link": "https://meet.google.com/qzr-nina-dnu"
+    }
+  ]
+}

@@ -1,11 +1,83 @@
 {
-  "lastUpdatedAt": "2026-03-18T12:29:51.845Z",
+  "lastUpdatedAt": "2026-03-19T05:41:19.164Z",
   "entries": [
+    {
+      "dayKey": "2025-10-14",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2025-10-14-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T05:41:19.121Z"
+    },
+    {
+      "dayKey": "2026-01-14",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-01-14-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T05:41:19.126Z"
+    },
+    {
+      "dayKey": "2026-01-21",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-01-21-transcripts.json",
+      "transcriptCount": 3,
+      "fetchedAt": "2026-03-19T05:41:19.134Z"
+    },
+    {
+      "dayKey": "2026-01-27",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-01-27-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T05:41:19.142Z"
+    },
+    {
+      "dayKey": "2026-01-29",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-01-29-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T05:41:19.147Z"
+    },
+    {
+      "dayKey": "2026-02-02",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-02-02-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T05:41:19.149Z"
+    },
+    {
+      "dayKey": "2026-02-04",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-02-04-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T05:41:19.151Z"
+    },
+    {
+      "dayKey": "2026-02-13",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-02-13-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T05:41:19.153Z"
+    },
+    {
+      "dayKey": "2026-02-18",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-02-18-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T05:41:19.157Z"
+    },
+    {
+      "dayKey": "2026-02-23",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-02-23-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T05:41:19.160Z"
+    },
+    {
+      "dayKey": "2026-03-02",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-03-02-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T05:41:19.163Z"
+    },
     {
       "dayKey": "2026-03-17",
       "filePath": "/home/runner/work/co-pilot/co-pilot/pulse/normalized/2026-03-17-transcripts.json",
       "transcriptCount": 0,
       "fetchedAt": "2026-03-18T12:29:51.845Z"
+    },
+    {
+      "dayKey": "2026-03-18",
+      "filePath": "/Users/shabharish/Documents/CM/Co-Pilot/pulse/normalized/2026-03-18-transcripts.json",
+      "transcriptCount": 1,
+      "fetchedAt": "2026-03-19T02:22:17.903Z"
     }
   ]
 }

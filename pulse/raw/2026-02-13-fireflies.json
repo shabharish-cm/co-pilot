@@ -1,0 +1,1182 @@
+{
+  "dayKey": "2026-02-13",
+  "fetchedAt": "2026-03-19T05:41:19.151Z",
+  "source": "backfill-date-range",
+  "transcripts": [
+    {
+      "id": "01KH8EHKMJGQTZ6T9CMJXBRPVF",
+      "title": "Yahoo - April Survey FR Discussion",
+      "date": 1770966900000,
+      "participants": [
+        "sam@culturemonkey.io",
+        "gowtham@culturemonkey.io",
+        "shabharish.v@culturemonkey.io",
+        "karthik.n@culturemonkey.io",
+        "yugi@culturemonkey.io",
+        "yug@culturemonkey.io"
+      ],
+      "summary": {
+        "overview": "- **Survey Data Improvements:** Exclude zero scores to prevent misleading participation trends; enhances report accuracy and reliability.\n\n- **Benchmark Naming Clarity:** Standardize terms for manager and company benchmarks; improves score interpretation across organizational structures.\n\n- **Custom Driver Settings:** Customers can save tailored driver visibility per survey type, increasing relevance and reducing analysis noise.\n\n- **Scheduled Exports:** Introduced for lifecycle/custom surveys with flexible timing; enhances secure data accessibility for enterprise customers.\n\n- **UI Enhancements:** Simplified filtering options and clearer column labels in reports; improves user experience and data clarity.\n\n- **Feedback Module Translation:** Partial support for translating feedback into English; aids global customers in analyzing multilingual feedback.",
+        "action_items": "\n**Karthik N**\nDeliver priority render file by Monday evening with line-by-line context (01:11)\nImplement dashboard enhancements for showing empty survey months as blanks on participation graphs (06:11)\nEnable configuration to exclude unwanted drivers for future survey reports as per customer needs (14:17)\nFinalize role-based access feature for managers and sub-admins to create and edit actions with appropriate restrictions (15:57)\nAdd company average and benchmark score columns to reports with clarifications on benchmark reliability (24:24)\nIntegrate partial English translation within feedback module (27:41)\nDevelop scheduled export functionality for lifecycle and continuous surveys, including frequency options and confidential data compliance (36:23)\nDefine lifecycle data access and separation protocols for enterprise customers (44:03)\n\n**Shabharish V**\nSupport enhancements on participation dashboard improvements and line graph visualization discussion (04:40)\nAssist with terminology changes and flexible settings for reporting benchmarks and driver visibility (09:05)\nSupport role-based permission mapping for managers and sub-admins (15:57)\nCollaborate on report filtering and column labeling for driver and comment counts (23:46)\nVerify scheduled export utility applicability for enterprise lifecycle service customers (38:42)\n\n**Yugi P**\nVerify usability of dashboard graphs including handling of zero vs empty scores in survey months without data (05:29)\nConfirm terminology and filter presets in reporting modules (20:12)\nCollaborate on feedback module translation and removing open feedback questions (27:38)\nEvaluate removal of manager reaction feature from feedback email templates (30:21)\nSupport scheduled export feature definition including email delivery configurations and export frequencies (36:23)\n",
+        "notes": "## **Survey Data and Benchmarking Enhancements**\n\nThe team decided to improve survey data representation and benchmarking to reflect realistic participation and comparison metrics.\n\n- **Refined survey score handling to exclude zero scores when no survey was conducted** (08:13)  \n    - The line graph will show empty data points instead of zeros for months without surveys  \n    - This prevents misleading dips and spikes in participation and driver scores over time  \n    - Shabharish emphasized removing zero scores from inactive months to improve data accuracy  \n    - This change aligns visual data with actual survey activity, enhancing report reliability\n\n- **Clarified company and manager benchmark naming conventions for better user understanding** (08:24)  \n    - “Manager benchmark” will be referred to as “company overall score” for consistency  \n    - Karthik noted multiple companies/organizations exist under one customer, so naming will adapt accordingly  \n    - The benchmark naming will be flexible to reflect vertical or company-specific views as needed  \n    - This helps users interpret scores appropriately based on organizational structure\n\n- **Allowed customers to save customized driver visibility settings per survey type** (14:17)  \n    - For example, customers can exclude certain drivers in pulse or Adula surveys if irrelevant  \n    - This setting will apply platform-wide, not just individual customers like Yahoo  \n    - Karthik highlighted this as a way to tailor driver metrics to each customer’s survey context  \n    - It improves the relevance of driver scores and prevents noise in analysis\n\n- **Expanded reporting features to add company average and benchmark score columns** (24:24)  \n    - Yugi requested adding columns for company average and benchmark scores in reports  \n    - Karthik explained benchmark data is imperfect but some companies provide question-wise benchmarks  \n    - This enhancement will support better comparative insights in report dashboards  \n    - It aids users in quickly assessing performance relative to company norms\n\n## **Role-Based Access and Manager Interaction Controls**\n\nDecisions were made to refine role-specific permissions and interaction capabilities to improve data security and user experience.\n\n- **Implemented role-based restrictions on survey data actions for managers and sub-admins** (16:25)  \n    - Managers and sub-admins can view results and conversations but cannot create or edit surveys  \n    - Admins retain full control over survey creation and report exports  \n    - This limits data modification rights to authorized roles, protecting survey integrity  \n    - Karthik explained this maintains data quality while allowing managers meaningful visibility\n\n- **Enabled managers to initiate conversations and create actions within permitted scopes** (15:08)  \n    - Creation of actions and conversations is allowed for managers with appropriate permissions  \n    - Admins and sub-admins have configurable options to grant or restrict these capabilities  \n    - This facilitates direct manager involvement in feedback follow-up without compromising control  \n    - Shabharish supported showing these actions clearly in the manager interface\n\n- **Refined “My Company Score” terminology and participation visibility for indirect reporting managers** (18:26)  \n    - The score label will be renamed to clarify it represents the manager’s company-level performance  \n    - Participation metrics will reflect team-level involvement beneath indirect managers  \n    - This improves clarity on whose data managers are seeing and responsible for  \n    - It supports accurate tracking of engagement and performance within reporting lines\n\n- **Removed manager reaction and certain feedback features to simplify email templates and feedback modules** (30:21)  \n    - Manager reaction customization was rejected to avoid complexity in email communications  \n    - Open feedback removal was discussed to streamline reporting pages  \n    - These decisions focus on trimming less-used features to improve system usability  \n    - Karthik confirmed these removals align with current customer needs and reduce maintenance\n\n## **Scheduled Export and Lifecycle Survey Support**\n\nThe group prioritized scheduled exports as a critical feature for enterprise lifecycle survey customers, enhancing data accessibility and workflow.\n\n- **Scheduled exports introduced for lifecycle and custom service surveys with flexible timing options** (35:53)  \n    - Customers like Yahoo will get weekly, bi-weekly, or monthly export options via email  \n    - This addresses the need to move confidential lifecycle survey data out of Culture Monkey securely  \n    - Karthik highlighted the importance for hiring and manager performance metrics tracking  \n    - Scheduled exports enable automated data delivery, supporting ongoing enterprise reporting needs\n\n- **Access control and data separation managed carefully for lifecycle and custom service data exports** (44:08)  \n    - Data attributes like employee ID, email, and name will be carefully segregated by service type  \n    - Finance, operations, and other departments will maintain separated views within lifecycle and custom services  \n    - This ensures privacy and compliance while allowing integrated reporting across teams  \n    - Yugi and Karthik confirmed this approach meets enterprise data governance requirements\n\n- **Platform-level eligibility controls ensure only authorized users access lifecycle and export features** (38:42)  \n    - Users with platform access will gain appropriate rights to lifecycle data and export functions  \n    - This prevents unauthorized data exposure and aligns with company security policies  \n    - Export options will cover advanced and dynamic reports for comprehensive data delivery  \n    - This builds a scalable export system supporting all enterprise customer needs\n\n## **Language, Feedback Module, and UI Improvements**\n\nThe team focused on improving language support, feedback translation, and user interface refinements to enhance customer experience.\n\n- **Partial implementation of feedback translation in the new feedback module, focusing on English** (27:38)  \n    - Feedback will be translatable back to English for better analysis across languages  \n    - Karthik noted full translation is partially possible currently and will expand over time  \n    - This supports global customers receiving feedback in multiple languages  \n    - Yugi emphasized this as a key improvement for actionable insights from diverse regions\n\n- **Removal of low-priority or duplicate feedback questions and language inconsistencies** (26:07)  \n    - Rejected some product language changes and repetitive questions to simplify surveys  \n    - This cleanup improves clarity and reduces survey fatigue for respondents  \n    - The team prioritized existing benchmarks over new low-impact features  \n    - Karthik confirmed these removals align with customer feedback and product focus\n\n- **UI adjustments include renaming columns and filtering options for clearer report views** (23:39)  \n    - Columns for driver and comment counts will be labeled clearly in reports  \n    - Filter options will restrict selection to single sets for more precise data views  \n    - These changes help users interpret data faster and reduce confusion  \n    - Yugi and Karthik collaborated to finalize these user-friendly enhancements\n\n- **Dashboard and participation rate controls enhanced for better overtime analysis** (04:51)  \n    - Participation dashboards now support driver scores over time with clearer control options  \n    - This allows managers to monitor engagement trends and improve survey response rates  \n    - Shabharish supported adding controls to exclude months without surveys from calculations  \n    - These improvements help customers make timely, data-driven decisions on employee feedback programs",
+        "keywords": [
+          "Survey Participation",
+          "Dashboard Visualization",
+          "Benchmarking Configuration",
+          "Role-Based Access Control",
+          "Scheduled Export",
+          "Lifecycle Data Management"
+        ]
+      },
+      "sentences": [
+        {
+          "index": 0,
+          "speaker_name": "Karthik N",
+          "raw_text": "Oh okay.",
+          "start_time": 2.16
+        },
+        {
+          "index": 1,
+          "speaker_name": "Yugi P",
+          "raw_text": "Fireplace.",
+          "start_time": 3.44
+        },
+        {
+          "index": 2,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Call somebody.",
+          "start_time": 25.85
+        },
+        {
+          "index": 3,
+          "speaker_name": "Karthik N",
+          "raw_text": "Feature discussion.",
+          "start_time": 29.21
+        },
+        {
+          "index": 4,
+          "speaker_name": "Karthik N",
+          "raw_text": "At Paneer small items.",
+          "start_time": 50.09
+        },
+        {
+          "index": 5,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay.",
+          "start_time": 62.05
+        },
+        {
+          "index": 6,
+          "speaker_name": "Karthik N",
+          "raw_text": "We confirmed last time.",
+          "start_time": 71.09
+        },
+        {
+          "index": 7,
+          "speaker_name": "Karthik N",
+          "raw_text": "So in the render task.",
+          "start_time": 97.33
+        },
+        {
+          "index": 8,
+          "speaker_name": "Karthik N",
+          "raw_text": "They will give us a priority okay so in the file Monday evening.",
+          "start_time": 105.41
+        },
+        {
+          "index": 9,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay okay.",
+          "start_time": 117.59
+        },
+        {
+          "index": 10,
+          "speaker_name": "Karthik N",
+          "raw_text": "Why is the context line by line.",
+          "start_time": 118.83
+        },
+        {
+          "index": 11,
+          "speaker_name": "Yugi P",
+          "raw_text": "In the option on the first to include requested hover overs.",
+          "start_time": 124.79
+        },
+        {
+          "index": 12,
+          "speaker_name": "Karthik N",
+          "raw_text": "So number platform.",
+          "start_time": 134.96
+        },
+        {
+          "index": 13,
+          "speaker_name": "Karthik N",
+          "raw_text": "It's not valid in drama.",
+          "start_time": 157.36
+        },
+        {
+          "index": 14,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 160.87
+        },
+        {
+          "index": 15,
+          "speaker_name": "Yugi P",
+          "raw_text": "Let's say navigation.",
+          "start_time": 176.39
+        },
+        {
+          "index": 16,
+          "speaker_name": "Yugi P",
+          "raw_text": "And the text change.",
+          "start_time": 182.71
+        },
+        {
+          "index": 17,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay okay.",
+          "start_time": 189.24
+        },
+        {
+          "index": 18,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 194.52
+        },
+        {
+          "index": 19,
+          "speaker_name": "Yugi P",
+          "raw_text": "Which he's asking for right now.",
+          "start_time": 199.08
+        },
+        {
+          "index": 20,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 203.24
+        },
+        {
+          "index": 21,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Platform level.",
+          "start_time": 211.53
+        },
+        {
+          "index": 22,
+          "speaker_name": "Yugi P",
+          "raw_text": "Like not only with relevant to him but it should be relevant for all companies.",
+          "start_time": 218.17
+        },
+        {
+          "index": 23,
+          "speaker_name": "Yugi P",
+          "raw_text": "So you get all requested.",
+          "start_time": 228.01
+        },
+        {
+          "index": 24,
+          "speaker_name": "Karthik N",
+          "raw_text": "However it's such a possibility of having.",
+          "start_time": 229.81
+        },
+        {
+          "index": 25,
+          "speaker_name": "Yugi P",
+          "raw_text": "A participation dashboard in self results data the dashboard page or a participation.",
+          "start_time": 235.53
+        },
+        {
+          "index": 26,
+          "speaker_name": "Yugi P",
+          "raw_text": "Which he's doing it through Google sheets in the last survey.",
+          "start_time": 256.32
+        },
+        {
+          "index": 27,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay.",
+          "start_time": 260.4
+        },
+        {
+          "index": 28,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 276.13
+        },
+        {
+          "index": 29,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay.",
+          "start_time": 278.69
+        },
+        {
+          "index": 30,
+          "speaker_name": "Yugi P",
+          "raw_text": "Overall driver performance Driver scores over time.",
+          "start_time": 280.53
+        },
+        {
+          "index": 31,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Makes sense the overtime analysis enhancement control on the participation rate on the oh okay.",
+          "start_time": 291.25
+        },
+        {
+          "index": 32,
+          "speaker_name": "Yugi P",
+          "raw_text": "But let's say if you have five, six surveys I mean six months.",
+          "start_time": 329.15
+        },
+        {
+          "index": 33,
+          "speaker_name": "Yugi P",
+          "raw_text": "The score is not zero but they didn't run a survey.",
+          "start_time": 345.79
+        },
+        {
+          "index": 34,
+          "speaker_name": "Yugi P",
+          "raw_text": "Which is why you want to have a ball graph.",
+          "start_time": 354.11
+        },
+        {
+          "index": 35,
+          "speaker_name": "Yugi P",
+          "raw_text": "The R graph dips and spikes in service.",
+          "start_time": 362.67
+        },
+        {
+          "index": 36,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 370.6
+        },
+        {
+          "index": 37,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Either and the empty survey.",
+          "start_time": 371
+        },
+        {
+          "index": 38,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Instead of zero we can give it empty.",
+          "start_time": 386.84
+        },
+        {
+          "index": 39,
+          "speaker_name": "Yugi P",
+          "raw_text": "Oh from line graph.",
+          "start_time": 446.78
+        },
+        {
+          "index": 40,
+          "speaker_name": "Shabharish V",
+          "raw_text": "The enps.",
+          "start_time": 455.11
+        },
+        {
+          "index": 41,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 457.75
+        },
+        {
+          "index": 42,
+          "speaker_name": "Yugi P",
+          "raw_text": "But because it's just one survey.",
+          "start_time": 473.91
+        },
+        {
+          "index": 43,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 485.77
+        },
+        {
+          "index": 44,
+          "speaker_name": "Shabharish V",
+          "raw_text": "We should also take care of the request to remove 0 score from months in which we did not have a survey.",
+          "start_time": 493.05
+        },
+        {
+          "index": 45,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 497.81
+        },
+        {
+          "index": 46,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay.",
+          "start_time": 504.26
+        },
+        {
+          "index": 47,
+          "speaker_name": "Yugi P",
+          "raw_text": "Internal benchmark okay.",
+          "start_time": 511.54
+        },
+        {
+          "index": 48,
+          "speaker_name": "Yugi P",
+          "raw_text": "Manager soda internal benchmark and organ.",
+          "start_time": 513.78
+        },
+        {
+          "index": 49,
+          "speaker_name": "Yugi P",
+          "raw_text": "We should only call it as company or not means a vertical phenomena okay okay.",
+          "start_time": 526.42
+        },
+        {
+          "index": 50,
+          "speaker_name": "Yugi P",
+          "raw_text": "Companies.",
+          "start_time": 542.78
+        },
+        {
+          "index": 51,
+          "speaker_name": "Karthik N",
+          "raw_text": "Manager benchmark.",
+          "start_time": 545.82
+        },
+        {
+          "index": 52,
+          "speaker_name": "Karthik N",
+          "raw_text": "So this should be company overall score.",
+          "start_time": 555.02
+        },
+        {
+          "index": 53,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Either in a platform level layer makes sense to change this company or.",
+          "start_time": 558.61
+        },
+        {
+          "index": 54,
+          "speaker_name": "Karthik N",
+          "raw_text": "Render types of customers they have something called expense company which means multiple companies.",
+          "start_time": 567.97
+        },
+        {
+          "index": 55,
+          "speaker_name": "Karthik N",
+          "raw_text": "Multiple organizations I think it makes sense to call it as a company okay maybe or company individual companies individual companies individual regions so doesn't make sense to change it for all customers but we can take a call on that.",
+          "start_time": 584.7
+        },
+        {
+          "index": 56,
+          "speaker_name": "Karthik N",
+          "raw_text": "Org change.",
+          "start_time": 638.68
+        },
+        {
+          "index": 57,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay Innovation value value.",
+          "start_time": 701.77
+        },
+        {
+          "index": 58,
+          "speaker_name": "Karthik N",
+          "raw_text": "Say for example.",
+          "start_time": 717.71
+        },
+        {
+          "index": 59,
+          "speaker_name": "Karthik N",
+          "raw_text": "For example.",
+          "start_time": 738.51
+        },
+        {
+          "index": 60,
+          "speaker_name": "Karthik N",
+          "raw_text": "So in the in the they can save a setting saying that the drivers.",
+          "start_time": 743.51
+        },
+        {
+          "index": 61,
+          "speaker_name": "Karthik N",
+          "raw_text": "For Garrett it makes more sense say for example Garrett survey recent survey mentality so if an Adula or pulse survey up a previous driver salah and the ignore panic.",
+          "start_time": 752.87
+        },
+        {
+          "index": 62,
+          "speaker_name": "Karthik N",
+          "raw_text": "Render issue one they can uncheck the drivers they don't want to see.",
+          "start_time": 798.13
+        },
+        {
+          "index": 63,
+          "speaker_name": "Karthik N",
+          "raw_text": "Exclude service.",
+          "start_time": 813.41
+        },
+        {
+          "index": 64,
+          "speaker_name": "Karthik N",
+          "raw_text": "Next time the driver let them enable will fix for all customers not just for Yahoo.",
+          "start_time": 823.49
+        },
+        {
+          "index": 65,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 831.77
+        },
+        {
+          "index": 66,
+          "speaker_name": "Yugi P",
+          "raw_text": "The default option.",
+          "start_time": 857.25
+        },
+        {
+          "index": 67,
+          "speaker_name": "Karthik N",
+          "raw_text": "Cs panel co. Action search panel.",
+          "start_time": 878.94
+        },
+        {
+          "index": 68,
+          "speaker_name": "Karthik N",
+          "raw_text": "Advanced search.",
+          "start_time": 891.26
+        },
+        {
+          "index": 69,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Show actions in manager.",
+          "start_time": 904.63
+        },
+        {
+          "index": 70,
+          "speaker_name": "Karthik N",
+          "raw_text": "Conversation.",
+          "start_time": 908.63
+        },
+        {
+          "index": 71,
+          "speaker_name": "Karthik N",
+          "raw_text": "Initiate conversation Initiate conversation.",
+          "start_time": 915.19
+        },
+        {
+          "index": 72,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay so on the Madriang on the create action for managers 9 upload a call down so admin we can say see manager and sub admin we can give that option so that.",
+          "start_time": 924.15
+        },
+        {
+          "index": 73,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Correct flag on the button.",
+          "start_time": 957.58
+        },
+        {
+          "index": 74,
+          "speaker_name": "Karthik N",
+          "raw_text": "The existing survey data because it's a role based restriction so managers and sub admins survey create Pandra option reports export like report builder option create action initiate conversation restriction edit create pandamudi but you can still view the results conversations actions okay okay.",
+          "start_time": 985.76
+        },
+        {
+          "index": 75,
+          "speaker_name": "Yugi P",
+          "raw_text": "The overall.",
+          "start_time": 1031.37
+        },
+        {
+          "index": 76,
+          "speaker_name": "Karthik N",
+          "raw_text": "My company.",
+          "start_time": 1066.24
+        },
+        {
+          "index": 77,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 1081.52
+        },
+        {
+          "index": 78,
+          "speaker_name": "Shabharish V",
+          "raw_text": "The Anthony Antonita Bolter either user.",
+          "start_time": 1085.28
+        },
+        {
+          "index": 79,
+          "speaker_name": "Yugi P",
+          "raw_text": "Manager.",
+          "start_time": 1094.17
+        },
+        {
+          "index": 80,
+          "speaker_name": "Karthik N",
+          "raw_text": "So for example see in indirectly reporting manager the minimum participation but but in the iron of being a person.",
+          "start_time": 1106.33
+        },
+        {
+          "index": 81,
+          "speaker_name": "Karthik N",
+          "raw_text": "Participation.",
+          "start_time": 1128.74
+        },
+        {
+          "index": 82,
+          "speaker_name": "Karthik N",
+          "raw_text": "Overall which means on the rest of the team members manager or a score company or a score.",
+          "start_time": 1135.54
+        },
+        {
+          "index": 83,
+          "speaker_name": "Karthik N",
+          "raw_text": "And the overall here the three dots.",
+          "start_time": 1173.19
+        },
+        {
+          "index": 84,
+          "speaker_name": "Karthik N",
+          "raw_text": "So the rename my company score.",
+          "start_time": 1188.87
+        },
+        {
+          "index": 85,
+          "speaker_name": "Yugi P",
+          "raw_text": "In the option on the filter let's.",
+          "start_time": 1212.06
+        },
+        {
+          "index": 86,
+          "speaker_name": "Karthik N",
+          "raw_text": "Say L2.",
+          "start_time": 1217.82
+        },
+        {
+          "index": 87,
+          "speaker_name": "Yugi P",
+          "raw_text": "We can only select one the single set option.",
+          "start_time": 1220.86
+        },
+        {
+          "index": 88,
+          "speaker_name": "Yugi P",
+          "raw_text": "Report question listen section.",
+          "start_time": 1282.32
+        },
+        {
+          "index": 89,
+          "speaker_name": "Yugi P",
+          "raw_text": "You know overall score company average overall owner average owner.",
+          "start_time": 1293.36
+        },
+        {
+          "index": 90,
+          "speaker_name": "Karthik N",
+          "raw_text": "Company.",
+          "start_time": 1306.16
+        },
+        {
+          "index": 91,
+          "speaker_name": "Yugi P",
+          "raw_text": "Just see overall average score.",
+          "start_time": 1309.28
+        },
+        {
+          "index": 92,
+          "speaker_name": "Karthik N",
+          "raw_text": "Over question okay.",
+          "start_time": 1313.2
+        },
+        {
+          "index": 93,
+          "speaker_name": "Shabharish V",
+          "raw_text": "In the question.",
+          "start_time": 1319.28
+        },
+        {
+          "index": 94,
+          "speaker_name": "Yugi P",
+          "raw_text": "The 9.0 9.2 okay under all responses towards this question.",
+          "start_time": 1329.15
+        },
+        {
+          "index": 95,
+          "speaker_name": "Karthik N",
+          "raw_text": "No.",
+          "start_time": 1355.91
+        },
+        {
+          "index": 96,
+          "speaker_name": "Karthik N",
+          "raw_text": "13.",
+          "start_time": 1358.95
+        },
+        {
+          "index": 97,
+          "speaker_name": "Karthik N",
+          "raw_text": "Reports questions.",
+          "start_time": 1368.15
+        },
+        {
+          "index": 98,
+          "speaker_name": "Karthik N",
+          "raw_text": "Clarification.",
+          "start_time": 1378.55
+        },
+        {
+          "index": 99,
+          "speaker_name": "Yugi P",
+          "raw_text": "Label the columns for driver and comment count.",
+          "start_time": 1419.32
+        },
+        {
+          "index": 100,
+          "speaker_name": "Karthik N",
+          "raw_text": "Previous page.",
+          "start_time": 1426.84
+        },
+        {
+          "index": 101,
+          "speaker_name": "Karthik N",
+          "raw_text": "For this question.",
+          "start_time": 1443.31
+        },
+        {
+          "index": 102,
+          "speaker_name": "Yugi P",
+          "raw_text": "To look into the ability to add the company average and benchmark score column.",
+          "start_time": 1464.12
+        },
+        {
+          "index": 103,
+          "speaker_name": "Karthik N",
+          "raw_text": "Question score question score question benchmark rejected.",
+          "start_time": 1472.6
+        },
+        {
+          "index": 104,
+          "speaker_name": "Karthik N",
+          "raw_text": "See driver wise it's not the right one.",
+          "start_time": 1513.76
+        },
+        {
+          "index": 105,
+          "speaker_name": "Karthik N",
+          "raw_text": "The benchmark is also not very 100 accurate now but question wise the type of questions.",
+          "start_time": 1524.64
+        },
+        {
+          "index": 106,
+          "speaker_name": "Karthik N",
+          "raw_text": "But some companies still give question wise benchmark.",
+          "start_time": 1546.17
+        },
+        {
+          "index": 107,
+          "speaker_name": "Yugi P",
+          "raw_text": "Question.",
+          "start_time": 1552.09
+        },
+        {
+          "index": 108,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Repeating questions.",
+          "start_time": 1556.89
+        },
+        {
+          "index": 109,
+          "speaker_name": "Karthik N",
+          "raw_text": "Why.",
+          "start_time": 1567.36
+        },
+        {
+          "index": 110,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Product language.",
+          "start_time": 1569.36
+        },
+        {
+          "index": 111,
+          "speaker_name": "Karthik N",
+          "raw_text": "Either rejected pickup for discussion low priority existing benchmark.",
+          "start_time": 1573.6
+        },
+        {
+          "index": 112,
+          "speaker_name": "Karthik N",
+          "raw_text": "Can remove the same total keywords.",
+          "start_time": 1594.33
+        },
+        {
+          "index": 113,
+          "speaker_name": "Yugi P",
+          "raw_text": "To confirm if you can translate all.",
+          "start_time": 1658.87
+        },
+        {
+          "index": 114,
+          "speaker_name": "Karthik N",
+          "raw_text": "Results back to English new feedback module will all individual feedbacks when the translate panel so that and then the language or the feedback translation.",
+          "start_time": 1661.029
+        },
+        {
+          "index": 115,
+          "speaker_name": "Karthik N",
+          "raw_text": "English translation.",
+          "start_time": 1689.08
+        },
+        {
+          "index": 116,
+          "speaker_name": "Karthik N",
+          "raw_text": "So partially possible via new feedback module but.",
+          "start_time": 1700.27
+        },
+        {
+          "index": 117,
+          "speaker_name": "Yugi P",
+          "raw_text": "The remove open feedback.",
+          "start_time": 1708.91
+        },
+        {
+          "index": 118,
+          "speaker_name": "Karthik N",
+          "raw_text": "So for example the default feedback question do you have any additional feedback or suggestions.",
+          "start_time": 1716.27
+        },
+        {
+          "index": 119,
+          "speaker_name": "Karthik N",
+          "raw_text": "Feedback question.",
+          "start_time": 1734.68
+        },
+        {
+          "index": 120,
+          "speaker_name": "Karthik N",
+          "raw_text": "So reports page total dashboard at the box for the CARTI tier.",
+          "start_time": 1742.36
+        },
+        {
+          "index": 121,
+          "speaker_name": "Karthik N",
+          "raw_text": "Do you have any additional feedback on the reports feedback module so on the surveillance by default it's a valid request okay.",
+          "start_time": 1759.03
+        },
+        {
+          "index": 122,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yeah.",
+          "start_time": 1799.29
+        },
+        {
+          "index": 123,
+          "speaker_name": "Yugi P",
+          "raw_text": "Plus minus zero.",
+          "start_time": 1806.88
+        },
+        {
+          "index": 124,
+          "speaker_name": "Karthik N",
+          "raw_text": "Rejected feedback module.",
+          "start_time": 1812.72
+        },
+        {
+          "index": 125,
+          "speaker_name": "Yugi P",
+          "raw_text": "Investigative remove the manager reaction.",
+          "start_time": 1821.76
+        },
+        {
+          "index": 126,
+          "speaker_name": "Karthik N",
+          "raw_text": "Comments like email templates do do we still need to do this?",
+          "start_time": 1836.01
+        },
+        {
+          "index": 127,
+          "speaker_name": "Karthik N",
+          "raw_text": "You know, it's like removing a entire feature in Ramari.",
+          "start_time": 1843.21
+        },
+        {
+          "index": 128,
+          "speaker_name": "Karthik N",
+          "raw_text": "Feature.",
+          "start_time": 1857.78
+        },
+        {
+          "index": 129,
+          "speaker_name": "Karthik N",
+          "raw_text": "That's the idea.",
+          "start_time": 1873.3
+        },
+        {
+          "index": 130,
+          "speaker_name": "Karthik N",
+          "raw_text": "Manager reaction Customize the email sent to employees already done already rejected.",
+          "start_time": 1890.92
+        },
+        {
+          "index": 131,
+          "speaker_name": "Karthik N",
+          "raw_text": "I already rejected.",
+          "start_time": 1913.17
+        },
+        {
+          "index": 132,
+          "speaker_name": "Karthik N",
+          "raw_text": "We can automatically exclude.",
+          "start_time": 1918.61
+        },
+        {
+          "index": 133,
+          "speaker_name": "Karthik N",
+          "raw_text": "No data.",
+          "start_time": 1964.72
+        },
+        {
+          "index": 134,
+          "speaker_name": "Karthik N",
+          "raw_text": "The life cycle candidate life cycle employee life cycle either automated custom service participants manual number on the Custom Service1 the continuously running service.",
+          "start_time": 1974.96
+        },
+        {
+          "index": 135,
+          "speaker_name": "Karthik N",
+          "raw_text": "So if we have a continuously running survey valid now survey Running.",
+          "start_time": 1997.09
+        },
+        {
+          "index": 136,
+          "speaker_name": "Karthik N",
+          "raw_text": "90 days.",
+          "start_time": 2007.25
+        },
+        {
+          "index": 137,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 2017.93
+        },
+        {
+          "index": 138,
+          "speaker_name": "Yugi P",
+          "raw_text": "Mmm.",
+          "start_time": 2047.43
+        },
+        {
+          "index": 139,
+          "speaker_name": "Karthik N",
+          "raw_text": "Repeated is allowed on the same multiple times repeat.",
+          "start_time": 2070.95
+        },
+        {
+          "index": 140,
+          "speaker_name": "Karthik N",
+          "raw_text": "Completion stage.",
+          "start_time": 2085.77
+        },
+        {
+          "index": 141,
+          "speaker_name": "Karthik N",
+          "raw_text": "This makes sense for all customers Abdina or valid reasoning rejection Valid reasoning like multi multi selection in filters.",
+          "start_time": 2099.61
+        },
+        {
+          "index": 142,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay okay so almost completed top completed top pending discussion okay.",
+          "start_time": 2116.25
+        },
+        {
+          "index": 143,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay.",
+          "start_time": 2127.53
+        },
+        {
+          "index": 144,
+          "speaker_name": "Karthik N",
+          "raw_text": "Or moon customers including Yahoo There is a high opportunity or request where they need scheduled exports okay so especially for life cycle related Even for Yahoo it's a new customer okay so they they are running life cycle service.",
+          "start_time": 2153.42
+        },
+        {
+          "index": 145,
+          "speaker_name": "Yugi P",
+          "raw_text": "But they.",
+          "start_time": 2183.83
+        },
+        {
+          "index": 146,
+          "speaker_name": "Karthik N",
+          "raw_text": "Want to take the data from culture monkey back to some other place.",
+          "start_time": 2184.35
+        },
+        {
+          "index": 147,
+          "speaker_name": "Karthik N",
+          "raw_text": "But we don't have that option right now Confidential data.",
+          "start_time": 2196.15
+        },
+        {
+          "index": 148,
+          "speaker_name": "Karthik N",
+          "raw_text": "Login pani login pan.",
+          "start_time": 2204.47
+        },
+        {
+          "index": 149,
+          "speaker_name": "Karthik N",
+          "raw_text": "I want at least weekly ones.",
+          "start_time": 2254.82
+        },
+        {
+          "index": 150,
+          "speaker_name": "Karthik N",
+          "raw_text": "Performance metric score in the manager hiring manager so on the entire flow in the entire journey.",
+          "start_time": 2263.67
+        },
+        {
+          "index": 151,
+          "speaker_name": "Karthik N",
+          "raw_text": "And I found it very valid okay scheduled reports.",
+          "start_time": 2284.79
+        },
+        {
+          "index": 152,
+          "speaker_name": "Karthik N",
+          "raw_text": "But reports page exporting the option mal.",
+          "start_time": 2310.66
+        },
+        {
+          "index": 153,
+          "speaker_name": "Yugi P",
+          "raw_text": "Drop down button.",
+          "start_time": 2318.25
+        },
+        {
+          "index": 154,
+          "speaker_name": "Karthik N",
+          "raw_text": "Correct.",
+          "start_time": 2322.33
+        },
+        {
+          "index": 155,
+          "speaker_name": "Karthik N",
+          "raw_text": "Confidential data export option including the advanced reports dynamic reports so.",
+          "start_time": 2341.84
+        },
+        {
+          "index": 156,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 2358.48
+        },
+        {
+          "index": 157,
+          "speaker_name": "Karthik N",
+          "raw_text": "But scheduled export is a highly useful feature if we want to implement life cycle for all enterprise customers okay.",
+          "start_time": 2375.85
+        },
+        {
+          "index": 158,
+          "speaker_name": "Karthik N",
+          "raw_text": "Employee module.",
+          "start_time": 2394.89
+        },
+        {
+          "index": 159,
+          "speaker_name": "Karthik N",
+          "raw_text": "Life cycle handle Panda HR VPS custom service handle so if platform access they are eligible to access the rest of the pages okay okay.",
+          "start_time": 2403.57
+        },
+        {
+          "index": 160,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay so in the scheduled export.",
+          "start_time": 2430.09
+        },
+        {
+          "index": 161,
+          "speaker_name": "Karthik N",
+          "raw_text": "Customers hopper Kima Yahoo in the life cycle so other priority.",
+          "start_time": 2440.81
+        },
+        {
+          "index": 162,
+          "speaker_name": "Karthik N",
+          "raw_text": "Again is based on the daily slot so you can only.",
+          "start_time": 2452.18
+        },
+        {
+          "index": 163,
+          "speaker_name": "Karthik N",
+          "raw_text": "You can only give weekly bi weekly, monthly daily too many exports.",
+          "start_time": 2458.34
+        },
+        {
+          "index": 164,
+          "speaker_name": "Karthik N",
+          "raw_text": "But he can choose an email address.",
+          "start_time": 2469.78
+        },
+        {
+          "index": 165,
+          "speaker_name": "Karthik N",
+          "raw_text": "Customer wear a timer clause so in the considerations.",
+          "start_time": 2482.66
+        },
+        {
+          "index": 166,
+          "speaker_name": "Karthik N",
+          "raw_text": "Or call last week feedback call Marion okay.",
+          "start_time": 2508.62
+        },
+        {
+          "index": 167,
+          "speaker_name": "Karthik N",
+          "raw_text": "Manager view.",
+          "start_time": 2521.9
+        },
+        {
+          "index": 168,
+          "speaker_name": "Karthik N",
+          "raw_text": "But they lose their manager visibility okay.",
+          "start_time": 2532.3
+        },
+        {
+          "index": 169,
+          "speaker_name": "Karthik N",
+          "raw_text": "So on the etf I include panitona.",
+          "start_time": 2563.94
+        },
+        {
+          "index": 170,
+          "speaker_name": "Karthik N",
+          "raw_text": "Again enterprise customers data for life cycle service Data for the custom service.",
+          "start_time": 2571.06
+        },
+        {
+          "index": 171,
+          "speaker_name": "Karthik N",
+          "raw_text": "We understand it's a unique or unique employee ideal email address or go values on the update but the custom service.",
+          "start_time": 2587.54
+        },
+        {
+          "index": 172,
+          "speaker_name": "Karthik N",
+          "raw_text": "Add general or customer because back to back update other main reason life cycle service responses.",
+          "start_time": 2603.34
+        },
+        {
+          "index": 173,
+          "speaker_name": "Karthik N",
+          "raw_text": "Or combined teams Madri they will have data e.g.",
+          "start_time": 2632.58
+        },
+        {
+          "index": 174,
+          "speaker_name": "Karthik N",
+          "raw_text": "finance and operations in Panitania when the custom service.",
+          "start_time": 2638.18
+        },
+        {
+          "index": 175,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay.",
+          "start_time": 2643.78
+        },
+        {
+          "index": 176,
+          "speaker_name": "Karthik N",
+          "raw_text": "Finance and operations.",
+          "start_time": 2648.02
+        },
+        {
+          "index": 177,
+          "speaker_name": "Karthik N",
+          "raw_text": "But life cycle service Finance and operations.",
+          "start_time": 2655.78
+        },
+        {
+          "index": 178,
+          "speaker_name": "Karthik N",
+          "raw_text": "So either number data flow.",
+          "start_time": 2698.71
+        },
+        {
+          "index": 179,
+          "speaker_name": "Karthik N",
+          "raw_text": "Custom service custom service list of attributes life cycle service or list of attributes common or list of attributes e.g.",
+          "start_time": 2705.19
+        },
+        {
+          "index": 180,
+          "speaker_name": "Karthik N",
+          "raw_text": "employee ID Name Email address.",
+          "start_time": 2714.59
+        },
+        {
+          "index": 181,
+          "speaker_name": "Karthik N",
+          "raw_text": "Hello Sorry boys customer call.",
+          "start_time": 3143.04
+        },
+        {
+          "index": 182,
+          "speaker_name": "Karthik N",
+          "raw_text": "Data separation correct life cycle so other request.",
+          "start_time": 3160.59
+        },
+        {
+          "index": 183,
+          "speaker_name": "Karthik N",
+          "raw_text": "So next access related problem.",
+          "start_time": 3183.48
+        },
+        {
+          "index": 184,
+          "speaker_name": "Karthik N",
+          "raw_text": "The data access.",
+          "start_time": 3191.08
+        },
+        {
+          "index": 185,
+          "speaker_name": "Karthik N",
+          "raw_text": "The data separation life cycle service.",
+          "start_time": 3209.64
+        },
+        {
+          "index": 186,
+          "speaker_name": "Karthik N",
+          "raw_text": "Scheduled export okay so on the schedule export okay.",
+          "start_time": 3219.59
+        },
+        {
+          "index": 187,
+          "speaker_name": "Karthik N",
+          "raw_text": "From my side yes on okay cool.",
+          "start_time": 3233.03
+        },
+        {
+          "index": 188,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Radiate and Excel.",
+          "start_time": 3240.56
+        },
+        {
+          "index": 189,
+          "speaker_name": "Karthik N",
+          "raw_text": "Oh.",
+          "start_time": 3245.04
+        },
+        {
+          "index": 190,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay bye bye.",
+          "start_time": 3250.8
+        }
+      ],
+      "meeting_link": "https://meet.google.com/mma-kihz-bsd"
+    }
+  ]
+}

@@ -1,0 +1,2941 @@
+{
+  "dayKey": "2026-01-14",
+  "fetchedAt": "2026-03-19T05:41:19.121Z",
+  "source": "backfill-date-range",
+  "transcripts": [
+    {
+      "id": "01KEGW0AYG2563TVWJV6HYE772",
+      "title": "Troon -> Cadence Call",
+      "date": 1768402800000,
+      "participants": [
+        "karthik.rao@culturemonkey.io",
+        "karthik.n@culturemonkey.io",
+        "shabharish.v@culturemonkey.io",
+        "carol.meichnersmith@troon.com",
+        "allison.sheaves@troon.com",
+        "christine.belyeu@troon.com",
+        "elaina.skala@troon.com"
+      ],
+      "summary": {
+        "overview": "- **Survey Launch:** Test survey launched today at 9:00 AM Phoenix time, with 45 participants across multiple locations.  \n- **Reminder Strategy:** Multi-channel reminders: SMS on January 15, WhatsApp on January 17, email on January 19.  \n- **Translation Updates:** Automatic translations in French, Spanish, and Haitian Creole; manual corrections based on feedback.  \n- **Data Security:** Survey access requires employee ID or email validation; no OTP for anonymity.  \n- **Reporting Demo:** Demo scheduled for next week to showcase reporting capabilities and secure access controls.  \n- **Feedback Integration:** Test survey will guide final updates and improvements; follow-up meeting next Wednesday to assess progress.",
+        "action_items": "\n**Karthik Rao**\nPublish the test survey at 9 AM Phoenix time immediately after the call (07:52)\nSend the generic survey link and QR code to the team for access testing and feedback collection (13:34)\nMonitor and address any survey issues reported by the team; serve as primary contact for support (21:09)\nCoordinate with engineering and Sabrish to develop multilingual launch email templates based on data from Rob and ensure translations are ready (17:18)\nPrepare and deliver a demo session on reporting features focusing on manager and leadership views for the next week’s call (19:38)\n\n**Carol Meichner-Smith**\nShare HR director contact details and ensure all 45 participants are included in the platform data upload (06:00)\nCoordinate internally to confirm language preferences and finalize the list of participants requiring translated launch emails (18:00)\nLead testing of generic link and QR code accessibility with team and additional participants, including testing for unauthorized access prevention (22:09)\nProvide feedback on the test survey and translation accuracy to Karthik promptly during the survey window (19:13)\n\n**Elaina Skala**\nTest survey using home phone numbers for text/WhatsApp reminders and provide feedback on reminder reception and survey access (07:15)\nSupport testing QR code and generic link functionality, including conducting unauthorized access tests with non-pilot members (22:57)\n\n**Christine Belyeu**\nEvaluate survey reminder effectiveness and timing, especially with regard to internal group response planning (11:37)\nParticipate in testing of survey links and reminder messaging to ensure functionality (22:05)\n",
+        "notes": "## **Survey Launch and Participant Management**\n\nThe team finalized launching the **test survey** today at **9:00 AM Phoenix time** to validate workflow, translations, and participant experience (07:49).\n\n- **Karthik Rao confirmed the test survey launch** with **45 participants**, including HR directors, ensuring employee data accuracy for all (05:34).\n    - Participants cover multiple locations with **multilingual support enabled in French, Spanish, and Haitian Creole** for survey questions and landing pages.\n    - The test survey duplicates the final survey setup to allow updates after feedback, mainly focusing on translation accuracy and question order.\n    - The survey will remain open until **Tuesday, January 20**, closing at midnight to maximize participation.\n    - PTO absence of one participant was addressed by removing them from the list, with flexibility to add later if needed (06:27).\n\n- **Launch timing was optimized** to accommodate time zones, starting early post-call at 9:00 AM local time to reach West Coast participants before the East Coast workday peak (07:49).\n\n- **Multiple reminder channels will be tested**: SMS on **January 15**, WhatsApp on **January 17**, and email on **January 19**, aiming to maximize response rates through preferred communication methods (09:36).\n    - SMS reminders will go to all participants with phone numbers, WhatsApp only to those with verified WhatsApp contacts.\n    - Email reminders include dynamic placeholders for employee name, survey end date, and unique links.\n    - Elaina Skala and Carol Meichner-Smith emphasized testing on language preferences and internal coordination to exclude any participants who should not receive reminders (11:37).\n\n- **Survey access via unique links, generic URLs, and QR codes** was enabled to simplify entry and test user preference between employee ID or email address for validation (13:34).\n    - Karthik recommended avoiding verification codes to maintain anonymity and reduce user friction.\n    - Carol and team will test whether email or employee ID is more user-friendly to finalize the validation method for the main survey.\n    - Access permissions are enforced so only authorized participants can submit responses, preventing unauthorized access (23:16).\n\n## **Multilingual and Translation Enhancements**\n\nThe team is actively addressing **multilingual support and translation quality** to ensure accurate and culturally appropriate survey content (04:16).\n\n- **Automatic translations for French, Spanish, and Haitian Creole are deployed** but manual updates will be made based on tester feedback to fix errors or improve clarity (05:34).\n- Karthik and engineering, including product manager Sabrish, are working on adding **multilingual email templates** for launch and reminders, pending approval of language preference data from Rob’s team (17:18).\n- Carol proposed a workaround to **manually update language preferences at the property level** if Rob’s data set does not include them in time, requiring a lead time of about **one week** for data preparation and upload (17:49).\n- The team agreed translations for emails are a “nice to have” but not critical, prioritizing survey question translations first (18:38).\n\n## **Survey Data Integrity and Anonymity**\n\nMaintaining **data integrity and participant anonymity** was a key concern addressed during the meeting (14:00).\n\n- Survey access requires either employee ID or email validation to match participant data securely while preserving anonymity (14:00).\n- Karthik advised against using OTP-based verification codes as it could undermine anonymity perception among participants (15:26).\n- Carol expects email addresses will be used for internal club surveys, but employee IDs may be preferred for the larger quarterly survey to reduce email exposure (15:38).\n- The system restricts access if unauthorized employees attempt to access the survey via QR code or link, ensuring data security and accuracy (23:16).\n\n## **Reporting and Leadership Access Planning**\n\nThe next phase involves **demonstrating reporting capabilities** with a focus on manager and leadership access control to protect sensitive data (19:13).\n\n- Karthik plans to present a **reporting demo next week** showing how managers and leaders will access survey results with role-based permissions limiting data visibility (19:13).\n- Leadership will receive access only to their company’s data, not full admin rights, to maintain security and confidentiality.\n- Carol noted leadership meetings to review survey results are scheduled after the follow-up call, enabling incorporation of feedback from the test survey into reporting demos (20:30).\n\n## **Support and Communication Protocol**\n\nClear communication channels and support protocols were established to address any survey issues promptly (21:09).\n\n- Karthik requested all survey-related problems be sent directly to him via email to ensure swift response and resolution (21:26).\n- Carol, Elaina, and Christine confirmed readiness to escalate issues and coordinate internally if survey participants face difficulties.\n- The team agreed that the generic links and QR codes are now accessible for testing, with a brief delay expected before full activation post-launch (22:12).\n- Testing confirmed that early survey access attempts show a “not ready” message until the official launch, preventing premature submissions (23:58).\n\n## **Process Validation and Feedback Integration**\n\nThe team is focused on **iterative testing and feedback collection** to refine the survey experience ahead of the final release (00:00–24:44).\n\n- The test survey acts as a live environment for participants and admin users to uncover any UI, translation, or data issues before the main launch.\n- Carol and Elaina will lead initial testing, with a small group held back to verify reminder functionality on SMS and WhatsApp later in the cycle (12:22).\n- Feedback from this test will inform question order, language updates, template improvements, and final participant access methods.\n- Karthik and Sabrish will coordinate engineering updates on requested features such as hiding survey completion time and adding multilingual email support.\n- Follow-up meetings are scheduled for next Wednesday to review progress and incorporate test results into the broader rollout plan (24:05).",
+        "keywords": [
+          "Test Survey",
+          "Multilingual Support",
+          "Survey Reminders",
+          "Culture Monkey",
+          "Participant Access",
+          "Reporting Demo"
+        ]
+      },
+      "sentences": [
+        {
+          "index": 0,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "I understand it.",
+          "start_time": 0.16
+        },
+        {
+          "index": 1,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "And she'll be joining.",
+          "start_time": 0.72
+        },
+        {
+          "index": 2,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Perfect.",
+          "start_time": 2.24
+        },
+        {
+          "index": 3,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I think we just wait for a couple of minutes.",
+          "start_time": 2.96
+        },
+        {
+          "index": 4,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So just to let you guys know today from my end, there would be one more person.",
+          "start_time": 6.64
+        },
+        {
+          "index": 5,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I'll probably give you an introduction once he joins, but then just to let you know who he is, he's the product manager.",
+          "start_time": 12.88
+        },
+        {
+          "index": 6,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So, like I said, you guys have a couple of requests in knowing what are the best things we can utilize for Culture Monkey.",
+          "start_time": 19.44
+        },
+        {
+          "index": 7,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Right.",
+          "start_time": 25.72
+        },
+        {
+          "index": 8,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "In terms of new features.",
+          "start_time": 26.34
+        },
+        {
+          "index": 9,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So he's just going to be on the Call, silent listener, just to see.",
+          "start_time": 28.18
+        },
+        {
+          "index": 10,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "How Troon workflow and everything that comes in and what we can recommend you.",
+          "start_time": 31.14
+        },
+        {
+          "index": 11,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "To have his features in the future.",
+          "start_time": 35.3
+        },
+        {
+          "index": 12,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And he can develop it with the engineering team, so.",
+          "start_time": 37.06
+        },
+        {
+          "index": 13,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So he'll be on the Call in some time as well.",
+          "start_time": 40.98
+        },
+        {
+          "index": 14,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Let me just ping in if he's joining.",
+          "start_time": 46.82
+        },
+        {
+          "index": 15,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Oh, yeah.",
+          "start_time": 62.79
+        },
+        {
+          "index": 16,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "While we wait for Carol.",
+          "start_time": 63.51
+        },
+        {
+          "index": 17,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I think today's calls is going.",
+          "start_time": 66.31
+        },
+        {
+          "index": 18,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "To be pretty straightforward.",
+          "start_time": 68.35
+        },
+        {
+          "index": 19,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Just wanted to just go through the items for the test survey before we launch it, just to see if it looks the way you want it.",
+          "start_time": 70.71
+        },
+        {
+          "index": 20,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And also this will let you know we can update items in the test.",
+          "start_time": 78.76
+        },
+        {
+          "index": 21,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Survey if in case questions cannot be changed for now, but we'll just keep.",
+          "start_time": 83.8
+        },
+        {
+          "index": 22,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "A note of what are the things.",
+          "start_time": 87.64
+        },
+        {
+          "index": 23,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "We have noticed with faults or any misalignments, especially the translations.",
+          "start_time": 88.64
+        },
+        {
+          "index": 24,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Right.",
+          "start_time": 94.04
+        },
+        {
+          "index": 25,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The translations are also enabled.",
+          "start_time": 94.4
+        },
+        {
+          "index": 26,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So this is where people are taking the survey.",
+          "start_time": 96.24
+        },
+        {
+          "index": 27,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And also just take a look if translations also need to be updated for the final survey, which we do.",
+          "start_time": 98.96
+        },
+        {
+          "index": 28,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I think Carol is joined.",
+          "start_time": 107.1
+        },
+        {
+          "index": 29,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Hi, Carol.",
+          "start_time": 108.54
+        },
+        {
+          "index": 30,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Good morning.",
+          "start_time": 109.22
+        },
+        {
+          "index": 31,
+          "speaker_name": "Christine Belyeu",
+          "raw_text": "Good morning.",
+          "start_time": 110.22
+        },
+        {
+          "index": 32,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Perfect.",
+          "start_time": 112.14
+        },
+        {
+          "index": 33,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So we were just waiting for you, Carol.",
+          "start_time": 113.02
+        },
+        {
+          "index": 34,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I actually have one more person who's joined the Call today.",
+          "start_time": 114.78
+        },
+        {
+          "index": 35,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Just wanted to give you an introduction.",
+          "start_time": 119.7
+        },
+        {
+          "index": 36,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So from our team, Sabrish is on the Call today.",
+          "start_time": 122.54
+        },
+        {
+          "index": 37,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "He's the product manager for us, so.",
+          "start_time": 125.02
+        },
+        {
+          "index": 38,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "He works closely with our engineering as.",
+          "start_time": 127.46
+        },
+        {
+          "index": 39,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Well as the customer perspective as well.",
+          "start_time": 129.94
+        },
+        {
+          "index": 40,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So today I think Shabrish is going to be a silent listener, just to let you know, he just wants to.",
+          "start_time": 132.899
+        },
+        {
+          "index": 41,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Understand Trun's workflow for the surveys, the business model, and also the same time.",
+          "start_time": 139.339
+        },
+        {
+          "index": 42,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Any feature requests, any concerns that you.",
+          "start_time": 145.779
+        },
+        {
+          "index": 43,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Feel like that they need to be set up in a different way specifically for Tron.",
+          "start_time": 148.579
+        },
+        {
+          "index": 44,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "He'll be the one who will be.",
+          "start_time": 153.179
+        },
+        {
+          "index": 45,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Helping us out further with developing certain.",
+          "start_time": 154.299
+        },
+        {
+          "index": 46,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Things in the future as well, so.",
+          "start_time": 156.539
+        },
+        {
+          "index": 47,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So we will also have Saprish on the Call.",
+          "start_time": 160.45
+        },
+        {
+          "index": 48,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Sabrish, would you like to add anything for now?",
+          "start_time": 162.49
+        },
+        {
+          "index": 49,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Thank you for the introduction.",
+          "start_time": 166.53
+        },
+        {
+          "index": 50,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "Hello, everyone.",
+          "start_time": 167.93
+        },
+        {
+          "index": 51,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Hi.",
+          "start_time": 169.73
+        },
+        {
+          "index": 52,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "Hi.",
+          "start_time": 170.45
+        },
+        {
+          "index": 53,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Okay, perfect.",
+          "start_time": 172.05
+        },
+        {
+          "index": 54,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "I was gonna say good evening.",
+          "start_time": 173.57
+        },
+        {
+          "index": 55,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, yeah, it is good evening.",
+          "start_time": 175.73
+        },
+        {
+          "index": 56,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "From our End Perfect.",
+          "start_time": 178.01
+        },
+        {
+          "index": 57,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So Carol, I think I'm just speaking to Elena and Christy as well.",
+          "start_time": 180.85
+        },
+        {
+          "index": 58,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So agenda of the Call is very simple for today.",
+          "start_time": 184.17
+        },
+        {
+          "index": 59,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Just want to go through the items before we launch the test survey for today.",
+          "start_time": 186.57
+        },
+        {
+          "index": 60,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I just want to show you.",
+          "start_time": 190.57
+        },
+        {
+          "index": 61,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Everything and if it's good to go with the timings and everything, we can launch it.",
+          "start_time": 191.81
+        },
+        {
+          "index": 62,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I'll just share my screen.",
+          "start_time": 195.69
+        },
+        {
+          "index": 63,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Second.",
+          "start_time": 199.29
+        },
+        {
+          "index": 64,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Just let me know once my screen is visible.",
+          "start_time": 200.41
+        },
+        {
+          "index": 65,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yes, good.",
+          "start_time": 205.37
+        },
+        {
+          "index": 66,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So before I think questions, why.",
+          "start_time": 208.17
+        },
+        {
+          "index": 67,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So just to start things off, I have created two surveys in the platform.",
+          "start_time": 210.97
+        },
+        {
+          "index": 68,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "One is basically our test survey that we are going to launch today.",
+          "start_time": 215.94
+        },
+        {
+          "index": 69,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I've just marked it as a test.",
+          "start_time": 219.18
+        },
+        {
+          "index": 70,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Survey and given the name as test.",
+          "start_time": 220.5
+        },
+        {
+          "index": 71,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "As well just for reference.",
+          "start_time": 221.98
+        },
+        {
+          "index": 72,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "This has been marked as test survey as well.",
+          "start_time": 224.9
+        },
+        {
+          "index": 73,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And there's an exact loan of the.",
+          "start_time": 227.22
+        },
+        {
+          "index": 74,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Survey which we configured so far at the same time.",
+          "start_time": 230.06
+        },
+        {
+          "index": 75,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The reason why I've kept another survey is that any feedback we get from all the participants who are testing the.",
+          "start_time": 233.14
+        },
+        {
+          "index": 76,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Survey rate, let it be translation question.",
+          "start_time": 238.54
+        },
+        {
+          "index": 77,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Order, any misalignment or any description updates we can update in the actual final survey.",
+          "start_time": 241.68
+        },
+        {
+          "index": 78,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I'm considering this to be the.",
+          "start_time": 247.4
+        },
+        {
+          "index": 79,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Final survey and the test one to.",
+          "start_time": 248.6
+        },
+        {
+          "index": 80,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Be the current survey we'll be launching today.",
+          "start_time": 250.2
+        },
+        {
+          "index": 81,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I hope that's fine.",
+          "start_time": 253.2
+        },
+        {
+          "index": 82,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Elena, Christine.",
+          "start_time": 254.64
+        },
+        {
+          "index": 83,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, perfect.",
+          "start_time": 256.24
+        },
+        {
+          "index": 84,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The rest, I think every description that you were given, the launch template, the background, everything is exactly the same.",
+          "start_time": 259.2
+        },
+        {
+          "index": 85,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "ENPS is added, the multilingual for all.",
+          "start_time": 267.34
+        },
+        {
+          "index": 86,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The translations has been added and I.",
+          "start_time": 270.26
+        },
+        {
+          "index": 87,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Think I'll show it from here.",
+          "start_time": 274.7
+        },
+        {
+          "index": 88,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So here, these are the languages we have enabled.",
+          "start_time": 276.46
+        },
+        {
+          "index": 89,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "French, Spanish and heightened.",
+          "start_time": 278.78
+        },
+        {
+          "index": 90,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Again, this will be a drop down for everyone.",
+          "start_time": 280.42
+        },
+        {
+          "index": 91,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "This will be the landing page and.",
+          "start_time": 283.26
+        },
+        {
+          "index": 92,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Anything if they would want to change.",
+          "start_time": 285.18
+        },
+        {
+          "index": 93,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The question, choose the drop down and.",
+          "start_time": 287.26
+        },
+        {
+          "index": 94,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "They can basically have the entire translation been done over here.",
+          "start_time": 289.54
+        },
+        {
+          "index": 95,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But what I will predominantly recommend is.",
+          "start_time": 293.17
+        },
+        {
+          "index": 96,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Whoever is testing the survey, let them.",
+          "start_time": 296.21
+        },
+        {
+          "index": 97,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Go through all the things and the more feedback we get, the more clarity we get if in case we need to change something as well.",
+          "start_time": 298.45
+        },
+        {
+          "index": 98,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So if they could try different languages.",
+          "start_time": 306.13
+        },
+        {
+          "index": 99,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Who are native speakers in French, Spanish and Haitian, that will also be helpful.",
+          "start_time": 307.97
+        },
+        {
+          "index": 100,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So that's one of the things I would prefer them to go through it thoroughly entirely.",
+          "start_time": 313.17
+        },
+        {
+          "index": 101,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And I think Elena and Krishna, this.",
+          "start_time": 319.26
+        },
+        {
+          "index": 102,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Is the reorder of the questions as.",
+          "start_time": 321.5
+        },
+        {
+          "index": 103,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Well, which I've updated.",
+          "start_time": 322.9
+        },
+        {
+          "index": 104,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Again, that's also something you can just.",
+          "start_time": 324.7
+        },
+        {
+          "index": 105,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Take a look while you're doing the survey as well.",
+          "start_time": 326.94
+        },
+        {
+          "index": 106,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "If the reorder is in the exact.",
+          "start_time": 328.98
+        },
+        {
+          "index": 107,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Manner you're looking for at the same time.",
+          "start_time": 330.3
+        },
+        {
+          "index": 108,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "That's one of the things again, we have the usual stuff which we did.",
+          "start_time": 334.22
+        },
+        {
+          "index": 109,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Already earlier on top of that.",
+          "start_time": 339.26
+        },
+        {
+          "index": 110,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Again, these are the translations, automatic translations that is done by the platform.",
+          "start_time": 344.16
+        },
+        {
+          "index": 111,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Again just to let you know, we'll collect these feedbacks and any translations that has to be updated, we'll manually update.",
+          "start_time": 348.56
+        },
+        {
+          "index": 112,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "That in the platform if that's required.",
+          "start_time": 354.64
+        },
+        {
+          "index": 113,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And the final piece is the participants.",
+          "start_time": 358.88
+        },
+        {
+          "index": 114,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So in total we have 45 participants taking part in the survey.",
+          "start_time": 361.92
+        },
+        {
+          "index": 115,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "That's including all three of you.",
+          "start_time": 366.08
+        },
+        {
+          "index": 116,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And also I believe you're giving me.",
+          "start_time": 367.52
+        },
+        {
+          "index": 117,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The HR directors details as well.",
+          "start_time": 370.08
+        },
+        {
+          "index": 118,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So all of you have been added into the platform and 45 of you.",
+          "start_time": 372.79
+        },
+        {
+          "index": 119,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Will be the participants of the survey.",
+          "start_time": 376.43
+        },
+        {
+          "index": 120,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "With your exact employee data that's been uploaded so far.",
+          "start_time": 379.47
+        },
+        {
+          "index": 121,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Any questions here team?",
+          "start_time": 383.31
+        },
+        {
+          "index": 122,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Until now.",
+          "start_time": 384.39
+        },
+        {
+          "index": 123,
+          "speaker_name": "Christine Belyeu",
+          "raw_text": "Carol, I just thought of something.",
+          "start_time": 387.39
+        },
+        {
+          "index": 124,
+          "speaker_name": "Christine Belyeu",
+          "raw_text": "Cody is actually out on PTO this week so I don't know if there's someone else that we can put in for the jupyter office or if we just want to remove him completely.",
+          "start_time": 389.55
+        },
+        {
+          "index": 125,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Let's just let it go.",
+          "start_time": 402.26
+        },
+        {
+          "index": 126,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "And they feel as if they want us to extend or add.",
+          "start_time": 403.58
+        },
+        {
+          "index": 127,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "We can do that.",
+          "start_time": 409.74
+        },
+        {
+          "index": 128,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, we can also extend it if it's required.",
+          "start_time": 412.1
+        },
+        {
+          "index": 129,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "You can just let me know like.",
+          "start_time": 414.14
+        },
+        {
+          "index": 130,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "A day before so I can have it extended.",
+          "start_time": 415.42
+        },
+        {
+          "index": 131,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Okay.",
+          "start_time": 417.54
+        },
+        {
+          "index": 132,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Yeah.",
+          "start_time": 418.06
+        },
+        {
+          "index": 133,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Because we're going to run it through next Tuesday or we said we'd close it on Tuesday.",
+          "start_time": 418.38
+        },
+        {
+          "index": 134,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, I just wasn't sure when he back.",
+          "start_time": 427.47
+        },
+        {
+          "index": 135,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Dude, I.",
+          "start_time": 429.19
+        },
+        {
+          "index": 136,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Is that the day he's back?",
+          "start_time": 430.59
+        },
+        {
+          "index": 137,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "I don't know.",
+          "start_time": 432.43
+        },
+        {
+          "index": 138,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "I don't.",
+          "start_time": 433.07
+        },
+        {
+          "index": 139,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I don't.",
+          "start_time": 433.43
+        },
+        {
+          "index": 140,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah.",
+          "start_time": 433.71
+        },
+        {
+          "index": 141,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "That far out?",
+          "start_time": 434.35
+        },
+        {
+          "index": 142,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I don't know.",
+          "start_time": 435.03
+        },
+        {
+          "index": 143,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "And I did put.",
+          "start_time": 435.63
+        },
+        {
+          "index": 144,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "I used the home phones, not work cells to the.",
+          "start_time": 436.75
+        },
+        {
+          "index": 145,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "The home number, not the work number to hopefully get as many people.",
+          "start_time": 441.31
+        },
+        {
+          "index": 146,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "So we may just get it on his personal.",
+          "start_time": 444.51
+        },
+        {
+          "index": 147,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "The text or WhatsApp.",
+          "start_time": 446.43
+        },
+        {
+          "index": 148,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Yeah.",
+          "start_time": 449.31
+        },
+        {
+          "index": 149,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Perfect.",
+          "start_time": 452.11
+        },
+        {
+          "index": 150,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So.",
+          "start_time": 452.59
+        },
+        {
+          "index": 151,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So what I'm thinking is I'll be launching it today as we agreed.",
+          "start_time": 453.39
+        },
+        {
+          "index": 152,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So the time zone will be America slash Phoenix.",
+          "start_time": 456.83
+        },
+        {
+          "index": 153,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Is there a specific time you'd like to launch today?",
+          "start_time": 460.75
+        },
+        {
+          "index": 154,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I've just set it as 11 but.",
+          "start_time": 462.83
+        },
+        {
+          "index": 155,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "We can change it.",
+          "start_time": 464.03
+        },
+        {
+          "index": 156,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "You can do it when we get off the Call as early.",
+          "start_time": 465.39
+        },
+        {
+          "index": 157,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah.",
+          "start_time": 469.07
+        },
+        {
+          "index": 158,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "So it's already 8 o' clock here.",
+          "start_time": 469.47
+        },
+        {
+          "index": 159,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "You could do it at 9 o'.",
+          "start_time": 470.71
+        },
+        {
+          "index": 160,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Clock.",
+          "start_time": 471.83
+        },
+        {
+          "index": 161,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Perfect.",
+          "start_time": 472.59
+        },
+        {
+          "index": 162,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah that looks nice that way.",
+          "start_time": 473.15
+        },
+        {
+          "index": 163,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "We'll pick up the east coast before the further in their day.",
+          "start_time": 475.19
+        },
+        {
+          "index": 164,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Got that.",
+          "start_time": 480.34
+        },
+        {
+          "index": 165,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And I think the date we decided.",
+          "start_time": 481.3
+        },
+        {
+          "index": 166,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Was for Tuesday and Tuesday is it.",
+          "start_time": 483.22
+        },
+        {
+          "index": 167,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The survey is open till late midnight.",
+          "start_time": 485.38
+        },
+        {
+          "index": 168,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Or would you want to before.",
+          "start_time": 488.1
+        },
+        {
+          "index": 169,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "That's fine.",
+          "start_time": 490.82
+        },
+        {
+          "index": 170,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "That's fine.",
+          "start_time": 492.02
+        },
+        {
+          "index": 171,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Right.",
+          "start_time": 492.62
+        },
+        {
+          "index": 172,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Perfect.",
+          "start_time": 492.98
+        },
+        {
+          "index": 173,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And then let me just open a different tab.",
+          "start_time": 494.18
+        },
+        {
+          "index": 174,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So for the launch and for the reminder we are using the customized template.",
+          "start_time": 498.02
+        },
+        {
+          "index": 175,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "That, that we spoke.",
+          "start_time": 503.3
+        },
+        {
+          "index": 176,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So for the launch, the email will go with the name of Trun and the great Culture Monkey center name would.",
+          "start_time": 504.48
+        },
+        {
+          "index": 177,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Also remain the same subject line and.",
+          "start_time": 510.68
+        },
+        {
+          "index": 178,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The same content that you had shared.",
+          "start_time": 515.52
+        },
+        {
+          "index": 179,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Across just two placeholders.",
+          "start_time": 517.16
+        },
+        {
+          "index": 180,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The employee name, which is a placeholder.",
+          "start_time": 519.12
+        },
+        {
+          "index": 181,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And the unique link.",
+          "start_time": 521.32
+        },
+        {
+          "index": 182,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "This is also the placeholder, so that's also been updated.",
+          "start_time": 523.36
+        },
+        {
+          "index": 183,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The URL of the is the unique URL.",
+          "start_time": 526.88
+        },
+        {
+          "index": 184,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So this is what we'll be launching today for today's content with the unique link for all the 45 employees.",
+          "start_time": 530.38
+        },
+        {
+          "index": 185,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And then we have the email reminder again.",
+          "start_time": 537.9
+        },
+        {
+          "index": 186,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Email starts with Tron and Culture Monkey.",
+          "start_time": 543.82
+        },
+        {
+          "index": 187,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Sender name is true sender name and.",
+          "start_time": 545.94
+        },
+        {
+          "index": 188,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Then the content that you've shared across.",
+          "start_time": 549.5
+        },
+        {
+          "index": 189,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But in this there'll be three placeholder.",
+          "start_time": 553.18
+        },
+        {
+          "index": 190,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Employee name, the date, the date when the survey ends.",
+          "start_time": 556.47
+        },
+        {
+          "index": 191,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "This will pick up automatically.",
+          "start_time": 559.59
+        },
+        {
+          "index": 192,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Tuesday, 20th of January.",
+          "start_time": 560.99
+        },
+        {
+          "index": 193,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And the unique URL.",
+          "start_time": 564.19
+        },
+        {
+          "index": 194,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Can we.",
+          "start_time": 566.27
+        },
+        {
+          "index": 195,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Oh, yeah, okay, go ahead, keep going.",
+          "start_time": 567.31
+        },
+        {
+          "index": 196,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "What day are we planning on sending that out?",
+          "start_time": 569.19
+        },
+        {
+          "index": 197,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, so that's.",
+          "start_time": 572.35
+        },
+        {
+          "index": 198,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Okay.",
+          "start_time": 575.63
+        },
+        {
+          "index": 199,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Sorry.",
+          "start_time": 576.07
+        },
+        {
+          "index": 200,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "No, no, no problem.",
+          "start_time": 576.99
+        },
+        {
+          "index": 201,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So this is customizable.",
+          "start_time": 579.39
+        },
+        {
+          "index": 202,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "This is just a reference I've added so far.",
+          "start_time": 581.88
+        },
+        {
+          "index": 203,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So what I'm thinking is, since we.",
+          "start_time": 583.72
+        },
+        {
+          "index": 204,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Have already done email reminders the last time.",
+          "start_time": 585.52
+        },
+        {
+          "index": 205,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Right.",
+          "start_time": 587.88
+        },
+        {
+          "index": 206,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I predominantly wanted to test out SMS.",
+          "start_time": 588.2
+        },
+        {
+          "index": 207,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And WhatsApp first before we do the emails in terms of remind.",
+          "start_time": 590.32
+        },
+        {
+          "index": 208,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So first reminder, we were thinking of.",
+          "start_time": 594.68
+        },
+        {
+          "index": 209,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "15Th, which is tomorrow.",
+          "start_time": 597.68
+        },
+        {
+          "index": 210,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I thought we'll do SMS because we have everyone's phone number first and see if all 45 people do receive the SMS.",
+          "start_time": 599.48
+        },
+        {
+          "index": 211,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "If no one submits a response today.",
+          "start_time": 606.53
+        },
+        {
+          "index": 212,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "At 11, does that work?",
+          "start_time": 609.97
+        },
+        {
+          "index": 213,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Guys, the timing and the date works.",
+          "start_time": 611.73
+        },
+        {
+          "index": 214,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "You can do it for nine.",
+          "start_time": 615.25
+        },
+        {
+          "index": 215,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Yeah.",
+          "start_time": 617.09
+        },
+        {
+          "index": 216,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Okay.",
+          "start_time": 618.29
+        },
+        {
+          "index": 217,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Okay, that's nine.",
+          "start_time": 619.09
+        },
+        {
+          "index": 218,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "It is.",
+          "start_time": 619.97
+        },
+        {
+          "index": 219,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So that's my SMS again.",
+          "start_time": 621.65
+        },
+        {
+          "index": 220,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Friday we'll do for WhatsApp.",
+          "start_time": 623.57
+        },
+        {
+          "index": 221,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And I hope that's again nine.",
+          "start_time": 625.25
+        },
+        {
+          "index": 222,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Right.",
+          "start_time": 627.13
+        },
+        {
+          "index": 223,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "9am okay, so that will be WhatsApp.",
+          "start_time": 627.49
+        },
+        {
+          "index": 224,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So again, WhatsApp, it's going to work.",
+          "start_time": 631.01
+        },
+        {
+          "index": 225,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "In a way where whoever has submitted the response by 15th.",
+          "start_time": 632.84
+        },
+        {
+          "index": 226,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Right.",
+          "start_time": 637.24
+        },
+        {
+          "index": 227,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The remaining unanswered participants will be only.",
+          "start_time": 637.68
+        },
+        {
+          "index": 228,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Receiving the WhatsApp reminder, specifically if the number they've given is their WhatsApp number.",
+          "start_time": 640.52
+        },
+        {
+          "index": 229,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So let's say if 30 people are still pending and 25p or out of the 30, 25 people have given their WhatsApp, those 25 people will get WhatsApp reminders.",
+          "start_time": 647.04
+        },
+        {
+          "index": 230,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The five people would not be getting.",
+          "start_time": 656.88
+        },
+        {
+          "index": 231,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The WhatsApp reminder because.",
+          "start_time": 658.36
+        },
+        {
+          "index": 232,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Because it's not available.",
+          "start_time": 659.62
+        },
+        {
+          "index": 233,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I hope that that'd be okay.",
+          "start_time": 662.1
+        },
+        {
+          "index": 234,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Right.",
+          "start_time": 663.66
+        },
+        {
+          "index": 235,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "If I'm just.",
+          "start_time": 664.18
+        },
+        {
+          "index": 236,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Just saying in case.",
+          "start_time": 665.54
+        },
+        {
+          "index": 237,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "If it's not there.",
+          "start_time": 666.38
+        },
+        {
+          "index": 238,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "WhatsApp number.",
+          "start_time": 666.94
+        },
+        {
+          "index": 239,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, yeah.",
+          "start_time": 667.62
+        },
+        {
+          "index": 240,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And then I'm back on Monday, that is on 19th.",
+          "start_time": 669.62
+        },
+        {
+          "index": 241,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "We'll be doing one more reminder which is the email just to see if.",
+          "start_time": 672.9
+        },
+        {
+          "index": 242,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The emails work the way it is supposed to be.",
+          "start_time": 676.58
+        },
+        {
+          "index": 243,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So that would be the reminders.",
+          "start_time": 680.98
+        },
+        {
+          "index": 244,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But does this reminder schedule work for you guys or would you want me to in case add one more?",
+          "start_time": 683.58
+        },
+        {
+          "index": 245,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Because it's only one more day Tuesday.",
+          "start_time": 688.74
+        },
+        {
+          "index": 246,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And this is just a test survey.",
+          "start_time": 690.74
+        },
+        {
+          "index": 247,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So do you think this is enough.",
+          "start_time": 692.38
+        },
+        {
+          "index": 248,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Or would you like to make any changes?",
+          "start_time": 693.66
+        },
+        {
+          "index": 249,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "I think personally, yeah, I think it works.",
+          "start_time": 697.54
+        },
+        {
+          "index": 250,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "And we're trying all three channels.",
+          "start_time": 700.38
+        },
+        {
+          "index": 251,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "Christine and Carol, we may need to internally see if there's groups of people we want to be like, don't respond.",
+          "start_time": 703.14
+        },
+        {
+          "index": 252,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "So we can make sure you get the reminder email.",
+          "start_time": 710.18
+        },
+        {
+          "index": 253,
+          "speaker_name": "Christine Belyeu",
+          "raw_text": "It's just not going to respond.",
+          "start_time": 712.38
+        },
+        {
+          "index": 254,
+          "speaker_name": "Christine Belyeu",
+          "raw_text": "I was going to wait until the 19.",
+          "start_time": 713.7
+        },
+        {
+          "index": 255,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Yeah, I was going to do this.",
+          "start_time": 715.88
+        },
+        {
+          "index": 256,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Yeah, I'll do the same, but I was gonna.",
+          "start_time": 717.88
+        },
+        {
+          "index": 257,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "And we can touch base as well.",
+          "start_time": 720.84
+        },
+        {
+          "index": 258,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Just, just have a thought.",
+          "start_time": 722.44
+        },
+        {
+          "index": 259,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Hey, as you're doing this, please realize there's language options.",
+          "start_time": 724.84
+        },
+        {
+          "index": 260,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "You know, this is when it kind of put together a reminder of certain things that we're going through now, just to let them know.",
+          "start_time": 731.32
+        },
+        {
+          "index": 261,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So that's I think the best approach.",
+          "start_time": 742.21
+        },
+        {
+          "index": 262,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Guys, what you can do is maybe let a couple of people take the survey the first few days.",
+          "start_time": 744.13
+        },
+        {
+          "index": 263,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Carol, Elaine and Chrissy, you guys can do it at the final day once the reminders are done.",
+          "start_time": 749.01
+        },
+        {
+          "index": 264,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Maybe just keep like another two to.",
+          "start_time": 754.05
+        },
+        {
+          "index": 265,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Three people just in case because email is fine.",
+          "start_time": 756.41
+        },
+        {
+          "index": 266,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Just wanted to make sure SMS and WhatsApp, you get the reminder in the exact appropriate manner and, and if that works well without any other issues.",
+          "start_time": 759.49
+        },
+        {
+          "index": 267,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So you can just keep another two to three people extra where you can.",
+          "start_time": 769.56
+        },
+        {
+          "index": 268,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Just wait, ask them to wait maybe till Friday or Monday and just see that the, both the reminders come across perfectly.",
+          "start_time": 772.4
+        },
+        {
+          "index": 269,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "SMS and WhatsApp.",
+          "start_time": 778.56
+        },
+        {
+          "index": 270,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, so that's one.",
+          "start_time": 781.48
+        },
+        {
+          "index": 271,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And so I'll publish it before publishing it.",
+          "start_time": 785
+        },
+        {
+          "index": 272,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "These are the questions, these are the.",
+          "start_time": 790.12
+        },
+        {
+          "index": 273,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Participants.",
+          "start_time": 792.08
+        },
+        {
+          "index": 274,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Survey launch and mine templates.",
+          "start_time": 794.93
+        },
+        {
+          "index": 275,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I don't know, it's an anonymous survey.",
+          "start_time": 798.61
+        },
+        {
+          "index": 276,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So Carolyn, would you like me to share the generic link and the QR code as well?",
+          "start_time": 801.09
+        },
+        {
+          "index": 277,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Would you like to test this out while we do the survey?",
+          "start_time": 807.05
+        },
+        {
+          "index": 278,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "While we launch the survey as well.",
+          "start_time": 810.089
+        },
+        {
+          "index": 279,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "This is also another channel.",
+          "start_time": 811.53
+        },
+        {
+          "index": 280,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Yes, I would.",
+          "start_time": 814.13
+        },
+        {
+          "index": 281,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Yes, if we can do that, I will.",
+          "start_time": 815.57
+        },
+        {
+          "index": 282,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Yes, please.",
+          "start_time": 818.53
+        },
+        {
+          "index": 283,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Okay, that's straightforward then.",
+          "start_time": 821.72
+        },
+        {
+          "index": 284,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, go ahead.",
+          "start_time": 823.16
+        },
+        {
+          "index": 285,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "And I guess for us if we choose to use the link or the QR code, they have to fill in more information in order to get the survey completed correct.",
+          "start_time": 826.2
+        },
+        {
+          "index": 286,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So that's also Another part of testing that I want you to do because now let's say once the survey goes live, right, all three of you, what you can do is rather than clicking on the unique link, open the QR code, I'll send you the QR code and the generic link.",
+          "start_time": 840.28
+        },
+        {
+          "index": 287,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The two options would come up either to give your enter your employee ID.",
+          "start_time": 857.81
+        },
+        {
+          "index": 288,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Or enter your email address.",
+          "start_time": 862.21
+        },
+        {
+          "index": 289,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Since the 45 people who are taking part in the survey would know their.",
+          "start_time": 864.21
+        },
+        {
+          "index": 290,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Details about a testing.",
+          "start_time": 867.65
+        },
+        {
+          "index": 291,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "You let me know what are the date data you're typing in.",
+          "start_time": 870.05
+        },
+        {
+          "index": 292,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Then you click on the submit button.",
+          "start_time": 874.16
+        },
+        {
+          "index": 293,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The system automatically validates based on the employee data we have uploaded for those 45 people.",
+          "start_time": 876.4
+        },
+        {
+          "index": 294,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "You will be redirected the landing page.",
+          "start_time": 882.24
+        },
+        {
+          "index": 295,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Where you have the survey description, the language selection and then you will continue.",
+          "start_time": 884.96
+        },
+        {
+          "index": 296,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Doing the same thing again.",
+          "start_time": 888.92
+        },
+        {
+          "index": 297,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But the tricky part is you can either use the employer ID or the.",
+          "start_time": 891.44
+        },
+        {
+          "index": 298,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Email the email address.",
+          "start_time": 898.04
+        },
+        {
+          "index": 299,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So that's where if you test it and you can let me know what is more comfortable for all the 45 people.",
+          "start_time": 900.36
+        },
+        {
+          "index": 300,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Then based on that, when we actually.",
+          "start_time": 906.36
+        },
+        {
+          "index": 301,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Do the survey, we can give either one of them either the employee ID or email address which is more common to people.",
+          "start_time": 908.08
+        },
+        {
+          "index": 302,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And if it's required, there's an option of putting a verification code.",
+          "start_time": 915.319
+        },
+        {
+          "index": 303,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But I generally wouldn't recommend it because if you use a verification code, right, I will send an OTP to their email.",
+          "start_time": 920.08
+        },
+        {
+          "index": 304,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Then they might have the feeling, okay.",
+          "start_time": 926.28
+        },
+        {
+          "index": 305,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "It'S not an anonymous survey, they can be tracked.",
+          "start_time": 928.12
+        },
+        {
+          "index": 306,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So that's something we wouldn't recommend.",
+          "start_time": 930.92
+        },
+        {
+          "index": 307,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But yeah, that's also security layer in.",
+          "start_time": 932.68
+        },
+        {
+          "index": 308,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Case if people do ask if they need it.",
+          "start_time": 934.64
+        },
+        {
+          "index": 309,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "I'm going to tell you for this group, right, it's probably their email address for when we do the clubs, it's probably their employee id.",
+          "start_time": 938.68
+        },
+        {
+          "index": 310,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Okay, that's fair.",
+          "start_time": 947.64
+        },
+        {
+          "index": 311,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So once you click on generic link, right, Just see if whichever comes up because and when if it's coming the email address, then we'll do a thing when we do the final survey updated.",
+          "start_time": 949.8
+        },
+        {
+          "index": 312,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "To employee ID so that they don't have to type their email address.",
+          "start_time": 960.42
+        },
+        {
+          "index": 313,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Okay, so yeah, that's the thing.",
+          "start_time": 963.14
+        },
+        {
+          "index": 314,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So let me just publish it now.",
+          "start_time": 966.5
+        },
+        {
+          "index": 315,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So 9am today, right, for publishing the survey.",
+          "start_time": 970.74
+        },
+        {
+          "index": 316,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Phoenix test survey.",
+          "start_time": 976.26
+        },
+        {
+          "index": 317,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, so I will publish the survey.",
+          "start_time": 980.47
+        },
+        {
+          "index": 318,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So that should come at 9 o' clock at your end, post the Call, I'll do a thing, I'll send you.",
+          "start_time": 982.51
+        },
+        {
+          "index": 319,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The QR code and the generic link.",
+          "start_time": 988.03
+        },
+        {
+          "index": 320,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "You can open that once the survey is live and then you don't have to submit answers.",
+          "start_time": 990.23
+        },
+        {
+          "index": 321,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Open it, just see everything is working as it is and just Keep it.",
+          "start_time": 996.07
+        },
+        {
+          "index": 322,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Open till Monday, Tuesday at least the three of you and maybe a couple more people.",
+          "start_time": 999.83
+        },
+        {
+          "index": 323,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The rest, let them do it as it is.",
+          "start_time": 1003.19
+        },
+        {
+          "index": 324,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah.",
+          "start_time": 1007.33
+        },
+        {
+          "index": 325,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I think two things on top of my mind.",
+          "start_time": 1007.81
+        },
+        {
+          "index": 326,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "What you had requested was two things.",
+          "start_time": 1012.61
+        },
+        {
+          "index": 327,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "In terms of the survey.",
+          "start_time": 1015.09
+        },
+        {
+          "index": 328,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "One is the complete time to be.",
+          "start_time": 1016.41
+        },
+        {
+          "index": 329,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Taken in survey that has to be hidden.",
+          "start_time": 1018.17
+        },
+        {
+          "index": 330,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I think that was one of the requests.",
+          "start_time": 1020.45
+        },
+        {
+          "index": 331,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And second, also what we discussed was regarding the multiple languages when we're sending the.",
+          "start_time": 1022.21
+        },
+        {
+          "index": 332,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "The launch template, not just English, can we have in different languages.",
+          "start_time": 1030.21
+        },
+        {
+          "index": 333,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I think those are the two requests which we're currently working on, so.",
+          "start_time": 1034.779
+        },
+        {
+          "index": 334,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Which we're also working with Shabrij and with the engineering.",
+          "start_time": 1038.619
+        },
+        {
+          "index": 335,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I'll get you updates on that.",
+          "start_time": 1041.819
+        },
+        {
+          "index": 336,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But like I said for that second part, the multilingual templates, when Rob is sending the file, I think I got an update from Rob.",
+          "start_time": 1043.499
+        },
+        {
+          "index": 337,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "There's some approval spending.",
+          "start_time": 1052.299
+        },
+        {
+          "index": 338,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "He'll send it across.",
+          "start_time": 1053.619
+        },
+        {
+          "index": 339,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "If we can get a language preference using that, we can probably send the multilingual multiple language launch template.",
+          "start_time": 1055.179
+        },
+        {
+          "index": 340,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I mean, that's one of the workarounds.",
+          "start_time": 1066.94
+        },
+        {
+          "index": 341,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "We have in mind.",
+          "start_time": 1068.5
+        },
+        {
+          "index": 342,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Would we be able to, prior to launch, if it doesn't come over in Rob's data, would we be able to, for instance, work with a property to say, hey, these are the people that need this translation and put it into the data before we launch the quarterly survey?",
+          "start_time": 1069.9
+        },
+        {
+          "index": 343,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "We can, but as long as you do it, give us a bit earlier, maybe like a week before we can have it ready.",
+          "start_time": 1097.89
+        },
+        {
+          "index": 344,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Because here the data set is very huge.",
+          "start_time": 1103.77
+        },
+        {
+          "index": 345,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "If it's a very small data set, it's fine.",
+          "start_time": 1105.53
+        },
+        {
+          "index": 346,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "We just need a couple of days.",
+          "start_time": 1107.37
+        },
+        {
+          "index": 347,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But since it's a huge set, just.",
+          "start_time": 1109.01
+        },
+        {
+          "index": 348,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Give it like as a week before.",
+          "start_time": 1110.89
+        },
+        {
+          "index": 349,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I can set the expectations with the team that this is something we're.",
+          "start_time": 1112.21
+        },
+        {
+          "index": 350,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Going to come up with.",
+          "start_time": 1115.71
+        },
+        {
+          "index": 351,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Because I want Rob to worry about the data set first.",
+          "start_time": 1118.31
+        },
+        {
+          "index": 352,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "The translations is, I would say, a nice to have.",
+          "start_time": 1124.39
+        },
+        {
+          "index": 353,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Right.",
+          "start_time": 1127.75
+        },
+        {
+          "index": 354,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "But we can work with the properties themselves.",
+          "start_time": 1128.71
+        },
+        {
+          "index": 355,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "If they have language translation requests, say, hey, we know the survey can translate.",
+          "start_time": 1135.99
+        },
+        {
+          "index": 356,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "We're working on launch emails.",
+          "start_time": 1142.67
+        },
+        {
+          "index": 357,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Who are the people?",
+          "start_time": 1144.59
+        },
+        {
+          "index": 358,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "So we can work it in a way that hopefully we can.",
+          "start_time": 1145.39
+        },
+        {
+          "index": 359,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "We'll see what the lift is too, for us.",
+          "start_time": 1149.95
+        },
+        {
+          "index": 360,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So that's perfect.",
+          "start_time": 1153.95
+        },
+        {
+          "index": 361,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So think Carol.",
+          "start_time": 1156.75
+        },
+        {
+          "index": 362,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So now while we work on the, the test survey, right, get as much as feedback as you can and you can share it across.",
+          "start_time": 1158.51
+        },
+        {
+          "index": 363,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "In the meantime, post this survey is done, right.",
+          "start_time": 1166.99
+        },
+        {
+          "index": 364,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And by the time we get the data from Rob, I think there's a couple of days in between.",
+          "start_time": 1170.85
+        },
+        {
+          "index": 365,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I think I already given you.",
+          "start_time": 1176.05
+        },
+        {
+          "index": 366,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Like a demo on how the reporting works.",
+          "start_time": 1177.29
+        },
+        {
+          "index": 367,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So the next thing I want to.",
+          "start_time": 1179.21
+        },
+        {
+          "index": 368,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Do is show you the demo again for reporting.",
+          "start_time": 1180.45
+        },
+        {
+          "index": 369,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But this time I wanted to show.",
+          "start_time": 1183.21
+        },
+        {
+          "index": 370,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "You in terms of how it's going to look like for a manager and for a leader.",
+          "start_time": 1185.61
+        },
+        {
+          "index": 371,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I think that's also very important because that's where the access part comes into the picture.",
+          "start_time": 1189.89
+        },
+        {
+          "index": 372,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So this time you'll have a bit more data for me to show you and maybe using that I'll give you more clarity.",
+          "start_time": 1194.77
+        },
+        {
+          "index": 373,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So once we do the actual survey done that'll also give you a clearer picture.",
+          "start_time": 1199.95
+        },
+        {
+          "index": 374,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Okay.",
+          "start_time": 1204.91
+        },
+        {
+          "index": 375,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Which person should get which access, especially the managers.",
+          "start_time": 1205.43
+        },
+        {
+          "index": 376,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "It's fine.",
+          "start_time": 1209.59
+        },
+        {
+          "index": 377,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But I'm talking about from the leadership perspective because we generally don't give them the full administrator access.",
+          "start_time": 1210.11
+        },
+        {
+          "index": 378,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "We only give their companies access alone.",
+          "start_time": 1216.35
+        },
+        {
+          "index": 379,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So yeah.",
+          "start_time": 1220.19
+        },
+        {
+          "index": 380,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I think that's the next plan.",
+          "start_time": 1221.07
+        },
+        {
+          "index": 381,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "For the next week.",
+          "start_time": 1222.43
+        },
+        {
+          "index": 382,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Also the feedback that you'll be getting.",
+          "start_time": 1223.7
+        },
+        {
+          "index": 383,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "From the team who's doing the survey.",
+          "start_time": 1225.18
+        },
+        {
+          "index": 384,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So that's the things we can discuss.",
+          "start_time": 1227.38
+        },
+        {
+          "index": 385,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "We don't meet, we don't meet with the leaders until after our Call next week.",
+          "start_time": 1230.26
+        },
+        {
+          "index": 386,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "So it'd be the feedback won't be till the following week.",
+          "start_time": 1236.34
+        },
+        {
+          "index": 387,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "That was trying to get in a shortened week everybody together.",
+          "start_time": 1240.74
+        },
+        {
+          "index": 388,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "So I think reporting next week works great.",
+          "start_time": 1244.58
+        },
+        {
+          "index": 389,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Perfect.",
+          "start_time": 1249.13
+        },
+        {
+          "index": 390,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Perfect then.",
+          "start_time": 1249.61
+        },
+        {
+          "index": 391,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So I'll keep those things aligned from my end so that I can show you as a demo for next week.",
+          "start_time": 1250.37
+        },
+        {
+          "index": 392,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And the week after.",
+          "start_time": 1254.57
+        },
+        {
+          "index": 393,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "You can get my.",
+          "start_time": 1255.29
+        },
+        {
+          "index": 394,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Get me back with the feedback once you receive it.",
+          "start_time": 1256.01
+        },
+        {
+          "index": 395,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But any other questions?",
+          "start_time": 1258.97
+        },
+        {
+          "index": 396,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Carol, Andina Christi, you wanted to discuss apart from this for today.",
+          "start_time": 1260.97
+        },
+        {
+          "index": 397,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "I don't anticipate any issues but if there's something wacky come comes along where someone survey just isn't working or something or the other.",
+          "start_time": 1269.93
+        },
+        {
+          "index": 398,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "Do we just email you or is there a support email?",
+          "start_time": 1278.66
+        },
+        {
+          "index": 399,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "What, what's the best protocol in that case if something's gone awry.",
+          "start_time": 1281.62
+        },
+        {
+          "index": 400,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So even if it goes with the.",
+          "start_time": 1286.98
+        },
+        {
+          "index": 401,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Wrong, if something goes wrong, even if it reach with the support email it still come to me.",
+          "start_time": 1288.42
+        },
+        {
+          "index": 402,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So you can directly send it to me.",
+          "start_time": 1292.62
+        },
+        {
+          "index": 403,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I'll quickly check my mailbox.",
+          "start_time": 1294.58
+        },
+        {
+          "index": 404,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah.",
+          "start_time": 1296.14
+        },
+        {
+          "index": 405,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So yeah, I think that's all from my end.",
+          "start_time": 1298.66
+        },
+        {
+          "index": 406,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Shapirish, would you like to check something from your end?",
+          "start_time": 1301.02
+        },
+        {
+          "index": 407,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Oh, you're good, Relax.",
+          "start_time": 1304.39
+        },
+        {
+          "index": 408,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah Karthik, I'm good today.",
+          "start_time": 1309.07
+        },
+        {
+          "index": 409,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, perfect.",
+          "start_time": 1310.47
+        },
+        {
+          "index": 410,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Thank you then.",
+          "start_time": 1311.95
+        },
+        {
+          "index": 411,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So Carolina Christie, the survey is published.",
+          "start_time": 1313.47
+        },
+        {
+          "index": 412,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I think in some time you guys.",
+          "start_time": 1316.75
+        },
+        {
+          "index": 413,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Will be able to access it.",
+          "start_time": 1317.99
+        },
+        {
+          "index": 414,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Let me know if any questions or any issues that come across and I hope next week.",
+          "start_time": 1319.23
+        },
+        {
+          "index": 415,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I think a Call is scheduled for Wednesday.",
+          "start_time": 1325.71
+        },
+        {
+          "index": 416,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I hope that works.",
+          "start_time": 1328.75
+        },
+        {
+          "index": 417,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "Same time today.",
+          "start_time": 1329.59
+        },
+        {
+          "index": 418,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Quick Question for.",
+          "start_time": 1332.65
+        },
+        {
+          "index": 419,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "For you, we should be able to log in and get the link and the QR code now, correct?",
+          "start_time": 1333.85
+        },
+        {
+          "index": 420,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yes, but can you just share your screen?",
+          "start_time": 1340.57
+        },
+        {
+          "index": 421,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "I just wanted to check that you'd.",
+          "start_time": 1342.13
+        },
+        {
+          "index": 422,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Be able to get it in.",
+          "start_time": 1343.65
+        },
+        {
+          "index": 423,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "I can if you need.",
+          "start_time": 1346.769
+        },
+        {
+          "index": 424,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Okay.",
+          "start_time": 1347.93
+        },
+        {
+          "index": 425,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "I'm like, I'm not that far.",
+          "start_time": 1348.57
+        },
+        {
+          "index": 426,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "I was like, I like, I like to ghost what he's doing so great there.",
+          "start_time": 1351.93
+        },
+        {
+          "index": 427,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "Second one survey.",
+          "start_time": 1357.78
+        },
+        {
+          "index": 428,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, that's the one share.",
+          "start_time": 1359.54
+        },
+        {
+          "index": 429,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And.",
+          "start_time": 1363.3
+        },
+        {
+          "index": 430,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, so that's the generic link.",
+          "start_time": 1363.66
+        },
+        {
+          "index": 431,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And can you click on the hyperlink?",
+          "start_time": 1366.58
+        },
+        {
+          "index": 432,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, that will take you to the QR code, which you can share it.",
+          "start_time": 1368.58
+        },
+        {
+          "index": 433,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Across to the team.",
+          "start_time": 1372.46
+        },
+        {
+          "index": 434,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "And then I wonder.",
+          "start_time": 1374.18
+        },
+        {
+          "index": 435,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But I generically.",
+          "start_time": 1377.38
+        },
+        {
+          "index": 436,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And the QR code is the same.",
+          "start_time": 1378.86
+        },
+        {
+          "index": 437,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "If you notice the URL is just the same.",
+          "start_time": 1379.98
+        },
+        {
+          "index": 438,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Just read.",
+          "start_time": 1381.7
+        },
+        {
+          "index": 439,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Actually the same place.",
+          "start_time": 1382.1
+        },
+        {
+          "index": 440,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Perfect.",
+          "start_time": 1383.58
+        },
+        {
+          "index": 441,
+          "speaker_name": "Christine Belyeu",
+          "raw_text": "Can we do a test with the QR code for someone that's not on our pilot list?",
+          "start_time": 1385.26
+        },
+        {
+          "index": 442,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Oh, to make sure they can't get to it?",
+          "start_time": 1393.5
+        },
+        {
+          "index": 443,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah.",
+          "start_time": 1395.66
+        },
+        {
+          "index": 444,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "I'll make Diego do it.",
+          "start_time": 1396.46
+        },
+        {
+          "index": 445,
+          "speaker_name": "Christine Belyeu",
+          "raw_text": "Okay.",
+          "start_time": 1398.22
+        },
+        {
+          "index": 446,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Okay.",
+          "start_time": 1398.7
+        },
+        {
+          "index": 447,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "I was gonna see.",
+          "start_time": 1400.22
+        },
+        {
+          "index": 448,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "He's.",
+          "start_time": 1402.22
+        },
+        {
+          "index": 449,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "He's the only one we have physical right now.",
+          "start_time": 1403.02
+        },
+        {
+          "index": 450,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "You can do it in a way.",
+          "start_time": 1406.86
+        },
+        {
+          "index": 451,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So let's say, for example, if a person is not available to do it.",
+          "start_time": 1407.9
+        },
+        {
+          "index": 452,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Right, if you know their employee id, you scan it from your phone or you scan it from any of the.",
+          "start_time": 1410.94
+        },
+        {
+          "index": 453,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Scanning devices you have, type in their employee ID or type in their email address on behalf of them, you'll get to see that that person will be.",
+          "start_time": 1415.54
+        },
+        {
+          "index": 454,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Restricted or that you're not authorized to.",
+          "start_time": 1422.3
+        },
+        {
+          "index": 455,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Take part in the survey.",
+          "start_time": 1424.54
+        },
+        {
+          "index": 456,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So it's not necessary.",
+          "start_time": 1426.02
+        },
+        {
+          "index": 457,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "You have to reach out to him.",
+          "start_time": 1426.94
+        },
+        {
+          "index": 458,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Any one of you can also do it on his behalf.",
+          "start_time": 1427.9
+        },
+        {
+          "index": 459,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Oh, okay.",
+          "start_time": 1430.18
+        },
+        {
+          "index": 460,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Yeah.",
+          "start_time": 1430.9
+        },
+        {
+          "index": 461,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "And right now it says it's not ready.",
+          "start_time": 1431.62
+        },
+        {
+          "index": 462,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Perfect.",
+          "start_time": 1438.76
+        },
+        {
+          "index": 463,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "So even if we get stuff out there early, they'll get a, hey, it's not ready yet.",
+          "start_time": 1439.08
+        },
+        {
+          "index": 464,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "So.",
+          "start_time": 1444.12
+        },
+        {
+          "index": 465,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, So I would suggest probably once.",
+          "start_time": 1445.8
+        },
+        {
+          "index": 466,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "It launches, wait for just two to three minutes just to make sure it's.",
+          "start_time": 1448.2
+        },
+        {
+          "index": 467,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Accessible across all the three channels we have.",
+          "start_time": 1451.84
+        },
+        {
+          "index": 468,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "But now it says email reminders is alone, is going via SMS and WhatsApp QR code.",
+          "start_time": 1454.24
+        },
+        {
+          "index": 469,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And the email will be immediately active.",
+          "start_time": 1460.2
+        },
+        {
+          "index": 470,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So is the generic link.",
+          "start_time": 1462.24
+        },
+        {
+          "index": 471,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Yeah, I guess that's pretty much it.",
+          "start_time": 1465.73
+        },
+        {
+          "index": 472,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "From my end, guys.",
+          "start_time": 1468.49
+        },
+        {
+          "index": 473,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "So any questions you might come across, let me know via email.",
+          "start_time": 1469.73
+        },
+        {
+          "index": 474,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "And if not, then we can catch on next week's Call on Wednesday.",
+          "start_time": 1473.49
+        },
+        {
+          "index": 475,
+          "speaker_name": "Elaina Skala",
+          "raw_text": "Sounds great.",
+          "start_time": 1478.13
+        },
+        {
+          "index": 476,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Sounds great then.",
+          "start_time": 1479.41
+        },
+        {
+          "index": 477,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Thank you then.",
+          "start_time": 1480.21
+        },
+        {
+          "index": 478,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Have a great day.",
+          "start_time": 1480.81
+        },
+        {
+          "index": 479,
+          "speaker_name": "Carol Meichner-Smith",
+          "raw_text": "Thank you.",
+          "start_time": 1482.45
+        },
+        {
+          "index": 480,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Bye.",
+          "start_time": 1484.13
+        },
+        {
+          "index": 481,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Bye then.",
+          "start_time": 1484.45
+        },
+        {
+          "index": 482,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Thank you.",
+          "start_time": 1484.81
+        },
+        {
+          "index": 483,
+          "speaker_name": "Karthik Rao",
+          "raw_text": "Sa.",
+          "start_time": 1489.5
+        }
+      ],
+      "meeting_link": "https://teams.microsoft.com/l/meetup-join/19:meeting_MWJmN2EyYjUtMThkNy00MGI4LWE4MWUtMGI4MTlhY2FlZDAz@thread.v2/0?context={\"Tid\":\"b5c44a51-4444-494b-ab84-a131bfecc687\",\"Oid\":\"bc9f8936-d969-4ed4-b052-b563baeb9bba\"}"
+    }
+  ]
+}

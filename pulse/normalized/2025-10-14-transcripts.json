@@ -1,0 +1,20 @@
+{
+  "dayKey": "2025-10-14",
+  "generatedAt": "2026-03-19T05:41:19.120Z",
+  "transcripts": [
+    {
+      "transcriptId": "01K7CGGY7PS7YA3ES8QMKRGYQH",
+      "meetingTitle": "Culturemonkey <> Sprinto : Monthly Sync",
+      "meetingDate": "2025-10-14T09:30:00.000Z",
+      "participants": [
+        "himanij@sprinto.com",
+        "shabharish.v@culturemonkey.io"
+      ],
+      "summary": "",
+      "transcriptText": "",
+      "sourceUrl": "https://meet.google.com/gvx-agcs-dpy",
+      "fetchedAt": "2026-03-19T05:41:19.118Z",
+      "sourceDay": "2025-10-14"
+    }
+  ]
+}

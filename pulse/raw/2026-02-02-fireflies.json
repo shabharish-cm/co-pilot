@@ -1,0 +1,1136 @@
+{
+  "dayKey": "2026-02-02",
+  "fetchedAt": "2026-03-19T05:41:19.147Z",
+  "source": "backfill-date-range",
+  "transcripts": [
+    {
+      "id": "01KG74155TW1MYV7YC84HCEGGG",
+      "title": "Shabharish and Madhu Sivakumar",
+      "date": 1770012000000,
+      "participants": [
+        "madhumathis@sprinto.com",
+        "shabharish.v@culturemonkey.io"
+      ],
+      "summary": {
+        "overview": "- **Audit Evidence Needed:** Provide clear evidence of vulnerability management to close audit gaps and avoid confusion.\n\n- **System Document Updates:** Remove outdated AWS references in system documentation to streamline compliance and avoid irrelevant requests.\n\n- **Screenshots Required:** Audit demands visual proof from GitHub tools showing active vulnerability tracking with SLAs for fixes.\n\n- **Incident Documentation Process:** Manual evidence submission needed due to missing incident data in the audit platform, requiring JIRA screenshots.\n\n- **Threat Detection Setup:** Establish threat detection in Digital Ocean to support audit requirements and reduce manual evidence burden.\n\n- **Timely Updates Essential:** Coordinate updates and evidence submission within the audit timeline to address compliance issues effectively.",
+        "action_items": "\n**Shabharish V**\nConfirm via email that CultureMonkey does not use AWS to clarify audit discrepancy (01:51)\nVerify with engineering whether GitHub Dependabot or any vulnerability scanning tools are used on the codebase (03:47)\nUpdate the “System Description” document to accurately reflect current infrastructure, removing AWS references, then share updated version with the auditor (05:30)\nProvide screenshots from Jira showing incident tracking for applications and infrastructure to auditors for evidence purposes (07:40)\nCheck if threat detection system is enabled on Digital Ocean platform and provide corresponding evidence (08:19)\nShare Digital Ocean’s security audit logs (“distillation security history”) with the audit team (09:53)\nCollaborate with engineering to gather all evidence as discussed and send the collected data via email (12:17)\n\n**Madhu Sivakumar**\nProvide a detailed summary email post-call outlining required action items for auditing evidence (11:49)\n",
+        "notes": "## **Audit Evidence and Compliance Documentation**\n\nThe team must provide clear evidence of vulnerability management and update system documentation to resolve audit gaps (01:51).\n\n- **Shabharish V confirmed non-usage of AWS**, clarifying the audit's incorrect AWS reference requires updating the system description document to remove outdated AWS mentions (05:01).\n    - Madhu Sivakumar showed how to locate and update the system description to reflect current infrastructure and avoid audit confusion.\n    - Correcting these documents will prevent auditors from requesting irrelevant AWS evidence, streamlining compliance.\n    - Shabharish will update and resend the system description to auditors as the authoritative source.\n\n- **Audit requires screenshots proving vulnerability resolution through automated tools**, specifically evidence from GitHub’s Dependabot or similar scanning tools integrated into their coding workflow (03:29).\n    - The audit demands visual proof of active vulnerability tracking with priority levels and defined SLAs for fixes to ensure risk mitigation.\n    - Madhu clarified that Dependabot flags vulnerabilities by priority; resolving high-priority issues within SLAs is crucial to pass audit controls.\n    - Shabharish will check with engineering on Dependabot usage and coordinate providing the required screenshots.\n\n## **Incident Tracking and Vulnerability Monitoring**\n\nThe team lacks visible incident data in the audit platform, necessitating manual evidence submission to satisfy audit requirements (06:37).\n\n- **No incidents currently appear in the audit dashboard due to syncing issues**, requiring manual screenshots from JIRA for any app or infrastructure incidents to serve as evidence (07:16).\n    - Madhu emphasized that a screenshot will suffice for the audit, mitigating delays caused by dashboard sync problems.\n    - Providing incident records will demonstrate active monitoring and response processes, a key compliance metric.\n    - Shabharish agreed to collect and share these screenshots promptly.\n\n- **Vulnerability tracking must also include documented SLAs and prioritization** to show timely risk mitigation, aligning with auditor expectations (04:28).\n    - This structured approach to vulnerability management is a critical control for reducing potential system exposures.\n\n## **Infrastructure Threat Detection and Security Logging**\n\nDigital Ocean infrastructure requires threat detection setup and evidence to meet audit security controls (08:06).\n\n- **Threat detection is missing or unconfirmed in Digital Ocean**, with auditors requiring proof of active monitoring systems analogous to AWS GuardDuty (09:34).\n    - Madhu explained that enabling threat detection in Digital Ocean will also enable automatic evidence syncing into the audit platform.\n    - Without this, manual evidence is necessary, increasing audit workload and risk of non-compliance.\n    - Shabharish will check with engineering to verify current threat detection status and initiate setup if needed.\n\n- **Security audit logs from Digital Ocean are available and should be shared** to demonstrate ongoing security monitoring (09:47).\n    - Sharing these logs will strengthen the audit evidence portfolio by showing continuous event tracking.\n    - This supports compliance with controls requiring data retention and audit trail availability.\n\n## **Process Improvements and Next Steps**\n\nClear action items and communication protocols were established to address audit evidence gaps and streamline compliance (11:40).\n\n- **Madhu committed to sending Shabharish a detailed email listing all required evidence and updates** immediately after the call for clarity and task tracking (11:51).\n    - This ensures no critical audit requirements are missed and facilitates coordinated follow-up.\n    - Shabharish plans to collaborate with engineering to gather all necessary data quickly.\n    - Delivering evidence through the existing email thread maintains transparency with auditors and speeds resolution.\n\n- **The team will update system descriptions, enable threat detection, and provide vulnerability and incident screenshots within the audit timeline** to close open compliance issues (12:23).\n    - This proactive approach addresses auditor concerns and reduces risk of delays or negative findings.\n    - Regular updates and responsive communication with auditors will support successful audit outcomes.",
+        "keywords": [
+          "Vulnerability management",
+          "System description",
+          "Digital Ocean",
+          "Threat detection",
+          "Incident tracking",
+          "Audit evidence"
+        ]
+      },
+      "sentences": [
+        {
+          "index": 0,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "This meeting is being recorded.",
+          "start_time": 13.12
+        },
+        {
+          "index": 1,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Hello.",
+          "start_time": 89.15
+        },
+        {
+          "index": 2,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Hi.",
+          "start_time": 90.03
+        },
+        {
+          "index": 3,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yeah.",
+          "start_time": 92.27
+        },
+        {
+          "index": 4,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "All right.",
+          "start_time": 94.35
+        },
+        {
+          "index": 5,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Thank you so much for joining.",
+          "start_time": 95.03
+        },
+        {
+          "index": 6,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yes, I think we are at a stand where we need a couple of evidences from your end rate.",
+          "start_time": 98.03
+        },
+        {
+          "index": 7,
+          "speaker_name": "Shabharish V",
+          "raw_text": "That's right, yeah.",
+          "start_time": 105.57
+        },
+        {
+          "index": 8,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "All right, perfect.",
+          "start_time": 106.85
+        },
+        {
+          "index": 9,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So do you have any questions on that part?",
+          "start_time": 107.77
+        },
+        {
+          "index": 10,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Right.",
+          "start_time": 111.49
+        },
+        {
+          "index": 11,
+          "speaker_name": "Shabharish V",
+          "raw_text": "One thing I have to like, I wanted to clarify is we don't use aws.",
+          "start_time": 112.05
+        },
+        {
+          "index": 12,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Not sure how that even showed up in the audit, but we don't use aws.",
+          "start_time": 116.05
+        },
+        {
+          "index": 13,
+          "speaker_name": "Shabharish V",
+          "raw_text": "So I'll confirm that in the email as well.",
+          "start_time": 122.13
+        },
+        {
+          "index": 14,
+          "speaker_name": "Shabharish V",
+          "raw_text": "And I wanted to know about the screenshots that you, the auditor is asking, you know, for.",
+          "start_time": 125.49
+        },
+        {
+          "index": 15,
+          "speaker_name": "Shabharish V",
+          "raw_text": "You know, that that reflects the vulnerabilities being sorted out.",
+          "start_time": 132.14
+        },
+        {
+          "index": 16,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Do you have any samples or.",
+          "start_time": 138.46
+        },
+        {
+          "index": 17,
+          "speaker_name": "Shabharish V",
+          "raw_text": "I'm not sure entirely how, how we're going to provide evidence for that for vulnerabilities.",
+          "start_time": 141.02
+        },
+        {
+          "index": 18,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Is it right?",
+          "start_time": 146.34
+        },
+        {
+          "index": 19,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yeah.",
+          "start_time": 147.18
+        },
+        {
+          "index": 20,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So do you have your Sprinto account right now?",
+          "start_time": 148.78
+        },
+        {
+          "index": 21,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yes, I do.",
+          "start_time": 152.14
+        },
+        {
+          "index": 22,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Can you share your screen?",
+          "start_time": 153.26
+        },
+        {
+          "index": 23,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Let's just go relative what's there and then based on that we can take a call.",
+          "start_time": 154.58
+        },
+        {
+          "index": 24,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yeah.",
+          "start_time": 160.24
+        },
+        {
+          "index": 25,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay, I'm signing in.",
+          "start_time": 161.6
+        },
+        {
+          "index": 26,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Give me a minute.",
+          "start_time": 163.92
+        },
+        {
+          "index": 27,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay.",
+          "start_time": 165.12
+        },
+        {
+          "index": 28,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So typically with respect to the vulnerability, what they're asking is are you using any code to scan for vulnerability?",
+          "start_time": 168.64
+        },
+        {
+          "index": 29,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Like any tool that, that, that is used to code for vulnerabilities?",
+          "start_time": 176.8
+        },
+        {
+          "index": 30,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Like scan your code, sorry, for vulnerabilities.",
+          "start_time": 182.8
+        },
+        {
+          "index": 31,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Right.",
+          "start_time": 185.73
+        },
+        {
+          "index": 32,
+          "speaker_name": "Shabharish V",
+          "raw_text": "We have a vendor, so every time we reach out to them to get the VAPT scan.",
+          "start_time": 186.45
+        },
+        {
+          "index": 33,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "And that is for the VAPD report, right?",
+          "start_time": 196.21
+        },
+        {
+          "index": 34,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "That the vendor that you use.",
+          "start_time": 199.33
+        },
+        {
+          "index": 35,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yeah.",
+          "start_time": 200.93
+        },
+        {
+          "index": 36,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "But do you have any tool that is running on the platform?",
+          "start_time": 201.33
+        },
+        {
+          "index": 37,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Like what is.",
+          "start_time": 204.85
+        },
+        {
+          "index": 38,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Where are you writing your code?",
+          "start_time": 205.89
+        },
+        {
+          "index": 39,
+          "speaker_name": "Shabharish V",
+          "raw_text": "We maintain it in git and we use cursor for writing the code.",
+          "start_time": 209.41
+        },
+        {
+          "index": 40,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So is it GitHub?",
+          "start_time": 215.65
+        },
+        {
+          "index": 41,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yeah.",
+          "start_time": 217.73
+        },
+        {
+          "index": 42,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay, so generally in GitHub you have this dependabot, right?",
+          "start_time": 219.17
+        },
+        {
+          "index": 43,
+          "speaker_name": "Shabharish V",
+          "raw_text": "I'm not sure if they're using it.",
+          "start_time": 227.65
+        },
+        {
+          "index": 44,
+          "speaker_name": "Shabharish V",
+          "raw_text": "I probably have to check with engineering.",
+          "start_time": 230.01
+        },
+        {
+          "index": 45,
+          "speaker_name": "Shabharish V",
+          "raw_text": "So can you probably give me some idea about it?",
+          "start_time": 233.01
+        },
+        {
+          "index": 46,
+          "speaker_name": "Shabharish V",
+          "raw_text": "I'll check with the engineering on those.",
+          "start_time": 236.21
+        },
+        {
+          "index": 47,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay, so I will just give you an understanding of what they're asking you for.",
+          "start_time": 238.99
+        },
+        {
+          "index": 48,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Right.",
+          "start_time": 242.99
+        },
+        {
+          "index": 49,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Based on that you can give me evidence.",
+          "start_time": 243.47
+        },
+        {
+          "index": 50,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Now, what are they saying is typically when you enable your GitHub depender bot, what usually happens is it will list the vulnerabilities automatically and then it will also set the priority for the vulnerability.",
+          "start_time": 245.39
+        },
+        {
+          "index": 51,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "See, if it is a high priority vulnerability, then the auditor will ask you to resolve it so that typically it does not affect your system in any way.",
+          "start_time": 258.43
+        },
+        {
+          "index": 52,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Right.",
+          "start_time": 267.01
+        },
+        {
+          "index": 53,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay.",
+          "start_time": 267.73
+        },
+        {
+          "index": 54,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay.",
+          "start_time": 268.17
+        },
+        {
+          "index": 55,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So that's the reason why he's asking for a screenshot of all of these Vulnerabilities added and the priority of those and also the defined SLA reflecting for those.",
+          "start_time": 268.61
+        },
+        {
+          "index": 56,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So okay, it will look like something like an incident only where you will have multiple vulnerabilities.",
+          "start_time": 279.33
+        },
+        {
+          "index": 57,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "The repo code repo will be mentioned and what is the vulnerability will be said.",
+          "start_time": 287.17
+        },
+        {
+          "index": 58,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "And typically you will have to make sure that it is resolved within a specified sla.",
+          "start_time": 292.61
+        },
+        {
+          "index": 59,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Ah.",
+          "start_time": 298.43
+        },
+        {
+          "index": 60,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay, okay, okay.",
+          "start_time": 298.91
+        },
+        {
+          "index": 61,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So that is what is he.",
+          "start_time": 301.07
+        },
+        {
+          "index": 62,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "That is what he is asking for.",
+          "start_time": 302.47
+        },
+        {
+          "index": 63,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "And aws, what he's saying is in your system description.",
+          "start_time": 306.67
+        },
+        {
+          "index": 64,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Right.",
+          "start_time": 311.31
+        },
+        {
+          "index": 65,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "When you go to policy section and when you open your system description document, I think that document is not updated because of.",
+          "start_time": 311.55
+        },
+        {
+          "index": 66,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "I think there AWS is present because of which they're asking for evidence for aws.",
+          "start_time": 318.99
+        },
+        {
+          "index": 67,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "You will have to update your system description document.",
+          "start_time": 324.27
+        },
+        {
+          "index": 68,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay.",
+          "start_time": 328.96
+        },
+        {
+          "index": 69,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay.",
+          "start_time": 330.32
+        },
+        {
+          "index": 70,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Where do I find it?",
+          "start_time": 331.6
+        },
+        {
+          "index": 71,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Do you.",
+          "start_time": 333.6
+        },
+        {
+          "index": 72,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Can you share your screen?",
+          "start_time": 334.08
+        },
+        {
+          "index": 73,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "I can show you.",
+          "start_time": 335
+        },
+        {
+          "index": 74,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay, now let's go to policies on top.",
+          "start_time": 341.68
+        },
+        {
+          "index": 75,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay, let's search for system description.",
+          "start_time": 346.4
+        },
+        {
+          "index": 76,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Can you use the search icon and then search for System Description?",
+          "start_time": 348.72
+        },
+        {
+          "index": 77,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "No, not that search the one next to below.",
+          "start_time": 352.24
+        },
+        {
+          "index": 78,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "I validated.",
+          "start_time": 355.76
+        },
+        {
+          "index": 79,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yeah, that one.",
+          "start_time": 356.72
+        },
+        {
+          "index": 80,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yeah.",
+          "start_time": 361.44
+        },
+        {
+          "index": 81,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Let's open the system description and when you try to search for aws, I think.",
+          "start_time": 361.84
+        },
+        {
+          "index": 82,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Can you download it?",
+          "start_time": 369.76
+        },
+        {
+          "index": 83,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "I think this was updated on 2023, right?",
+          "start_time": 380.64
+        },
+        {
+          "index": 84,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "That's why it is showing old data.",
+          "start_time": 383.36
+        },
+        {
+          "index": 85,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "You might have to update it and then just send it to the auditor saying this is the updated system description document and then they will use the ones from there.",
+          "start_time": 387.22
+        },
+        {
+          "index": 86,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay, got it.",
+          "start_time": 396.02
+        },
+        {
+          "index": 87,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay, so that is with respect to system AWS that you told and remaining.",
+          "start_time": 397.38
+        },
+        {
+          "index": 88,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "I think so ideally for 52 there there's no evidence that is seen under Jira.",
+          "start_time": 405.54
+        },
+        {
+          "index": 89,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Can you close the screen and let's go to data library.",
+          "start_time": 414.74
+        },
+        {
+          "index": 90,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yeah, click on data library and let's click on incidents.",
+          "start_time": 425.89
+        },
+        {
+          "index": 91,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So here, here they.",
+          "start_time": 431.73
+        },
+        {
+          "index": 92,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "We are not able to see any incidents, right?",
+          "start_time": 433.09
+        },
+        {
+          "index": 93,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Right.",
+          "start_time": 436.61
+        },
+        {
+          "index": 94,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yeah, yeah.",
+          "start_time": 436.93
+        },
+        {
+          "index": 95,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "That's the reason that they're asking for evidence because it's not available in the dashboard that we sent them.",
+          "start_time": 437.85
+        },
+        {
+          "index": 96,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay, so this is what I told that it is not syncing.",
+          "start_time": 443.71
+        },
+        {
+          "index": 97,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So if you.",
+          "start_time": 446.99
+        },
+        {
+          "index": 98,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "For now for the audit purpose, I.",
+          "start_time": 448.19
+        },
+        {
+          "index": 99,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "If you can directly get my evidence from JIRA for incidents for any app or infra related incidents, then I can send that to the auditor as evidence.",
+          "start_time": 450.51
+        },
+        {
+          "index": 100,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "That is one.",
+          "start_time": 459.069
+        },
+        {
+          "index": 101,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Oh, just a screenshot is enough, right?",
+          "start_time": 460.27
+        },
+        {
+          "index": 102,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yes, a screenshot is enough.",
+          "start_time": 462.99
+        },
+        {
+          "index": 103,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "If they ask anything else, we can probably give them late after that.",
+          "start_time": 464.27
+        },
+        {
+          "index": 104,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Oh, okay.",
+          "start_time": 468.68
+        },
+        {
+          "index": 105,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "And do you have threat detection system enabled?",
+          "start_time": 471.16
+        },
+        {
+          "index": 106,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "I think you should have AWS guardduty enabled.",
+          "start_time": 478.6
+        },
+        {
+          "index": 107,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So you're not using aws.",
+          "start_time": 481.8
+        },
+        {
+          "index": 108,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Can you go to Info, what is the infra tool that you're using?",
+          "start_time": 483.4
+        },
+        {
+          "index": 109,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Distillocean a digital ocean.",
+          "start_time": 486.6
+        },
+        {
+          "index": 110,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay.",
+          "start_time": 489.68
+        },
+        {
+          "index": 111,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So for digital use ocean, do you have any threat detection enabled?",
+          "start_time": 490.12
+        },
+        {
+          "index": 112,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Not sure on the day that I will check with my engineering.",
+          "start_time": 499.41
+        },
+        {
+          "index": 113,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yeah, that also they need evidence because that is again not found in the.",
+          "start_time": 502.69
+        },
+        {
+          "index": 114,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So when you go to infrastructure now can you click on infrastructure?",
+          "start_time": 506.61
+        },
+        {
+          "index": 115,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Let's go to monitoring.",
+          "start_time": 517.09
+        },
+        {
+          "index": 116,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So can you.",
+          "start_time": 537.5
+        },
+        {
+          "index": 117,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "I don't think the threat detection is here.",
+          "start_time": 539.34
+        },
+        {
+          "index": 118,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay, let's go to compliance controls and let's Click search for 61.",
+          "start_time": 541.74
+        },
+        {
+          "index": 119,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "61 under search here.",
+          "start_time": 550.294
+        },
+        {
+          "index": 120,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yeah, can you click on this?",
+          "start_time": 555.67
+        },
+        {
+          "index": 121,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So this is also one of the things for which we need evidence.",
+          "start_time": 557.67
+        },
+        {
+          "index": 122,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So it, it says threat detection system should be enabled in your infra, which is digital ocean.",
+          "start_time": 562.23
+        },
+        {
+          "index": 123,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So we need evidence to understand if you are detecting threat in any way.",
+          "start_time": 567.75
+        },
+        {
+          "index": 124,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay.",
+          "start_time": 574.83
+        },
+        {
+          "index": 125,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So this is one of the evidence, other evidence that we need.",
+          "start_time": 576.03
+        },
+        {
+          "index": 126,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "And do you have like collection of security audit logs at your end?",
+          "start_time": 580.19
+        },
+        {
+          "index": 127,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yeah, we have distillation security history that we can share.",
+          "start_time": 587.87
+        },
+        {
+          "index": 128,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay.",
+          "start_time": 593.23
+        },
+        {
+          "index": 129,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So ideally we need evidence for all of these that we discussed.",
+          "start_time": 595.23
+        },
+        {
+          "index": 130,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Right.",
+          "start_time": 600.19
+        },
+        {
+          "index": 131,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So if you could share all of those then that would be great.",
+          "start_time": 600.83
+        },
+        {
+          "index": 132,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay, so just to list out the items the incident tracking in J. Yeah.",
+          "start_time": 604.59
+        },
+        {
+          "index": 133,
+          "speaker_name": "Shabharish V",
+          "raw_text": "And the security from distortion.",
+          "start_time": 611.79
+        },
+        {
+          "index": 134,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yes, we have another.",
+          "start_time": 617.07
+        },
+        {
+          "index": 135,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Is this threat detection system?",
+          "start_time": 620.35
+        },
+        {
+          "index": 136,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Right.",
+          "start_time": 622.99
+        },
+        {
+          "index": 137,
+          "speaker_name": "Shabharish V",
+          "raw_text": "So if we set it up here, would that be good or anything else is needed?",
+          "start_time": 623.63
+        },
+        {
+          "index": 138,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So you can set it up here, that's fine.",
+          "start_time": 631.56
+        },
+        {
+          "index": 139,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "But typically what happens is once you enable it.",
+          "start_time": 634.6
+        },
+        {
+          "index": 140,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So considering I'm thinking that.",
+          "start_time": 637.72
+        },
+        {
+          "index": 141,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "See, you have set up Digital Ocean already.",
+          "start_time": 639.24
+        },
+        {
+          "index": 142,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Right.",
+          "start_time": 641.24
+        },
+        {
+          "index": 143,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So I think maybe the threat detection might not be set up in Digital Ocean because of which the sync is not happening.",
+          "start_time": 642.44
+        },
+        {
+          "index": 144,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay.",
+          "start_time": 649.72
+        },
+        {
+          "index": 145,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Considering if it is already set up, then it would have synced and then this control would have automatically fetched evidence from there.",
+          "start_time": 650.44
+        },
+        {
+          "index": 146,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So you see, you can.",
+          "start_time": 659.4
+        },
+        {
+          "index": 147,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "We've already.",
+          "start_time": 662.36
+        },
+        {
+          "index": 148,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "You come.",
+          "start_time": 663.16
+        },
+        {
+          "index": 149,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "You've completed the integration rate.",
+          "start_time": 663.72
+        },
+        {
+          "index": 150,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "You go to infra under data library infrastructure.",
+          "start_time": 667.56
+        },
+        {
+          "index": 151,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yeah, DigitalOcean is already there.",
+          "start_time": 674.76
+        },
+        {
+          "index": 152,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yes.",
+          "start_time": 676.84
+        },
+        {
+          "index": 153,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So you have to just see that if the threat detection system is enabled, can you click on entities?",
+          "start_time": 677.96
+        },
+        {
+          "index": 154,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So these are all of your entities.",
+          "start_time": 684.84
+        },
+        {
+          "index": 155,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "But once we might have to check with your.",
+          "start_time": 687.8
+        },
+        {
+          "index": 156,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "The infra owner if threat detection is enabled.",
+          "start_time": 692.52
+        },
+        {
+          "index": 157,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay.",
+          "start_time": 698.36
+        },
+        {
+          "index": 158,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Threat detection and the system description has to be updated and the vulnerabilities has to be listed.",
+          "start_time": 700.04
+        },
+        {
+          "index": 159,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay.",
+          "start_time": 709.17
+        },
+        {
+          "index": 160,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "So I think these are the ones.",
+          "start_time": 711.33
+        },
+        {
+          "index": 161,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "I can also send you an email after our call like to send you the action items once again.",
+          "start_time": 712.85
+        },
+        {
+          "index": 162,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yeah, that would be helpful.",
+          "start_time": 717.97
+        },
+        {
+          "index": 163,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yeah, work with my in front engineering to get this sorted.",
+          "start_time": 719.65
+        },
+        {
+          "index": 164,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay.",
+          "start_time": 724.53
+        },
+        {
+          "index": 165,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay.",
+          "start_time": 725.13
+        },
+        {
+          "index": 166,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yeah, you can send me over the next item right away, after the call, right?",
+          "start_time": 725.73
+        },
+        {
+          "index": 167,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yeah, yeah, I'll.",
+          "start_time": 730.37
+        },
+        {
+          "index": 168,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "I'll get it for you.",
+          "start_time": 731.17
+        },
+        {
+          "index": 169,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yeah, I can send it to you.",
+          "start_time": 733.09
+        },
+        {
+          "index": 170,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "No worries.",
+          "start_time": 734.49
+        },
+        {
+          "index": 171,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Okay, I. I think we're good.",
+          "start_time": 737.19
+        },
+        {
+          "index": 172,
+          "speaker_name": "Shabharish V",
+          "raw_text": "So I'll start working with my team to collect these.",
+          "start_time": 739.19
+        },
+        {
+          "index": 173,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Done.",
+          "start_time": 743.19
+        },
+        {
+          "index": 174,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Done.",
+          "start_time": 743.51
+        },
+        {
+          "index": 175,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "All right, once you have this collected, just send it in the email thread only so that the auditor can also see, and then.",
+          "start_time": 743.75
+        },
+        {
+          "index": 176,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Yeah, yeah, there's any question, they'll get back.",
+          "start_time": 749.87
+        },
+        {
+          "index": 177,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Okay.",
+          "start_time": 751.71
+        },
+        {
+          "index": 178,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "All right, thank you so much for being on call.",
+          "start_time": 752.95
+        },
+        {
+          "index": 179,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "You have a great day.",
+          "start_time": 754.95
+        },
+        {
+          "index": 180,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Bye.",
+          "start_time": 755.83
+        },
+        {
+          "index": 181,
+          "speaker_name": "Madhu Sivakumar",
+          "raw_text": "Bye.",
+          "start_time": 756.19
+        },
+        {
+          "index": 182,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Yeah, bye.",
+          "start_time": 756.63
+        },
+        {
+          "index": 183,
+          "speaker_name": "Shabharish V",
+          "raw_text": "Thanks.",
+          "start_time": 757.31
+        }
+      ],
+      "meeting_link": "https://us02web.zoom.us/j/86332911540?pwd=aMlpSJZEjaaBKz337rrBu8mcrI0Ay1.1"
+    }
+  ]
+}

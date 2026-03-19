@@ -1,0 +1,1378 @@
+{
+  "dayKey": "2025-09-20",
+  "fetchedAt": "2026-03-19T05:33:23.514Z",
+  "source": "backfill",
+  "transcripts": [
+    {
+      "id": "01K5HSQ9JG3E1X8DBRV21GQV0X",
+      "title": "CultureMonkey Survey Launch",
+      "date": 1758312900000,
+      "participants": [
+        "mercolanese@coastal24.com,ccloyd@coastal24.com,yugi@culturemonkey.io,yug@culturemonkey.io",
+        "mercolanese@coastal24.com",
+        "ccloyd@coastal24.com",
+        "yug@culturemonkey.io"
+      ],
+      "summary": {
+        "overview": "- Coastal Credit Union Employee Engagement Survey 25 configured to match last year's theme for consistency in branding and user experience.\n- New ENPS question incorporated into the anonymous survey structure for enhanced feedback collection in 2025.\n- Feedback functionality disabled while retaining three open text questions to gather qualitative insights from respondents.\n- Survey launch is set for September 22nd at 10:00 AM EST, with a closing date of October 3rd at 5:30 PM EST, allowing an 11-day response window.\n- Twice weekly email reminders will initiate on September 24th, following an established engagement pattern to boost participation.\n- A flexible reminder system will accommodate additional notifications based on participation rates during the survey.\n- Weekly participation digests will be delivered every Tuesday, focusing on department-based insights to enhance reporting.\n- Previous year's participation rate of 81.7% set as a benchmark target for this year's engagement metrics.\n- All participant data has been successfully loaded onto the platform, totaling 617 individuals after adjustments.",
+        "action_items": "\n**Yugi**\nPublish survey for automatic launch on September 22nd at 10:00 AM EST (07:10)\nSend weekly participation digest reports every Tuesday organized by department demographics (10:50)\nAdd additional reminder notifications if needed based on participation rates during survey period (07:10)\n\n**Megan**\nContact Yugi via text or email to request additional reminders if participation rates require intervention (07:10)\n",
+        "notes": "## **Survey Platform Configuration & Deployment**\n- **Coastal Credit Union Employee Engagement Survey 25** fully configured with strategic enhancements over previous year's framework (00:00)\n  - Anonymous survey structure maintained to encourage honest employee feedback and participation\n  - **ENPS (Employee Net Promoter Score) question** integrated as new measurement component for 2025, expanding beyond traditional engagement metrics\n  - **3 open text questions** retained from previous year's successful survey structure, providing qualitative insights alongside quantitative data\n  - Survey theme consistency preserved from 2024 to maintain brand recognition and user familiarity\n  - **617 active participants** loaded onto platform after systematic removal of test accounts, ensuring clean participant database\n  - Feedback functionality strategically disabled to streamline survey experience and focus on core engagement measurements\n\n## **Launch Timeline & Coordination Strategy**\n- **September 22nd, 10:00 AM EST launch** synchronized with organizational communication strategy (02:34)\n  - **October 3rd, 5:30 PM EST closure** providing **11-day response window** for comprehensive employee participation\n  - Cross-timezone coordination demonstrated through **1:45 AM vendor-side meeting** to ensure seamless Monday morning launch\n  - Pre-launch configuration completed on Saturday to eliminate Monday morning rush and potential technical issues\n  - Launch timing aligns with standard business hours to maximize initial survey visibility and employee awareness\n\n## **Strategic Reminder Campaign & Engagement Optimization**\n- **Twice-weekly email reminder cadence** implemented following proven engagement methodology (04:48)\n  - **September 24th (Wednesday) 11:00 AM** first reminder strategically timed 2 days post-launch\n  - **September 26th (Friday)** second reminder maintaining end-of-week visibility\n  - **September 29th (Monday)** third reminder following consistent Monday/Wednesday/Friday pattern\n  - **Flexible reminder infrastructure** allowing real-time additions based on participation analytics\n  - Reminder templates pre-configured for **survey launch**, **standard reminders**, and **final day notifications**\n  - Template customization capability enabling targeted messaging for different participant segments\n\n## **Participation Analytics & Performance Monitoring**\n- **Weekly participation digest program** launched to drive organizational engagement through data-driven insights (09:03)\n  - **Department-based demographic analysis** selected as primary reporting framework for actionable team-level insights\n  - **Tuesday delivery schedule** providing mid-week participation data for remainder-of-week engagement initiatives\n  - **81.7% participation benchmark** from previous year establishing performance target for 2025 survey (10:50)\n  - **Real-time participation tracking** enabling responsive reminder strategy adjustments\n  - Department-level insights designed to identify low-participation teams requiring focused internal communication efforts\n  - Analytics framework supporting internal HR initiatives to boost survey completion rates across all organizational units",
+        "keywords": [
+          "Employee engagement survey",
+          "ENPS question",
+          "participation rates",
+          "reminder schedule",
+          "department demographics",
+          "survey launch"
+        ]
+      },
+      "sentences": [
+        {
+          "index": 0,
+          "speaker_name": null,
+          "raw_text": "Sa.",
+          "start_time": 0.24
+        },
+        {
+          "index": 1,
+          "speaker_name": null,
+          "raw_text": "Yes, Megan, I'll just quickly share my screen and walk you through the configurations.",
+          "start_time": 35.85
+        },
+        {
+          "index": 2,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 40.81
+        },
+        {
+          "index": 3,
+          "speaker_name": null,
+          "raw_text": "Yes, that sounds good.",
+          "start_time": 46.41
+        },
+        {
+          "index": 4,
+          "speaker_name": null,
+          "raw_text": "Okay, can you see my screen?",
+          "start_time": 49.53
+        },
+        {
+          "index": 5,
+          "speaker_name": null,
+          "raw_text": "Yes.",
+          "start_time": 52.4
+        },
+        {
+          "index": 6,
+          "speaker_name": null,
+          "raw_text": "Okay, so the survey name is Coastal Credit Union employee engagement survey 25.",
+          "start_time": 53.76
+        },
+        {
+          "index": 7,
+          "speaker_name": null,
+          "raw_text": "And this is the theme which we're having.",
+          "start_time": 62.24
+        },
+        {
+          "index": 8,
+          "speaker_name": null,
+          "raw_text": "Same as last year.",
+          "start_time": 66.4
+        },
+        {
+          "index": 9,
+          "speaker_name": null,
+          "raw_text": "Right.",
+          "start_time": 67.36
+        },
+        {
+          "index": 10,
+          "speaker_name": null,
+          "raw_text": "And it's an anonymous survey with the ENPS question and we've disabled feedback.",
+          "start_time": 68.64
+        },
+        {
+          "index": 11,
+          "speaker_name": null,
+          "raw_text": "While we do have three other open text question questions.",
+          "start_time": 73.92
+        },
+        {
+          "index": 12,
+          "speaker_name": null,
+          "raw_text": "Right.",
+          "start_time": 77.5
+        },
+        {
+          "index": 13,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 78.18
+        },
+        {
+          "index": 14,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 83.14
+        },
+        {
+          "index": 15,
+          "speaker_name": null,
+          "raw_text": "So just to preview.",
+          "start_time": 83.94
+        },
+        {
+          "index": 16,
+          "speaker_name": null,
+          "raw_text": "Right.",
+          "start_time": 85.26
+        },
+        {
+          "index": 17,
+          "speaker_name": null,
+          "raw_text": "So these are the questions which are verified.",
+          "start_time": 85.58
+        },
+        {
+          "index": 18,
+          "speaker_name": null,
+          "raw_text": "From which we.",
+          "start_time": 90.18
+        },
+        {
+          "index": 19,
+          "speaker_name": null,
+          "raw_text": "Using.",
+          "start_time": 91.22
+        },
+        {
+          "index": 20,
+          "speaker_name": null,
+          "raw_text": "From.",
+          "start_time": 91.62
+        },
+        {
+          "index": 21,
+          "speaker_name": null,
+          "raw_text": "From the previous year.",
+          "start_time": 91.94
+        },
+        {
+          "index": 22,
+          "speaker_name": null,
+          "raw_text": "Right.",
+          "start_time": 93.22
+        },
+        {
+          "index": 23,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 94.18
+        },
+        {
+          "index": 24,
+          "speaker_name": null,
+          "raw_text": "Yeah, yeah.",
+          "start_time": 95.62
+        },
+        {
+          "index": 25,
+          "speaker_name": null,
+          "raw_text": "I involved.",
+          "start_time": 97.1
+        },
+        {
+          "index": 26,
+          "speaker_name": null,
+          "raw_text": "Besides uploading, Daryl is in a different meeting.",
+          "start_time": 98.66
+        },
+        {
+          "index": 27,
+          "speaker_name": null,
+          "raw_text": "So as long as everything was the same as last year.",
+          "start_time": 106.91
+        },
+        {
+          "index": 28,
+          "speaker_name": null,
+          "raw_text": "And then you added one question.",
+          "start_time": 111.31
+        },
+        {
+          "index": 29,
+          "speaker_name": null,
+          "raw_text": "Right?",
+          "start_time": 113.39
+        },
+        {
+          "index": 30,
+          "speaker_name": null,
+          "raw_text": "Yes.",
+          "start_time": 115.79
+        },
+        {
+          "index": 31,
+          "speaker_name": null,
+          "raw_text": "So last year we had all these questions except the enps, which is the last question.",
+          "start_time": 116.23
+        },
+        {
+          "index": 32,
+          "speaker_name": null,
+          "raw_text": "So we're adding.",
+          "start_time": 121.87
+        },
+        {
+          "index": 33,
+          "speaker_name": null,
+          "raw_text": "Adding this this year as per the suggestion Plum schedule.",
+          "start_time": 122.71
+        },
+        {
+          "index": 34,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 126.71
+        },
+        {
+          "index": 35,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 127.31
+        },
+        {
+          "index": 36,
+          "speaker_name": null,
+          "raw_text": "Yep.",
+          "start_time": 127.79
+        },
+        {
+          "index": 37,
+          "speaker_name": null,
+          "raw_text": "So sounds good.",
+          "start_time": 128.15
+        },
+        {
+          "index": 38,
+          "speaker_name": null,
+          "raw_text": "And I've just added all the employees on the platform currently, which is 617.",
+          "start_time": 129.96
+        },
+        {
+          "index": 39,
+          "speaker_name": null,
+          "raw_text": "One employee is me, which is a test user.",
+          "start_time": 136.2
+        },
+        {
+          "index": 40,
+          "speaker_name": null,
+          "raw_text": "So I've removed that.",
+          "start_time": 139.72
+        },
+        {
+          "index": 41,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 142.2
+        },
+        {
+          "index": 42,
+          "speaker_name": null,
+          "raw_text": "Because I remembered seeing 618.",
+          "start_time": 142.56
+        },
+        {
+          "index": 43,
+          "speaker_name": null,
+          "raw_text": "Okay, that's good.",
+          "start_time": 144.199
+        },
+        {
+          "index": 44,
+          "speaker_name": null,
+          "raw_text": "So that's me.",
+          "start_time": 145.88
+        },
+        {
+          "index": 45,
+          "speaker_name": null,
+          "raw_text": "So I just removed myself.",
+          "start_time": 146.72
+        },
+        {
+          "index": 46,
+          "speaker_name": null,
+          "raw_text": "And there are 617 participants.",
+          "start_time": 147.88
+        },
+        {
+          "index": 47,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 150
+        },
+        {
+          "index": 48,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 150.52
+        },
+        {
+          "index": 49,
+          "speaker_name": null,
+          "raw_text": "And at what time are you planning to launch this survey, Megan?",
+          "start_time": 154.13
+        },
+        {
+          "index": 50,
+          "speaker_name": null,
+          "raw_text": "On Monday?",
+          "start_time": 158.05
+        },
+        {
+          "index": 51,
+          "speaker_name": null,
+          "raw_text": "Well, Dad, I don't know.",
+          "start_time": 161.01
+        },
+        {
+          "index": 52,
+          "speaker_name": null,
+          "raw_text": "Let me see.",
+          "start_time": 162.05
+        },
+        {
+          "index": 53,
+          "speaker_name": null,
+          "raw_text": "I'm.",
+          "start_time": 163.65
+        },
+        {
+          "index": 54,
+          "speaker_name": null,
+          "raw_text": "I am in.",
+          "start_time": 164.21
+        },
+        {
+          "index": 55,
+          "speaker_name": null,
+          "raw_text": "Cheryl waiting on her response.",
+          "start_time": 164.97
+        },
+        {
+          "index": 56,
+          "speaker_name": null,
+          "raw_text": "No worries.",
+          "start_time": 184.22
+        },
+        {
+          "index": 57,
+          "speaker_name": null,
+          "raw_text": "I'll.",
+          "start_time": 184.86
+        },
+        {
+          "index": 58,
+          "speaker_name": null,
+          "raw_text": "I can wait.",
+          "start_time": 185.26
+        },
+        {
+          "index": 59,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 185.94
+        },
+        {
+          "index": 60,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 186.54
+        },
+        {
+          "index": 61,
+          "speaker_name": null,
+          "raw_text": "And Megan, just so I didn't disturb you, what time is it at your place right now?",
+          "start_time": 188.14
+        },
+        {
+          "index": 62,
+          "speaker_name": null,
+          "raw_text": "It is 4:19.",
+          "start_time": 193.78
+        },
+        {
+          "index": 63,
+          "speaker_name": null,
+          "raw_text": "Oh, okay.",
+          "start_time": 198.22
+        },
+        {
+          "index": 64,
+          "speaker_name": null,
+          "raw_text": "In the afternoon.",
+          "start_time": 200.38
+        },
+        {
+          "index": 65,
+          "speaker_name": null,
+          "raw_text": "And she said 10:00am Eastern time.",
+          "start_time": 201.22
+        },
+        {
+          "index": 66,
+          "speaker_name": null,
+          "raw_text": "Okay, so this should be launched on 22nd of September at 10:00am EST, which is America New York time zone, right?",
+          "start_time": 208.07
+        },
+        {
+          "index": 67,
+          "speaker_name": null,
+          "raw_text": "Yes, that's correct.",
+          "start_time": 215.91
+        },
+        {
+          "index": 68,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 217.67
+        },
+        {
+          "index": 69,
+          "speaker_name": null,
+          "raw_text": "When are you planning to end the survey?",
+          "start_time": 218.19
+        },
+        {
+          "index": 70,
+          "speaker_name": null,
+          "raw_text": "I mean, this is just a figurative date wherein we can extend the end of the survey, but this is just a definitive law end date, which we could just configure your survey with.",
+          "start_time": 223.35
+        },
+        {
+          "index": 71,
+          "speaker_name": null,
+          "raw_text": "Okay, asking for that too.",
+          "start_time": 232.85
+        },
+        {
+          "index": 72,
+          "speaker_name": null,
+          "raw_text": "Question.",
+          "start_time": 236.29
+        },
+        {
+          "index": 73,
+          "speaker_name": null,
+          "raw_text": "I. I just looked at our number of employees as.",
+          "start_time": 237.01
+        },
+        {
+          "index": 74,
+          "speaker_name": null,
+          "raw_text": "You know what.",
+          "start_time": 243.09
+        },
+        {
+          "index": 75,
+          "speaker_name": null,
+          "raw_text": "Okay, hold on.",
+          "start_time": 243.77
+        },
+        {
+          "index": 76,
+          "speaker_name": null,
+          "raw_text": "She said 5:30pm Eastern time on October 3rd.",
+          "start_time": 244.41
+        },
+        {
+          "index": 77,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 255.97
+        },
+        {
+          "index": 78,
+          "speaker_name": null,
+          "raw_text": "It's 17:30.",
+          "start_time": 256.69
+        },
+        {
+          "index": 79,
+          "speaker_name": null,
+          "raw_text": "Right?",
+          "start_time": 258.69
+        },
+        {
+          "index": 80,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 259.05
+        },
+        {
+          "index": 81,
+          "speaker_name": null,
+          "raw_text": "Yes.",
+          "start_time": 259.49
+        },
+        {
+          "index": 82,
+          "speaker_name": null,
+          "raw_text": "Yes.",
+          "start_time": 260.3
+        },
+        {
+          "index": 83,
+          "speaker_name": null,
+          "raw_text": "Okay, done.",
+          "start_time": 260.7
+        },
+        {
+          "index": 84,
+          "speaker_name": null,
+          "raw_text": "I'll just quickly set up the templates as well.",
+          "start_time": 262.3
+        },
+        {
+          "index": 85,
+          "speaker_name": null,
+          "raw_text": "So it's a survey launch template 2025 and the survey reminder template 25.",
+          "start_time": 265.22
+        },
+        {
+          "index": 86,
+          "speaker_name": null,
+          "raw_text": "So when we get to the last day of the survey, we'll change the template to set to the last reminder date.",
+          "start_time": 272.62
+        },
+        {
+          "index": 87,
+          "speaker_name": null,
+          "raw_text": "So we have a separate template for that as well.",
+          "start_time": 279.7
+        },
+        {
+          "index": 88,
+          "speaker_name": null,
+          "raw_text": "Okay, we'll set that before the survey response and any specific schedule for the reminder.",
+          "start_time": 281.9
+        },
+        {
+          "index": 89,
+          "speaker_name": null,
+          "raw_text": "So we would recommend twice a week with the email reminders.",
+          "start_time": 288.91
+        },
+        {
+          "index": 90,
+          "speaker_name": null,
+          "raw_text": "So any.",
+          "start_time": 293.19
+        },
+        {
+          "index": 91,
+          "speaker_name": null,
+          "raw_text": "Any specific schedule in your head.",
+          "start_time": 293.83
+        },
+        {
+          "index": 92,
+          "speaker_name": null,
+          "raw_text": "Let's.",
+          "start_time": 296.43
+        },
+        {
+          "index": 93,
+          "speaker_name": null,
+          "raw_text": "She said twice a week is fine.",
+          "start_time": 321
+        },
+        {
+          "index": 94,
+          "speaker_name": null,
+          "raw_text": "Okay, so we can set it for maybe 24th as a first reminder at 11am email.",
+          "start_time": 324.2
+        },
+        {
+          "index": 95,
+          "speaker_name": null,
+          "raw_text": "Yeah, sounds good.",
+          "start_time": 333.08
+        },
+        {
+          "index": 96,
+          "speaker_name": null,
+          "raw_text": "26Th via email.",
+          "start_time": 335.24
+        },
+        {
+          "index": 97,
+          "speaker_name": null,
+          "raw_text": "And then would you choose 29 or 30?",
+          "start_time": 338.81
+        },
+        {
+          "index": 98,
+          "speaker_name": null,
+          "raw_text": "Which one do you prefer on Friday?",
+          "start_time": 343.13
+        },
+        {
+          "index": 99,
+          "speaker_name": null,
+          "raw_text": "Okay, so let's see.",
+          "start_time": 349.21
+        },
+        {
+          "index": 100,
+          "speaker_name": null,
+          "raw_text": "You said 24.",
+          "start_time": 350.17
+        },
+        {
+          "index": 101,
+          "speaker_name": null,
+          "raw_text": "So we send it out on a Monday.",
+          "start_time": 351.33
+        },
+        {
+          "index": 102,
+          "speaker_name": null,
+          "raw_text": "We send them a reminder Wednesday and Friday.",
+          "start_time": 353.41
+        },
+        {
+          "index": 103,
+          "speaker_name": null,
+          "raw_text": "So that's the 24th and the 26th.",
+          "start_time": 359.45
+        },
+        {
+          "index": 104,
+          "speaker_name": null,
+          "raw_text": "I would say the 29th and the first.",
+          "start_time": 361.69
+        },
+        {
+          "index": 105,
+          "speaker_name": null,
+          "raw_text": "Like do the same cadence as the previous week.",
+          "start_time": 367.3
+        },
+        {
+          "index": 106,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 371.94
+        },
+        {
+          "index": 107,
+          "speaker_name": null,
+          "raw_text": "So while we launch the survey, this is just the four reminders which we can set.",
+          "start_time": 372.42
+        },
+        {
+          "index": 108,
+          "speaker_name": null,
+          "raw_text": "But after the service launched, we can set up any kind of reminders which you want.",
+          "start_time": 376.9
+        },
+        {
+          "index": 109,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 381.46
+        },
+        {
+          "index": 110,
+          "speaker_name": null,
+          "raw_text": "So it's not like these four reminders are the final one.",
+          "start_time": 382.18
+        },
+        {
+          "index": 111,
+          "speaker_name": null,
+          "raw_text": "So we can increase or decrease the reminders based on the participation.",
+          "start_time": 384.58
+        },
+        {
+          "index": 112,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 389.98
+        },
+        {
+          "index": 113,
+          "speaker_name": null,
+          "raw_text": "Okay, gotcha.",
+          "start_time": 390.26
+        },
+        {
+          "index": 114,
+          "speaker_name": null,
+          "raw_text": "So just to confirm, it's launching on 22nd at 10am and closing on 3rd of October at 5:30.",
+          "start_time": 392.78
+        },
+        {
+          "index": 115,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 399.98
+        },
+        {
+          "index": 116,
+          "speaker_name": null,
+          "raw_text": "These are the reminder templates, and these are the reminder schedules.",
+          "start_time": 400.38
+        },
+        {
+          "index": 117,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 406.22
+        },
+        {
+          "index": 118,
+          "speaker_name": null,
+          "raw_text": "Yeah, 24, 26.",
+          "start_time": 407.74
+        },
+        {
+          "index": 119,
+          "speaker_name": null,
+          "raw_text": "And we have six 17 participants as well.",
+          "start_time": 410.54
+        },
+        {
+          "index": 120,
+          "speaker_name": null,
+          "raw_text": "So this is the survey runtime for 6:17 participants with the notifications as.",
+          "start_time": 413.98
+        },
+        {
+          "index": 121,
+          "speaker_name": null,
+          "raw_text": "So.",
+          "start_time": 424.58
+        },
+        {
+          "index": 122,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 425.74
+        },
+        {
+          "index": 123,
+          "speaker_name": null,
+          "raw_text": "And we can see this if we look in there too, right?",
+          "start_time": 426.62
+        },
+        {
+          "index": 124,
+          "speaker_name": null,
+          "raw_text": "Exactly.",
+          "start_time": 429.98
+        },
+        {
+          "index": 125,
+          "speaker_name": null,
+          "raw_text": "Exactly.",
+          "start_time": 430.66
+        },
+        {
+          "index": 126,
+          "speaker_name": null,
+          "raw_text": "So if you want to add more reminders, you can just send me a text or email and I can add specific.",
+          "start_time": 431.18
+        },
+        {
+          "index": 127,
+          "speaker_name": null,
+          "raw_text": "More reminders as per the participation.",
+          "start_time": 436.34
+        },
+        {
+          "index": 128,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 438.42
+        },
+        {
+          "index": 129,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 438.86
+        },
+        {
+          "index": 130,
+          "speaker_name": null,
+          "raw_text": "So I can just publish this survey and it'll automatically get launched at 10am EST.",
+          "start_time": 441.5
+        },
+        {
+          "index": 131,
+          "speaker_name": null,
+          "raw_text": "So can I just publish this survey right now?",
+          "start_time": 447.84
+        },
+        {
+          "index": 132,
+          "speaker_name": null,
+          "raw_text": "Yes.",
+          "start_time": 450.48
+        },
+        {
+          "index": 133,
+          "speaker_name": null,
+          "raw_text": "Perfect.",
+          "start_time": 452.64
+        },
+        {
+          "index": 134,
+          "speaker_name": null,
+          "raw_text": "Just give me one second.",
+          "start_time": 453.44
+        },
+        {
+          "index": 135,
+          "speaker_name": null,
+          "raw_text": "I'll just do a quick check from my end.",
+          "start_time": 457.28
+        },
+        {
+          "index": 136,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 460.88
+        },
+        {
+          "index": 137,
+          "speaker_name": null,
+          "raw_text": "And just so you know, Megan, it's.",
+          "start_time": 471.52
+        },
+        {
+          "index": 138,
+          "speaker_name": null,
+          "raw_text": "It's actually 1:45 in my time zone, so I was just, you know, glad that you we had this conversation today so that we didn't have to rush on a Monday morning.",
+          "start_time": 473.72
+        },
+        {
+          "index": 139,
+          "speaker_name": null,
+          "raw_text": "Right.",
+          "start_time": 484.84
+        },
+        {
+          "index": 140,
+          "speaker_name": null,
+          "raw_text": "So.",
+          "start_time": 485.2
+        },
+        {
+          "index": 141,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 485.44
+        },
+        {
+          "index": 142,
+          "speaker_name": null,
+          "raw_text": "This conversation today.",
+          "start_time": 486.36
+        },
+        {
+          "index": 143,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 488.76
+        },
+        {
+          "index": 144,
+          "speaker_name": null,
+          "raw_text": "Because that would be pretty early your time.",
+          "start_time": 489.2
+        },
+        {
+          "index": 145,
+          "speaker_name": null,
+          "raw_text": "Yeah, I understand.",
+          "start_time": 491.16
+        },
+        {
+          "index": 146,
+          "speaker_name": null,
+          "raw_text": "So that's why I even sent an email asking you guys for a call.",
+          "start_time": 492.36
+        },
+        {
+          "index": 147,
+          "speaker_name": null,
+          "raw_text": "Even today.",
+          "start_time": 495.8
+        },
+        {
+          "index": 148,
+          "speaker_name": null,
+          "raw_text": "Yeah, yeah, yeah.",
+          "start_time": 497.8
+        },
+        {
+          "index": 149,
+          "speaker_name": null,
+          "raw_text": "It's good to get that done in advance.",
+          "start_time": 500.2
+        },
+        {
+          "index": 150,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 503.45
+        },
+        {
+          "index": 151,
+          "speaker_name": null,
+          "raw_text": "What.",
+          "start_time": 505.77
+        },
+        {
+          "index": 152,
+          "speaker_name": null,
+          "raw_text": "What day is it there?",
+          "start_time": 506.17
+        },
+        {
+          "index": 153,
+          "speaker_name": null,
+          "raw_text": "Friday or Saturday?",
+          "start_time": 508.81
+        },
+        {
+          "index": 154,
+          "speaker_name": null,
+          "raw_text": "It's.",
+          "start_time": 511.37
+        },
+        {
+          "index": 155,
+          "speaker_name": null,
+          "raw_text": "It's Saturday at 1:54am a.m. oh my goodness.",
+          "start_time": 512.01
+        },
+        {
+          "index": 156,
+          "speaker_name": null,
+          "raw_text": "Do you work at night all the time or just for us?",
+          "start_time": 519.13
+        },
+        {
+          "index": 157,
+          "speaker_name": null,
+          "raw_text": "Not exactly.",
+          "start_time": 521.77
+        },
+        {
+          "index": 158,
+          "speaker_name": null,
+          "raw_text": "Not exactly.",
+          "start_time": 522.89
+        },
+        {
+          "index": 159,
+          "speaker_name": null,
+          "raw_text": "So just in case when survey launches come in place and have to come into place.",
+          "start_time": 523.77
+        },
+        {
+          "index": 160,
+          "speaker_name": null,
+          "raw_text": "So that's when I, you know, do such meetings.",
+          "start_time": 529.41
+        },
+        {
+          "index": 161,
+          "speaker_name": null,
+          "raw_text": "But otherwise I do my meetings in the first half of, of your time, which is before 12:00pm EST.",
+          "start_time": 532.89
+        },
+        {
+          "index": 162,
+          "speaker_name": null,
+          "raw_text": "Oh my gosh, I'm sorry.",
+          "start_time": 539.37
+        },
+        {
+          "index": 163,
+          "speaker_name": null,
+          "raw_text": "You're up in the middle of the night in.",
+          "start_time": 540.49
+        },
+        {
+          "index": 164,
+          "speaker_name": null,
+          "raw_text": "No, Megan, I'm glad we had this conversation because I, I, I don't even think we, I would be able to rush you before the survey launch at 10am, right?",
+          "start_time": 543.61
+        },
+        {
+          "index": 165,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 552.33
+        },
+        {
+          "index": 166,
+          "speaker_name": null,
+          "raw_text": "So I don't even know if you, if you would have started your work at 10am and me rushing you at that time would be pretty chaotic.",
+          "start_time": 552.73
+        },
+        {
+          "index": 167,
+          "speaker_name": null,
+          "raw_text": "So, so it's fine.",
+          "start_time": 558.65
+        },
+        {
+          "index": 168,
+          "speaker_name": null,
+          "raw_text": "That's not a problem.",
+          "start_time": 561.13
+        },
+        {
+          "index": 169,
+          "speaker_name": null,
+          "raw_text": "Thank you.",
+          "start_time": 561.93
+        },
+        {
+          "index": 170,
+          "speaker_name": null,
+          "raw_text": "Perfect.",
+          "start_time": 563.61
+        },
+        {
+          "index": 171,
+          "speaker_name": null,
+          "raw_text": "So I think all of these look good.",
+          "start_time": 564.17
+        },
+        {
+          "index": 172,
+          "speaker_name": null,
+          "raw_text": "So I'll proceed with the survey launch.",
+          "start_time": 566.49
+        },
+        {
+          "index": 173,
+          "speaker_name": null,
+          "raw_text": "Perfect.",
+          "start_time": 572.97
+        },
+        {
+          "index": 174,
+          "speaker_name": null,
+          "raw_text": "I launched the survey and it should be going out to all the participants on 10am EST on Monday.",
+          "start_time": 574.09
+        },
+        {
+          "index": 175,
+          "speaker_name": null,
+          "raw_text": "Right.",
+          "start_time": 581.85
+        },
+        {
+          "index": 176,
+          "speaker_name": null,
+          "raw_text": "Okay, amazing.",
+          "start_time": 582.33
+        },
+        {
+          "index": 177,
+          "speaker_name": null,
+          "raw_text": "So let's.",
+          "start_time": 584.89
+        },
+        {
+          "index": 178,
+          "speaker_name": null,
+          "raw_text": "And one more thing, Megan.",
+          "start_time": 587.46
+        },
+        {
+          "index": 179,
+          "speaker_name": null,
+          "raw_text": "So I just want to talk to you on one more thing.",
+          "start_time": 589.22
+        },
+        {
+          "index": 180,
+          "speaker_name": null,
+          "raw_text": "So we've recently started an initiative wherein we give participation digest every week.",
+          "start_time": 591.62
+        },
+        {
+          "index": 181,
+          "speaker_name": null,
+          "raw_text": "So it's, it's something which, which you people can use to, you know, boost participation within your organization.",
+          "start_time": 599.78
+        },
+        {
+          "index": 182,
+          "speaker_name": null,
+          "raw_text": "So I can give you participation by split by teams location or teams business unit or whichever demographic you'd want to so that you can get more understanding on what demographic it needs and accordingly push internal participation to get more participation at the end of the day.",
+          "start_time": 607.38
+        },
+        {
+          "index": 183,
+          "speaker_name": null,
+          "raw_text": "Right?",
+          "start_time": 627.41
+        },
+        {
+          "index": 184,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 628.29
+        },
+        {
+          "index": 185,
+          "speaker_name": null,
+          "raw_text": "So if you could let me know by which demographic you would like insights on.",
+          "start_time": 629.57
+        },
+        {
+          "index": 186,
+          "speaker_name": null,
+          "raw_text": "I could send emails every Monday or Tuesday based on the highest participation of teams or lowest participation of teams so that you would know which teams you should focus more on to get highest participation.",
+          "start_time": 634.53
+        },
+        {
+          "index": 187,
+          "speaker_name": null,
+          "raw_text": "Right?",
+          "start_time": 650.66
+        },
+        {
+          "index": 188,
+          "speaker_name": null,
+          "raw_text": "Yeah, I think that would be good.",
+          "start_time": 651.3
+        },
+        {
+          "index": 189,
+          "speaker_name": null,
+          "raw_text": "The, let me see department is probably the best.",
+          "start_time": 654.02
+        },
+        {
+          "index": 190,
+          "speaker_name": null,
+          "raw_text": "Which is the team name, right?",
+          "start_time": 657.74
+        },
+        {
+          "index": 191,
+          "speaker_name": null,
+          "raw_text": "Yeah, yeah, yeah, I think that would be good.",
+          "start_time": 661.78
+        },
+        {
+          "index": 192,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 665.62
+        },
+        {
+          "index": 193,
+          "speaker_name": null,
+          "raw_text": "I'll ensure to send a digest by every Tuesday.",
+          "start_time": 666.58
+        },
+        {
+          "index": 194,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 671.77
+        },
+        {
+          "index": 195,
+          "speaker_name": null,
+          "raw_text": "Where you can work through the whole week to ensure that those teams get higher participation.",
+          "start_time": 672.13
+        },
+        {
+          "index": 196,
+          "speaker_name": null,
+          "raw_text": "And, and we can ensure we get a higher participation more than the previous year.",
+          "start_time": 677.53
+        },
+        {
+          "index": 197,
+          "speaker_name": null,
+          "raw_text": "So last year we got an 81.7 percentage, which you can see.",
+          "start_time": 682.21
+        },
+        {
+          "index": 198,
+          "speaker_name": null,
+          "raw_text": "So we'll ensure to get a more better participation in last year.",
+          "start_time": 686.81
+        },
+        {
+          "index": 199,
+          "speaker_name": null,
+          "raw_text": "Yeah, yeah, yeah, hopefully.",
+          "start_time": 689.81
+        },
+        {
+          "index": 200,
+          "speaker_name": null,
+          "raw_text": "So.",
+          "start_time": 691.77
+        },
+        {
+          "index": 201,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 693.21
+        },
+        {
+          "index": 202,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 693.77
+        },
+        {
+          "index": 203,
+          "speaker_name": null,
+          "raw_text": "Perfect.",
+          "start_time": 694.37
+        },
+        {
+          "index": 204,
+          "speaker_name": null,
+          "raw_text": "Perfect, Megan.",
+          "start_time": 694.85
+        },
+        {
+          "index": 205,
+          "speaker_name": null,
+          "raw_text": "So this was a very productive conversation.",
+          "start_time": 695.53
+        },
+        {
+          "index": 206,
+          "speaker_name": null,
+          "raw_text": "I, I wish we get a higher participation than last time.",
+          "start_time": 697.69
+        },
+        {
+          "index": 207,
+          "speaker_name": null,
+          "raw_text": "And any issues, any, any, you know, any, anything which you face, please feel free to reach out to me and ask Megan to reach out to me.",
+          "start_time": 701.77
+        },
+        {
+          "index": 208,
+          "speaker_name": null,
+          "raw_text": "I'll be glad to help.",
+          "start_time": 710.25
+        },
+        {
+          "index": 209,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 711.17
+        },
+        {
+          "index": 210,
+          "speaker_name": null,
+          "raw_text": "Okay.",
+          "start_time": 711.85
+        },
+        {
+          "index": 211,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 712.33
+        },
+        {
+          "index": 212,
+          "speaker_name": null,
+          "raw_text": "Thank you so much.",
+          "start_time": 712.65
+        },
+        {
+          "index": 213,
+          "speaker_name": null,
+          "raw_text": "Perfect.",
+          "start_time": 714.569
+        },
+        {
+          "index": 214,
+          "speaker_name": null,
+          "raw_text": "Thank you so much for your time, Megan.",
+          "start_time": 715.05
+        },
+        {
+          "index": 215,
+          "speaker_name": null,
+          "raw_text": "Have a great day.",
+          "start_time": 716.45
+        },
+        {
+          "index": 216,
+          "speaker_name": null,
+          "raw_text": "All right.",
+          "start_time": 717.61
+        },
+        {
+          "index": 217,
+          "speaker_name": null,
+          "raw_text": "Have a good weekend.",
+          "start_time": 718.05
+        },
+        {
+          "index": 218,
+          "speaker_name": null,
+          "raw_text": "Yeah.",
+          "start_time": 719.37
+        },
+        {
+          "index": 219,
+          "speaker_name": null,
+          "raw_text": "Bye.",
+          "start_time": 719.73
+        },
+        {
+          "index": 220,
+          "speaker_name": null,
+          "raw_text": "Bye.",
+          "start_time": 719.97
+        },
+        {
+          "index": 221,
+          "speaker_name": null,
+          "raw_text": "Thanks.",
+          "start_time": 720.25
+        },
+        {
+          "index": 222,
+          "speaker_name": null,
+          "raw_text": "Bye.",
+          "start_time": 720.61
+        },
+        {
+          "index": 223,
+          "speaker_name": null,
+          "raw_text": "Bye.",
+          "start_time": 721.53
+        }
+      ],
+      "meeting_link": "https://meet1608.webex.com/meet1608/j.php?MTID=m29a42e00b053f92fd30c4f5dfda95410"
+    }
+  ]
+}

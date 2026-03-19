@@ -58,24 +58,9 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6g9RjjJX748JQh7x"
-    },
-    {
-      "id": "6g9RjjmgpCmXX5Rx",
-      "content": "Evaluate value of Post-Launch Survey Editing (Guardrailed) - new feature in validation",
-      "due": "2026-03-19",
-      "priority": 2,
-      "labels": [
-        "product",
-        "research"
-      ],
-      "sectionId": "6g8x4JxwH876pgGQ",
-      "sectionName": "Features",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6g9RjjmgpCmXX5Rx"
     }
   ],
-  "completedToday": [],
+  "completedToday": ["6g9RjjmgpCmXX5Rx"],
   "dueSoon": [
     {
       "id": "6g9wjqRfhhHJQ84x",
@@ -115,21 +100,6 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6g9RjjJX748JQh7x"
-    },
-    {
-      "id": "6g9RjjmgpCmXX5Rx",
-      "content": "Evaluate value of Post-Launch Survey Editing (Guardrailed) - new feature in validation",
-      "due": "2026-03-19",
-      "priority": 2,
-      "labels": [
-        "product",
-        "research"
-      ],
-      "sectionId": "6g8x4JxwH876pgGQ",
-      "sectionName": "Features",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6g9RjjmgpCmXX5Rx"
     }
   ],
   "todayMeetings": [],

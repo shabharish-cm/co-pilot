@@ -1,0 +1,3549 @@
+{
+  "dayKey": "2026-02-23",
+  "fetchedAt": "2026-03-19T05:41:19.157Z",
+  "source": "backfill-date-range",
+  "transcripts": [
+    {
+      "id": "01KHXEKAEBEXHK0HQHW5HDX10E",
+      "title": "Weekly Culture Monkey/Yahoo Implementation Mtg.",
+      "date": 1771862700000,
+      "participants": [
+        "sanya.lamba@yahooinc.com",
+        "gowtham@culturemonkey.io",
+        "charlie.trinco@yahooinc.com",
+        "kate.burk@yahooinc.com",
+        "patrick.briscoe@yahooinc.com",
+        "karthik.n@culturemonkey.io",
+        "siva@culturemonkey.io",
+        "yugi@culturemonkey.io",
+        "dayna.matusek@yahooinc.com",
+        "sunil@culturemonkey.io",
+        "praneesh.jayaraj@yahooinc.com",
+        "scott.domes@yahooinc.com",
+        "shabharish.v@culturemonkey.io",
+        "karthik.rao@culturemonkey.io",
+        "yug@culturemonkey.io"
+      ],
+      "summary": {
+        "overview": "- **Access Permissions for Surveys:** Admin access will be separated for lifecycle and engagement surveys to meet distinct needs.\n\n- **Candidate Survey Management:** Candidate survey access will remain independent from employee surveys to accommodate varying access requirements.\n\n- **Scheduled Survey Data Exports:** New scheduled export capabilities are in development, with updates expected next week for better reporting flexibility.\n\n- **Dashboard Enhancements:** Features like hover-over tooltips are prioritized for usability improvements, while complex requests are deferred for future review.\n\n- **Manager Reaction Tracking:** Current data shows low manager engagement rates; future automated reports on reactions may be developed for efficiency.",
+        "action_items": "\n**Yugi P**\nFollow up on timeline for candidate survey service rollout and report back (38:12)\nConsult team regarding complexity and feasibility of question-to-driver score comparison enhancement (20:50)\nConfirm with team specifics on overall score calculation method for dashboard (37:10)\nPush to fix inaccurate manager invite metrics in the system (26:15)\n\n**Karthik N**\nArrange a demo showing access permission settings for employee engagement, lifecycle, and candidate survey modules (10:40)\nInvestigate and provide export of manager reaction emails logs covering the week of January 12 and recent months (24:45)\nExplore feasibility of generating log-based reports for manager reactions and maintain these as scheduled exports/notifications in next quarter upgrades (27:45)\n\n**Charlie Trinco**\nSchedule follow-up meeting next week to review updates on scheduled export and access permissions (16:00)\nPrioritize enhancements and prepare stack-ranked list for delivery in next few days (21:50)\n\n**Sanya Lamba**\nCoordinate testing of candidate access service scenarios and monitor rollout timing once confirmed (38:12)\n\n**Scott Domes**\nConfirm with Yugi team about weighting and reporting of overall scores to ensure clarity (37:15)\n",
+        "notes": "## **Access Permissions for Surveys**\n\nThe team agreed on segregating admin access between employee engagement and lifecycle surveys to meet distinct business needs.\n\n- **Sub-admin access split for employee surveys** is planned with checkbox options for lifecycle (5, 30, 90 days and exit) versus engagement and pulse surveys, addressing Kate’s access request (06:00)\n    - This approach allows different team members varying access levels based on survey type.\n    - Yugi explained this solves the problem of wanting recruiting to access lifecycle but not engagement data.\n    - Candidate surveys remain separate and are not included in this checkbox solution.\n    - This segregation reflects overlapping employee survey types but no overlap with candidate module users.\n\n- **Candidate survey access handled separately from employee surveys** as a distinct permission invite outside the two checkboxes (09:08)\n    - Karthik clarified candidate access is managed independently and not part of the checkbox UI.\n    - This separation accommodates multiple groups like recruiting admins and HRBPs with different access needs.\n    - The two checkbox feature for employee surveys is not live yet but planned for implementation soon.\n    - A sandbox demo of access controls will be arranged before production rollout to confirm functionality for users like Kate.\n\n- **Clarification of current access environment** resolved confusion about survey permission grouping (12:32)\n    - Scott realized lifecycle and engagement/pulse were previously bundled but now separated.\n    - This separation eliminates the need for complex checkboxes for candidate surveys in the current system.\n    - Charlie welcomed the upcoming demo to visualize the permissioning setup.\n    - The team agreed the solution meets their access control requirements.\n\n- **Discussion on Looker integration and data export for Culture Monkey data** highlighted limited past use of exports (13:23)\n    - Karthik noted enterprise clients typically export CSVs manually for presentations.\n    - No API existed for direct data pulls, as Culture Monkey prefers users to leverage its dashboards.\n    - Scheduled exports are being developed but frequency and data timing remain open issues.\n    - Karthik expects an update by next week on export scheduling and permissions combined.\n\n\n## **Survey Data Export and Reporting**\n\nThe team explored scheduled export capabilities to enhance reporting flexibility while maintaining Culture Monkey as the primary data source.\n\n- **Scheduled export of survey data is under active development with expected update by next week** (15:38)\n    - Frequency issues arise because survey participants can be added and respond at different times.\n    - This timing mismatch causes slight variances in respondent counts across exports.\n    - The team is working to clarify export timing rules to ensure consistent data snapshots.\n    - No fixed ETA yet for full rollout; further internal discussions planned.\n\n- **Charlie emphasized preference for keeping Culture Monkey as the single source of truth** to reduce overhead (14:08)\n    - The new permissioning setup diminishes the need for external exports.\n    - Quarterly exports could be used as needed for high-level presentations.\n    - Scheduled exports will help automate this process but with caveats on data freshness.\n    - This approach balances internal dashboard use with occasional external reporting needs.\n\n- **A demo of the permission management UI will be provided in a sandbox environment** before wider rollout (10:45)\n    - This will allow stakeholders to see granting access to users like Kate.\n    - Sandbox testing will avoid disruptions to live data and user access.\n    - The demo will confirm the user experience and permission settings.\n    - This step is key to smooth implementation and user training.\n\n- **No prior enterprise clients have used Looker integration for Lifecycle surveys, mostly manual CSV exports** (13:23)\n    - Culture Monkey does not currently support API exports for lifecycle data.\n    - The preference is to build features internally rather than exporting data.\n    - Export functionality is limited but evolving with scheduled exports.\n    - This historical context informs development priorities.\n\n\n## **Survey Dashboard Enhancements and Roadmap**\n\nSeveral enhancement requests were discussed, with some deferred due to complexity and others prioritized for future roadmap consideration.\n\n- **Adding company average score next to question scores was rejected for now due to complexity but may be revisited later** (17:51)\n    - Yugi explained the feature involves significant development effort.\n    - The team prioritized survey launch timing over adding this detail.\n    - It will remain under consideration for future quarters.\n    - This metric helps managers benchmark their scores against company-wide results.\n\n- **Comparing individual question scores to overall driver scores was also rejected but under review for future inclusion** (19:17)\n    - Initial rejection was due to complexity and lack of clarity on benchmarking.\n    - Yugi will revisit this based on Charlie’s explanation of its potential value.\n    - The feature could offer managers more granular insight into performance drivers.\n    - Manpower and technical feasibility will be evaluated before adding this.\n\n- **Hover-over tooltips are planned to address some question-score related clarity needs** (21:48)\n    - This is a simpler enhancement that can improve manager understanding.\n    - It will complement existing views showing driver and question breakdowns.\n    - The team will prioritize these smaller usability improvements.\n    - This helps managers interpret scores without complex new features.\n\n- **Managers expressed satisfaction with current dashboard views but want clearer connections between question and driver scores** (21:47)\n    - The table view showing scores by driver and question is highly valued.\n    - Managers want to identify hotspots within drivers more easily.\n    - The team is exploring ways to improve this without heavy development.\n    - This user feedback will guide upcoming enhancements.\n\n\n## **Manager Actions and Reaction Tracking**\n\nThe lack of reporting on manager reactions was noted as a gap, with potential manual and automated solutions discussed.\n\n- **Manager reaction removals were rejected but tracking their usage is desired for communication effectiveness checks** (23:59)\n    - Charlie asked if reports exist on how many managers reacted to comments.\n    - Yugi and Karthik confirmed no built-in report but logs could be exported.\n    - A manual export of reaction emails can provide some insight.\n    - This helps verify communications without overwhelming employees.\n\n- **Logs for manager reactions and related emails may be available for up to 90 days and will be investigated** (24:43)\n    - Karthik will check if logs exist for the key week of January 12th.\n    - If available, these logs can be used to audit engagement with manager reactions.\n    - The team will try to pull data for recent months as backup.\n    - This is important as survey go-live dates recede into the past.\n\n- **Manager usage statistics in the platform currently show inconsistent invite and action counts, with fixes underway** (26:01)\n    - Scott noted 41 managers out of 774 invited appeared active, roughly 5%.\n    - Yugi confirmed the numbers are incorrect and under correction.\n    - Only three valid manager actions were recorded beyond testing.\n    - Accurate stats are critical for understanding manager engagement.\n\n- **Future quarterly reports or dashboards on manager reactions and actions could be automated if logs can be converted into reports** (28:37)\n    - Charlie hopes for report-builder support rather than manual log reviews.\n    - Karthik indicated logs exist but their integration into reports is pending.\n    - This will aid ongoing monitoring without manual effort.\n    - It supports strategy evaluation of manager communication effectiveness.\n\n\n## **Survey Scoring and Dashboard Metrics**\n\nThe group clarified how overall scores are calculated and the limitations of splitting trends by survey type.\n\n- **Overall survey scores are computed as a simple average of all question scores across all selected surveys** (35:24)\n    - Scott and Sanya confirmed the total score is sum of all question scores divided by number of questions.\n    - No weighting is applied to treat surveys differently regardless of question count.\n    - This means longer engagement surveys have more influence than shorter pulse surveys.\n    - Yugi will verify this approach with his team for confirmation.\n\n- **Dashboard views can filter to show scores for specific surveys, but cannot split trend lines by survey type yet** (32:23)\n    - Charlie asked if engagement and pulse scores can be shown separately over time.\n    - Yugi confirmed the dashboard allows filtering by survey but aggregates scores for displayed surveys.\n    - No current functionality exists to split ENPS or overall scores by survey category.\n    - This limits detailed trend analysis across different survey types.\n\n- **Lifecycle survey scores do not appear on the main dashboard, only engagement and pulse custom surveys are shown** (33:42)\n    - Scott clarified lifecycle scores are excluded from dashboard trend views.\n    - This matches the earlier access segregation between lifecycle and engagement surveys.\n    - It maintains focus on pulse and engagement survey results in reporting.\n    - Managers should be aware of this when interpreting dashboard data.\n\n- **Charlie plans to create a visual representation of how overall scores are calculated** to aid understanding (36:58)\n    - This will help stakeholders grasp the averaging logic.\n    - It supports clearer communication on survey results interpretation.\n    - The visual may influence future dashboard feature requests.\n    - Scott and Yugi agreed this is a helpful step for the team.",
+        "keywords": [
+          "sub-admin access",
+          "lifecycle surveys",
+          "employee engagement",
+          "candidate surveys",
+          "scheduled export",
+          "manager reactions"
+        ]
+      },
+      "sentences": [
+        {
+          "index": 0,
+          "speaker_name": "Yugi P",
+          "raw_text": "Hi, charlie.",
+          "start_time": 34.17
+        },
+        {
+          "index": 1,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Hello.",
+          "start_time": 35.77
+        },
+        {
+          "index": 2,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Hello.",
+          "start_time": 36.17
+        },
+        {
+          "index": 3,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We'll get started and hopefully people will join.",
+          "start_time": 58.76
+        },
+        {
+          "index": 4,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We are six after the hour.",
+          "start_time": 61.32
+        },
+        {
+          "index": 5,
+          "speaker_name": "Scott Domes",
+          "raw_text": "The only thing from the original project plan, Yugi, was sub admin access for Kate on candidate side, but not lifecycle side.",
+          "start_time": 66.36
+        },
+        {
+          "index": 6,
+          "speaker_name": "Scott Domes",
+          "raw_text": "You were going to come back to us with an update there.",
+          "start_time": 75.56
+        },
+        {
+          "index": 7,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes, Scott.",
+          "start_time": 80.26
+        },
+        {
+          "index": 8,
+          "speaker_name": "Yugi P",
+          "raw_text": "So I think I'll bring this response along with Charlie's discussion as well, since I wanted to get her ideas on the ask for look at integration.",
+          "start_time": 80.9
+        },
+        {
+          "index": 9,
+          "speaker_name": "Yugi P",
+          "raw_text": "Also get more clarity on your request.",
+          "start_time": 92.58
+        },
+        {
+          "index": 10,
+          "speaker_name": "Yugi P",
+          "raw_text": "Right.",
+          "start_time": 94.5
+        },
+        {
+          "index": 11,
+          "speaker_name": "Yugi P",
+          "raw_text": "So I know Kate mentioned that she wanted to discuss on the looker story integration.",
+          "start_time": 94.78
+        },
+        {
+          "index": 12,
+          "speaker_name": "Yugi P",
+          "raw_text": "So my team wanted to get an exact understanding of what the requirements are and what you expect to get out of the platform, so we can accordingly decide on the feasibility.",
+          "start_time": 98.9
+        },
+        {
+          "index": 13,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, before we jump into Charlie's list, let's just hurry up and go through what we've done so far.",
+          "start_time": 111.3
+        },
+        {
+          "index": 14,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So we've already had the system and we're only looking at 5, 30, 90.",
+          "start_time": 118.34
+        },
+        {
+          "index": 15,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So let me just.",
+          "start_time": 122.34
+        },
+        {
+          "index": 16,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Hiring manager.",
+          "start_time": 125.62
+        },
+        {
+          "index": 17,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That'll all be hers.",
+          "start_time": 126.54
+        },
+        {
+          "index": 18,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yes, Claire.",
+          "start_time": 127.58
+        },
+        {
+          "index": 19,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right, so system set up, shut down and we're good there.",
+          "start_time": 134.63
+        },
+        {
+          "index": 20,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Manual processes in the past, when we're.",
+          "start_time": 138.95
+        },
+        {
+          "index": 21,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We accomplish all that.",
+          "start_time": 140.91
+        },
+        {
+          "index": 22,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We did our first audit.",
+          "start_time": 142.71
+        },
+        {
+          "index": 23,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That was a success, Sonia.",
+          "start_time": 144.55
+        },
+        {
+          "index": 24,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Right.",
+          "start_time": 146.35
+        },
+        {
+          "index": 25,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That was for 5 and 30.",
+          "start_time": 146.63
+        },
+        {
+          "index": 26,
+          "speaker_name": "Scott Domes",
+          "raw_text": "There were no 90.",
+          "start_time": 148.07
+        },
+        {
+          "index": 27,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We're good there.",
+          "start_time": 150.15
+        },
+        {
+          "index": 28,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We have one more audit.",
+          "start_time": 151.03
+        },
+        {
+          "index": 29,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That were two more audits that we're going to do before we call this 100% complete.",
+          "start_time": 152.27
+        },
+        {
+          "index": 30,
+          "speaker_name": "Scott Domes",
+          "raw_text": "There are some training.",
+          "start_time": 158.36
+        },
+        {
+          "index": 31,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So if we'll go through what Charlie has, if there is time, we'd like to go through some of the dashboards.",
+          "start_time": 160.04
+        },
+        {
+          "index": 32,
+          "speaker_name": "Scott Domes",
+          "raw_text": "There are some questions we have there.",
+          "start_time": 164.52
+        },
+        {
+          "index": 33,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And Sonia, were we able to Download all the 53090 data and add it into a private folder?",
+          "start_time": 167.16
+        },
+        {
+          "index": 34,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yes, that's complete.",
+          "start_time": 175.32
+        },
+        {
+          "index": 35,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, when did we complete that?",
+          "start_time": 176.76
+        },
+        {
+          "index": 36,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Last Thursday.",
+          "start_time": 178.36
+        },
+        {
+          "index": 37,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yeah.",
+          "start_time": 179.8
+        },
+        {
+          "index": 38,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, so that's complete.",
+          "start_time": 180.44
+        },
+        {
+          "index": 39,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And then exit survey is not what we're going to talk about yet, but we will eventually have to get to that.",
+          "start_time": 183.65
+        },
+        {
+          "index": 40,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, so I'm good there.",
+          "start_time": 191.25
+        },
+        {
+          "index": 41,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Charlie, any questions on what's going on there?",
+          "start_time": 194.13
+        },
+        {
+          "index": 42,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yeah, just wanted to come back to the original question around candidate and life cycle access.",
+          "start_time": 197.25
+        },
+        {
+          "index": 43,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Can we talk a little bit about that?",
+          "start_time": 203.33
+        },
+        {
+          "index": 44,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Because I had a call on Friday with Kate to understand the requirements around that.",
+          "start_time": 204.93
+        },
+        {
+          "index": 45,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So I figure we can address it.",
+          "start_time": 208.45
+        },
+        {
+          "index": 46,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yep.",
+          "start_time": 210.18
+        },
+        {
+          "index": 47,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I'll stop sharing that.",
+          "start_time": 210.42
+        },
+        {
+          "index": 48,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yugi wanted to address that in all your request, your requests.",
+          "start_time": 211.94
+        },
+        {
+          "index": 49,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So he's gonna.",
+          "start_time": 215.54
+        },
+        {
+          "index": 50,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I'll let him and you talk through and Sonny and I will listen and chime in.",
+          "start_time": 216.58
+        },
+        {
+          "index": 51,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Sure.",
+          "start_time": 221.22
+        },
+        {
+          "index": 52,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So my understanding, Yugi, of where this request originated from and where it's kind of Gone to is there has been a discussion around different access to different parts of culture monkey.",
+          "start_time": 221.86
+        },
+        {
+          "index": 53,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So in Kate's instance, we've got candidate and lifecycle surveys more dominantly on our side of the House, we've got like engagement surveys, which breaks down into engagement pulse surveys.",
+          "start_time": 237.89
+        },
+        {
+          "index": 54,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So in chatting with Kate a little bit on Friday, I think the business need that we're after is that different team members have different levels of access for difference types of surveys.",
+          "start_time": 249.13
+        },
+        {
+          "index": 55,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So for example, Kate needs admin access to or a higher level of access in the candidate and lifecycle survey space.",
+          "start_time": 262.42
+        },
+        {
+          "index": 56,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But we don't want her to have as high as high of access in the pulse and engagement survey side of it.",
+          "start_time": 271.46
+        },
+        {
+          "index": 57,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "To amplify that, we would want to give the recruiting team lots of access to see the results of all of the candidate and lifecycle surveys, but we wouldn't want them to be able to see all of the pulse and engagement surveys.",
+          "start_time": 278.5
+        },
+        {
+          "index": 58,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So starting with that original request, I think Friday in the Slack channel, we saw like a little bit of solutioning proposal in there.",
+          "start_time": 291.29
+        },
+        {
+          "index": 59,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Like can we actually put all of that data in looker and enforce the permissions that way?",
+          "start_time": 300.09
+        },
+        {
+          "index": 60,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But just coming back to the baseline functionality and capabilities of culture monkeys, are we saying that we can't give people admin access to different surveys?",
+          "start_time": 303.93
+        },
+        {
+          "index": 61,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "It as long as you're an admin, you're an admin across everything.",
+          "start_time": 316.09
+        },
+        {
+          "index": 62,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes, Charlie, So I do have a solution for your request.",
+          "start_time": 320.24
+        },
+        {
+          "index": 63,
+          "speaker_name": "Yugi P",
+          "raw_text": "Right, so wherein, you know, we'll be putting in a checkbox at the place near the access permissions, right?",
+          "start_time": 323.56
+        },
+        {
+          "index": 64,
+          "speaker_name": "Yugi P",
+          "raw_text": "So we grant access to a sub admin or a super admin.",
+          "start_time": 331.48
+        },
+        {
+          "index": 65,
+          "speaker_name": "Yugi P",
+          "raw_text": "You will now be getting a checkbox stating if the specific employee should be given access only to employee engagement surveys or should they be just given access to life cycle surveys, which is the 5, 30, 90 and exit.",
+          "start_time": 334.8
+        },
+        {
+          "index": 66,
+          "speaker_name": "Yugi P",
+          "raw_text": "So with this structure we can segregate the access for specific employees wherein you can just make employees see engagement service, Engagement and pulse service alone.",
+          "start_time": 352.03
+        },
+        {
+          "index": 67,
+          "speaker_name": "Yugi P",
+          "raw_text": "Or if you just like people to see life cycle alone, which I think would be solved with kids case, right?",
+          "start_time": 363.39
+        },
+        {
+          "index": 68,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yes.",
+          "start_time": 369.56
+        },
+        {
+          "index": 69,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yeah.",
+          "start_time": 370.44
+        },
+        {
+          "index": 70,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So I just heard life cycle and engagement.",
+          "start_time": 371
+        },
+        {
+          "index": 71,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I didn't hear a candidate check boxes or is there 3 candidate is pretty separate?",
+          "start_time": 375.24
+        },
+        {
+          "index": 72,
+          "speaker_name": "Yugi P",
+          "raw_text": "Scott.",
+          "start_time": 383.08
+        },
+        {
+          "index": 73,
+          "speaker_name": "Yugi P",
+          "raw_text": "So we're just focusing on the employee side since this overlaps with the employee and can any employee life cycle.",
+          "start_time": 383.52
+        },
+        {
+          "index": 74,
+          "speaker_name": "Yugi P",
+          "raw_text": "We're just working on the employee module right now to, you know, segregate access for you and Kate.",
+          "start_time": 389.08
+        },
+        {
+          "index": 75,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I'm sorry, can you, can you say that again?",
+          "start_time": 395.06
+        },
+        {
+          "index": 76,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I just want to make sure I'm 100% we're the way we think is engagement and Pulse, Employee life cycle and candidate.",
+          "start_time": 397.62
+        },
+        {
+          "index": 77,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Are you grouping candidate and life cycle together and keeping.",
+          "start_time": 413.58
+        },
+        {
+          "index": 78,
+          "speaker_name": "Yugi P",
+          "raw_text": "No, Scott.",
+          "start_time": 420.27
+        },
+        {
+          "index": 79,
+          "speaker_name": "Yugi P",
+          "raw_text": "No this.",
+          "start_time": 420.83
+        },
+        {
+          "index": 80,
+          "speaker_name": "Karthik N",
+          "raw_text": "No.",
+          "start_time": 421.95
+        },
+        {
+          "index": 81,
+          "speaker_name": "Yugi P",
+          "raw_text": "No Scott.",
+          "start_time": 422.35
+        },
+        {
+          "index": 82,
+          "speaker_name": "Yugi P",
+          "raw_text": "So I'm not involving candidate service at all at this moment.",
+          "start_time": 423.03
+        },
+        {
+          "index": 83,
+          "speaker_name": "Yugi P",
+          "raw_text": "I'm just focusing on the employee engagement and pulse surveys and the 53090 surveys wherein you can split access either for the engagement and pulse surveys or for the 53019 exit service.",
+          "start_time": 426.99
+        },
+        {
+          "index": 84,
+          "speaker_name": "Yugi P",
+          "raw_text": "Just I'm not going into the candidate module right now, just the employee side.",
+          "start_time": 441.91
+        },
+        {
+          "index": 85,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that short sighted",
+          "start_time": 446.49
+        },
+        {
+          "index": 86,
+          "speaker_name": "Yugi P",
+          "raw_text": "that, that this use case won't happen with candidates, Right.",
+          "start_time": 450.89
+        },
+        {
+          "index": 87,
+          "speaker_name": "Yugi P",
+          "raw_text": "So because you only choose people who you want to see in candidates and we don't see overlap of the employees and candidates in the candidate module, but whereas in the employee side you have an overlap of both the kind of surveys run.",
+          "start_time": 454.09
+        },
+        {
+          "index": 88,
+          "speaker_name": "Yugi P",
+          "raw_text": "That's fine.",
+          "start_time": 466.33
+        },
+        {
+          "index": 89,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Let me explain why I say that.",
+          "start_time": 467.29
+        },
+        {
+          "index": 90,
+          "speaker_name": "Scott Domes",
+          "raw_text": "The we have groups of admin users here, right?",
+          "start_time": 473.22
+        },
+        {
+          "index": 91,
+          "speaker_name": "Scott Domes",
+          "raw_text": "You're going to have your data people, Sonia, myself, who are super admins and sub admins.",
+          "start_time": 482.34
+        },
+        {
+          "index": 92,
+          "speaker_name": "Scott Domes",
+          "raw_text": "You're going to have people like, you're going to have HRBPs that are leaders and HR leaders like Charlie, Janice and whoever else, right?",
+          "start_time": 491.78
+        },
+        {
+          "index": 93,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Then you're gonna have HRBP sub admins that are interested in exit and 530 90.",
+          "start_time": 505.08
+        },
+        {
+          "index": 94,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Then you're have sub admins and recruiting that are candidate focused, right?",
+          "start_time": 512.52
+        },
+        {
+          "index": 95,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So if you only, if you only look at two, if you only look at two checkboxes and not three, that's where the hangup's gonna be.",
+          "start_time": 517.72
+        },
+        {
+          "index": 96,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I can't let, I can't say that 5, 3090 day that recruiting might be interested in.",
+          "start_time": 526.25
+        },
+        {
+          "index": 97,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I can't let them see the exit surveys, can't let them see that.",
+          "start_time": 533.45
+        },
+        {
+          "index": 98,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But I, but we may want to let them see 5:30, 90.",
+          "start_time": 537.93
+        },
+        {
+          "index": 99,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I'm not sure.",
+          "start_time": 543.05
+        },
+        {
+          "index": 100,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But there's groups Life cycle, candidate and engagement.",
+          "start_time": 543.57
+        },
+        {
+          "index": 101,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, Scott.",
+          "start_time": 548.89
+        },
+        {
+          "index": 102,
+          "speaker_name": "Karthik N",
+          "raw_text": "So I think I can clarify this.",
+          "start_time": 549.57
+        },
+        {
+          "index": 103,
+          "speaker_name": "Karthik N",
+          "raw_text": "Your understanding is correct.",
+          "start_time": 550.97
+        },
+        {
+          "index": 104,
+          "speaker_name": "Karthik N",
+          "raw_text": "When we say checkboxes under the employee access, you have life cycle and the rest of the service, which is employee engagement and pulse service, right?",
+          "start_time": 552.99
+        },
+        {
+          "index": 105,
+          "speaker_name": "Karthik N",
+          "raw_text": "Then candidate is considered as a separate checkbox which is not available in the same page.",
+          "start_time": 562.11
+        },
+        {
+          "index": 106,
+          "speaker_name": "Karthik N",
+          "raw_text": "Although you can choose who gets the candidate access.",
+          "start_time": 567.15
+        },
+        {
+          "index": 107,
+          "speaker_name": "Karthik N",
+          "raw_text": "Say for example in Kate's scenario you give access to the life cycle which is under the employee 30, 90 days and then you give access to the candidate so she does not have access to the employee engagement and the pulse.",
+          "start_time": 570.43
+        },
+        {
+          "index": 108,
+          "speaker_name": "Karthik N",
+          "raw_text": "So all the three modules are separated.",
+          "start_time": 587.34
+        },
+        {
+          "index": 109,
+          "speaker_name": "Karthik N",
+          "raw_text": "The only thing is that we don't have three checkboxes, it's just two.",
+          "start_time": 589.1
+        },
+        {
+          "index": 110,
+          "speaker_name": "Karthik N",
+          "raw_text": "But then candidate is treated as a separate invite altogether.",
+          "start_time": 593.74
+        },
+        {
+          "index": 111,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that.",
+          "start_time": 603.42
+        },
+        {
+          "index": 112,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that checkboxes live today or it's something in the future?",
+          "start_time": 604.06
+        },
+        {
+          "index": 113,
+          "speaker_name": "Karthik N",
+          "raw_text": "Those two checkboxes are not live today.",
+          "start_time": 608.67
+        },
+        {
+          "index": 114,
+          "speaker_name": "Karthik N",
+          "raw_text": "That's the discussion I had with the team today.",
+          "start_time": 610.43
+        },
+        {
+          "index": 115,
+          "speaker_name": "Karthik N",
+          "raw_text": "Since we wanted to have the integration, they went to the core problem.",
+          "start_time": 612.99
+        },
+        {
+          "index": 116,
+          "speaker_name": "Karthik N",
+          "raw_text": "They want to understand why we need an integration.",
+          "start_time": 617.27
+        },
+        {
+          "index": 117,
+          "speaker_name": "Karthik N",
+          "raw_text": "Instead we can just solve it in the platform with this access.",
+          "start_time": 620.11
+        },
+        {
+          "index": 118,
+          "speaker_name": "Karthik N",
+          "raw_text": "This is the solution that the team already had in place.",
+          "start_time": 623.47
+        },
+        {
+          "index": 119,
+          "speaker_name": "Karthik N",
+          "raw_text": "If this will fix the Kate's scenario, then we will implement it in the upcoming weeks.",
+          "start_time": 627.07
+        },
+        {
+          "index": 120,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that's the clarification we wanted today.",
+          "start_time": 633.82
+        },
+        {
+          "index": 121,
+          "speaker_name": "Karthik N",
+          "raw_text": "And tomorrow we have an internal discussion with the team.",
+          "start_time": 635.82
+        },
+        {
+          "index": 122,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Thanks, Karthik.",
+          "start_time": 639.98
+        },
+        {
+          "index": 123,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Would it be possible to get a demo of.",
+          "start_time": 640.9
+        },
+        {
+          "index": 124,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, of course.",
+          "start_time": 645.26
+        },
+        {
+          "index": 125,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Even if it's quick.",
+          "start_time": 646.22
+        },
+        {
+          "index": 126,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Just to see, like if I were to grant Kate permission, how we do it on the current side of it, where we see Engagement and Lifecycle and then separately how we do the candidate survey side of it.",
+          "start_time": 647.06
+        },
+        {
+          "index": 127,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, of course, Charlie.",
+          "start_time": 660.81
+        },
+        {
+          "index": 128,
+          "speaker_name": "Karthik N",
+          "raw_text": "I'll see when this can be enabled.",
+          "start_time": 662.97
+        },
+        {
+          "index": 129,
+          "speaker_name": "Karthik N",
+          "raw_text": "We can also do it in one of our Sandbox account.",
+          "start_time": 666.41
+        },
+        {
+          "index": 130,
+          "speaker_name": "Karthik N",
+          "raw_text": "Instead of doing it in Yahoo's live instance, we can do it on one of our Sandbox account.",
+          "start_time": 668.53
+        },
+        {
+          "index": 131,
+          "speaker_name": "Karthik N",
+          "raw_text": "If not, we can also enable it in Yahoo and we can just do it with one particular access.",
+          "start_time": 673.13
+        },
+        {
+          "index": 132,
+          "speaker_name": "Karthik N",
+          "raw_text": "It's either Kate or someone else before we actually implement it for the others.",
+          "start_time": 678.49
+        },
+        {
+          "index": 133,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Fantastic.",
+          "start_time": 683.93
+        },
+        {
+          "index": 134,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "That would be amazing.",
+          "start_time": 684.61
+        },
+        {
+          "index": 135,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Thank you.",
+          "start_time": 686.1
+        },
+        {
+          "index": 136,
+          "speaker_name": "Karthik N",
+          "raw_text": "No problem.",
+          "start_time": 687.3
+        },
+        {
+          "index": 137,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "All right, Scott, anything else from your side at the moment on that topic?",
+          "start_time": 691.06
+        },
+        {
+          "index": 138,
+          "speaker_name": "Scott Domes",
+          "raw_text": "No, I.",
+          "start_time": 697.14
+        },
+        {
+          "index": 139,
+          "speaker_name": "Scott Domes",
+          "raw_text": "To be 100% honest, I'm still a little bit confused on what was just said there.",
+          "start_time": 697.86
+        },
+        {
+          "index": 140,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I hear two from Yugi, I hear three from Karthik.",
+          "start_time": 702.66
+        },
+        {
+          "index": 141,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But I, I'll.",
+          "start_time": 705.66
+        },
+        {
+          "index": 142,
+          "speaker_name": "Yugi P",
+          "raw_text": "I'll.",
+          "start_time": 707.06
+        },
+        {
+          "index": 143,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Charlie, if you're understanding it differently than",
+          "start_time": 707.46
+        },
+        {
+          "index": 144,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I am and I think a demo like a visual of this is going to be really, really helpful.",
+          "start_time": 709.46
+        },
+        {
+          "index": 145,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But if I'm understanding it correctly, our current environment, where we've got Eng, both Pulse and Full Engagement Survey and the Lifecycle is going to be one instance where we've got bifurcated permissions and then the candidate survey is going to be a little bit different in a separate environment.",
+          "start_time": 713.54
+        },
+        {
+          "index": 146,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But I think what Karthik's offering is even in a sandbox premise, like we can see a demo of how we give recruiting access across both.",
+          "start_time": 727.36
+        },
+        {
+          "index": 147,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Both of those things.",
+          "start_time": 738.24
+        },
+        {
+          "index": 148,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But ultimately for our sakes, it's separate than engagement, which I think is what we're after.",
+          "start_time": 739.2
+        },
+        {
+          "index": 149,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Nope.",
+          "start_time": 743.79
+        },
+        {
+          "index": 150,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I now understand because we didn't have that bifurcation between the two.",
+          "start_time": 744.11
+        },
+        {
+          "index": 151,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It wasn't that way to begin with.",
+          "start_time": 749.55
+        },
+        {
+          "index": 152,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But I just Clicked it in.",
+          "start_time": 750.95
+        },
+        {
+          "index": 153,
+          "speaker_name": "Karthik N",
+          "raw_text": "That's correct.",
+          "start_time": 751.91
+        },
+        {
+          "index": 154,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right, that is fine.",
+          "start_time": 752.99
+        },
+        {
+          "index": 155,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Before was all one and done like everything in one.",
+          "start_time": 754.59
+        },
+        {
+          "index": 156,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Now I see that they're separated.",
+          "start_time": 758.03
+        },
+        {
+          "index": 157,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So then we wouldn't need those checkboxes.",
+          "start_time": 760.67
+        },
+        {
+          "index": 158,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So we're good.",
+          "start_time": 763.35
+        },
+        {
+          "index": 159,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Terrific.",
+          "start_time": 764.51
+        },
+        {
+          "index": 160,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay.",
+          "start_time": 765.23
+        },
+        {
+          "index": 161,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Extending off of this conversation, so.",
+          "start_time": 766.43
+        },
+        {
+          "index": 162,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So we saw the question from Kate last week on Friday as to whether we can connect Culture Monkey data with Looker.",
+          "start_time": 769.5
+        },
+        {
+          "index": 163,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I'm a huge proponent of just keeping it in CultureMonkey as our single source of truth.",
+          "start_time": 777.66
+        },
+        {
+          "index": 164,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "It's less for us to maintain all of those sorts of things and I think this permissioning is going to alleviate the need for export.",
+          "start_time": 781.82
+        },
+        {
+          "index": 165,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But Yugi and Karthik, in your experience have other customers exported this to external dashboards?",
+          "start_time": 789.42
+        },
+        {
+          "index": 166,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And what has that looked like for.",
+          "start_time": 796.82
+        },
+        {
+          "index": 167,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "For you all?",
+          "start_time": 798.62
+        },
+        {
+          "index": 168,
+          "speaker_name": "Karthik N",
+          "raw_text": "No.",
+          "start_time": 803.02
+        },
+        {
+          "index": 169,
+          "speaker_name": "Karthik N",
+          "raw_text": "So I'll tell you from the enterprise accounts that I've handled personally handled where they usually take the export as a CSP and they start working on the CSP for different types of presentations.",
+          "start_time": 803.34
+        },
+        {
+          "index": 170,
+          "speaker_name": "Karthik N",
+          "raw_text": "Like they do quarterly life cycle presentations or candidate presentations.",
+          "start_time": 815.7
+        },
+        {
+          "index": 171,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 819.46
+        },
+        {
+          "index": 172,
+          "speaker_name": "Karthik N",
+          "raw_text": "So they specifically like pulling out the data reports from Culture Monkey to a different dashboard.",
+          "start_time": 820.22
+        },
+        {
+          "index": 173,
+          "speaker_name": "Karthik N",
+          "raw_text": "One, we never had an API to pull this for two reasons.",
+          "start_time": 827.15
+        },
+        {
+          "index": 174,
+          "speaker_name": "Karthik N",
+          "raw_text": "We want people to utilize Culture Monkey's dashboard and anything that they want, we want to do it in house.",
+          "start_time": 830.67
+        },
+        {
+          "index": 175,
+          "speaker_name": "Karthik N",
+          "raw_text": "We want to provide that here.",
+          "start_time": 836.51
+        },
+        {
+          "index": 176,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that's the reason we are exploring the different options.",
+          "start_time": 838.11
+        },
+        {
+          "index": 177,
+          "speaker_name": "Karthik N",
+          "raw_text": "But we have never taken an export outside, especially for the Lifecycle surveys in the past.",
+          "start_time": 841.63
+        },
+        {
+          "index": 178,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, okay.",
+          "start_time": 848.91
+        },
+        {
+          "index": 179,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "No, great to know.",
+          "start_time": 849.87
+        },
+        {
+          "index": 180,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I just think that context and going back to Kate is going to help close the loop there.",
+          "start_time": 851.39
+        },
+        {
+          "index": 181,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And I think her reporting needs are scheduled Karthik as well.",
+          "start_time": 855.23
+        },
+        {
+          "index": 182,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So like even if we had to do a quarterly like top up, we could do that as needed sort of thing.",
+          "start_time": 861.39
+        },
+        {
+          "index": 183,
+          "speaker_name": "Karthik N",
+          "raw_text": "That's 100% what the team is working on.",
+          "start_time": 868.35
+        },
+        {
+          "index": 184,
+          "speaker_name": "Karthik N",
+          "raw_text": "The scheduled export is one major point that I also wanted to catch up.",
+          "start_time": 871.989
+        },
+        {
+          "index": 185,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we do have that.",
+          "start_time": 876.11
+        },
+        {
+          "index": 186,
+          "speaker_name": "Karthik N",
+          "raw_text": "So the only thing is the frequency is something that the team is looking at because two things.",
+          "start_time": 878.27
+        },
+        {
+          "index": 187,
+          "speaker_name": "Karthik N",
+          "raw_text": "One which we also discussed with Sanya, if I remember.",
+          "start_time": 883.03
+        },
+        {
+          "index": 188,
+          "speaker_name": "Karthik N",
+          "raw_text": "So it's either the date when they got added to the survey or when they got they submitted the survey.",
+          "start_time": 887.67
+        },
+        {
+          "index": 189,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 893.59
+        },
+        {
+          "index": 190,
+          "speaker_name": "Karthik N",
+          "raw_text": "Say someone might get added to the survey in March.",
+          "start_time": 894.07
+        },
+        {
+          "index": 191,
+          "speaker_name": "Karthik N",
+          "raw_text": "They can still like end of March and they still take the survey in April.",
+          "start_time": 897.11
+        },
+        {
+          "index": 192,
+          "speaker_name": "Yugi P",
+          "raw_text": "Right.",
+          "start_time": 901.43
+        },
+        {
+          "index": 193,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that's when there will be a slight mismatch of count on the number of people added to the survey and the number of people who responded to the survey.",
+          "start_time": 901.83
+        },
+        {
+          "index": 194,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 910.31
+        },
+        {
+          "index": 195,
+          "speaker_name": "Karthik N",
+          "raw_text": "So, so that's the frequency thing that we are trying to solve right now.",
+          "start_time": 910.63
+        },
+        {
+          "index": 196,
+          "speaker_name": "Karthik N",
+          "raw_text": "But once it's there in place, we will have more details about it.",
+          "start_time": 914.34
+        },
+        {
+          "index": 197,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay.",
+          "start_time": 919.06
+        },
+        {
+          "index": 198,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, that sounds good.",
+          "start_time": 923.14
+        },
+        {
+          "index": 199,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And I think everything can be solved with a footnote or two in our reporting.",
+          "start_time": 924.66
+        },
+        {
+          "index": 200,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But ultimately Karthik, where does that kind of sit for you all in terms of when you think that will be something where we'll have a solution in place",
+          "start_time": 928.66
+        },
+        {
+          "index": 201,
+          "speaker_name": "Karthik N",
+          "raw_text": "for the scheduled export?",
+          "start_time": 938.51
+        },
+        {
+          "index": 202,
+          "speaker_name": "Karthik N",
+          "raw_text": "I do not have an eta but possibly by next week because I also have a discussion around the permissions that we just discussed.",
+          "start_time": 939.59
+        },
+        {
+          "index": 203,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 947.35
+        },
+        {
+          "index": 204,
+          "speaker_name": "Karthik N",
+          "raw_text": "So those two things I need to talk to my team together.",
+          "start_time": 947.59
+        },
+        {
+          "index": 205,
+          "speaker_name": "Karthik N",
+          "raw_text": "So probably by next week we should have an ata.",
+          "start_time": 950.83
+        },
+        {
+          "index": 206,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yugi, do we from our previous discussion, do you have any timelines for the scheduled export?",
+          "start_time": 953.39
+        },
+        {
+          "index": 207,
+          "speaker_name": "Yugi P",
+          "raw_text": "Not really.",
+          "start_time": 961.47
+        },
+        {
+          "index": 208,
+          "speaker_name": "Yugi P",
+          "raw_text": "Karthik, I think we have to pick this up with my team once again.",
+          "start_time": 962.11
+        },
+        {
+          "index": 209,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 965.15
+        },
+        {
+          "index": 210,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay then.",
+          "start_time": 965.76
+        },
+        {
+          "index": 211,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, fantastic.",
+          "start_time": 967.28
+        },
+        {
+          "index": 212,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We'll put it on our agenda to chat through next week and see if we've got any updates then.",
+          "start_time": 968.28
+        },
+        {
+          "index": 213,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Terrific.",
+          "start_time": 973.28
+        },
+        {
+          "index": 214,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay.",
+          "start_time": 974.8
+        },
+        {
+          "index": 215,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "With that Scott and Sonia, I'm going to move us off of this and back into 2026 poll survey scoped enhancements.",
+          "start_time": 975.4
+        },
+        {
+          "index": 216,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Does that work?",
+          "start_time": 982.24
+        },
+        {
+          "index": 217,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, Yuzi, Karthik, anything else on that topic before I move us over to the other set of enhancements we've been chatting through?",
+          "start_time": 984.24
+        },
+        {
+          "index": 218,
+          "speaker_name": "Yugi P",
+          "raw_text": "No, Charlie.",
+          "start_time": 993.21
+        },
+        {
+          "index": 219,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Perfect.",
+          "start_time": 994.41
+        },
+        {
+          "index": 220,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, so we took a look at one too many Google sheets open this morning.",
+          "start_time": 994.93
+        },
+        {
+          "index": 221,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We took a look at everything with regards to enhancements.",
+          "start_time": 1000.57
+        },
+        {
+          "index": 222,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And your notes on that.",
+          "start_time": 1004.89
+        },
+        {
+          "index": 223,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We have a couple of notes and just follow up questions to see if we can help clarify and close the loop on our side of the house, if that's okay.",
+          "start_time": 1006.09
+        },
+        {
+          "index": 224,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So that one is a hover over.",
+          "start_time": 1014.81
+        },
+        {
+          "index": 225,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, we had one in here.",
+          "start_time": 1016.73
+        },
+        {
+          "index": 226,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "When we're looking at.",
+          "start_time": 1018.82
+        },
+        {
+          "index": 227,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I'm going to pull up Culture Monkey as well so we can take a look at the tool in parallel.",
+          "start_time": 1019.66
+        },
+        {
+          "index": 228,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But we were taking a look at the questions page here.",
+          "start_time": 1025.38
+        },
+        {
+          "index": 229,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "There we go.",
+          "start_time": 1030.58
+        },
+        {
+          "index": 230,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And the enhancement that was asked for was to add in the company average score here.",
+          "start_time": 1031.54
+        },
+        {
+          "index": 231,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So in this example we're looking at Janice's organization.",
+          "start_time": 1037.3
+        },
+        {
+          "index": 232,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We see how her team scored one of the use cases that we were finding very valuable in terms of the volume of questions that we were getting from the business was out.",
+          "start_time": 1040.9
+        },
+        {
+          "index": 233,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Is my score for this question compared to Yahoo's overall score?",
+          "start_time": 1050.28
+        },
+        {
+          "index": 234,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So I know this was listed as rejected but just curious Yugi, if you've got any more information on is this something that we can add later on in the roadmap and it's just too complex to tackle right now or what are what our limitations are are on including the company?",
+          "start_time": 1055.68
+        },
+        {
+          "index": 235,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes, Charlie.",
+          "start_time": 1071.49
+        },
+        {
+          "index": 236,
+          "speaker_name": "Yugi P",
+          "raw_text": "So this was something which could involve a big manf, which is why, given the short time for the survey launch, we wanted to pick this up in the later quarters and implement this.",
+          "start_time": 1072.17
+        },
+        {
+          "index": 237,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, perfect.",
+          "start_time": 1082.85
+        },
+        {
+          "index": 238,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So we'll put a pin in this one and we'll just consider it on the roadmap for potential discussion later.",
+          "start_time": 1084.21
+        },
+        {
+          "index": 239,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay.",
+          "start_time": 1090.29
+        },
+        {
+          "index": 240,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay,",
+          "start_time": 1091.09
+        },
+        {
+          "index": 241,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Let's do that.",
+          "start_time": 1096.78
+        },
+        {
+          "index": 242,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "The next one that we had was the question score.",
+          "start_time": 1097.5
+        },
+        {
+          "index": 243,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Oh, okay.",
+          "start_time": 1105.02
+        },
+        {
+          "index": 244,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "This was, this is another one is.",
+          "start_time": 1106.22
+        },
+        {
+          "index": 245,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And it's low hanging fruit.",
+          "start_time": 1109.1
+        },
+        {
+          "index": 246,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But also just curious if this is of similar nature.",
+          "start_time": 1111.66
+        },
+        {
+          "index": 247,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So some of these, as you know, our drivers are made up of multiple questions.",
+          "start_time": 1115.18
+        },
+        {
+          "index": 248,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "In some instances, in some instances there's a one to one relationship.",
+          "start_time": 1121
+        },
+        {
+          "index": 249,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But in the case where let's say there's like three purpose alignment questions, is it possible to take the individual question score and compare it to the overall driver score for that person so they can see, like, look, I'm looking at purpose alignment.",
+          "start_time": 1124.76
+        },
+        {
+          "index": 250,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "The overall purpose alignment score was 9.5.",
+          "start_time": 1140.4
+        },
+        {
+          "index": 251,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But this question gives me specific insights into where we can improve in that driver.",
+          "start_time": 1144.12
+        },
+        {
+          "index": 252,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Is that something we can do?",
+          "start_time": 1149.84
+        },
+        {
+          "index": 253,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Compare question score to driver score.",
+          "start_time": 1151
+        },
+        {
+          "index": 254,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay, I'm just thinking off the top of my head.",
+          "start_time": 1157.64
+        },
+        {
+          "index": 255,
+          "speaker_name": "Yugi P",
+          "raw_text": "So let's say you have three questions to a driver and you get a specific driver score, but in cases wherein there's just one question mapped to a driver, and in those cases the comparison won't make sense.",
+          "start_time": 1160.12
+        },
+        {
+          "index": 256,
+          "speaker_name": "Yugi P",
+          "raw_text": "Right.",
+          "start_time": 1172.76
+        },
+        {
+          "index": 257,
+          "speaker_name": "Yugi P",
+          "raw_text": "So I'm just looking at possible, no listing types.",
+          "start_time": 1173.12
+        },
+        {
+          "index": 258,
+          "speaker_name": "Yugi P",
+          "raw_text": "Was this listed on the Pulse survey requirement sheet?",
+          "start_time": 1179.31
+        },
+        {
+          "index": 259,
+          "speaker_name": "Yugi P",
+          "raw_text": "Charlie?",
+          "start_time": 1183.75
+        },
+        {
+          "index": 260,
+          "speaker_name": "Yugi P",
+          "raw_text": "I'm just thinking, I think it's a new request, which I don't remember.",
+          "start_time": 1184.23
+        },
+        {
+          "index": 261,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So, yeah, we have it here under this line.",
+          "start_time": 1187.47
+        },
+        {
+          "index": 262,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "It was rejected.",
+          "start_time": 1194.07
+        },
+        {
+          "index": 263,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "It was the ability to look at the benchmark score in comparison to the individual question score.",
+          "start_time": 1196.35
+        },
+        {
+          "index": 264,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And so just looking at it similar to above, like, this seems pretty complex to add comparisons in at the question level, but if, like, is this something that's completely out of scope and I was just wondering why if so, or is it something that we could potentially keep on the roadmap and revisit later?",
+          "start_time": 1203.66
+        },
+        {
+          "index": 265,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yeah, maybe.",
+          "start_time": 1220.94
+        },
+        {
+          "index": 266,
+          "speaker_name": "Yugi P",
+          "raw_text": "Charlie, the reason why it was rejected is that we understood that you wanted to compare, you know, questions of the benchmark score, which wouldn't make sense, right?",
+          "start_time": 1221.86
+        },
+        {
+          "index": 267,
+          "speaker_name": "Yugi P",
+          "raw_text": "Because the questions might vary and it wouldn't make sense to compare it to a global industry benchmark.",
+          "start_time": 1231.47
+        },
+        {
+          "index": 268,
+          "speaker_name": "Yugi P",
+          "raw_text": "So that's the reason we rejected this one.",
+          "start_time": 1236.59
+        },
+        {
+          "index": 269,
+          "speaker_name": "Yugi P",
+          "raw_text": "But the explanation, you gave a different perspective entirely.",
+          "start_time": 1239.39
+        },
+        {
+          "index": 270,
+          "speaker_name": "Yugi P",
+          "raw_text": "So maybe I'll talk to my team and see if we can include this and I'll also check with my team on the, you know, manpower involved.",
+          "start_time": 1243.629
+        },
+        {
+          "index": 271,
+          "speaker_name": "Yugi P",
+          "raw_text": "So that we can look at including it in a future surveys.",
+          "start_time": 1250.87
+        },
+        {
+          "index": 272,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Sounds good.",
+          "start_time": 1254.55
+        },
+        {
+          "index": 273,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Sounds good.",
+          "start_time": 1255.19
+        },
+        {
+          "index": 274,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, I'm aligned with those.",
+          "start_time": 1255.87
+        },
+        {
+          "index": 275,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I was just wrapping up the questions because I think, I think just contextually, if we take a step back, this view was very popular with our managers in reviewing their scores.",
+          "start_time": 1257.51
+        },
+        {
+          "index": 276,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And this table, Sorry, just take a moment for it to load.",
+          "start_time": 1268.07
+        },
+        {
+          "index": 277,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But that table at the bottom was really helpful.",
+          "start_time": 1274.87
+        },
+        {
+          "index": 278,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "However, the two views, of course, this is by driver, the other one is by question.",
+          "start_time": 1278.15
+        },
+        {
+          "index": 279,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And so just helping them make a connection between question scores, driver scores, what questions, give us a little bit more insight into where our hotspots are within a driver, those sorts of things.",
+          "start_time": 1282.93
+        },
+        {
+          "index": 280,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So I just think that's what we're solving for.",
+          "start_time": 1295.169
+        },
+        {
+          "index": 281,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But if you have any other ideas in terms of how our managers can do that for themselves, would love to hear it.",
+          "start_time": 1298.17
+        },
+        {
+          "index": 282,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So that's just some context.",
+          "start_time": 1305.55
+        },
+        {
+          "index": 283,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay, good.",
+          "start_time": 1307.71
+        },
+        {
+          "index": 284,
+          "speaker_name": "Yugi P",
+          "raw_text": "I'm sorry.",
+          "start_time": 1308.47
+        },
+        {
+          "index": 285,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yeah.",
+          "start_time": 1308.99
+        },
+        {
+          "index": 286,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay.",
+          "start_time": 1310.99
+        },
+        {
+          "index": 287,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "There's a couple that we can definitely address with hover overs, which is.",
+          "start_time": 1312.91
+        },
+        {
+          "index": 288,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, that's fine.",
+          "start_time": 1317.43
+        },
+        {
+          "index": 289,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Scott, did we want to say anything more on the sentiment, smiley faces or are we okay to sit with that one?",
+          "start_time": 1321.71
+        },
+        {
+          "index": 290,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I. I think culture monkeys pretty dug in that they're going to keep them.",
+          "start_time": 1333.96
+        },
+        {
+          "index": 291,
+          "speaker_name": "Scott Domes",
+          "raw_text": "You know, the, the only.",
+          "start_time": 1338.68
+        },
+        {
+          "index": 292,
+          "speaker_name": "Scott Domes",
+          "raw_text": "If we're going to stick with the smiley face, which is perfectly fine.",
+          "start_time": 1342.28
+        },
+        {
+          "index": 293,
+          "speaker_name": "Scott Domes",
+          "raw_text": "The one that is zero still looks like a frowny face with some of the feedback that I got right there.",
+          "start_time": 1345.8
+        },
+        {
+          "index": 294,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It's.",
+          "start_time": 1354.28
+        },
+        {
+          "index": 295,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It doesn't.",
+          "start_time": 1354.76
+        },
+        {
+          "index": 296,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It doesn't look neutral is what I'm hearing from.",
+          "start_time": 1355.2
+        },
+        {
+          "index": 297,
+          "speaker_name": "Scott Domes",
+          "raw_text": "From people.",
+          "start_time": 1359.04
+        },
+        {
+          "index": 298,
+          "speaker_name": "Yugi P",
+          "raw_text": "But that is neither a sad or a happy emoji, Scott.",
+          "start_time": 1363.28
+        },
+        {
+          "index": 299,
+          "speaker_name": "Yugi P",
+          "raw_text": "So that's the whole point of having it as the one with the slanting mouth.",
+          "start_time": 1368
+        },
+        {
+          "index": 300,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yeah, yeah.",
+          "start_time": 1371.28
+        },
+        {
+          "index": 301,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That the, the one looks like he's a little bit frowning.",
+          "start_time": 1372.28
+        },
+        {
+          "index": 302,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's that.",
+          "start_time": 1375.32
+        },
+        {
+          "index": 303,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I mean, that you guys are good with your happy smiley.",
+          "start_time": 1375.92
+        },
+        {
+          "index": 304,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's fine.",
+          "start_time": 1379.52
+        },
+        {
+          "index": 305,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But I'm saying I'm only giving you feedback from my side where looks like almost frowning.",
+          "start_time": 1380
+        },
+        {
+          "index": 306,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It isn't usually it's like a straight line and not a going down.",
+          "start_time": 1384.89
+        },
+        {
+          "index": 307,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's it.",
+          "start_time": 1389.17
+        },
+        {
+          "index": 308,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Or there.",
+          "start_time": 1391.61
+        },
+        {
+          "index": 309,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's it, Charlie.",
+          "start_time": 1395.05
+        },
+        {
+          "index": 310,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "All good.",
+          "start_time": 1396.49
+        },
+        {
+          "index": 311,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, I'll move us on then.",
+          "start_time": 1397.21
+        },
+        {
+          "index": 312,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "The next one that I've got is the manager reactions.",
+          "start_time": 1399.69
+        },
+        {
+          "index": 313,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So, Yugi, we were, we were pretty adamant that we wanted to remove manager reactions.",
+          "start_time": 1404.57
+        },
+        {
+          "index": 314,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We see that that's been rejected, which is okay.",
+          "start_time": 1410.85
+        },
+        {
+          "index": 315,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And I think our proactive communication was really helpful.",
+          "start_time": 1414.14
+        },
+        {
+          "index": 316,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "However, we've got no way to verify that our communications were effective.",
+          "start_time": 1416.94
+        },
+        {
+          "index": 317,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Is there any way of seeing how many people, how many managers reacted to these comments?",
+          "start_time": 1421.14
+        },
+        {
+          "index": 318,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Is there a way to see what comments were reacted to any.",
+          "start_time": 1428.62
+        },
+        {
+          "index": 319,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Any sort of reportability on this function.",
+          "start_time": 1433.34
+        },
+        {
+          "index": 320,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay, I'll check with my Steam if we can get an exploit.",
+          "start_time": 1439.83
+        },
+        {
+          "index": 321,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes.",
+          "start_time": 1444.71
+        },
+        {
+          "index": 322,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yeah.",
+          "start_time": 1445.35
+        },
+        {
+          "index": 323,
+          "speaker_name": "Karthik N",
+          "raw_text": "So Charlie, we don't have that on the platform but if you'd like just to make sure that it's working internally.",
+          "start_time": 1445.71
+        },
+        {
+          "index": 324,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1453.71
+        },
+        {
+          "index": 325,
+          "speaker_name": "Karthik N",
+          "raw_text": "We can try to get an export of the emails probably like last 10 days or last one week.",
+          "start_time": 1454.03
+        },
+        {
+          "index": 326,
+          "speaker_name": "Karthik N",
+          "raw_text": "How many such reaction emails were sent so we can get that information.",
+          "start_time": 1459.83
+        },
+        {
+          "index": 327,
+          "speaker_name": "Karthik N",
+          "raw_text": "If that works out for you, that.",
+          "start_time": 1464.63
+        },
+        {
+          "index": 328,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "That works.",
+          "start_time": 1467.19
+        },
+        {
+          "index": 329,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "My only pause with what you've said there Karthik, is we're a bit removed from the survey going live now.",
+          "start_time": 1468.23
+        },
+        {
+          "index": 330,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So is there any way to get a snapshot of the week where we shared results which I believe was the 12th of January",
+          "start_time": 1474.03
+        },
+        {
+          "index": 331,
+          "speaker_name": "Karthik N",
+          "raw_text": "to that day we may not have that logs because it's back to in January 12th.",
+          "start_time": 1483.43
+        },
+        {
+          "index": 332,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1489.63
+        },
+        {
+          "index": 333,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that's the reason.",
+          "start_time": 1489.95
+        },
+        {
+          "index": 334,
+          "speaker_name": "Karthik N",
+          "raw_text": "But I can see how long we have the logs for.",
+          "start_time": 1491.03
+        },
+        {
+          "index": 335,
+          "speaker_name": "Karthik N",
+          "raw_text": "If it's 90 days it's easy to get it for Jan.",
+          "start_time": 1493.47
+        },
+        {
+          "index": 336,
+          "speaker_name": "Karthik N",
+          "raw_text": "But if it's less than that or if there are too many other emails that went out from Yahoo.",
+          "start_time": 1496.92
+        },
+        {
+          "index": 337,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1501.8
+        },
+        {
+          "index": 338,
+          "speaker_name": "Karthik N",
+          "raw_text": "So then these logs will go down.",
+          "start_time": 1502.04
+        },
+        {
+          "index": 339,
+          "speaker_name": "Karthik N",
+          "raw_text": "That I can see.",
+          "start_time": 1504.68
+        },
+        {
+          "index": 340,
+          "speaker_name": "Karthik N",
+          "raw_text": "So I'll see for January 12th, the week of January 12th.",
+          "start_time": 1505.48
+        },
+        {
+          "index": 341,
+          "speaker_name": "Karthik N",
+          "raw_text": "Let's see if we get that logs.",
+          "start_time": 1508.88
+        },
+        {
+          "index": 342,
+          "speaker_name": "Karthik N",
+          "raw_text": "If you don't have.",
+          "start_time": 1511
+        },
+        {
+          "index": 343,
+          "speaker_name": "Karthik N",
+          "raw_text": "We'll also do it for the rest of the days like with the recent months.",
+          "start_time": 1511.96
+        },
+        {
+          "index": 344,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Fantastic.",
+          "start_time": 1515.72
+        },
+        {
+          "index": 345,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Sorry Scott, go for it.",
+          "start_time": 1516.6
+        },
+        {
+          "index": 346,
+          "speaker_name": "Scott Domes",
+          "raw_text": "On that same note, there was three things that we were looking at, right?",
+          "start_time": 1518.44
+        },
+        {
+          "index": 347,
+          "speaker_name": "Scott Domes",
+          "raw_text": "How many managers went in here?",
+          "start_time": 1522.04
+        },
+        {
+          "index": 348,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So I don't know what this is right here.",
+          "start_time": 1525.13
+        },
+        {
+          "index": 349,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Total managers, 999.",
+          "start_time": 1526.93
+        },
+        {
+          "index": 350,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Maybe it's going back in history.",
+          "start_time": 1528.61
+        },
+        {
+          "index": 351,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Right.",
+          "start_time": 1530.25
+        },
+        {
+          "index": 352,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But we invited 7.",
+          "start_time": 1532.17
+        },
+        {
+          "index": 353,
+          "speaker_name": "Scott Domes",
+          "raw_text": "7 4.",
+          "start_time": 1534.456
+        },
+        {
+          "index": 354,
+          "speaker_name": "Scott Domes",
+          "raw_text": "41 managers have accepted the invite, which means they've been in the system.",
+          "start_time": 1536.576
+        },
+        {
+          "index": 355,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And then this 225 would probably be this minus what we actually invited which is 225.",
+          "start_time": 1542.89
+        },
+        {
+          "index": 356,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So are we saying 41 managers out of 774 or let's say 5% of managers are going in here?",
+          "start_time": 1548.97
+        },
+        {
+          "index": 357,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that what we're saying?",
+          "start_time": 1558.59
+        },
+        {
+          "index": 358,
+          "speaker_name": "Yugi P",
+          "raw_text": "No, Scott, this is actually not the correct value and we are working on fixing discount so this should be fixed pretty soon.",
+          "start_time": 1561.75
+        },
+        {
+          "index": 359,
+          "speaker_name": "Yugi P",
+          "raw_text": "I know we had this discussion when doing a manager invites time.",
+          "start_time": 1569.51
+        },
+        {
+          "index": 360,
+          "speaker_name": "Yugi P",
+          "raw_text": "So I just push this up with my team once more and ensure this is showing the correct number.",
+          "start_time": 1573.59
+        },
+        {
+          "index": 361,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 1578.22
+        },
+        {
+          "index": 362,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Awesome.",
+          "start_time": 1578.7
+        },
+        {
+          "index": 363,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Then actions was the other one.",
+          "start_time": 1579.82
+        },
+        {
+          "index": 364,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Charlie, what you brought up was one.",
+          "start_time": 1583.66
+        },
+        {
+          "index": 365,
+          "speaker_name": "Scott Domes",
+          "raw_text": "How many managers have been There was two and then total actions.",
+          "start_time": 1585.58
+        },
+        {
+          "index": 366,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I'm a super admin so it was 10 actions but seven of them were like dummy Actions that we were doing in test phase.",
+          "start_time": 1588.94
+        },
+        {
+          "index": 367,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So am I safe to assume that out of everybody that's been in here, Titan, Rob and Johan or Jonah?",
+          "start_time": 1597.58
+        },
+        {
+          "index": 368,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Johan.",
+          "start_time": 1608.22
+        },
+        {
+          "index": 369,
+          "speaker_name": "Scott Domes",
+          "raw_text": "I don't know how I got that.",
+          "start_time": 1609.1
+        },
+        {
+          "index": 370,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Jonah, three actions have been created.",
+          "start_time": 1610.54
+        },
+        {
+          "index": 371,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that fair?",
+          "start_time": 1614.38
+        },
+        {
+          "index": 372,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes, Paul.",
+          "start_time": 1615.66
+        },
+        {
+          "index": 373,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yeah.",
+          "start_time": 1616.38
+        },
+        {
+          "index": 374,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay, so three total actions.",
+          "start_time": 1616.78
+        },
+        {
+          "index": 375,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We don't know how many managers.",
+          "start_time": 1619.74
+        },
+        {
+          "index": 376,
+          "speaker_name": "Scott Domes",
+          "raw_text": "You're going to fix that.",
+          "start_time": 1621.58
+        },
+        {
+          "index": 377,
+          "speaker_name": "Scott Domes",
+          "raw_text": "See how many people are actually in here.",
+          "start_time": 1623.9
+        },
+        {
+          "index": 378,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It isn't 5%.",
+          "start_time": 1626.78
+        },
+        {
+          "index": 379,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Roughly 5%.",
+          "start_time": 1627.98
+        },
+        {
+          "index": 380,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And then the other one, Charlie, was yours.",
+          "start_time": 1629.34
+        },
+        {
+          "index": 381,
+          "speaker_name": "Scott Domes",
+          "raw_text": "There's no place for me to see reactions.",
+          "start_time": 1632.14
+        },
+        {
+          "index": 382,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Those were the three things that we said we wanted to look at.",
+          "start_time": 1634.14
+        },
+        {
+          "index": 383,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "All right, it is.",
+          "start_time": 1637.51
+        },
+        {
+          "index": 384,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And Karthik, appreciate you looking into the nine the the previous 90 days of logs.",
+          "start_time": 1640.07
+        },
+        {
+          "index": 385,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We'll see what we can pull with regards to the last engagement survey.",
+          "start_time": 1644.63
+        },
+        {
+          "index": 386,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But would it be possible then for the manager reactions if we need to manually pull those from our logs of what's being sent out from Culture Monkey, can we schedule that for this next survey so we can take a look at what happened this time around?",
+          "start_time": 1647.95
+        },
+        {
+          "index": 387,
+          "speaker_name": "Karthik N",
+          "raw_text": "We can try Charlie, because it's not, it's.",
+          "start_time": 1668.08
+        },
+        {
+          "index": 388,
+          "speaker_name": "Karthik N",
+          "raw_text": "It's a log.",
+          "start_time": 1670.68
+        },
+        {
+          "index": 389,
+          "speaker_name": "Karthik N",
+          "raw_text": "It's not a report that we are looking at.",
+          "start_time": 1671.24
+        },
+        {
+          "index": 390,
+          "speaker_name": "Karthik N",
+          "raw_text": "It's a log of how many reaction emails that were sent out to managers, like to the employees from managers.",
+          "start_time": 1672.96
+        },
+        {
+          "index": 391,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1679.84
+        },
+        {
+          "index": 392,
+          "speaker_name": "Karthik N",
+          "raw_text": "So I can put it as a request to the team, but I don't know how it will be moved internally.",
+          "start_time": 1680.12
+        },
+        {
+          "index": 393,
+          "speaker_name": "Karthik N",
+          "raw_text": "I'll also keep you posted on that one.",
+          "start_time": 1686.32
+        },
+        {
+          "index": 394,
+          "speaker_name": "Karthik N",
+          "raw_text": "So first thing I'll do the 90 days log for the triplass survey.",
+          "start_time": 1688.04
+        },
+        {
+          "index": 395,
+          "speaker_name": "Karthik N",
+          "raw_text": "I'll see what we can get out of it and then I'll also put this thing of keeping it in the platform.",
+          "start_time": 1691.51
+        },
+        {
+          "index": 396,
+          "speaker_name": "Karthik N",
+          "raw_text": "So see, notifications are the biggest task that you are picking up for the next quarter.",
+          "start_time": 1698.47
+        },
+        {
+          "index": 397,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1702.95
+        },
+        {
+          "index": 398,
+          "speaker_name": "Karthik N",
+          "raw_text": "So any notification that you want to schedule, let it be super admin notification.",
+          "start_time": 1703.35
+        },
+        {
+          "index": 399,
+          "speaker_name": "Karthik N",
+          "raw_text": "You want to see the scheduled export.",
+          "start_time": 1707.95
+        },
+        {
+          "index": 400,
+          "speaker_name": "Karthik N",
+          "raw_text": "Those are the things that we will be working on for the next quarter.",
+          "start_time": 1709.55
+        },
+        {
+          "index": 401,
+          "speaker_name": "Karthik N",
+          "raw_text": "So maybe we can include this as well.",
+          "start_time": 1712.23
+        },
+        {
+          "index": 402,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Amazing.",
+          "start_time": 1714.87
+        },
+        {
+          "index": 403,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, sounds good.",
+          "start_time": 1715.59
+        },
+        {
+          "index": 404,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Charlie, what's your expectation on that?",
+          "start_time": 1717.23
+        },
+        {
+          "index": 405,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That it.",
+          "start_time": 1718.83
+        },
+        {
+          "index": 406,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That it's a report in report builder that we can pull out?",
+          "start_time": 1719.19
+        },
+        {
+          "index": 407,
+          "speaker_name": "Scott Domes",
+          "raw_text": "If it's a log, they can.",
+          "start_time": 1721.95
+        },
+        {
+          "index": 408,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It can be turned into a report.",
+          "start_time": 1723.31
+        },
+        {
+          "index": 409,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "That would be phenomenal.",
+          "start_time": 1726.67
+        },
+        {
+          "index": 410,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Listen, if we could do that, great.",
+          "start_time": 1727.91
+        },
+        {
+          "index": 411,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And I think it would be great from the Culture Monkey side too because then they're not manually sifting through audits or logs rather.",
+          "start_time": 1729.79
+        },
+        {
+          "index": 412,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But my main goal right now is to confirm our strategy.",
+          "start_time": 1738.19
+        },
+        {
+          "index": 413,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Like is, are our comms effective enough that employees are not being peppered by manager reactions which we're not promoting.",
+          "start_time": 1742.59
+        },
+        {
+          "index": 414,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So that is more just a gut check to make sure that we had done okay, we covered our bases, but we didn't see any questions come through from employees either.",
+          "start_time": 1751.34
+        },
+        {
+          "index": 415,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Right, Scott?",
+          "start_time": 1758.46
+        },
+        {
+          "index": 416,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So I'm not too concerned.",
+          "start_time": 1759.1
+        },
+        {
+          "index": 417,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "It's not our highest priority.",
+          "start_time": 1760.78
+        },
+        {
+          "index": 418,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But keeping in mind that this will happen every survey just want to make sure that we're.",
+          "start_time": 1762.62
+        },
+        {
+          "index": 419,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We're doing our best.",
+          "start_time": 1768.34
+        },
+        {
+          "index": 420,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yeah.",
+          "start_time": 1770.06
+        },
+        {
+          "index": 421,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Well, I'm saying if they're in their logs already, right.",
+          "start_time": 1770.62
+        },
+        {
+          "index": 422,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And they're pulling those logs, turning those into reports is not a huge lift.",
+          "start_time": 1773.98
+        },
+        {
+          "index": 423,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And as.",
+          "start_time": 1778.34
+        },
+        {
+          "index": 424,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And as users of the.",
+          "start_time": 1778.86
+        },
+        {
+          "index": 425,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Of the application, those are probably the three things that we'd want to know.",
+          "start_time": 1780.78
+        },
+        {
+          "index": 426,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Who's been logged in the last 90 days, how many managed reactions and actions.",
+          "start_time": 1785.22
+        },
+        {
+          "index": 427,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Well, actions we can get to.",
+          "start_time": 1792.22
+        },
+        {
+          "index": 428,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But who's logged in and what are the managed reactions?",
+          "start_time": 1793.5
+        },
+        {
+          "index": 429,
+          "speaker_name": "Scott Domes",
+          "raw_text": "These are all logs that are there that if there was a report from a super admin standpoint, we'd be able to pull and say, this, this salad's being used.",
+          "start_time": 1795.62
+        },
+        {
+          "index": 430,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's all.",
+          "start_time": 1803.42
+        },
+        {
+          "index": 431,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And they already have a report builder area, so.",
+          "start_time": 1807.98
+        },
+        {
+          "index": 432,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Potato.",
+          "start_time": 1811.82
+        },
+        {
+          "index": 433,
+          "speaker_name": "Scott Domes",
+          "raw_text": "All right, Sorry, go ahead.",
+          "start_time": 1812.86
+        },
+        {
+          "index": 434,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "No, no worries at all.",
+          "start_time": 1814.699
+        },
+        {
+          "index": 435,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay.",
+          "start_time": 1817.74
+        },
+        {
+          "index": 436,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Let's have a quick peek at everything else.",
+          "start_time": 1818.86
+        },
+        {
+          "index": 437,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "This is fine.",
+          "start_time": 1823.58
+        },
+        {
+          "index": 438,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "This is fine.",
+          "start_time": 1824.46
+        },
+        {
+          "index": 439,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay.",
+          "start_time": 1827.4
+        },
+        {
+          "index": 440,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I think we were really happy with everything else that was accepted.",
+          "start_time": 1827.96
+        },
+        {
+          "index": 441,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So our main goal for this week is to get everything prioritized.",
+          "start_time": 1830.92
+        },
+        {
+          "index": 442,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Of course.",
+          "start_time": 1835.76
+        },
+        {
+          "index": 443,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We need to get that stack, that stack ranked for you all in the next, like, couple of days.",
+          "start_time": 1837.24
+        },
+        {
+          "index": 444,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So we know what we're moving on.",
+          "start_time": 1843
+        },
+        {
+          "index": 445,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I did have one question for this group, Karthik and uv.",
+          "start_time": 1846.04
+        },
+        {
+          "index": 446,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "This is more of a discovery question.",
+          "start_time": 1849.84
+        },
+        {
+          "index": 447,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "It is not in any way, like something we need to, like, move on super quickly.",
+          "start_time": 1851.72
+        },
+        {
+          "index": 448,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But I'm just thinking ahead to later surveys.",
+          "start_time": 1857.19
+        },
+        {
+          "index": 449,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So we're talking a little bit earlier about the split between Engagement Survey and Lifecycle survey within Engagement Survey, because we are very clearly calling out, like Engagement Survey versus Pulse Survey.",
+          "start_time": 1860.47
+        },
+        {
+          "index": 450,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Do we have a way to split that in our dashboarding?",
+          "start_time": 1876.07
+        },
+        {
+          "index": 451,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And here's what I mean.",
+          "start_time": 1879.19
+        },
+        {
+          "index": 452,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "In our dashboard view, we've got this scores over time toggle.",
+          "start_time": 1883.44
+        },
+        {
+          "index": 453,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I'm fairly confident for this next poll survey, which we are looking to land in April, we will continue to use the dashboard as a single view of like, just the current survey that's going on.",
+          "start_time": 1887.52
+        },
+        {
+          "index": 454,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So we would filter this for just the 2026 pulse survey.",
+          "start_time": 1899.84
+        },
+        {
+          "index": 455,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "With that in mind, though, looking ahead to the bigger survey again at the end of the year.",
+          "start_time": 1904.72
+        },
+        {
+          "index": 456,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "That will be our second year using Culture Monkey, which is great.",
+          "start_time": 1909
+        },
+        {
+          "index": 457,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And we're going start to see trend lines here.",
+          "start_time": 1912.04
+        },
+        {
+          "index": 458,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "However, our Pulse survey is very different from our engagement survey in that the engagement survey is much longer.",
+          "start_time": 1914.62
+        },
+        {
+          "index": 459,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "There's just different elements to it.",
+          "start_time": 1923.26
+        },
+        {
+          "index": 460,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "And so I was wondering, in this view, do we have any ability to split out the ENPS score across our engagement surveys versus the ENPS score and overall scores of our Pulse surveys?",
+          "start_time": 1925.42
+        },
+        {
+          "index": 461,
+          "speaker_name": "Yugi P",
+          "raw_text": "I mean, Charlie, I think we already have a feature available wherein we can choose which survey should be displayed on the dashboard.",
+          "start_time": 1943.85
+        },
+        {
+          "index": 462,
+          "speaker_name": "Yugi P",
+          "raw_text": "Right.",
+          "start_time": 1951.29
+        },
+        {
+          "index": 463,
+          "speaker_name": "Yugi P",
+          "raw_text": "So let's say you want to display just the Pulse survey.",
+          "start_time": 1952.01
+        },
+        {
+          "index": 464,
+          "speaker_name": "Yugi P",
+          "raw_text": "When it's.",
+          "start_time": 1954.73
+        },
+        {
+          "index": 465,
+          "speaker_name": "Yugi P",
+          "raw_text": "When the survey is running, you can just keep it that as well.",
+          "start_time": 1955.01
+        },
+        {
+          "index": 466,
+          "speaker_name": "Yugi P",
+          "raw_text": "So let's say when you run the engagement survey at the end of this year, you just want the two engagement surveys and within culture monthly and not the Pulse survey.",
+          "start_time": 1958.13
+        },
+        {
+          "index": 467,
+          "speaker_name": "Yugi P",
+          "raw_text": "We can exclude all survey and just include the both engagement surveys alone.",
+          "start_time": 1967.58
+        },
+        {
+          "index": 468,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yeah, so that would be.",
+          "start_time": 1973.02
+        },
+        {
+          "index": 469,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "That would be amazing.",
+          "start_time": 1974.9
+        },
+        {
+          "index": 470,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I'm really happy with that option.",
+          "start_time": 1975.78
+        },
+        {
+          "index": 471,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "If we wanted to go for enabling all three surveys, Engagement, Pulse and Engagement, can the scores over time be split to show the trend of engagement surveys versus the trend of Pulse surveys or.",
+          "start_time": 1977.34
+        },
+        {
+          "index": 472,
+          "speaker_name": "Yugi P",
+          "raw_text": "I don't think we split based on the survey types.",
+          "start_time": 1993.35
+        },
+        {
+          "index": 473,
+          "speaker_name": "Yugi P",
+          "raw_text": "It just overall score, which would show the aggregate across all the surveys which we've chosen to display.",
+          "start_time": 1996.47
+        },
+        {
+          "index": 474,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, Sounds good.",
+          "start_time": 2002.87
+        },
+        {
+          "index": 475,
+          "speaker_name": "Yugi P",
+          "raw_text": "Nope.",
+          "start_time": 2005.47
+        },
+        {
+          "index": 476,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Good to have both options in my back pocket.",
+          "start_time": 2005.87
+        },
+        {
+          "index": 477,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I was just thinking ahead, so.",
+          "start_time": 2007.63
+        },
+        {
+          "index": 478,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I appreciate that.",
+          "start_time": 2009.51
+        },
+        {
+          "index": 479,
+          "speaker_name": "Yugi P",
+          "raw_text": "Okay.",
+          "start_time": 2011.19
+        },
+        {
+          "index": 480,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay,",
+          "start_time": 2012.23
+        },
+        {
+          "index": 481,
+          "speaker_name": "Yugi P",
+          "raw_text": "Charlie, the lifecycle survey scores will not be shown on the dashboard.",
+          "start_time": 2015.43
+        },
+        {
+          "index": 482,
+          "speaker_name": "Yugi P",
+          "raw_text": "It's just the custom surveys which are the Engagement and Pulse alone.",
+          "start_time": 2019.07
+        },
+        {
+          "index": 483,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Correct.",
+          "start_time": 2022.95
+        },
+        {
+          "index": 484,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Go for it, Scott.",
+          "start_time": 2024.71
+        },
+        {
+          "index": 485,
+          "speaker_name": "Scott Domes",
+          "raw_text": "To that point, Charlie, Our overall score.",
+          "start_time": 2027.67
+        },
+        {
+          "index": 486,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Don't separate that out.",
+          "start_time": 2035.67
+        },
+        {
+          "index": 487,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is the overall score equally weighted between a pulse.",
+          "start_time": 2041.83
+        },
+        {
+          "index": 488,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Let me walk through this.",
+          "start_time": 2050.65
+        },
+        {
+          "index": 489,
+          "speaker_name": "Scott Domes",
+          "raw_text": "We have a pulse, Pulse, Engagement.",
+          "start_time": 2052.17
+        },
+        {
+          "index": 490,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is it all the questions.",
+          "start_time": 2056.01
+        },
+        {
+          "index": 491,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is it score for all the questions divided by cumulative total score divided by number of questions or is it each survey is equal to one?",
+          "start_time": 2059.29
+        },
+        {
+          "index": 492,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Right.",
+          "start_time": 2074.659
+        },
+        {
+          "index": 493,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Get where I'm going, Yugi Karthik.",
+          "start_time": 2076.099
+        },
+        {
+          "index": 494,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes, but I get your point.",
+          "start_time": 2081.379
+        },
+        {
+          "index": 495,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yeah.",
+          "start_time": 2082.659
+        },
+        {
+          "index": 496,
+          "speaker_name": "Yugi P",
+          "raw_text": "So you want to know what brings in the overall score?",
+          "start_time": 2083.299
+        },
+        {
+          "index": 497,
+          "speaker_name": "Yugi P",
+          "raw_text": "Is it just the average of all driver scores or is it the average of the question score?",
+          "start_time": 2087.459
+        },
+        {
+          "index": 498,
+          "speaker_name": "Yugi P",
+          "raw_text": "Like which one is it?",
+          "start_time": 2094.219
+        },
+        {
+          "index": 499,
+          "speaker_name": "Yugi P",
+          "raw_text": "Are you asking or.",
+          "start_time": 2095.259
+        },
+        {
+          "index": 500,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yeah.",
+          "start_time": 2096.739
+        },
+        {
+          "index": 501,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So is the five questions on an engagement equal to the one question on a Pulse?",
+          "start_time": 2097.299
+        },
+        {
+          "index": 502,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Mm.",
+          "start_time": 2103.41
+        },
+        {
+          "index": 503,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Mm.",
+          "start_time": 2103.97
+        },
+        {
+          "index": 504,
+          "speaker_name": "Scott Domes",
+          "raw_text": "If five questions are around work environment on the engagement and the Pulse has one question on work environment, are all these scores equal to the same weight as this one or is it total divided by six?",
+          "start_time": 2106.37
+        },
+        {
+          "index": 505,
+          "speaker_name": "Yugi P",
+          "raw_text": "It's just the total divided by six, Scott.",
+          "start_time": 2124.05
+        },
+        {
+          "index": 506,
+          "speaker_name": "Yugi P",
+          "raw_text": "It won't be a weighted average.",
+          "start_time": 2127.01
+        },
+        {
+          "index": 507,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Okay.",
+          "start_time": 2129.67
+        },
+        {
+          "index": 508,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I think my understanding is if we have 17 questions, the engagement survey, it's the average of all those 17 questions.",
+          "start_time": 2130.47
+        },
+        {
+          "index": 509,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "And if in Pulse we have two questions, it's the average of those.",
+          "start_time": 2138.79
+        },
+        {
+          "index": 510,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Right, Yogi?",
+          "start_time": 2141.75
+        },
+        {
+          "index": 511,
+          "speaker_name": "Yugi P",
+          "raw_text": "Exactly.",
+          "start_time": 2142.55
+        },
+        {
+          "index": 512,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yeah.",
+          "start_time": 2143.03
+        },
+        {
+          "index": 513,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yes, of course.",
+          "start_time": 2143.39
+        },
+        {
+          "index": 514,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yeah, yeah.",
+          "start_time": 2145.51
+        },
+        {
+          "index": 515,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So that's the overall score per survey, correct?",
+          "start_time": 2146.87
+        },
+        {
+          "index": 516,
+          "speaker_name": "Scott Domes",
+          "raw_text": "On our dashboard, it's overall score, it's everything.",
+          "start_time": 2151.91
+        },
+        {
+          "index": 517,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Right?",
+          "start_time": 2157.2
+        },
+        {
+          "index": 518,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's what I was getting at.",
+          "start_time": 2157.84
+        },
+        {
+          "index": 519,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes.",
+          "start_time": 2159.92
+        },
+        {
+          "index": 520,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "For the timing, it'll just appear differently, I think.",
+          "start_time": 2162.16
+        },
+        {
+          "index": 521,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah.",
+          "start_time": 2164.96
+        },
+        {
+          "index": 522,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, wait.",
+          "start_time": 2167.92
+        },
+        {
+          "index": 523,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So, Scott, if you were to recap that for me, what's the weighting of the overall score?",
+          "start_time": 2170.4
+        },
+        {
+          "index": 524,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So the overall score, when you get into reports, it's going to be the average of all questions asked.",
+          "start_time": 2175.84
+        },
+        {
+          "index": 525,
+          "speaker_name": "Scott Domes",
+          "raw_text": "The dashboard is still the average of all scores.",
+          "start_time": 2184.73
+        },
+        {
+          "index": 526,
+          "speaker_name": "Scott Domes",
+          "raw_text": "And, Yugi, that's what I'm hearing.",
+          "start_time": 2190.01
+        },
+        {
+          "index": 527,
+          "speaker_name": "Scott Domes",
+          "raw_text": "So if you have 17 here as Sonya point out and two over here, it is 19.",
+          "start_time": 2192.25
+        },
+        {
+          "index": 528,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It is a cumulative score of 19 divided by 19.",
+          "start_time": 2199.53
+        },
+        {
+          "index": 529,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, perfect.",
+          "start_time": 2203.77
+        },
+        {
+          "index": 530,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So it's this one.",
+          "start_time": 2204.61
+        },
+        {
+          "index": 531,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Got it.",
+          "start_time": 2206.18
+        },
+        {
+          "index": 532,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "So it's not like this Survey scored a 2.4.",
+          "start_time": 2207.06
+        },
+        {
+          "index": 533,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "This survey scored a 3.3.",
+          "start_time": 2210.26
+        },
+        {
+          "index": 534,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "We're taking the average of the survey score.",
+          "start_time": 2211.82
+        },
+        {
+          "index": 535,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "That's not.",
+          "start_time": 2213.58
+        },
+        {
+          "index": 536,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "It's by question.",
+          "start_time": 2214.22
+        },
+        {
+          "index": 537,
+          "speaker_name": "Scott Domes",
+          "raw_text": "That's right.",
+          "start_time": 2215.94
+        },
+        {
+          "index": 538,
+          "speaker_name": "Karthik N",
+          "raw_text": "Got it.",
+          "start_time": 2216.98
+        },
+        {
+          "index": 539,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "I'm gonna put this into a visual",
+          "start_time": 2218.1
+        },
+        {
+          "index": 540,
+          "speaker_name": "Scott Domes",
+          "raw_text": "for us because the way you asked that question earlier, I'm like, well, we better know how.",
+          "start_time": 2219.5
+        },
+        {
+          "index": 541,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Like how that scored.",
+          "start_time": 2224.66
+        },
+        {
+          "index": 542,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Yes.",
+          "start_time": 2225.78
+        },
+        {
+          "index": 543,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Is that your understanding, Yugi?",
+          "start_time": 2226.18
+        },
+        {
+          "index": 544,
+          "speaker_name": "Yugi P",
+          "raw_text": "Yes, Scott, that's what is.",
+          "start_time": 2229.46
+        },
+        {
+          "index": 545,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It is.",
+          "start_time": 2231.46
+        },
+        {
+          "index": 546,
+          "speaker_name": "Yugi P",
+          "raw_text": "But I'll just do a quick confirmation with my team as well tomorrow on this.",
+          "start_time": 2231.86
+        },
+        {
+          "index": 547,
+          "speaker_name": "Karthik N",
+          "raw_text": "Okay.",
+          "start_time": 2235.44
+        },
+        {
+          "index": 548,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Because if not Charlie, right now, the way it is is not in my opinion.",
+          "start_time": 2237.84
+        },
+        {
+          "index": 549,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It's not a big issue.",
+          "start_time": 2244.52
+        },
+        {
+          "index": 550,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 2245.68
+        },
+        {
+          "index": 551,
+          "speaker_name": "Scott Domes",
+          "raw_text": "But if it's the other way, if it's every survey is weighted equally, then breaking those out actually means something.",
+          "start_time": 2246.64
+        },
+        {
+          "index": 552,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Right?",
+          "start_time": 2253.04
+        },
+        {
+          "index": 553,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Right.",
+          "start_time": 2253.44
+        },
+        {
+          "index": 554,
+          "speaker_name": "Scott Domes",
+          "raw_text": "It means a huge something.",
+          "start_time": 2254.32
+        },
+        {
+          "index": 555,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Correct.",
+          "start_time": 2256.24
+        },
+        {
+          "index": 556,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay, we'll get that clarification.",
+          "start_time": 2258.49
+        },
+        {
+          "index": 557,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "But just wanted to start thinking about that.",
+          "start_time": 2260.13
+        },
+        {
+          "index": 558,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay.",
+          "start_time": 2263.61
+        },
+        {
+          "index": 559,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "With that being said, Scott, Sonia, anything else for today?",
+          "start_time": 2264.49
+        },
+        {
+          "index": 560,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Great discussion today.",
+          "start_time": 2269.37
+        },
+        {
+          "index": 561,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, I think it's perfect.",
+          "start_time": 2272.57
+        },
+        {
+          "index": 562,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Just in terms of the candidate survey.",
+          "start_time": 2273.969
+        },
+        {
+          "index": 563,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I know it's Karthik looking into that one.",
+          "start_time": 2275.37
+        },
+        {
+          "index": 564,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So we have the scenarios with us.",
+          "start_time": 2279.21
+        },
+        {
+          "index": 565,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Right.",
+          "start_time": 2280.93
+        },
+        {
+          "index": 566,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "So I think just in terms of testing, so is the ETA then to potentially roll out the service by the end of this week, then, Yugi.",
+          "start_time": 2281.85
+        },
+        {
+          "index": 567,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Or what dates are we looking at?",
+          "start_time": 2289.52
+        },
+        {
+          "index": 568,
+          "speaker_name": "Yugi P",
+          "raw_text": "I'm not sure of the timeline, Sonia.",
+          "start_time": 2292.12
+        },
+        {
+          "index": 569,
+          "speaker_name": "Yugi P",
+          "raw_text": "Maybe I'll check with Karthik Rao and get back to you after this call.",
+          "start_time": 2294.32
+        },
+        {
+          "index": 570,
+          "speaker_name": "Yugi P",
+          "raw_text": "Does that work?",
+          "start_time": 2297.48
+        },
+        {
+          "index": 571,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "Yeah, yeah, sure, sure.",
+          "start_time": 2298.68
+        },
+        {
+          "index": 572,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "This is cuter, but yeah, that's it.",
+          "start_time": 2299.8
+        },
+        {
+          "index": 573,
+          "speaker_name": "Sanya Lamba",
+          "raw_text": "I and Charlie, thank you.",
+          "start_time": 2301.76
+        },
+        {
+          "index": 574,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay.",
+          "start_time": 2303.8
+        },
+        {
+          "index": 575,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Yugi, anything from your side that we need to address today?",
+          "start_time": 2304.28
+        },
+        {
+          "index": 576,
+          "speaker_name": "Yugi P",
+          "raw_text": "Nothing else.",
+          "start_time": 2308.28
+        },
+        {
+          "index": 577,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Okay.",
+          "start_time": 2309.8
+        },
+        {
+          "index": 578,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Sounds good.",
+          "start_time": 2310.92
+        },
+        {
+          "index": 579,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Then I will let you all go.",
+          "start_time": 2311.56
+        },
+        {
+          "index": 580,
+          "speaker_name": "Charlie Trinco",
+          "raw_text": "Thanks for the time.",
+          "start_time": 2313.27
+        },
+        {
+          "index": 581,
+          "speaker_name": "Yugi P",
+          "raw_text": "Thank you, Charlie.",
+          "start_time": 2315.35
+        },
+        {
+          "index": 582,
+          "speaker_name": "Yugi P",
+          "raw_text": "Thank you.",
+          "start_time": 2316.23
+        },
+        {
+          "index": 583,
+          "speaker_name": "Scott Domes",
+          "raw_text": "Bye.",
+          "start_time": 2317.83
+        }
+      ],
+      "meeting_link": "https://meet.google.com/qgp-oyuw-tux"
+    }
+  ]
+}

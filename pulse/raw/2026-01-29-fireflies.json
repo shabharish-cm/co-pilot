@@ -1,0 +1,3520 @@
+{
+  "dayKey": "2026-01-29",
+  "fetchedAt": "2026-03-19T05:41:19.143Z",
+  "source": "backfill-date-range",
+  "transcripts": [
+    {
+      "id": "01KFNEGECQXGC40V2R96ZE5CQH",
+      "title": "KAG <> CultureMonkey - Weekly Sync",
+      "date": 1769695200000,
+      "participants": [
+        "gowtham@culturemonkey.io",
+        "shabharish.v@culturemonkey.io",
+        "karthik.n@culturemonkey.io",
+        "yugi@culturemonkey.io",
+        "carlea.leon@thekag.com",
+        "katie.collins@thekag.com",
+        "steven.schneider@thekag.com",
+        "kylee.bauman@thekag.com",
+        "phillip.dean@thekag.com",
+        "yug@culturemonkey.io"
+      ],
+      "summary": {
+        "overview": "- **Historical Data Import Due:** Deliver expected by first week of February, pending IT concerns resolution.  \n- **Survey Dashboard Capabilities:** Tracks participation rates and calculates Employee Net Promoter Score; sample ENPS is 28.57.  \n- **Export Functionality Challenges:** New hire surveys lack detailed metrics; proposed shift to rating scales for better reporting.  \n- **Survey Format Alignment Process:** Yugi will assist in reformatting questions for consistency; offline meetings planned with leadership.  \n- **AI Sentiment Analysis Improvements:** AI score ranges from -1.0 to +1.0; some emoji discrepancies noted; improvements needed for trust.  \n- **Ongoing Communication Plans:** Weekly touch bases to track progress; updates on historical data and survey formats will be shared.",
+        "action_items": "\n**Yugi**\nShare email detailing IT team’s feedback and requirements regarding historical data import (01:43)\nInvestigate and fix emoji sentiment display bugs; send screenshots of correct emoji sentiment interpretations post-call (22:48)\nCheck backend enablement to provide lifecycle analytics dashboard access; prepare documentation on lifecycle analytics capabilities (26:25)\nInvestigate feasibility to export pie-chart data with labeled values for clearer report export (23:43)\nAssist KAG with reformatting the new hire survey into a rating scale format if agreed upon (38:00)\nConfirm and fix update issues with custom free-text question responses count and sentiment scoring (34:37)\n\n**Phillip Dean**\nDiscuss internally with Kylie and Jen whether to transition new hire survey questions to rating scale format for better data analysis (30:04)\nContinue evaluating dashboard/reporting suitability for current organizational and lifecycle surveys; share feedback with Yugi (37:00)\n\n**Kylee Bauman**\nReview dashboard walkthrough and prepare for leadership demos (03:37)\nCoordinate with Phillip and Yugi to finalize survey reporting needs and format decisions (37:00)\n",
+        "notes": "## **Historical Data Import and Dashboard Access**\n\nThe team confirmed the **historical data import** is on track for delivery by the **first week of February**, pending resolution of some outstanding requirements from IT (01:17).\n\n- **Yugi** committed to sharing the IT team’s concerns in an email post-meeting to expedite resolution.\n- The historical data import remains the last major open issue before the organizational survey dashboards are finalized.\n- Delivering this data on time is critical to enable full dashboard functionality ahead of upcoming surveys.\n- **Katie Collins** and stakeholders will monitor progress in their weekly touch base calls to ensure timelines hold.\n\n## **Survey Dashboard Features and Reporting Capabilities**\n\nThe dashboard walkthrough clarified key features for engagement and new hire surveys, highlighting strengths and current limitations (04:16).\n\n- **Yugi** showed how participation rates, bounce rates, and average response times are tracked, helping measure survey engagement quality.\n- The **Employee Net Promoter Score (ENPS)** is calculated and broken down by response categories, supporting assessment of overall employee sentiment, with a sample ENPS of **28.57** on the test survey (09:23).\n- Heat maps provide color-coded scores by team and location to quickly flag high and low performing groups, aiding targeted interventions.\n- Export options allow full or filtered data downloads in Excel or CSV, including heat maps with multiple demographic breakdowns.\n- Custom report building supports mixing up to **three attributes** such as team, manager, or location, enabling tailored views critical for leadership deep dives (28:20).\n- The dashboards currently support overall word clouds for open text responses but lack filtering by demographics, which limits granularity (18:44).\n- Feedback sentiment analysis uses AI-generated emojis, but some bugs were acknowledged and will be addressed post-call (21:38).\n\n## **Export Functionality and Data Accessibility Challenges**\n\nExporting detailed survey data remains a pain point, especially for non-rating scale surveys like the new hire survey, requiring strategic decisions (23:43).\n\n- **Phillip Dean** emphasized the need to easily export pie chart data with clear labels without manual hovering, suggesting a feature to highlight top three categories.\n- Current exports from new hire surveys provide only basic participation percentages, not detailed driver scores or question-level data (25:17).\n- **Yugi** confirmed the limitation stems from the new hire survey’s lack of rating scale questions, blocking detailed metric exports (28:44).\n- A potential shift to rating scale questions for these surveys was proposed to enable richer data exports and analysis.\n- **Phillip Dean** indicated this would require internal discussions with leadership to balance survey integrity with reporting needs (30:02).\n- The team agreed that consistent survey formats across types would improve manager familiarity and streamline reporting.\n\n## **Process and Next Steps for Survey Format Alignment**\n\nDiscussions highlighted the importance of aligning survey question formats to improve data usability and reporting consistency across the organization (29:50).\n\n- **Yugi** offered to assist in reformatting new hire survey questions into rating scales to match engagement surveys for better analytics.\n- The team plans offline meetings involving **Phillip Dean**, **Kylee Bauman**, and leadership to decide on survey format changes before broader deployment.\n- This approach aims to simplify data extraction and empower managers with uniform dashboards across surveys.\n- Timely decisions here will impact future survey designs and reporting capabilities, influencing overall engagement strategy effectiveness.\n\n## **AI-Driven Feedback and Sentiment Analysis**\n\nThe platform’s AI-powered sentiment tagging and feedback categorization provide valuable insights but require fine-tuning for accuracy and clarity (31:18).\n\n- AI assigns sentiment scores between **-1.0 and +1.0** and emojis to free-text responses, aiding quick sentiment visualization.\n- Some discrepancies in emoji assignments were noted, with Yugi committing to investigate and improve accuracy.\n- Feedback can be filtered by survey and sentiment to focus on specific employee groups or concerns.\n- AI categorizes feedback by team, helping identify localized issues and engagement drivers.\n- Improving AI reliability is critical to building trust in qualitative data and informing targeted actions.\n\n## **Timeline and Communication Protocols**\n\nClear timelines and communication plans were established to maintain momentum and stakeholder alignment (01:17, 38:02).\n\n- Yugi will email updates on historical data import requirements and AI feedback issues.\n- The team will reconvene in weekly touch bases to track progress on outstanding items.\n- Decisions on survey question formats will be communicated to Yugi for implementation support.\n- Recording of dashboard demos was agreed to facilitate training and leadership presentations.\n- Phillip and Kylee will lead internal discussions to finalize survey formats to optimize reporting and analytics.",
+        "keywords": [
+          "Survey Dashboards",
+          "Historical Data Import",
+          "Employee Net Promoter Score (ENPS)",
+          "Survey Reporting & Exports",
+          "AI Sentiment Analysis",
+          "New Hire Survey Limitations"
+        ]
+      },
+      "sentences": [
+        {
+          "index": 0,
+          "speaker_name": "Yugi",
+          "raw_text": "I'm sorry if I sound weird, but I'm just recovering from a sick throat, so apologize if I make off a bit in between.",
+          "start_time": 0.56
+        },
+        {
+          "index": 1,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Yeah.",
+          "start_time": 8.96
+        },
+        {
+          "index": 2,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Good morning.",
+          "start_time": 10.08
+        },
+        {
+          "index": 3,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Okay.",
+          "start_time": 10.8
+        },
+        {
+          "index": 4,
+          "speaker_name": "Yugi",
+          "raw_text": "Hi, Philip.",
+          "start_time": 12.4
+        },
+        {
+          "index": 5,
+          "speaker_name": "Yugi",
+          "raw_text": "How are you?",
+          "start_time": 13.2
+        },
+        {
+          "index": 6,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I'm good.",
+          "start_time": 14.16
+        },
+        {
+          "index": 7,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Hey, there may have been a.",
+          "start_time": 15.36
+        },
+        {
+          "index": 8,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "May have been a mistake.",
+          "start_time": 17.92
+        },
+        {
+          "index": 9,
+          "speaker_name": "Yugi",
+          "raw_text": "You.",
+          "start_time": 19.84
+        },
+        {
+          "index": 10,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "This meeting was supposed to be just for Kylie and I to view the dashboards, so I don't know if everybody got invited or what, but.",
+          "start_time": 20.32
+        },
+        {
+          "index": 11,
+          "speaker_name": "Yugi",
+          "raw_text": "Oh, I. I just moved the meeting from yesterday.",
+          "start_time": 30.21
+        },
+        {
+          "index": 12,
+          "speaker_name": "Yugi",
+          "raw_text": "Today.",
+          "start_time": 33.17
+        },
+        {
+          "index": 13,
+          "speaker_name": "Yugi",
+          "raw_text": "I guess I just updated the timing for the weekly.",
+          "start_time": 33.57
+        },
+        {
+          "index": 14,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 37.89
+        },
+        {
+          "index": 15,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 38.29
+        },
+        {
+          "index": 16,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah.",
+          "start_time": 39.17
+        },
+        {
+          "index": 17,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So, Carly, Katie, unless y' all just want to stay on here, you don't have to.",
+          "start_time": 39.73
+        },
+        {
+          "index": 18,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I. I was just trying to get time for Callie and I to look at the dashboards.",
+          "start_time": 43.21
+        },
+        {
+          "index": 19,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Okay.",
+          "start_time": 47.97
+        },
+        {
+          "index": 20,
+          "speaker_name": "Katie Collins",
+          "raw_text": "No, I think that sounds fine to me.",
+          "start_time": 48.41
+        },
+        {
+          "index": 21,
+          "speaker_name": "Katie Collins",
+          "raw_text": "I guess really quickly though, this too.",
+          "start_time": 50.29
+        },
+        {
+          "index": 22,
+          "speaker_name": "Katie Collins",
+          "raw_text": "I saw the.",
+          "start_time": 52.58
+        },
+        {
+          "index": 23,
+          "speaker_name": "Katie Collins",
+          "raw_text": "What do I call it, the open issues log still come in for everything that we've like completed versus what we saw of.",
+          "start_time": 56.02
+        },
+        {
+          "index": 24,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Outstanding.",
+          "start_time": 61.46
+        },
+        {
+          "index": 25,
+          "speaker_name": "Katie Collins",
+          "raw_text": "I guess really quickly.",
+          "start_time": 62.18
+        },
+        {
+          "index": 26,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Do you have any updates on when we can expect the historical pieces to be imported?",
+          "start_time": 64.02
+        },
+        {
+          "index": 27,
+          "speaker_name": "Katie Collins",
+          "raw_text": "I know we were hoping that to have that this week, but I don't know if you had any updates for the team.",
+          "start_time": 70.82
+        },
+        {
+          "index": 28,
+          "speaker_name": "Yugi",
+          "raw_text": "Yes, Katie.",
+          "start_time": 77.22
+        },
+        {
+          "index": 29,
+          "speaker_name": "Yugi",
+          "raw_text": "So I mentioned that we would be delivering this by the first week of Feb, so that is under progress.",
+          "start_time": 78.1
+        },
+        {
+          "index": 30,
+          "speaker_name": "Yugi",
+          "raw_text": "So once that will be ready, and I should be letting you know through email, my team has shared a few concerns or requirements from your.",
+          "start_time": 84.95
+        },
+        {
+          "index": 31,
+          "speaker_name": "Yugi",
+          "raw_text": "From their side, which I will share an email post this call.",
+          "start_time": 94.47
+        },
+        {
+          "index": 32,
+          "speaker_name": "Yugi",
+          "raw_text": "So once you share that as well, I think we can fast track this and get this on time.",
+          "start_time": 98.07
+        },
+        {
+          "index": 33,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Okay, that sounds good.",
+          "start_time": 103.59
+        },
+        {
+          "index": 34,
+          "speaker_name": "Katie Collins",
+          "raw_text": "So we'll just wait to hear a little bit more next week in our regular touch base.",
+          "start_time": 105.19
+        },
+        {
+          "index": 35,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay, sure.",
+          "start_time": 110.19
+        },
+        {
+          "index": 36,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Okay, that sounds good.",
+          "start_time": 111.15
+        },
+        {
+          "index": 37,
+          "speaker_name": "Katie Collins",
+          "raw_text": "And then I think this is maybe the final, like, kind of show and tell piece then as far as like the other open issues.",
+          "start_time": 114.51
+        },
+        {
+          "index": 38,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, I think so.",
+          "start_time": 125.389
+        },
+        {
+          "index": 39,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I mean, the only thing that I saw left on that tracker was the historical piece and then.",
+          "start_time": 126.51
+        },
+        {
+          "index": 40,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Then we were probably going to touch base when we got closer to the organizational survey.",
+          "start_time": 132.03
+        },
+        {
+          "index": 41,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "It's the last thing, really.",
+          "start_time": 136.63
+        },
+        {
+          "index": 42,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So.",
+          "start_time": 137.67
+        },
+        {
+          "index": 43,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "So.",
+          "start_time": 138.11
+        },
+        {
+          "index": 44,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So we're just wanting.",
+          "start_time": 138.49
+        },
+        {
+          "index": 45,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I know Jen is wanting us to kind of show her, hey, what are these dashboards going to look like?",
+          "start_time": 139.37
+        },
+        {
+          "index": 46,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "And Kylie's wanting a demo, so I had brought her in today.",
+          "start_time": 145.49
+        },
+        {
+          "index": 47,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I know, Yugi, you were showing us last time.",
+          "start_time": 150.49
+        },
+        {
+          "index": 48,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "We ran out of time, but I thought you could kind of take Kylie and I through that today so we can start showing that to our leadership here.",
+          "start_time": 153.09
+        },
+        {
+          "index": 49,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Okay, that sounds good then.",
+          "start_time": 164.42
+        },
+        {
+          "index": 50,
+          "speaker_name": "Katie Collins",
+          "raw_text": "So I guess if you guys are going to use the rest of the time for that I can hop off.",
+          "start_time": 165.86
+        },
+        {
+          "index": 51,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Unless there's anything else Yugi, you need from us?",
+          "start_time": 170.82
+        },
+        {
+          "index": 52,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Anything on the it side?",
+          "start_time": 174.26
+        },
+        {
+          "index": 53,
+          "speaker_name": "Yugi",
+          "raw_text": "Nothing else required, Katie.",
+          "start_time": 176.74
+        },
+        {
+          "index": 54,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Okay, that sounds good.",
+          "start_time": 179.14
+        },
+        {
+          "index": 55,
+          "speaker_name": "Katie Collins",
+          "raw_text": "All right, thanks, you guys.",
+          "start_time": 181.86
+        },
+        {
+          "index": 56,
+          "speaker_name": "Yugi",
+          "raw_text": "Thanks.",
+          "start_time": 183.22
+        },
+        {
+          "index": 57,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Thanks, Katie.",
+          "start_time": 183.42
+        },
+        {
+          "index": 58,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Carly, I'll leave it up to you.",
+          "start_time": 184.74
+        },
+        {
+          "index": 59,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "If you want to stay on, you can.",
+          "start_time": 185.98
+        },
+        {
+          "index": 60,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Oh, she's all.",
+          "start_time": 187.02
+        },
+        {
+          "index": 61,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "There we go.",
+          "start_time": 188.1
+        },
+        {
+          "index": 62,
+          "speaker_name": "Yugi",
+          "raw_text": "She's going.",
+          "start_time": 188.98
+        },
+        {
+          "index": 63,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay, very good.",
+          "start_time": 190.02
+        },
+        {
+          "index": 64,
+          "speaker_name": "Yugi",
+          "raw_text": "Awesome.",
+          "start_time": 192.14
+        },
+        {
+          "index": 65,
+          "speaker_name": "Yugi",
+          "raw_text": "No worries, Philip.",
+          "start_time": 193.74
+        },
+        {
+          "index": 66,
+          "speaker_name": "Yugi",
+          "raw_text": "I believe I'll just quickly recap from where we left last week.",
+          "start_time": 195.9
+        },
+        {
+          "index": 67,
+          "speaker_name": "Yugi",
+          "raw_text": "So I believe I walked you both on the basic reporting.",
+          "start_time": 200.14
+        },
+        {
+          "index": 68,
+          "speaker_name": "Yugi",
+          "raw_text": "Right.",
+          "start_time": 206.1
+        },
+        {
+          "index": 69,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So.",
+          "start_time": 206.62
+        },
+        {
+          "index": 70,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So let me start.",
+          "start_time": 207.02
+        },
+        {
+          "index": 71,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Kylie was not able to join us last week at all.",
+          "start_time": 208.54
+        },
+        {
+          "index": 72,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So if you could come just start us over, that's fine with me.",
+          "start_time": 211.42
+        },
+        {
+          "index": 73,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I. I could use the refresher anyway.",
+          "start_time": 214.78
+        },
+        {
+          "index": 74,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "And then do you think it would be possible for us to record this session?",
+          "start_time": 217.1
+        },
+        {
+          "index": 75,
+          "speaker_name": "Yugi",
+          "raw_text": "Absolutely.",
+          "start_time": 222.48
+        },
+        {
+          "index": 76,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 223.12
+        },
+        {
+          "index": 77,
+          "speaker_name": "Yugi",
+          "raw_text": "Just give me one quick second.",
+          "start_time": 223.44
+        },
+        {
+          "index": 78,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay, fine.",
+          "start_time": 225.04
+        },
+        {
+          "index": 79,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah.",
+          "start_time": 226.24
+        },
+        {
+          "index": 80,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "And I know, Kylie, are you wanting to look more because you're looking at like new hire survey, which I know we don't have as much capability there, but are you wanting to see more on that?",
+          "start_time": 226.6
+        },
+        {
+          "index": 81,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Are you wanting to see kind of like, hey, what is.",
+          "start_time": 236.64
+        },
+        {
+          "index": 82,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "What are the possibilities with this test survey that we did?",
+          "start_time": 238.96
+        },
+        {
+          "index": 83,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Yeah, I think either way, I just wanted to get a better understanding what we can see as admins and also if possible, what the manager would be able to see on their end.",
+          "start_time": 242.48
+        },
+        {
+          "index": 84,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Got you.",
+          "start_time": 254.35
+        },
+        {
+          "index": 85,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay.",
+          "start_time": 255.15
+        },
+        {
+          "index": 86,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay, sure.",
+          "start_time": 256.83
+        },
+        {
+          "index": 87,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll just do a quick walkthrough once more.",
+          "start_time": 257.79
+        },
+        {
+          "index": 88,
+          "speaker_name": "Yugi",
+          "raw_text": "No worries about that.",
+          "start_time": 260.55
+        },
+        {
+          "index": 89,
+          "speaker_name": "Yugi",
+          "raw_text": "So, yeah, so you can go to the report section on the left pane and you will see the list of surveys which have been run on the platform.",
+          "start_time": 261.51
+        },
+        {
+          "index": 90,
+          "speaker_name": "Yugi",
+          "raw_text": "So for this call's purpose, we'll take the test of the quick engagement survey, wherein you can see the status of the survey, whether it's it's running or it's ended, or if it's in a draft state wherein you just haven't published it yet.",
+          "start_time": 270.35
+        },
+        {
+          "index": 91,
+          "speaker_name": "Yugi",
+          "raw_text": "You can even see a participation wherein as a percentage and you'll also see a number of people who responded against number of people who were actually part of the survey.",
+          "start_time": 283.78
+        },
+        {
+          "index": 92,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 294.1
+        },
+        {
+          "index": 93,
+          "speaker_name": "Yugi",
+          "raw_text": "And once we click on the survey report, you will get a summary page as the first section.",
+          "start_time": 295.14
+        },
+        {
+          "index": 94,
+          "speaker_name": "Yugi",
+          "raw_text": "A summary is nothing but like a quick digest or a quick eagle's eye view of the key statistics where you can see the number of questions being used, number of participants, and the actual start date of the survey, start and time along with the end date of the survey.",
+          "start_time": 301.69
+        },
+        {
+          "index": 95,
+          "speaker_name": "Yugi",
+          "raw_text": "The key statistics would contain information like number of emails, which is like the number of survey invites sent.",
+          "start_time": 321.29
+        },
+        {
+          "index": 96,
+          "speaker_name": "Yugi",
+          "raw_text": "And you can see the number of people who've clicked on the survey link and number of people who responded against people who did not.",
+          "start_time": 328.64
+        },
+        {
+          "index": 97,
+          "speaker_name": "Yugi",
+          "raw_text": "So this would give you an understanding of how many people have actually clicked on the survey link and number of people who never even responded to the survey.",
+          "start_time": 336.56
+        },
+        {
+          "index": 98,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Okay.",
+          "start_time": 344.48
+        },
+        {
+          "index": 99,
+          "speaker_name": "Yugi",
+          "raw_text": "And this is like a participation rate, pretty self explanatory.",
+          "start_time": 345.6
+        },
+        {
+          "index": 100,
+          "speaker_name": "Yugi",
+          "raw_text": "And this is the bounce rate.",
+          "start_time": 349.76
+        },
+        {
+          "index": 101,
+          "speaker_name": "Yugi",
+          "raw_text": "The bounce rate is a pretty simple calculation wherein it refers to the percentage of people who clicked on the survey link, started answering a few questions and then just closed the window and never came back to finish the survey.",
+          "start_time": 352
+        },
+        {
+          "index": 102,
+          "speaker_name": "Yugi",
+          "raw_text": "So right now, since you can see the number of people who clicked and number of people who responded are the same, the bounce rate is zero.",
+          "start_time": 367.11
+        },
+        {
+          "index": 103,
+          "speaker_name": "Yugi",
+          "raw_text": "But if there is a large difference between the people who clicked and the people who responded, that should give you a percentage value in the bounce rate.",
+          "start_time": 373.91
+        },
+        {
+          "index": 104,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 382.54
+        },
+        {
+          "index": 105,
+          "speaker_name": "Yugi",
+          "raw_text": "And the average response time would be the average time taken by all of the participants in the survey to answer the survey.",
+          "start_time": 383.5
+        },
+        {
+          "index": 106,
+          "speaker_name": "Yugi",
+          "raw_text": "And the feedback distribution is like a pretty, you know, pie chart kind of a thing wherein you can see the distribution of the total positive comments, neutral and negative comments.",
+          "start_time": 390.94
+        },
+        {
+          "index": 107,
+          "speaker_name": "Yugi",
+          "raw_text": "For the test survey the count is pretty low.",
+          "start_time": 401.26
+        },
+        {
+          "index": 108,
+          "speaker_name": "Yugi",
+          "raw_text": "But for an organization wide survey you can get an actual count or just a quick understanding of how these sentiments are across the survey for employees.",
+          "start_time": 403.98
+        },
+        {
+          "index": 109,
+          "speaker_name": "Yugi",
+          "raw_text": "And this feedback sentiment is a value which is given from minus 1.0 to plus 1.",
+          "start_time": 413.2
+        },
+        {
+          "index": 110,
+          "speaker_name": "Yugi",
+          "raw_text": "Wherein based on the number of positive, neutral, negative comments, we bring you a specific value by which any positive numbers would indicate that the feedback is positive.",
+          "start_time": 420.96
+        },
+        {
+          "index": 111,
+          "speaker_name": "Yugi",
+          "raw_text": "But any negative or anything you know from 0 to minus 1 indicates that the sentiment is negative.",
+          "start_time": 433.2
+        },
+        {
+          "index": 112,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay, Any queries on this?",
+          "start_time": 439.94
+        },
+        {
+          "index": 113,
+          "speaker_name": "Yugi",
+          "raw_text": "Kylie?",
+          "start_time": 443.14
+        },
+        {
+          "index": 114,
+          "speaker_name": "Yugi",
+          "raw_text": "Philip.",
+          "start_time": 443.86
+        },
+        {
+          "index": 115,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I guess the last piece that you covered at the bottom, I guess my question is why does that show a negative?",
+          "start_time": 447.94
+        },
+        {
+          "index": 116,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "And the pie chart above show neutral.",
+          "start_time": 458.42
+        },
+        {
+          "index": 117,
+          "speaker_name": "Yugi",
+          "raw_text": "This is a negative.",
+          "start_time": 463.92
+        },
+        {
+          "index": 118,
+          "speaker_name": "Yugi",
+          "raw_text": "Sorry, this should be on a zero scale because there isn't any qualified qualifiable value to calculate this.",
+          "start_time": 465.68
+        },
+        {
+          "index": 119,
+          "speaker_name": "Yugi",
+          "raw_text": "So it's, it's null.",
+          "start_time": 471.96
+        },
+        {
+          "index": 120,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah, but icon must, must be showing a second which is kind of like an illustration bug.",
+          "start_time": 473.68
+        },
+        {
+          "index": 121,
+          "speaker_name": "Yugi",
+          "raw_text": "But it should be an null value over here which is what is nan, Right?",
+          "start_time": 479.48
+        },
+        {
+          "index": 122,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 488.57
+        },
+        {
+          "index": 123,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 489.45
+        },
+        {
+          "index": 124,
+          "speaker_name": "Yugi",
+          "raw_text": "So the next section will be a reports wherein you get the core scores or the primary scores of your survey results, wherein the overall score refers to the average of all the responses of all the questions given by all employees.",
+          "start_time": 489.93
+        },
+        {
+          "index": 125,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 508.57
+        },
+        {
+          "index": 126,
+          "speaker_name": "Yugi",
+          "raw_text": "So this kind of shows like how much you've scored in this survey, which is given by your employees.",
+          "start_time": 509.21
+        },
+        {
+          "index": 127,
+          "speaker_name": "Yugi",
+          "raw_text": "And the participation rate is the number of past employees, percentage of employees who responded.",
+          "start_time": 516.41
+        },
+        {
+          "index": 128,
+          "speaker_name": "Yugi",
+          "raw_text": "And the ENPS is a Specific question, wherein we have a question called, you know, overall, how likely are you to recommend KAG as a good place to work?",
+          "start_time": 522.17
+        },
+        {
+          "index": 129,
+          "speaker_name": "Yugi",
+          "raw_text": "So we, you know, isolate this specific question, give you a breakdown so that you can understand know which employees would actually recommend kg, which employees do not and which employees are neutral.",
+          "start_time": 533.45
+        },
+        {
+          "index": 130,
+          "speaker_name": "Yugi",
+          "raw_text": "So any scores from 0.",
+          "start_time": 548.71
+        },
+        {
+          "index": 131,
+          "speaker_name": "Yugi",
+          "raw_text": "So any employee who gives a score of 0 to 6 are detractors wherein they do not recommend KAG, and 7 and 8 are neutral wherein they don't know.",
+          "start_time": 551.19
+        },
+        {
+          "index": 132,
+          "speaker_name": "Yugi",
+          "raw_text": "I mean, they would either neither recommend nor would not, but 9 and 10 are the people who would recommend.",
+          "start_time": 563.11
+        },
+        {
+          "index": 133,
+          "speaker_name": "Yugi",
+          "raw_text": "So from this specific question, you can get a more detailed understanding on how employees feel about recommending KAG to their friends or family.",
+          "start_time": 569.9
+        },
+        {
+          "index": 134,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay, so this is how we calculate this on, you know, a scale of minus 100 to plus 100.",
+          "start_time": 580.38
+        },
+        {
+          "index": 135,
+          "speaker_name": "Yugi",
+          "raw_text": "So this should be the qualifiable score for this, 28.57.",
+          "start_time": 588.46
+        },
+        {
+          "index": 136,
+          "speaker_name": "Yugi",
+          "raw_text": "So in an actual survey you would get a much better value with lot of responses across the scale.",
+          "start_time": 592.34
+        },
+        {
+          "index": 137,
+          "speaker_name": "Yugi",
+          "raw_text": "So that should help you understand the actual sentiment of employees.",
+          "start_time": 598.77
+        },
+        {
+          "index": 138,
+          "speaker_name": "Yugi",
+          "raw_text": "And this is the participation over time, wherein you can see the number of participants who responded to the survey on each specific day.",
+          "start_time": 604.29
+        },
+        {
+          "index": 139,
+          "speaker_name": "Yugi",
+          "raw_text": "So when you hover over a specific bar, you can see the date and the number of respondees to any specific channel.",
+          "start_time": 612.77
+        },
+        {
+          "index": 140,
+          "speaker_name": "Yugi",
+          "raw_text": "So let's say if you use emails, SMS text messages and Microsoft Teams.",
+          "start_time": 621.31
+        },
+        {
+          "index": 141,
+          "speaker_name": "Yugi",
+          "raw_text": "So in that way you can see how many people have responded through email, how many people have responded through, you know, have clicked the link via text messages and completed the survey.",
+          "start_time": 627.95
+        },
+        {
+          "index": 142,
+          "speaker_name": "Yugi",
+          "raw_text": "This breakdown could help you understand which channel is much effective for employees to answer the survey.",
+          "start_time": 636.83
+        },
+        {
+          "index": 143,
+          "speaker_name": "Yugi",
+          "raw_text": "And this, this also shows you on very specific dates.",
+          "start_time": 643.87
+        },
+        {
+          "index": 144,
+          "speaker_name": "Yugi",
+          "raw_text": "And the engagement score by drivers is the actual heat map wherein we dissect the scores based on various demographics like teams, locations, reporting managers and others.",
+          "start_time": 648.9
+        },
+        {
+          "index": 145,
+          "speaker_name": "Yugi",
+          "raw_text": "So we get this data from the employee file which is sent to us through the sftp and within each demographic filter you can see the specific teams which have participated in the survey.",
+          "start_time": 659.86
+        },
+        {
+          "index": 146,
+          "speaker_name": "Yugi",
+          "raw_text": "So you'll get the participation rate count, the ENPS score.",
+          "start_time": 673.63
+        },
+        {
+          "index": 147,
+          "speaker_name": "Yugi",
+          "raw_text": "So while the overall score is present, over here you can see a breakdown of the NPS score by individual teams as well.",
+          "start_time": 677.07
+        },
+        {
+          "index": 148,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 684.75
+        },
+        {
+          "index": 149,
+          "speaker_name": "Yugi",
+          "raw_text": "And you'll also get an overall score for the specific teams and the individual driver scores.",
+          "start_time": 685.35
+        },
+        {
+          "index": 150,
+          "speaker_name": "Yugi",
+          "raw_text": "So any score on a light green is a good and any scores on a dark green are excellent, wherein light red is kind of okay, but still something which you should see, but something in dark red like something like this is very alarming.",
+          "start_time": 690.99
+        },
+        {
+          "index": 151,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay, so we have color coded the heat map so that you don't, you don't need to deep dive and understand, but you just get a quick understanding from just seeing the heat map itself.",
+          "start_time": 709
+        },
+        {
+          "index": 152,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay, so let's say you want to understand what specific questions have influenced the score of 7 for let's say human resources services team.",
+          "start_time": 717.64
+        },
+        {
+          "index": 153,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can click on the specific heat map cell wherein you can see for this specific team to get a score of 7.",
+          "start_time": 729.48
+        },
+        {
+          "index": 154,
+          "speaker_name": "Yugi",
+          "raw_text": "You can see these many questions have been mapped to the specific driver or the overall score to get a score of seven for this team.",
+          "start_time": 743.72
+        },
+        {
+          "index": 155,
+          "speaker_name": "Yugi",
+          "raw_text": "So if you want to see by specific drivers as well, you can click on autonomy driver so that for the specific autonomy driver you have this question mapped or driver is more like a team wherein this question mapped to the autonomy driver, the employees under this human resources service system has given a score of 7.3.",
+          "start_time": 752.43
+        },
+        {
+          "index": 156,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay, so this might help you in, in cases wherein you want to understand which specific question has influenced a score of 7.3 or you want to understand a level breakdown.",
+          "start_time": 776.11
+        },
+        {
+          "index": 157,
+          "speaker_name": "Yugi",
+          "raw_text": "So in that cases this could help you a lot.",
+          "start_time": 784.97
+        },
+        {
+          "index": 158,
+          "speaker_name": "Yugi",
+          "raw_text": "And let's say you want to see all this on the heat map, but on the platform, but you want to have an export or you just want to export it as an Excel or a CSV file.",
+          "start_time": 788.81
+        },
+        {
+          "index": 159,
+          "speaker_name": "Yugi",
+          "raw_text": "You can just go to the three dots on the top right, I mean top left, and then choose the file format you want to export it.",
+          "start_time": 798.49
+        },
+        {
+          "index": 160,
+          "speaker_name": "Yugi",
+          "raw_text": "And automatically the file will be exported to your laptop or desktop.",
+          "start_time": 805.21
+        },
+        {
+          "index": 161,
+          "speaker_name": "Yugi",
+          "raw_text": "And you can even export the entire heat map with all the specific demographics as multiple subsheets by scrolling up, going into Share and clicking on export to xls.",
+          "start_time": 810.33
+        },
+        {
+          "index": 162,
+          "speaker_name": "Yugi",
+          "raw_text": "So this will export the entire heat map with multiple subsheets as different demographics in a single Excel file for you.",
+          "start_time": 826.03
+        },
+        {
+          "index": 163,
+          "speaker_name": "Yugi",
+          "raw_text": "So any clarifications with this?",
+          "start_time": 833.47
+        },
+        {
+          "index": 164,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I don't have anything.",
+          "start_time": 838.92
+        },
+        {
+          "index": 165,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Philip, do you?",
+          "start_time": 839.68
+        },
+        {
+          "index": 166,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "No, nope, I'm good.",
+          "start_time": 841.08
+        },
+        {
+          "index": 167,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 845.64
+        },
+        {
+          "index": 168,
+          "speaker_name": "Yugi",
+          "raw_text": "And let's say you've seen the aggregate scores of each drivers and questions and demographics.",
+          "start_time": 847.64
+        },
+        {
+          "index": 169,
+          "speaker_name": "Yugi",
+          "raw_text": "So now you would like to, you know, break down on a more question level analysis.",
+          "start_time": 853.96
+        },
+        {
+          "index": 170,
+          "speaker_name": "Yugi",
+          "raw_text": "Right?",
+          "start_time": 858.12
+        },
+        {
+          "index": 171,
+          "speaker_name": "Yugi",
+          "raw_text": "So that's when you can click on the question tabs wherein you can see the specific question with the driver they've been mapped to and their overall and their score as well.",
+          "start_time": 858.6
+        },
+        {
+          "index": 172,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can scroll down and see all the individual question scores and see the individual scores and let's say you want to understand, sorry, the answer distribution for the specific question.",
+          "start_time": 868.93
+        },
+        {
+          "index": 173,
+          "speaker_name": "Yugi",
+          "raw_text": "So that's when you click on a specific question.",
+          "start_time": 884.29
+        },
+        {
+          "index": 174,
+          "speaker_name": "Yugi",
+          "raw_text": "And you can see the response breakdown.",
+          "start_time": 890.46
+        },
+        {
+          "index": 175,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can see that, you know, about 71% have chosen the option satisfied and very dissatisfied is zero and very satisfied is 28.6.",
+          "start_time": 893.9
+        },
+        {
+          "index": 176,
+          "speaker_name": "Yugi",
+          "raw_text": "But right now, as I mentioned before, since this is a test survey, the amount of data being shown here is low.",
+          "start_time": 904.38
+        },
+        {
+          "index": 177,
+          "speaker_name": "Yugi",
+          "raw_text": "But in an actual, you know, org wide surveys, you might get a lot of insights by this pie chart.",
+          "start_time": 911.1
+        },
+        {
+          "index": 178,
+          "speaker_name": "Yugi",
+          "raw_text": "And you can also see a quick digest which will show you information of the team which has given the highest rating for this question and the location for which you know which has given the highest rating for this question.",
+          "start_time": 918.58
+        },
+        {
+          "index": 179,
+          "speaker_name": "Yugi",
+          "raw_text": "And as you scroll down you can even understand the breakdown by demographics.",
+          "start_time": 931.46
+        },
+        {
+          "index": 180,
+          "speaker_name": "Yugi",
+          "raw_text": "So right now that this breakdown is an overall breakdown.",
+          "start_time": 936.94
+        },
+        {
+          "index": 181,
+          "speaker_name": "Yugi",
+          "raw_text": "But if you want to even split it down by specific teams, like let's say for info technology, you can see two employees have given satisfied whereas three employees have been very satisfied.",
+          "start_time": 939.78
+        },
+        {
+          "index": 182,
+          "speaker_name": "Yugi",
+          "raw_text": "Or if you want to split by location, you can see for North Canton, two have given satisfied, one has given very satisfied.",
+          "start_time": 950.32
+        },
+        {
+          "index": 183,
+          "speaker_name": "Yugi",
+          "raw_text": "So by this understanding you can see a more detailed breakdown of the employee sentiments by each question.",
+          "start_time": 959.32
+        },
+        {
+          "index": 184,
+          "speaker_name": "Yugi",
+          "raw_text": "And this will also help you by groups wherein which team has given the score for number of submissions.",
+          "start_time": 967.04
+        },
+        {
+          "index": 185,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can see the maybe a cohort level size by understanding which specific cohort teams locations has given the highest number of, you know, inputs to influence the score.",
+          "start_time": 974.25
+        },
+        {
+          "index": 186,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 985.61
+        },
+        {
+          "index": 187,
+          "speaker_name": "Yugi",
+          "raw_text": "Any questions in this?",
+          "start_time": 987.21
+        },
+        {
+          "index": 188,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "None for me.",
+          "start_time": 990.81
+        },
+        {
+          "index": 189,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Callie, this is, this is more when you go over to like the new hire surveys more what you're seeing because you're going to click down by question.",
+          "start_time": 991.93
+        },
+        {
+          "index": 190,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right.",
+          "start_time": 998.09
+        },
+        {
+          "index": 191,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Because we don't have like all the heat map stuff so.",
+          "start_time": 998.37
+        },
+        {
+          "index": 192,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Right.",
+          "start_time": 1000.91
+        },
+        {
+          "index": 193,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Have you, have you played around in there any with like trying to filter?",
+          "start_time": 1001.87
+        },
+        {
+          "index": 194,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Not a whole lot.",
+          "start_time": 1007.55
+        },
+        {
+          "index": 195,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I have looked through it but not really knowing what I'm doing so.",
+          "start_time": 1008.43
+        },
+        {
+          "index": 196,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right, right.",
+          "start_time": 1013.07
+        },
+        {
+          "index": 197,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Same.",
+          "start_time": 1015.39
+        },
+        {
+          "index": 198,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1016.67
+        },
+        {
+          "index": 199,
+          "speaker_name": "Yugi",
+          "raw_text": "And let's say you want to just compare the question scores of the overall organization wide versus specific teams.",
+          "start_time": 1017.31
+        },
+        {
+          "index": 200,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can see the filters over here where let's say you just want to compare human resources services team score with the overall score.",
+          "start_time": 1024.99
+        },
+        {
+          "index": 201,
+          "speaker_name": "Yugi",
+          "raw_text": "So when you click on a specific team you can compare the or wide score to the team score and see how the specific team or location is faring against the org wide score.",
+          "start_time": 1034.289
+        },
+        {
+          "index": 202,
+          "speaker_name": "Yugi",
+          "raw_text": "So this could help you understand where specific teams are lagging and where specific teams are outperforming the overall or wide scores.",
+          "start_time": 1045.169
+        },
+        {
+          "index": 203,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Does it turn red if it's below the the Not.",
+          "start_time": 1053.69
+        },
+        {
+          "index": 204,
+          "speaker_name": "Yugi",
+          "raw_text": "Not at the moment, Scott.",
+          "start_time": 1058.53
+        },
+        {
+          "index": 205,
+          "speaker_name": "Yugi",
+          "raw_text": "So it just gives you a clear distinction through green and blue.",
+          "start_time": 1059.65
+        },
+        {
+          "index": 206,
+          "speaker_name": "Yugi",
+          "raw_text": "But we are looking into bringing color coding like how we have in the heat maps as well.",
+          "start_time": 1062.81
+        },
+        {
+          "index": 207,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1066.77
+        },
+        {
+          "index": 208,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, yeah.",
+          "start_time": 1067.17
+        },
+        {
+          "index": 209,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Gotcha.",
+          "start_time": 1067.61
+        },
+        {
+          "index": 210,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Gotcha.",
+          "start_time": 1067.97
+        },
+        {
+          "index": 211,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay.",
+          "start_time": 1068.45
+        },
+        {
+          "index": 212,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah, perfect.",
+          "start_time": 1068.97
+        },
+        {
+          "index": 213,
+          "speaker_name": "Yugi",
+          "raw_text": "The next section would Be word clouds.",
+          "start_time": 1072.49
+        },
+        {
+          "index": 214,
+          "speaker_name": "Yugi",
+          "raw_text": "Wherein right now for the survey, we don't have any qualifiable data, but it's pretty simple.",
+          "start_time": 1075.61
+        },
+        {
+          "index": 215,
+          "speaker_name": "Yugi",
+          "raw_text": "Like it highlights the words which are being used a lot in the feedbacks as a bigger word so that you get to see this.",
+          "start_time": 1081.32
+        },
+        {
+          "index": 216,
+          "speaker_name": "Yugi",
+          "raw_text": "The words which are being used by a lot of employees, or let's say a lot of employees have mentioned salary, or a lot of employees have mentioned work life balance, that specific word will appear as a bigger word compared to other ones.",
+          "start_time": 1092.2
+        },
+        {
+          "index": 217,
+          "speaker_name": "Yugi",
+          "raw_text": "So you understand which areas of what of your organization you need to focus on and to improve your scores a lot.",
+          "start_time": 1106.44
+        },
+        {
+          "index": 218,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1114.03
+        },
+        {
+          "index": 219,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Is that, is that word cloud?",
+          "start_time": 1117.71
+        },
+        {
+          "index": 220,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Is that just for overall or could you do that for a certain division?",
+          "start_time": 1119.11
+        },
+        {
+          "index": 221,
+          "speaker_name": "Yugi",
+          "raw_text": "No, Philip, the word cloud is just an overall thing.",
+          "start_time": 1124.91
+        },
+        {
+          "index": 222,
+          "speaker_name": "Yugi",
+          "raw_text": "It cannot be filtered to a specific demographic.",
+          "start_time": 1128.11
+        },
+        {
+          "index": 223,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, gotcha.",
+          "start_time": 1131.23
+        },
+        {
+          "index": 224,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay.",
+          "start_time": 1132.23
+        },
+        {
+          "index": 225,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1133.47
+        },
+        {
+          "index": 226,
+          "speaker_name": "Yugi",
+          "raw_text": "Kylie, any queries on this?",
+          "start_time": 1134.99
+        },
+        {
+          "index": 227,
+          "speaker_name": "Katie Collins",
+          "raw_text": "No.",
+          "start_time": 1139.1
+        },
+        {
+          "index": 228,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "So I was, I was looking at the new hire survey and it does look like that we're able to see the word cloud from that because we have sufficient data.",
+          "start_time": 1139.34
+        },
+        {
+          "index": 229,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "So, Philip, I don't know if you're.",
+          "start_time": 1149.66
+        },
+        {
+          "index": 230,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "If you've seen that yet, but I.",
+          "start_time": 1151.5
+        },
+        {
+          "index": 231,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Can look at it right now.",
+          "start_time": 1154.38
+        },
+        {
+          "index": 232,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah, I just want to show you the way here.",
+          "start_time": 1155.9
+        },
+        {
+          "index": 233,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, there we go.",
+          "start_time": 1158.38
+        },
+        {
+          "index": 234,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Training is the big one there, Kelly.",
+          "start_time": 1159.42
+        },
+        {
+          "index": 235,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right?",
+          "start_time": 1161.02
+        },
+        {
+          "index": 236,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah, yeah, yeah.",
+          "start_time": 1162.63
+        },
+        {
+          "index": 237,
+          "speaker_name": "Yugi",
+          "raw_text": "So even if you hover on a specific, you can see number of occurrences of that word.",
+          "start_time": 1164.15
+        },
+        {
+          "index": 238,
+          "speaker_name": "Yugi",
+          "raw_text": "So training has been mentioned by 16 employees.",
+          "start_time": 1167.95
+        },
+        {
+          "index": 239,
+          "speaker_name": "Yugi",
+          "raw_text": "Equipment is being five, and home suppliers and so on.",
+          "start_time": 1170.63
+        },
+        {
+          "index": 240,
+          "speaker_name": "Yugi",
+          "raw_text": "So you just get an idea of how know what employees are actually feeling on an overall analysis.",
+          "start_time": 1174.35
+        },
+        {
+          "index": 241,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Interesting.",
+          "start_time": 1182.07
+        },
+        {
+          "index": 242,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1184.15
+        },
+        {
+          "index": 243,
+          "speaker_name": "Yugi",
+          "raw_text": "And you can even filter it by specific questions as well, Philip.",
+          "start_time": 1184.67
+        },
+        {
+          "index": 244,
+          "speaker_name": "Yugi",
+          "raw_text": "Not by demographics, but by specific questions.",
+          "start_time": 1190.28
+        },
+        {
+          "index": 245,
+          "speaker_name": "Yugi",
+          "raw_text": "So let's say you want to see, you know, what suggestions you have for improving.",
+          "start_time": 1193
+        },
+        {
+          "index": 246,
+          "speaker_name": "Yugi",
+          "raw_text": "So you, you want to know what employees feel.",
+          "start_time": 1197.24
+        },
+        {
+          "index": 247,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can see tools, training, new guys, equipment are the words which are being used a lot.",
+          "start_time": 1199.88
+        },
+        {
+          "index": 248,
+          "speaker_name": "Yugi",
+          "raw_text": "Right.",
+          "start_time": 1205.32
+        },
+        {
+          "index": 249,
+          "speaker_name": "Yugi",
+          "raw_text": "So this could help you break this down by question level as well.",
+          "start_time": 1205.64
+        },
+        {
+          "index": 250,
+          "speaker_name": "Katie Collins",
+          "raw_text": "Interesting.",
+          "start_time": 1212.52
+        },
+        {
+          "index": 251,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, yeah, I see that.",
+          "start_time": 1215.33
+        },
+        {
+          "index": 252,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So you can filter it out.",
+          "start_time": 1217.45
+        },
+        {
+          "index": 253,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I like that.",
+          "start_time": 1218.41
+        },
+        {
+          "index": 254,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, yeah, that's nice.",
+          "start_time": 1218.97
+        },
+        {
+          "index": 255,
+          "speaker_name": "Yugi",
+          "raw_text": "And the next section would be the feedbacks, which are the free text questions wherein you can, you can just filter down the.",
+          "start_time": 1222.85
+        },
+        {
+          "index": 256,
+          "speaker_name": "Yugi",
+          "raw_text": "All the.",
+          "start_time": 1230.85
+        },
+        {
+          "index": 257,
+          "speaker_name": "Yugi",
+          "raw_text": "All of the free text questions wherein no employee attributes are being shown.",
+          "start_time": 1231.69
+        },
+        {
+          "index": 258,
+          "speaker_name": "Yugi",
+          "raw_text": "So this is exactly like how you would see when an OR survey is also being run.",
+          "start_time": 1236.05
+        },
+        {
+          "index": 259,
+          "speaker_name": "Yugi",
+          "raw_text": "It's just the.",
+          "start_time": 1239.53
+        },
+        {
+          "index": 260,
+          "speaker_name": "Yugi",
+          "raw_text": "So comment alone with the question associated.",
+          "start_time": 1241.02
+        },
+        {
+          "index": 261,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can just see the anonymized responses of employees.",
+          "start_time": 1244.18
+        },
+        {
+          "index": 262,
+          "speaker_name": "Yugi",
+          "raw_text": "You can even filter this down by specific teams locations as well so that you understand the feedback given by Specific demographics as well, and you can filter down by questions.",
+          "start_time": 1248.3
+        },
+        {
+          "index": 263,
+          "speaker_name": "Yugi",
+          "raw_text": "So since we just have one default feedback question, it's just this question over here.",
+          "start_time": 1259.5
+        },
+        {
+          "index": 264,
+          "speaker_name": "Yugi",
+          "raw_text": "But when you use more than one like you.",
+          "start_time": 1264.14
+        },
+        {
+          "index": 265,
+          "speaker_name": "Yugi",
+          "raw_text": "You have a customized free text questions.",
+          "start_time": 1268.09
+        },
+        {
+          "index": 266,
+          "speaker_name": "Yugi",
+          "raw_text": "That's when you can filter down and, you know, navigate through like that.",
+          "start_time": 1270.45
+        },
+        {
+          "index": 267,
+          "speaker_name": "Yugi",
+          "raw_text": "So.",
+          "start_time": 1274.93
+        },
+        {
+          "index": 268,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1275.49
+        },
+        {
+          "index": 269,
+          "speaker_name": "Yugi",
+          "raw_text": "Any questions in this?",
+          "start_time": 1275.85
+        },
+        {
+          "index": 270,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "No, I guess I have a question.",
+          "start_time": 1280.85
+        },
+        {
+          "index": 271,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "So I see like the, the emojis to the left of the responses.",
+          "start_time": 1283.97
+        },
+        {
+          "index": 272,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "How does that tie into the scores?",
+          "start_time": 1290.77
+        },
+        {
+          "index": 273,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Is that part of that heat map?",
+          "start_time": 1294.62
+        },
+        {
+          "index": 274,
+          "speaker_name": "Yugi",
+          "raw_text": "No.",
+          "start_time": 1298.54
+        },
+        {
+          "index": 275,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah, sorry, I didn't mention that one.",
+          "start_time": 1299.18
+        },
+        {
+          "index": 276,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1303.02
+        },
+        {
+          "index": 277,
+          "speaker_name": "Yugi",
+          "raw_text": "So our platform has an AI tool wherein we kind of analyze the overall comment and we give an overall emoji.",
+          "start_time": 1303.46
+        },
+        {
+          "index": 278,
+          "speaker_name": "Yugi",
+          "raw_text": "So we have three kinds of emojis.",
+          "start_time": 1312.62
+        },
+        {
+          "index": 279,
+          "speaker_name": "Yugi",
+          "raw_text": "So this one is a neutral emoji wherein this comment doesn't give you any specific sentiment.",
+          "start_time": 1314.1
+        },
+        {
+          "index": 280,
+          "speaker_name": "Yugi",
+          "raw_text": "Right.",
+          "start_time": 1320.46
+        },
+        {
+          "index": 281,
+          "speaker_name": "Yugi",
+          "raw_text": "But let's say an employee gives a very angry feedback or they, they give you a very happy feedback.",
+          "start_time": 1321.02
+        },
+        {
+          "index": 282,
+          "speaker_name": "Yugi",
+          "raw_text": "In those cases, the emojis would change to a very angry one or a very happy one.",
+          "start_time": 1327.66
+        },
+        {
+          "index": 283,
+          "speaker_name": "Yugi",
+          "raw_text": "So I'll just see if there is something like that in the new hire survey.",
+          "start_time": 1333.819
+        },
+        {
+          "index": 284,
+          "speaker_name": "Yugi",
+          "raw_text": "Oh, I think there's something.",
+          "start_time": 1352.07
+        },
+        {
+          "index": 285,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1355.67
+        },
+        {
+          "index": 286,
+          "speaker_name": "Yugi",
+          "raw_text": "I think there's something.",
+          "start_time": 1356.95
+        },
+        {
+          "index": 287,
+          "speaker_name": "Yugi",
+          "raw_text": "Some kind of a bug over here, which I will check with my team, but I will send you screenshots of the actual emojis after this call.",
+          "start_time": 1358.15
+        },
+        {
+          "index": 288,
+          "speaker_name": "Yugi",
+          "raw_text": "So you get my idea of how the emojis work right now.",
+          "start_time": 1365.03
+        },
+        {
+          "index": 289,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll just check this with my team.",
+          "start_time": 1367.19
+        },
+        {
+          "index": 290,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Okay.",
+          "start_time": 1368.19
+        },
+        {
+          "index": 291,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "They all look to be neutral.",
+          "start_time": 1368.47
+        },
+        {
+          "index": 292,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah, there's something wrong with this.",
+          "start_time": 1370.87
+        },
+        {
+          "index": 293,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll check this with my team.",
+          "start_time": 1372.39
+        },
+        {
+          "index": 294,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, thank you.",
+          "start_time": 1373.43
+        },
+        {
+          "index": 295,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Let me ask something, Yugi.",
+          "start_time": 1377.11
+        },
+        {
+          "index": 296,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I'm, I'm looking at like, hey, I've just got like a pie chart pulled up on our new hire survey here.",
+          "start_time": 1378.35
+        },
+        {
+          "index": 297,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "And I noticed like, you have to hover over it to be able to see, like, proximity to home is one of the biggest ones here, you know, like, and what factors influence your decision?",
+          "start_time": 1384.39
+        },
+        {
+          "index": 298,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So I'm just looking at a question, looking at the pie chart.",
+          "start_time": 1397.69
+        },
+        {
+          "index": 299,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I'm, I, I know Kylie is going to need to be able to export a lot of this data, but like, you can't really see it on the pie chart.",
+          "start_time": 1400.33
+        },
+        {
+          "index": 300,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "What are the big ones?",
+          "start_time": 1409.97
+        },
+        {
+          "index": 301,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I don't want to have to do a bunch of manual work.",
+          "start_time": 1410.77
+        },
+        {
+          "index": 302,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Is there a way to pull that out and you'd be able to see what that pie chart represents besides the little boxes down there like it would it without having to hover.",
+          "start_time": 1412.41
+        },
+        {
+          "index": 303,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "You see what I'm saying?",
+          "start_time": 1422.48
+        },
+        {
+          "index": 304,
+          "speaker_name": "Yugi",
+          "raw_text": "Oh, so you just want to export this entire pie chart with the values in It.",
+          "start_time": 1423.92
+        },
+        {
+          "index": 305,
+          "speaker_name": "Yugi",
+          "raw_text": "Right, right.",
+          "start_time": 1428.2
+        },
+        {
+          "index": 306,
+          "speaker_name": "Yugi",
+          "raw_text": "That's a good suggestion.",
+          "start_time": 1431.2
+        },
+        {
+          "index": 307,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1432.32
+        },
+        {
+          "index": 308,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll see if.",
+          "start_time": 1433.92
+        },
+        {
+          "index": 309,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll talk to my team.",
+          "start_time": 1434.64
+        },
+        {
+          "index": 310,
+          "speaker_name": "Yugi",
+          "raw_text": "Philip.",
+          "start_time": 1435.84
+        },
+        {
+          "index": 311,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll see if we can, you know, implement this feature, but it's a.",
+          "start_time": 1436.28
+        },
+        {
+          "index": 312,
+          "speaker_name": "Yugi",
+          "raw_text": "It's a nice solution as well.",
+          "start_time": 1439.72
+        },
+        {
+          "index": 313,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1440.88
+        },
+        {
+          "index": 314,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah.",
+          "start_time": 1441.84
+        },
+        {
+          "index": 315,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I mean, we.",
+          "start_time": 1442.2
+        },
+        {
+          "index": 316,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "We just want to be able to see it.",
+          "start_time": 1442.64
+        },
+        {
+          "index": 317,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right.",
+          "start_time": 1443.92
+        },
+        {
+          "index": 318,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Like, if she puts it out, like, on.",
+          "start_time": 1444.24
+        },
+        {
+          "index": 319,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "We're doing deep dives with our, you know, with our EVPs of our divisions, and they want to be able to clearly see, hey, what are the big chunks?",
+          "start_time": 1446.4
+        },
+        {
+          "index": 320,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "And I don't want, Callie, I'm to go in here and doing a bunch of manual work every time.",
+          "start_time": 1455.37
+        },
+        {
+          "index": 321,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Part of the reason we did this was that we would not have to do a bunch of manual work, that we could just export these reports.",
+          "start_time": 1459.01
+        },
+        {
+          "index": 322,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So I just want them to be clear if we can.",
+          "start_time": 1465.09
+        },
+        {
+          "index": 323,
+          "speaker_name": "Yugi",
+          "raw_text": "Understood.",
+          "start_time": 1469.57
+        },
+        {
+          "index": 324,
+          "speaker_name": "Yugi",
+          "raw_text": "Understood, Philip.",
+          "start_time": 1470.17
+        },
+        {
+          "index": 325,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll just talk to my team and see on.",
+          "start_time": 1470.85
+        },
+        {
+          "index": 326,
+          "speaker_name": "Yugi",
+          "raw_text": "I know if we already have this as a part of our roadmap or if we can add this to our existing.",
+          "start_time": 1473.17
+        },
+        {
+          "index": 327,
+          "speaker_name": "Yugi",
+          "raw_text": "This year's roadmap.",
+          "start_time": 1477.41
+        },
+        {
+          "index": 328,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1478.37
+        },
+        {
+          "index": 329,
+          "speaker_name": "Yugi",
+          "raw_text": "Right.",
+          "start_time": 1479.04
+        },
+        {
+          "index": 330,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I mean, even if it, like, highlighted the top three or something, you know.",
+          "start_time": 1479.2
+        },
+        {
+          "index": 331,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "You know what I'm saying?",
+          "start_time": 1482.32
+        },
+        {
+          "index": 332,
+          "speaker_name": "Yugi",
+          "raw_text": "I got that.",
+          "start_time": 1486
+        },
+        {
+          "index": 333,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right.",
+          "start_time": 1486.6
+        },
+        {
+          "index": 334,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Would that be helpful to you?",
+          "start_time": 1487.04
+        },
+        {
+          "index": 335,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Oh, definitely.",
+          "start_time": 1488.88
+        },
+        {
+          "index": 336,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I have a. I have a question on that.",
+          "start_time": 1489.52
+        },
+        {
+          "index": 337,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "So before, when we were talking about the export functionality, what happens if we.",
+          "start_time": 1491.68
+        },
+        {
+          "index": 338,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I'm back on the.",
+          "start_time": 1500.08
+        },
+        {
+          "index": 339,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "The new hire survey and I guess the landing page.",
+          "start_time": 1502
+        },
+        {
+          "index": 340,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Yes.",
+          "start_time": 1507.14
+        },
+        {
+          "index": 341,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "So under share, what would happen if we were to export that?",
+          "start_time": 1507.7
+        },
+        {
+          "index": 342,
+          "speaker_name": "Yugi",
+          "raw_text": "What.",
+          "start_time": 1514.38
+        },
+        {
+          "index": 343,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "What information would we get?",
+          "start_time": 1514.82
+        },
+        {
+          "index": 344,
+          "speaker_name": "Yugi",
+          "raw_text": "You just get the plain participation percentage and the count, the ones which you are seeing.",
+          "start_time": 1517.46
+        },
+        {
+          "index": 345,
+          "speaker_name": "Yugi",
+          "raw_text": "So, yeah, you'll just see the ones over here alone.",
+          "start_time": 1524.34
+        },
+        {
+          "index": 346,
+          "speaker_name": "Yugi",
+          "raw_text": "Not the driver's course, because we use a single select questions.",
+          "start_time": 1528.1
+        },
+        {
+          "index": 347,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Okay.",
+          "start_time": 1532.97
+        },
+        {
+          "index": 348,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "And then if we were to go under the questions tab and export that.",
+          "start_time": 1534.33
+        },
+        {
+          "index": 349,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, that's where I'm asking.",
+          "start_time": 1541.69
+        },
+        {
+          "index": 350,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Like, we would need to export that.",
+          "start_time": 1543.13
+        },
+        {
+          "index": 351,
+          "speaker_name": "Yugi",
+          "raw_text": "So I understand that looks like a valid ask.",
+          "start_time": 1545.29
+        },
+        {
+          "index": 352,
+          "speaker_name": "Yugi",
+          "raw_text": "And that's.",
+          "start_time": 1550.41
+        },
+        {
+          "index": 353,
+          "speaker_name": "Yugi",
+          "raw_text": "That's.",
+          "start_time": 1551.09
+        },
+        {
+          "index": 354,
+          "speaker_name": "Yugi",
+          "raw_text": "I think that's what Philip even asked.",
+          "start_time": 1551.45
+        },
+        {
+          "index": 355,
+          "speaker_name": "Yugi",
+          "raw_text": "Previously on the Export.",
+          "start_time": 1552.97
+        },
+        {
+          "index": 356,
+          "speaker_name": "Yugi",
+          "raw_text": "The answer to distribution as well.",
+          "start_time": 1554.57
+        },
+        {
+          "index": 357,
+          "speaker_name": "Yugi",
+          "raw_text": "Right.",
+          "start_time": 1556.73
+        },
+        {
+          "index": 358,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1557.39
+        },
+        {
+          "index": 359,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1558.19
+        },
+        {
+          "index": 360,
+          "speaker_name": "Yugi",
+          "raw_text": "Understood.",
+          "start_time": 1559.79
+        },
+        {
+          "index": 361,
+          "speaker_name": "Yugi",
+          "raw_text": "With that said, Kylie.",
+          "start_time": 1561.23
+        },
+        {
+          "index": 362,
+          "speaker_name": "Yugi",
+          "raw_text": "So did you get a chance to look into the life cycle analytics over here?",
+          "start_time": 1562.47
+        },
+        {
+          "index": 363,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I don't believe so.",
+          "start_time": 1570.11
+        },
+        {
+          "index": 364,
+          "speaker_name": "Yugi",
+          "raw_text": "Oh, okay.",
+          "start_time": 1572.59
+        },
+        {
+          "index": 365,
+          "speaker_name": "Yugi",
+          "raw_text": "Let me just walk you through that as well.",
+          "start_time": 1573.59
+        },
+        {
+          "index": 366,
+          "speaker_name": "Yugi",
+          "raw_text": "So that might give you a lot of extra insight.",
+          "start_time": 1575.23
+        },
+        {
+          "index": 367,
+          "speaker_name": "Yugi",
+          "raw_text": "So just give me a second.",
+          "start_time": 1577.31
+        },
+        {
+          "index": 368,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Yeah, I'm seeing the same thing on my end.",
+          "start_time": 1585.06
+        },
+        {
+          "index": 369,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I'm not seeing.",
+          "start_time": 1587.3
+        },
+        {
+          "index": 370,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right.",
+          "start_time": 1588.98
+        },
+        {
+          "index": 371,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "We haven't really seen anything on that yet.",
+          "start_time": 1589.94
+        },
+        {
+          "index": 372,
+          "speaker_name": "Yugi",
+          "raw_text": "Oh, okay.",
+          "start_time": 1593.38
+        },
+        {
+          "index": 373,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1594.42
+        },
+        {
+          "index": 374,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll just do a quick check on mine.",
+          "start_time": 1594.86
+        },
+        {
+          "index": 375,
+          "speaker_name": "Yugi",
+          "raw_text": "There should be something which should be enabled on the back end by my side.",
+          "start_time": 1596.74
+        },
+        {
+          "index": 376,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll just quickly check that and get back to you.",
+          "start_time": 1599.74
+        },
+        {
+          "index": 377,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll just maybe do a document of what, you know, dashboards you'd see in this lifecycle analytics so you can understand what you can expect or you know, extract from the platform as well.",
+          "start_time": 1601.7
+        },
+        {
+          "index": 378,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay, done.",
+          "start_time": 1611.53
+        },
+        {
+          "index": 379,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1617.29
+        },
+        {
+          "index": 380,
+          "speaker_name": "Yugi",
+          "raw_text": "So now that we've covered the individual reports, the next step would be to do a report export.",
+          "start_time": 1617.69
+        },
+        {
+          "index": 381,
+          "speaker_name": "Yugi",
+          "raw_text": "Right.",
+          "start_time": 1624.09
+        },
+        {
+          "index": 382,
+          "speaker_name": "Yugi",
+          "raw_text": "So we do have a list of pre customized templates for report exports wherein you can see rating distribution across the standard attributes, the driver scores for managers and the ENPs for managers and the text responses entirely in one file and so on.",
+          "start_time": 1624.81
+        },
+        {
+          "index": 383,
+          "speaker_name": "Yugi",
+          "raw_text": "So if you want to do an export by specific these templates, you can export these using these options.",
+          "start_time": 1641.83
+        },
+        {
+          "index": 384,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay, but we can create our own as well.",
+          "start_time": 1651.15
+        },
+        {
+          "index": 385,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Or is it only just these templates?",
+          "start_time": 1655.15
+        },
+        {
+          "index": 386,
+          "speaker_name": "Yugi",
+          "raw_text": "Yes, you can even mix and match your report to the advanced section.",
+          "start_time": 1658.19
+        },
+        {
+          "index": 387,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can go to advanced, click on dynamic reports and let's say you just want to mix and match of three attributes.",
+          "start_time": 1662.63
+        },
+        {
+          "index": 388,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1669.63
+        },
+        {
+          "index": 389,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can select the report metrics whether you want by engagement score, question level, driver or rating distribution.",
+          "start_time": 1669.99
+        },
+        {
+          "index": 390,
+          "speaker_name": "Yugi",
+          "raw_text": "You can just choose one of these you want and click on the add ons you require and then select three attributes.",
+          "start_time": 1677.31
+        },
+        {
+          "index": 391,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can just make a use of three attributes to mix and provide another report.",
+          "start_time": 1684.27
+        },
+        {
+          "index": 392,
+          "speaker_name": "Yugi",
+          "raw_text": "So if you want split by teams, within managers, within locations, you can select all these attributes and then click on generate report.",
+          "start_time": 1690.19
+        },
+        {
+          "index": 393,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "This is what we're trying to get down to, right?",
+          "start_time": 1700.96
+        },
+        {
+          "index": 394,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Like to be able to do this because for what Kylie has to export with some of her reports, we would want to be able to get it down by division, by manager in some areas probably.",
+          "start_time": 1702.8
+        },
+        {
+          "index": 395,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "And I noticed Yugi, that the only surveys that are available to do this for our test ones.",
+          "start_time": 1714.64
+        },
+        {
+          "index": 396,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Is there a reason why the new hire survey isn't on there?",
+          "start_time": 1721.45
+        },
+        {
+          "index": 397,
+          "speaker_name": "Yugi",
+          "raw_text": "Yes, yes, Kylie, that's because the new hire survey doesn't have rating questions which don't have any scores.",
+          "start_time": 1724.73
+        },
+        {
+          "index": 398,
+          "speaker_name": "Yugi",
+          "raw_text": "Right.",
+          "start_time": 1731.41
+        },
+        {
+          "index": 399,
+          "speaker_name": "Yugi",
+          "raw_text": "So since all of these are based on rating questions which have a scale of one to five, we won't be having enough data to actually get through this.",
+          "start_time": 1731.93
+        },
+        {
+          "index": 400,
+          "speaker_name": "Yugi",
+          "raw_text": "That's why.",
+          "start_time": 1741.77
+        },
+        {
+          "index": 401,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So Callie, this goes back to our.",
+          "start_time": 1743.61
+        },
+        {
+          "index": 402,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "We asked him to keep the, the new hire exactly the way it was.",
+          "start_time": 1746.87
+        },
+        {
+          "index": 403,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "This, this was why he was telling us.",
+          "start_time": 1751.71
+        },
+        {
+          "index": 404,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I mean as I'm kind of looking back why he was telling us we need to do it the other way.",
+          "start_time": 1754.39
+        },
+        {
+          "index": 405,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "And so we may need to have another discussion and see if we need to like I want to be able to you to be able to export data easily.",
+          "start_time": 1760.47
+        },
+        {
+          "index": 406,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "You know, I thought we would just be able to export like by question, like you're doing pretty easily.",
+          "start_time": 1769.43
+        },
+        {
+          "index": 407,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "And I know you, you're going to check on that for us, but I don't know, we may have to figure out how to get it into this format so we can, so we can get that report pushed out.",
+          "start_time": 1778.81
+        },
+        {
+          "index": 408,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I don't know.",
+          "start_time": 1789.13
+        },
+        {
+          "index": 409,
+          "speaker_name": "Yugi",
+          "raw_text": "No worries.",
+          "start_time": 1790.73
+        },
+        {
+          "index": 410,
+          "speaker_name": "Yugi",
+          "raw_text": "Philip, if you would like to transition towards a rating scale type of survey, just let me know if you're okay to go forward.",
+          "start_time": 1791.29
+        },
+        {
+          "index": 411,
+          "speaker_name": "Yugi",
+          "raw_text": "I can just help you with reformatting the questions to ensure that.",
+          "start_time": 1798.49
+        },
+        {
+          "index": 412,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah.",
+          "start_time": 1802.16
+        },
+        {
+          "index": 413,
+          "speaker_name": "Yugi",
+          "raw_text": "Align with your previous year's question.",
+          "start_time": 1802.44
+        },
+        {
+          "index": 414,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Well, I mean it's going to be a pretty, it's going to have to be a pretty heavy discussion on our side with, with Jen and Kylie and myself to figure out if we want to do this.",
+          "start_time": 1804.96
+        },
+        {
+          "index": 415,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, let me, let me think about that one.",
+          "start_time": 1816.96
+        },
+        {
+          "index": 416,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I'm going to talk with Kelly about that offline Yugi.",
+          "start_time": 1818.8
+        },
+        {
+          "index": 417,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay, no worries.",
+          "start_time": 1821.84
+        },
+        {
+          "index": 418,
+          "speaker_name": "Yugi",
+          "raw_text": "Just discuss with this internally.",
+          "start_time": 1822.76
+        },
+        {
+          "index": 419,
+          "speaker_name": "Yugi",
+          "raw_text": "Let me know.",
+          "start_time": 1824.64
+        },
+        {
+          "index": 420,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll take it out from then.",
+          "start_time": 1825.08
+        },
+        {
+          "index": 421,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Sure.",
+          "start_time": 1826.96
+        },
+        {
+          "index": 422,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1829.66
+        },
+        {
+          "index": 423,
+          "speaker_name": "Yugi",
+          "raw_text": "Perfect.",
+          "start_time": 1829.9
+        },
+        {
+          "index": 424,
+          "speaker_name": "Yugi",
+          "raw_text": "And the next section would be the feedback section wherein you get a section exclusively for feedbacks.",
+          "start_time": 1830.7
+        },
+        {
+          "index": 425,
+          "speaker_name": "Yugi",
+          "raw_text": "So this will give you.",
+          "start_time": 1837.5
+        },
+        {
+          "index": 426,
+          "speaker_name": "Yugi",
+          "raw_text": "So this, these are the emojis which I mentioned.",
+          "start_time": 1839.02
+        },
+        {
+          "index": 427,
+          "speaker_name": "Yugi",
+          "raw_text": "Right.",
+          "start_time": 1841.1
+        },
+        {
+          "index": 428,
+          "speaker_name": "Yugi",
+          "raw_text": "So you get the overall sentiment across your feedbacks on all surveys and on the platform.",
+          "start_time": 1841.66
+        },
+        {
+          "index": 429,
+          "speaker_name": "Yugi",
+          "raw_text": "And this should give you the number of negative comments, number of neutral, number of positive.",
+          "start_time": 1849.26
+        },
+        {
+          "index": 430,
+          "speaker_name": "Yugi",
+          "raw_text": "And this will give you a quick digest on the top teams which have given feedbacks, the top locations which has given feedback in the top keywords as well.",
+          "start_time": 1856.53
+        },
+        {
+          "index": 431,
+          "speaker_name": "Yugi",
+          "raw_text": "And this will also show you the top drivers or the themes which are being discussed by employees and feedbacks or the free text questions.",
+          "start_time": 1864.45
+        },
+        {
+          "index": 432,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1871.65
+        },
+        {
+          "index": 433,
+          "speaker_name": "Yugi",
+          "raw_text": "Any questions in this?",
+          "start_time": 1872.77
+        },
+        {
+          "index": 434,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I don't.",
+          "start_time": 1878.29
+        },
+        {
+          "index": 435,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1880.86
+        },
+        {
+          "index": 436,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1882.94
+        },
+        {
+          "index": 437,
+          "speaker_name": "Yugi",
+          "raw_text": "So the open text, open comments are the free text questions, responses wherein you can.",
+          "start_time": 1884.38
+        },
+        {
+          "index": 438,
+          "speaker_name": "Yugi",
+          "raw_text": "Based on the responses for those question.",
+          "start_time": 1889.74
+        },
+        {
+          "index": 439,
+          "speaker_name": "Yugi",
+          "raw_text": "Do you have any feedback or suggestions?",
+          "start_time": 1891.98
+        },
+        {
+          "index": 440,
+          "speaker_name": "Yugi",
+          "raw_text": "You can just see the list of feedbacks for that question.",
+          "start_time": 1894.22
+        },
+        {
+          "index": 441,
+          "speaker_name": "Yugi",
+          "raw_text": "And so you can see the score over here.",
+          "start_time": 1899.02
+        },
+        {
+          "index": 442,
+          "speaker_name": "Yugi",
+          "raw_text": "Right.",
+          "start_time": 1901.58
+        },
+        {
+          "index": 443,
+          "speaker_name": "Yugi",
+          "raw_text": "So the, the sentiment score which I mentioned in the beginning in the summary page.",
+          "start_time": 1901.9
+        },
+        {
+          "index": 444,
+          "speaker_name": "Yugi",
+          "raw_text": "So any positive feedbacks would get a score from 0 to point 0 to 1 and negative comments will get a score from 0 to minus 1.",
+          "start_time": 1906.36
+        },
+        {
+          "index": 445,
+          "speaker_name": "Yugi",
+          "raw_text": "Right.",
+          "start_time": 1915
+        },
+        {
+          "index": 446,
+          "speaker_name": "Yugi",
+          "raw_text": "And the platform with the help of AI automatically categorizes the feedbacks into specific teams.",
+          "start_time": 1915.64
+        },
+        {
+          "index": 447,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "But that's wrong, right?",
+          "start_time": 1925.56
+        },
+        {
+          "index": 448,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Like if you see it, it's showing happy and that's not a happy.",
+          "start_time": 1927.24
+        },
+        {
+          "index": 449,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Well, I said maybe it is.",
+          "start_time": 1931.73
+        },
+        {
+          "index": 450,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Maybe I read it wrong.",
+          "start_time": 1932.93
+        },
+        {
+          "index": 451,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Sure, yeah.",
+          "start_time": 1933.93
+        },
+        {
+          "index": 452,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, I guess, I guess you could consider that a happy I. I don't know, like my human brain goes.",
+          "start_time": 1935.61
+        },
+        {
+          "index": 453,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "That could go two ways.",
+          "start_time": 1941.01
+        },
+        {
+          "index": 454,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right.",
+          "start_time": 1942.77
+        },
+        {
+          "index": 455,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So I don't know, like my hr, like, it could be, hey, I really enjoyed my.",
+          "start_time": 1943.89
+        },
+        {
+          "index": 456,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Like it.",
+          "start_time": 1949.17
+        },
+        {
+          "index": 457,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "That's probably correct right there.",
+          "start_time": 1950.13
+        },
+        {
+          "index": 458,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "But like, I don't know if they're.",
+          "start_time": 1951.69
+        },
+        {
+          "index": 459,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "If, if you're trying to say, hey, I don't think everybody's getting this treatment.",
+          "start_time": 1954.61
+        },
+        {
+          "index": 460,
+          "speaker_name": "Yugi",
+          "raw_text": "You know, it could, it could go both ways.",
+          "start_time": 1958.29
+        },
+        {
+          "index": 461,
+          "speaker_name": "Yugi",
+          "raw_text": "I understand.",
+          "start_time": 1960.69
+        },
+        {
+          "index": 462,
+          "speaker_name": "Yugi",
+          "raw_text": "But yeah, right.",
+          "start_time": 1961.09
+        },
+        {
+          "index": 463,
+          "speaker_name": "Yugi",
+          "raw_text": "It's just an AI tool wherein it's constantly evolving and we are also making sure the data gets totally accurate.",
+          "start_time": 1962.53
+        },
+        {
+          "index": 464,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 1968.59
+        },
+        {
+          "index": 465,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 1971.23
+        },
+        {
+          "index": 466,
+          "speaker_name": "Yugi",
+          "raw_text": "And you even have an option to filter the feedbacks based on specific surveys.",
+          "start_time": 1971.95
+        },
+        {
+          "index": 467,
+          "speaker_name": "Yugi",
+          "raw_text": "So if you just want to see the feedbacks for the new hire survey alone, you can click on the survey and click apply.",
+          "start_time": 1979.23
+        },
+        {
+          "index": 468,
+          "speaker_name": "Yugi",
+          "raw_text": "And let's say if you want to see by sentiments as well.",
+          "start_time": 1986.91
+        },
+        {
+          "index": 469,
+          "speaker_name": "Yugi",
+          "raw_text": "So let's say if you don't have any open text.",
+          "start_time": 1990.75
+        },
+        {
+          "index": 470,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Do we have any open text?",
+          "start_time": 1996.91
+        },
+        {
+          "index": 471,
+          "speaker_name": "Yugi",
+          "raw_text": "I don't.",
+          "start_time": 1999.07
+        },
+        {
+          "index": 472,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "The good question.",
+          "start_time": 2002.91
+        },
+        {
+          "index": 473,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "What's that?",
+          "start_time": 2005.15
+        },
+        {
+          "index": 474,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I said that's a good question.",
+          "start_time": 2006.43
+        },
+        {
+          "index": 475,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah.",
+          "start_time": 2008.35
+        },
+        {
+          "index": 476,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right.",
+          "start_time": 2008.75
+        },
+        {
+          "index": 477,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I'm just thinking we might have to rethink this thing.",
+          "start_time": 2009.23
+        },
+        {
+          "index": 478,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I. I don't know.",
+          "start_time": 2011.55
+        },
+        {
+          "index": 479,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "My head's just going.",
+          "start_time": 2012.23
+        },
+        {
+          "index": 480,
+          "speaker_name": "Yugi",
+          "raw_text": "But Philip, I think we do have something like that.",
+          "start_time": 2013.19
+        },
+        {
+          "index": 481,
+          "speaker_name": "Yugi",
+          "raw_text": "So that would come under the question comments, which is the custom Phytax questions.",
+          "start_time": 2016.99
+        },
+        {
+          "index": 482,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay.",
+          "start_time": 2021.56
+        },
+        {
+          "index": 483,
+          "speaker_name": "Yugi",
+          "raw_text": "Open comments refer to the default question, which is do you have any feedback or suggestions?",
+          "start_time": 2021.96
+        },
+        {
+          "index": 484,
+          "speaker_name": "Yugi",
+          "raw_text": "But the question comments would refer to, you know, the custom free text questions wherein if you select, say you click on the new hire survey.",
+          "start_time": 2026.68
+        },
+        {
+          "index": 485,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Yeah.",
+          "start_time": 2038.36
+        },
+        {
+          "index": 486,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Our last two questions on the new hire survey are open.",
+          "start_time": 2038.72
+        },
+        {
+          "index": 487,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Open.",
+          "start_time": 2041.64
+        },
+        {
+          "index": 488,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay.",
+          "start_time": 2042.04
+        },
+        {
+          "index": 489,
+          "speaker_name": "Yugi",
+          "raw_text": "All right.",
+          "start_time": 2042.64
+        },
+        {
+          "index": 490,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Gotcha.",
+          "start_time": 2045.24
+        },
+        {
+          "index": 491,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 2047.65
+        },
+        {
+          "index": 492,
+          "speaker_name": "Yugi",
+          "raw_text": "Oh, okay.",
+          "start_time": 2050.13
+        },
+        {
+          "index": 493,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I think there's actually a few, but I know the last two are.",
+          "start_time": 2053.41
+        },
+        {
+          "index": 494,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So is that saying that nobody has answered those questions?",
+          "start_time": 2058.21
+        },
+        {
+          "index": 495,
+          "speaker_name": "Yugi",
+          "raw_text": "No, no, they should be because those are mandatory questions, so.",
+          "start_time": 2061.49
+        },
+        {
+          "index": 496,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Required.",
+          "start_time": 2065.73
+        },
+        {
+          "index": 497,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah, it should be updating.",
+          "start_time": 2067.81
+        },
+        {
+          "index": 498,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Still 16 right up there.",
+          "start_time": 2071.25
+        },
+        {
+          "index": 499,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right.",
+          "start_time": 2073.26
+        },
+        {
+          "index": 500,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 2077.82
+        },
+        {
+          "index": 501,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll check that one as well.",
+          "start_time": 2078.26
+        },
+        {
+          "index": 502,
+          "speaker_name": "Yugi",
+          "raw_text": "I'm really sorry, there are a lot of messages going on.",
+          "start_time": 2079.5
+        },
+        {
+          "index": 503,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll just check this one.",
+          "start_time": 2081.82
+        },
+        {
+          "index": 504,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "What training and or resources?",
+          "start_time": 2082.7
+        },
+        {
+          "index": 505,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "That question, if you scroll down a little bit.",
+          "start_time": 2085.26
+        },
+        {
+          "index": 506,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Yes, that one with the angry emoji.",
+          "start_time": 2090.3
+        },
+        {
+          "index": 507,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "That one is on a new hire.",
+          "start_time": 2092.5
+        },
+        {
+          "index": 508,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Well, actually it's showing via test.",
+          "start_time": 2094.7
+        },
+        {
+          "index": 509,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "New hires.",
+          "start_time": 2097.02
+        },
+        {
+          "index": 510,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah, that's coming from a test service.",
+          "start_time": 2097.9
+        },
+        {
+          "index": 511,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Gotcha.",
+          "start_time": 2100.14
+        },
+        {
+          "index": 512,
+          "speaker_name": "Yugi",
+          "raw_text": "Let me just quickly check this to the reports.",
+          "start_time": 2102.21
+        },
+        {
+          "index": 513,
+          "speaker_name": "Yugi",
+          "raw_text": "So we are having our 85 response.",
+          "start_time": 2117.09
+        },
+        {
+          "index": 514,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Yeah.",
+          "start_time": 2119.69
+        },
+        {
+          "index": 515,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 2124.53
+        },
+        {
+          "index": 516,
+          "speaker_name": "Yugi",
+          "raw_text": "I think there should be something on the back end which I should enable for this one as well.",
+          "start_time": 2126.54
+        },
+        {
+          "index": 517,
+          "speaker_name": "Yugi",
+          "raw_text": "I'll do that and let you guys know.",
+          "start_time": 2130.5
+        },
+        {
+          "index": 518,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 2132.1
+        },
+        {
+          "index": 519,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah, I think this covers the Overall reporting structure for, you know, which covers both life cycle surveys for the, which is a new hire and the engagement survey kind of types.",
+          "start_time": 2134.3
+        },
+        {
+          "index": 520,
+          "speaker_name": "Yugi",
+          "raw_text": "So you can just walk through the platform, see if you have any questions and let me know.",
+          "start_time": 2148.78
+        },
+        {
+          "index": 521,
+          "speaker_name": "Yugi",
+          "raw_text": "So I'll be happy to answer any questions through email when you reach out to me.",
+          "start_time": 2153.18
+        },
+        {
+          "index": 522,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yeah, I think probably we're just going to need to play around with it a little bit and, and see if it gives us what we want.",
+          "start_time": 2158.85
+        },
+        {
+          "index": 523,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I, they're twofold here.",
+          "start_time": 2167.65
+        },
+        {
+          "index": 524,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right.",
+          "start_time": 2170.53
+        },
+        {
+          "index": 525,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Like this, what you're showing me works really well for like our organizational engagement survey.",
+          "start_time": 2170.77
+        },
+        {
+          "index": 526,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Like we're going to be able to structure that thing where you can just filter this thing straight out and run reports.",
+          "start_time": 2177.17
+        },
+        {
+          "index": 527,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "That's, that's going to be fine.",
+          "start_time": 2182.13
+        },
+        {
+          "index": 528,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I, Kylie, I think like on your surveys, the way that we're doing them, we, we might have to have a little more discussion around them to make sure we can get the data easily extracted out of the system.",
+          "start_time": 2183.45
+        },
+        {
+          "index": 529,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "It's just, is what it is.",
+          "start_time": 2196.77
+        },
+        {
+          "index": 530,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Right.",
+          "start_time": 2199.25
+        },
+        {
+          "index": 531,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Had to figure out on that.",
+          "start_time": 2200.13
+        },
+        {
+          "index": 532,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "But like I, I, I'm, it's very promising for the organizational.",
+          "start_time": 2201.29
+        },
+        {
+          "index": 533,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I think that's going to be fine, but I think there's going to, before we start adding in like exit surveys and things like that, we're going to have to figure out what we want to glean.",
+          "start_time": 2206.53
+        },
+        {
+          "index": 534,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "It would be good if, if we started seeing kind of the same thing come out of all these surveys.",
+          "start_time": 2215.88
+        },
+        {
+          "index": 535,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "So the managers got really used to seeing the same dashboard.",
+          "start_time": 2220.04
+        },
+        {
+          "index": 536,
+          "speaker_name": "Yugi",
+          "raw_text": "So.",
+          "start_time": 2226.2
+        },
+        {
+          "index": 537,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I don't know, Kylie, feel free to speak up, but that, those are my thoughts.",
+          "start_time": 2227.16
+        },
+        {
+          "index": 538,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "No, yeah, no, I'm completely, I'm, I'm this in the same, same boat as you.",
+          "start_time": 2230.08
+        },
+        {
+          "index": 539,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I, I agree with that statement.",
+          "start_time": 2234.6
+        },
+        {
+          "index": 540,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay.",
+          "start_time": 2236.92
+        },
+        {
+          "index": 541,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay.",
+          "start_time": 2237.6
+        },
+        {
+          "index": 542,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "All right, well, I will get with you offline here a little while.",
+          "start_time": 2238.2
+        },
+        {
+          "index": 543,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "We'll, we'll get our heads together on it.",
+          "start_time": 2241.95
+        },
+        {
+          "index": 544,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "All right, sounds good.",
+          "start_time": 2246.55
+        },
+        {
+          "index": 545,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Yugi, thank you so much for your time.",
+          "start_time": 2247.43
+        },
+        {
+          "index": 546,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Thank you for walking us through the functionality of the, the reports and dashboards.",
+          "start_time": 2249.31
+        },
+        {
+          "index": 547,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah, no worries.",
+          "start_time": 2254.87
+        },
+        {
+          "index": 548,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Absolutely.",
+          "start_time": 2256.23
+        },
+        {
+          "index": 549,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Yugi, thank you so much.",
+          "start_time": 2256.87
+        },
+        {
+          "index": 550,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "This is good.",
+          "start_time": 2257.91
+        },
+        {
+          "index": 551,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I think it's just some decisions we need to make on our end, so, but, but thank you for showing us the functionality there.",
+          "start_time": 2258.55
+        },
+        {
+          "index": 552,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "We appreciate it.",
+          "start_time": 2263.51
+        },
+        {
+          "index": 553,
+          "speaker_name": "Yugi",
+          "raw_text": "Sure.",
+          "start_time": 2264.87
+        },
+        {
+          "index": 554,
+          "speaker_name": "Yugi",
+          "raw_text": "Just let me know what you're deciding on.",
+          "start_time": 2265.27
+        },
+        {
+          "index": 555,
+          "speaker_name": "Yugi",
+          "raw_text": "And accordingly, if you want to proceed with the rating kind of questions, I'll be happy to reformat them and even create survey so that the ones who get, you know, added to the survey in the future would be responding with a rating kind of question which could help you to analyze this much better.",
+          "start_time": 2266.91
+        },
+        {
+          "index": 556,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Okay.",
+          "start_time": 2282.29
+        },
+        {
+          "index": 557,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Excellent.",
+          "start_time": 2283.57
+        },
+        {
+          "index": 558,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Thank.",
+          "start_time": 2284.13
+        },
+        {
+          "index": 559,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Thank you so much, Yugi.",
+          "start_time": 2284.45
+        },
+        {
+          "index": 560,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "We will.",
+          "start_time": 2285.53
+        },
+        {
+          "index": 561,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "We will get back with you.",
+          "start_time": 2285.89
+        },
+        {
+          "index": 562,
+          "speaker_name": "Yugi",
+          "raw_text": "Yeah.",
+          "start_time": 2287.49
+        },
+        {
+          "index": 563,
+          "speaker_name": "Yugi",
+          "raw_text": "Perfect.",
+          "start_time": 2287.93
+        },
+        {
+          "index": 564,
+          "speaker_name": "Yugi",
+          "raw_text": "Perfect.",
+          "start_time": 2288.41
+        },
+        {
+          "index": 565,
+          "speaker_name": "Yugi",
+          "raw_text": "Any other.",
+          "start_time": 2289.01
+        },
+        {
+          "index": 566,
+          "speaker_name": "Yugi",
+          "raw_text": "Any other clarifications or things we have to discuss?",
+          "start_time": 2289.73
+        },
+        {
+          "index": 567,
+          "speaker_name": "Yugi",
+          "raw_text": "Philip?",
+          "start_time": 2292.21
+        },
+        {
+          "index": 568,
+          "speaker_name": "Yugi",
+          "raw_text": "Kylie?",
+          "start_time": 2292.81
+        },
+        {
+          "index": 569,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "I'm good for now.",
+          "start_time": 2294.37
+        },
+        {
+          "index": 570,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "I believe so.",
+          "start_time": 2295.33
+        },
+        {
+          "index": 571,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 2297.49
+        },
+        {
+          "index": 572,
+          "speaker_name": "Yugi",
+          "raw_text": "Okay.",
+          "start_time": 2297.97
+        },
+        {
+          "index": 573,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Hey, thanks.",
+          "start_time": 2298.33
+        },
+        {
+          "index": 574,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Thanks, my friend.",
+          "start_time": 2298.85
+        },
+        {
+          "index": 575,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "We appreciate it.",
+          "start_time": 2299.87
+        },
+        {
+          "index": 576,
+          "speaker_name": "Yugi",
+          "raw_text": "Thank you so much.",
+          "start_time": 2301.47
+        },
+        {
+          "index": 577,
+          "speaker_name": "Phillip Dean",
+          "raw_text": "Take care.",
+          "start_time": 2303.15
+        },
+        {
+          "index": 578,
+          "speaker_name": "Yugi",
+          "raw_text": "Bye.",
+          "start_time": 2304.51
+        },
+        {
+          "index": 579,
+          "speaker_name": "Kylee Bauman",
+          "raw_text": "Bye.",
+          "start_time": 2304.83
+        }
+      ],
+      "meeting_link": "https://teams.microsoft.com/l/meetup-join/19:meeting_MTk3ZDZjMmEtZWIzYy00YzhlLTg2YzEtMjBjMjViOTI2YWJi@thread.v2/0?context={\"Tid\":\"9f654f46-8532-4ffc-8ef1-9f20f78c97ef\",\"Oid\":\"0f408415-1977-4389-80a6-3dffd1e80186\"}"
+    }
+  ]
+}
