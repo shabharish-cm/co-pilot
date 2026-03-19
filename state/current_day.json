@@ -134,7 +134,7 @@
   ],
   "todayMeetings": [],
   "digestPaths": {
-    "morning": null,
+    "morning": "daily/digests/2026-03-19-morning.md",
     "eod": null
   }
 }
