@@ -1,12 +1,6 @@
 {
   "date": "2026-03-19",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-19T02:17:12.615Z",
-  "lastEveningSyncAt": "2026-03-18T16:45:08.731Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-19T02:17:12.615Z",
   "openTasks": [
     {
       "id": "6g9gQ3XFRQxFrRfQ",
@@ -75,66 +69,5 @@
       "url": "https://todoist.com/showTask?id=6g9RjjmgpCmXX5Rx"
     }
   ],
-  "completedToday": [],
-  "dueSoon": [
-    {
-      "id": "6g9wjqRfhhHJQ84x",
-      "content": "Customer Pulse - Generate requirements from Feedback",
-      "due": "2026-03-19",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6g9wjqRfhhHJQ84x"
-    },
-    {
-      "id": "6gC358jQm385w2vx",
-      "content": "Backfill 6-month Fireflies transcripts via Slack export",
-      "due": "2026-03-19",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gC358jQm385w2vx"
-    },
-    {
-      "id": "6g9RjjJX748JQh7x",
-      "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
-      "due": "2026-03-19",
-      "priority": 2,
-      "labels": [
-        "follow-up",
-        "research"
-      ],
-      "sectionId": "6g8x4JxwH876pgGQ",
-      "sectionName": "Features",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6g9RjjJX748JQh7x"
-    },
-    {
-      "id": "6g9RjjmgpCmXX5Rx",
-      "content": "Evaluate value of Post-Launch Survey Editing (Guardrailed) - new feature in validation",
-      "due": "2026-03-19",
-      "priority": 2,
-      "labels": [
-        "product",
-        "research"
-      ],
-      "sectionId": "6g8x4JxwH876pgGQ",
-      "sectionName": "Features",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6g9RjjmgpCmXX5Rx"
-    }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": null,
-    "eod": null
-  }
+  "todayMeetings": []
 }
