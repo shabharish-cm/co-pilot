@@ -1,12 +1,25 @@
 {
   "date": "2026-03-19",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-19T05:37:49.634Z",
-  "lastEveningSyncAt": "2026-03-19T16:42:10.191Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-19T16:42:10.191Z",
+  "completedToday": [
+    {
+      "id": "6g9RjjmgpCmXX5Rx",
+      "content": "Evaluate value of Post-Launch Survey Editing (Guardrailed) - new feature in validation",
+      "due": "2026-03-19",
+      "priority": 2,
+      "labels": [
+        "product",
+        "research"
+      ],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6g9RjjmgpCmXX5Rx",
+      "completedVia": "claude",
+      "completedAt": "2026-03-19T05:54:17.792Z"
+    }
+  ],
   "openTasks": [
     {
       "id": "6g9gQ3XFRQxFrRfQ",
@@ -96,25 +109,6 @@
       "url": "https://todoist.com/showTask?id=6gC7xJM8267RxRpx"
     }
   ],
-  "completedToday": [
-    {
-      "id": "6g9RjjmgpCmXX5Rx",
-      "content": "Evaluate value of Post-Launch Survey Editing (Guardrailed) - new feature in validation",
-      "due": "2026-03-19",
-      "priority": 2,
-      "labels": [
-        "product",
-        "research"
-      ],
-      "sectionId": "6g8x4JxwH876pgGQ",
-      "sectionName": "Features",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6g9RjjmgpCmXX5Rx",
-      "completedVia": "claude",
-      "completedAt": "2026-03-19T05:54:17.792Z"
-    }
-  ],
   "dueSoon": [
     {
       "id": "6g9wjqRfhhHJQ84x",
@@ -167,10 +161,5 @@
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6g9RjjJX748JQh7x"
     }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-19-morning.md",
-    "eod": null
-  }
+  ]
 }
