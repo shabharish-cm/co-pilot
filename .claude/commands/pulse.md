@@ -15,6 +15,7 @@ Run every Thursday (Claude cron task). Can also be run manually.
 2. `pulse/master/customer-pulse-master.md` — prior history for recurrence detection
 3. `state/transcript_index.json` — to identify available files
 4. `context/system/routing-and-scoring.md` — value-effort scoring dimensions
+5. `context/customers/<Account>/` — per-customer context files (survey analyses, briefings, notes). Glob all files under this path and read any that match accounts appearing in the week's transcripts.
 
 ## Step 0 — Sync repo
 Run `git pull` to ensure local transcript and pulse files are up to date before reading.
@@ -29,7 +30,9 @@ If no transcript files exist for the window:
 - Stop. Do not generate empty or fabricated content.
 
 ## Step 3 — Sonnet analysis phase
-Read all transcripts in the window. Classify every customer signal into exactly one of:
+Read all transcripts in the window. For each account that appears, check if a folder exists at `context/customers/<Account>/` and read any files there for additional context (prior survey results, briefing notes, known priorities).
+
+Classify every customer signal into exactly one of:
 - **New feature requests** — things customers want that don't exist
 - **Problems with existing features** — complaints, confusion, bugs, friction
 - **What customers love** — explicit praise or strong positive signal
@@ -55,6 +58,17 @@ Write the final weekly digest to `pulse/weekly/YYYY-WW-customer-pulse.md` with s
 ## Step 5 — Update pulse master
 Append the new week entry to `pulse/master/customer-pulse-master.md` following the existing section format.
 
+## Step 5b — Update customer context files
+For each account that raised a signal this week:
+- Check if `context/customers/<Account>/` exists. If not, create it.
+- Append or create `context/customers/<Account>/pulse-signals.md` with a dated entry:
+  ```
+  ## YYYY-MM-DD (Week YYYY-WW)
+  - <signal 1>
+  - <signal 2>
+  ```
+- Do not rewrite existing entries — append only.
+
 ## Step 6 — Update sync metadata
 Update `state/last_sync.json` → `weeklyCustomerPulseDigest` with:
 ```json
@@ -64,7 +78,7 @@ Update `state/last_sync.json` → `weeklyCustomerPulseDigest` with:
 ## Step 7 — Commit and push
 After writing the digest, updating the pulse master, and updating `state/last_sync.json`, run:
 ```
-git add pulse/weekly/YYYY-WW-customer-pulse.md pulse/master/customer-pulse-master.md state/last_sync.json
+git add pulse/weekly/YYYY-WW-customer-pulse.md pulse/master/customer-pulse-master.md state/last_sync.json context/customers/
 git commit -m "digest: weekly pulse YYYY-WW"
 git push
 ```
