@@ -2,7 +2,17 @@ import { registerCommand } from './command-registry';
 import { route } from './router';
 import { createTask, updateTask, completeTask, findMatchingTasks } from '../services/task-manager/task-manager.service';
 import { routeTask } from '../integrations/todoist/routing';
+import { TODOIST_SECTIONS } from '../config/sections';
 import * as readline from 'readline';
+
+/** Resolve a user-supplied section name to a { id, name } pair, or null if unrecognised. */
+function resolveSection(raw: string): { id: string; name: string } | null {
+  const lower = raw.toLowerCase().replace(/[^a-z]/g, '');
+  for (const sec of Object.values(TODOIST_SECTIONS)) {
+    if (sec.name.toLowerCase().replace(/[^a-z]/g, '') === lower) return sec;
+  }
+  return null;
+}
 
 function askConfirm(question: string): Promise<boolean> {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
@@ -23,34 +33,57 @@ registerCommand({
     const title = args[0];
     if (!title) { console.error('Usage: add "<task title>"'); process.exit(1); }
 
-    const dueArg  = args.find(a => a.startsWith('due:'))?.slice(4);
-    const priArg  = args.find(a => a.startsWith('p:'))?.slice(2);
-    const priority = priArg ? (parseInt(priArg, 10) as 1|2|3|4) : undefined;
+    const dueArg     = args.find(a => a.startsWith('due:'))?.slice(4);
+    const priArg     = args.find(a => a.startsWith('p:'))?.slice(2);
+    const sectionArg = args.find(a => a.startsWith('section:'))?.slice(8);
+    const priority   = priArg ? (parseInt(priArg, 10) as 1|2|3|4) : undefined;
 
-    const routing = routeTask(title);
+    let sectionId:   string;
+    let sectionName: string;
+    let ruleLabel:   string;
+
+    if (sectionArg) {
+      const resolved = resolveSection(sectionArg);
+      if (!resolved) {
+        const valid = Object.values(TODOIST_SECTIONS).map(s => s.name).join(', ');
+        console.error(`Unknown section "${sectionArg}". Valid: ${valid}`);
+        process.exit(1);
+      }
+      sectionId   = resolved.id;
+      sectionName = resolved.name;
+      ruleLabel   = 'section-override';
+    } else {
+      const routing = routeTask(title);
+      sectionId   = routing.sectionId;
+      sectionName = routing.sectionName;
+      ruleLabel   = `${routing.rule}, confidence: ${routing.confidence}${routing.match ? `, match: ${routing.match}` : ''}`;
+      if (routing.competingMatch) {
+        console.log(`  ⚠ Competing match: ${routing.competingMatch.rule} → ${routing.competingMatch.match} (logged, CS wins)`);
+      }
+      const needsConfirm = routing.confidence === 'inferred' || routing.confidence === 'defaulted';
+      if (needsConfirm) {
+        console.log(`\nCreating task: "${title}"`);
+        console.log(`  Section:    ${sectionName}  (rule: ${ruleLabel})`);
+        if (dueArg)   console.log(`  Due:        ${dueArg}`);
+        if (priority) console.log(`  Priority:   ${priority}`);
+        const ok = await askConfirm('Routing confidence is low — proceed?');
+        if (!ok) { console.log('Cancelled.'); return; }
+      }
+    }
 
     console.log(`\nCreating task: "${title}"`);
-    console.log(`  Section:    ${routing.sectionName}  (rule: ${routing.rule}, confidence: ${routing.confidence}${routing.match ? `, match: ${routing.match}` : ''})`);
-    if (dueArg)  console.log(`  Due:        ${dueArg}`);
+    console.log(`  Section:    ${sectionName}  (rule: ${ruleLabel})`);
+    if (dueArg)   console.log(`  Due:        ${dueArg}`);
     if (priority) console.log(`  Priority:   ${priority}`);
-    if (routing.competingMatch) {
-      console.log(`  ⚠ Competing match: ${routing.competingMatch.rule} → ${routing.competingMatch.match} (logged, CS wins)`);
-    }
-
-    const needsConfirm = routing.confidence === 'inferred' || routing.confidence === 'defaulted';
-    if (needsConfirm) {
-      const ok = await askConfirm('Routing confidence is low — proceed?');
-      if (!ok) { console.log('Cancelled.'); return; }
-    }
 
     const task = await createTask({
       content:   title,
       dueString: dueArg,
       priority,
-      sectionId: routing.sectionId,
+      sectionId,
     });
 
-    console.log(`\n✓ Created: ${task.content} [${task.id}] → ${routing.sectionName}`);
+    console.log(`\n✓ Created: ${task.content} [${task.id}] → ${sectionName}`);
     console.log(`  Todoist: ${task.url}`);
   },
 });

@@ -21,7 +21,8 @@ Each week is appended as a new section after the Thursday `/pulse` run.
 
 ### 1. New Feature Requests
 
-#### Multilingual survey support — delivery + translation + localized UI
+#### Multilingual survey support — delivery + translation + localized UI 
+- Exists (Needs improvement)
 Requested in **every month** across 20+ calls. Languages explicitly named: Spanish, French, German, Zulu, Japanese, Chinese (Mandarin), Arabic, Dutch. Jan (Nexi Group, BMW Brilliance), Feb (ELIS, Kubota, Mahindra, HMH, Rewardsco, Allegro), Mar–Nov (constant). Apleona (Jun) specifically needs the **entire platform UI in German**, not just survey content, for manager adoption among non-English-speaking leaders.
 ```
 Value: H  Effort: M (estimated)  Placement: Strategic Bet
@@ -29,6 +30,7 @@ Evidence basis: transcript-backed (20+ calls)
 ```
 
 #### Manager dashboards with role-based access control
+- In the roadmap
 Mentioned in 15+ calls across all months. Managers need team-level analytics without compromising individual anonymity. Requests span access tiers: HR admin → HRBP → regional manager → frontline manager. Specific asks include heatmaps, driver breakdowns, and participation rates per team. Calls: G&J Pepsi, Splendid Hospitality, Allegro, Altium, ASCO, Quest Global, Yahoo, Troon, Formlabs, Camunda, and 8+ others.
 ```
 Value: H  Effort: M (estimated)  Placement: Strategic Bet
@@ -36,6 +38,7 @@ Evidence basis: transcript-backed (15+ calls)
 ```
 
 #### Non-desk / frontline worker delivery channels (QR, SMS, WhatsApp, kiosk)
+- Exists (except Kiosk - but QR can be kiosk-ed by the customer)
 12+ calls from manufacturing, logistics, retail, hospitality, and cargo/aviation sectors. Employees lack email access entirely. Calls: G&J Pepsi (Jan), Mahindra Logistics (Feb), Altium Packaging (Apr), Air General (May), Crown Worldwide (May), Apleona (Jun), and 6+ others across Jul–Oct.
 ```
 Value: H  Effort: H (estimated)  Placement: Strategic Bet
@@ -43,6 +46,7 @@ Evidence basis: transcript-backed (12+ calls)
 ```
 
 #### Lifecycle survey automation — event-triggered, HRIS-connected
+- Does Not exist
 12+ calls across all months. Customers want surveys to auto-fire from HRIS events: onboarding day 30/60/90, appraisal, exit, manager change. Mindsprint (May) wanted 8–10 driver mapping per pulse with composite EPS score. Formlabs (May) wanted event + role-based triggers. OneMain Financial (Oct) wanted MVP-to-scale lifecycle model.
 ```
 Value: H  Effort: H (estimated)  Placement: Strategic Bet
@@ -50,6 +54,7 @@ Evidence basis: transcript-backed (12+ calls)
 ```
 
 #### Custom/branded PowerPoint + Excel exports for leadership
+- Does Not exist
 8+ calls explicitly requesting executive-ready PPT/Excel exports in percent-favorable format. Splendid Hospitality (Jan), Allegro MicroSystems (Feb), Altium Packaging (Apr), Fender (Jul), KAG (Aug), and 3+ others. Leadership teams need board-ready decks without manual reformatting.
 ```
 Value: H  Effort: M (estimated)  Placement: Strategic Bet
@@ -57,6 +62,7 @@ Evidence basis: transcript-backed (8+ calls)
 ```
 
 #### AI-powered analytics and action planning (Ask Cooper)
+- Does Not exist
 Mentioned in 10+ calls as a key differentiator sought or explicitly demoed. Zee Entertainment (May), Mindsprint (May), Fender (Oct), Camunda (Jul), and others. Customers want AI to auto-surface insights, flag disengaged cohorts, and suggest actions — not just show charts.
 ```
 Value: H  Effort: M (estimated)  Placement: Strategic Bet
@@ -64,6 +70,7 @@ Evidence basis: transcript-backed (10+ calls)
 ```
 
 #### Industry benchmarking data
+- Exists (Server on demand)
 8+ calls across Jan–Sep. Customers want to compare scores against industry peers, geographic norms, or competitors. AutoNation (Jan), G&J Pepsi (Jan), Kubota (Feb), Mahindra (Feb), Rewardsco (Feb), RPG (Sep), KAG (Aug), El Cortez (Sep). Benchmarking is often a buying criterion, not just a nice-to-have.
 ```
 Value: M  Effort: M (estimated)  Placement: Reconsider
@@ -71,6 +78,7 @@ Evidence basis: transcript-backed (8+ calls)
 ```
 
 #### Disengaged employee / flight-risk detection view
+- Does not exist
 Formlabs (May) explicitly described wanting a **list of disengaged employees** with a journey view to identify attrition risk early — not just aggregate charts. Culture Amp's retention module showed only static charts; this was a primary switching reason.
 ```
 Value: H  Effort: H (estimated)  Placement: Strategic Bet
@@ -78,6 +86,7 @@ Evidence basis: transcript-backed (1 call, high-signal)
 ```
 
 #### Live survey editing without breaking historical trend lines
+- Does not exist (Not in roadmap)
 Formlabs (May) needed to edit active survey questions (e.g., change salary ranges to % brackets) without invalidating multi-year trend continuity. Culture Amp's inability to do this was the primary exit driver.
 ```
 Value: M  Effort: H (estimated)  Placement: Reconsider
@@ -85,6 +94,7 @@ Evidence basis: transcript-backed (1 call)
 ```
 
 #### Full platform UI localization (non-English)
+- Does not exist
 Apleona Group (Jun, 45,000 employees, Germany) requires the **entire manager-facing dashboard in German** — not just translated surveys. Manager adoption fails when the platform UI is English-only. Distinct from multilingual survey content.
 ```
 Value: M  Effort: H (estimated)  Placement: Reconsider
