@@ -1,12 +1,6 @@
 {
   "date": "2026-03-20",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-20T06:26:51.875Z",
-  "lastEveningSyncAt": "2026-03-19T16:42:10.191Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-20T06:26:51.875Z",
   "openTasks": [
     {
       "id": "6g9gQ3XFRQxFrRfQ",
@@ -96,24 +90,5 @@
       "url": "https://todoist.com/showTask?id=6gC7xJM8267RxRpx"
     }
   ],
-  "completedToday": [],
-  "dueSoon": [
-    {
-      "id": "6gC8VJWpV65C4wrQ",
-      "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
-      "due": "2026-03-21",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gC8VJWpV65C4wrQ"
-    }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": null,
-    "eod": null
-  }
+  "todayMeetings": []
 }
