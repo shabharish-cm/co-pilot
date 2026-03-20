@@ -1,7 +1,7 @@
 {
   "date": "2026-03-20",
   "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-20T07:14:05.796Z",
+  "lastMorningSyncAt": "2026-03-20T10:31:51.880Z",
   "lastEveningSyncAt": "2026-03-19T16:42:10.191Z",
   "sourceStatus": {
     "todoist": "fresh",
@@ -160,6 +160,18 @@
       "url": "https://todoist.com/showTask?id=6gC8VJWpV65C4wrQ"
     },
     {
+      "id": "6gCM8HFVqx8WHHHx",
+      "content": "Build feature landing page — Flexible time-range filtering",
+      "due": null,
+      "priority": 3,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCM8HFVqx8WHHHx"
+    },
+    {
       "id": "6g9RjjJX748JQh7x",
       "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
       "due": "2026-03-27",
@@ -187,6 +199,18 @@
       "url": "https://todoist.com/showTask?id=6gCJvxPrVRf2V9GQ"
     },
     {
+      "id": "6gCM8HJ7MH6MfmVQ",
+      "content": "Write blog posts on flexible time-range filtering availability (AEO/GEO counter-narrative)",
+      "due": null,
+      "priority": 3,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCM8HJ7MH6MfmVQ"
+    },
+    {
       "id": "6gC7xJM8267RxRpx",
       "content": "Section Rules MVP — dev completion",
       "due": "2026-04-10",
@@ -197,6 +221,45 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gC7xJM8267RxRpx"
+    },
+    {
+      "id": "6gCM8gVrX92jF9mQ",
+      "content": "Align with marketing on time-range filtering content strategy (landing page + blog)",
+      "description": "Get marketing team to build feature landing page and blog posts covering availability of flexible time-range filtering. Goal: counter G2 review narrative (\"does not support over-time analysis\") via AEO/GEO-indexed content.\n\nRelated tasks:\n- Build feature landing page — Flexible time-range filtering\n- Write blog posts on flexible time-range filtering availability (AEO/GEO counter-narrative)",
+      "due": null,
+      "priority": 3,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCM8gVrX92jF9mQ"
+    },
+    {
+      "id": "6gCMFmVR5J66X4Gx",
+      "content": "Yahoo — trigger HM survey for 3 candidates, check with Engg and update CS",
+      "description": "Yahoo has 3 candidates for whom the Hiring Manager Survey needs to be triggered on Monday.\n- Check with Engg on triggering the survey\n- Update CS team once confirmed",
+      "due": "2026-03-23",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCMFmVR5J66X4Gx"
+    },
+    {
+      "id": "6gCM8H6FfcgmFgGx",
+      "content": "Build flexible time-range filtering (over-time analysis)",
+      "description": "Dev in progress. Trends over time are viewable; date-range filters not yet available. PRD: PRDs/Overtime Analysis/Overtime Analysis Revamp PRD.docx",
+      "due": null,
+      "priority": 3,
+      "labels": [],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCM8H6FfcgmFgGx"
     }
   ],
   "completedToday": [
@@ -227,28 +290,22 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gCJvxPrVRf2V9GQ"
-    }
-  ],
-  "todayMeetings": [
-    {
-      "id": "2bpn44mckres2fpnubali6vq7d_20260320T083000Z",
-      "title": "Bi-Weekly Prep call",
-      "startTime": "2026-03-20T14:00:00+05:30",
-      "endTime": "2026-03-20T15:00:00+05:30",
-      "attendees": []
     },
     {
-      "id": "646akp0pm6kj18d1djfmr75n3f_20260320T093000Z",
-      "title": "Customer Pulse",
-      "startTime": "2026-03-20T15:00:00+05:30",
-      "endTime": "2026-03-20T15:45:00+05:30",
-      "attendees": [
-        "shabharish.v@culturemonkey.io",
-        "dhamodharan@culturemonkey.io"
-      ],
-      "meetLink": "https://meet.google.com/rup-fyoe-hdb"
+      "id": "6gCMFmVR5J66X4Gx",
+      "content": "Yahoo — trigger HM survey for 3 candidates, check with Engg and update CS",
+      "description": "Yahoo has 3 candidates for whom the Hiring Manager Survey needs to be triggered on Monday.\n- Check with Engg on triggering the survey\n- Update CS team once confirmed",
+      "due": "2026-03-23",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCMFmVR5J66X4Gx"
     }
   ],
+  "todayMeetings": [],
   "digestPaths": {
     "morning": "daily/digests/2026-03-20-morning.md",
     "eod": null
