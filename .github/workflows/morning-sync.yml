@@ -37,5 +37,5 @@ jobs:
           git config user.email "bot@pm-copilot"
           git add state/current_day.json state/last_sync.json daily/raw/
           git diff --staged --quiet || git commit -m "chore: morning sync $(date -u +%Y-%m-%d)"
-          git pull --rebase
+          git pull --rebase --autostash
           git push
