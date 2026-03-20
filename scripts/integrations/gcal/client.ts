@@ -18,11 +18,14 @@ export class GCalClient {
    * In Google Calendar: Settings → Share with specific people → add the
    * service account email with "See all event details" permission.
    */
-  constructor(opts: { serviceAccountJson: object; calendarId: string }) {
+  constructor(opts: { serviceAccountJson: object; calendarId: string; userEmail?: string }) {
     this.calendarId = opts.calendarId;
     this.auth = new GoogleAuth({
       credentials: opts.serviceAccountJson,
       scopes: SCOPES,
+      // Impersonate the user so the service account reads their calendar.
+      // Requires domain-wide delegation enabled on the service account.
+      ...(opts.userEmail ? { clientOptions: { subject: opts.userEmail } } : {}),
     });
   }
 

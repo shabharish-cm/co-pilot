@@ -1,7 +1,7 @@
 {
   "date": "2026-03-20",
   "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-20T06:26:51.875Z",
+  "lastMorningSyncAt": "2026-03-20T07:14:05.796Z",
   "lastEveningSyncAt": "2026-03-19T16:42:10.191Z",
   "sourceStatus": {
     "todoist": "fresh",
@@ -21,18 +21,6 @@
       "url": "https://todoist.com/showTask?id=6g9gQ3XFRQxFrRfQ"
     },
     {
-      "id": "6g9wjqRfhhHJQ84x",
-      "content": "Customer Pulse - Generate requirements from Feedback",
-      "due": "2026-03-19",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": true,
-      "url": "https://todoist.com/showTask?id=6g9wjqRfhhHJQ84x"
-    },
-    {
       "id": "6gC7GmvfXQ7FVVmx",
       "content": "Send info to UGG regarding workers logic",
       "due": null,
@@ -45,16 +33,119 @@
       "url": "https://todoist.com/showTask?id=6gC7GmvfXQ7FVVmx"
     },
     {
-      "id": "6gC358jQm385w2vx",
-      "content": "Backfill 6-month Fireflies transcripts via Slack export",
-      "due": "2026-03-19",
+      "id": "6gCJx6qQ8r3wcv8Q",
+      "content": "Feedback based prioritisation agent",
+      "due": "2026-03-31",
+      "priority": 3,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJx6qQ8r3wcv8Q"
+    },
+    {
+      "id": "6gCJxJcmvpjWP3gQ",
+      "content": "Build Dashboard Frontend",
+      "description": "- Create a UI showing feedback categories and account size context\n- Enable filtering by high-value accounts or critical issues\n- Add timeline (what trending, solved, pending)",
+      "due": null,
       "priority": 1,
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
       "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": true,
-      "url": "https://todoist.com/showTask?id=6gC358jQm385w2vx"
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJxJcmvpjWP3gQ"
+    },
+    {
+      "id": "6gCJxJgfR2JRqm6Q",
+      "content": "Automate and Scale",
+      "description": "- Once validated, scale feedback intake and automate prioritization\n- Regularly review and update dashboard for founders",
+      "due": null,
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJxJgfR2JRqm6Q"
+    },
+    {
+      "id": "6gCJxqR95722Cw7Q",
+      "content": "Feedback based prioritisation agent — MVP",
+      "due": "2026-03-25",
+      "priority": 3,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJxqR95722Cw7Q"
+    },
+    {
+      "id": "6gCJxJPVg9pPCxPx",
+      "content": "Align with Gautam (Account Signals)",
+      "description": "- Identify key metrics (e.g., account size, churn risk)\n- Confirm data update frequency (weekly/monthly)\n- Define data access method (API or export)",
+      "due": null,
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJxJPVg9pPCxPx"
+    },
+    {
+      "id": "6gCJxJMMgfHPC52x",
+      "content": "Align with Sam (Access Dependencies)",
+      "description": "- List required systems/tools for feedback intake\n- Clarify permissions needed to pull data\n- Confirm workflow/tech constraints",
+      "due": null,
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJxJMMgfHPC52x"
+    },
+    {
+      "id": "6gCJxJQhxwMMjH5Q",
+      "content": "Create CSV State Storage",
+      "description": "- Design CSV structure (e.g., columns: account, size, churn risk)\n- Set process to keep it updated",
+      "due": null,
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJxJQhxwMMjH5Q"
+    },
+    {
+      "id": "6gCJxJQpgjfRXpGQ",
+      "content": "Build Backend Agent (Claude)",
+      "description": "- Gather feedback from all sources into one repository\n- Use Claude to synthesize feedback into categories: bugs, features, UX\n- Tag each feedback with account context from CSV",
+      "due": null,
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJxJQpgjfRXpGQ"
+    },
+    {
+      "id": "6gCJxJWqg3mcGV5Q",
+      "content": "Test Prototype",
+      "description": "- Run a small batch of feedback through tagging and prioritization\n- Validate if prioritization aligns with expectations",
+      "due": null,
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJxJWqg3mcGV5Q"
     },
     {
       "id": "6gC8VJWpV65C4wrQ",
@@ -71,7 +162,7 @@
     {
       "id": "6g9RjjJX748JQh7x",
       "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
-      "due": "2026-03-19",
+      "due": "2026-03-27",
       "priority": 2,
       "labels": [
         "follow-up",
@@ -80,8 +171,20 @@
       "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
       "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": true,
+      "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6g9RjjJX748JQh7x"
+    },
+    {
+      "id": "6gCJvxPrVRf2V9GQ",
+      "content": "[Hiring Manager Survey for Monday](https://culturemonkey.slack.com/archives/C0A97KCNQCQ/p1773939793682129)",
+      "due": "2026-03-20",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJvxPrVRf2V9GQ"
     },
     {
       "id": "6gC7xJM8267RxRpx",
@@ -96,7 +199,10 @@
       "url": "https://todoist.com/showTask?id=6gC7xJM8267RxRpx"
     }
   ],
-  "completedToday": [],
+  "completedToday": [
+    "6g9wjqRfhhHJQ84x",
+    "6gC358jQm385w2vx"
+  ],
   "dueSoon": [
     {
       "id": "6gC8VJWpV65C4wrQ",
@@ -109,11 +215,42 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gC8VJWpV65C4wrQ"
+    },
+    {
+      "id": "6gCJvxPrVRf2V9GQ",
+      "content": "[Hiring Manager Survey for Monday](https://culturemonkey.slack.com/archives/C0A97KCNQCQ/p1773939793682129)",
+      "due": "2026-03-20",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJvxPrVRf2V9GQ"
     }
   ],
-  "todayMeetings": [],
+  "todayMeetings": [
+    {
+      "id": "2bpn44mckres2fpnubali6vq7d_20260320T083000Z",
+      "title": "Bi-Weekly Prep call",
+      "startTime": "2026-03-20T14:00:00+05:30",
+      "endTime": "2026-03-20T15:00:00+05:30",
+      "attendees": []
+    },
+    {
+      "id": "646akp0pm6kj18d1djfmr75n3f_20260320T093000Z",
+      "title": "Customer Pulse",
+      "startTime": "2026-03-20T15:00:00+05:30",
+      "endTime": "2026-03-20T15:45:00+05:30",
+      "attendees": [
+        "shabharish.v@culturemonkey.io",
+        "dhamodharan@culturemonkey.io"
+      ],
+      "meetLink": "https://meet.google.com/rup-fyoe-hdb"
+    }
+  ],
   "digestPaths": {
-    "morning": null,
+    "morning": "daily/digests/2026-03-20-morning.md",
     "eod": null
   }
 }

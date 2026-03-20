@@ -26,6 +26,7 @@ export const ENV = {
   gcal: {
     serviceAccountJson: optional('GCAL_SERVICE_ACCOUNT_JSON', ''),
     calendarId:         optional('GCAL_CALENDAR_ID', 'primary'),
+    userEmail:          optional('GCAL_USER_EMAIL', ''),
   },
   fireflies: {
     apiKey: optional('FIREFLIES_API_KEY', ''),
