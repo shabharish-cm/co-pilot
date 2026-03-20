@@ -7,10 +7,8 @@ Parse a natural-language task request, determine the correct Todoist section via
 - **Sonnet** for intent parsing, due date inference, and ambiguity handling.
 
 ## Routing
-Before creating, run routing logic:
-1. Load `context/system/team-list.md` — CS and Engg member aliases.
-2. Load `context/system/routing-and-scoring.md` — priority order and section IDs.
-3. Apply the 6-priority routing algorithm (effy → CS member → Engg member → feature keywords → labels → default).
+Before creating, run routing logic (team membership and section IDs are in CLAUDE.md):
+1. Apply the routing algorithm (effy → CS member → Engg member → CM keywords → feature keywords → labels → default).
 4. Log: `{ rule, sectionId, sectionName, confidence, match, competingMatch? }`
 
 ## Preview Before Create

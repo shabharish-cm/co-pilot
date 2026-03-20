@@ -11,7 +11,7 @@ Load `.claude/Skills/design-ux-researcher.md`
 
 ## Context files to read
 - `context/product/ux_patterns.md` — mandatory. Use the defined patterns (wizard, table, modal, etc.).
-- `context/product/product_glossary.md` — mandatory. Use canonical product terminology.
+- Product glossary is in CLAUDE.md — no separate file load needed.
 
 ## Precondition (fail closed)
 Check that `PRDs/<feature-name>/prd.md` exists and is non-empty.
@@ -20,7 +20,7 @@ If not: stop. Say exactly which file is missing and how to generate it.
 ## Behavior
 1. Read the PRD fully. Identify key user flows and states.
 2. Read `ux_patterns.md` — use existing patterns rather than inventing new UI conventions.
-3. Read `product_glossary.md` — use canonical terms in all UI labels.
+3. Use canonical product terms from CLAUDE.md glossary in all UI labels.
 
 ## Output requirements
 - Single-file HTML with embedded CSS (no external dependencies).

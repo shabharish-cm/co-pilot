@@ -14,7 +14,7 @@ Run every Thursday (Claude cron task). Can also be run manually.
 1. `pulse/normalized/YYYY-MM-DD-transcripts.json` files covering the Thu–Wed window
 2. `pulse/master/customer-pulse-master.md` — prior history for recurrence detection
 3. `state/transcript_index.json` — to identify available files
-4. `context/system/routing-and-scoring.md` — value-effort scoring dimensions
+4. Value-effort scoring dimensions — available in CLAUDE.md, no separate file load needed
 5. `context/customers/<Account>/` — per-customer context files (survey analyses, briefings, notes). Glob all files under this path and read any that match accounts appearing in the week's transcripts.
 
 ## Step 0 — Sync repo

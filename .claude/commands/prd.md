@@ -14,8 +14,8 @@ Load and operate with:
 - `.claude/Skills/jtbd.md` (JTBD alignment check)
 
 ## Context files to read
-- `context/product/product_glossary.md` — use canonical terminology throughout
 - `context/business/business_profile.md` — business context and strategic fit
+- Product glossary is in CLAUDE.md — no separate file load needed
 
 ## Preconditions (fail closed)
 Check that all of these exist and are non-empty:
