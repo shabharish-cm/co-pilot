@@ -13,10 +13,10 @@
     "dayKey": "2026-03-19"
   },
   "weeklyCustomerPulseDigest": {
-    "ranAt": "2026-03-19T00:00:00.000Z",
+    "ranAt": "2026-03-20T07:20:00.000Z",
     "status": "success",
-    "weekKey": "2025-ENTERPRISE-LISTENING",
-    "windowStart": "2025-01-01",
-    "windowEnd": "2025-11-30"
+    "weekKey": "2026-W12",
+    "windowStart": "2026-03-13",
+    "windowEnd": "2026-03-19"
   }
 }
