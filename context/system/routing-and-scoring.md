@@ -40,12 +40,15 @@ Evaluate signals in strict priority order. Stop at the first match.
 
 **Priority 4 — CM org keywords detected**
 - If the task contains org-level initiative keywords: "initiative", "pulse initiative", "quick wins", "org", "platform strategy", "customer pulse", "feedback analysis", "product strategy"
+- If the task involves content creation: "blog", "blog post", "landing page", "content strategy", "marketing content", "AEO", "GEO", "SEO content"
+- If the task involves internal PM execution: "align with marketing", "brief marketing", "sync with marketing"
 - These are internal CultureMonkey tasks — not customer requests, not engineering asks, not feature builds
 - → Route to **CM** (`6g9wjjpVgppgxJwQ`)
 - Confidence: `inferred`
 
 **Priority 5 — Feature keywords detected**
 - If the task contains product or feature intent keywords (e.g. "build", "design", "feature", "PRD", "spec", "roadmap")
+- Note: "build" only routes to Features if it clearly refers to product development (not blog/content/landing page builds)
 - → Route to **Features** (`6g8x4JxwH876pgGQ`)
 - Confidence: `inferred`
 
