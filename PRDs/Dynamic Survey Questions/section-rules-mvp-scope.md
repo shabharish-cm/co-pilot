@@ -11,6 +11,12 @@
 
 CultureMonkey surveys are fully static today — every employee sees every section. Customers need the ability to target specific sections at specific employee groups (e.g., show "Management Effectiveness" only to people managers). Without this, surveys either over-ask irrelevant questions or require separate surveys per segment — both create operational friction.
 
+## Customer Evidence
+
+| Account | Use Case | ARR |
+|---|---|---|
+| KAG / Keenan Auto Group | Separate section for Designation = "Driver" and "Dispatcher" — role-specific questions for their 8,000-person transport workforce | $40K/yr (active) |
+
 ---
 
 ## What's In MVP
