@@ -1,12 +1,6 @@
 {
   "date": "2026-03-21",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-21T03:06:02.041Z",
-  "lastEveningSyncAt": "2026-03-20T14:12:59.284Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-21T03:06:02.041Z",
   "openTasks": [
     {
       "id": "6g9gQ3XFRQxFrRfQ",
@@ -250,37 +244,5 @@
       "url": "https://todoist.com/showTask?id=6gCM8H6FfcgmFgGx"
     }
   ],
-  "completedToday": [],
-  "dueSoon": [
-    {
-      "id": "6gC8VJWpV65C4wrQ",
-      "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
-      "due": "2026-03-21",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gC8VJWpV65C4wrQ"
-    },
-    {
-      "id": "6gCMFmVR5J66X4Gx",
-      "content": "Yahoo — trigger HM survey for 3 candidates, check with Engg and update CS",
-      "description": "Yahoo has 3 candidates for whom the Hiring Manager Survey needs to be triggered on Monday.\n- Check with Engg on triggering the survey\n- Update CS team once confirmed",
-      "due": "2026-03-23",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gCMFmVR5J66X4Gx"
-    }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": null,
-    "eod": null
-  }
+  "todayMeetings": []
 }
