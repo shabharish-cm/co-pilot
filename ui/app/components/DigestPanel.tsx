@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useBoardStore } from '../store/boardStore';
 import { SECTION_CONFIGS, formatDueDate, cleanContent } from '../lib/utils';
 import type { SectionKey } from '../lib/types';
@@ -167,7 +167,11 @@ export default function DigestPanel() {
   const [genOutput, setGenOutput] = useState('');
   const [genDots, setGenDots] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
+  const abortRef = useRef<AbortController | null>(null);
   const { tasks, openDrawer } = useBoardStore();
+
+  // Abort any in-flight generation on unmount
+  useEffect(() => () => { abortRef.current?.abort(); }, []);
 
   const fetchDigest = async () => {
     try {
@@ -194,6 +198,10 @@ export default function DigestPanel() {
 
   const handleRegenerate = async () => {
     if (generating) return;
+    // Abort any previous in-flight run
+    abortRef.current?.abort();
+    const abort = new AbortController();
+    abortRef.current = abort;
     setGenerating(true);
     setGenOutput('');
     let hasError = false;
@@ -203,6 +211,7 @@ export default function DigestPanel() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ command: '/morning' }),
+        signal: abort.signal,
       });
       const reader = res.body?.getReader();
       if (!reader) throw new Error('No response body');
@@ -214,9 +223,11 @@ export default function DigestPanel() {
         setGenOutput(acc);
       }
     } catch (err: unknown) {
+      if ((err as Error).name === 'AbortError') return; // user-initiated, no error shown
       hasError = true;
       setGenOutput(`[error: ${(err as Error).message}]`);
     } finally {
+      abortRef.current = null;
       setGenerating(false);
       if (!hasError) {
         // Write the generated digest to disk before refreshing the UI

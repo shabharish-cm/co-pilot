@@ -23,9 +23,18 @@ export default function ClaudeSidebar() {
   const [historyIdx, setHistoryIdx] = useState(-1);
   const [running, setRunning] = useState(false);
 
+  const [dots, setDots] = useState('');
+
   const outputRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+
+  // Animate dots when running
+  useEffect(() => {
+    if (!running) { setDots(''); return; }
+    const id = setInterval(() => setDots(d => d.length >= 3 ? '' : d + '.'), 400);
+    return () => clearInterval(id);
+  }, [running]);
 
   // Cmd+K to focus
   useEffect(() => {
@@ -76,14 +85,18 @@ export default function ClaudeSidebar() {
       const decoder = new TextDecoder();
       let acc = '';
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        acc += decoder.decode(value, { stream: true });
-        const snapshot = acc;
-        setEntries(prev =>
-          prev.map(e => e.id === id ? { ...e, output: snapshot } : e)
-        );
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          acc += decoder.decode(value, { stream: true });
+          const snapshot = acc;
+          setEntries(prev =>
+            prev.map(e => e.id === id ? { ...e, output: snapshot } : e)
+          );
+        }
+      } finally {
+        reader.cancel();
       }
     } catch (err: unknown) {
       if ((err as Error).name === 'AbortError') {
@@ -315,13 +328,19 @@ export default function ClaudeSidebar() {
           flexShrink: 0,
         }}
       >
-        <span style={{ color: '#FFE500', fontFamily: 'var(--font-mono)', fontSize: '13px', flexShrink: 0 }}>$</span>
+        <span style={{
+          color: running ? (dots.length % 2 === 0 ? '#FFE500' : '#aa9900') : '#FFE500',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '13px',
+          flexShrink: 0,
+          transition: 'color 0.4s',
+        }}>$</span>
         <input
           ref={inputRef}
           value={input}
           onChange={e => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={running ? 'running… (Ctrl+C to cancel)' : 'ask claude or /skill…'}
+          placeholder={running ? `running${dots} (Ctrl+C to cancel)` : 'ask claude or /skill…'}
           disabled={running}
           autoComplete="off"
           spellCheck={false}

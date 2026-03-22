@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useMemo, useCallback } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { renderMarkdown } from '../lib/markdown';
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -521,6 +521,9 @@ function JTBDTabContent({
   const [loading, setLoading] = useState(false);
   const [generating, setGenerating] = useState(false);
   const [genOutput, setGenOutput] = useState('');
+  const abortRef = useRef<AbortController | null>(null);
+
+  useEffect(() => () => { abortRef.current?.abort(); }, []);
 
   useEffect(() => {
     const mdFiles = files.filter(f => f.ext === 'md');
@@ -533,6 +536,9 @@ function JTBDTabContent({
   }, [files]);
 
   const handleGenerate = async () => {
+    abortRef.current?.abort();
+    const abort = new AbortController();
+    abortRef.current = abort;
     setGenerating(true);
     setGenOutput('');
     try {
@@ -540,6 +546,7 @@ function JTBDTabContent({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ command: `/jtbd ${folderName}` }),
+        signal: abort.signal,
       });
       const reader = res.body?.getReader();
       if (!reader) throw new Error('No response');
@@ -553,8 +560,11 @@ function JTBDTabContent({
       }
       onGenerated();
     } catch (e: unknown) {
-      setGenOutput(`[error: ${(e as Error).message}]`);
+      if ((e as Error).name !== 'AbortError') {
+        setGenOutput(`[error: ${(e as Error).message}]`);
+      }
     } finally {
+      abortRef.current = null;
       setGenerating(false);
     }
   };

@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
 import { spawn } from 'child_process';
+import type { ChildProcessWithoutNullStreams } from 'child_process';
 import path from 'path';
 
 // Always run in the Co-Pilot repo root, not ui/
@@ -11,6 +12,8 @@ const SHELL_ENV = {
   PATH: '/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
 };
 
+const TIMEOUT_MS = 5 * 60 * 1000; // 5 minutes — hard cap per invocation
+
 export async function POST(req: NextRequest) {
   const { command } = await req.json() as { command: string };
   if (!command?.trim()) {
@@ -19,12 +22,14 @@ export async function POST(req: NextRequest) {
 
   const encoder = new TextEncoder();
 
+  // Hoisted so cancel() can reference them
+  let proc: ChildProcessWithoutNullStreams | null = null;
+  let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
   const readable = new ReadableStream({
     start(controller) {
       const cmd = command.trim();
-      let proc;
 
-      // All input goes to Claude CLI — pipe via stdin so skills resolve correctly
       proc = spawn(
         CLAUDE_BIN,
         ['--dangerously-skip-permissions', '-p'],
@@ -33,26 +38,46 @@ export async function POST(req: NextRequest) {
       proc.stdin!.write(cmd);
       proc.stdin!.end();
 
+      // Hard timeout — kills the process if it runs too long
+      timeoutId = setTimeout(() => {
+        proc?.kill('SIGTERM');
+        try {
+          controller.enqueue(encoder.encode('\n[timeout: process killed after 5 minutes]'));
+          controller.close();
+        } catch { /* already closed */ }
+      }, TIMEOUT_MS);
+
       proc.stdout.on('data', (chunk: Buffer) => {
-        controller.enqueue(encoder.encode(chunk.toString()));
+        try { controller.enqueue(encoder.encode(chunk.toString())); } catch { /* stream closed */ }
       });
 
       proc.stderr.on('data', (chunk: Buffer) => {
-        // Include stderr so the user can see errors/progress
-        controller.enqueue(encoder.encode(chunk.toString()));
+        try { controller.enqueue(encoder.encode(chunk.toString())); } catch { /* stream closed */ }
       });
 
       proc.on('close', (code) => {
-        if (code !== 0 && code !== null) {
-          controller.enqueue(encoder.encode(`\n[exited ${code}]`));
-        }
-        controller.close();
+        if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; }
+        try {
+          if (code !== 0 && code !== null) {
+            controller.enqueue(encoder.encode(`\n[exited ${code}]`));
+          }
+          controller.close();
+        } catch { /* already closed */ }
       });
 
       proc.on('error', (err) => {
-        controller.enqueue(encoder.encode(`[error: ${err.message}]`));
-        controller.close();
+        if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; }
+        try {
+          controller.enqueue(encoder.encode(`[error: ${err.message}]`));
+          controller.close();
+        } catch { /* already closed */ }
       });
+    },
+
+    // Called when the client disconnects or aborts — kill the process immediately
+    cancel() {
+      if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; }
+      proc?.kill('SIGTERM');
     },
   });
 
