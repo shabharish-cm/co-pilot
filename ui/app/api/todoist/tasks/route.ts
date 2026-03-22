@@ -26,15 +26,15 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { content, description, due_date, priority, labels, section_id } = body;
+    const { content, description, due_date, priority, labels, section_id, parent_id } = body;
 
     if (!content?.trim()) {
       return NextResponse.json({ error: 'content is required' }, { status: 400 });
     }
 
-    // Run routing if no section_id provided
-    const routing = section_id ? null : routeTask(content, labels ?? []);
-    const resolvedSectionId = section_id ?? routing?.sectionId;
+    // Skip routing for subtasks
+    const routing = (section_id || parent_id) ? null : routeTask(content, labels ?? []);
+    const resolvedSectionId = section_id ?? (parent_id ? undefined : routing?.sectionId);
 
     const task = await createTask(TOKEN, {
       content: content.trim(),
@@ -43,6 +43,7 @@ export async function POST(req: NextRequest) {
       priority,
       labels,
       section_id: resolvedSectionId,
+      parent_id,
     });
 
     const enriched = enrichTask(task);

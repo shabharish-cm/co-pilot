@@ -26,6 +26,7 @@ export default function TaskDrawer() {
     selectedTaskId,
     drawerOpen,
     closeDrawer,
+    openDrawer,
     updateTaskStatus,
     moveTaskToSection,
     completeTask,
@@ -44,6 +45,8 @@ export default function TaskDrawer() {
   const [confirm, setConfirm] = useState<ConfirmModal | null>(null);
   const [newLabel, setNewLabel] = useState('');
   const [addingLabel, setAddingLabel] = useState(false);
+  const [newSubtask, setNewSubtask] = useState('');
+  const [addingSubtask, setAddingSubtask] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
 
   // Sync local fields when task changes
@@ -132,6 +135,25 @@ export default function TaskDrawer() {
     await completeTask(task.id);
   };
 
+  const handleAddSubtask = async () => {
+    if (!newSubtask.trim()) return;
+    setAddingSubtask(true);
+    try {
+      const res = await fetch('/api/todoist/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: newSubtask.trim(), parent_id: task.id }),
+      });
+      if (!res.ok) throw new Error('Failed to create subtask');
+      setNewSubtask('');
+    } catch {
+      // silently ignore for now
+    } finally {
+      setAddingSubtask(false);
+    }
+  };
+
+  const subtasks = tasks.filter(t => t.parent_id === task.id);
   const comments: TodoistComment[] = task.comments ?? [];
 
   return (
@@ -569,6 +591,106 @@ export default function TaskDrawer() {
               placeholder="Add description, V:H E:M, notes…"
               style={{ resize: 'vertical', fontFamily: 'var(--font-body)', fontSize: '12px' }}
             />
+          </div>
+
+          {/* Subtasks */}
+          <div style={{ marginBottom: '14px' }}>
+            <div
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontWeight: 700,
+                fontSize: '10px',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                marginBottom: '8px',
+                borderBottom: '1.5px solid #000',
+                paddingBottom: '4px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+            >
+              <span>SUBTASKS ({subtasks.length})</span>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '8px' }}>
+              {subtasks.length === 0 && (
+                <div style={{ fontSize: '12px', color: '#aaa', fontFamily: 'var(--font-body)' }}>
+                  No subtasks.
+                </div>
+              )}
+              {subtasks.map(st => (
+                <div
+                  key={st.id}
+                  onClick={() => openDrawer(st.id)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '6px 8px',
+                    border: '1.5px solid #ddd',
+                    background: '#fff',
+                    cursor: 'pointer',
+                    transition: 'border-color 0.1s',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = '#000')}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = '#ddd')}
+                >
+                  <div
+                    style={{
+                      width: '4px',
+                      height: '14px',
+                      background: st.status === 'done' ? '#aaa' : '#FFE500',
+                      flexShrink: 0,
+                      border: '1px solid #000',
+                    }}
+                  />
+                  <span
+                    style={{
+                      flex: 1,
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '12px',
+                      color: st.status === 'done' ? '#aaa' : '#000',
+                      textDecoration: st.status === 'done' ? 'line-through' : 'none',
+                    }}
+                  >
+                    {cleanContent(st.content)}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '9px',
+                      color: '#888',
+                      background: '#f5f5f5',
+                      border: '1px solid #ccc',
+                      padding: '1px 4px',
+                    }}
+                  >
+                    {st.status}
+                  </span>
+                  <span style={{ color: '#bbb', fontSize: '10px' }}>↗</span>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', gap: '6px' }}>
+              <input
+                className="nb-input"
+                value={newSubtask}
+                onChange={e => setNewSubtask(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter') handleAddSubtask(); }}
+                placeholder="Add subtask…"
+                style={{ flex: 1, fontSize: '12px', padding: '5px 8px' }}
+              />
+              <button
+                className="nb-btn"
+                onClick={handleAddSubtask}
+                disabled={addingSubtask || !newSubtask.trim()}
+                style={{ fontSize: '10px', opacity: addingSubtask || !newSubtask.trim() ? 0.5 : 1 }}
+              >
+                + ADD
+              </button>
+            </div>
           </div>
 
           {/* Comments */}

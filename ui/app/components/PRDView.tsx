@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import { useBoardStore } from '../store/boardStore';
 import { renderMarkdown } from '../lib/markdown';
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -509,9 +508,19 @@ function ResearchTabContent({ files }: { files: FileInfo[] }) {
   );
 }
 
-function JTBDTabContent({ files, onGenerate }: { files: FileInfo[]; onGenerate: () => void }) {
+function JTBDTabContent({
+  files,
+  folderName,
+  onGenerated,
+}: {
+  files: FileInfo[];
+  folderName: string;
+  onGenerated: () => void;
+}) {
   const [content, setContent] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [generating, setGenerating] = useState(false);
+  const [genOutput, setGenOutput] = useState('');
 
   useEffect(() => {
     const mdFiles = files.filter(f => f.ext === 'md');
@@ -523,13 +532,81 @@ function JTBDTabContent({ files, onGenerate }: { files: FileInfo[]; onGenerate: 
       .catch(() => setLoading(false));
   }, [files]);
 
-  if (files.filter(f => f.ext === 'md').length === 0) {
+  const handleGenerate = async () => {
+    setGenerating(true);
+    setGenOutput('');
+    try {
+      const res = await fetch('/api/shell', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ command: `/jtbd ${folderName}` }),
+      });
+      const reader = res.body?.getReader();
+      if (!reader) throw new Error('No response');
+      const decoder = new TextDecoder();
+      let acc = '';
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        acc += decoder.decode(value, { stream: true });
+        setGenOutput(acc);
+      }
+      onGenerated();
+    } catch (e: unknown) {
+      setGenOutput(`[error: ${(e as Error).message}]`);
+    } finally {
+      setGenerating(false);
+    }
+  };
+
+  const hasJtbd = files.filter(f => f.ext === 'md').length > 0;
+
+  if (!hasJtbd && !generating && !genOutput) {
     return (
       <EmptyPane
-        message='No JTBD document found. Generate one from this PRD.'
+        message="No JTBD document found. Generate one from this PRD's research notes."
         buttonLabel='GENERATE JTBD'
-        onButton={onGenerate}
+        onButton={handleGenerate}
       />
+    );
+  }
+
+  if (generating || genOutput) {
+    return (
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+        <div
+          style={{
+            padding: '10px 16px',
+            borderBottom: '1.5px solid #000',
+            background: '#111',
+            flexShrink: 0,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+          }}
+        >
+          <span style={{ color: '#FFE500', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
+            {generating ? '⟳ Generating JTBD…' : '✓ Generation complete'}
+          </span>
+        </div>
+        <pre
+          style={{
+            flex: 1,
+            overflowY: 'auto',
+            padding: '16px',
+            margin: 0,
+            fontFamily: 'var(--font-mono)',
+            fontSize: '11.5px',
+            lineHeight: '1.6',
+            background: '#0d0d0d',
+            color: '#b0b0b0',
+            whiteSpace: 'pre-wrap',
+            wordBreak: 'break-word',
+          }}
+        >
+          {genOutput || '…'}
+        </pre>
+      </div>
     );
   }
 
@@ -551,14 +628,42 @@ function JTBDTabContent({ files, onGenerate }: { files: FileInfo[]; onGenerate: 
     );
   }
 
-  return content ? <MarkdownPane content={content} /> : null;
+  return content ? (
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+      <div
+        style={{
+          padding: '8px 16px',
+          borderBottom: '1.5px solid #e0e0e0',
+          background: '#fff',
+          flexShrink: 0,
+          display: 'flex',
+          justifyContent: 'flex-end',
+        }}
+      >
+        <button
+          onClick={handleGenerate}
+          style={{
+            background: 'transparent',
+            border: '1.5px solid #000',
+            fontFamily: 'var(--font-heading)',
+            fontWeight: 700,
+            fontSize: '9px',
+            letterSpacing: '0.08em',
+            padding: '3px 10px',
+            cursor: 'pointer',
+          }}
+        >
+          ↺ REGENERATE
+        </button>
+      </div>
+      <MarkdownPane content={content} />
+    </div>
+  ) : null;
 }
 
 // ── Main PRDView ──────────────────────────────────────────────────────────────
 
 export default function PRDView() {
-  const { toggleSidebar } = useBoardStore();
-
   const [projects, setProjects] = useState<ProjectFolder[]>([]);
   const [projectsLoading, setProjectsLoading] = useState(true);
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
@@ -600,9 +705,13 @@ export default function PRDView() {
     setInnerTab('prd');
   };
 
-  const handleGenerateJTBD = () => {
-    toggleSidebar();
-    // User can then run /jtbd in the terminal sidebar
+  const refreshFiles = () => {
+    if (!selectedProject) return;
+    setFilesLoading(true);
+    fetch(`/api/prd/files?folder=${encodeURIComponent(selectedProject)}`)
+      .then(r => r.json())
+      .then((data: CategorisedFiles) => { setFiles(data); setFilesLoading(false); })
+      .catch(() => setFilesLoading(false));
   };
 
   return (
@@ -746,8 +855,12 @@ export default function PRDView() {
                     )
                   )}
                   {innerTab === 'research' && <ResearchTabContent files={files.research} />}
-                  {innerTab === 'jtbd' && (
-                    <JTBDTabContent files={files.jtbd} onGenerate={handleGenerateJTBD} />
+                  {innerTab === 'jtbd' && selectedProject && (
+                    <JTBDTabContent
+                      files={files.jtbd}
+                      folderName={selectedProject}
+                      onGenerated={refreshFiles}
+                    />
                   )}
                 </>
               )}

@@ -40,7 +40,7 @@ interface BoardStore {
   sidebarOpen: boolean;
   filterSection: SectionKey | null;
   filterStatus: TaskStatus | null;
-  filterDue: 'overdue' | 'today' | 'this-week' | null;
+  filterDue: ('overdue' | 'today' | 'this-week')[];
 
   activeTab: ActiveTab;
   enableUpNext: boolean;
@@ -78,7 +78,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
   sidebarOpen: false,
   filterSection: null,
   filterStatus: null,
-  filterDue: null,
+  filterDue: [],
 
   activeTab: 'board',
   enableUpNext: readLocalBool('pm-copilot-enable-upnext', false),
@@ -297,31 +297,34 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
   setFilter: (type, value) => {
     if (type === 'section') set({ filterSection: value as SectionKey | null });
     if (type === 'status') set({ filterStatus: value as TaskStatus | null });
-    if (type === 'due') set({ filterDue: value as 'overdue' | 'today' | 'this-week' | null });
+    if (type === 'due') {
+      const v = value as 'overdue' | 'today' | 'this-week';
+      const { filterDue } = get();
+      const next = filterDue.includes(v) ? filterDue.filter(d => d !== v) : [...filterDue, v];
+      set({ filterDue: next });
+    }
   },
 
-  clearFilters: () => set({ filterSection: null, filterStatus: null, filterDue: null }),
+  clearFilters: () => set({ filterSection: null, filterStatus: null, filterDue: [] }),
 
   getFilteredTasks: () => {
     const { tasks, filterSection, filterStatus, filterDue } = get();
     return tasks.filter(t => {
+      if (t.parent_id) return false; // subtasks not shown on board
       if (filterSection && t.sectionKey !== filterSection) return false;
       if (filterStatus && t.status !== filterStatus) return false;
-      if (filterDue) {
+      if (filterDue.length > 0) {
         const now = new Date();
-        if (filterDue === 'overdue' && !t.isOverdue) return false;
-        if (filterDue === 'today') {
-          if (!t.due) return false;
-          const today = new Date().toISOString().slice(0, 10);
-          if (t.due.date !== today) return false;
-        }
-        if (filterDue === 'this-week') {
-          if (!t.due) return false;
-          const weekEnd = new Date(now);
-          weekEnd.setDate(weekEnd.getDate() + 7);
-          const dueDate = new Date(t.due.date);
-          if (dueDate > weekEnd) return false;
-        }
+        const today = now.toISOString().slice(0, 10);
+        const weekEnd = new Date(now);
+        weekEnd.setDate(weekEnd.getDate() + 7);
+        const matches = filterDue.some(d => {
+          if (d === 'overdue') return t.isOverdue;
+          if (d === 'today') return !!t.due && t.due.date === today;
+          if (d === 'this-week') return !!t.due && new Date(t.due.date) <= weekEnd;
+          return false;
+        });
+        if (!matches) return false;
       }
       return true;
     });

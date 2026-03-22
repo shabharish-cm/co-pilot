@@ -101,6 +101,7 @@ export function enrichTask(task: TodoistTask): TaskWithMeta {
     sectionKey,
     status,
     isOverdue,
+    parent_id: task.parent_id ?? null,
     valueEffort,
   };
 }

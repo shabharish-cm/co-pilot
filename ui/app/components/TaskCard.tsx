@@ -1,5 +1,6 @@
 'use client';
 
+import { createPortal } from 'react-dom';
 import { Draggable } from '@hello-pangea/dnd';
 import type { TaskWithMeta } from '../lib/types';
 import { SECTION_CONFIGS, priorityColor, placementColor, formatDueDate, cleanContent } from '../lib/utils';
@@ -19,7 +20,8 @@ export default function TaskCard({ task, index, onOpen, onMenuOpen }: TaskCardPr
 
   return (
     <Draggable draggableId={task.id} index={index}>
-      {(provided, snapshot) => (
+      {(provided, snapshot) => {
+        const card = (
         <div
           ref={provided.innerRef}
           {...provided.draggableProps}
@@ -236,7 +238,11 @@ export default function TaskCard({ task, index, onOpen, onMenuOpen }: TaskCardPr
             </div>
           </div>
         </div>
-      )}
+        );
+        return snapshot.isDragging
+          ? createPortal(card, document.body)
+          : card;
+      }}
     </Draggable>
   );
 }

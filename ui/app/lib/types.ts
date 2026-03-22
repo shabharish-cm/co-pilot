@@ -17,6 +17,7 @@ export interface TodoistTask {
   labels: string[];
   section_id: string | null;
   project_id: string;
+  parent_id?: string | null;
   url?: string;
   is_completed?: boolean;
   completed_at?: string | null;
@@ -31,6 +32,7 @@ export interface TodoistCreatePayload {
   labels?: string[];
   section_id?: string;
   project_id?: string;
+  parent_id?: string;
 }
 
 export interface TodoistUpdatePayload {
@@ -72,6 +74,7 @@ export interface TaskWithMeta {
   sectionKey: SectionKey;
   status: TaskStatus;
   isOverdue: boolean;
+  parent_id?: string | null;
   valueEffort?: ValueEffort;
   comments?: TodoistComment[];
   mutatedAt?: number;

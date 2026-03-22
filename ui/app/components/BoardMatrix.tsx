@@ -101,7 +101,7 @@ export default function BoardMatrix() {
   }, []);
 
   const tasks = getFilteredTasks();
-  const hasActiveFilters = !!(filterSection || filterStatus || filterDue);
+  const hasActiveFilters = !!(filterSection || filterStatus || filterDue.length > 0);
 
   const visibleStatuses = STATUS_ORDER.filter(s => {
     if (s === 'up-next' && !enableUpNext) return false;
@@ -178,7 +178,7 @@ export default function BoardMatrix() {
                 </div>
                 {(['overdue', 'today', 'this-week'] as const).map(d => (
                   <label key={d} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontFamily: 'var(--font-body)', cursor: 'pointer', padding: '2px 0' }}>
-                    <input type="radio" name="filter-due" checked={filterDue === d} onChange={() => setFilter('due', d)} />
+                    <input type="checkbox" checked={filterDue.includes(d)} onChange={() => setFilter('due', d)} />
                     {d === 'overdue' ? 'Overdue' : d === 'today' ? 'Due today' : 'This week'}
                   </label>
                 ))}
