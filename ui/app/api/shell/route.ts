@@ -25,13 +25,14 @@ export async function POST(req: NextRequest) {
       let proc;
 
       if (cmd.startsWith('/')) {
-        // Slash commands → claude skill, non-interactive, Co-Pilot root
-        // stdio: ['ignore'] tells claude stdin is /dev/null so it doesn't wait
+        // Slash commands → pipe the command via stdin so claude resolves the skill
         proc = spawn(
           CLAUDE_BIN,
-          ['--dangerously-skip-permissions', '-p', cmd],
-          { cwd: REPO_ROOT, env: SHELL_ENV, stdio: ['ignore', 'pipe', 'pipe'] }
+          ['--dangerously-skip-permissions', '-p'],
+          { cwd: REPO_ROOT, env: SHELL_ENV, stdio: ['pipe', 'pipe', 'pipe'] }
         );
+        proc.stdin!.write(cmd);
+        proc.stdin!.end();
       } else {
         // Arbitrary shell command in Co-Pilot root
         proc = spawn('/bin/bash', ['-c', cmd], {
