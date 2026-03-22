@@ -280,7 +280,7 @@
   ],
   "todayMeetings": [],
   "digestPaths": {
-    "morning": null,
+    "morning": "daily/digests/2026-03-22-morning.md",
     "eod": null
   }
 }
