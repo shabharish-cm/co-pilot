@@ -1,12 +1,22 @@
 {
   "date": "2026-03-22",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-22T03:24:20.180Z",
-  "lastEveningSyncAt": "2026-03-22T14:00:06.433Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-22T14:00:06.433Z",
+  "completedToday": [
+    {
+      "id": "6g9gQ3XFRQxFrRfQ",
+      "content": "Confirm Display Name feature ETA with Karthik Rao",
+      "due": null,
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6g9gQ3XFRQxFrRfQ",
+      "completedVia": "manual",
+      "completedAt": "2026-03-22T14:00:06.433Z"
+    }
+  ],
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -241,22 +251,6 @@
       "url": "https://todoist.com/showTask?id=6gCM8H6FfcgmFgGx"
     }
   ],
-  "completedToday": [
-    {
-      "id": "6g9gQ3XFRQxFrRfQ",
-      "content": "Confirm Display Name feature ETA with Karthik Rao",
-      "due": null,
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6g9gQ3XFRQxFrRfQ",
-      "completedVia": "manual",
-      "completedAt": "2026-03-22T14:00:06.433Z"
-    }
-  ],
   "dueSoon": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -309,10 +303,5 @@
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gCMFmVR5J66X4Gx"
     }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-22-morning.md",
-    "eod": null
-  }
+  ]
 }
