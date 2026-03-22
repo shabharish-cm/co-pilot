@@ -6,10 +6,13 @@ import CalendarWidget from './components/CalendarWidget';
 import BoardMatrix from './components/BoardMatrix';
 import TaskDrawer from './components/TaskDrawer';
 import ClaudeSidebar from './components/ClaudeSidebar';
+import PulseView from './components/PulseView';
+import PRDView from './components/PRDView';
+import SettingsView from './components/SettingsView';
 import { useBoardStore } from './store/boardStore';
 
 export default function HomePage() {
-  const { sidebarOpen } = useBoardStore();
+  const { sidebarOpen, activeTab } = useBoardStore();
 
   return (
     <div
@@ -30,24 +33,29 @@ export default function HomePage() {
           overflow: 'hidden',
         }}
       >
-        {/* Left panel */}
-        <div
-          style={{
-            width: '280px',
-            flexShrink: 0,
-            borderRight: '2.5px solid #000',
-            overflowY: 'auto',
-            padding: '12px',
-            background: '#FFFBF5',
-          }}
-        >
-          <DigestPanel />
-          <CalendarWidget />
-        </div>
+        {/* Left panel — only visible on board tab */}
+        {activeTab === 'board' && (
+          <div
+            style={{
+              width: '280px',
+              flexShrink: 0,
+              borderRight: '2.5px solid #000',
+              overflowY: 'auto',
+              padding: '12px',
+              background: '#FFFBF5',
+            }}
+          >
+            <DigestPanel />
+            <CalendarWidget />
+          </div>
+        )}
 
-        {/* Main board */}
+        {/* Main content area */}
         <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-          <BoardMatrix />
+          {activeTab === 'board' && <BoardMatrix />}
+          {activeTab === 'pulse' && <PulseView />}
+          {activeTab === 'prd' && <PRDView />}
+          {activeTab === 'settings' && <SettingsView />}
         </div>
 
         {/* Claude sidebar */}

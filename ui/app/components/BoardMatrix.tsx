@@ -54,6 +54,8 @@ export default function BoardMatrix() {
     filterDue,
     setFilter,
     clearFilters,
+    enableUpNext,
+    enableBlocked,
   } = useBoardStore();
 
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
@@ -100,6 +102,12 @@ export default function BoardMatrix() {
 
   const tasks = getFilteredTasks();
   const hasActiveFilters = !!(filterSection || filterStatus || filterDue);
+
+  const visibleStatuses = STATUS_ORDER.filter(s => {
+    if (s === 'up-next' && !enableUpNext) return false;
+    if (s === 'blocked' && !enableBlocked) return false;
+    return true;
+  });
 
   const onDragEnd = useCallback((result: DropResult) => {
     const { draggableId, destination, source } = result;
@@ -201,7 +209,7 @@ export default function BoardMatrix() {
           flex: 1, display: 'flex', overflowX: 'auto', overflowY: 'hidden',
           padding: '0', gap: '0',
         }}>
-          {STATUS_ORDER.map((status, colIdx) => {
+          {visibleStatuses.map((status, colIdx) => {
             const colTasks = tasks.filter(t => t.status === status);
             const isDoneCol = status === 'done';
 
@@ -213,7 +221,7 @@ export default function BoardMatrix() {
                   flex: '1 1 220px',
                   display: 'flex',
                   flexDirection: 'column',
-                  borderRight: colIdx < STATUS_ORDER.length - 1 ? '2.5px solid #000' : undefined,
+                  borderRight: colIdx < visibleStatuses.length - 1 ? '2.5px solid #000' : undefined,
                   height: '100%',
                   background: isDoneCol ? 'rgba(0,0,0,0.02)' : '#FFFBF5',
                 }}

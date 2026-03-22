@@ -3,13 +3,20 @@
 import { useEffect, useState } from 'react';
 import { formatInTimeZone } from 'date-fns-tz';
 import { useBoardStore } from '../store/boardStore';
+import type { ActiveTab } from '../store/boardStore';
 
 const IST = 'Asia/Kolkata';
 
+const TAB_LABELS: { id: ActiveTab; label: string }[] = [
+  { id: 'board', label: 'BOARD' },
+  { id: 'pulse', label: 'PULSE' },
+  { id: 'prd', label: 'PRD \u25C8' },
+  { id: 'settings', label: 'SETTINGS' },
+];
+
 export default function Navbar() {
   const [time, setTime] = useState('');
-  const [activeTab, setActiveTab] = useState<'board' | 'pulse' | 'settings'>('board');
-  const { toggleSidebar, sidebarOpen } = useBoardStore();
+  const { activeTab, setActiveTab, toggleSidebar, sidebarOpen } = useBoardStore();
 
   useEffect(() => {
     const tick = () => {
@@ -53,14 +60,15 @@ export default function Navbar() {
 
       {/* Nav tabs */}
       <div style={{ display: 'flex', gap: '4px', flex: 1 }}>
-        {(['board', 'pulse', 'settings'] as const).map(tab => (
+        {TAB_LABELS.map(({ id, label }) => (
           <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
+            key={id}
+            onClick={() => setActiveTab(id)}
             style={{
-              background: activeTab === tab ? '#FFE500' : 'transparent',
-              color: activeTab === tab ? '#000' : '#999',
-              border: activeTab === tab ? '2px solid #FFE500' : '2px solid transparent',
+              background: activeTab === id ? '#FFE500' : 'transparent',
+              color: activeTab === id ? '#000' : '#999',
+              border: 'none',
+              borderRadius: 0,
               fontFamily: 'var(--font-space-grotesk)',
               fontWeight: 700,
               fontSize: '11px',
@@ -71,7 +79,7 @@ export default function Navbar() {
               transition: 'all 0.1s ease',
             }}
           >
-            {tab}
+            {label}
           </button>
         ))}
       </div>

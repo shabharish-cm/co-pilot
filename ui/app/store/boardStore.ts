@@ -13,8 +13,21 @@ import {
   SECTION_CONFIGS,
 } from '../lib/utils';
 
+export type ActiveTab = 'board' | 'pulse' | 'prd' | 'settings';
+
 const POLL_INTERVAL_MS = 15 * 60 * 1000; // 15 min
 const MUTATION_GRACE_MS = 15 * 60 * 1000; // skip overwriting tasks mutated in last 15 min
+
+function readLocalBool(key: string, fallback: boolean): boolean {
+  if (typeof window === 'undefined') return fallback;
+  try {
+    const v = localStorage.getItem(key);
+    if (v === null) return fallback;
+    return v === 'true';
+  } catch {
+    return fallback;
+  }
+}
 
 interface BoardStore {
   tasks: TaskWithMeta[];
@@ -28,6 +41,10 @@ interface BoardStore {
   filterSection: SectionKey | null;
   filterStatus: TaskStatus | null;
   filterDue: 'overdue' | 'today' | 'this-week' | null;
+
+  activeTab: ActiveTab;
+  enableUpNext: boolean;
+  enableBlocked: boolean;
 
   fetchTasks: () => Promise<void>;
   updateTaskStatus: (id: string, status: TaskStatus) => Promise<void>;
@@ -44,6 +61,10 @@ interface BoardStore {
   setFilter: (type: 'section' | 'status' | 'due', value: string | null) => void;
   clearFilters: () => void;
   getFilteredTasks: () => TaskWithMeta[];
+
+  setActiveTab: (tab: ActiveTab) => void;
+  setEnableUpNext: (v: boolean) => void;
+  setEnableBlocked: (v: boolean) => void;
 }
 
 export const useBoardStore = create<BoardStore>((set, get) => ({
@@ -58,6 +79,22 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
   filterSection: null,
   filterStatus: null,
   filterDue: null,
+
+  activeTab: 'board',
+  enableUpNext: readLocalBool('pm-copilot-enable-upnext', false),
+  enableBlocked: readLocalBool('pm-copilot-enable-blocked', false),
+
+  setActiveTab: (tab: ActiveTab) => set({ activeTab: tab }),
+
+  setEnableUpNext: (v: boolean) => {
+    try { localStorage.setItem('pm-copilot-enable-upnext', String(v)); } catch { /* noop */ }
+    set({ enableUpNext: v });
+  },
+
+  setEnableBlocked: (v: boolean) => {
+    try { localStorage.setItem('pm-copilot-enable-blocked', String(v)); } catch { /* noop */ }
+    set({ enableBlocked: v });
+  },
 
   fetchTasks: async () => {
     set({ isLoading: true, error: null });
