@@ -207,6 +207,9 @@ export default function DigestPanel() {
     let hasError = false;
     let acc = '';
     try {
+      // Sync live Todoist state before generating — catches edits made in the native app
+      await fetch('/api/state/refresh', { method: 'POST', signal: abort.signal }).catch(() => {});
+
       const res = await fetch('/api/shell', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
