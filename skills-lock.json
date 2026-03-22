@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "mem": {
+      "source": "runablehq/memory",
+      "sourceType": "github",
+      "computedHash": "72147cfc56200444cb85ab2b5f18392d81a4174f14347720f3ff5e2328375253"
+    }
+  }
+}
