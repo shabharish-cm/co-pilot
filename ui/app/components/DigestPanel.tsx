@@ -197,6 +197,7 @@ export default function DigestPanel() {
     setGenerating(true);
     setGenOutput('');
     let hasError = false;
+    let acc = '';
     try {
       const res = await fetch('/api/shell', {
         method: 'POST',
@@ -206,7 +207,6 @@ export default function DigestPanel() {
       const reader = res.body?.getReader();
       if (!reader) throw new Error('No response body');
       const decoder = new TextDecoder();
-      let acc = '';
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
@@ -218,6 +218,14 @@ export default function DigestPanel() {
       setGenOutput(`[error: ${(err as Error).message}]`);
     } finally {
       setGenerating(false);
+      if (!hasError) {
+        // Write the generated digest to disk before refreshing the UI
+        await fetch('/api/digest', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ rawOutput: acc }),
+        }).catch(() => {});
+      }
       await fetchDigest();
       // Clear output after success so the refreshed digest is the only thing visible
       if (!hasError) {
