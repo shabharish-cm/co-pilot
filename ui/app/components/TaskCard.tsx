@@ -26,7 +26,7 @@ export default function TaskCard({ task, index, onOpen, onMenuOpen }: TaskCardPr
           {...provided.dragHandleProps}
           style={{
             ...provided.draggableProps.style,
-            background: sectionCfg.bgColor,
+            background: '#fff',
             border: '2.5px solid #000',
             boxShadow: snapshot.isDragging ? '6px 6px 0 #000' : '3px 3px 0 #000',
             marginBottom: '8px',
@@ -54,6 +54,21 @@ export default function TaskCard({ task, index, onOpen, onMenuOpen }: TaskCardPr
 
           {/* Card content */}
           <div style={{ paddingLeft: '12px', paddingRight: '8px', paddingTop: '8px', paddingBottom: '8px' }}>
+            {/* Section badge */}
+            <div style={{ marginBottom: '5px' }}>
+              <span style={{
+                background: sectionCfg.color,
+                border: '1.5px solid #000',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 700,
+                fontSize: '9px',
+                letterSpacing: '0.06em',
+                padding: '1px 5px',
+                display: 'inline-block',
+              }}>
+                {sectionCfg.name}
+              </span>
+            </div>
             {/* Title */}
             <div
               style={{

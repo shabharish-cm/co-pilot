@@ -2,53 +2,32 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useBoardStore } from '../store/boardStore';
-import type { ChatMessage } from '../lib/types';
-import { cleanContent } from '../lib/utils';
 
-const SLASH_COMMANDS = [
-  { cmd: '/morning', label: '/morning', desc: "Today's digest summary" },
-  { cmd: '/eod', label: '/eod', desc: 'Generate EOD summary' },
-  { cmd: '/now', label: '/now', desc: 'Top 3 priority tasks' },
-  { cmd: '/pulse', label: '/pulse', desc: 'Customer pulse snapshot' },
-];
-
-function processCommand(input: string, tasks: ReturnType<typeof useBoardStore.getState>['tasks']): string {
-  const cmd = input.trim().toLowerCase();
-
-  if (cmd === '/morning') {
-    return '/morning — summarize my morning digest and top priorities for today';
-  }
-  if (cmd === '/eod') {
-    const inProgress = tasks.filter(t => t.status === 'in-progress').map(t => cleanContent(t.content));
-    const done = tasks.filter(t => t.status === 'done').map(t => cleanContent(t.content));
-    return `/eod — generate an EOD summary. In-progress: ${inProgress.join(', ') || 'none'}. Done today: ${done.join(', ') || 'none'}.`;
-  }
-  if (cmd === '/now') {
-    return '/now — what are my top 3 priority tasks right now?';
-  }
-  if (cmd === '/pulse') {
-    return '/pulse — give me a customer pulse snapshot from the CS Requests section';
-  }
-  if (cmd.startsWith('what\'s due today') || cmd.startsWith('whats due today')) {
-    return "what's due today? — list all tasks with due date today";
-  }
-
-  return input;
+interface TerminalEntry {
+  id: number;
+  command: string;
+  output: string;
+  running: boolean;
 }
 
-export default function ClaudeSidebar() {
-  const { sidebarOpen, toggleSidebar, tasks, selectedTaskId, drawerOpen } = useBoardStore();
+const QUICK_COMMANDS = ['/morning', '/eod', '/now', '/pulse'];
 
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+let entryId = 0;
+
+export default function ClaudeSidebar() {
+  const { sidebarOpen, toggleSidebar } = useBoardStore();
+
+  const [entries, setEntries] = useState<TerminalEntry[]>([]);
   const [input, setInput] = useState('');
-  const [isStreaming, setIsStreaming] = useState(false);
   const [history, setHistory] = useState<string[]>([]);
   const [historyIdx, setHistoryIdx] = useState(-1);
-  const [streamingContent, setStreamingContent] = useState('');
-  const outputRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const [running, setRunning] = useState(false);
 
-  // Keyboard shortcut: Cmd+K
+  const outputRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
+
+  // Cmd+K to focus
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
@@ -61,110 +40,90 @@ export default function ClaudeSidebar() {
     return () => window.removeEventListener('keydown', handler);
   }, [toggleSidebar]);
 
-  // Listen for copilot commands from DigestPanel REGENERATE button
-  useEffect(() => {
-    const handler = (e: CustomEvent<string>) => {
-      setInput(e.detail);
-      setTimeout(() => inputRef.current?.focus(), 100);
-    };
-    window.addEventListener('copilot:command', handler as EventListener);
-    return () => window.removeEventListener('copilot:command', handler as EventListener);
-  }, []);
-
-  // Auto-scroll
+  // Auto-scroll on new output
   useEffect(() => {
     if (outputRef.current) {
       outputRef.current.scrollTop = outputRef.current.scrollHeight;
     }
-  }, [messages, streamingContent]);
+  }, [entries]);
 
-  const getContext = useCallback(() => {
-    if (!drawerOpen || !selectedTaskId) return undefined;
-    const task = tasks.find(t => t.id === selectedTaskId);
-    if (!task) return undefined;
-    return `Task context: "${cleanContent(task.content)}" — Section: ${task.sectionKey}, Status: ${task.status}, Due: ${task.due?.date ?? 'none'}`;
-  }, [drawerOpen, selectedTaskId, tasks]);
+  const runCommand = useCallback(async (cmd: string) => {
+    const trimmed = cmd.trim();
+    if (!trimmed || running) return;
 
-  const sendMessage = useCallback(async (overrideInput?: string) => {
-    const raw = (overrideInput ?? input).trim();
-    if (!raw || isStreaming) return;
-
-    const processed = processCommand(raw, tasks);
-    const userMsg: ChatMessage = { role: 'user', content: processed };
-
-    const newMessages = [...messages, userMsg];
-    setMessages(newMessages);
-    setInput('');
-    setHistory(h => [raw, ...h.slice(0, 49)]);
+    setHistory(h => [trimmed, ...h.filter(x => x !== trimmed)].slice(0, 50));
     setHistoryIdx(-1);
-    setIsStreaming(true);
-    setStreamingContent('');
+    setInput('');
+    setRunning(true);
+
+    const id = ++entryId;
+    setEntries(prev => [...prev, { id, command: trimmed, output: '', running: true }]);
+
+    const abort = new AbortController();
+    abortRef.current = abort;
 
     try {
-      const res = await fetch('/api/claude', {
+      const res = await fetch('/api/shell', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          messages: newMessages,
-          context: getContext(),
-          tasks: tasks.slice(0, 30).map(t => ({
-            content: t.content,
-            sectionKey: t.sectionKey,
-            status: t.status,
-            isOverdue: t.isOverdue,
-            due: t.due,
-          })),
-        }),
+        body: JSON.stringify({ command: trimmed }),
+        signal: abort.signal,
       });
 
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({ error: 'Unknown error' }));
-        throw new Error(err.error ?? `HTTP ${res.status}`);
-      }
+      const reader = res.body?.getReader();
+      if (!reader) throw new Error('No response body');
 
-      const reader = res.body!.getReader();
       const decoder = new TextDecoder();
-      let accumulated = '';
+      let acc = '';
 
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-        const chunk = decoder.decode(value, { stream: true });
-        accumulated += chunk;
-        setStreamingContent(accumulated);
+        acc += decoder.decode(value, { stream: true });
+        const snapshot = acc;
+        setEntries(prev =>
+          prev.map(e => e.id === id ? { ...e, output: snapshot } : e)
+        );
       }
-
-      const assistantMsg: ChatMessage = { role: 'assistant', content: accumulated };
-      setMessages(prev => [...prev, assistantMsg]);
-      setStreamingContent('');
-    } catch (e: unknown) {
-      const errorMsg = e instanceof Error ? e.message : 'Unknown error';
-      const assistantMsg: ChatMessage = {
-        role: 'assistant',
-        content: `⚠ Error: ${errorMsg}`,
-      };
-      setMessages(prev => [...prev, assistantMsg]);
-      setStreamingContent('');
+    } catch (err: unknown) {
+      if ((err as Error).name === 'AbortError') {
+        setEntries(prev =>
+          prev.map(e => e.id === id ? { ...e, output: e.output + '\n^C' } : e)
+        );
+      } else {
+        setEntries(prev =>
+          prev.map(e => e.id === id ? { ...e, output: e.output + `\n[${(err as Error).message}]` } : e)
+        );
+      }
     } finally {
-      setIsStreaming(false);
+      setEntries(prev =>
+        prev.map(e => e.id === id ? { ...e, running: false } : e)
+      );
+      setRunning(false);
+      abortRef.current = null;
+      setTimeout(() => inputRef.current?.focus(), 50);
     }
-  }, [input, messages, isStreaming, tasks, getContext]);
+  }, [running]);
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      sendMessage();
-      return;
-    }
-    if (e.key === 'ArrowUp' && input === '') {
-      const idx = Math.min(historyIdx + 1, history.length - 1);
-      setHistoryIdx(idx);
-      setInput(history[idx] ?? '');
-    }
-    if (e.key === 'ArrowDown' && historyIdx >= 0) {
-      const idx = historyIdx - 1;
-      setHistoryIdx(idx);
-      setInput(idx < 0 ? '' : history[idx]);
+      runCommand(input);
+    } else if (e.key === 'c' && e.ctrlKey) {
+      abortRef.current?.abort();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const next = Math.min(historyIdx + 1, history.length - 1);
+      setHistoryIdx(next);
+      setInput(history[next] ?? '');
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const next = Math.max(historyIdx - 1, -1);
+      setHistoryIdx(next);
+      setInput(next === -1 ? '' : history[next] ?? '');
+    } else if (e.key === 'l' && e.ctrlKey) {
+      e.preventDefault();
+      setEntries([]);
     }
   };
 
@@ -176,23 +135,21 @@ export default function ClaudeSidebar() {
           position: 'fixed',
           right: 0,
           top: '50%',
-          transform: 'translateY(-50%)',
+          transform: 'translateY(-50%) rotate(90deg)',
           background: '#000',
           color: '#FFE500',
           border: '2.5px solid #000',
-          borderRight: 'none',
-          fontFamily: 'var(--font-heading)',
-          fontWeight: 700,
+          padding: '6px 14px',
+          fontFamily: 'var(--font-mono)',
           fontSize: '11px',
-          letterSpacing: '0.08em',
-          writingMode: 'vertical-rl',
-          padding: '16px 8px',
+          fontWeight: 700,
+          letterSpacing: '0.1em',
           cursor: 'pointer',
-          zIndex: 500,
-          boxShadow: '-3px 0 0 #000',
+          zIndex: 40,
+          boxShadow: '3px 3px 0 #FFE500',
         }}
       >
-        ◆ CLAUDE
+        TERMINAL ◆
       </button>
     );
   }
@@ -200,12 +157,13 @@ export default function ClaudeSidebar() {
   return (
     <div
       style={{
-        width: '320px',
-        flexShrink: 0,
-        borderLeft: '2.5px solid #000',
-        background: '#FFFBF5',
+        width: '340px',
+        minWidth: '340px',
         display: 'flex',
         flexDirection: 'column',
+        border: '2.5px solid #000',
+        boxShadow: '4px 4px 0 #000',
+        background: '#0d0d0d',
         height: '100%',
         overflow: 'hidden',
       }}
@@ -214,7 +172,7 @@ export default function ClaudeSidebar() {
       <div
         style={{
           background: '#000',
-          color: '#fff',
+          borderBottom: '2.5px solid #FFE500',
           padding: '10px 14px',
           display: 'flex',
           alignItems: 'center',
@@ -222,288 +180,178 @@ export default function ClaudeSidebar() {
           flexShrink: 0,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ color: '#FFE500', fontSize: '16px' }}>◆</span>
-          <span
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontWeight: 700,
-              fontSize: '12px',
-              letterSpacing: '0.08em',
-            }}
-          >
-            CLAUDE COPILOT
-          </span>
-        </div>
+        <span style={{
+          fontFamily: 'var(--font-heading)',
+          fontSize: '12px',
+          fontWeight: 700,
+          letterSpacing: '0.12em',
+          color: '#FFE500',
+        }}>
+          ◆ TERMINAL — Co-Pilot
+        </span>
         <button
           onClick={toggleSidebar}
           style={{
             background: 'transparent',
-            border: '1px solid #555',
-            color: '#fff',
+            border: '1.5px solid #555',
+            color: '#aaa',
+            width: '22px',
+            height: '22px',
+            cursor: 'pointer',
             fontFamily: 'var(--font-mono)',
             fontSize: '11px',
-            padding: '2px 6px',
-            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            lineHeight: 1,
           }}
-          title="Close (Cmd+K)"
         >
-          ✕
+          ×
         </button>
       </div>
 
-      {/* Context indicator */}
-      {drawerOpen && selectedTaskId && (
-        <div
-          style={{
-            padding: '6px 12px',
-            background: '#FFE500',
-            borderBottom: '1.5px solid #000',
-            fontSize: '10px',
-            fontFamily: 'var(--font-mono)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '4px',
-            flexShrink: 0,
-          }}
-        >
-          <span>CTX:</span>
-          <span style={{ fontWeight: 700 }}>
-            {cleanContent(tasks.find(t => t.id === selectedTaskId)?.content ?? '').slice(0, 40)}…
-          </span>
-        </div>
-      )}
-
-      {/* Slash command badges */}
-      <div
-        style={{
-          padding: '8px 12px',
-          borderBottom: '1.5px solid #ddd',
-          display: 'flex',
-          gap: '4px',
-          flexWrap: 'wrap',
-          flexShrink: 0,
-        }}
-      >
-        {SLASH_COMMANDS.map(({ cmd, label }) => (
+      {/* Quick command badges */}
+      <div style={{
+        display: 'flex',
+        gap: '6px',
+        padding: '8px 12px',
+        background: '#111',
+        borderBottom: '1px solid #222',
+        flexWrap: 'wrap',
+        flexShrink: 0,
+      }}>
+        {QUICK_COMMANDS.map(cmd => (
           <button
             key={cmd}
-            onClick={() => setInput(cmd)}
-            title={cmd}
+            onClick={() => runCommand(cmd)}
+            disabled={running}
             style={{
-              background: '#f5f5f5',
-              border: '1.5px solid #000',
-              boxShadow: '2px 2px 0 #000',
+              background: 'transparent',
+              border: '1.5px solid #444',
+              color: '#ccc',
+              padding: '3px 8px',
               fontFamily: 'var(--font-mono)',
-              fontSize: '10px',
-              padding: '3px 7px',
-              cursor: 'pointer',
-              transition: 'all 0.1s ease',
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.background = '#FFE500';
-              (e.currentTarget as HTMLElement).style.transform = 'translate(-1px, -1px)';
-              (e.currentTarget as HTMLElement).style.boxShadow = '3px 3px 0 #000';
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.background = '#f5f5f5';
-              (e.currentTarget as HTMLElement).style.transform = '';
-              (e.currentTarget as HTMLElement).style.boxShadow = '2px 2px 0 #000';
+              fontSize: '11px',
+              cursor: running ? 'not-allowed' : 'pointer',
+              letterSpacing: '0.05em',
+              opacity: running ? 0.4 : 1,
             }}
           >
-            {label}
+            {cmd}
           </button>
         ))}
       </div>
 
-      {/* Messages area */}
+      {/* Terminal output */}
       <div
         ref={outputRef}
         style={{
           flex: 1,
           overflowY: 'auto',
           padding: '12px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '12px',
+          lineHeight: '1.6',
+          color: '#e0e0e0',
+          background: '#0d0d0d',
         }}
+        onClick={() => inputRef.current?.focus()}
       >
-        {messages.length === 0 && !isStreaming && (
-          <div
-            style={{
-              fontSize: '12px',
-              fontFamily: 'var(--font-mono)',
-              color: '#aaa',
-              textAlign: 'center',
-              marginTop: '24px',
-              lineHeight: 1.6,
-            }}
-          >
-            Ask me anything about your tasks.<br />
-            Use /morning, /eod, /now for quick summaries.<br />
-            <span style={{ fontSize: '10px', display: 'block', marginTop: '8px', color: '#bbb' }}>
-              Cmd+K to toggle · ↑↓ for history
-            </span>
+        {entries.length === 0 && (
+          <div style={{ color: '#555', fontSize: '11px' }}>
+            <div>PM Copilot terminal. CWD: ~/Co-Pilot</div>
+            <div style={{ marginTop: '4px' }}>Type any shell command or /morning, /eod, /pulse</div>
+            <div style={{ marginTop: '2px' }}>Ctrl+C cancel  ·  Ctrl+L clear  ·  ↑↓ history</div>
           </div>
         )}
 
-        {messages.map((msg, i) => (
-          <div key={i}>
-            {msg.role === 'user' ? (
-              <div
+        {entries.map(entry => (
+          <div key={entry.id} style={{ marginBottom: '12px' }}>
+            {/* Command line */}
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
+              <span style={{ color: '#FFE500', flexShrink: 0 }}>$</span>
+              <span style={{ color: '#fff', wordBreak: 'break-all' }}>{entry.command}</span>
+              {entry.running && (
+                <span style={{ color: '#555', animation: 'pulse 1s infinite', marginLeft: '4px' }}>▌</span>
+              )}
+            </div>
+            {/* Output */}
+            {entry.output && (
+              <pre
                 style={{
-                  borderLeft: '3px solid #FFE500',
-                  paddingLeft: '8px',
-                  display: 'flex',
-                  gap: '6px',
+                  margin: '4px 0 0 14px',
+                  padding: 0,
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-word',
+                  color: entry.output.startsWith('[error') || entry.output.includes('[exited') ? '#FF6B6B' : '#b0b0b0',
+                  fontSize: '11.5px',
+                  fontFamily: 'var(--font-mono)',
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '10px',
-                    color: '#999',
-                    flexShrink: 0,
-                    paddingTop: '1px',
-                  }}
-                >
-                  YOU &gt;
-                </span>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '12px',
-                    color: '#333',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}
-                >
-                  {msg.content}
-                </span>
-              </div>
-            ) : (
-              <div
-                style={{
-                  background: '#fff',
-                  border: '1.5px solid #000',
-                  boxShadow: '2px 2px 0 #000',
-                  padding: '10px 12px',
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '10px',
-                    color: '#888',
-                    marginBottom: '6px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                  }}
-                >
-                  <span style={{ color: '#FFE500' }}>◆</span> CLAUDE
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '12px',
-                    color: '#111',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {msg.content}
-                </div>
-              </div>
+                {entry.output}
+              </pre>
             )}
           </div>
         ))}
 
-        {/* Streaming output */}
-        {isStreaming && (
-          <div
-            style={{
-              background: '#fff',
-              border: '1.5px solid #000',
-              boxShadow: '2px 2px 0 #000',
-              padding: '10px 12px',
-            }}
-          >
-            <div
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '10px',
-                color: '#888',
-                marginBottom: '6px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px',
-              }}
-            >
-              <span style={{ color: '#FFE500' }}>◆</span> CLAUDE
-            </div>
-            <div
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '12px',
-                color: '#111',
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
-                lineHeight: 1.6,
-              }}
-            >
-              {streamingContent || <span className="loading-dots" />}
-            </div>
+        {/* Inline cursor when idle */}
+        {!running && entries.length > 0 && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ color: '#FFE500' }}>$</span>
+            <span style={{ color: '#555' }}>_</span>
           </div>
         )}
       </div>
 
-      {/* Input area */}
+      {/* Input */}
       <div
         style={{
-          borderTop: '2.5px solid #000',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
           padding: '10px 12px',
+          background: '#111',
+          borderTop: '2px solid #222',
           flexShrink: 0,
-          background: '#fff',
         }}
       >
-        <div style={{ display: 'flex', gap: '6px' }}>
-          <textarea
-            ref={inputRef}
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Ask anything… (↵ to send, ↑↓ history)"
-            rows={2}
-            style={{
-              flex: 1,
-              border: '2.5px solid #000',
-              boxShadow: '3px 3px 0 #000',
-              background: '#fff',
-              padding: '8px 10px',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '12px',
-              resize: 'none',
-              outline: 'none',
-            }}
-            disabled={isStreaming}
-          />
+        <span style={{ color: '#FFE500', fontFamily: 'var(--font-mono)', fontSize: '13px', flexShrink: 0 }}>$</span>
+        <input
+          ref={inputRef}
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder={running ? 'running… (Ctrl+C to cancel)' : 'command or /skill…'}
+          disabled={running}
+          autoComplete="off"
+          spellCheck={false}
+          style={{
+            flex: 1,
+            background: 'transparent',
+            border: 'none',
+            outline: 'none',
+            color: running ? '#555' : '#fff',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '12px',
+            caretColor: '#FFE500',
+          }}
+        />
+        {running && (
           <button
-            className="nb-btn nb-btn-primary"
-            onClick={() => sendMessage()}
-            disabled={!input.trim() || isStreaming}
+            onClick={() => abortRef.current?.abort()}
             style={{
-              padding: '8px 12px',
-              flexShrink: 0,
-              alignSelf: 'stretch',
-              opacity: !input.trim() || isStreaming ? 0.5 : 1,
-              fontSize: '11px',
+              background: 'transparent',
+              border: '1px solid #555',
+              color: '#FF6B6B',
+              padding: '2px 8px',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '10px',
+              cursor: 'pointer',
             }}
           >
-            {isStreaming ? '…' : 'SEND ↵'}
+            ^C
           </button>
-        </div>
+        )}
       </div>
     </div>
   );

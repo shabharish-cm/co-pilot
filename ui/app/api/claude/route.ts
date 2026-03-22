@@ -121,12 +121,18 @@ export async function POST(req: NextRequest) {
 
   const encoder = new TextEncoder();
 
+  const REPO_ROOT = require('path').resolve(process.cwd(), '..');
+
   const readable = new ReadableStream({
     start(controller) {
-      // claude --print reads from stdin and streams to stdout
-      const proc = spawn('/opt/homebrew/bin/claude', ['--print'], {
-        env: { ...process.env, HOME: process.env.HOME ?? '/Users/shabharish' },
-      });
+      const proc = spawn(
+        '/opt/homebrew/bin/claude',
+        ['--dangerously-skip-permissions', '--print'],
+        {
+          cwd: REPO_ROOT,
+          env: { ...process.env, HOME: process.env.HOME ?? '/Users/shabharish' },
+        }
+      );
 
       proc.stdin.write(fullPrompt);
       proc.stdin.end();
