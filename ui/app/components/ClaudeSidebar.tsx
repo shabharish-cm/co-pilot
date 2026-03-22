@@ -259,8 +259,8 @@ export default function ClaudeSidebar() {
       >
         {entries.length === 0 && (
           <div style={{ color: '#555', fontSize: '11px' }}>
-            <div>PM Copilot terminal. CWD: ~/Co-Pilot</div>
-            <div style={{ marginTop: '4px' }}>Type any shell command or /morning, /eod, /pulse</div>
+            <div>◆ Claude CLI — Co-Pilot context loaded</div>
+            <div style={{ marginTop: '4px' }}>Ask anything, or use /morning, /eod, /now, /pulse</div>
             <div style={{ marginTop: '2px' }}>Ctrl+C cancel  ·  Ctrl+L clear  ·  ↑↓ history</div>
           </div>
         )}
@@ -321,7 +321,7 @@ export default function ClaudeSidebar() {
           value={input}
           onChange={e => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={running ? 'running… (Ctrl+C to cancel)' : 'command or /skill…'}
+          placeholder={running ? 'running… (Ctrl+C to cancel)' : 'ask claude or /skill…'}
           disabled={running}
           autoComplete="off"
           spellCheck={false}

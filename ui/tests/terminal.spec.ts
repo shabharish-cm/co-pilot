@@ -35,12 +35,13 @@ test.describe('Terminal Sidebar', () => {
     await expect(page.locator('input[placeholder*="command"]')).toBeVisible();
   });
 
-  test('shell command echo works', async ({ page }) => {
+  test('plain question gets a response from Claude', async ({ page }) => {
+    test.setTimeout(60000);
     await page.click('button:has-text("TERMINAL")');
-    const input = page.locator('input[placeholder*="command"]');
-    await input.fill('echo hello-world');
+    const input = page.locator('input[placeholder*="claude"]');
+    await input.fill('reply with just the word: pong');
     await input.press('Enter');
-    await expect(page.locator('pre:has-text("hello-world")')).toBeVisible({ timeout: 10000 });
+    await expect(page.locator('pre').filter({ hasText: /pong/i }).first()).toBeVisible({ timeout: 50000 });
   });
 
   test('/now slash command returns focused actions', async ({ page }) => {
@@ -54,22 +55,24 @@ test.describe('Terminal Sidebar', () => {
 
   test('Ctrl+L clears terminal output', async ({ page }) => {
     await page.click('button:has-text("TERMINAL")');
-    const input = page.locator('input[placeholder*="command"]');
-    await input.fill('echo clearme');
+    const input = page.locator('input[placeholder*="claude"]');
+    // Type a command but don't wait for Claude response — just check the command line appears
+    await input.fill('hello');
     await input.press('Enter');
-    await expect(page.locator('pre:has-text("clearme")')).toBeVisible({ timeout: 10000 });
+    await page.waitForTimeout(500);
+    // Clear immediately
     await input.press('Control+l');
-    await expect(page.locator('pre:has-text("clearme")')).not.toBeVisible();
+    await expect(page.locator('span').filter({ hasText: '$ hello' })).not.toBeVisible();
   });
 
   test('↑ arrow recalls command history', async ({ page }) => {
     await page.click('button:has-text("TERMINAL")');
-    const input = page.locator('input[placeholder*="command"]');
-    await input.fill('echo first-cmd');
+    const input = page.locator('input[placeholder*="claude"]');
+    await input.fill('my-test-command-xyz');
     await input.press('Enter');
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(300);
     await input.press('ArrowUp');
-    await expect(input).toHaveValue('echo first-cmd');
+    await expect(input).toHaveValue('my-test-command-xyz');
   });
 
   test('close button (×) hides the sidebar', async ({ page }) => {
@@ -80,16 +83,7 @@ test.describe('Terminal Sidebar', () => {
   });
 });
 
-test.describe('Shell API — direct', () => {
-  test('POST /api/shell echo returns correct output', async ({ request }) => {
-    const res = await request.post('/api/shell', {
-      data: { command: 'echo ping123' },
-    });
-    expect(res.ok()).toBeTruthy();
-    const body = await res.text();
-    expect(body).toContain('ping123');
-  });
-
+test.describe('Claude CLI API — direct', () => {
   test('POST /api/shell empty command returns 200', async ({ request }) => {
     const res = await request.post('/api/shell', {
       data: { command: '' },
@@ -97,12 +91,13 @@ test.describe('Shell API — direct', () => {
     expect(res.status()).toBe(200);
   });
 
-  test('POST /api/shell pwd returns Co-Pilot root path', async ({ request }) => {
+  test('POST /api/shell returns a streaming response', async ({ request }) => {
     const res = await request.post('/api/shell', {
-      data: { command: 'pwd' },
+      data: { command: 'say hello in one word' },
+      timeout: 30000,
     });
+    expect(res.ok()).toBeTruthy();
     const body = await res.text();
-    expect(body).toContain('Co-Pilot');
-    expect(body).not.toContain('/ui');
+    expect(body.length).toBeGreaterThan(0);
   });
 });

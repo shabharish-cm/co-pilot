@@ -24,23 +24,14 @@ export async function POST(req: NextRequest) {
       const cmd = command.trim();
       let proc;
 
-      if (cmd.startsWith('/')) {
-        // Slash commands → pipe the command via stdin so claude resolves the skill
-        proc = spawn(
-          CLAUDE_BIN,
-          ['--dangerously-skip-permissions', '-p'],
-          { cwd: REPO_ROOT, env: SHELL_ENV, stdio: ['pipe', 'pipe', 'pipe'] }
-        );
-        proc.stdin!.write(cmd);
-        proc.stdin!.end();
-      } else {
-        // Arbitrary shell command in Co-Pilot root
-        proc = spawn('/bin/bash', ['-c', cmd], {
-          cwd: REPO_ROOT,
-          env: SHELL_ENV,
-          stdio: ['ignore', 'pipe', 'pipe'],
-        });
-      }
+      // All input goes to Claude CLI — pipe via stdin so skills resolve correctly
+      proc = spawn(
+        CLAUDE_BIN,
+        ['--dangerously-skip-permissions', '-p'],
+        { cwd: REPO_ROOT, env: SHELL_ENV, stdio: ['pipe', 'pipe', 'pipe'] }
+      );
+      proc.stdin!.write(cmd);
+      proc.stdin!.end();
 
       proc.stdout.on('data', (chunk: Buffer) => {
         controller.enqueue(encoder.encode(chunk.toString()));
