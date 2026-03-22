@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getTasks, createTask, enrichTask } from '../../../lib/todoist';
 import { routeTask } from '../../../lib/routing';
+import { refreshCurrentDayState } from '../../../lib/state';
 
 const TOKEN = process.env.TODOIST_API_TOKEN ?? '';
 
@@ -47,6 +48,7 @@ export async function POST(req: NextRequest) {
     });
 
     const enriched = enrichTask(task);
+    refreshCurrentDayState(TOKEN).catch(() => {});
     return NextResponse.json({ task: enriched, routing });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';

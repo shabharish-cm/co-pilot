@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { updateTask, enrichTask } from '../../../../lib/todoist';
+import { refreshCurrentDayState } from '../../../../lib/state';
 
 const TOKEN = process.env.TODOIST_API_TOKEN ?? '';
 
@@ -32,6 +33,7 @@ export async function PATCH(
     }
 
     const updated = await updateTask(TOKEN, id, payload as Parameters<typeof updateTask>[2]);
+    refreshCurrentDayState(TOKEN).catch(() => {});
     return NextResponse.json(enrichTask(updated));
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
