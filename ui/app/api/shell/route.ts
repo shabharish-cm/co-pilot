@@ -26,16 +26,18 @@ export async function POST(req: NextRequest) {
 
       if (cmd.startsWith('/')) {
         // Slash commands → claude skill, non-interactive, Co-Pilot root
+        // stdio: ['ignore'] tells claude stdin is /dev/null so it doesn't wait
         proc = spawn(
           CLAUDE_BIN,
           ['--dangerously-skip-permissions', '-p', cmd],
-          { cwd: REPO_ROOT, env: SHELL_ENV }
+          { cwd: REPO_ROOT, env: SHELL_ENV, stdio: ['ignore', 'pipe', 'pipe'] }
         );
       } else {
         // Arbitrary shell command in Co-Pilot root
         proc = spawn('/bin/bash', ['-c', cmd], {
           cwd: REPO_ROOT,
           env: SHELL_ENV,
+          stdio: ['ignore', 'pipe', 'pipe'],
         });
       }
 
