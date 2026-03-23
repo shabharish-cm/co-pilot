@@ -126,9 +126,17 @@
   .demo-tag { background: #fff; border: 1px solid var(--brand-green); color: var(--brand-green-dark); font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 5px; }
   .demo-tag .rm-tag { cursor: pointer; font-size: 10px; color: var(--text-muted); }
   .demo-tag .rm-tag:hover { color: var(--danger); }
-  .demo-add-row { display: flex; gap: 0.5rem; }
-  .demo-add-row select { flex: 1; height: 36px; border: 1px solid var(--border-gray); border-radius: 3px; font-family: inherit; font-size: 13px; padding: 0 0.75rem; background: #fff; }
-  .demo-add-row button { height: 36px; padding: 0 1rem; background: var(--brand-green); color: #fff; border: none; border-radius: 3px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .demo-add-row { display: flex; gap: 0.5rem; align-items: center; }
+  .demo-add-row select { height: 36px; border: 1px solid var(--border-gray); border-radius: 3px; font-family: inherit; font-size: 13px; padding: 0 0.75rem; background: #fff; min-width: 160px; }
+  /* Multiselect panel */
+  .demo-multiselect { background: #fff; border: 1px solid var(--border-gray); border-radius: 3px; margin-top: 0.75rem; overflow: hidden; }
+  .demo-ms-header { background: var(--light-gray); padding: 0.45rem 0.75rem; border-bottom: 1px solid var(--border-gray); }
+  .demo-ms-option { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.75rem; font-size: 13px; cursor: pointer; user-select: none; }
+  .demo-ms-option:hover { background: var(--hover-bg); }
+  .demo-ms-option input[type=checkbox] { accent-color: var(--brand-green); width: 14px; height: 14px; cursor: pointer; flex-shrink: 0; }
+  .demo-ms-header .demo-ms-option { padding: 0; font-weight: 600; color: var(--text-default); }
+  .demo-ms-options { display: flex; flex-wrap: wrap; padding: 0.25rem 0; max-height: 200px; overflow-y: auto; }
+  .demo-ms-options .demo-ms-option { flex: 0 0 50%; }
 
   /* SURVEY RESTRICTION TOGGLE */
   .restriction-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; }
@@ -315,17 +323,25 @@
           <!-- Filled dynamically -->
         </div>
         <div class="demo-add-row">
-          <select id="demoType">
+          <select id="demoType" onchange="updateDemoMultiselect()">
             <option value="">Select type...</option>
             <option value="team">Team</option>
             <option value="bu">Business Unit</option>
             <option value="location">Location</option>
             <option value="bg">Business Group</option>
           </select>
-          <select id="demoValue">
-            <option value="">Select value...</option>
-          </select>
-          <button onclick="addDemo()">+ Add</button>
+        </div>
+        <!-- Multiselect panel — shown when a type is chosen -->
+        <div id="demoMultiselect" class="demo-multiselect" style="display:none;">
+          <div class="demo-ms-header">
+            <label class="demo-ms-option">
+              <input type="checkbox" id="demoSelectAll" onchange="toggleSelectAll(this)">
+              <span>All <span id="demoTypeLabel"></span>s</span>
+            </label>
+          </div>
+          <div id="demoMsOptions" class="demo-ms-options">
+            <!-- Filled dynamically -->
+          </div>
         </div>
         <p class="help-text mt-2"><i class="fas fa-info-circle"></i> At least one demographic must be selected when using Fixed Demographic scope.</p>
       </div>
@@ -499,28 +515,83 @@
     validateForm();
   }
 
-  function updateDemoOptions() {
+  function updateDemoMultiselect() {
     const type = document.getElementById('demoType').value;
-    const sel = document.getElementById('demoValue');
-    sel.innerHTML = '<option value="">Select value...</option>';
-    if (type && demoOptions[type]) {
-      demoOptions[type].forEach(v => {
-        const o = document.createElement('option');
-        o.value = v; o.textContent = v;
-        sel.appendChild(o);
-      });
+    const panel = document.getElementById('demoMultiselect');
+    const optContainer = document.getElementById('demoMsOptions');
+    const typeLabel = document.getElementById('demoTypeLabel');
+    const allCb = document.getElementById('demoSelectAll');
+
+    if (!type || !demoOptions[type]) {
+      panel.style.display = 'none';
+      return;
     }
+
+    const typeName = {team:'Team',bu:'Business Unit',location:'Location',bg:'Business Group'}[type];
+    typeLabel.textContent = typeName;
+    allCb.checked = false;
+    allCb.indeterminate = false;
+
+    optContainer.innerHTML = '';
+    demoOptions[type].forEach(v => {
+      const isSelected = demographics.some(d => d.type === type && d.val === v);
+      const label = document.createElement('label');
+      label.className = 'demo-ms-option';
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.value = v;
+      cb.checked = isSelected;
+      cb.addEventListener('change', () => onDemoCheckChange(type, cb));
+      label.appendChild(cb);
+      label.appendChild(document.createTextNode(v));
+      optContainer.appendChild(label);
+    });
+
+    syncAllCheckbox();
+    panel.style.display = 'block';
   }
 
-  function addDemo() {
-    const type = document.getElementById('demoType').value;
-    const val = document.getElementById('demoValue').value;
-    if (!type || !val) return;
+  function onDemoCheckChange(type, cb) {
+    const val = cb.value;
     const key = type + ':' + val;
-    if (demographics.find(d => d.key === key)) return;
-    demographics.push({ key, type, val });
+    if (cb.checked) {
+      if (!demographics.find(d => d.key === key)) {
+        demographics.push({ key, type, val });
+      }
+    } else {
+      demographics = demographics.filter(d => d.key !== key);
+    }
+    syncAllCheckbox();
     renderDemoTags();
     validateForm();
+  }
+
+  function toggleSelectAll(cb) {
+    const type = document.getElementById('demoType').value;
+    const checkboxes = document.querySelectorAll('#demoMsOptions input[type=checkbox]');
+    checkboxes.forEach(c => {
+      c.checked = cb.checked;
+      const val = c.value;
+      const key = type + ':' + val;
+      if (cb.checked) {
+        if (!demographics.find(d => d.key === key)) {
+          demographics.push({ key, type, val });
+        }
+      } else {
+        demographics = demographics.filter(d => d.key !== key);
+      }
+    });
+    renderDemoTags();
+    validateForm();
+  }
+
+  function syncAllCheckbox() {
+    const allCb = document.getElementById('demoSelectAll');
+    const checkboxes = [...document.querySelectorAll('#demoMsOptions input[type=checkbox]')];
+    const total = checkboxes.length;
+    const checked = checkboxes.filter(c => c.checked).length;
+    allCb.checked = total > 0 && checked === total;
+    allCb.indeterminate = checked > 0 && checked < total;
   }
 
   function renderDemoTags() {
@@ -536,12 +607,18 @@
   }
 
   function removeDemo(i) {
+    const removed = demographics[i];
     demographics.splice(i, 1);
+    // Uncheck the removed item in the panel if visible
+    const currentType = document.getElementById('demoType').value;
+    if (removed && removed.type === currentType) {
+      const checkboxes = document.querySelectorAll('#demoMsOptions input[type=checkbox]');
+      checkboxes.forEach(c => { if (c.value === removed.val) c.checked = false; });
+      syncAllCheckbox();
+    }
     renderDemoTags();
     validateForm();
   }
-
-  document.getElementById('demoType').addEventListener('change', updateDemoOptions);
 
   // VALIDATION
   function validateForm() {

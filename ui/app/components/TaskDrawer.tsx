@@ -47,6 +47,7 @@ export default function TaskDrawer() {
   const [addingLabel, setAddingLabel] = useState(false);
   const [newSubtask, setNewSubtask] = useState('');
   const [addingSubtask, setAddingSubtask] = useState(false);
+  const [completing, setCompleting] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
 
   // Sync local fields when task changes
@@ -132,7 +133,9 @@ export default function TaskDrawer() {
 
   const handleComplete = async () => {
     setConfirm(null);
+    setCompleting(true);
     await completeTask(task.id);
+    setCompleting(false);
   };
 
   const handleAddSubtask = async () => {
@@ -780,10 +783,11 @@ export default function TaskDrawer() {
         >
           <button
             className="nb-btn nb-btn-primary"
-            style={{ flex: 1, justifyContent: 'center', fontSize: '12px' }}
-            onClick={() => setConfirm({ type: 'complete' })}
+            style={{ flex: 1, justifyContent: 'center', fontSize: '12px', opacity: completing ? 0.6 : 1 }}
+            onClick={() => !completing && setConfirm({ type: 'complete' })}
+            disabled={completing}
           >
-            ✓ MARK COMPLETE
+            {completing ? 'COMPLETING…' : '✓ MARK COMPLETE'}
           </button>
           <button
             onClick={() => setConfirm({ type: 'delete' })}
@@ -854,10 +858,11 @@ export default function TaskDrawer() {
               </button>
               <button
                 className={confirm.type === 'complete' ? 'nb-btn nb-btn-primary' : 'nb-btn nb-btn-danger'}
-                style={{ flex: 1, justifyContent: 'center' }}
+                style={{ flex: 1, justifyContent: 'center', opacity: completing ? 0.6 : 1 }}
                 onClick={handleComplete}
+                disabled={completing}
               >
-                {confirm.type === 'complete' ? 'COMPLETE' : 'DELETE'}
+                {confirm.type === 'complete' ? (completing ? 'COMPLETING…' : 'COMPLETE') : 'DELETE'}
               </button>
             </div>
           </div>

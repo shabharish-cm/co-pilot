@@ -239,6 +239,30 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gCM8H6FfcgmFgGx"
+    },
+    {
+      "id": "6gF55mHvJXqRGmxx",
+      "content": "Share CURL statements with Patrick (Yahoo all-candidate export workaround)",
+      "due": "2026-03-23",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gF55mHvJXqRGmxx"
+    },
+    {
+      "id": "6gF55p3f4xqR3chQ",
+      "content": "Validate hiring manager surveys triggered for Yahoo candidates with DOJ 23-Mar",
+      "due": "2026-03-23",
+      "priority": 2,
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gF55p3f4xqR3chQ"
     }
   ],
   "completedToday": [],

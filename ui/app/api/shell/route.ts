@@ -6,8 +6,9 @@ import path from 'path';
 // Always run in the Co-Pilot repo root, not ui/
 const REPO_ROOT = path.resolve(process.cwd(), '..');
 const CLAUDE_BIN = '/opt/homebrew/bin/claude';
+const { ANTHROPIC_API_KEY: _stripped, ...restEnv } = process.env;
 const SHELL_ENV = {
-  ...process.env,
+  ...restEnv,
   HOME: process.env.HOME ?? '/Users/shabharish',
   PATH: '/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
 };

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — Monday, March 23, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0f1117;
+    color: #e2e8f0;
+    min-height: 100vh;
+    padding: 32px 24px;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #1e2530;
+  }
+  .header-left h1 { font-size: 22px; font-weight: 700; color: #f1f5f9; }
+  .header-left .sub { font-size: 13px; color: #64748b; margin-top: 4px; }
+  .badge-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .badge {
+    font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+    letter-spacing: 0.4px;
+  }
+  .badge-green  { background: #052e16; color: #4ade80; border: 1px solid #166534; }
+  .badge-blue   { background: #0c1a2e; color: #60a5fa; border: 1px solid #1e3a5f; }
+  .badge-orange { background: #2d1500; color: #fb923c; border: 1px solid #7c2d12; }
+  .badge-gray   { background: #1e2530; color: #94a3b8; border: 1px solid #334155; }
+  .time { font-size: 12px; color: #475569; padding-top: 4px; }
+
+  /* Section label */
+  .section-label {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; color: #475569; margin-bottom: 12px; margin-top: 28px;
+  }
+
+  /* Priority cards */
+  .priority-grid { display: flex; flex-direction: column; gap: 10px; }
+  .priority-card {
+    background: #141921;
+    border: 1px solid #1e2a3a;
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex; align-items: flex-start; gap: 14px;
+    transition: border-color 0.15s;
+  }
+  .priority-card:hover { border-color: #2d3f55; }
+  .rank {
+    width: 28px; height: 28px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; flex-shrink: 0;
+  }
+  .rank-1 { background: #1a0a00; color: #f97316; border: 1px solid #7c2d12; }
+  .rank-2 { background: #0a1a10; color: #22c55e; border: 1px solid #166534; }
+  .rank-3 { background: #0a0f1a; color: #60a5fa; border: 1px solid #1e3a5f; }
+  .card-body { flex: 1; }
+  .card-title { font-size: 14px; font-weight: 600; color: #f1f5f9; line-height: 1.4; }
+  .card-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+  .pill {
+    font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 500;
+  }
+  .pill-cs     { background: #1a0030; color: #c084fc; border: 1px solid #6b21a8; }
+  .pill-cm     { background: #001a2e; color: #38bdf8; border: 1px solid #075985; }
+  .pill-effy   { background: #0d1a00; color: #a3e635; border: 1px solid #3f6212; }
+  .pill-feat   { background: #1a1500; color: #fbbf24; border: 1px solid #92400e; }
+  .pill-due    { background: #1e2530; color: #94a3b8; }
+  .pill-today  { background: #2d1500; color: #fb923c; border: 1px solid #7c2d12; }
+  .pill-inprog { background: #052e16; color: #4ade80; border: 1px solid #166534; }
+  .card-note { font-size: 12px; color: #64748b; margin-top: 6px; line-height: 1.5; }
+  .card-link { font-size: 11px; color: #3b82f6; text-decoration: none; margin-top: 6px; display: inline-block; }
+  .card-link:hover { color: #60a5fa; }
+
+  /* Watchouts */
+  .watchout-list { display: flex; flex-direction: column; gap: 8px; }
+  .watchout {
+    background: #1a1200;
+    border: 1px solid #422006;
+    border-left: 3px solid #f59e0b;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #fcd34d;
+    line-height: 1.5;
+  }
+  .watchout span { color: #fbbf24; margin-right: 6px; }
+
+  /* Focus tip */
+  .focus-card {
+    background: #0a0f1a;
+    border: 1px solid #1e2a3a;
+    border-left: 3px solid #6366f1;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #a5b4fc;
+    line-height: 1.6;
+  }
+  .focus-card .label { font-weight: 700; color: #818cf8; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+
+  /* Upcoming */
+  .upcoming-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+  .upcoming-card {
+    background: #141921;
+    border: 1px solid #1e2a3a;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .upcoming-date { font-size: 11px; color: #475569; margin-bottom: 4px; font-weight: 600; }
+  .upcoming-title { font-size: 12px; color: #cbd5e1; line-height: 1.4; }
+
+  /* Board summary */
+  .board-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+  .board-card {
+    background: #141921;
+    border: 1px solid #1e2a3a;
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .board-count { font-size: 26px; font-weight: 800; }
+  .board-name { font-size: 11px; color: #64748b; margin-top: 4px; font-weight: 500; }
+  .c-effy   { color: #a3e635; }
+  .c-cm     { color: #38bdf8; }
+  .c-cs     { color: #c084fc; }
+  .c-feat   { color: #fbbf24; }
+  .c-engg   { color: #f87171; }
+
+  /* Footer */
+  .footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid #1e2530; font-size: 11px; color: #334155; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Monday, March 23 — Morning Digest</h1>
+      <div class="sub">PM Copilot · CultureMonkey · Shab</div>
+      <div class="badge-row">
+        <span class="badge badge-green">✓ No Overdue</span>
+        <span class="badge badge-blue">📅 No Meetings</span>
+        <span class="badge badge-orange">3 Due Today</span>
+        <span class="badge badge-gray">19 Open Tasks</span>
+      </div>
+    </div>
+    <div class="time">IST · 9:00 AM</div>
+  </div>
+
+  <!-- Board Summary -->
+  <div class="section-label">Board at a Glance</div>
+  <div class="board-grid">
+    <div class="board-card"><div class="board-count c-cs">2</div><div class="board-name">CS Requests</div></div>
+    <div class="board-card"><div class="board-count c-cm">9</div><div class="board-name">CM</div></div>
+    <div class="board-card"><div class="board-count c-feat">4</div><div class="board-name">Features</div></div>
+    <div class="board-card"><div class="board-count c-effy">1</div><div class="board-name">effy</div></div>
+    <div class="board-card"><div class="board-count c-engg">0</div><div class="board-name">Engg asks</div></div>
+  </div>
+
+  <!-- Top 3 Priorities -->
+  <div class="section-label">Top 3 Priorities</div>
+  <div class="priority-grid">
+
+    <div class="priority-card">
+      <div class="rank rank-1">1</div>
+      <div class="card-body">
+        <div class="card-title">Yahoo — trigger HM survey for 3 candidates, check with Engg and update CS</div>
+        <div class="card-meta">
+          <span class="pill pill-cs">CS Requests</span>
+          <span class="pill pill-today">Due Today</span>
+        </div>
+        <div class="card-note">Engg → CS sequence. Confirm with Engg first, then update CS team. Kick this off first thing.</div>
+        <a class="card-link" href="https://todoist.com/showTask?id=6gCMFmVR5J66X4Gx" target="_blank">Open in Todoist →</a>
+      </div>
+    </div>
+
+    <div class="priority-card">
+      <div class="rank rank-2">2</div>
+      <div class="card-body">
+        <div class="card-title">Check Section visibility example from KAG with Yugi</div>
+        <div class="card-meta">
+          <span class="pill pill-cs">CS Requests</span>
+          <span class="pill pill-today">Due Today</span>
+        </div>
+        <div class="card-note">Quick CS sync — ping Yugi early before the day fills up.</div>
+        <a class="card-link" href="https://todoist.com/showTask?id=6gC8VJWpV65C4wrQ" target="_blank">Open in Todoist →</a>
+      </div>
+    </div>
+
+    <div class="priority-card">
+      <div class="rank rank-3">3</div>
+      <div class="card-body">
+        <div class="card-title">Send info to UGG regarding workers logic</div>
+        <div class="card-meta">
+          <span class="pill pill-effy">effy</span>
+          <span class="pill pill-due">Due Mar 24</span>
+          <span class="pill pill-inprog">In Progress</span>
+        </div>
+        <div class="card-note">Due tomorrow, already in-progress. Close it out today in the afternoon deep-work block.</div>
+        <a class="card-link" href="https://todoist.com/showTask?id=6gC7GmvfXQ7FVVmx" target="_blank">Open in Todoist →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Also Due Today -->
+  <div class="section-label">Also Due Today</div>
+  <div class="priority-grid">
+    <div class="priority-card">
+      <div class="card-body">
+        <div class="card-title">Align with Gautam (Account Signals)</div>
+        <div class="card-meta">
+          <span class="pill pill-cm">CM</span>
+          <span class="pill pill-today">Due Today</span>
+        </div>
+        <div class="card-note">Identify key metrics · Confirm data update frequency · Define data access method.</div>
+        <a class="card-link" href="https://todoist.com/showTask?id=6gCJxJPVg9pPCxPx" target="_blank">Open in Todoist →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Watch-outs -->
+  <div class="section-label">Watch-outs</div>
+  <div class="watchout-list">
+    <div class="watchout"><span>⚠</span>Both CS tasks need others' input — ping Engg and Yugi early to avoid blocking on replies.</div>
+    <div class="watchout"><span>⚠</span>Yahoo has a strict sequence: confirm with Engg first, then update CS.</div>
+    <div class="watchout"><span>⚠</span>Feedback-based prioritisation agent MVP is due Wednesday (Mar 25) — no buffer if today slips.</div>
+  </div>
+
+  <!-- Focus Tip -->
+  <div class="section-label">Focus Tip</div>
+  <div class="focus-card">
+    <div class="label">💡 Meeting-free Monday</div>
+    Use the morning for CS outreach (Yahoo + KAG/Yugi), then switch to deep work on UGG/effy in the afternoon. Protect the afternoon block.
+  </div>
+
+  <!-- Upcoming -->
+  <div class="section-label">Coming Up</div>
+  <div class="upcoming-grid">
+    <div class="upcoming-card">
+      <div class="upcoming-date">Tomorrow · Mar 24</div>
+      <div class="upcoming-title">Send info to UGG regarding workers logic</div>
+    </div>
+    <div class="upcoming-card">
+      <div class="upcoming-date">Wed · Mar 25</div>
+      <div class="upcoming-title">Feedback-based prioritisation agent — MVP</div>
+    </div>
+    <div class="upcoming-card">
+      <div class="upcoming-date">Fri · Mar 27</div>
+      <div class="upcoming-title">Check if Sentiment Analysis has improved</div>
+    </div>
+    <div class="upcoming-card">
+      <div class="upcoming-date">Apr 10</div>
+      <div class="upcoming-title">Section Rules MVP — dev completion</div>
+    </div>
+  </div>
+
+  <div class="footer">Generated by PM Copilot · March 23, 2026 · IST</div>
+</div>
+</body>
+</html>

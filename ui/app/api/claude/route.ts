@@ -130,7 +130,7 @@ export async function POST(req: NextRequest) {
         ['--dangerously-skip-permissions', '--print'],
         {
           cwd: REPO_ROOT,
-          env: { ...process.env, HOME: process.env.HOME ?? '/Users/shabharish' },
+          env: (() => { const { ANTHROPIC_API_KEY: _s, ...e } = process.env; return { ...e, HOME: process.env.HOME ?? '/Users/shabharish' }; })(),
         }
       );
 
