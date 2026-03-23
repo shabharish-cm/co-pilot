@@ -12,3 +12,4 @@
 
 ## Workflow
 - [Unified repo operating workflow](workflow_unified_pm_os.md) — Daily `/morning` digest flow, PRD pipeline (`/research` -> `/jtbd` -> `/prd` -> `/wireframe`), and weekly pulse-to-roadmap rhythm
+- [Claude learnings, mistakes, and preferences log](claude_agent_notes.md) — Append-only behavior notes for future turns
