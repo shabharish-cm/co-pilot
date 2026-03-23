@@ -5,7 +5,9 @@ import { test, expect } from '@playwright/test';
 test.describe('Tab navigation', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    await page.waitForSelector('text=BOARD', { timeout: 10000 });
+    // Navigate to BOARD first so we can test tab switching
+    await page.getByRole('button', { name: 'BOARD' }).click();
+    await page.waitForSelector('text=BACKLOG', { timeout: 10000 });
   });
 
   test('clicking PULSE tab hides board columns', async ({ page }) => {

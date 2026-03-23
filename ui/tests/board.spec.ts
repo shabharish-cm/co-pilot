@@ -5,17 +5,20 @@ import { test, expect } from '@playwright/test';
 test.describe('Board — layout and columns', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    await page.waitForSelector('text=BOARD', { timeout: 10000 });
+    // HOME is now the default — navigate to BOARD
+    await page.getByRole('button', { name: 'BOARD' }).click();
+    await page.waitForSelector('text=BACKLOG', { timeout: 10000 });
   });
 
-  test('renders the main navbar with all four tabs', async ({ page }) => {
+  test('renders the main navbar with all five tabs', async ({ page }) => {
+    await expect(page.getByRole('button', { name: 'HOME' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'BOARD' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'PULSE' })).toBeVisible();
     await expect(page.getByRole('button', { name: /PRD/ })).toBeVisible();
     await expect(page.getByRole('button', { name: 'SETTINGS' })).toBeVisible();
   });
 
-  test('BOARD tab is active by default with yellow background', async ({ page }) => {
+  test('BOARD tab is active (yellow) after clicking it', async ({ page }) => {
     const boardBtn = page.getByRole('button', { name: 'BOARD' });
     // Yellow = rgb(255, 229, 0)
     await expect(boardBtn).toHaveCSS('background-color', 'rgb(255, 229, 0)');

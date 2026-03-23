@@ -14,7 +14,10 @@ async function openFirstDrawer(page: import('@playwright/test').Page) {
 test.describe('Task Drawer', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    await page.waitForTimeout(3000);
+    // HOME is now default — navigate to BOARD where OPEN ↗ buttons exist on task cards
+    await page.getByRole('button', { name: 'BOARD' }).click();
+    await page.waitForSelector('text=BACKLOG', { timeout: 10000 });
+    await page.waitForTimeout(2000); // allow tasks to load
   });
 
   test('OPEN button on task card opens drawer', async ({ page }) => {

@@ -13,7 +13,7 @@ import {
   SECTION_CONFIGS,
 } from '../lib/utils';
 
-export type ActiveTab = 'board' | 'pulse' | 'prd' | 'settings';
+export type ActiveTab = 'home' | 'board' | 'pulse' | 'prd' | 'settings';
 
 const POLL_INTERVAL_MS = 15 * 60 * 1000; // 15 min
 const MUTATION_GRACE_MS = 15 * 60 * 1000; // skip overwriting tasks mutated in last 15 min
@@ -80,7 +80,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
   filterStatus: null,
   filterDue: [],
 
-  activeTab: 'board',
+  activeTab: 'home',
   enableUpNext: readLocalBool('pm-copilot-enable-upnext', false),
   enableBlocked: readLocalBool('pm-copilot-enable-blocked', false),
 

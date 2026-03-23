@@ -1,144 +1,23 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { useBoardStore } from '../store/boardStore';
-
-interface TerminalEntry {
-  id: number;
-  command: string;
-  output: string;
-  running: boolean;
-}
+import { useTerminal } from '../hooks/useTerminal';
 
 const QUICK_COMMANDS = ['/morning', '/eod', '/now', '/pulse'];
 
-let entryId = 0;
-
 export default function ClaudeSidebar() {
   const { sidebarOpen, toggleSidebar } = useBoardStore();
+  const {
+    entries, input, setInput, running, dots,
+    outputRef, inputRef,
+    runCommand, handleKeyDown, abort,
+  } = useTerminal();
 
-  const [entries, setEntries] = useState<TerminalEntry[]>([]);
-  const [input, setInput] = useState('');
-  const [history, setHistory] = useState<string[]>([]);
-  const [historyIdx, setHistoryIdx] = useState(-1);
-  const [running, setRunning] = useState(false);
-
-  const [dots, setDots] = useState('');
-
-  const outputRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const abortRef = useRef<AbortController | null>(null);
-
-  // Animate dots when running
+  // Auto-focus when opened
   useEffect(() => {
-    if (!running) { setDots(''); return; }
-    const id = setInterval(() => setDots(d => d.length >= 3 ? '' : d + '.'), 400);
-    return () => clearInterval(id);
-  }, [running]);
-
-  // Cmd+K to focus
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        toggleSidebar();
-        setTimeout(() => inputRef.current?.focus(), 100);
-      }
-    };
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, [toggleSidebar]);
-
-  // Auto-scroll on new output
-  useEffect(() => {
-    if (outputRef.current) {
-      outputRef.current.scrollTop = outputRef.current.scrollHeight;
-    }
-  }, [entries]);
-
-  const runCommand = useCallback(async (cmd: string) => {
-    const trimmed = cmd.trim();
-    if (!trimmed || running) return;
-
-    setHistory(h => [trimmed, ...h.filter(x => x !== trimmed)].slice(0, 50));
-    setHistoryIdx(-1);
-    setInput('');
-    setRunning(true);
-
-    const id = ++entryId;
-    setEntries(prev => [...prev, { id, command: trimmed, output: '', running: true }]);
-
-    const abort = new AbortController();
-    abortRef.current = abort;
-
-    try {
-      const res = await fetch('/api/shell', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ command: trimmed }),
-        signal: abort.signal,
-      });
-
-      const reader = res.body?.getReader();
-      if (!reader) throw new Error('No response body');
-
-      const decoder = new TextDecoder();
-      let acc = '';
-
-      try {
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          acc += decoder.decode(value, { stream: true });
-          const snapshot = acc;
-          setEntries(prev =>
-            prev.map(e => e.id === id ? { ...e, output: snapshot } : e)
-          );
-        }
-      } finally {
-        reader.cancel();
-      }
-    } catch (err: unknown) {
-      if ((err as Error).name === 'AbortError') {
-        setEntries(prev =>
-          prev.map(e => e.id === id ? { ...e, output: e.output + '\n^C' } : e)
-        );
-      } else {
-        setEntries(prev =>
-          prev.map(e => e.id === id ? { ...e, output: e.output + `\n[${(err as Error).message}]` } : e)
-        );
-      }
-    } finally {
-      setEntries(prev =>
-        prev.map(e => e.id === id ? { ...e, running: false } : e)
-      );
-      setRunning(false);
-      abortRef.current = null;
-      setTimeout(() => inputRef.current?.focus(), 50);
-    }
-  }, [running]);
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      runCommand(input);
-    } else if (e.key === 'c' && e.ctrlKey) {
-      abortRef.current?.abort();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      const next = Math.min(historyIdx + 1, history.length - 1);
-      setHistoryIdx(next);
-      setInput(history[next] ?? '');
-    } else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      const next = Math.max(historyIdx - 1, -1);
-      setHistoryIdx(next);
-      setInput(next === -1 ? '' : history[next] ?? '');
-    } else if (e.key === 'l' && e.ctrlKey) {
-      e.preventDefault();
-      setEntries([]);
-    }
-  };
+    if (sidebarOpen) setTimeout(() => inputRef.current?.focus(), 100);
+  }, [sidebarOpen, inputRef]);
 
   if (!sidebarOpen) {
     return (
@@ -170,13 +49,13 @@ export default function ClaudeSidebar() {
   return (
     <div
       style={{
-        width: '340px',
-        minWidth: '340px',
+        width: '360px',
+        minWidth: '360px',
         display: 'flex',
         flexDirection: 'column',
         border: '2.5px solid #000',
-        boxShadow: '4px 4px 0 #000',
-        background: '#0d0d0d',
+        boxShadow: '-4px 0 0 #000',
+        background: '#fff',
         height: '100%',
         overflow: 'hidden',
       }}
@@ -185,7 +64,7 @@ export default function ClaudeSidebar() {
       <div
         style={{
           background: '#000',
-          borderBottom: '2.5px solid #FFE500',
+          borderBottom: '2.5px solid #000',
           padding: '10px 14px',
           display: 'flex',
           alignItems: 'center',
@@ -193,46 +72,17 @@ export default function ClaudeSidebar() {
           flexShrink: 0,
         }}
       >
-        <span style={{
-          fontFamily: 'var(--font-heading)',
-          fontSize: '12px',
-          fontWeight: 700,
-          letterSpacing: '0.12em',
-          color: '#FFE500',
-        }}>
+        <span style={{ fontFamily: 'var(--font-heading)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', color: '#FFE500' }}>
           ◆ TERMINAL — Co-Pilot
         </span>
         <button
           onClick={toggleSidebar}
-          style={{
-            background: 'transparent',
-            border: '1.5px solid #555',
-            color: '#aaa',
-            width: '22px',
-            height: '22px',
-            cursor: 'pointer',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '11px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            lineHeight: 1,
-          }}
-        >
-          ×
-        </button>
+          style={{ background: 'transparent', border: '1.5px solid #555', color: '#aaa', width: '22px', height: '22px', cursor: 'pointer', fontFamily: 'var(--font-mono)', fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
+        >×</button>
       </div>
 
-      {/* Quick command badges */}
-      <div style={{
-        display: 'flex',
-        gap: '6px',
-        padding: '8px 12px',
-        background: '#111',
-        borderBottom: '1px solid #222',
-        flexWrap: 'wrap',
-        flexShrink: 0,
-      }}>
+      {/* Quick commands */}
+      <div style={{ display: 'flex', gap: '6px', padding: '8px 12px', background: '#F5F5F5', borderBottom: '1px solid #e0e0e0', flexWrap: 'wrap', flexShrink: 0 }}>
         {QUICK_COMMANDS.map(cmd => (
           <button
             key={cmd}
@@ -240,8 +90,8 @@ export default function ClaudeSidebar() {
             disabled={running}
             style={{
               background: 'transparent',
-              border: '1.5px solid #444',
-              color: '#ccc',
+              border: '1.5px solid #ccc',
+              color: '#444',
               padding: '3px 8px',
               fontFamily: 'var(--font-mono)',
               fontSize: '11px',
@@ -249,92 +99,61 @@ export default function ClaudeSidebar() {
               letterSpacing: '0.05em',
               opacity: running ? 0.4 : 1,
             }}
+            onMouseEnter={e => { if (!running) { (e.currentTarget as HTMLElement).style.background = '#FFE500'; (e.currentTarget as HTMLElement).style.borderColor = '#000'; } }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.borderColor = '#ccc'; }}
           >
             {cmd}
           </button>
         ))}
       </div>
 
-      {/* Terminal output */}
+      {/* Output — white background */}
       <div
         ref={outputRef}
-        style={{
-          flex: 1,
-          overflowY: 'auto',
-          padding: '12px',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '12px',
-          lineHeight: '1.6',
-          color: '#e0e0e0',
-          background: '#0d0d0d',
-        }}
+        style={{ flex: 1, overflowY: 'auto', padding: '12px', fontFamily: 'var(--font-mono)', fontSize: '12px', lineHeight: '1.7', color: '#111', background: '#fff' }}
         onClick={() => inputRef.current?.focus()}
       >
         {entries.length === 0 && (
-          <div style={{ color: '#555', fontSize: '11px' }}>
-            <div>◆ Claude CLI — Co-Pilot context loaded</div>
-            <div style={{ marginTop: '4px' }}>Ask anything, or use /morning, /eod, /now, /pulse</div>
-            <div style={{ marginTop: '2px' }}>Ctrl+C cancel  ·  Ctrl+L clear  ·  ↑↓ history</div>
+          <div style={{ color: '#bbb', fontSize: '11px' }}>
+            <div style={{ color: '#999' }}>◆ Claude CLI — Co-Pilot context loaded</div>
+            <div style={{ marginTop: '4px', color: '#bbb' }}>Ask anything, or use /morning, /eod, /now, /pulse</div>
+            <div style={{ marginTop: '2px', color: '#bbb' }}>Ctrl+C cancel  ·  Ctrl+L clear  ·  ↑↓ history</div>
           </div>
         )}
-
         {entries.map(entry => (
           <div key={entry.id} style={{ marginBottom: '12px' }}>
-            {/* Command line */}
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
-              <span style={{ color: '#FFE500', flexShrink: 0 }}>$</span>
-              <span style={{ color: '#fff', wordBreak: 'break-all' }}>{entry.command}</span>
-              {entry.running && (
-                <span style={{ color: '#555', animation: 'pulse 1s infinite', marginLeft: '4px' }}>▌</span>
-              )}
+              <span style={{ color: '#999', flexShrink: 0 }}>$</span>
+              <span style={{ color: '#000', fontWeight: 600, wordBreak: 'break-all' }}>{entry.command}</span>
+              {entry.running && <span style={{ color: '#bbb', marginLeft: '4px' }}>▌</span>}
             </div>
-            {/* Output */}
             {entry.output && (
-              <pre
-                style={{
-                  margin: '4px 0 0 14px',
-                  padding: 0,
-                  whiteSpace: 'pre-wrap',
-                  wordBreak: 'break-word',
-                  color: entry.output.startsWith('[error') || entry.output.includes('[exited') ? '#FF6B6B' : '#b0b0b0',
-                  fontSize: '11.5px',
-                  fontFamily: 'var(--font-mono)',
-                }}
-              >
+              <pre style={{
+                margin: '4px 0 0 14px',
+                padding: 0,
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
+                color: entry.output.includes('[exited') || entry.output.startsWith('[error') ? '#CC0000' : '#333',
+                fontSize: '12px',
+                fontFamily: 'var(--font-mono)',
+                lineHeight: '1.6',
+              }}>
                 {entry.output}
               </pre>
             )}
           </div>
         ))}
-
-        {/* Inline cursor when idle */}
         {!running && entries.length > 0 && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ color: '#FFE500' }}>$</span>
-            <span style={{ color: '#555' }}>_</span>
+            <span style={{ color: '#999' }}>$</span>
+            <span style={{ color: '#ddd' }}>_</span>
           </div>
         )}
       </div>
 
-      {/* Input */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          padding: '10px 12px',
-          background: '#111',
-          borderTop: '2px solid #222',
-          flexShrink: 0,
-        }}
-      >
-        <span style={{
-          color: running ? (dots.length % 2 === 0 ? '#FFE500' : '#aa9900') : '#FFE500',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '13px',
-          flexShrink: 0,
-          transition: 'color 0.4s',
-        }}>$</span>
+      {/* Input bar */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', background: '#F9F9F9', borderTop: '1.5px solid #d0d0d0', flexShrink: 0 }}>
+        <span style={{ color: running ? '#bbb' : '#999', fontFamily: 'var(--font-mono)', fontSize: '13px', flexShrink: 0 }}>$</span>
         <input
           ref={inputRef}
           value={input}
@@ -344,30 +163,10 @@ export default function ClaudeSidebar() {
           disabled={running}
           autoComplete="off"
           spellCheck={false}
-          style={{
-            flex: 1,
-            background: 'transparent',
-            border: 'none',
-            outline: 'none',
-            color: running ? '#555' : '#fff',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '12px',
-            caretColor: '#FFE500',
-          }}
+          style={{ flex: 1, background: 'transparent', border: 'none', outline: 'none', color: running ? '#aaa' : '#000', fontFamily: 'var(--font-mono)', fontSize: '12px', caretColor: '#000' }}
         />
         {running && (
-          <button
-            onClick={() => abortRef.current?.abort()}
-            style={{
-              background: 'transparent',
-              border: '1px solid #555',
-              color: '#FF6B6B',
-              padding: '2px 8px',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '10px',
-              cursor: 'pointer',
-            }}
-          >
+          <button onClick={abort} style={{ background: 'transparent', border: '1px solid #e0e0e0', color: '#CC0000', padding: '2px 8px', fontFamily: 'var(--font-mono)', fontSize: '10px', cursor: 'pointer' }}>
             ^C
           </button>
         )}
