@@ -1,12 +1,23 @@
 {
-  "date": "2026-03-18",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-23T09:47:26.892Z",
-  "lastEveningSyncAt": "2026-03-23T14:38:38.742Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "date": "2026-03-23",
+  "fetchedAt": "2026-03-23T14:38:38.742Z",
+  "completedToday": [
+    {
+      "id": "6gCJxJMMgfHPC52x",
+      "content": "Align with Sam (Access Dependencies)",
+      "description": "- List required systems/tools for feedback intake\n- Clarify permissions needed to pull data\n- Confirm workflow/tech constraints",
+      "due": null,
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJxJMMgfHPC52x",
+      "completedVia": "manual",
+      "completedAt": "2026-03-23T14:38:38.742Z"
+    }
+  ],
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -240,23 +251,6 @@
       "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
     }
   ],
-  "completedToday": [
-    {
-      "id": "6gCJxJMMgfHPC52x",
-      "content": "Align with Sam (Access Dependencies)",
-      "description": "- List required systems/tools for feedback intake\n- Clarify permissions needed to pull data\n- Confirm workflow/tech constraints",
-      "due": null,
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gCJxJMMgfHPC52x",
-      "completedVia": "manual",
-      "completedAt": "2026-03-23T14:38:38.742Z"
-    }
-  ],
   "dueSoon": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -334,10 +328,5 @@
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
     }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": null,
-    "eod": null
-  }
+  ]
 }
