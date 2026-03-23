@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Co-Pilot UI — Revamp Plan v2 (Surgical)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #FFFBF5;
+    color: #111;
+    padding: 40px 28px;
+    line-height: 1.6;
+  }
+  .container { max-width: 980px; margin: 0 auto; }
+
+  /* Header */
+  .page-header { margin-bottom: 36px; padding-bottom: 20px; border-bottom: 2.5px solid #000; }
+  .page-header h1 { font-size: 24px; font-weight: 800; letter-spacing: -0.3px; }
+  .page-header .sub { font-size: 13px; color: #555; margin-top: 4px; font-family: monospace; }
+  .tag-row { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+  .tag {
+    font-size: 10px; font-weight: 700; padding: 3px 9px;
+    text-transform: uppercase; letter-spacing: 0.6px;
+    border: 2px solid #000;
+  }
+  .tag-y  { background: #FFE500; }
+  .tag-k  { background: #000; color: #FFE500; }
+  .tag-p  { background: #FF90E8; }
+  .tag-g  { background: #B9F0A0; }
+
+  /* Section */
+  .section { margin-bottom: 40px; }
+  .section-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px;
+    background: #000; color: #FFE500;
+    margin-bottom: 16px;
+  }
+  .section-num { font-size: 11px; font-weight: 800; font-family: monospace; opacity: 0.7; }
+  .section-title { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* Core problem */
+  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2.5px solid #000; }
+  .prob-col { padding: 16px 18px; }
+  .prob-col:first-child { border-right: 2.5px solid #000; }
+  .col-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; font-family: monospace; }
+  .prob-item { font-size: 13px; color: #333; padding: 6px 0; border-bottom: 1px solid #eee; line-height: 1.5; }
+  .prob-item:last-child { border-bottom: none; }
+  .prob-item strong { color: #000; }
+  .now-label .col-label { color: #FF3B00; }
+  .then-label .col-label { color: #007A00; }
+
+  /* Component audit table */
+  .audit-table { width: 100%; border-collapse: collapse; border: 2.5px solid #000; }
+  .audit-table th {
+    background: #000; color: #fff;
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+    padding: 8px 12px; text-align: left;
+  }
+  .audit-table td { font-size: 12px; padding: 9px 12px; border-bottom: 1.5px solid #ddd; vertical-align: top; }
+  .audit-table tr:last-child td { border-bottom: none; }
+  .audit-table tr:hover td { background: #FFFBDE; }
+  .status-keep { background: #B9F0A0; border: 1.5px solid #000; font-size: 10px; font-weight: 700; padding: 2px 7px; white-space: nowrap; }
+  .status-move { background: #FFE500; border: 1.5px solid #000; font-size: 10px; font-weight: 700; padding: 2px 7px; white-space: nowrap; }
+  .status-new  { background: #FF90E8; border: 1.5px solid #000; font-size: 10px; font-weight: 700; padding: 2px 7px; white-space: nowrap; }
+  .status-extend { background: #A8D8FF; border: 1.5px solid #000; font-size: 10px; font-weight: 700; padding: 2px 7px; white-space: nowrap; }
+  .status-drop { background: #FFB347; border: 1.5px solid #000; font-size: 10px; font-weight: 700; padding: 2px 7px; white-space: nowrap; }
+  .file-cell { font-family: monospace; font-size: 11px; color: #555; }
+  .change-cell { font-size: 12px; color: #333; }
+
+  /* Layout wireframes */
+  .wf-container { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .wf-box { border: 2.5px solid #000; box-shadow: 4px 4px 0 #000; }
+  .wf-label { background: #000; color: #FFE500; font-size: 10px; font-weight: 700; padding: 6px 10px; text-transform: uppercase; letter-spacing: 0.8px; font-family: monospace; }
+  .wf-body { padding: 12px; font-family: monospace; font-size: 11px; line-height: 1.8; color: #333; }
+  .wf-zone { border: 1.5px dashed #aaa; padding: 8px 10px; margin-bottom: 6px; font-size: 11px; color: #555; }
+  .wf-zone-label { font-weight: 700; color: #000; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .z-hero  { border-color: #000; background: #FFFBDE; }
+  .z-today { border-color: #007A00; background: #F0FFF0; }
+  .z-cli   { border-color: #000; background: #0d0d0d; color: #FFE500; }
+  .z-cli .wf-zone-label { color: #FFE500; }
+  .z-board { border-color: #000; background: #fff; }
+  .wf-note { font-size: 11px; color: #777; margin-top: 8px; font-family: sans-serif; }
+
+  /* Build steps */
+  .build-list { display: flex; flex-direction: column; gap: 0; border: 2.5px solid #000; }
+  .build-item { display: flex; gap: 0; border-bottom: 1.5px solid #000; }
+  .build-item:last-child { border-bottom: none; }
+  .build-phase {
+    width: 36px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 12px; font-family: monospace;
+    border-right: 1.5px solid #000;
+  }
+  .p1 { background: #FF90E8; }
+  .p2 { background: #FFE500; }
+  .p3 { background: #B9F0A0; }
+  .build-content { padding: 12px 16px; flex: 1; }
+  .build-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .build-files { font-family: monospace; font-size: 11px; color: #555; margin-bottom: 4px; }
+  .build-desc { font-size: 12px; color: #444; line-height: 1.55; }
+  .build-effort {
+    font-size: 10px; font-weight: 700; padding: 2px 8px;
+    border: 1.5px solid #000; font-family: monospace;
+    margin-left: auto; align-self: flex-start; white-space: nowrap; flex-shrink: 0;
+  }
+  .e-s { background: #B9F0A0; }
+  .e-m { background: #FFE500; }
+  .e-l { background: #FF90E8; }
+  .build-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
+
+  /* Journey mapping */
+  .journey-table { width: 100%; border-collapse: collapse; border: 2.5px solid #000; }
+  .journey-table th { background: #000; color: #FFE500; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 8px 12px; text-align: left; }
+  .journey-table td { font-size: 12px; padding: 10px 12px; border-bottom: 1.5px solid #ddd; vertical-align: top; line-height: 1.55; }
+  .journey-table tr:last-child td { border-bottom: none; }
+  .moment { font-weight: 700; font-size: 12px; }
+  .now-flow { color: #FF3B00; }
+  .after-flow { color: #007A00; }
+  .where { font-family: monospace; font-size: 11px; color: #555; }
+
+  /* Constraint box */
+  .constraint {
+    border: 2.5px solid #000; box-shadow: 4px 4px 0 #000;
+    padding: 16px 18px;
+  }
+  .constraint .c-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; font-family: monospace; background: #000; color: #FFE500; padding: 4px 8px; display: inline-block; }
+  .constraint p { font-size: 13px; color: #333; margin-bottom: 8px; line-height: 1.6; }
+  .constraint p:last-child { margin-bottom: 0; }
+  code { background: #f0f0f0; border: 1px solid #ccc; padding: 1px 5px; font-size: 11px; font-family: monospace; }
+
+  /* Footer */
+  .footer { margin-top: 40px; padding-top: 14px; border-top: 2.5px solid #000; font-size: 11px; color: #888; font-family: monospace; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1>Co-Pilot UI — Revamp Plan v2</h1>
+    <div class="sub">Surgical changes only · Built on existing codebase · Neo-brutalism retained</div>
+    <div class="tag-row">
+      <span class="tag tag-y">Based on actual code audit</span>
+      <span class="tag tag-k">CLI-first</span>
+      <span class="tag tag-p">No API key</span>
+      <span class="tag tag-g">No rewrites</span>
+    </div>
+  </div>
+
+
+  <!-- 1. Root cause of the problem -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">The actual problem — one diagnosis</span>
+    </div>
+    <div class="problem-grid">
+      <div class="prob-col now-label">
+        <div class="col-label">What the code does now</div>
+        <div class="prob-item">Default tab is <strong>BOARD</strong>. There is no "home" view.</div>
+        <div class="prob-item">The <strong>CLI terminal</strong> is a toggleable right sidebar (340px). Closed by default. Requires Cmd+K or clicking CLAUDE button.</div>
+        <div class="prob-item"><strong>DigestPanel</strong> lives in a 280px left column on the Board tab only — truncated to 240 chars, full view is a modal.</div>
+        <div class="prob-item">Board, Pulse, PRD, Settings tabs exist. <strong>No dashboard tab.</strong></div>
+        <div class="prob-item"><strong>PRDView</strong> is a file browser for existing PRDs — no workflow guidance for creating one.</div>
+        <div class="prob-item">Terminal and Digest are on <strong>different sides of the board</strong>, never together.</div>
+      </div>
+      <div class="prob-col then-label">
+        <div class="col-label">What the user needs</div>
+        <div class="prob-item"><strong>HOME tab</strong> as default: Digest hero + Due Today tasks + CLI always visible.</div>
+        <div class="prob-item">CLI is a <strong>persistent bottom panel</strong> on Home — never hidden, no toggle needed.</div>
+        <div class="prob-item"><strong>Full digest</strong> as the top zone of Home, not truncated in a sidebar column.</div>
+        <div class="prob-item">BOARD tab stays — it works. Just not as the landing page.</div>
+        <div class="prob-item">PRD tab gets a <strong>guided multi-step flow</strong>: paste input → /research → /jtbd → /prd → /wireframe.</div>
+        <div class="prob-item">All three zones (Digest, Tasks, CLI) visible at once <strong>without toggling anything.</strong></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 2. Component audit -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Component audit — keep / move / new</span>
+    </div>
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>What it is now</th>
+          <th>Action</th>
+          <th>What changes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="file-cell">app/page.tsx</td>
+          <td>3-panel shell (left + main + sidebar)</td>
+          <td><span class="status-move">RESTRUCTURE</span></td>
+          <td class="change-cell">Add HOME tab rendering. Board tab keeps existing 3-panel. Home tab gets full-width 3-zone stacked layout.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/Navbar.tsx</td>
+          <td>BOARD / PULSE / PRD / SETTINGS tabs + CLAUDE toggle</td>
+          <td><span class="status-move">EXTEND</span></td>
+          <td class="change-cell">Add HOME tab as first item. Set HOME as default. Remove CLAUDE toggle from navbar — not needed on Home since CLI is always visible there.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">store/boardStore.ts</td>
+          <td>ActiveTab = 'board' | 'pulse' | 'prd' | 'settings'</td>
+          <td><span class="status-move">EXTEND</span></td>
+          <td class="change-cell">Add 'home' to ActiveTab union. Change default activeTab to 'home'.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/BoardMatrix.tsx</td>
+          <td>Full 2D kanban — section rows × status columns. Drag-and-drop.</td>
+          <td><span class="status-keep">KEEP AS-IS</span></td>
+          <td class="change-cell">No changes. This is the main value of the Board tab.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/ClaudeSidebar.tsx</td>
+          <td>Toggleable right sidebar terminal. All streaming/history logic is here.</td>
+          <td><span class="status-move">EXTRACT + KEEP</span></td>
+          <td class="change-cell">Extract terminal logic into a shared <code>useTerminal</code> hook. ClaudeSidebar still used on Board/Pulse/PRD. New <code>CliPanel.tsx</code> uses the same hook for the Home bottom zone.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/DigestPanel.tsx</td>
+          <td>280px left column widget with truncated digest + top tasks + regenerate.</td>
+          <td><span class="status-move">REPURPOSE</span></td>
+          <td class="change-cell">Keep all fetch/regenerate logic. Create a <code>DigestZone.tsx</code> variant that renders full-width at full height — no truncation, no modal needed. DigestPanel stays for the Board tab left column.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/CalendarWidget.tsx</td>
+          <td>5-day calendar strip in Board left panel.</td>
+          <td><span class="status-keep">KEEP AS-IS</span></td>
+          <td class="change-cell">Stays in Board left panel. Not on Home — the digest + due-today cards cover the same need more concisely.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/TaskCard.tsx</td>
+          <td>Card used in BoardMatrix cells.</td>
+          <td><span class="status-keep">KEEP AS-IS</span></td>
+          <td class="change-cell">Reused as-is in the Home due-today row.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/TaskDrawer.tsx</td>
+          <td>Full-height right drawer for task detail/edit.</td>
+          <td><span class="status-keep">KEEP AS-IS</span></td>
+          <td class="change-cell">Works from Home too — already a global overlay.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/RoutingModal.tsx</td>
+          <td>Section-change confirmation modal.</td>
+          <td><span class="status-keep">KEEP AS-IS</span></td>
+          <td class="change-cell">No changes.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/PRDView.tsx</td>
+          <td>File browser for PRDs folder. Inner tabs: PRD / Mockup / Research / JTBD.</td>
+          <td><span class="status-extend">EXTEND</span></td>
+          <td class="change-cell">Add a "NEW PRD +" button that opens a guided multi-step panel alongside the file browser. Steps run via CLI (same shell route). File browser stays unchanged.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/PulseView.tsx</td>
+          <td>Pulse tab — customer pulse table.</td>
+          <td><span class="status-keep">KEEP AS-IS</span></td>
+          <td class="change-cell">No changes. Add Fireflies transcript drop panel to this tab (new sub-section).</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/HomeView.tsx</td>
+          <td>Does not exist.</td>
+          <td><span class="status-new">NEW FILE</span></td>
+          <td class="change-cell">New component. 3 zones stacked: DigestZone (top) + DueTodayRow (mid) + CliPanel (bottom pinned). No sidebar toggle needed here.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">components/CliPanel.tsx</td>
+          <td>Does not exist.</td>
+          <td><span class="status-new">NEW FILE</span></td>
+          <td class="change-cell">Inline CLI panel for Home bottom zone. Uses same <code>useTerminal</code> hook. Always visible, no toggle.</td>
+        </tr>
+        <tr>
+          <td class="file-cell">hooks/useTerminal.ts</td>
+          <td>Does not exist — logic is embedded in ClaudeSidebar.</td>
+          <td><span class="status-new">NEW FILE</span></td>
+          <td class="change-cell">Extract: entries state, runCommand, history, abort, keyboard handlers. Shared by ClaudeSidebar and CliPanel.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 3. Layout wireframes -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">New layouts — Home tab vs. Board tab</span>
+    </div>
+    <div class="wf-container">
+
+      <div class="wf-box">
+        <div class="wf-label">HOME tab (new default)</div>
+        <div class="wf-body">
+          <div class="wf-zone z-hero">
+            <div class="wf-zone-label">Zone A — Morning Digest (38%)</div>
+            Full digest content rendered. No truncation. Section headers, bullets, bold. Stale badge + REGENERATE button. Pulls from daily/digests/YYYY-MM-DD-morning.md
+          </div>
+          <div class="wf-zone z-today">
+            <div class="wf-zone-label">Zone B — Due Today (28%)</div>
+            Horizontal scroll row of TaskCards due today. Each card: title, section pill, ✓ complete. Click → TaskDrawer. Source: boardStore tasks filtered by due === today.
+          </div>
+          <div class="wf-zone z-cli">
+            <div class="wf-zone-label" style="color:#FFE500">Zone C — CLI Terminal (34%, pinned bottom)</div>
+            Always visible. Input line at bottom. Output scrolls up. Quick commands: /morning /eod /now /pulse. ↑↓ history. Ctrl+C abort. Same logic as sidebar terminal.
+          </div>
+        </div>
+        <div class="wf-note" style="padding: 0 12px 12px;">No left panel. No sidebar toggle. CLAUDE button hidden on this tab.</div>
+      </div>
+
+      <div class="wf-box">
+        <div class="wf-label">BOARD tab (unchanged)</div>
+        <div class="wf-body">
+          <div style="display:grid; grid-template-columns: 80px 1fr 60px; gap: 4px; margin-bottom: 4px;">
+            <div class="wf-zone" style="margin:0; font-size:10px; text-align:center;">
+              <div class="wf-zone-label" style="font-size:9px;">Left</div>
+              Digest<br/>+ Cal
+            </div>
+            <div class="wf-zone z-board" style="margin:0; font-size:10px; text-align:center; min-height: 80px;">
+              <div class="wf-zone-label" style="font-size:9px;">Board Matrix</div>
+              Section rows × Status cols<br/>Drag & Drop
+            </div>
+            <div class="wf-zone" style="margin:0; font-size:10px; text-align:center; background:#0d0d0d; color:#FFE500;">
+              <div style="font-size:9px; font-weight:700; color:#FFE500;">Sidebar</div>
+              CLI<br/>toggle
+            </div>
+          </div>
+        </div>
+        <div class="wf-note" style="padding: 0 12px 12px;">Zero changes to this tab. It already works well.</div>
+      </div>
+
+      <div class="wf-box">
+        <div class="wf-label">PRD tab (extended)</div>
+        <div class="wf-body">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+            <div class="wf-zone" style="min-height:100px; font-size:10px;">
+              <div class="wf-zone-label">LEFT — File Browser (existing)</div>
+              Project folders list<br/>Click → inner tabs (PRD / Mockup / Research / JTBD)<br/>View/render file content
+            </div>
+            <div class="wf-zone" style="min-height:100px; font-size:10px; background:#FFF0FF; border-color:#FF90E8;">
+              <div class="wf-zone-label" style="color:#c000c0;">RIGHT — Guided Flow (new)</div>
+              "NEW PRD +" button triggers panel<br/>Step indicator: Research → JTBD → PRD → Wireframe<br/>Each step: paste input → run → stream → confirm
+            </div>
+          </div>
+        </div>
+        <div class="wf-note" style="padding: 0 12px 12px;">File browser stays unchanged. Guided panel is additive on the right side.</div>
+      </div>
+
+      <div class="wf-box">
+        <div class="wf-label">PULSE tab (extended)</div>
+        <div class="wf-body">
+          <div class="wf-zone" style="font-size:10px; min-height:50px;">
+            <div class="wf-zone-label">Existing — Pulse table (customer × driver scores)</div>
+            Unchanged
+          </div>
+          <div class="wf-zone" style="font-size:10px; min-height:50px; background:#F0FFF0; border-color:#007A00;">
+            <div class="wf-zone-label" style="color:#007A00;">New — Transcript Intake panel</div>
+            Paste or drop Fireflies transcript. "RUN /PULSE" button → streams output → auto-saves to pulse/normalized/
+          </div>
+        </div>
+        <div class="wf-note" style="padding: 0 12px 12px;">One additive panel below the existing pulse table.</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- 4. User journey mapping -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Journey mapping — before and after each moment</span>
+    </div>
+    <table class="journey-table">
+      <thead>
+        <tr>
+          <th>Moment</th>
+          <th>Now (friction)</th>
+          <th>After (smooth)</th>
+          <th>Tab / Zone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="moment">Morning start</td>
+          <td class="now-flow">Open Cursor terminal → run /morning manually → wait → open markdown preview separately. Switch to Todoist for task overview.</td>
+          <td class="after-flow">Open Co-Pilot → HOME tab loads with today's digest already rendered (auto-scheduled at 8:30 IST). Due-today cards in Zone B. CLI ready in Zone C.</td>
+          <td class="where">HOME · Zone A+B+C</td>
+        </tr>
+        <tr>
+          <td class="moment">Quick task op (add, update, complete)</td>
+          <td class="now-flow">Switch to Cursor terminal → type command → wait for output → context switch back.</td>
+          <td class="after-flow">CLI (Zone C) is already visible at bottom of HOME. Type directly. No toggle, no switch.</td>
+          <td class="where">HOME · Zone C</td>
+        </tr>
+        <tr>
+          <td class="moment">Board overview / drag tasks</td>
+          <td class="now-flow">Already works in BOARD tab. No change needed.</td>
+          <td class="after-flow">Same. Click BOARD tab. 2D matrix, drag to change status/section.</td>
+          <td class="where">BOARD</td>
+        </tr>
+        <tr>
+          <td class="moment">Meeting notes</td>
+          <td class="now-flow">CLI command in Cursor terminal. Notes written and saved via CLI.</td>
+          <td class="after-flow">CLI Zone C on HOME. Same command, same output. Notes still saved to context/customers/ by the CLI skill.</td>
+          <td class="where">HOME · Zone C</td>
+        </tr>
+        <tr>
+          <td class="moment">PRD flow (research → JTBD → PRD → mockup)</td>
+          <td class="now-flow">Paste info in Cursor CLI → /research → read output → /jtbd → /prd → /wireframe. All separate commands, output scroll-lost.</td>
+          <td class="after-flow">PRD tab → "NEW PRD +" → guided step panel. Each step shows input box + runs its command + streams output + waits for your confirm before advancing. All step outputs persist in the panel for reference.</td>
+          <td class="where">PRD · Guided panel</td>
+        </tr>
+        <tr>
+          <td class="moment">Weekly Fireflies → Pulse</td>
+          <td class="now-flow">Manual /pulse in terminal. Output saved manually. No dedicated place to do this in UI.</td>
+          <td class="after-flow">PULSE tab → transcript intake panel → paste/drop → RUN /PULSE → streams + auto-saves.</td>
+          <td class="where">PULSE · Intake panel</td>
+        </tr>
+        <tr>
+          <td class="moment">EOD wrap</td>
+          <td class="now-flow">Manual /eod in Cursor terminal.</td>
+          <td class="after-flow">Quick command button in CLI Zone C (/eod). Or click BOARD tab → DigestPanel's "GENERATE EOD" button (appears after 5pm).</td>
+          <td class="where">HOME Zone C or BOARD</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 5. Build order -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Build order — smallest diff, highest impact first</span>
+    </div>
+    <div class="build-list">
+
+      <div class="build-item">
+        <div class="build-phase p1">P1</div>
+        <div class="build-content">
+          <div class="build-header">
+            <div class="build-title">Extract useTerminal hook</div>
+            <span class="build-effort e-s">SMALL · 1-2h</span>
+          </div>
+          <div class="build-files">hooks/useTerminal.ts (new)</div>
+          <div class="build-desc">Pull entries, runCommand, history, abort, keyboard handlers out of ClaudeSidebar.tsx into a reusable hook. ClaudeSidebar becomes a thin wrapper. Required before anything else can share the terminal logic.</div>
+        </div>
+      </div>
+
+      <div class="build-item">
+        <div class="build-phase p1">P1</div>
+        <div class="build-content">
+          <div class="build-header">
+            <div class="build-title">Add HOME tab + wire up routing</div>
+            <span class="build-effort e-s">SMALL · 1h</span>
+          </div>
+          <div class="build-files">store/boardStore.ts · Navbar.tsx · page.tsx</div>
+          <div class="build-desc">Add 'home' to ActiveTab. Set default to 'home'. Add HOME as first nav tab. In page.tsx: when activeTab === 'home', render HomeView (no left panel, no sidebar). CLAUDE button hidden when on home tab.</div>
+        </div>
+      </div>
+
+      <div class="build-item">
+        <div class="build-phase p1">P1</div>
+        <div class="build-content">
+          <div class="build-header">
+            <div class="build-title">Build HomeView.tsx + CliPanel.tsx</div>
+            <span class="build-effort e-m">MEDIUM · 3-4h</span>
+          </div>
+          <div class="build-files">components/HomeView.tsx (new) · components/CliPanel.tsx (new)</div>
+          <div class="build-desc">HomeView: flex column, full height. Zone A (38%) = DigestZone. Zone B (28%) = DueTodayRow. Zone C (34%) = CliPanel pinned at bottom. CliPanel: inline terminal using useTerminal hook, same neo-brutalist styling as ClaudeSidebar but horizontal layout.</div>
+        </div>
+      </div>
+
+      <div class="build-item">
+        <div class="build-phase p1">P1</div>
+        <div class="build-content">
+          <div class="build-header">
+            <div class="build-title">Build DigestZone.tsx (full-width digest)</div>
+            <span class="build-effort e-s">SMALL · 1-2h</span>
+          </div>
+          <div class="build-files">components/DigestZone.tsx (new)</div>
+          <div class="build-desc">Reuses all fetch/regenerate logic from DigestPanel. Renders full digest content without truncation — no modal needed. Stale indicator. Regenerate button. Top-3 tasks shown as inline chips that jump to Board on click. DigestPanel stays for the Board left column.</div>
+        </div>
+      </div>
+
+      <div class="build-item">
+        <div class="build-phase p1">P1</div>
+        <div class="build-content">
+          <div class="build-header">
+            <div class="build-title">Build DueTodayRow (Zone B)</div>
+            <span class="build-effort e-s">SMALL · 1h</span>
+          </div>
+          <div class="build-files">components/DueTodayRow.tsx (new)</div>
+          <div class="build-desc">Horizontal scroll row. Filters boardStore tasks where due === today (IST). Each card: title, section pill, priority dot, ✓ complete button (calls completeTask from store), click → openDrawer. Empty state: "No tasks due today ✓".</div>
+        </div>
+      </div>
+
+      <div class="build-item">
+        <div class="build-phase p2">P2</div>
+        <div class="build-content">
+          <div class="build-header">
+            <div class="build-title">PRD guided flow panel</div>
+            <span class="build-effort e-l">LARGE · 4-6h</span>
+          </div>
+          <div class="build-files">components/PRDView.tsx (extend)</div>
+          <div class="build-desc">Add "NEW PRD +" button to existing file browser header. Clicking opens a right-side guided panel. Step indicator: 1-Research / 2-JTBD / 3-PRD / 4-Wireframe. Each step: textarea for input/context, RUN button → shell route → streaming output, CONFIRM & NEXT button. Session state stored in component (not persisted — safe to lose on refresh).</div>
+        </div>
+      </div>
+
+      <div class="build-item">
+        <div class="build-phase p2">P2</div>
+        <div class="build-content">
+          <div class="build-header">
+            <div class="build-title">Pulse transcript intake panel</div>
+            <span class="build-effort e-m">MEDIUM · 2-3h</span>
+          </div>
+          <div class="build-files">components/PulseView.tsx (extend)</div>
+          <div class="build-desc">Add a collapsible "TRANSCRIPT INTAKE" section below existing pulse table. Textarea for pasting Fireflies transcript. "RUN /PULSE" button → shell route → streams output. Output auto-saved via existing /api/shell + CLI skill. No new API routes needed.</div>
+        </div>
+      </div>
+
+      <div class="build-item">
+        <div class="build-phase p3">P3</div>
+        <div class="build-content">
+          <div class="build-header">
+            <div class="build-title">Auto-schedule morning digest</div>
+            <span class="build-effort e-s">SMALL · 1h</span>
+          </div>
+          <div class="build-files">scripts/cron/morning-digest.sh (already exists)</div>
+          <div class="build-desc">The cron script already exists. launchd logs show it's partially set up. Verify the launchd plist runs at 8:30 IST daily and writes to daily/digests/. If broken, re-register the plist. UI already polls the file — nothing to change there.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- 6. What stays exactly the same -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <span class="section-title">What is NOT changing</span>
+    </div>
+    <div class="constraint">
+      <div class="c-title">Locked — do not touch</div>
+      <p><strong>BoardMatrix.tsx</strong> — the 2D section × status kanban with drag-and-drop is fully functional and well-built. No changes.</p>
+      <p><strong>All API routes</strong> (<code>/api/shell</code>, <code>/api/todoist/*</code>, <code>/api/digest</code>, <code>/api/calendar</code>, <code>/api/pulse</code>, <code>/api/prd/*</code>) — all stay as-is. Already fixed to strip ANTHROPIC_API_KEY.</p>
+      <p><strong>TaskDrawer.tsx, TaskCard.tsx, RoutingModal.tsx, QuickAddForm.tsx</strong> — zero changes. All work correctly and are reused in the new Home view.</p>
+      <p><strong>Design system</strong> — neo-brutalism tokens unchanged: warm white background, yellow/pink/blue/green accents, 2.5px black borders, 4px hard shadow, zero radius, Space Grotesk + DM Sans + Space Mono fonts.</p>
+      <p><strong>ClaudeSidebar.tsx</strong> — stays on Board/Pulse/PRD tabs as the toggleable right sidebar. Only thing added is it now delegates to <code>useTerminal</code> hook instead of owning the logic itself.</p>
+      <p><strong>All CLI commands</strong> (/morning, /eod, /now, /pulse, /prd, /jtbd, /research, /wireframe, /add, /done, /update) — unchanged. The UI routes through the existing shell API.</p>
+    </div>
+  </div>
+
+
+  <div class="footer">Co-Pilot UI Revamp Plan v2 · Based on codebase audit · March 23, 2026</div>
+</div>
+</body>
+</html>

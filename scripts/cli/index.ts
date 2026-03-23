@@ -1,8 +1,15 @@
 import { registerCommand } from './command-registry';
 import { route } from './router';
-import { createTask, updateTask, completeTask, findMatchingTasks } from '../services/task-manager/task-manager.service';
+import {
+  createTask,
+  updateTask,
+  completeTask,
+  findMatchingTasks,
+  findTaskById,
+} from '../services/task-manager/task-manager.service';
 import { routeTask } from '../integrations/todoist/routing';
 import { TODOIST_SECTIONS } from '../config/sections';
+import type { TaskRecord } from '../types/daily';
 import * as readline from 'readline';
 
 /** Resolve a user-supplied section name to a { id, name } pair, or null if unrecognised. */
@@ -22,6 +29,43 @@ function askConfirm(question: string): Promise<boolean> {
       resolve(answer.trim().toLowerCase() === 'y');
     });
   });
+}
+
+function askInput(question: string): Promise<string> {
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise(resolve => {
+    rl.question(`${question} `, answer => {
+      rl.close();
+      resolve(answer.trim());
+    });
+  });
+}
+
+function isTaskId(raw: string): boolean {
+  return /^\d+$/.test(raw.trim());
+}
+
+async function chooseTaskFromMatches(query: string, matches: TaskRecord[]): Promise<TaskRecord | null> {
+  console.log(`\nMultiple matches for "${query}":`);
+  matches.forEach((task, idx) => {
+    console.log(`  ${idx + 1}. [${task.id}] ${task.content}`);
+  });
+
+  const choice = await askInput('Select task number or exact ID (Enter to cancel):');
+  if (!choice) return null;
+
+  if (isTaskId(choice)) {
+    const byId = matches.find(task => task.id === choice);
+    if (byId) return byId;
+  }
+
+  const byIndex = Number.parseInt(choice, 10);
+  if (Number.isInteger(byIndex) && byIndex >= 1 && byIndex <= matches.length) {
+    return matches[byIndex - 1];
+  }
+
+  console.log('Invalid selection. Cancelled.');
+  return null;
 }
 
 // ── /add ────────────────────────────────────────────────────────────────────
@@ -92,20 +136,59 @@ registerCommand({
 registerCommand({
   name: 'update',
   description: 'Update an existing Todoist task',
-  usage: 'update <taskId> [content:"new"] [due:"tomorrow"] [p:2]',
+  usage: 'update <taskId|"search query"> [content:"new"] [due:"tomorrow"] [p:2]',
   handler: async (args) => {
-    const taskId   = args[0];
-    if (!taskId) { console.error('Usage: update <taskId> [field:value ...]'); process.exit(1); }
+    const target = args[0];
+    if (!target) {
+      console.error('Usage: update <taskId|"search query"> [field:value ...]');
+      process.exit(1);
+    }
 
     const contentArg = args.find(a => a.startsWith('content:'))?.slice(8);
     const dueArg     = args.find(a => a.startsWith('due:'))?.slice(4);
     const priArg     = args.find(a => a.startsWith('p:'))?.slice(2);
     const priority   = priArg ? (parseInt(priArg, 10) as 1|2|3|4) : undefined;
 
-    console.log(`\nUpdating task ${taskId}:`);
-    if (contentArg) console.log(`  content → "${contentArg}"`);
-    if (dueArg)     console.log(`  due     → ${dueArg}`);
-    if (priority)   console.log(`  priority → ${priority}`);
+    if (!contentArg && !dueArg && priority === undefined) {
+      console.error('No changes provided. Use one of: content:, due:, p:');
+      process.exit(1);
+    }
+
+    let taskId = target;
+    let currentTask = isTaskId(target) ? findTaskById(target) : undefined;
+
+    if (!isTaskId(target)) {
+      const matches = findMatchingTasks(target);
+      if (matches.length === 0) {
+        console.log(`No open tasks matching "${target}"`);
+        return;
+      }
+
+      const selected = matches.length === 1 ? matches[0] : await chooseTaskFromMatches(target, matches);
+      if (!selected) {
+        console.log('Cancelled.');
+        return;
+      }
+
+      taskId = selected.id;
+      currentTask = selected;
+    } else if (!currentTask) {
+      const ok = await askConfirm(`Task ${taskId} not found in local state. Continue anyway?`);
+      if (!ok) { console.log('Cancelled.'); return; }
+    }
+
+    console.log(`\nUpdating task ${taskId}${currentTask ? `: "${currentTask.content}"` : ''}`);
+    if (currentTask) {
+      console.log('  Before:');
+      console.log(`    content  → "${currentTask.content}"`);
+      console.log(`    due      → ${currentTask.due ?? 'none'}`);
+      console.log(`    priority → ${currentTask.priority}`);
+    }
+
+    console.log('  After:');
+    console.log(`    content  → "${contentArg ?? currentTask?.content ?? '(unchanged)'}"`);
+    console.log(`    due      → ${dueArg ?? currentTask?.due ?? 'none'}`);
+    console.log(`    priority → ${priority ?? currentTask?.priority ?? '(unchanged)'}`);
 
     const ok = await askConfirm('Apply changes?');
     if (!ok) { console.log('Cancelled.'); return; }
@@ -124,32 +207,28 @@ registerCommand({
     const query = args.join(' ');
     if (!query) { console.error('Usage: done <taskId or search query>'); process.exit(1); }
 
-    // Try direct ID first, else search
-    const isId = /^\d+$/.test(query);
-    if (isId) {
-      const ok = await askConfirm(`Complete task ${query}?`);
+    if (isTaskId(query)) {
+      const task = findTaskById(query);
+      const label = task ? `"${task.content}" [${task.id}]` : `task ${query}`;
+      const ok = await askConfirm(`Complete ${label}?`);
       if (!ok) { console.log('Cancelled.'); return; }
       await completeTask(query);
-      console.log(`\n✓ Completed task ${query}`);
+      console.log(`\n✓ Completed ${task ? task.content : `task ${query}`}`);
       return;
     }
 
-    // Search
     const matches = findMatchingTasks(query);
     if (matches.length === 0) {
       console.log(`No open tasks matching "${query}"`);
       return;
     }
-    if (matches.length > 1) {
-      console.log(`\nMultiple matches for "${query}" — please confirm:`);
-      matches.forEach((t, i) => console.log(`  ${i + 1}. [${t.id}] ${t.content}`));
-      const ok = await askConfirm('Complete the first match?');
-      if (!ok) { console.log('Cancelled — use task ID directly for precision.'); return; }
-    }
 
-    const target = matches[0];
+    const target = matches.length === 1 ? matches[0] : await chooseTaskFromMatches(query, matches);
+    if (!target) { console.log('Cancelled.'); return; }
+
     const ok = await askConfirm(`Complete: "${target.content}"?`);
     if (!ok) { console.log('Cancelled.'); return; }
+
     await completeTask(target.id);
     console.log(`\n✓ Completed: ${target.content}`);
   },

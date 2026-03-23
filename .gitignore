@@ -5,3 +5,10 @@ dist/
 logs/
 playwright-report/
 test-results/
+.DS_Store
+**/.DS_Store
+ui/.next/
+ui/node_modules/
+ui/playwright-report/
+ui/test-results/
+*.tsbuildinfo

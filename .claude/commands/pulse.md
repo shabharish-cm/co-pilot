@@ -18,7 +18,8 @@ Run every Thursday (Claude cron task). Can also be run manually.
 5. `context/customers/<Account>/` — per-customer context files (survey analyses, briefings, notes). Glob all files under this path and read any that match accounts appearing in the week's transcripts.
 
 ## Step 0 — Sync repo
-Run `git pull` to ensure local transcript and pulse files are up to date before reading.
+Run `git pull` once at the start of the session to ensure local transcript and pulse files are up to date before reading.
+If this command is invoked from an automation script that already pulled, skip the extra pull.
 
 ## Step 1 — Determine window
 Compute the previous Thursday through Wednesday window (7 days ending last Wednesday).

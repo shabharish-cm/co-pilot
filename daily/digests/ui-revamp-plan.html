@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Co-Pilot UI — Revamp Plan</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0d0f14;
+    color: #e2e8f0;
+    padding: 40px 28px;
+    line-height: 1.6;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* Page header */
+  .page-header { margin-bottom: 40px; }
+  .page-header h1 {
+    font-size: 26px; font-weight: 800; color: #f8fafc;
+    letter-spacing: -0.5px;
+  }
+  .page-header .sub { color: #475569; font-size: 14px; margin-top: 6px; }
+  .page-header .tag-row { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 0.6px;
+    border: 1.5px solid;
+  }
+  .tag-y  { color: #facc15; border-color: #854d0e; background: #1c1200; }
+  .tag-b  { color: #60a5fa; border-color: #1e3a5f; background: #060f1e; }
+  .tag-g  { color: #4ade80; border-color: #166534; background: #021108; }
+  .tag-r  { color: #f87171; border-color: #7f1d1d; background: #1a0404; }
+
+  /* Section */
+  .section { margin-bottom: 44px; }
+  .section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1e2530;
+  }
+  .section-num {
+    width: 26px; height: 26px; border-radius: 6px;
+    background: #1e2530; color: #94a3b8;
+    font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title { font-size: 16px; font-weight: 700; color: #f1f5f9; }
+  .section-sub { font-size: 12px; color: #475569; margin-left: auto; }
+
+  /* Problem / now cards */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .now-card, .then-card {
+    border-radius: 8px; padding: 16px 18px;
+  }
+  .now-card {
+    background: #130a0a; border: 1.5px solid #3b1212;
+  }
+  .then-card {
+    background: #070f08; border: 1.5px solid #14532d;
+  }
+  .card-label {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 10px;
+  }
+  .now-card .card-label { color: #ef4444; }
+  .then-card .card-label { color: #22c55e; }
+  .card-item {
+    font-size: 13px; color: #94a3b8; padding: 5px 0;
+    border-bottom: 1px solid #1e2530; line-height: 1.5;
+  }
+  .card-item:last-child { border-bottom: none; }
+  .card-item strong { color: #e2e8f0; }
+
+  /* Layout wireframe */
+  .wireframe {
+    background: #0a0d13;
+    border: 2px solid #1e2530;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+  }
+  .wf-bar {
+    background: #141921; border: 1.5px solid #1e2a3a;
+    border-radius: 6px; padding: 8px 12px;
+    color: #64748b; margin-bottom: 8px;
+    display: flex; gap: 8px; align-items: center;
+  }
+  .wf-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .wf-dot-r { background: #ef4444; } .wf-dot-y { background: #eab308; } .wf-dot-g { background: #22c55e; }
+  .wf-tabs { display: flex; gap: 2px; margin-bottom: 8px; }
+  .wf-tab {
+    padding: 6px 14px; border-radius: 6px 6px 0 0;
+    font-size: 11px; font-weight: 600;
+    border: 1.5px solid; border-bottom: none;
+    cursor: pointer;
+  }
+  .wf-tab-active { background: #141921; color: #f1f5f9; border-color: #2d3f55; }
+  .wf-tab-inactive { background: #0a0d13; color: #475569; border-color: #1e2530; }
+  .wf-layout {
+    display: grid;
+    gap: 8px;
+  }
+  .wf-zone {
+    border: 1.5px dashed #2d3f55;
+    border-radius: 6px;
+    padding: 14px 16px;
+    position: relative;
+  }
+  .wf-zone-label {
+    position: absolute; top: -9px; left: 12px;
+    background: #0a0d13; padding: 0 6px;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px;
+  }
+  .wf-zone-desc { font-size: 12px; color: #64748b; margin-top: 4px; }
+  .z-digest { border-color: #1e3a5f; }
+  .z-digest .wf-zone-label { color: #60a5fa; }
+  .z-today { border-color: #14532d; }
+  .z-today .wf-zone-label { color: #4ade80; }
+  .z-cli { border-color: #3f2d00; }
+  .z-cli .wf-zone-label { color: #facc15; }
+  .wf-split { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .z-tasks { border-color: #2d1f5e; }
+  .z-tasks .wf-zone-label { color: #a78bfa; }
+  .z-pulse { border-color: #1a2d1a; }
+  .z-pulse .wf-zone-label { color: #86efac; }
+
+  /* Feature cards */
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .feature-card {
+    background: #0e1420;
+    border: 1.5px solid #1e2a3a;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .feature-card .fc-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .feature-card .fc-title { font-size: 14px; font-weight: 700; color: #f1f5f9; }
+  .feature-card .fc-effort {
+    font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: 8px;
+  }
+  .effort-s { background: #052e16; color: #4ade80; border: 1px solid #166534; }
+  .effort-m { background: #2d1500; color: #fb923c; border: 1px solid #7c2d12; }
+  .effort-l { background: #2d0a0a; color: #f87171; border: 1px solid #7f1d1d; }
+  .feature-card .fc-desc { font-size: 12px; color: #64748b; line-height: 1.6; }
+  .feature-card .fc-tag {
+    font-size: 10px; font-weight: 600; margin-top: 10px;
+    padding: 2px 8px; border-radius: 4px; display: inline-block;
+  }
+  .fc-tab-home { background: #0c1a2e; color: #60a5fa; }
+  .fc-tab-board { background: #1a0030; color: #c084fc; }
+  .fc-tab-pulse { background: #0a2010; color: #4ade80; }
+  .fc-tab-sched { background: #1a1200; color: #fbbf24; }
+  .fc-tab-prd { background: #1a0a1a; color: #e879f9; }
+
+  /* Workflow steps */
+  .workflow { display: flex; align-items: flex-start; gap: 0; flex-wrap: wrap; }
+  .wf-step {
+    display: flex; align-items: flex-start; gap: 0;
+  }
+  .wf-step-box {
+    background: #0e1420; border: 1.5px solid #1e2a3a;
+    border-radius: 8px; padding: 12px 14px;
+    min-width: 140px;
+  }
+  .wf-step-num { font-size: 10px; color: #475569; font-weight: 700; margin-bottom: 4px; }
+  .wf-step-name { font-size: 13px; font-weight: 700; color: #f1f5f9; }
+  .wf-step-cmd { font-size: 11px; color: #fbbf24; margin-top: 4px; font-family: monospace; }
+  .wf-arrow {
+    color: #334155; font-size: 18px; padding: 12px 6px; align-self: center;
+  }
+
+  /* Build order table */
+  .build-table { width: 100%; border-collapse: collapse; }
+  .build-table th {
+    text-align: left; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: #475569; padding: 8px 12px;
+    border-bottom: 2px solid #1e2530;
+  }
+  .build-table td {
+    font-size: 13px; padding: 10px 12px;
+    border-bottom: 1px solid #141921; vertical-align: top;
+  }
+  .build-table tr:last-child td { border-bottom: none; }
+  .build-table tr:hover td { background: #0e1420; }
+  .phase { font-weight: 700; }
+  .p1 { color: #f97316; } .p2 { color: #facc15; } .p3 { color: #4ade80; }
+  .effort-chip {
+    font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 12px;
+    display: inline-block;
+  }
+  .e-s { background: #052e16; color: #4ade80; }
+  .e-m { background: #2d1500; color: #fb923c; }
+  .e-l { background: #2d0a0a; color: #f87171; }
+  .note-cell { color: #64748b; font-size: 12px; }
+
+  /* Constraint box */
+  .constraint-box {
+    background: #0a0f1a;
+    border: 1.5px solid #1e2a3a;
+    border-left: 3px solid #6366f1;
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 13px; color: #94a3b8; line-height: 1.7;
+  }
+  .constraint-box strong { color: #a5b4fc; }
+
+  /* Footer */
+  .footer { margin-top: 44px; padding-top: 16px; border-top: 1px solid #1e2530; font-size: 11px; color: #334155; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1>Co-Pilot UI — Revamp Plan</h1>
+    <div class="sub">UX rethink · Neo-brutalism · CLI-first · No API key</div>
+    <div class="tag-row">
+      <span class="tag tag-y">Next.js</span>
+      <span class="tag tag-b">Claude CLI (OAuth)</span>
+      <span class="tag tag-g">3 Tabs</span>
+      <span class="tag tag-r">No ANTHROPIC_API_KEY</span>
+    </div>
+  </div>
+
+
+  <!-- 1. The Problem -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">What's broken today vs. what we're building</div>
+    </div>
+    <div class="two-col">
+      <div class="now-card">
+        <div class="card-label">Now — Fragmented</div>
+        <div class="card-item"><strong>Cursor terminal</strong> for /morning, then markdown preview</div>
+        <div class="card-item"><strong>Todoist window</strong> open separately for task board</div>
+        <div class="card-item"><strong>CLI only</strong> for meeting notes, PRD flow, task ops</div>
+        <div class="card-item"><strong>Manual</strong> /morning run every morning</div>
+        <div class="card-item"><strong>Weekly manual</strong> /pulse for Fireflies → digest</div>
+        <div class="card-item">UI exists but doesn't add value over CLI</div>
+      </div>
+      <div class="then-card">
+        <div class="card-label">After — Unified</div>
+        <div class="card-item"><strong>One window</strong>: digest + tasks + CLI always visible</div>
+        <div class="card-item"><strong>Board tab</strong> replaces Todoist browser window</div>
+        <div class="card-item"><strong>CLI panel</strong> at bottom, always accessible, full feature parity</div>
+        <div class="card-item"><strong>Scheduled digest</strong> auto-runs at 8:30 AM IST</div>
+        <div class="card-item"><strong>Pulse tab</strong> for drop-in Fireflies → digest flow</div>
+        <div class="card-item">PRD workflow as guided multi-step sidebar</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 2. Information Architecture -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Information Architecture — 3 tabs</div>
+    </div>
+    <div class="wireframe">
+      <div class="wf-bar">
+        <div class="wf-dot wf-dot-r"></div>
+        <div class="wf-dot wf-dot-y"></div>
+        <div class="wf-dot wf-dot-g"></div>
+        <span style="margin-left:6px; color:#475569;">Co-Pilot — localhost:3000</span>
+      </div>
+      <div class="wf-tabs">
+        <div class="wf-tab wf-tab-active">⬡ Home</div>
+        <div class="wf-tab wf-tab-inactive">⊞ Board</div>
+        <div class="wf-tab wf-tab-inactive">◎ Pulse</div>
+      </div>
+      <div class="wf-layout">
+        <!-- Home tab -->
+        <div class="wf-zone z-digest" style="min-height:110px;">
+          <div class="wf-zone-label">ZONE A · Digest (40%)</div>
+          <div class="wf-zone-desc" style="margin-top:6px;">
+            Morning digest rendered as styled markdown. Stale indicator if &gt;8h old. Refresh button triggers /morning via CLI. Shows: Top 3 priorities · Watch-outs · Focus tip.
+          </div>
+        </div>
+        <div class="wf-zone z-today" style="min-height:80px;">
+          <div class="wf-zone-label">ZONE B · Due Today (28%)</div>
+          <div class="wf-zone-desc" style="margin-top:6px;">
+            Horizontal scroll cards for tasks due today. Each card: title, section pill, priority dot, ✓ complete button. Click → expand with quick actions (edit, open Todoist, add comment).
+          </div>
+        </div>
+        <div class="wf-zone z-cli" style="min-height:90px;">
+          <div class="wf-zone-label">ZONE C · CLI (32%) — always visible, sticky bottom</div>
+          <div class="wf-zone-desc" style="margin-top:6px;">
+            Persistent terminal panel. Input line + streaming output above. Handles all slash commands: /morning /eod /pulse /prd /notes /task [add|update|done]. Scroll history. Can expand to full-screen.
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px; font-size:11px; color:#334155;">↓ Board tab layout</div>
+      <div class="wf-layout" style="margin-top:8px;">
+        <div class="wf-split">
+          <div class="wf-zone z-tasks" style="min-height:120px;">
+            <div class="wf-zone-label">Board Tab · Kanban columns</div>
+            <div class="wf-zone-desc" style="margin-top:6px;">
+              Section columns: effy · CS Requests · Engg asks · Features · CM. Filter bar top. Quick-add per column. Inline complete/edit. Status label badges.
+            </div>
+          </div>
+          <div class="wf-zone z-pulse" style="min-height:120px;">
+            <div class="wf-zone-label">Pulse Tab · Transcript → Digest</div>
+            <div class="wf-zone-desc" style="margin-top:6px;">
+              Left: paste or drop Fireflies transcript. Right: streaming digest output. Archive of past pulse digests below. Run /pulse button triggers CLI.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 3. Feature breakdown -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Feature breakdown by tab</div>
+    </div>
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="fc-head">
+          <div class="fc-title">Auto-scheduled morning digest</div>
+          <div class="fc-effort effort-s">Small</div>
+        </div>
+        <div class="fc-desc">Cron job at 8:30 AM IST runs /morning via Claude CLI. Result written to digest file. UI polls/reloads on new file. No more manual runs.</div>
+        <span class="fc-tag fc-tab-sched">Scheduler</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="fc-head">
+          <div class="fc-title">Digest Zone A — styled render</div>
+          <div class="fc-effort effort-s">Small</div>
+        </div>
+        <div class="fc-desc">Replace raw markdown preview with a styled renderer. Same data, visual hierarchy. Stale badge if digest is older than 8h. One-click refresh triggers /morning in CLI zone.</div>
+        <span class="fc-tag fc-tab-home">Home</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="fc-head">
+          <div class="fc-title">Due Today Zone B — task cards</div>
+          <div class="fc-effort effort-s">Small</div>
+        </div>
+        <div class="fc-desc">Cards pulled from current_day.json. Horizontal scroll. Each card has a ✓ button that calls Todoist API to complete inline. Click expands with full task description + actions.</div>
+        <span class="fc-tag fc-tab-home">Home</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="fc-head">
+          <div class="fc-title">CLI Zone C — persistent terminal</div>
+          <div class="fc-effort effort-m">Medium</div>
+        </div>
+        <div class="fc-desc">Always-visible bottom panel. Uses existing shell/route.ts. Expandable to full-screen. Command history (↑↓). Streaming output with ANSI color support. Slash command autocomplete.</div>
+        <span class="fc-tag fc-tab-home">Home</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="fc-head">
+          <div class="fc-title">Task Board — section kanban</div>
+          <div class="fc-effort effort-m">Medium</div>
+        </div>
+        <div class="fc-desc">5 section columns. Live data from Todoist API. Drag-to-complete or status-label change. Filter by overdue / in-progress / up-next. Quick add at column top. Replaces Todoist browser window entirely.</div>
+        <span class="fc-tag fc-tab-board">Board</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="fc-head">
+          <div class="fc-title">Board — inline task drawer</div>
+          <div class="fc-effort effort-s">Small</div>
+        </div>
+        <div class="fc-desc">Click any task card → right drawer slides in. Shows full description, labels, due date editor, comment thread, complete button. No need to open Todoist.</div>
+        <span class="fc-tag fc-tab-board">Board</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="fc-head">
+          <div class="fc-title">Pulse Tab — transcript intake</div>
+          <div class="fc-effort effort-m">Medium</div>
+        </div>
+        <div class="fc-desc">Paste or file-drop Fireflies transcript on left. Hit Run → streams /pulse output on right. Result auto-saved to pulse/normalized/ and surfaced in digest archive below. Replaces weekly manual /pulse.</div>
+        <span class="fc-tag fc-tab-pulse">Pulse</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="fc-head">
+          <div class="fc-title">PRD guided flow — sidebar</div>
+          <div class="fc-effort effort-l">Large</div>
+        </div>
+        <div class="fc-desc">Triggered by /prd in CLI or button on Board task. Step indicator: Research → JTBD → PRD → Mockup → Validate. Each step auto-runs the right slash command, streams output, waits for confirmation before advancing. State persisted per task ID.</div>
+        <span class="fc-tag fc-tab-prd">PRD Flow</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="fc-head">
+          <div class="fc-title">Meeting notes — quick launcher</div>
+          <div class="fc-effort effort-s">Small</div>
+        </div>
+        <div class="fc-desc">Floating button or CLI shortcut /notes [title] opens a split view: left is a minimal markdown editor pre-seeded with a template, right is streaming Claude output. Saves to context/customers/ on submit.</div>
+        <span class="fc-tag fc-tab-home">Home + Board</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- 4. PRD workflow -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">PRD workflow — how the guided flow maps to your CLI steps</div>
+    </div>
+    <div class="workflow">
+      <div class="wf-step">
+        <div class="wf-step-box">
+          <div class="wf-step-num">STEP 1</div>
+          <div class="wf-step-name">Research</div>
+          <div class="wf-step-cmd">/research [feature]</div>
+        </div>
+      </div>
+      <div class="wf-arrow">→</div>
+      <div class="wf-step">
+        <div class="wf-step-box">
+          <div class="wf-step-num">STEP 2</div>
+          <div class="wf-step-name">JTBD</div>
+          <div class="wf-step-cmd">/jtbd</div>
+        </div>
+      </div>
+      <div class="wf-arrow">→</div>
+      <div class="wf-step">
+        <div class="wf-step-box">
+          <div class="wf-step-num">STEP 3</div>
+          <div class="wf-step-name">Write PRD</div>
+          <div class="wf-step-cmd">/prd write</div>
+        </div>
+      </div>
+      <div class="wf-arrow">→</div>
+      <div class="wf-step">
+        <div class="wf-step-box">
+          <div class="wf-step-num">STEP 4</div>
+          <div class="wf-step-name">Mockup</div>
+          <div class="wf-step-cmd">/prd mockup</div>
+        </div>
+      </div>
+      <div class="wf-arrow">→</div>
+      <div class="wf-step">
+        <div class="wf-step-box">
+          <div class="wf-step-num">STEP 5</div>
+          <div class="wf-step-name">Validate</div>
+          <div class="wf-step-cmd">/prd validate</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 14px; font-size: 13px; color: #64748b; line-height: 1.7;">
+      In the sidebar, each step streams output into a panel. A <strong style="color:#94a3b8">Confirm & Continue</strong> button advances the step. You can edit the output before confirming. Step state is saved to <code style="color:#fbbf24; background:#1a1200; padding:1px 5px; border-radius:3px;">context/prd-sessions/[task-id].json</code> so you can resume across sessions.
+    </div>
+  </div>
+
+
+  <!-- 5. Build order -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Recommended build order</div>
+    </div>
+    <table class="build-table">
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>What to build</th>
+          <th>Effort</th>
+          <th>Why now</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="phase p1">1 · Foundation</span></td>
+          <td>Persistent CLI zone (Zone C) + 3-zone Home layout</td>
+          <td><span class="effort-chip e-m">Medium</span></td>
+          <td class="note-cell">Everything else builds on this. CLI parity with what you have in Cursor terminal.</td>
+        </tr>
+        <tr>
+          <td><span class="phase p1">1 · Foundation</span></td>
+          <td>Auto-schedule /morning at 8:30 AM IST</td>
+          <td><span class="effort-chip e-s">Small</span></td>
+          <td class="note-cell">Immediate daily value. Frees up the morning ritual entirely.</td>
+        </tr>
+        <tr>
+          <td><span class="phase p1">1 · Foundation</span></td>
+          <td>Due Today cards (Zone B) with inline complete</td>
+          <td><span class="effort-chip e-s">Small</span></td>
+          <td class="note-cell">Replaces the Todoist tab for your morning scan.</td>
+        </tr>
+        <tr>
+          <td><span class="phase p2">2 · Board</span></td>
+          <td>Task Board tab — section columns + task drawer</td>
+          <td><span class="effort-chip e-m">Medium</span></td>
+          <td class="note-cell">Replaces Todoist window. Biggest friction point in current workflow.</td>
+        </tr>
+        <tr>
+          <td><span class="phase p2">2 · Board</span></td>
+          <td>Digest Zone A — styled renderer + stale indicator</td>
+          <td><span class="effort-chip e-s">Small</span></td>
+          <td class="note-cell">Polish. The digest is already good, just needs better visual treatment.</td>
+        </tr>
+        <tr>
+          <td><span class="phase p3">3 · Power</span></td>
+          <td>Pulse Tab — transcript drop + streaming output</td>
+          <td><span class="effort-chip e-m">Medium</span></td>
+          <td class="note-cell">Formalises the weekly /pulse ritual into a proper UI.</td>
+        </tr>
+        <tr>
+          <td><span class="phase p3">3 · Power</span></td>
+          <td>PRD guided sidebar flow</td>
+          <td><span class="effort-chip e-l">Large</span></td>
+          <td class="note-cell">Multi-step state management. High value but not a daily driver.</td>
+        </tr>
+        <tr>
+          <td><span class="phase p3">3 · Power</span></td>
+          <td>Meeting notes launcher</td>
+          <td><span class="effort-chip e-s">Small</span></td>
+          <td class="note-cell">Quality of life. Bring template + Claude output into one pane.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 6. Constraints -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Hard constraints &amp; architecture notes</div>
+    </div>
+    <div class="constraint-box">
+      <strong>No ANTHROPIC_API_KEY</strong> — All Claude calls go through <code style="background:#0a0f1a; padding:1px 5px; border-radius:3px;">/opt/homebrew/bin/claude --dangerously-skip-permissions -p</code> (already patched in shell/route.ts and claude/route.ts). OAuth session via Claude Pro. Never spawn with ANTHROPIC_API_KEY in env.<br><br>
+      <strong>CLI is the intelligence layer</strong> — The UI is a shell around the CLI, not a replacement. Every smart action (digest, PRD, pulse, notes) goes through a shell spawn. The UI's job is context display, task CRUD, and workflow guidance.<br><br>
+      <strong>Todoist API</strong> — Task CRUD (create, update, complete) calls go directly to Todoist REST API from Next.js server routes — no Claude involved. Board tab uses the existing todoist.ts lib.<br><br>
+      <strong>Neo-brutalism theme</strong> — Retain: dark background (#0d0f14), high-contrast accent colors, 1.5–2px solid borders, monospace for CLI, no rounded-off softness. Add: bold section separators, visible grid lines on Board tab.<br><br>
+      <strong>State files are the source of truth</strong> — current_day.json is the live board state. Digest files are in daily/digests/. Pulse in pulse/. UI reads these; CLI writes them. No database needed.
+    </div>
+  </div>
+
+  <div class="footer">Co-Pilot Revamp Plan · Shab · March 23, 2026 · Draft v1</div>
+</div>
+</body>
+</html>

@@ -9,7 +9,7 @@ Parse a natural-language task request, determine the correct Todoist section via
 ## Routing
 Before creating, run routing logic (team membership and section IDs are in CLAUDE.md):
 1. Apply the routing algorithm (effy → CS member → Engg member → CM keywords → feature keywords → labels → default).
-4. Log: `{ rule, sectionId, sectionName, confidence, match, competingMatch? }`
+2. Log: `{ rule, sectionId, sectionName, confidence, match, competingMatch? }`
 
 ## Preview Before Create
 Always show this before creating:
@@ -19,7 +19,7 @@ Creating task: "<title>"
   Due:        <inferred or none>
   Priority:   <inferred or none>
 ```
-If confidence is `matched`: proceed automatically.
+If confidence is `matched` or `label-inferred`: proceed automatically.
 If confidence is `inferred` or `defaulted`: ask for confirmation before creating.
 
 ## After Create

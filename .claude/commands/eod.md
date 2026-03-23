@@ -8,7 +8,8 @@ Generate an end-of-day summary and carry-forward recommendations from cached sta
 - **Sonnet** only if reasoning is needed to detect missed commitments or blockers.
 
 ## Step 0 — Sync repo
-Run `git pull` to ensure local state reflects the latest Action-committed data before reading any files.
+Run `git pull` once at the start of the session to ensure local state reflects the latest Action-committed data before reading files.
+If this command is invoked from an automation script that already pulled, skip the extra pull.
 
 ## Inputs (read from repo — do not fetch live)
 1. `state/current_day.json` — completed tasks, open tasks, due-soon tasks

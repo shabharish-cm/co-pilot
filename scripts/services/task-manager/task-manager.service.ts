@@ -118,3 +118,9 @@ export function findMatchingTasks(query: string): TaskRecord[] {
   const lower = query.toLowerCase();
   return state.openTasks.filter(t => t.content.toLowerCase().includes(lower));
 }
+
+/** Find an open task by exact Todoist ID from local state. */
+export function findTaskById(taskId: string): TaskRecord | undefined {
+  const state = readJSON<CurrentDay>(PATHS.state.currentDay);
+  return state?.openTasks.find(t => t.id === taskId);
+}

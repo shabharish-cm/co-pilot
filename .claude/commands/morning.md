@@ -8,7 +8,8 @@ Generate a human-readable morning digest from cached repository state. Do not fe
 - **Haiku** for writing: final digest output.
 
 ## Step 0 — Sync repo
-Run `git pull` to ensure local state reflects the latest Action-committed data before reading any files.
+Run `git pull` once at the start of the session to ensure local state reflects the latest Action-committed data before reading files.
+If this command is invoked from an automation script that already pulled, skip the extra pull.
 
 ## Inputs (read from repo — do not fetch live)
 1. `state/current_day.json` — tasks, meetings, sync timestamps
