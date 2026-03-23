@@ -76,7 +76,7 @@
       "id": "6gCJxJPVg9pPCxPx",
       "content": "Align with Gautam (Account Signals)",
       "description": "- Identify key metrics (e.g., account size, churn risk)\n- Confirm data update frequency (weekly/monthly)\n- Define data access method (API or export)",
-      "due": null,
+      "due": "2026-03-23",
       "priority": 1,
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
@@ -270,6 +270,19 @@
       "url": "https://todoist.com/showTask?id=6gCJxqR95722Cw7Q"
     },
     {
+      "id": "6gCJxJPVg9pPCxPx",
+      "content": "Align with Gautam (Account Signals)",
+      "description": "- Identify key metrics (e.g., account size, churn risk)\n- Confirm data update frequency (weekly/monthly)\n- Define data access method (API or export)",
+      "due": "2026-03-23",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gCJxJPVg9pPCxPx"
+    },
+    {
       "id": "6gC8VJWpV65C4wrQ",
       "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
       "due": "2026-03-23",
@@ -297,7 +310,7 @@
   ],
   "todayMeetings": [],
   "digestPaths": {
-    "morning": null,
+    "morning": "daily/digests/2026-03-23-morning.md",
     "eod": null
   }
 }
