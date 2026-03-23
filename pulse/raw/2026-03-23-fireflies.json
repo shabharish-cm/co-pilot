@@ -1,0 +1,3810 @@
+{
+  "dayKey": "2026-03-23",
+  "fetchedAt": "2026-03-23T20:02:31.970Z",
+  "source": "slack",
+  "transcripts": [
+    {
+      "id": "01KM2QRTSJS1B0JG5QNTPJ78PR",
+      "title": "Certis Belchim x CultureMonkey - Reports Discussion",
+      "date": 1774274400000,
+      "participants": [
+        "magdalena.majkowska@certisbelchim.com,domnita.damian@certisbelchim.com,karthik.n@culturemonkey.io,yugi@culturemonkey.io,yug@culturemonkey.io",
+        "magdalena.majkowska@certisbelchim.com",
+        "domnita.damian@certisbelchim.com",
+        "karthik.n@culturemonkey.io",
+        "yug@culturemonkey.io"
+      ],
+      "summary": {
+        "overview": "- **Executive Report Format:** Team agreed on a structured format featuring survey overview, scores, and actionable recommendations.\n\n- **Country-Level Data:** Decision made to include country and department-level data for clearer alignment with leadership responsibilities.\n\n- **Report Timeline:** Final report due by April 17; seven working days turnaround after confirming content.\n\n- **Dashboard Updates:** Previous survey data removed from dashboards for clarity; managers will access only the latest results.\n\n- **Thematic Analysis:** People science team will provide a thematic analysis of feedback, enhancing insights alongside numeric data.\n\n- **Comparative Data Inclusion:** Side-by-side comparison slides to display trends between current and previous surveys will be added for leadership.",
+        "action_items": "\n**Domnita Damian**\nReview the report generated from the CultureMonkey platform for the current survey results to confirm if it meets expectations (07:23)\n\n**Magdalena Majkowska**\nConfirm the slides format and detail requirements for the executive presentation, including populations (countries, global departments), key comparison data, and any design preferences, to give sufficient lead time before April 17th deadline (14:53)\n\n**Karthik N**\nProvide sample executive presentation format to Certis Belchim participants during the meeting (04:14)\nExclude the previous survey results from the manager dashboards for clearer access to current survey data and confirm when done (12:41)\nShare the ENPS methodological slides with Certis Belchim for internal briefing and presentation use (18:33)\nInitiate thematic analysis of textual feedback received from the survey, prepare a separate report for leaders, and begin work on thematic analysis immediately (18:33)\nCoordinate with people science team to deliver the completed executive presentation slides within the timeline, incorporating requested customizations (18:33)\nKeep Yugi informed of all discussed details and ensure he resumes communication with Certis Belchim from tomorrow (19:14)\n",
+        "notes": "## **Leadership Presentation Format**\n\nThe team agreed on using a structured executive report format to present survey results to leadership.\n\n- **Customizable executive report format introduced by Culture Monkey** includes survey overview, overall and demographic scores, ENPS details, and driver performance breakdown (04:14)\n    - The report features question-wise top and bottom rankings and actionable recommendations from people science experts\n    - Domnita explained last year’s presentation was manually created without platform-generated slides (03:39)\n    - Karthik highlighted flexibility to add or remove sections based on leadership needs and provide editable slides\n\n- **Decision to include country-level data for local populations and department-level data for global teams** to align with leadership responsibilities (06:38)\n    - The current report format was considered exhaustive and similar to last year’s by Domnita\n    - Magdalena emphasized the need to finalize which populations to include and potentially adjust presentation length for executives\n    - Karthik noted question-level detail is usually reserved for HRBP or regional heads, not executives\n\n- **Report generation timeline set to meet leadership meeting deadline on April 17** with a review by HR director Bianca beforehand (09:52)\n    - Karthik committed to a delivery turnaround of about **seven working days** once final content is confirmed\n    - Magdalena stressed the urgency given Easter holidays and short turnaround, requesting early start on slide generation\n    - The team agreed to confirm exact slide contents soon to allow time for edits\n\n## **Survey Data Access and Dashboard Configuration**\n\nAdjustments were planned to simplify survey data visibility for managers and align dashboard content with current survey results.\n\n- **Exclusion of previous survey data from main dashboards** to show only the latest survey results to managers and sub-admins (11:59)\n    - Karthik confirmed this backend change would prevent confusion caused by displaying averaged results from multiple surveys\n    - Individual reports for prior surveys will remain accessible separately for detailed review\n    - Magdalena agreed this change would make tool usage easier for managers viewing team results\n\n- **Clarification and support planned for interpreting ENPS scores** to improve understanding and communication across leadership (12:41)\n    - Karthik noted availability of slides explaining ENPS calculation and methodology which can be included in presentations\n    - Domnita expressed skepticism regarding ENPS usefulness, noting it was not used last year, but Magdalena said this may change based on HR director input\n    - Final decision on ENPS inclusion will be confirmed after discussions with Bianca\n\n## **Textual Feedback Analysis and Reporting**\n\nThe team planned advanced analysis of open-text survey comments to provide deeper insights beyond numeric scores.\n\n- **People science team will deliver a thematic analysis report of qualitative feedback** using partially AI-driven and manually verified methods (15:38)\n    - Karthik explained the AI component automates initial categorization but manual checks ensure accuracy and alignment with actual comments\n    - The thematic analysis will be a separate report, typically 4-5 slides, distinct from the main executive presentation\n    - Magdalena welcomed this service and confirmed no additional cost will be charged, as this is included in the existing survey package (16:31)\n\n- **Thematic analysis intended to complement the numeric results and support leadership understanding** of key feedback themes and improvement areas\n    - This approach reflects increased involvement by the Data Science and People Science teams to add value for enterprise clients\n    - Karthik emphasized that providing comprehensive insights helps demonstrate the survey’s value to leadership and supports follow-up actions\n\n## **Survey Comparison and Reporting Enhancements**\n\nThe leadership presentation will include comparative data to highlight trends and changes in survey results.\n\n- **Inclusion of side-by-side comparison slides for key driver scores between current and previous surveys** planned to show trends clearly (17:15)\n    - Karthik shared an example where each slide displays prior year scores next to current results with explanations of increases, decreases, or stability\n    - This feature helps leadership quickly grasp progress or emerging issues over time\n    - Magdalena confirmed this comparison would be valuable and requested it be included in the upcoming presentation\n\n- **Final report format and slide selection to be confirmed via email for refinement and timely delivery** (18:33)\n    - Karthik will send ENPS explanatory slides and coordinate exclusion of old survey data from dashboards immediately\n    - The team agreed to finalize slide contents soon to allow time for adjustments before the leadership meeting deadline\n    - Yogi will resume contact with Magdalena for follow-ups once available, ensuring smooth ongoing communication (19:14)",
+        "keywords": [
+          "CultureMonkey",
+          "Leadership Presentation",
+          "Survey Reports",
+          "Thematic Analysis",
+          "ENPS",
+          "Dashboard Access"
+        ]
+      },
+      "sentences": [
+        {
+          "index": 0,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "Hello?",
+          "start_time": 88.75
+        },
+        {
+          "index": 1,
+          "speaker_name": "Karthik N",
+          "raw_text": "Hello.",
+          "start_time": 90.35
+        },
+        {
+          "index": 2,
+          "speaker_name": "Karthik N",
+          "raw_text": "Can you hear me?",
+          "start_time": 90.79
+        },
+        {
+          "index": 3,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "I can hear you.",
+          "start_time": 92.27
+        },
+        {
+          "index": 4,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "I can't see you yet, but yes, there you are.",
+          "start_time": 93.27
+        },
+        {
+          "index": 5,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Karthik.",
+          "start_time": 100.47
+        },
+        {
+          "index": 6,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Good to see you.",
+          "start_time": 101.15
+        },
+        {
+          "index": 7,
+          "speaker_name": "Karthik N",
+          "raw_text": "Good to see you.",
+          "start_time": 103.15
+        },
+        {
+          "index": 8,
+          "speaker_name": "Karthik N",
+          "raw_text": "It's been a while so I know Yugi has been helping you a lot with the survey so I just wanted to join in today.",
+          "start_time": 103.91
+        },
+        {
+          "index": 9,
+          "speaker_name": "Karthik N",
+          "raw_text": "So he, he had some emergencies and he had to leave.",
+          "start_time": 110.33
+        },
+        {
+          "index": 10,
+          "speaker_name": "Karthik N",
+          "raw_text": "So yeah, I was also helping him with all these final participants, update all the removals, etc.",
+          "start_time": 113.85
+        },
+        {
+          "index": 11,
+          "speaker_name": "Karthik N",
+          "raw_text": "So today's call I want to understand because last time we spoke with Dominita she specifically mentioned what kind of reports she would like the leadership to see.",
+          "start_time": 122.97
+        },
+        {
+          "index": 12,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 133.37
+        },
+        {
+          "index": 13,
+          "speaker_name": "Karthik N",
+          "raw_text": "So.",
+          "start_time": 133.73
+        },
+        {
+          "index": 14,
+          "speaker_name": "Karthik N",
+          "raw_text": "And what we can provide.",
+          "start_time": 134.09
+        },
+        {
+          "index": 15,
+          "speaker_name": "Karthik N",
+          "raw_text": "So this call I wanted to specifically understand the requirements.",
+          "start_time": 136.15
+        },
+        {
+          "index": 16,
+          "speaker_name": "Karthik N",
+          "raw_text": "Say for example, you want a leadership presentation, do you need it in a certain structure?",
+          "start_time": 140.47
+        },
+        {
+          "index": 17,
+          "speaker_name": "Karthik N",
+          "raw_text": "Because Culture Monkey has its own default structure.",
+          "start_time": 146.67
+        },
+        {
+          "index": 18,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 148.95
+        },
+        {
+          "index": 19,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we just want to understand that.",
+          "start_time": 149.43
+        },
+        {
+          "index": 20,
+          "speaker_name": "Karthik N",
+          "raw_text": "Oh, dominance also.",
+          "start_time": 150.83
+        },
+        {
+          "index": 21,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Yeah.",
+          "start_time": 151.99
+        },
+        {
+          "index": 22,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Yes, yes.",
+          "start_time": 152.63
+        },
+        {
+          "index": 23,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Domita is joining which is great from my perspective.",
+          "start_time": 153.23
+        },
+        {
+          "index": 24,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "As you know this is the first time I'm using the platform itself.",
+          "start_time": 159.19
+        },
+        {
+          "index": 25,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So I would like to be sure that I understand all the information that we have there in a proper way.",
+          "start_time": 162.75
+        },
+        {
+          "index": 26,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Hi Damita.",
+          "start_time": 167.22
+        },
+        {
+          "index": 27,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Good afternoon.",
+          "start_time": 168.42
+        },
+        {
+          "index": 28,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Can you.",
+          "start_time": 169.94
+        },
+        {
+          "index": 29,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "You can hear us?",
+          "start_time": 171.22
+        },
+        {
+          "index": 30,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "And okay.",
+          "start_time": 172.1
+        },
+        {
+          "index": 31,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Because you're very quiet.",
+          "start_time": 174.62
+        },
+        {
+          "index": 32,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "It's.",
+          "start_time": 180.82
+        },
+        {
+          "index": 33,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Yeah, I can hear Karthik well but not.",
+          "start_time": 182.18
+        },
+        {
+          "index": 34,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "You're not that well.",
+          "start_time": 184.7
+        },
+        {
+          "index": 35,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Okay.",
+          "start_time": 186.42
+        },
+        {
+          "index": 36,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Let's hope it will be better now.",
+          "start_time": 187.06
+        },
+        {
+          "index": 37,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Yeah.",
+          "start_time": 193.06
+        },
+        {
+          "index": 38,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So.",
+          "start_time": 193.46
+        },
+        {
+          "index": 39,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So because we've started the meta, we started with Cartic to talk about the format of the presentation for the leadership team that is required.",
+          "start_time": 193.78
+        },
+        {
+          "index": 40,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "What was it last year because I was not there.",
+          "start_time": 207.97
+        },
+        {
+          "index": 41,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Was it a very specific format that we wanted to have from the platform?",
+          "start_time": 213.25
+        },
+        {
+          "index": 42,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "Last year we didn't have any format.",
+          "start_time": 219.97
+        },
+        {
+          "index": 43,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "I created the presentation.",
+          "start_time": 221.93
+        },
+        {
+          "index": 44,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Ah, okay.",
+          "start_time": 224.68
+        },
+        {
+          "index": 45,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "I put in their information with the overall results, results per countries where we have highest results where we have lowest.",
+          "start_time": 226.92
+        },
+        {
+          "index": 46,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "And statistics where we can find some concerns and so on.",
+          "start_time": 240.76
+        },
+        {
+          "index": 47,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So.",
+          "start_time": 245.2
+        },
+        {
+          "index": 48,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "But I couldn't have any presentation from the platform.",
+          "start_time": 245.56
+        },
+        {
+          "index": 49,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "I just needed to created by myself.",
+          "start_time": 248.84
+        },
+        {
+          "index": 50,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes.",
+          "start_time": 254.79
+        },
+        {
+          "index": 51,
+          "speaker_name": "Karthik N",
+          "raw_text": "So like, like I mentioned.",
+          "start_time": 255.43
+        },
+        {
+          "index": 52,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 257.43
+        },
+        {
+          "index": 53,
+          "speaker_name": "Karthik N",
+          "raw_text": "So last time we didn't have this option.",
+          "start_time": 257.67
+        },
+        {
+          "index": 54,
+          "speaker_name": "Karthik N",
+          "raw_text": "But right now we have this people science team who can actually work on a custom presentation.",
+          "start_time": 259.35
+        },
+        {
+          "index": 55,
+          "speaker_name": "Karthik N",
+          "raw_text": "I can show you a sample format right now on the call.",
+          "start_time": 264.71
+        },
+        {
+          "index": 56,
+          "speaker_name": "Karthik N",
+          "raw_text": "So what we will do is we will.",
+          "start_time": 267.75
+        },
+        {
+          "index": 57,
+          "speaker_name": "Karthik N",
+          "raw_text": "If this format looks good and all the information that you need for the leadership team is available in the report, we will give Culture Monkeys default format.",
+          "start_time": 270.67
+        },
+        {
+          "index": 58,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 279.94
+        },
+        {
+          "index": 59,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that should be helpful.",
+          "start_time": 280.26
+        },
+        {
+          "index": 60,
+          "speaker_name": "Karthik N",
+          "raw_text": "So let me just show you this one.",
+          "start_time": 281.38
+        },
+        {
+          "index": 61,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes.",
+          "start_time": 284.7
+        },
+        {
+          "index": 62,
+          "speaker_name": "Karthik N",
+          "raw_text": "So yeah.",
+          "start_time": 286.38
+        },
+        {
+          "index": 63,
+          "speaker_name": "Karthik N",
+          "raw_text": "Can you see my screen?",
+          "start_time": 287.14
+        },
+        {
+          "index": 64,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "Yes.",
+          "start_time": 288.94
+        },
+        {
+          "index": 65,
+          "speaker_name": "Karthik N",
+          "raw_text": "Perfect.",
+          "start_time": 290.3
+        },
+        {
+          "index": 66,
+          "speaker_name": "Karthik N",
+          "raw_text": "So this is a sample presentation that we usually share with Our customers.",
+          "start_time": 291.02
+        },
+        {
+          "index": 67,
+          "speaker_name": "Karthik N",
+          "raw_text": "So this is the format that we usually share the presentation for the leadership.",
+          "start_time": 295.34
+        },
+        {
+          "index": 68,
+          "speaker_name": "Karthik N",
+          "raw_text": "So this is an executive report kind of format.",
+          "start_time": 299.46
+        },
+        {
+          "index": 69,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we have a basic slides that mentions how the scoring system works and then you have the survey overview itself, like what was the survey name, how long did it run, all those details.",
+          "start_time": 303.02
+        },
+        {
+          "index": 70,
+          "speaker_name": "Karthik N",
+          "raw_text": "And then we have the overall score, the participation and the driver scores and then you have ENPS details.",
+          "start_time": 314.94
+        },
+        {
+          "index": 71,
+          "speaker_name": "Karthik N",
+          "raw_text": "And then now we go by demographics.",
+          "start_time": 323.18
+        },
+        {
+          "index": 72,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 325.26
+        },
+        {
+          "index": 73,
+          "speaker_name": "Karthik N",
+          "raw_text": "So if you want it by country, we show you scores by country or we show you scores by regions.",
+          "start_time": 325.58
+        },
+        {
+          "index": 74,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "Right.",
+          "start_time": 331.26
+        },
+        {
+          "index": 75,
+          "speaker_name": "Karthik N",
+          "raw_text": "So whatever data that you have on the platform, we can show by different demographics and we can give you question wise breakdown.",
+          "start_time": 331.96
+        },
+        {
+          "index": 76,
+          "speaker_name": "Karthik N",
+          "raw_text": "So what are the top questions, what are the bottom questions?",
+          "start_time": 339.96
+        },
+        {
+          "index": 77,
+          "speaker_name": "Karthik N",
+          "raw_text": "And then we can give you an overall summary.",
+          "start_time": 343.4
+        },
+        {
+          "index": 78,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 346.76
+        },
+        {
+          "index": 79,
+          "speaker_name": "Karthik N",
+          "raw_text": "And apart from this, we also give you this breakdown of driver performance which is typically positive, negative and neutral based on each driver.",
+          "start_time": 347.12
+        },
+        {
+          "index": 80,
+          "speaker_name": "Karthik N",
+          "raw_text": "And then we do a similar one for questions.",
+          "start_time": 356.92
+        },
+        {
+          "index": 81,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "Right.",
+          "start_time": 361.25
+        },
+        {
+          "index": 82,
+          "speaker_name": "Karthik N",
+          "raw_text": "And, and finally what we have is like an action recommendation.",
+          "start_time": 361.45
+        },
+        {
+          "index": 83,
+          "speaker_name": "Karthik N",
+          "raw_text": "So based on the scores that you read got in each driver, we just give some recommendations based on our people, science experts what can be done to improve these drivers in the next survey.",
+          "start_time": 365.57
+        },
+        {
+          "index": 84,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 377.05
+        },
+        {
+          "index": 85,
+          "speaker_name": "Karthik N",
+          "raw_text": "And in case internally you also have a lot of recommendations, you just give it to us and we put it in one of the slides or you can also edit the slide.",
+          "start_time": 377.29
+        },
+        {
+          "index": 86,
+          "speaker_name": "Karthik N",
+          "raw_text": "So this is a basic a report format that we provide.",
+          "start_time": 385.01
+        },
+        {
+          "index": 87,
+          "speaker_name": "Karthik N",
+          "raw_text": "So if anything additionally you would like to include, we can still do that.",
+          "start_time": 388.46
+        },
+        {
+          "index": 88,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Okay, well that makes sense.",
+          "start_time": 392.94
+        },
+        {
+          "index": 89,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Right?",
+          "start_time": 395.86
+        },
+        {
+          "index": 90,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "I mean",
+          "start_time": 396.18
+        },
+        {
+          "index": 91,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "that all looks reasonable.",
+          "start_time": 398.86
+        },
+        {
+          "index": 92,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "We would need to think if we just want to have the countries or, or also the departments maybe.",
+          "start_time": 402.139
+        },
+        {
+          "index": 93,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Right.",
+          "start_time": 411.18
+        },
+        {
+          "index": 94,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "Countries we had last year.",
+          "start_time": 412.11
+        },
+        {
+          "index": 95,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "And as we have a split between local and global, then for global it will be about departments and the rest of it will be about countries.",
+          "start_time": 413.47
+        },
+        {
+          "index": 96,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "But I think the report that you're presenting looks quite exhaustive and it's what we presented also last year.",
+          "start_time": 424.99
+        },
+        {
+          "index": 97,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "If you can get the report out from the system for our own results, then we can have a look and then come back to you and ask",
+          "start_time": 433.79
+        },
+        {
+          "index": 98,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "you if we need something more or less or different.",
+          "start_time": 443.87
+        },
+        {
+          "index": 99,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, yes, absolutely.",
+          "start_time": 447.21
+        },
+        {
+          "index": 100,
+          "speaker_name": "Karthik N",
+          "raw_text": "And if you want any changed format.",
+          "start_time": 449.53
+        },
+        {
+          "index": 101,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 451.57
+        },
+        {
+          "index": 102,
+          "speaker_name": "Karthik N",
+          "raw_text": "Like last year, since you mentioned you already have a format, you can give it to us.",
+          "start_time": 451.73
+        },
+        {
+          "index": 103,
+          "speaker_name": "Karthik N",
+          "raw_text": "We can actually reduce or tweak it a little bit also if you feel like it's very long.",
+          "start_time": 456.41
+        },
+        {
+          "index": 104,
+          "speaker_name": "Karthik N",
+          "raw_text": "I know the question wise course are usually not for the executive team because they just want the overall driver scores and performance, etc.",
+          "start_time": 461.29
+        },
+        {
+          "index": 105,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 469.49
+        },
+        {
+          "index": 106,
+          "speaker_name": "Karthik N",
+          "raw_text": "So each question wise course the split are usually given for the smaller group which is like an HRBP team or regional heads, so who they want to make use of it.",
+          "start_time": 469.73
+        },
+        {
+          "index": 107,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 480.63
+        },
+        {
+          "index": 108,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that's something that we can work on.",
+          "start_time": 481.11
+        },
+        {
+          "index": 109,
+          "speaker_name": "Karthik N",
+          "raw_text": "But yes, from the platform we can give you the export.",
+          "start_time": 483.67
+        },
+        {
+          "index": 110,
+          "speaker_name": "Karthik N",
+          "raw_text": "You already have the access and by different data cuts also you have access which I can show you right now.",
+          "start_time": 486.35
+        },
+        {
+          "index": 111,
+          "speaker_name": "Karthik N",
+          "raw_text": "Say, for example, let me quickly share the screen.",
+          "start_time": 493.59
+        },
+        {
+          "index": 112,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, say, for example, we have enabled this advanced reporting option where you want to see data by different demographics.",
+          "start_time": 501.76
+        },
+        {
+          "index": 113,
+          "speaker_name": "Karthik N",
+          "raw_text": "It can be team, country or region.",
+          "start_time": 509.36
+        },
+        {
+          "index": 114,
+          "speaker_name": "Karthik N",
+          "raw_text": "So you go to this advanced tab, click on dynamic Reports, and then you have this option where you can choose the dimension, right?",
+          "start_time": 511.76
+        },
+        {
+          "index": 115,
+          "speaker_name": "Karthik N",
+          "raw_text": "So you have the survey and you have total participants, total answers, participation rate.",
+          "start_time": 521.08
+        },
+        {
+          "index": 116,
+          "speaker_name": "Karthik N",
+          "raw_text": "And then you can choose dimension.",
+          "start_time": 527.55
+        },
+        {
+          "index": 117,
+          "speaker_name": "Karthik N",
+          "raw_text": "Say for example, I want to see it by country, I can choose country.",
+          "start_time": 529.15
+        },
+        {
+          "index": 118,
+          "speaker_name": "Karthik N",
+          "raw_text": "So now you will have scores based on team plus the country.",
+          "start_time": 533.55
+        },
+        {
+          "index": 119,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 538.27
+        },
+        {
+          "index": 120,
+          "speaker_name": "Karthik N",
+          "raw_text": "So you get it as a CSV file and from this data you can put it in any presentation that you would like",
+          "start_time": 538.63
+        },
+        {
+          "index": 121,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "and it will generate the report.",
+          "start_time": 546.43
+        },
+        {
+          "index": 122,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "The one in Excel file.",
+          "start_time": 548.43
+        },
+        {
+          "index": 123,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, that's right.",
+          "start_time": 550.67
+        },
+        {
+          "index": 124,
+          "speaker_name": "Karthik N",
+          "raw_text": "That's right.",
+          "start_time": 551.67
+        },
+        {
+          "index": 125,
+          "speaker_name": "Karthik N",
+          "raw_text": "This is, this is kind of a raw data that you can use to create the presentation.",
+          "start_time": 552.15
+        },
+        {
+          "index": 126,
+          "speaker_name": "Karthik N",
+          "raw_text": "So this is one thing, but after you take the data and you finalize, this is what you want to show to the executive team.",
+          "start_time": 557.46
+        },
+        {
+          "index": 127,
+          "speaker_name": "Karthik N",
+          "raw_text": "We can also help you with designing and the presentation.",
+          "start_time": 563.46
+        },
+        {
+          "index": 128,
+          "speaker_name": "Karthik N",
+          "raw_text": "So you just need to confirm us what data you want to see.",
+          "start_time": 566.58
+        },
+        {
+          "index": 129,
+          "speaker_name": "Karthik N",
+          "raw_text": "If it's less than six slides or seven slides, you just decide that format and let us know.",
+          "start_time": 569.78
+        },
+        {
+          "index": 130,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we will just take.",
+          "start_time": 574.66
+        },
+        {
+          "index": 131,
+          "speaker_name": "Karthik N",
+          "raw_text": "The thing is, the people science team will usually take at least seven working days because they want to give the right data and right format.",
+          "start_time": 576.02
+        },
+        {
+          "index": 132,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that's the only time frame that we are looking at.",
+          "start_time": 584.38
+        },
+        {
+          "index": 133,
+          "speaker_name": "Karthik N",
+          "raw_text": "So once you confirm, we can deliver it in a week.",
+          "start_time": 587.02
+        },
+        {
+          "index": 134,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Yeah.",
+          "start_time": 592.7
+        },
+        {
+          "index": 135,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So the deadline for us is the 17th of April, I think, because we have the leadership team meeting then.",
+          "start_time": 593.1
+        },
+        {
+          "index": 136,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So until that time we should have the presentation like ready.",
+          "start_time": 599.74
+        },
+        {
+          "index": 137,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "And before that time we actually have to have it discussed with Bianca, with our HR director.",
+          "start_time": 606.63
+        },
+        {
+          "index": 138,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So not that much time, I would say.",
+          "start_time": 613.99
+        },
+        {
+          "index": 139,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "You could already start generating those slides.",
+          "start_time": 619.43
+        },
+        {
+          "index": 140,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Right?",
+          "start_time": 621.789
+        },
+        {
+          "index": 141,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "It's just like two, three weeks having Easter in the meantime.",
+          "start_time": 622.63
+        },
+        {
+          "index": 142,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "But additionally, because, okay, now we discussed the report and the slides that will be delivered to the leadership team.",
+          "start_time": 630.23
+        },
+        {
+          "index": 143,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "But then at some point we will give the access to the platform to the managers so they can see the results for their, for their teams.",
+          "start_time": 636.95
+        },
+        {
+          "index": 144,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So I understand that they will see the dashboards there as well.",
+          "start_time": 645.09
+        },
+        {
+          "index": 145,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "And we had this email discussion about what, what we can see in the dashboard that there is this average result from the two survey.",
+          "start_time": 649.49
+        },
+        {
+          "index": 146,
+          "speaker_name": "Karthik N",
+          "raw_text": "Mm.",
+          "start_time": 663.18
+        },
+        {
+          "index": 147,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "You got frozen, Magda.",
+          "start_time": 672.78
+        },
+        {
+          "index": 148,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Oh, sorry, sorry.",
+          "start_time": 675.42
+        },
+        {
+          "index": 149,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "I think I'm back.",
+          "start_time": 676.86
+        },
+        {
+          "index": 150,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "I'm just saying that, that it would be good if they can see the result of the last survey in that dashboard, not the average.",
+          "start_time": 679.18
+        },
+        {
+          "index": 151,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Because if you can, you know what I mean, that in the dashboard you could see at the moment you can see the average result from, from the two surveys which.",
+          "start_time": 686.7
+        },
+        {
+          "index": 152,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "What.",
+          "start_time": 700.63
+        },
+        {
+          "index": 153,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "What does it say to us?",
+          "start_time": 700.95
+        },
+        {
+          "index": 154,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "I mean we want to see the trend, we want to see to be able to compare.",
+          "start_time": 702.71
+        },
+        {
+          "index": 155,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "But average, that's not.",
+          "start_time": 706.23
+        },
+        {
+          "index": 156,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "And it will be.",
+          "start_time": 709.83
+        },
+        {
+          "index": 157,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "It can cause some misunderstandings for the monitors, I think.",
+          "start_time": 712.15
+        },
+        {
+          "index": 158,
+          "speaker_name": "Karthik N",
+          "raw_text": "Got it.",
+          "start_time": 719.29
+        },
+        {
+          "index": 159,
+          "speaker_name": "Karthik N",
+          "raw_text": "Which we can still exclude.",
+          "start_time": 719.85
+        },
+        {
+          "index": 160,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we have this option to exclude surveys from the main dashboard.",
+          "start_time": 721.37
+        },
+        {
+          "index": 161,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that is something that we can do from the back end.",
+          "start_time": 725.53
+        },
+        {
+          "index": 162,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that when people log in, the managers or the sub admins, when they log in, they only see the new survey results in the dashboard.",
+          "start_time": 727.73
+        },
+        {
+          "index": 163,
+          "speaker_name": "Karthik N",
+          "raw_text": "So individual reports are still available under the report section.",
+          "start_time": 736.41
+        },
+        {
+          "index": 164,
+          "speaker_name": "Karthik N",
+          "raw_text": "They can still see the old one and the new one.",
+          "start_time": 739.81
+        },
+        {
+          "index": 165,
+          "speaker_name": "Karthik N",
+          "raw_text": "But in the overall dashboard it will be just the new survey and not the old survey so that we can do it.",
+          "start_time": 742.53
+        },
+        {
+          "index": 166,
+          "speaker_name": "Karthik N",
+          "raw_text": "So tonight I'll just exclude the survey and I'll confirm so that you see the right scores from the dashboard that will also reflect for you as well.",
+          "start_time": 748.69
+        },
+        {
+          "index": 167,
+          "speaker_name": "Karthik N",
+          "raw_text": "So when you also see it, it is just a new survey, not the old one.",
+          "start_time": 756.53
+        },
+        {
+          "index": 168,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "I think that's.",
+          "start_time": 761.81
+        },
+        {
+          "index": 169,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Yeah, that will be easier for us to.",
+          "start_time": 762.81
+        },
+        {
+          "index": 170,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "To use the.",
+          "start_time": 765.13
+        },
+        {
+          "index": 171,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "The tool especially then when the managers will be.",
+          "start_time": 765.89
+        },
+        {
+          "index": 172,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Will be using it.",
+          "start_time": 768.37
+        },
+        {
+          "index": 173,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So.",
+          "start_time": 769.33
+        },
+        {
+          "index": 174,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "And I also had one question about the interpret reputation of this Net promoter score because that, that is something that we really need to be able to, to define and to, to give people right way to, to understand it.",
+          "start_time": 771.17
+        },
+        {
+          "index": 175,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "And do you have like, I don't know, separate slide on it or maybe something you could share?",
+          "start_time": 788.27
+        },
+        {
+          "index": 176,
+          "speaker_name": "Karthik N",
+          "raw_text": "We do so for, for enps we actually show how this, it's calculated, what's the calculation methodology and how the score comes in.",
+          "start_time": 794.91
+        },
+        {
+          "index": 177,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 803.94
+        },
+        {
+          "index": 178,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we have like a couple of slides specifically about the ENPs, which we can share it with you as well.",
+          "start_time": 804.22
+        },
+        {
+          "index": 179,
+          "speaker_name": "Karthik N",
+          "raw_text": "So if you want to include it in the presentation, you can do that.",
+          "start_time": 810.14
+        },
+        {
+          "index": 180,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "I think we can also exclude it because last year we didn't use it at all.",
+          "start_time": 813.62
+        },
+        {
+          "index": 181,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "And I don't see the benefit of having this as an indicator.",
+          "start_time": 817.34
+        },
+        {
+          "index": 182,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "I think in the conversation with Bianca we wanted to use it this year if as we have it.",
+          "start_time": 823.7
+        },
+        {
+          "index": 183,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "As we have it.",
+          "start_time": 829.43
+        },
+        {
+          "index": 184,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "But let's see, let's see.",
+          "start_time": 830.15
+        },
+        {
+          "index": 185,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Of course we will need to confirm with her if what is the message and she would like to transfer to the.",
+          "start_time": 831.11
+        },
+        {
+          "index": 186,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "To the leadership team and then to.",
+          "start_time": 837.07
+        },
+        {
+          "index": 187,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "To people.",
+          "start_time": 839.07
+        },
+        {
+          "index": 188,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "But yeah, was there anything else?",
+          "start_time": 840.99
+        },
+        {
+          "index": 189,
+          "speaker_name": "Domnita Damian",
+          "raw_text": "I think that's that this is it.",
+          "start_time": 850.75
+        },
+        {
+          "index": 190,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "We just need to start working on the.",
+          "start_time": 852.27
+        },
+        {
+          "index": 191,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "On the presentation, please, for us, because it will be like the process and on our side, maybe we can still confirm during next few days.",
+          "start_time": 855.23
+        },
+        {
+          "index": 192,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Yeah.",
+          "start_time": 867.71
+        },
+        {
+          "index": 193,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "What populations we want to see in the presentation, like in the details.",
+          "start_time": 868.11
+        },
+        {
+          "index": 194,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Right.",
+          "start_time": 873.07
+        },
+        {
+          "index": 195,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So countries and like you said, global and then the departments for global.",
+          "start_time": 873.39
+        },
+        {
+          "index": 196,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "For sure.",
+          "start_time": 880.6
+        },
+        {
+          "index": 197,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Because the leadership team members, those are their areas of responsibility.",
+          "start_time": 880.96
+        },
+        {
+          "index": 198,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Right.",
+          "start_time": 885.56
+        },
+        {
+          "index": 199,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So they will want to see their populations.",
+          "start_time": 885.88
+        },
+        {
+          "index": 200,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So yeah.",
+          "start_time": 890.28
+        },
+        {
+          "index": 201,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, that.",
+          "start_time": 893.32
+        },
+        {
+          "index": 202,
+          "speaker_name": "Karthik N",
+          "raw_text": "So you, like I mentioned, you can pull the data from the platform, but if you can also confirm what are the details you want in the presentation.",
+          "start_time": 894.12
+        },
+        {
+          "index": 203,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, absolutely.",
+          "start_time": 902.68
+        },
+        {
+          "index": 204,
+          "speaker_name": "Karthik N",
+          "raw_text": "Culture Monkey team can help.",
+          "start_time": 903.4
+        },
+        {
+          "index": 205,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we already have the format ready, which is our default format.",
+          "start_time": 905.48
+        },
+        {
+          "index": 206,
+          "speaker_name": "Karthik N",
+          "raw_text": "But any.",
+          "start_time": 908.48
+        },
+        {
+          "index": 207,
+          "speaker_name": "Karthik N",
+          "raw_text": "Anything that you need to tweak or anything, you can just send it to us via email.",
+          "start_time": 909.6
+        },
+        {
+          "index": 208,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 913.68
+        },
+        {
+          "index": 209,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we can also help you with refinement and moreover, anything related to text, like where you want to do a thematic analysis or a text analysis of all the feedbacks that you received.",
+          "start_time": 914
+        },
+        {
+          "index": 210,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we have.",
+          "start_time": 925.04
+        },
+        {
+          "index": 211,
+          "speaker_name": "Karthik N",
+          "raw_text": "Our team can still help you with the analysis.",
+          "start_time": 925.84
+        },
+        {
+          "index": 212,
+          "speaker_name": "Karthik N",
+          "raw_text": "So a lot of comments which you cannot read.",
+          "start_time": 928.24
+        },
+        {
+          "index": 213,
+          "speaker_name": "Karthik N",
+          "raw_text": "So you cannot read a lot of comments.",
+          "start_time": 931.04
+        },
+        {
+          "index": 214,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we can do a thematic analysis that we can also include in the presentation.",
+          "start_time": 932.64
+        },
+        {
+          "index": 215,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "That would be good, right?",
+          "start_time": 938.34
+        },
+        {
+          "index": 216,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Yeah.",
+          "start_time": 941.54
+        },
+        {
+          "index": 217,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Like it is probably AI driven.",
+          "start_time": 941.98
+        },
+        {
+          "index": 218,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Right.",
+          "start_time": 943.86
+        },
+        {
+          "index": 219,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So you put the information there and it is.",
+          "start_time": 944.1
+        },
+        {
+          "index": 220,
+          "speaker_name": "Karthik N",
+          "raw_text": "It's partially AI driven because we actually automated the AI driven part.",
+          "start_time": 948.82
+        },
+        {
+          "index": 221,
+          "speaker_name": "Karthik N",
+          "raw_text": "But then our team will also manually verify if it actually aligns with the feedbacks that we received.",
+          "start_time": 953.78
+        },
+        {
+          "index": 222,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 958.34
+        },
+        {
+          "index": 223,
+          "speaker_name": "Karthik N",
+          "raw_text": "So 100% it cannot be right.",
+          "start_time": 958.66
+        },
+        {
+          "index": 224,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we actually partially rely on that.",
+          "start_time": 961.33
+        },
+        {
+          "index": 225,
+          "speaker_name": "Karthik N",
+          "raw_text": "And then we also manually verify to make sure it aligns with all the feedbacks that you received.",
+          "start_time": 964.61
+        },
+        {
+          "index": 226,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 969.41
+        },
+        {
+          "index": 227,
+          "speaker_name": "Karthik N",
+          "raw_text": "And then we give you the final output.",
+          "start_time": 969.77
+        },
+        {
+          "index": 228,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that is like probably a four to five, four slides that we can do separately, like a separate report.",
+          "start_time": 972.13
+        },
+        {
+          "index": 229,
+          "speaker_name": "Karthik N",
+          "raw_text": "It's not included in the executive report, but if you want that as a separate report which we can give, it can be shared internally to the leaders instead of doing it in the executive presentation.",
+          "start_time": 978.33
+        },
+        {
+          "index": 230,
+          "speaker_name": "Karthik N",
+          "raw_text": "That can also happen.",
+          "start_time": 988.78
+        },
+        {
+          "index": 231,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "That's good.",
+          "start_time": 991.34
+        },
+        {
+          "index": 232,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "We will get a separate invoice for",
+          "start_time": 992.54
+        },
+        {
+          "index": 233,
+          "speaker_name": "Karthik N",
+          "raw_text": "this additional service or no, absolutely not.",
+          "start_time": 994.98
+        },
+        {
+          "index": 234,
+          "speaker_name": "Karthik N",
+          "raw_text": "Absolutely not.",
+          "start_time": 998.54
+        },
+        {
+          "index": 235,
+          "speaker_name": "Karthik N",
+          "raw_text": "So it's actually included.",
+          "start_time": 999.42
+        },
+        {
+          "index": 236,
+          "speaker_name": "Karthik N",
+          "raw_text": "Like even before the survey we spoke to Domdita, so all these reports are already included.",
+          "start_time": 1000.7
+        },
+        {
+          "index": 237,
+          "speaker_name": "Karthik N",
+          "raw_text": "And moreover, this year we have a lot of hands in the people Science team, Data Science team.",
+          "start_time": 1006.06
+        },
+        {
+          "index": 238,
+          "speaker_name": "Karthik N",
+          "raw_text": "So they want all our enterprise customers to have a lot of information from the survey so that the leaders can still see what we can achieve in the next survey.",
+          "start_time": 1011.98
+        },
+        {
+          "index": 239,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1022.24
+        },
+        {
+          "index": 240,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we want to give all the information to the leaders so they also see the value.",
+          "start_time": 1022.48
+        },
+        {
+          "index": 241,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1026.12
+        },
+        {
+          "index": 242,
+          "speaker_name": "Karthik N",
+          "raw_text": "End of the day we just want the leaders to see the value, how the survey ends.",
+          "start_time": 1026.44
+        },
+        {
+          "index": 243,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1030.72
+        },
+        {
+          "index": 244,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that's the reason we want to give all the reports to you.",
+          "start_time": 1031
+        },
+        {
+          "index": 245,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Great, that's.",
+          "start_time": 1035.12
+        },
+        {
+          "index": 246,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "That's a great information.",
+          "start_time": 1035.92
+        },
+        {
+          "index": 247,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Well, maybe the comparison between the surveys.",
+          "start_time": 1038.96
+        },
+        {
+          "index": 248,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Right.",
+          "start_time": 1043.009
+        },
+        {
+          "index": 249,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "This is something that would be very interesting for the leadership team to see.",
+          "start_time": 1043.409
+        },
+        {
+          "index": 250,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "To see the comparison in the presentation for the key dimensions.",
+          "start_time": 1048.369
+        },
+        {
+          "index": 251,
+          "speaker_name": "Karthik N",
+          "raw_text": "Well that's nice.",
+          "start_time": 1054.849
+        },
+        {
+          "index": 252,
+          "speaker_name": "Karthik N",
+          "raw_text": "So with one of our customers we actually did this comparison as well.",
+          "start_time": 1056.129
+        },
+        {
+          "index": 253,
+          "speaker_name": "Karthik N",
+          "raw_text": "So the slides that I showed you will have like a comparison slide where it will show the previous years driver score and then right next to it it will have the current score.",
+          "start_time": 1060.249
+        },
+        {
+          "index": 254,
+          "speaker_name": "Karthik N",
+          "raw_text": "So all we have to do is it's the same format but we make sure there is a comparison each slide and there is a description for it.",
+          "start_time": 1071.69
+        },
+        {
+          "index": 255,
+          "speaker_name": "Karthik N",
+          "raw_text": "Right.",
+          "start_time": 1078.89
+        },
+        {
+          "index": 256,
+          "speaker_name": "Karthik N",
+          "raw_text": "So whether it's increased, whether it's decreased or it's staying the same.",
+          "start_time": 1079.29
+        },
+        {
+          "index": 257,
+          "speaker_name": "Karthik N",
+          "raw_text": "So that is also doable.",
+          "start_time": 1083.45
+        },
+        {
+          "index": 258,
+          "speaker_name": "Karthik N",
+          "raw_text": "But yes, you can confirm this via email.",
+          "start_time": 1085.45
+        },
+        {
+          "index": 259,
+          "speaker_name": "Karthik N",
+          "raw_text": "So from our site we will send you this ENPS slides, how it works and what's the calculation, just for your reference.",
+          "start_time": 1087.53
+        },
+        {
+          "index": 260,
+          "speaker_name": "Karthik N",
+          "raw_text": "And then we will exclude the previous survey from dashboard so it will only show the new dashboard surveys.",
+          "start_time": 1094.79
+        },
+        {
+          "index": 261,
+          "speaker_name": "Karthik N",
+          "raw_text": "Third thing, I'll talk to the team about thematic analysis that we will separately work.",
+          "start_time": 1100.63
+        },
+        {
+          "index": 262,
+          "speaker_name": "Karthik N",
+          "raw_text": "The team will start working on it, but the executive presentation, you can confirm what are the slides that you want to see and what design, format, etc.",
+          "start_time": 1105.55
+        },
+        {
+          "index": 263,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Right.",
+          "start_time": 1113.71
+        },
+        {
+          "index": 264,
+          "speaker_name": "Karthik N",
+          "raw_text": "So we will wait for that but rest of the things we will move today itself.",
+          "start_time": 1113.91
+        },
+        {
+          "index": 265,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Okay.",
+          "start_time": 1117.43
+        },
+        {
+          "index": 266,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Okay.",
+          "start_time": 1118.03
+        },
+        {
+          "index": 267,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So I, I think we will be able to confirm the details for the slides quite, quite soon to give you enough time to work on and also to have some time for some corrections or additions in in the meantime.",
+          "start_time": 1118.63
+        },
+        {
+          "index": 268,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "So.",
+          "start_time": 1133.41
+        },
+        {
+          "index": 269,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Yeah.",
+          "start_time": 1133.81
+        },
+        {
+          "index": 270,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Okay.",
+          "start_time": 1134.53
+        },
+        {
+          "index": 271,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "All right.",
+          "start_time": 1135.25
+        },
+        {
+          "index": 272,
+          "speaker_name": "Karthik N",
+          "raw_text": "Yes, I think those were the things from my side.",
+          "start_time": 1138.37
+        },
+        {
+          "index": 273,
+          "speaker_name": "Karthik N",
+          "raw_text": "But any questions or anything that you still have to discuss.",
+          "start_time": 1140.37
+        },
+        {
+          "index": 274,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Nothing more from my side I think.",
+          "start_time": 1145.89
+        },
+        {
+          "index": 275,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "No.",
+          "start_time": 1148.05
+        },
+        {
+          "index": 276,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Okay.",
+          "start_time": 1149.25
+        },
+        {
+          "index": 277,
+          "speaker_name": "Karthik N",
+          "raw_text": "Great.",
+          "start_time": 1150.05
+        },
+        {
+          "index": 278,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Right.",
+          "start_time": 1150.41
+        },
+        {
+          "index": 279,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "We are aligned.",
+          "start_time": 1151.01
+        },
+        {
+          "index": 280,
+          "speaker_name": "Karthik N",
+          "raw_text": "Thank you.",
+          "start_time": 1154.37
+        },
+        {
+          "index": 281,
+          "speaker_name": "Karthik N",
+          "raw_text": "Thank you.",
+          "start_time": 1154.73
+        },
+        {
+          "index": 282,
+          "speaker_name": "Karthik N",
+          "raw_text": "I'll inform you.",
+          "start_time": 1155.09
+        },
+        {
+          "index": 283,
+          "speaker_name": "Karthik N",
+          "raw_text": "So since Yogi is not available, I'll inform him all the details so he will get back to you over an email.",
+          "start_time": 1156.21
+        },
+        {
+          "index": 284,
+          "speaker_name": "Karthik N",
+          "raw_text": "So from tomorrow he'll be in touch with you.",
+          "start_time": 1161.89
+        },
+        {
+          "index": 285,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Right.",
+          "start_time": 1165.17
+        },
+        {
+          "index": 286,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Okay.",
+          "start_time": 1165.65
+        },
+        {
+          "index": 287,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Thank you so much.",
+          "start_time": 1166.53
+        },
+        {
+          "index": 288,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Thank you.",
+          "start_time": 1167.81
+        },
+        {
+          "index": 289,
+          "speaker_name": "Karthik N",
+          "raw_text": "Thank you.",
+          "start_time": 1169.169
+        },
+        {
+          "index": 290,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Bye bye Bye bye.",
+          "start_time": 1170.13
+        },
+        {
+          "index": 291,
+          "speaker_name": "Magdalena Majkowska",
+          "raw_text": "Thanks.",
+          "start_time": 1171.49
+        }
+      ],
+      "meeting_link": "https://teams.microsoft.com/l/meetup-join/19:meeting_NjA3N2Q5MjQtNjZiZS00MWFlLWFlZjUtNzQ2ZGU4NzM4MGQ0@thread.v2/0?context={\"Tid\":\"9f654f46-8532-4ffc-8ef1-9f20f78c97ef\",\"Oid\":\"0f408415-1977-4389-80a6-3dffd1e80186\"}"
+    },
+    {
+      "id": "01KM7EGMB0QBS8KMZ3T65TX7Z9",
+      "title": "CultureMonkey Employee Engagement Discussion",
+      "date": 1774242000000,
+      "participants": [
+        "sgangaboina@in.alohaaba.com,vishnu.d@culturemonkey.io",
+        "sgangaboina@in.alohaaba.com"
+      ],
+      "summary": {
+        "overview": "- **Need for New Platform:** Aloha needs a structured pulse survey tool for **150 employees** and **40 contractors** to improve feedback.  \n- **Culture Monkey Overview:** The platform supports multi-language surveys and rich analytics through various channels like Slack and email.  \n- **Survey Features:** Includes templates, anonymity options, and detailed reports with participation rates and sentiment analysis.  \n- **Pricing Structure:** Set at **INR 380,000 annually** for up to 150 employees, with no extra fees for features.  \n- **Decision Process:** Evaluated by India and US leadership for commercial viability and improved actionable insights.  \n- **Next Steps:** Ongoing support from Culture Monkey with follow-up on product details and onboarding assistance.",
+        "action_items": "\n**Shashi Kanth Gangaboina**\nShare existing survey questions with Vishnu for review and customization suggestions (02:43)\nProvide feedback or queries after reviewing product and commercial details that Vishnu will send (20:59)\n\n**Vishnu**\nReview Shashi’s provided survey questions and assist with question customization (02:55)\nSend detailed product presentation, commercial proposal, and contact information to Shashi post-meeting (20:59)\nSupport onboarding and survey launch process once the decision is made (20:44)\n",
+        "notes": "## **Employee Engagement Platform Needs**\n\nThe company Aloha is seeking a structured pulse survey tool to improve employee feedback processes and analytics.\n\n- **Unstructured feedback system triggers need for new platform** at Aloha with about **150 employees** and **40 contractors** (02:08)  \n    - Current feedback is informal and lacks tracking and actionable insights  \n    - Existing HRMS tools provide limited survey capabilities without follow-up actions  \n    - Immediate launch target is within **one week**, indicating urgency  \n    - Leadership wants expert recommendations for survey question length and structure\n\n- **Aloha operates as a US-headquartered product company with India as development hub** (02:08)  \n    - Remote work setup limits demographic filters for survey analysis  \n    - Focus on department or role-level segmentation rather than detailed demographic splits  \n    - Employee feedback needs to be anonymous for candid responses\n\n## **Culture Monkey Platform Overview**\n\nCulture Monkey offers a comprehensive employee engagement suite designed to close the loop between feedback and action.\n\n- **Platform supports multi-language surveys, multiple distribution channels, and rich analytics** (04:24)  \n    - Surveys can be sent via Slack, email, WhatsApp, MS Teams, and more  \n    - Analytics include heat maps, demographic breakdowns, and qualitative feedback analysis  \n    - Inbuilt chatbot allows querying insights and generating action plans automatically  \n    - AI suggests action plans but allows manual customization and collaboration\n\n- **Manager dashboards provide real-time engagement metrics and benchmarks** (13:49)  \n    - Managers see engagement scores, ENPS trends, strengths/weaknesses, and industry comparisons  \n    - Option to toggle visibility to skip managers with very few reportees for more meaningful insights  \n    - Designed to reduce manual reporting and encourage proactive management\n\n## **Survey Creation and Reporting Features**\n\nThe platform simplifies survey building and delivers detailed reporting to guide decision-making.\n\n- **Survey setup includes template selection, multi-language support, and anonymous options** (06:51)  \n    - Supports rating, single/multi-select, free text, and various rating scales  \n    - Employee data upload for audience targeting with automated reminders  \n    - Survey links do not require portal logins and support resuming incomplete responses\n\n- **Post-survey, detailed reports show participation rates, ENPS scores, and driver-level insights** (08:49)  \n    - Heat maps enable drill-down by team, location, manager, and other layers  \n    - Qualitative themes summarized with positive and negative sentiment highlights  \n    - Action plans generated automatically based on low-scoring drivers for quick response\n\n## **Commercial and Decision-Making Context**\n\nPricing and evaluation are based on headcount with consideration for organizational scale and investment rationale.\n\n- **Pricing set at INR 380,000 annually for up to 150 employees with unlimited surveys** (16:45)  \n    - Includes dedicated account manager and full platform access without feature restrictions  \n    - Pricing model is strictly per employee headcount, no additional fees for features  \n    - Culture Monkey handles question framing, survey launches, and analytics support\n\n- **Decision process involves India and US leadership teams evaluating commercial viability** (17:30)  \n    - Current platform is minimal and lacks analytics and customization required for growth  \n    - Previous tools used were SurveyMonkey, Aeon, Tower Watson, but lacked actionable insights  \n    - Emphasis on balancing investment cost with the value of improved feedback and actionability\n\n- **Aloha's goal is to enhance participation and generate meaningful, expert-driven insights** (19:35)  \n    - Current offline discussions lack openness; platform aims to encourage honest feedback  \n    - Culture Monkey’s analytics and action planning are key differentiators noted by Vishnu  \n    - Implementation support offered to accelerate launch and ongoing survey management\n\n## **Next Steps and Support Commitment**\n\nVishnu from Culture Monkey commits to ongoing support and providing detailed product and commercial information.\n\n- **Post-meeting follow-up to share product details and commercial proposal** (21:08)  \n    - Vishnu will email documentation and contact info for continuous engagement  \n    - Open invitation for further discussions as India leadership evaluates options  \n    - Emphasis on seamless onboarding and dedicated account management to ease transition",
+        "keywords": [
+          "Employee Engagement",
+          "Pulse Survey",
+          "ENPS",
+          "Survey Analytics",
+          "Action Planning",
+          "Manager Dashboard"
+        ]
+      },
+      "sentences": [
+        {
+          "index": 0,
+          "speaker_name": "Vish",
+          "raw_text": "Good morning.",
+          "start_time": 0.72
+        },
+        {
+          "index": 1,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Hello.",
+          "start_time": 5.36
+        },
+        {
+          "index": 2,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Hi.",
+          "start_time": 6
+        },
+        {
+          "index": 3,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Good morning.",
+          "start_time": 6.56
+        },
+        {
+          "index": 4,
+          "speaker_name": "Vish",
+          "raw_text": "Hi.",
+          "start_time": 8.24
+        },
+        {
+          "index": 5,
+          "speaker_name": "Vish",
+          "raw_text": "Can you hear me?",
+          "start_time": 8.88
+        },
+        {
+          "index": 6,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Yeah.",
+          "start_time": 10.56
+        },
+        {
+          "index": 7,
+          "speaker_name": "Vish",
+          "raw_text": "Wonderful.",
+          "start_time": 12.08
+        },
+        {
+          "index": 8,
+          "speaker_name": "Vish",
+          "raw_text": "Wonderful.",
+          "start_time": 12.64
+        },
+        {
+          "index": 9,
+          "speaker_name": "Vish",
+          "raw_text": "Morning, Shashikant.",
+          "start_time": 13.92
+        },
+        {
+          "index": 10,
+          "speaker_name": "Vish",
+          "raw_text": "How's the day going?",
+          "start_time": 15.28
+        },
+        {
+          "index": 11,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Great.",
+          "start_time": 17.92
+        },
+        {
+          "index": 12,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Monday morning starting full of energy.",
+          "start_time": 18.28
+        },
+        {
+          "index": 13,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Good.",
+          "start_time": 21.28
+        },
+        {
+          "index": 14,
+          "speaker_name": "Vish",
+          "raw_text": "Good to know that.",
+          "start_time": 21.6
+        },
+        {
+          "index": 15,
+          "speaker_name": "Vish",
+          "raw_text": "Good to know.",
+          "start_time": 22.28
+        },
+        {
+          "index": 16,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 23.12
+        },
+        {
+          "index": 17,
+          "speaker_name": "Vish",
+          "raw_text": "So this is Vishnu and I'm from the partnerships team at Culture Monkey and will be a point of contact moving forward.",
+          "start_time": 23.68
+        },
+        {
+          "index": 18,
+          "speaker_name": "Vish",
+          "raw_text": "Would love to understand more about you.",
+          "start_time": 31.4
+        },
+        {
+          "index": 19,
+          "speaker_name": "Vish",
+          "raw_text": "And of course I do understand that you want to run Pulse Survey, but would love to understand how are you currently doing this?",
+          "start_time": 32.88
+        },
+        {
+          "index": 20,
+          "speaker_name": "Vish",
+          "raw_text": "Is it a transition from a different solution?",
+          "start_time": 38.64
+        },
+        {
+          "index": 21,
+          "speaker_name": "Vish",
+          "raw_text": "How many employees are there and how soon are you planning to launch a survey?",
+          "start_time": 40.68
+        },
+        {
+          "index": 22,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 44.32
+        },
+        {
+          "index": 23,
+          "speaker_name": "Vish",
+          "raw_text": "So all this would help me to structure the product demo for you.",
+          "start_time": 44.52
+        },
+        {
+          "index": 24,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Sure.",
+          "start_time": 49.08
+        },
+        {
+          "index": 25,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Vishnu.",
+          "start_time": 49.44
+        },
+        {
+          "index": 26,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So to start off with, I'm Sashi.",
+          "start_time": 50.68
+        },
+        {
+          "index": 27,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "I lead the India HR for this company named Aloha.",
+          "start_time": 53.32
+        },
+        {
+          "index": 28,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "We are a product based company based, headquartered out of US.",
+          "start_time": 58.92
+        },
+        {
+          "index": 29,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "India is basically the development center.",
+          "start_time": 62.92
+        },
+        {
+          "index": 30,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "We are close to about 150 people in full time and about 40 members in contractual modes through various staffing solutions.",
+          "start_time": 66.2
+        },
+        {
+          "index": 31,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "That's in terms of the headcount and in terms of the requirement, they have been a little bit of an unstructured way of running our feedbacks and pulses through the staff.",
+          "start_time": 76.84
+        },
+        {
+          "index": 32,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Okay.",
+          "start_time": 89.35
+        },
+        {
+          "index": 33,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "It is not a very structured or a very organized program through some of the internal mechanisms of the HRMS platforms and all that has been triggered, but there's not been concrete really, which gives a successive tracking of the details or the pulse or there is no action plan based out of that.",
+          "start_time": 90.95
+        },
+        {
+          "index": 34,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So that is the trigger of this requirement.",
+          "start_time": 109.75
+        },
+        {
+          "index": 35,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "We do have a requirement of running through multiple ways to understand the pulse.",
+          "start_time": 113.59
+        },
+        {
+          "index": 36,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "One is of course, the regular employee surveys.",
+          "start_time": 119.42
+        },
+        {
+          "index": 37,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "And then I wanted to understand how the ENPS works.",
+          "start_time": 121.74
+        },
+        {
+          "index": 38,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "And I see that's one of the provisions in your platform.",
+          "start_time": 125.34
+        },
+        {
+          "index": 39,
+          "speaker_name": "Vish",
+          "raw_text": "Yes.",
+          "start_time": 128.7
+        },
+        {
+          "index": 40,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So that's the requirement in brief.",
+          "start_time": 129.98
+        },
+        {
+          "index": 41,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "And maybe as you keep engaging with multiple organizations, you can share your expertise recommendations on how do we run it and structure it.",
+          "start_time": 131.82
+        },
+        {
+          "index": 42,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "And that's brief.",
+          "start_time": 141.42
+        },
+        {
+          "index": 43,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So in terms of the requirement, we need to launch right away.",
+          "start_time": 142.86
+        },
+        {
+          "index": 44,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So if possible, something in about a week's time also is something which we are targeting for.",
+          "start_time": 146.94
+        },
+        {
+          "index": 45,
+          "speaker_name": "Vish",
+          "raw_text": "Okay.",
+          "start_time": 153.1
+        },
+        {
+          "index": 46,
+          "speaker_name": "Vish",
+          "raw_text": "Okay.",
+          "start_time": 153.66
+        },
+        {
+          "index": 47,
+          "speaker_name": "Vish",
+          "raw_text": "I'm assuming that you already have your questions ready.",
+          "start_time": 155.5
+        },
+        {
+          "index": 48,
+          "speaker_name": "Vish",
+          "raw_text": "Is that so?",
+          "start_time": 157.98
+        },
+        {
+          "index": 49,
+          "speaker_name": "Vish",
+          "raw_text": "Because if you're looking to launch in a week.",
+          "start_time": 158.66
+        },
+        {
+          "index": 50,
+          "speaker_name": "Vish",
+          "raw_text": "Okay, okay, got it.",
+          "start_time": 161.18
+        },
+        {
+          "index": 51,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 163.02
+        },
+        {
+          "index": 52,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "I can share that.",
+          "start_time": 163.42
+        },
+        {
+          "index": 53,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "If you can review it and share your recommendations if it is too lengthy, based on the multiple platforms which you have seen for other companies, maybe that expertise should also.",
+          "start_time": 164.46
+        },
+        {
+          "index": 54,
+          "speaker_name": "Vish",
+          "raw_text": "Oh yeah, absolutely.",
+          "start_time": 175.96
+        },
+        {
+          "index": 55,
+          "speaker_name": "Vish",
+          "raw_text": "You can share that with me.",
+          "start_time": 176.92
+        },
+        {
+          "index": 56,
+          "speaker_name": "Vish",
+          "raw_text": "You know, post the call and I'll also share that with my team.",
+          "start_time": 178.28
+        },
+        {
+          "index": 57,
+          "speaker_name": "Vish",
+          "raw_text": "So you Know, it gets super easy when you, when you come on board, they can input those questions for you.",
+          "start_time": 180.88
+        },
+        {
+          "index": 58,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Sure.",
+          "start_time": 185.96
+        },
+        {
+          "index": 59,
+          "speaker_name": "Vish",
+          "raw_text": "Right, right.",
+          "start_time": 186.36
+        },
+        {
+          "index": 60,
+          "speaker_name": "Vish",
+          "raw_text": "So I'll begin with a quick presentation of what Culture Monkey does and then I'll move to the product demo in between.",
+          "start_time": 187.96
+        },
+        {
+          "index": 61,
+          "speaker_name": "Vish",
+          "raw_text": "If you have any questions as such, you can stop me right there and ask me.",
+          "start_time": 192.92
+        },
+        {
+          "index": 62,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Sure.",
+          "start_time": 196.52
+        },
+        {
+          "index": 63,
+          "speaker_name": "Vish",
+          "raw_text": "Right, right.",
+          "start_time": 196.88
+        },
+        {
+          "index": 64,
+          "speaker_name": "Vish",
+          "raw_text": "I hope you're able to see my screen.",
+          "start_time": 198.52
+        },
+        {
+          "index": 65,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Great.",
+          "start_time": 201.2
+        },
+        {
+          "index": 66,
+          "speaker_name": "Vish",
+          "raw_text": "Yeah, great.",
+          "start_time": 201.4
+        },
+        {
+          "index": 67,
+          "speaker_name": "Vish",
+          "raw_text": "So to begin with, as you know, CultureMonkey is a full stack employee engagement platform trusted by over 100 different countries and 300 plus customers across the globe.",
+          "start_time": 203.28
+        },
+        {
+          "index": 68,
+          "speaker_name": "Vish",
+          "raw_text": "And where we come into the picture is that we help you in terms of effectively bridging the gap between listening to your employees and taking the feedback into action.",
+          "start_time": 211.52
+        },
+        {
+          "index": 69,
+          "speaker_name": "Vish",
+          "raw_text": "And in between, whatever that is happening is totally taken care of.",
+          "start_time": 219.12
+        },
+        {
+          "index": 70,
+          "speaker_name": "Vish",
+          "raw_text": "CultureMonkey itself.",
+          "start_time": 221.72
+        },
+        {
+          "index": 71,
+          "speaker_name": "Vish",
+          "raw_text": "And some of the reasons why our customers love us is because we help you with the continuous listing process.",
+          "start_time": 223.2
+        },
+        {
+          "index": 72,
+          "speaker_name": "Vish",
+          "raw_text": "If you want to send out annual engagement survey, biannual survey, all this can be sent from Culture Monkey irrespective of which locations or languages that your employees may speak.",
+          "start_time": 228.19
+        },
+        {
+          "index": 73,
+          "speaker_name": "Vish",
+          "raw_text": "And in terms of how we operate as first we help you in sending out the survey and post that, what happens is that the analytics layer that comes into the picture, gathers all the data and you get to see how these insights are being distributed through the heat map and through the feedback analysis which can also be broken down into multiple layers as well.",
+          "start_time": 237.07
+        },
+        {
+          "index": 74,
+          "speaker_name": "Vish",
+          "raw_text": "And not just offsetting it goes one step ahead and gives you an understanding of what are the action plans that you can take based on the feedback that you have received completely.",
+          "start_time": 255.75
+        },
+        {
+          "index": 75,
+          "speaker_name": "Vish",
+          "raw_text": "And talking about the platform, we've broken the platform into four different modules, right?",
+          "start_time": 264.41
+        },
+        {
+          "index": 76,
+          "speaker_name": "Vish",
+          "raw_text": "The first module is Listening module and get to see a rich template library of all set of templates.",
+          "start_time": 268.65
+        },
+        {
+          "index": 77,
+          "speaker_name": "Vish",
+          "raw_text": "You can go ahead and choose any of these templates, customize the way you want it or if you want to create a new template on your own, you're free to do that as well.",
+          "start_time": 273.61
+        },
+        {
+          "index": 78,
+          "speaker_name": "Vish",
+          "raw_text": "While this being done, you'll also be able to know send it across various channels like Slack emails, text messages, WhatsApp, Ms. teams, you know, etc.",
+          "start_time": 281.69
+        },
+        {
+          "index": 79,
+          "speaker_name": "Vish",
+          "raw_text": "And, and yeah, while this being done, that's when the analyze part comes in.",
+          "start_time": 291.72
+        },
+        {
+          "index": 80,
+          "speaker_name": "Vish",
+          "raw_text": "And this is what differentiates Culture Monkey from the other other platforms.",
+          "start_time": 295.16
+        },
+        {
+          "index": 81,
+          "speaker_name": "Vish",
+          "raw_text": "The reason is because we, you know, we, you have a very structured reports and analytics within the platform itself which can be extracted as an offline report along with the heat map which gives you a proper demographic breakdown and the feedback analysis on, you know, understanding the qualitative, qualitative and dissecting that feedback.",
+          "start_time": 298.92
+        },
+        {
+          "index": 82,
+          "speaker_name": "Vish",
+          "raw_text": "Also have an inbuilt chatbot that helps you to fetch the inner reports and in fact you can use it for your advantage to fit your feature action plannings as well.",
+          "start_time": 316.1
+        },
+        {
+          "index": 83,
+          "speaker_name": "Vish",
+          "raw_text": "And the last piece is action scanbound board.",
+          "start_time": 326.82
+        },
+        {
+          "index": 84,
+          "speaker_name": "Vish",
+          "raw_text": "So what happens here is that based on all the feedback that you've received, the system itself will suggest you the action plan.",
+          "start_time": 330.1
+        },
+        {
+          "index": 85,
+          "speaker_name": "Vish",
+          "raw_text": "So you get to close the loop.",
+          "start_time": 337.54
+        },
+        {
+          "index": 86,
+          "speaker_name": "Vish",
+          "raw_text": "This works in a collaborative basis.",
+          "start_time": 338.98
+        },
+        {
+          "index": 87,
+          "speaker_name": "Vish",
+          "raw_text": "Although this AI generated, you can go ahead and edit these action plans or you can also create a new one.",
+          "start_time": 341.06
+        },
+        {
+          "index": 88,
+          "speaker_name": "Vish",
+          "raw_text": "And if you feel you want to give access to your employer for your managers to see to collaborate the, you know, the action plans effectively, that can also be doable.",
+          "start_time": 345.7
+        },
+        {
+          "index": 89,
+          "speaker_name": "Vish",
+          "raw_text": "And the last piece is sustainable, which is certainly one of the abuse piece of culture monkey because each and every manager will have a dedicated dashboard where they can go ahead and check out some of the key insights that falls under their cohort.",
+          "start_time": 358.02
+        },
+        {
+          "index": 90,
+          "speaker_name": "Vish",
+          "raw_text": "So this is to eliminate the constant conversation that you wanted to have with your managers.",
+          "start_time": 369.38
+        },
+        {
+          "index": 91,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 373.56
+        },
+        {
+          "index": 92,
+          "speaker_name": "Vish",
+          "raw_text": "So with this in place, any manager with five plus reportees, they'll have access to the dashboard.",
+          "start_time": 373.72
+        },
+        {
+          "index": 93,
+          "speaker_name": "Vish",
+          "raw_text": "They know what is happening when they go hard as such.",
+          "start_time": 379.52
+        },
+        {
+          "index": 94,
+          "speaker_name": "Vish",
+          "raw_text": "So talking about the support, once you come on board, you'll have a dedicated account management team who would be closely working with you through a Data Neo with CultureMonkey.",
+          "start_time": 382.68
+        },
+        {
+          "index": 95,
+          "speaker_name": "Vish",
+          "raw_text": "And what they do is put up a regular cadence call.",
+          "start_time": 391.16
+        },
+        {
+          "index": 96,
+          "speaker_name": "Vish",
+          "raw_text": "Understand how often do you want to run the survey, do a test survey launch and the main survey launch, they'll take care of the heavy lifting process for you.",
+          "start_time": 393.2
+        },
+        {
+          "index": 97,
+          "speaker_name": "Vish",
+          "raw_text": "In fact, you know, framing your questions as well.",
+          "start_time": 399.62
+        },
+        {
+          "index": 98,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 401.94
+        },
+        {
+          "index": 99,
+          "speaker_name": "Vish",
+          "raw_text": "I'm going to jump into the product demo.",
+          "start_time": 402.98
+        },
+        {
+          "index": 100,
+          "speaker_name": "Vish",
+          "raw_text": "I want to take a brief pause here and check any questions that you have for me.",
+          "start_time": 404.66
+        },
+        {
+          "index": 101,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "No, nothing at this point.",
+          "start_time": 409.06
+        },
+        {
+          "index": 102,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 411.38
+        },
+        {
+          "index": 103,
+          "speaker_name": "Vish",
+          "raw_text": "I'll begin with the survey creation process.",
+          "start_time": 411.94
+        },
+        {
+          "index": 104,
+          "speaker_name": "Vish",
+          "raw_text": "The survey creation process begins with selecting the template.",
+          "start_time": 414.14
+        },
+        {
+          "index": 105,
+          "speaker_name": "Vish",
+          "raw_text": "And here you'll have access to the entire template library.",
+          "start_time": 416.66
+        },
+        {
+          "index": 106,
+          "speaker_name": "Vish",
+          "raw_text": "You can go ahead and choose one or you can also create a new one.",
+          "start_time": 419.62
+        },
+        {
+          "index": 107,
+          "speaker_name": "Vish",
+          "raw_text": "For now, I'll select this particular template.",
+          "start_time": 422.1
+        },
+        {
+          "index": 108,
+          "speaker_name": "Vish",
+          "raw_text": "It just takes me to four to five simple steps.",
+          "start_time": 425.86
+        },
+        {
+          "index": 109,
+          "speaker_name": "Vish",
+          "raw_text": "First you got to give the name and how do you want to send this particular survey, whether it should be enough anonymous or non anonymous.",
+          "start_time": 427.9
+        },
+        {
+          "index": 110,
+          "speaker_name": "Vish",
+          "raw_text": "You can also identify question apart from English if you prefer any other language that is also doable.",
+          "start_time": 433.04
+        },
+        {
+          "index": 111,
+          "speaker_name": "Vish",
+          "raw_text": "You just need to enable the multi linguist and move towards the next steps.",
+          "start_time": 437.92
+        },
+        {
+          "index": 112,
+          "speaker_name": "Vish",
+          "raw_text": "So here you'll have access to the entire question.",
+          "start_time": 443.6
+        },
+        {
+          "index": 113,
+          "speaker_name": "Vish",
+          "raw_text": "You can go ahead and edit these questions the way you want it.",
+          "start_time": 445.72
+        },
+        {
+          "index": 114,
+          "speaker_name": "Vish",
+          "raw_text": "And we support all types of questions starting from Rating based, single select, multi select, free text and different scale of rating as well.",
+          "start_time": 448.4
+        },
+        {
+          "index": 115,
+          "speaker_name": "Vish",
+          "raw_text": "And once that is done, the translations part.",
+          "start_time": 454.72
+        },
+        {
+          "index": 116,
+          "speaker_name": "Vish",
+          "raw_text": "So if you prefer any of the languages.",
+          "start_time": 457.27
+        },
+        {
+          "index": 117,
+          "speaker_name": "Vish",
+          "raw_text": "Right, so apart from, apart from English, we can also support that.",
+          "start_time": 458.59
+        },
+        {
+          "index": 118,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Yeah,",
+          "start_time": 466.39
+        },
+        {
+          "index": 119,
+          "speaker_name": "Vish",
+          "raw_text": "you don't have to manually translate anything at all.",
+          "start_time": 469.35
+        },
+        {
+          "index": 120,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 471.47
+        },
+        {
+          "index": 121,
+          "speaker_name": "Vish",
+          "raw_text": "So it automatically features you the translation, you can edit it the way you want it.",
+          "start_time": 471.79
+        },
+        {
+          "index": 122,
+          "speaker_name": "Vish",
+          "raw_text": "And the next piece is setting up the audience.",
+          "start_time": 476.47
+        },
+        {
+          "index": 123,
+          "speaker_name": "Vish",
+          "raw_text": "So before launching the survey, we can help you upload your employee information into CultureMonkey.",
+          "start_time": 478.11
+        },
+        {
+          "index": 124,
+          "speaker_name": "Vish",
+          "raw_text": "Here you can pick and choose the employees that you want to send out the survey to.",
+          "start_time": 482.79
+        },
+        {
+          "index": 125,
+          "speaker_name": "Vish",
+          "raw_text": "And once that is done, the last piece is setting up the timelines on when do you want to launch that, when do you want to end that.",
+          "start_time": 486.75
+        },
+        {
+          "index": 126,
+          "speaker_name": "Vish",
+          "raw_text": "So before launching the survey, you can also inform your employees across various channels that they'll be receiving a survey on this particular date and also send automated reminders across all channels.",
+          "start_time": 491.83
+        },
+        {
+          "index": 127,
+          "speaker_name": "Vish",
+          "raw_text": "And upon launching the survey, the survey employees window would look like all they need to do is just click the link and start taking the survey.",
+          "start_time": 501.39
+        },
+        {
+          "index": 128,
+          "speaker_name": "Vish",
+          "raw_text": "They don't have to log into any sort of portal as such and all these answers are captured on the cloud.",
+          "start_time": 506.95
+        },
+        {
+          "index": 129,
+          "speaker_name": "Vish",
+          "raw_text": "So even if they move out of this link and come back, they can resume from where they actually left off.",
+          "start_time": 513.07
+        },
+        {
+          "index": 130,
+          "speaker_name": "Vish",
+          "raw_text": "Well, this being done, they can also monitor how many are currently answering the total participants, the overall percentage of answers that you've received, which are the channels that are working really well for you.",
+          "start_time": 518.97
+        },
+        {
+          "index": 131,
+          "speaker_name": "Vish",
+          "raw_text": "All this can be seen now.",
+          "start_time": 529.09
+        },
+        {
+          "index": 132,
+          "speaker_name": "Vish",
+          "raw_text": "Once your survey gets completed, everything gets stored in the reports repository and I'll choose this particular report.",
+          "start_time": 531.25
+        },
+        {
+          "index": 133,
+          "speaker_name": "Vish",
+          "raw_text": "The first thing that you're going to see is that the quick synopsis on what was the discussion point is all about.",
+          "start_time": 537.13
+        },
+        {
+          "index": 134,
+          "speaker_name": "Vish",
+          "raw_text": "That's a correlation of both the qualitative and the quantitative feedback.",
+          "start_time": 541.53
+        },
+        {
+          "index": 135,
+          "speaker_name": "Vish",
+          "raw_text": "And as you scroll down you'll get to see what are some of the positively and negatively discussed topics and also an immediate action plan that gets generated based on the overall feedback that you've received.",
+          "start_time": 545.21
+        },
+        {
+          "index": 136,
+          "speaker_name": "Vish",
+          "raw_text": "We'll dissect this action plan once we move to the actions Kanban board.",
+          "start_time": 554.95
+        },
+        {
+          "index": 137,
+          "speaker_name": "Vish",
+          "raw_text": "Let's get into the reports.",
+          "start_time": 559.43
+        },
+        {
+          "index": 138,
+          "speaker_name": "Vish",
+          "raw_text": "This is where you'll be spending most of your time because most of analytics will reside here and here you'll get to see the overall scope, the participation rate and the ENPS breakdown.",
+          "start_time": 561.11
+        },
+        {
+          "index": 139,
+          "speaker_name": "Vish",
+          "raw_text": "So we work based on the 11 point graph.",
+          "start_time": 570.47
+        },
+        {
+          "index": 140,
+          "speaker_name": "Vish",
+          "raw_text": "You'll get to see the promoter, the retractor score and the overall answers.",
+          "start_time": 573.11
+        },
+        {
+          "index": 141,
+          "speaker_name": "Vish",
+          "raw_text": "And as I scroll down, you'll get to see the heat map.",
+          "start_time": 576.74
+        },
+        {
+          "index": 142,
+          "speaker_name": "Vish",
+          "raw_text": "So how you have configured your employees in your system, that's exactly how it gets replicated here.",
+          "start_time": 579.38
+        },
+        {
+          "index": 143,
+          "speaker_name": "Vish",
+          "raw_text": "For example, teams could be departments, locations could be geographies.",
+          "start_time": 584.18
+        },
+        {
+          "index": 144,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 587.46
+        },
+        {
+          "index": 145,
+          "speaker_name": "Vish",
+          "raw_text": "So whatever you're seeing on the left are the demographic breakdown and whatever you're seeing on the top are the drivers under which the questions are being created.",
+          "start_time": 587.82
+        },
+        {
+          "index": 146,
+          "speaker_name": "Vish",
+          "raw_text": "For now I said the technology team and I see that the leadership has gotten 4 out of 10 which is certainly a bad score.",
+          "start_time": 595.94
+        },
+        {
+          "index": 147,
+          "speaker_name": "Vish",
+          "raw_text": "I can do quick 8 map drill down just by clicking that particular pin.",
+          "start_time": 603.38
+        },
+        {
+          "index": 148,
+          "speaker_name": "Vish",
+          "raw_text": "So what he's saying here is that under the leadership driver and under the technology team, what has been the response across different demographics?",
+          "start_time": 607.02
+        },
+        {
+          "index": 149,
+          "speaker_name": "Vish",
+          "raw_text": "It could be based on the location, could be based on the manager, sub team, etc.",
+          "start_time": 613.58
+        },
+        {
+          "index": 150,
+          "speaker_name": "Vish",
+          "raw_text": "And we also get to see what was the question that has been asked for that particular driver.",
+          "start_time": 617.9
+        },
+        {
+          "index": 151,
+          "speaker_name": "Vish",
+          "raw_text": "Any questions here so far?",
+          "start_time": 622.14
+        },
+        {
+          "index": 152,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "No, I'm good.",
+          "start_time": 625.02
+        },
+        {
+          "index": 153,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "I think on the report and analytics we will have another iteration on that.",
+          "start_time": 626.3
+        },
+        {
+          "index": 154,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Just we are basically a remote setup.",
+          "start_time": 631.34
+        },
+        {
+          "index": 155,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So there's a lot of aspects which are in a typically demographic wise and all that that would be having a very limited scope.",
+          "start_time": 633.98
+        },
+        {
+          "index": 156,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So it is typically on the rule probably which we can look at or maybe the department because for us it is not a huge.",
+          "start_time": 640.92
+        },
+        {
+          "index": 157,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Considering the size of organization which we are, there's not much of bifurcation where we filter the data.",
+          "start_time": 650.04
+        },
+        {
+          "index": 158,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Okay, so that is one but one base question.",
+          "start_time": 656.6
+        },
+        {
+          "index": 159,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Do we have any provision to see the actual responses given by the people the done?",
+          "start_time": 659.4
+        },
+        {
+          "index": 160,
+          "speaker_name": "Vish",
+          "raw_text": "No, because this is going to be completely anonymous so you wouldn't see who has given what sort of responses.",
+          "start_time": 666.83
+        },
+        {
+          "index": 161,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Okay, so it is only the results which we would be comprehending on, correct?",
+          "start_time": 672.75
+        },
+        {
+          "index": 162,
+          "speaker_name": "Vish",
+          "raw_text": "Yes.",
+          "start_time": 677.63
+        },
+        {
+          "index": 163,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Okay.",
+          "start_time": 679.39
+        },
+        {
+          "index": 164,
+          "speaker_name": "Vish",
+          "raw_text": "Right, I'll jump into the insights.",
+          "start_time": 679.99
+        },
+        {
+          "index": 165,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 683.39
+        },
+        {
+          "index": 166,
+          "speaker_name": "Vish",
+          "raw_text": "So I understand that you know not you don't have a lot of teams but it's also very important to understand how each and every drivers are responding so you can take better actions.",
+          "start_time": 683.75
+        },
+        {
+          "index": 167,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 693.15
+        },
+        {
+          "index": 168,
+          "speaker_name": "Vish",
+          "raw_text": "So here you'll get to see what are some of the top working drivers, some negative, some.",
+          "start_time": 694.23
+        },
+        {
+          "index": 169,
+          "speaker_name": "Vish",
+          "raw_text": "Some low performing drivers and how each and every answer has been distributed based on the question and how the driver distribution has been.",
+          "start_time": 698.23
+        },
+        {
+          "index": 170,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 704.91
+        },
+        {
+          "index": 171,
+          "speaker_name": "Vish",
+          "raw_text": "So now this gives you a better understanding on what should be the next best steps if autonomy seems to be working out and if it's not.",
+          "start_time": 705.15
+        },
+        {
+          "index": 172,
+          "speaker_name": "Vish",
+          "raw_text": "So how, how you can, how you can categorize it.",
+          "start_time": 712.63
+        },
+        {
+          "index": 173,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 715.19
+        },
+        {
+          "index": 174,
+          "speaker_name": "Vish",
+          "raw_text": "So all this can be seen and this can also be extracted as an offline report to help you even better.",
+          "start_time": 715.43
+        },
+        {
+          "index": 175,
+          "speaker_name": "Vish",
+          "raw_text": "You also have an inbuilt chatbot, right?",
+          "start_time": 720.64
+        },
+        {
+          "index": 176,
+          "speaker_name": "Vish",
+          "raw_text": "So just like how you use ChatGPT or Jebra, that's exactly how you can use our scooper so you just need to give the prompts and that'll give you the answers.",
+          "start_time": 723.96
+        },
+        {
+          "index": 177,
+          "speaker_name": "Vish",
+          "raw_text": "For example, you know, the top the low hanging drivers for you, what are the next best steps that you can take and then it'll give you action plans with clear insights.",
+          "start_time": 732.32
+        },
+        {
+          "index": 178,
+          "speaker_name": "Vish",
+          "raw_text": "So you can utilize that for to, you know, to better your action action plans accordingly.",
+          "start_time": 743.36
+        },
+        {
+          "index": 179,
+          "speaker_name": "Vish",
+          "raw_text": "Now talking about the actions.",
+          "start_time": 750.75
+        },
+        {
+          "index": 180,
+          "speaker_name": "Vish",
+          "raw_text": "Yeah, let's get into the actions Kanban board.",
+          "start_time": 752.99
+        },
+        {
+          "index": 181,
+          "speaker_name": "Vish",
+          "raw_text": "So here you'll get to see the action summary and let's get into the actions Kanban board.",
+          "start_time": 756.83
+        },
+        {
+          "index": 182,
+          "speaker_name": "Vish",
+          "raw_text": "We've broken the action Kanban board into several buckets total in progress and completed.",
+          "start_time": 761.71
+        },
+        {
+          "index": 183,
+          "speaker_name": "Vish",
+          "raw_text": "So what you see here, right the auto created all these are AI generated action plan depending on the drivers which are rated lower.",
+          "start_time": 766.35
+        },
+        {
+          "index": 184,
+          "speaker_name": "Vish",
+          "raw_text": "In that case you can go ahead and select that action plan and customize the way you want it.",
+          "start_time": 772.75
+        },
+        {
+          "index": 185,
+          "speaker_name": "Vish",
+          "raw_text": "Or if you want to create a new action plan on your own, you're free to do that as well.",
+          "start_time": 777.94
+        },
+        {
+          "index": 186,
+          "speaker_name": "Vish",
+          "raw_text": "Can give the name the pointers that you want to take assigned to a particular owner, pick up a driver, pick up a deadline and also add multiple collaborators.",
+          "start_time": 782.74
+        },
+        {
+          "index": 187,
+          "speaker_name": "Vish",
+          "raw_text": "And upon creating it, this is how it would look like.",
+          "start_time": 790.1
+        },
+        {
+          "index": 188,
+          "speaker_name": "Vish",
+          "raw_text": "Your collaborators will have a structured way to communicate.",
+          "start_time": 792.66
+        },
+        {
+          "index": 189,
+          "speaker_name": "Vish",
+          "raw_text": "They have full flexibility to go ahead and leave a comment and discuss here.",
+          "start_time": 798.18
+        },
+        {
+          "index": 190,
+          "speaker_name": "Vish",
+          "raw_text": "And if they feel if this particular action has been completed, they can just drag and drop from todo to in progress, on hold, cancel or completed whichever stages that they wanted.",
+          "start_time": 801.7
+        },
+        {
+          "index": 191,
+          "speaker_name": "Vish",
+          "raw_text": "As simple as you could see.",
+          "start_time": 809.68
+        },
+        {
+          "index": 192,
+          "speaker_name": "Vish",
+          "raw_text": "Right, Great.",
+          "start_time": 812.32
+        },
+        {
+          "index": 193,
+          "speaker_name": "Vish",
+          "raw_text": "So whatever you've seen so far is from your perspective, the super admins HR perspective.",
+          "start_time": 815.68
+        },
+        {
+          "index": 194,
+          "speaker_name": "Vish",
+          "raw_text": "And this I'm going to show you is from manager's perspective.",
+          "start_time": 820.24
+        },
+        {
+          "index": 195,
+          "speaker_name": "Vish",
+          "raw_text": "So every manager will have a dedicated dashboard where they can go ahead and check out some of the key insights that falls under their cohort.",
+          "start_time": 822.96
+        },
+        {
+          "index": 196,
+          "speaker_name": "Vish",
+          "raw_text": "They get to see the manager engagement score, the overall participation, the manager level ENPs, how the engagement score over the time has been, how the enps has fluctuated, the strengths that they have, the weakness that they have at a more driver level and most importantly internal and as well as the, you know, industry benchmark readily available on the dashboard itself.",
+          "start_time": 829.52
+        },
+        {
+          "index": 197,
+          "speaker_name": "Vish",
+          "raw_text": "Any questions here so far?",
+          "start_time": 848.49
+        },
+        {
+          "index": 198,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "No, not really.",
+          "start_time": 851.77
+        },
+        {
+          "index": 199,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "But in the manager thing also we have a little bit of a challenge.",
+          "start_time": 852.65
+        },
+        {
+          "index": 200,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "We have people with two or three reportees and I don't know whether it would be worth it to consider them.",
+          "start_time": 856.41
+        },
+        {
+          "index": 201,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Should we skip the direct manager and look at a next level manager?",
+          "start_time": 863.52
+        },
+        {
+          "index": 202,
+          "speaker_name": "Vish",
+          "raw_text": "Yeah, yeah, that is also possible.",
+          "start_time": 867.12
+        },
+        {
+          "index": 203,
+          "speaker_name": "Vish",
+          "raw_text": "Just a toggle button there.",
+          "start_time": 868.56
+        },
+        {
+          "index": 204,
+          "speaker_name": "Vish",
+          "raw_text": "Yeah, that can, that is, that is possible, right?",
+          "start_time": 870
+        },
+        {
+          "index": 205,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Because with two, three members I don't know whether the insights would be valid enough to do a conclusion and bring an action action plan out of it.",
+          "start_time": 873.96
+        },
+        {
+          "index": 206,
+          "speaker_name": "Vish",
+          "raw_text": "Exactly.",
+          "start_time": 882.08
+        },
+        {
+          "index": 207,
+          "speaker_name": "Vish",
+          "raw_text": "Exactly.",
+          "start_time": 882.68
+        },
+        {
+          "index": 208,
+          "speaker_name": "Vish",
+          "raw_text": "So yeah, I mean that's totally optional so.",
+          "start_time": 883.2
+        },
+        {
+          "index": 209,
+          "speaker_name": "Vish",
+          "raw_text": "So you can let us know you know who needs to get the access and especially in company company size of yours.",
+          "start_time": 885.36
+        },
+        {
+          "index": 210,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 890.76
+        },
+        {
+          "index": 211,
+          "speaker_name": "Vish",
+          "raw_text": "So they, they don't.",
+          "start_time": 890.96
+        },
+        {
+          "index": 212,
+          "speaker_name": "Vish",
+          "raw_text": "They don't go heavy on managers dashboard because it's easily manageable if it's less than 200.",
+          "start_time": 892.63
+        },
+        {
+          "index": 213,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 897.11
+        },
+        {
+          "index": 214,
+          "speaker_name": "Vish",
+          "raw_text": "So only very few will have been granted access from our customers.",
+          "start_time": 897.47
+        },
+        {
+          "index": 215,
+          "speaker_name": "Vish",
+          "raw_text": "So yeah it's totally your call.",
+          "start_time": 905.99
+        },
+        {
+          "index": 216,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Sure.",
+          "start_time": 908.87
+        },
+        {
+          "index": 217,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So do we have a provision for this word cloud and all that on the open text?",
+          "start_time": 909.35
+        },
+        {
+          "index": 218,
+          "speaker_name": "Vish",
+          "raw_text": "Yeah, you have access to.",
+          "start_time": 913.19
+        },
+        {
+          "index": 219,
+          "speaker_name": "Vish",
+          "raw_text": "You will have access to the entire platform.",
+          "start_time": 914.79
+        },
+        {
+          "index": 220,
+          "speaker_name": "Vish",
+          "raw_text": "So the pricing is only based on the number of employees.",
+          "start_time": 917.19
+        },
+        {
+          "index": 221,
+          "speaker_name": "Vish",
+          "raw_text": "So all the these things that you see.",
+          "start_time": 920.07
+        },
+        {
+          "index": 222,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 924.25
+        },
+        {
+          "index": 223,
+          "speaker_name": "Vish",
+          "raw_text": "So everything is accessible itself.",
+          "start_time": 924.45
+        },
+        {
+          "index": 224,
+          "speaker_name": "Vish",
+          "raw_text": "Great.",
+          "start_time": 928.93
+        },
+        {
+          "index": 225,
+          "speaker_name": "Vish",
+          "raw_text": "That's about the platform.",
+          "start_time": 932.53
+        },
+        {
+          "index": 226,
+          "speaker_name": "Vish",
+          "raw_text": "Shashi, any.",
+          "start_time": 933.89
+        },
+        {
+          "index": 227,
+          "speaker_name": "Vish",
+          "raw_text": "Any questions that you have for me?",
+          "start_time": 934.73
+        },
+        {
+          "index": 228,
+          "speaker_name": "Vish",
+          "raw_text": "How is Culture Monkey aligned with the expectations and what are the next steps?",
+          "start_time": 936.09
+        },
+        {
+          "index": 229,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Sure.",
+          "start_time": 941.41
+        },
+        {
+          "index": 230,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "One fundamental question.",
+          "start_time": 942.21
+        },
+        {
+          "index": 231,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Is it the primary platform of SurveyMonkey which is the same organization or is it a different thing?",
+          "start_time": 943.77
+        },
+        {
+          "index": 232,
+          "speaker_name": "Vish",
+          "raw_text": "No.",
+          "start_time": 952.09
+        },
+        {
+          "index": 233,
+          "speaker_name": "Vish",
+          "raw_text": "So we Server Monkey is a different company.",
+          "start_time": 952.29
+        },
+        {
+          "index": 234,
+          "speaker_name": "Vish",
+          "raw_text": "The similarity ends with the name.",
+          "start_time": 956.33
+        },
+        {
+          "index": 235,
+          "speaker_name": "Vish",
+          "raw_text": "So.",
+          "start_time": 957.85
+        },
+        {
+          "index": 236,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Okay.",
+          "start_time": 959.13
+        },
+        {
+          "index": 237,
+          "speaker_name": "Vish",
+          "raw_text": "Okay.",
+          "start_time": 959.65
+        },
+        {
+          "index": 238,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So I was using it sometime between 15 and 18.",
+          "start_time": 960.09
+        },
+        {
+          "index": 239,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "20.",
+          "start_time": 963.566
+        },
+        {
+          "index": 240,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "15 and 18.",
+          "start_time": 963.926
+        },
+        {
+          "index": 241,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So I was wondering after that then we moved to Aeon and others and then the Tower, Watson and others.",
+          "start_time": 964.69
+        },
+        {
+          "index": 242,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So it has been while that I have not come back to this name.",
+          "start_time": 970.89
+        },
+        {
+          "index": 243,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So I was just trying to understand that basic thing.",
+          "start_time": 974.05
+        },
+        {
+          "index": 244,
+          "speaker_name": "Vish",
+          "raw_text": "Okay.",
+          "start_time": 977.48
+        },
+        {
+          "index": 245,
+          "speaker_name": "Vish",
+          "raw_text": "Okay, got it.",
+          "start_time": 977.84
+        },
+        {
+          "index": 246,
+          "speaker_name": "Vish",
+          "raw_text": "No issues at all.",
+          "start_time": 978.48
+        },
+        {
+          "index": 247,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So.",
+          "start_time": 981.96
+        },
+        {
+          "index": 248,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So how does the commercial aspect work?",
+          "start_time": 982.36
+        },
+        {
+          "index": 249,
+          "speaker_name": "Vish",
+          "raw_text": "Just give me a second.",
+          "start_time": 986.92
+        },
+        {
+          "index": 250,
+          "speaker_name": "Vish",
+          "raw_text": "You mentioned there are about 150 employees right.",
+          "start_time": 987.76
+        },
+        {
+          "index": 251,
+          "speaker_name": "Vish",
+          "raw_text": "Will there be an increase in the number as well?",
+          "start_time": 992.559
+        },
+        {
+          "index": 252,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "No, we are specific to about 132 or something that considering some of our joinees are in pipeline.",
+          "start_time": 995.72
+        },
+        {
+          "index": 253,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So I've taken a round off number of 150.",
+          "start_time": 1002.4
+        },
+        {
+          "index": 254,
+          "speaker_name": "Vish",
+          "raw_text": "Okay.",
+          "start_time": 1005.87
+        },
+        {
+          "index": 255,
+          "speaker_name": "Vish",
+          "raw_text": "Okay, makes sense.",
+          "start_time": 1006.15
+        },
+        {
+          "index": 256,
+          "speaker_name": "Vish",
+          "raw_text": "So coming up to 150 employees we are priced at 3 80,000 which is going to be built annually and yeah unlimited survey access to the entire platform.",
+          "start_time": 1007.23
+        },
+        {
+          "index": 257,
+          "speaker_name": "Vish",
+          "raw_text": "A dedicated account manager, everything will be provided from us and we'll take care of the heavy lifting process.",
+          "start_time": 1018.67
+        },
+        {
+          "index": 258,
+          "speaker_name": "Vish",
+          "raw_text": "Whenever you're ready you can let us know.",
+          "start_time": 1024.99
+        },
+        {
+          "index": 259,
+          "speaker_name": "Vish",
+          "raw_text": "We can help you up and running as soon as possible.",
+          "start_time": 1026.47
+        },
+        {
+          "index": 260,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Okay so is it like consolidate package or is it on the headcount?",
+          "start_time": 1031.079
+        },
+        {
+          "index": 261,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "How does it work?",
+          "start_time": 1036.719
+        },
+        {
+          "index": 262,
+          "speaker_name": "Vish",
+          "raw_text": "It's only based on the head count.",
+          "start_time": 1037.559
+        },
+        {
+          "index": 263,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Okay.",
+          "start_time": 1040.359
+        },
+        {
+          "index": 264,
+          "speaker_name": "Vish",
+          "raw_text": "Yeah.",
+          "start_time": 1041.559
+        },
+        {
+          "index": 265,
+          "speaker_name": "Vish",
+          "raw_text": "And.",
+          "start_time": 1044.919
+        },
+        {
+          "index": 266,
+          "speaker_name": "Vish",
+          "raw_text": "And how does the decision making process looks like here Shashi?",
+          "start_time": 1045.279
+        },
+        {
+          "index": 267,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "We I will have to put it to the India leadership team and then we have our UDS leadership team who is part of these discussions and decision making, especially on the commercial aspects and because they are explor there's something which is existing internally with the existing platform.",
+          "start_time": 1050.119
+        },
+        {
+          "index": 268,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So by this out of the past experiences of these platform I just wanted to explore and understand if everything was commercially viable then that's where I've triggered this discussion.",
+          "start_time": 1067.06
+        },
+        {
+          "index": 269,
+          "speaker_name": "Vish",
+          "raw_text": "Okay.",
+          "start_time": 1078.98
+        },
+        {
+          "index": 270,
+          "speaker_name": "Vish",
+          "raw_text": "Okay, got it.",
+          "start_time": 1079.46
+        },
+        {
+          "index": 271,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 1080.5
+        },
+        {
+          "index": 272,
+          "speaker_name": "Vish",
+          "raw_text": "So.",
+          "start_time": 1080.82
+        },
+        {
+          "index": 273,
+          "speaker_name": "Vish",
+          "raw_text": "So what will help me understand is that menu what is the tool that you're currently using internally?",
+          "start_time": 1081.1
+        },
+        {
+          "index": 274,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "This one of the ERP which we have that has a provision to trigger the service.",
+          "start_time": 1086.98
+        },
+        {
+          "index": 275,
+          "speaker_name": "Vish",
+          "raw_text": "Okay.",
+          "start_time": 1092.78
+        },
+        {
+          "index": 276,
+          "speaker_name": "Vish",
+          "raw_text": "And any specific reason why you did not try that one initially?",
+          "start_time": 1093.34
+        },
+        {
+          "index": 277,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "They did.",
+          "start_time": 1098.3
+        },
+        {
+          "index": 278,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "I have joined the organization couple of months back, so it was in use for some of the past assignments.",
+          "start_time": 1099.26
+        },
+        {
+          "index": 279,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "But again it is not a full fledged tool.",
+          "start_time": 1107.18
+        },
+        {
+          "index": 280,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So it always has some limitations compared to the what features you have shown in terms of the reports, in terms of the analytics and some of the other customizations needed.",
+          "start_time": 1109.66
+        },
+        {
+          "index": 281,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "It is a. I would say it is a bare minimum application which is there.",
+          "start_time": 1119.58
+        },
+        {
+          "index": 282,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "But again, nevertheless the purpose was to launch the survey rather than the other thing needed a platform to drive it.",
+          "start_time": 1123.91
+        },
+        {
+          "index": 283,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So I think that served the need and that is where we were less than 100 at that point of time.",
+          "start_time": 1131.19
+        },
+        {
+          "index": 284,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "And going for any Jains or specialists like you for limited headcount doesn't call for a rational on investment as well.",
+          "start_time": 1137.75
+        },
+        {
+          "index": 285,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So that was one of the reasons on taking this standard there's not much of the scope there.",
+          "start_time": 1145.71
+        },
+        {
+          "index": 286,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "It's more of trying to understand who there is always an offline platform to discuss and deliberate.",
+          "start_time": 1151.48
+        },
+        {
+          "index": 287,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So people are not really open.",
+          "start_time": 1156.6
+        },
+        {
+          "index": 288,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So we thought that would be one of the platforms to go ahead and trigger it.",
+          "start_time": 1158.84
+        },
+        {
+          "index": 289,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So the participation and other things worked.",
+          "start_time": 1163.24
+        },
+        {
+          "index": 290,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "But trying to understand how it can be more fruitful in having a better expert that is the rational on looking at the other platforms.",
+          "start_time": 1165.76
+        },
+        {
+          "index": 291,
+          "speaker_name": "Vish",
+          "raw_text": "Got it.",
+          "start_time": 1175.82
+        },
+        {
+          "index": 292,
+          "speaker_name": "Vish",
+          "raw_text": "Got it.",
+          "start_time": 1176.38
+        },
+        {
+          "index": 293,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 1177.5
+        },
+        {
+          "index": 294,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "With couple of them like the tower Watson also.",
+          "start_time": 1178.86
+        },
+        {
+          "index": 295,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "So just trying to understand how does it work again with the kind of headcount which we have.",
+          "start_time": 1181.66
+        },
+        {
+          "index": 296,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "It is also about looking at whether it would be rational to invest so much and what would be the value.",
+          "start_time": 1187.1
+        },
+        {
+          "index": 297,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Unless the input is so strong even somebody expert as good as you would also have a very limited scope of actions.",
+          "start_time": 1192.94
+        },
+        {
+          "index": 298,
+          "speaker_name": "Vish",
+          "raw_text": "Got it.",
+          "start_time": 1201.46
+        },
+        {
+          "index": 299,
+          "speaker_name": "Vish",
+          "raw_text": "Yeah.",
+          "start_time": 1202.66
+        },
+        {
+          "index": 300,
+          "speaker_name": "Vish",
+          "raw_text": "I mean we can help you launch this sooner and of course take care of the analytics because what I see and what I hear is that analytics and action planning is something that's very vital for you at this moment and which has not been provided by the platform that you currently have.",
+          "start_time": 1202.98
+        },
+        {
+          "index": 301,
+          "speaker_name": "Vish",
+          "raw_text": "So we can take care of that, because that's what we do with Culture Monkey.",
+          "start_time": 1221.46
+        },
+        {
+          "index": 302,
+          "speaker_name": "Vish",
+          "raw_text": "And the platform takes care of everything that you wanted to see because the company size of yours, which is growing.",
+          "start_time": 1227.42
+        },
+        {
+          "index": 303,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 1233.08
+        },
+        {
+          "index": 304,
+          "speaker_name": "Vish",
+          "raw_text": "So, so typically how they, how our customers use is that they take all the analytics and, and understand what are the.",
+          "start_time": 1233.32
+        },
+        {
+          "index": 305,
+          "speaker_name": "Vish",
+          "raw_text": "I mean, basically the decisions are based on.",
+          "start_time": 1239.96
+        },
+        {
+          "index": 306,
+          "speaker_name": "Vish",
+          "raw_text": "Based on the analytics that you.",
+          "start_time": 1242.24
+        },
+        {
+          "index": 307,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "That you get.",
+          "start_time": 1243.48
+        },
+        {
+          "index": 308,
+          "speaker_name": "Vish",
+          "raw_text": "Right.",
+          "start_time": 1244.28
+        },
+        {
+          "index": 309,
+          "speaker_name": "Vish",
+          "raw_text": "So decisions.",
+          "start_time": 1244.56
+        },
+        {
+          "index": 310,
+          "speaker_name": "Vish",
+          "raw_text": "And that's what we cater to.",
+          "start_time": 1245.88
+        },
+        {
+          "index": 311,
+          "speaker_name": "Vish",
+          "raw_text": "And of course, you know, all the best for you in internal discussions.",
+          "start_time": 1247.599
+        },
+        {
+          "index": 312,
+          "speaker_name": "Vish",
+          "raw_text": "And you can let me know if you.",
+          "start_time": 1253.32
+        },
+        {
+          "index": 313,
+          "speaker_name": "Vish",
+          "raw_text": "If you need any.",
+          "start_time": 1254.6
+        },
+        {
+          "index": 314,
+          "speaker_name": "Vish",
+          "raw_text": "Any further help from my end.",
+          "start_time": 1255.24
+        },
+        {
+          "index": 315,
+          "speaker_name": "Vish",
+          "raw_text": "I'm happy to, you know, support you in this.",
+          "start_time": 1256.52
+        },
+        {
+          "index": 316,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Sure.",
+          "start_time": 1259.75
+        },
+        {
+          "index": 317,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "If you can help me with a little bit of the product and the commercial details that should help me do a company.",
+          "start_time": 1259.95
+        },
+        {
+          "index": 318,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Yeah.",
+          "start_time": 1267.99
+        },
+        {
+          "index": 319,
+          "speaker_name": "Vish",
+          "raw_text": "Yeah, I'll drop.",
+          "start_time": 1268.31
+        },
+        {
+          "index": 320,
+          "speaker_name": "Vish",
+          "raw_text": "You drop, drop in.",
+          "start_time": 1268.95
+        },
+        {
+          "index": 321,
+          "speaker_name": "Vish",
+          "raw_text": "Drop an email along with that, my contact number.",
+          "start_time": 1269.91
+        },
+        {
+          "index": 322,
+          "speaker_name": "Vish",
+          "raw_text": "So you can contact me anytime.",
+          "start_time": 1272.55
+        },
+        {
+          "index": 323,
+          "speaker_name": "Vish",
+          "raw_text": "So we can, we can discuss from there.",
+          "start_time": 1274.389
+        },
+        {
+          "index": 324,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Definitely that will be of.",
+          "start_time": 1277.35
+        },
+        {
+          "index": 325,
+          "speaker_name": "Vish",
+          "raw_text": "All Right, great.",
+          "start_time": 1279.75
+        },
+        {
+          "index": 326,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Thanks a lot.",
+          "start_time": 1280.63
+        },
+        {
+          "index": 327,
+          "speaker_name": "Vish",
+          "raw_text": "Thank you so much.",
+          "start_time": 1282.15
+        },
+        {
+          "index": 328,
+          "speaker_name": "Shashi Kanth Gangaboina",
+          "raw_text": "Thanks.",
+          "start_time": 1284.24
+        },
+        {
+          "index": 329,
+          "speaker_name": "Vish",
+          "raw_text": "Yep.",
+          "start_time": 1284.96
+        },
+        {
+          "index": 330,
+          "speaker_name": "Vish",
+          "raw_text": "You have a good day.",
+          "start_time": 1285.32
+        },
+        {
+          "index": 331,
+          "speaker_name": "Vish",
+          "raw_text": "Bye.",
+          "start_time": 1286
+        },
+        {
+          "index": 332,
+          "speaker_name": "Vish",
+          "raw_text": "Bye.",
+          "start_time": 1286.24
+        }
+      ],
+      "meeting_link": "https://teams.microsoft.com/l/meetup-join/19:meeting_OWYxNWUzZWYtYWUzZC00YWI0LWJlYjktNmQ0NDY2OWE5ZmZi@thread.v2/0?context={\"Tid\":\"b5c44a51-4444-494b-ab84-a131bfecc687\",\"Oid\":\"e3a8eb91-0aa2-4f64-af74-6a652b11c3b3\"}"
+    }
+  ]
+}
