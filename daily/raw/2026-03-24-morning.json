@@ -1,12 +1,6 @@
 {
   "date": "2026-03-24",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-24T03:18:04.901Z",
-  "lastEveningSyncAt": "2026-03-23T14:38:38.742Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-24T03:18:04.901Z",
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -240,104 +234,5 @@
       "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
     }
   ],
-  "completedToday": [],
-  "dueSoon": [
-    {
-      "id": "6gC7GmvfXQ7FVVmx",
-      "content": "Send info to UGG regarding workers logic",
-      "due": "2026-03-24",
-      "priority": 1,
-      "labels": [
-        "status:in-progress"
-      ],
-      "sectionId": "6g9QcvpjJw2cFmCx",
-      "sectionName": "effy",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gC7GmvfXQ7FVVmx"
-    },
-    {
-      "id": "6gCJxqR95722Cw7Q",
-      "content": "Feedback based prioritisation agent — MVP",
-      "due": "2026-03-25",
-      "priority": 3,
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gCJxqR95722Cw7Q"
-    },
-    {
-      "id": "6gCJxJPVg9pPCxPx",
-      "content": "Align with Gautam (Account Signals)",
-      "description": "- Identify key metrics (e.g., account size, churn risk)\n- Confirm data update frequency (weekly/monthly)\n- Define data access method (API or export)",
-      "due": "2026-03-24",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gCJxJPVg9pPCxPx"
-    },
-    {
-      "id": "6gC8VJWpV65C4wrQ",
-      "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
-      "due": "2026-03-25",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gC8VJWpV65C4wrQ"
-    },
-    {
-      "id": "6g9RjjJX748JQh7x",
-      "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
-      "due": "2026-03-27",
-      "priority": 2,
-      "labels": [
-        "follow-up",
-        "research",
-        "status:up-next"
-      ],
-      "sectionId": "6g8x4JxwH876pgGQ",
-      "sectionName": "Features",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6g9RjjJX748JQh7x"
-    },
-    {
-      "id": "6gCMFmVR5J66X4Gx",
-      "content": "Yahoo — trigger HM survey for 3 candidates, check with Engg and update CS",
-      "description": "Yahoo has 3 candidates for whom the Hiring Manager Survey needs to be triggered on Monday.\n- Check with Engg on triggering the survey\n- Update CS team once confirmed",
-      "due": "2026-03-24",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gCMFmVR5J66X4Gx"
-    },
-    {
-      "id": "6gF6Hv3WXcqQWpcx",
-      "content": "Confidentiality report for Yahoo Candidates",
-      "due": "2026-03-25",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
-    }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": null,
-    "eod": null
-  }
+  "todayMeetings": []
 }
