@@ -1,7 +1,7 @@
 {
   "date": "2026-03-24",
   "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-24T04:30:00.000Z",
+  "lastMorningSyncAt": "2026-03-24T05:15:00.000Z",
   "lastEveningSyncAt": "2026-03-23T14:38:38.742Z",
   "sourceStatus": {
     "todoist": "failed",
@@ -356,23 +356,26 @@
   "todayMeetings": [
     {
       "id": "16bmmfk50idt9680jn5vkb1108_20260324T093000Z",
-      "summary": "CS <> Product Teams / Biweekly Sync",
-      "start": "2026-03-24T15:00:00+05:30",
-      "end": "2026-03-24T15:45:00+05:30",
+      "title": "CS <> Product Teams / Biweekly Sync",
+      "startTime": "2026-03-24T15:00:00+05:30",
+      "endTime": "2026-03-24T15:45:00+05:30",
       "organizer": "gowtham@culturemonkey.io",
       "attendeeCount": 10,
+      "attendees": ["sivanandh@culturemonkey.io","gowtham@culturemonkey.io","mouriya.s@culturemonkey.io","sneha.m@culturemonkey.io","karthik.n@culturemonkey.io","yugi@culturemonkey.io","sam@culturemonkey.io","shabharish.v@culturemonkey.io","dhamodharan@culturemonkey.io","karthik.rao@culturemonkey.io"],
       "status": "confirmed",
       "myResponseStatus": "accepted"
     },
     {
       "id": "5irjkuv54refkc07ei5geucgt8",
-      "summary": "Feedback Pipeline - discussion",
-      "start": "2026-03-24T15:45:00+05:30",
-      "end": "2026-03-24T16:15:00+05:30",
+      "title": "Feedback Pipeline - discussion",
+      "startTime": "2026-03-24T15:45:00+05:30",
+      "endTime": "2026-03-24T16:15:00+05:30",
       "organizer": "shabharish.v@culturemonkey.io",
       "attendeeCount": 2,
+      "attendees": ["gowtham@culturemonkey.io","shabharish.v@culturemonkey.io"],
       "status": "confirmed",
-      "myResponseStatus": "accepted"
+      "myResponseStatus": "accepted",
+      "description": "Agenda: 1. Churn Exit Interviews 2. Account Intelligence 3. JIRA Forms for CS Feedback 4. Slack Automation — TAM Weekly Pulse"
     }
   ],
   "digestPaths": {
