@@ -69,6 +69,11 @@ export async function runMorningSync(): Promise<void> {
   }
 
   // ── Google Calendar ──────────────────────────────────────────────────────
+  // DEPRECATED (Phase 4 — 2026-03-24): This block is no longer the source of
+  // truth. Calendar data is now fetched live via the claude.ai GCal MCP server
+  // inside the /morning command. This entire block is a no-op when
+  // GCAL_SERVICE_ACCOUNT_JSON is absent (returns 'failed' gracefully).
+  // Scheduled for deletion in Phase 5 (~2026-04-24).
   try {
     const gcal = new GCalClient({
       serviceAccountJson: JSON.parse(ENV.gcal.serviceAccountJson),

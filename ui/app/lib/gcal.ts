@@ -1,3 +1,10 @@
+/**
+ * @deprecated Phase 4 — 2026-03-24
+ * GCal service-account helper for the /api/calendar UI route.
+ * Calendar data is now fetched live via the claude.ai Google Calendar MCP server.
+ * The /api/calendar route is still available but not rendered in the UI.
+ * Scheduled for deletion in Phase 5 (~2026-04-24).
+ */
 // GCal API helper — replicated from scripts/integrations/gcal/client.ts
 
 import { GoogleAuth } from 'google-auth-library';

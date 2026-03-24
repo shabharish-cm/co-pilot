@@ -1,3 +1,9 @@
+/**
+ * @deprecated Phase 4 — 2026-03-24
+ * Manual test utility for the service-account GCal integration.
+ * No longer needed — calendar access is via the claude.ai GCal MCP server.
+ * Scheduled for deletion in Phase 5 (~2026-04-24).
+ */
 import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '..', '.env'), override: true });

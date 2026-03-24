@@ -1,3 +1,10 @@
+/**
+ * @deprecated Phase 4 — 2026-03-24
+ * GCalClient is no longer used. Google Calendar is now fetched live via the
+ * claude.ai Google Calendar MCP server inside the /morning command.
+ * Scheduled for deletion in Phase 5 (~2026-04-24).
+ * Do not add new usages of this class.
+ */
 import axios from 'axios';
 import { GoogleAuth } from 'google-auth-library';
 import { withRetry } from '../../utils/retry';
