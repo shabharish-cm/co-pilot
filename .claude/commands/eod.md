@@ -1,30 +1,33 @@
 # /eod — End of Day Summary
 
 ## Purpose
-Generate an end-of-day summary and carry-forward recommendations from cached state.
+Generate an end-of-day summary and carry-forward recommendations.
 
 ## Model
 - **Haiku** for final digest drafting.
 - **Sonnet** only if reasoning is needed to detect missed commitments or blockers.
 
-## Step 0 — Sync repo
-Run `git pull` once at the start of the session to ensure local state reflects the latest Action-committed data before reading files.
-If this command is invoked from an automation script that already pulled, skip the extra pull.
+## Step 0 — Pull latest state
+Run `git pull` once at the start to pick up any updates committed by the evening sync (GitHub Actions runs at 19:00 IST and writes `completedToday` to `state/current_day.json`).
 
-## Inputs (read from repo — do not fetch live)
+## Inputs
 1. `state/current_day.json` — completed tasks, open tasks, due-soon tasks
 
 ## Freshness Check
-Read `state/last_sync.json`. Check `eveningSync.ranAt`.
-- If `ranAt` is null or older than 12 hours: show staleness banner.
+Read `state/last_sync.json`. Check `morningSync.ranAt`.
+- If `ranAt` is null or the date is not today: show banner:
+  > ⚠ Morning digest was not run today — completed task data may be incomplete.
+- If `eveningSync.ranAt` is null or older than 12 hours: show banner:
+  > ⚠ Evening sync has not run yet — `completedToday` may not reflect all completions.
 
 ## Output Structure
 
 ### 1. Completed Today
 List all entries in `completedToday`. Count and congratulate if meaningful.
+If empty: note that the evening sync may not have run yet.
 
 ### 2. Carry-Forward Tasks
-List all open tasks that were due today or earlier that are still incomplete.
+List all open tasks that were due today or earlier and are still incomplete.
 
 ### 3. Due Soon (Next 3 Days)
 List tasks in `dueSoon`. Highlight any that look at risk given today's carry-forward.
@@ -40,7 +43,6 @@ Write to: `daily/digests/YYYY-MM-DD-eod.md`
 Update `state/current_day.json` → `digestPaths.eod`.
 
 ## Step — Commit and push
-After writing the digest and updating `state/current_day.json`, run:
 ```
 git add daily/digests/YYYY-MM-DD-eod.md state/current_day.json
 git commit -m "digest: eod YYYY-MM-DD"

@@ -172,3 +172,32 @@ Examples:
 - Location
 - Role
 - Tenure
+
+---
+
+## Feedback Module
+The section of the platform where managers and admins review open-text employee comments.
+
+Sub-tabs:
+- Summary
+- Open Comments
+- Question Comments
+- Word Cloud
+
+Each comment card supports: reactions, starring, marking as viewed, creating an Action, and initiating a Conversation.
+
+---
+
+## Initiate Conversation
+A feature in the Feedback module that allows managers or admins to start an anonymous back-and-forth exchange with an employee about their specific feedback.
+
+How it works:
+- Manager/admin clicks "Initiate conversation" on a comment card.
+- An anonymous chat window opens within the platform.
+- The employee receives the message as an email from the product (sender identity is the platform, not the manager).
+- Employee replies via email; replies surface in the same chat window for the manager.
+- All exchanges are anonymous — the employee's identity is never revealed to the manager, and the manager's identity is never revealed to the employee.
+- The conversation can be resolved by the manager using the "Resolve" control.
+- A "Show Feedback" toggle lets the manager reference the original comment within the chat window.
+
+Anonymity model: end-to-end anonymous. The platform acts as the neutral relay. No identifying metadata is exposed on either side.

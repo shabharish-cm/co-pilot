@@ -178,7 +178,31 @@ Color: brand green.
 
 ---
 
-# 13. Integration Card Pattern
+# 13. Anonymous Conversation Pattern
+
+Used in: Feedback module ("Initiate conversation")
+
+Trigger: Manager/admin clicks "Initiate conversation" on a feedback comment card.
+
+Layout:
+
+- Full-screen or large modal chat window
+- Top-right controls: "Show Feedback" toggle (reveals original comment inline) + "Resolve" link
+- Message thread area (chat bubbles): manager messages right-aligned (brand green bubble), employee replies left-aligned
+- Bottom: text input area + send button (brand green circular icon)
+
+Rules:
+
+- Manager's identity is never shown to the employee; employee's identity is never shown to the manager
+- Employee receives each message as an email from the platform (no manager attribution)
+- Employee replies via email; replies appear in the manager's chat window
+- Manager can resolve the conversation at any time via the "Resolve" control
+- Conversation status: Open / Resolved
+- "Show Feedback" toggle surfaces the original comment text inside the chat window for manager reference
+
+---
+
+# 14. Integration Card Pattern
 
 Grid of cards showing integrations.
 

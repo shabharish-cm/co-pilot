@@ -225,6 +225,8 @@ Use these canonical terms in PRDs, UX flows, digests, wireframes, and documentat
 | Org Hierarchy | Organizational reporting structure visualization |
 | Employee Attributes | Metadata fields: Department, Location, Role, Tenure |
 | Ask Cooper | AI chatbot inside the platform for on-demand engagement insights |
+| Feedback Module | Section for reviewing open-text employee comments; sub-tabs: Summary, Open Comments, Question Comments, Word Cloud |
+| Initiate Conversation | Feature in Feedback module; manager/admin opens anonymous chat with a feedback-giver; employee receives messages as platform emails; fully anonymous both ways; manager can Resolve |
 
 ---
 

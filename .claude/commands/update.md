@@ -7,11 +7,19 @@ Update task metadata: content, due date, priority, or labels.
 - **Sonnet** for ambiguity resolution and change reasoning.
 
 ## Behavior
-1. Identify the target task by ID or search query against `state/current_day.json`.
-2. If query matches multiple tasks, present numbered options and require explicit selection (number or exact task ID).
-3. Show a before/after diff of the proposed change.
-4. Require confirmation before applying for any change to content, due, or priority.
-5. Run: `npm run task update <taskId> [content:"<text>"] [due:"<date>"] [p:<1-4>]`
+
+### 1. Resolve task list
+Check `lastMorningSyncAt` in `state/current_day.json`:
+- If date is today: use `openTasks` from the state file for lookup.
+- If date is prior to today (stale): fetch live from Todoist MCP (`get_tasks_list`, project `6g8q49QQxHrFxRFx`) and note `(live lookup — run /morning to persist state)`.
+
+### 2. Match and confirm
+- If query matches multiple tasks: present numbered options and require explicit selection (number or exact task ID).
+- Show a before/after diff of the proposed change.
+- Require confirmation before applying for any change to content, due, or priority.
+
+### 3. Apply
+Run: `npm run task update <taskId> [content:"<text>"] [due:"<date>"] [p:<1-4>]`
 
 ## Rules
 - Never apply an update if the task cannot be unambiguously identified.

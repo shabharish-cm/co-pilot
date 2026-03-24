@@ -9,5 +9,6 @@
       "WebFetch(*)"
     ],
     "deny": []
-  }
+  },
+  "enabledMcpjsonServers": ["todoist"]
 }
