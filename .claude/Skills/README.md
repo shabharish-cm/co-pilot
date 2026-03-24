@@ -15,6 +15,9 @@ This folder is the canonical source for reusable Claude role prompts in this rep
 | `engineering-code-reviewer.md` | Code review rigor and risk checks | implementation reviews |
 | `engineering-git-workflow-master.md` | Git process, branching, and release hygiene | delivery workflow |
 | `product-trend-researcher.md` | Market/competitor trend intelligence | discovery/research |
+| `fetch-todoist.md` | Fetch + normalize Todoist tasks via MCP → returns JSON | `/morning` subagent |
+| `fetch-gcal.md` | Fetch today's GCal events via MCP → returns JSON | `/morning` subagent |
+| `fetch-gmail.md` | Fetch + deduplicate Gmail signals via MCP → returns JSON | `/morning` subagent |
 
 ## Organization Rules
 
