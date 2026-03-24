@@ -1,9 +1,8 @@
 name: Morning Sync
 
 on:
-  schedule:
-    # 6:00 AM IST = 0:30 UTC
-    - cron: '30 0 * * *'
+  # Schedule disabled — /morning now fetches live via MCP (Todoist + GCal + Gmail).
+  # Keep workflow_dispatch for manual emergency runs or rollback.
   workflow_dispatch:
 
 jobs:
