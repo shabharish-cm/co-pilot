@@ -1,12 +1,17 @@
 {
   "date": "2026-03-24",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-24T05:15:00.000Z",
-  "lastEveningSyncAt": "2026-03-24T14:41:56.293Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-24T14:41:56.293Z",
+  "completedToday": [
+    {
+      "id": "6gCMFmVR5J66X4Gx",
+      "content": "Yahoo — trigger HM survey for 3 candidates, check with Engg and update CS",
+      "due": "2026-03-24",
+      "priority": 1,
+      "sectionName": "CS Requests",
+      "completedVia": "manual",
+      "completedAt": "2026-03-24T14:41:56.293Z"
+    }
+  ],
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -324,17 +329,6 @@
       "url": "https://todoist.com/showTask?id=6gFJqg2c5cgvCgjQ"
     }
   ],
-  "completedToday": [
-    {
-      "id": "6gCMFmVR5J66X4Gx",
-      "content": "Yahoo — trigger HM survey for 3 candidates, check with Engg and update CS",
-      "due": "2026-03-24",
-      "priority": 1,
-      "sectionName": "CS Requests",
-      "completedVia": "manual",
-      "completedAt": "2026-03-24T14:41:56.293Z"
-    }
-  ],
   "dueSoon": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -474,48 +468,5 @@
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gFJqg2c5cgvCgjQ"
     }
-  ],
-  "todayMeetings": [
-    {
-      "id": "16bmmfk50idt9680jn5vkb1108_20260324T093000Z",
-      "title": "CS <> Product Teams / Biweekly Sync",
-      "startTime": "2026-03-24T15:00:00+05:30",
-      "endTime": "2026-03-24T15:45:00+05:30",
-      "organizer": "gowtham@culturemonkey.io",
-      "attendeeCount": 10,
-      "attendees": [
-        "sivanandh@culturemonkey.io",
-        "gowtham@culturemonkey.io",
-        "mouriya.s@culturemonkey.io",
-        "sneha.m@culturemonkey.io",
-        "karthik.n@culturemonkey.io",
-        "yugi@culturemonkey.io",
-        "sam@culturemonkey.io",
-        "shabharish.v@culturemonkey.io",
-        "dhamodharan@culturemonkey.io",
-        "karthik.rao@culturemonkey.io"
-      ],
-      "status": "confirmed",
-      "myResponseStatus": "accepted"
-    },
-    {
-      "id": "5irjkuv54refkc07ei5geucgt8",
-      "title": "Feedback Pipeline - discussion",
-      "startTime": "2026-03-24T15:45:00+05:30",
-      "endTime": "2026-03-24T16:15:00+05:30",
-      "organizer": "shabharish.v@culturemonkey.io",
-      "attendeeCount": 2,
-      "attendees": [
-        "gowtham@culturemonkey.io",
-        "shabharish.v@culturemonkey.io"
-      ],
-      "status": "confirmed",
-      "myResponseStatus": "accepted",
-      "description": "Agenda: 1. Churn Exit Interviews 2. Account Intelligence 3. JIRA Forms for CS Feedback 4. Slack Automation — TAM Weekly Pulse"
-    }
-  ],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-24-morning.md",
-    "eod": null
-  }
+  ]
 }
