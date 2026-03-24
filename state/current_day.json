@@ -1,10 +1,10 @@
 {
   "date": "2026-03-24",
   "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-24T03:18:04.901Z",
+  "lastMorningSyncAt": "2026-03-24T04:30:00.000Z",
   "lastEveningSyncAt": "2026-03-23T14:38:38.742Z",
   "sourceStatus": {
-    "todoist": "fresh",
+    "todoist": "failed",
     "googleCalendar": "fresh"
   },
   "openTasks": [
@@ -125,6 +125,18 @@
       "url": "https://todoist.com/showTask?id=6gCJxJWqg3mcGV5Q"
     },
     {
+      "id": "6gFGR8hWxfmHR9vQ",
+      "content": "Yahoo - candidate surveys needs to be published - follow up with Saran",
+      "due": null,
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g8x4MgXR2q68fgQ",
+      "sectionName": "Engg asks",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gFGR8hWxfmHR9vQ"
+    },
+    {
       "id": "6gC8VJWpV65C4wrQ",
       "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
       "due": "2026-03-25",
@@ -191,7 +203,6 @@
     {
       "id": "6gCM8gVrX92jF9mQ",
       "content": "Align with marketing on time-range filtering content strategy (landing page + blog)",
-      "description": "Get marketing team to build feature landing page and blog posts covering availability of flexible time-range filtering. Goal: counter G2 review narrative (\"does not support over-time analysis\") via AEO/GEO-indexed content.\n\nRelated tasks:\n- Build feature landing page — Flexible time-range filtering\n- Write blog posts on flexible time-range filtering availability (AEO/GEO counter-narrative)",
       "due": null,
       "priority": 3,
       "labels": [],
@@ -202,22 +213,8 @@
       "url": "https://todoist.com/showTask?id=6gCM8gVrX92jF9mQ"
     },
     {
-      "id": "6gCMFmVR5J66X4Gx",
-      "content": "Yahoo — trigger HM survey for 3 candidates, check with Engg and update CS",
-      "description": "Yahoo has 3 candidates for whom the Hiring Manager Survey needs to be triggered on Monday.\n- Check with Engg on triggering the survey\n- Update CS team once confirmed",
-      "due": "2026-03-24",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gCMFmVR5J66X4Gx"
-    },
-    {
       "id": "6gCM8H6FfcgmFgGx",
       "content": "Build flexible time-range filtering (over-time analysis)",
-      "description": "Dev in progress. Trends over time are viewable; date-range filters not yet available. PRD: PRDs/Overtime Analysis/Overtime Analysis Revamp PRD.docx",
       "due": null,
       "priority": 3,
       "labels": [],
@@ -238,76 +235,18 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
-    }
-  ],
-  "completedToday": [],
-  "dueSoon": [
-    {
-      "id": "6gC7GmvfXQ7FVVmx",
-      "content": "Send info to UGG regarding workers logic",
-      "due": "2026-03-24",
-      "priority": 1,
-      "labels": [
-        "status:in-progress"
-      ],
-      "sectionId": "6g9QcvpjJw2cFmCx",
-      "sectionName": "effy",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gC7GmvfXQ7FVVmx"
     },
     {
-      "id": "6gCJxqR95722Cw7Q",
-      "content": "Feedback based prioritisation agent — MVP",
+      "id": "6gFGQp8gx45CcQ4x",
+      "content": "Sprinto - segregate security docs",
       "due": "2026-03-25",
-      "priority": 3,
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gCJxqR95722Cw7Q"
-    },
-    {
-      "id": "6gCJxJPVg9pPCxPx",
-      "content": "Align with Gautam (Account Signals)",
-      "description": "- Identify key metrics (e.g., account size, churn risk)\n- Confirm data update frequency (weekly/monthly)\n- Define data access method (API or export)",
-      "due": "2026-03-24",
       "priority": 1,
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gCJxJPVg9pPCxPx"
-    },
-    {
-      "id": "6gC8VJWpV65C4wrQ",
-      "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
-      "due": "2026-03-25",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gC8VJWpV65C4wrQ"
-    },
-    {
-      "id": "6g9RjjJX748JQh7x",
-      "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
-      "due": "2026-03-27",
-      "priority": 2,
-      "labels": [
-        "follow-up",
-        "research",
-        "status:up-next"
-      ],
-      "sectionId": "6g8x4JxwH876pgGQ",
-      "sectionName": "Features",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6g9RjjJX748JQh7x"
+      "url": "https://todoist.com/showTask?id=6gFGQp8gx45CcQ4x"
     },
     {
       "id": "6gCMFmVR5J66X4Gx",
@@ -321,6 +260,64 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gCMFmVR5J66X4Gx"
+    }
+  ],
+  "completedToday": [],
+  "dueSoon": [
+    {
+      "id": "6gC7GmvfXQ7FVVmx",
+      "content": "Send info to UGG regarding workers logic",
+      "due": "2026-03-24",
+      "priority": 1,
+      "labels": ["status:in-progress"],
+      "sectionId": "6g9QcvpjJw2cFmCx",
+      "sectionName": "effy",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
+    },
+    {
+      "id": "6gCJxJPVg9pPCxPx",
+      "content": "Align with Gautam (Account Signals)",
+      "due": "2026-03-24",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
+    },
+    {
+      "id": "6gCMFmVR5J66X4Gx",
+      "content": "Yahoo — trigger HM survey for 3 candidates, check with Engg and update CS",
+      "due": "2026-03-24",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
+    },
+    {
+      "id": "6gCJxqR95722Cw7Q",
+      "content": "Feedback based prioritisation agent — MVP",
+      "due": "2026-03-25",
+      "priority": 3,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
+    },
+    {
+      "id": "6gC8VJWpV65C4wrQ",
+      "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
+      "due": "2026-03-25",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
     },
     {
       "id": "6gF6Hv3WXcqQWpcx",
@@ -331,11 +328,53 @@
       "sectionId": "6g8x4HVHxpWVfVHQ",
       "sectionName": "CS Requests",
       "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
+      "isOverdue": false
+    },
+    {
+      "id": "6gFGQp8gx45CcQ4x",
+      "content": "Sprinto - segregate security docs",
+      "due": "2026-03-25",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
+    },
+    {
+      "id": "6g9RjjJX748JQh7x",
+      "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
+      "due": "2026-03-27",
+      "priority": 2,
+      "labels": ["follow-up", "research", "status:up-next"],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false
     }
   ],
-  "todayMeetings": [],
+  "todayMeetings": [
+    {
+      "id": "16bmmfk50idt9680jn5vkb1108_20260324T093000Z",
+      "summary": "CS <> Product Teams / Biweekly Sync",
+      "start": "2026-03-24T15:00:00+05:30",
+      "end": "2026-03-24T15:45:00+05:30",
+      "organizer": "gowtham@culturemonkey.io",
+      "attendeeCount": 10,
+      "status": "confirmed",
+      "myResponseStatus": "accepted"
+    },
+    {
+      "id": "5irjkuv54refkc07ei5geucgt8",
+      "summary": "Feedback Pipeline - discussion",
+      "start": "2026-03-24T15:45:00+05:30",
+      "end": "2026-03-24T16:15:00+05:30",
+      "organizer": "shabharish.v@culturemonkey.io",
+      "attendeeCount": 2,
+      "status": "confirmed",
+      "myResponseStatus": "accepted"
+    }
+  ],
   "digestPaths": {
     "morning": "daily/digests/2026-03-24-morning.md",
     "eod": null
