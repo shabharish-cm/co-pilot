@@ -1,8 +1,6 @@
 {
   "date": "2026-03-25",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-25T05:46:01.000Z",
-  "lastEveningSyncAt": "2026-03-23T14:38:38.742Z",
+  "fetchedAt": "2026-03-25T05:46:01.000Z",
   "sourceStatus": {
     "todoist": "fresh",
     "googleCalendar": "fresh"
@@ -321,93 +319,5 @@
       "url": "https://todoist.com/showTask?id=6gFWFHC7CJ3pCF3x"
     }
   ],
-  "completedToday": [],
-  "dueSoon": [
-    {
-      "id": "6gFWFHC7CJ3pCF3x",
-      "content": "Validate release notesx",
-      "due": "2026-03-25",
-      "priority": 4,
-      "priorityLabel": "urgent",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
-    {
-      "id": "6gCJxqR95722Cw7Q",
-      "content": "Feedback based prioritisation agent — MVP",
-      "due": "2026-03-25",
-      "priority": 3,
-      "priorityLabel": "high",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
-    {
-      "id": "6gFJqg2c5cgvCgjQ",
-      "content": "PRD: Talent Management — Skill Gap Analysis",
-      "due": "2026-03-25",
-      "priority": 2,
-      "priorityLabel": "medium",
-      "sectionName": "Features",
-      "isOverdue": false
-    },
-    {
-      "id": "6gF6Hv3WXcqQWpcx",
-      "content": "Confidentiality report for Yahoo Candidates",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CS Requests",
-      "isOverdue": false
-    },
-    {
-      "id": "6gFGQp8gx45CcQ4x",
-      "content": "Sprinto - segregate security docs",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
-    {
-      "id": "6gFJVxxjQvQpxc9x",
-      "content": "Get Totanga access from Gowtham",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
-    {
-      "id": "6gC8VJWpV65C4wrQ",
-      "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CS Requests",
-      "isOverdue": false
-    },
-    {
-      "id": "6gFJW48w452Xxv2x",
-      "content": "Get Churn notes from Gowtham",
-      "due": "2026-03-26",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
-    {
-      "id": "6g9RjjJX748JQh7x",
-      "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
-      "due": "2026-03-27",
-      "priority": 2,
-      "priorityLabel": "medium",
-      "sectionName": "Features",
-      "isOverdue": false
-    }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-25-morning.md",
-    "eod": null
-  }
+  "todayMeetings": []
 }
