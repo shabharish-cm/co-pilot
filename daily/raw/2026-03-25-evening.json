@@ -1,12 +1,23 @@
 {
   "date": "2026-03-25",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-25T05:46:01.000Z",
-  "lastEveningSyncAt": "2026-03-25T14:42:57.743Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-25T14:42:57.743Z",
+  "completedToday": [
+    {
+      "id": "6gC8VJWpV65C4wrQ",
+      "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
+      "due": "2026-03-25",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "isOverdue": false,
+      "dueSoon": true,
+      "url": "https://todoist.com/showTask?id=6gC8VJWpV65C4wrQ",
+      "completedVia": "manual",
+      "completedAt": "2026-03-25T14:42:57.742Z"
+    }
+  ],
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -323,23 +334,6 @@
       "url": "https://todoist.com/showTask?id=6gFc9HxFVVgqwHjQ"
     }
   ],
-  "completedToday": [
-    {
-      "id": "6gC8VJWpV65C4wrQ",
-      "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "isOverdue": false,
-      "dueSoon": true,
-      "url": "https://todoist.com/showTask?id=6gC8VJWpV65C4wrQ",
-      "completedVia": "manual",
-      "completedAt": "2026-03-25T14:42:57.742Z"
-    }
-  ],
   "dueSoon": [
     {
       "id": "6gCJxqR95722Cw7Q",
@@ -454,10 +448,5 @@
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gFc9HxFVVgqwHjQ"
     }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-25-morning.md",
-    "eod": null
-  }
+  ]
 }
