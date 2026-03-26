@@ -1,12 +1,32 @@
 {
   "date": "2026-03-26",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-26T02:30:00.000Z",
-  "lastEveningSyncAt": "2026-03-26T14:49:09.024Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-26T14:49:09.024Z",
+  "completedToday": [
+    {
+      "id": "6gFJqg2c5cgvCgjQ",
+      "content": "PRD: Talent Management — Skill Gap Analysis",
+      "due": "2026-03-25",
+      "priority": 2,
+      "priorityLabel": "medium",
+      "sectionName": "Features",
+      "isOverdue": true,
+      "dueSoon": false,
+      "completedVia": "manual",
+      "completedAt": "2026-03-26T14:49:09.024Z"
+    },
+    {
+      "id": "6gFWFHC7CJ3pCF3x",
+      "content": "Validate release notes",
+      "due": "2026-03-25",
+      "priority": 4,
+      "priorityLabel": "urgent",
+      "sectionName": "CM",
+      "isOverdue": true,
+      "dueSoon": false,
+      "completedVia": "manual",
+      "completedAt": "2026-03-26T14:49:09.024Z"
+    }
+  ],
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -322,32 +342,6 @@
       "url": "https://todoist.com/showTask?id=6gFqW3Cccm9hpjwx"
     }
   ],
-  "completedToday": [
-    {
-      "id": "6gFJqg2c5cgvCgjQ",
-      "content": "PRD: Talent Management — Skill Gap Analysis",
-      "due": "2026-03-25",
-      "priority": 2,
-      "priorityLabel": "medium",
-      "sectionName": "Features",
-      "isOverdue": true,
-      "dueSoon": false,
-      "completedVia": "manual",
-      "completedAt": "2026-03-26T14:49:09.024Z"
-    },
-    {
-      "id": "6gFWFHC7CJ3pCF3x",
-      "content": "Validate release notes",
-      "due": "2026-03-25",
-      "priority": 4,
-      "priorityLabel": "urgent",
-      "sectionName": "CM",
-      "isOverdue": true,
-      "dueSoon": false,
-      "completedVia": "manual",
-      "completedAt": "2026-03-26T14:49:09.024Z"
-    }
-  ],
   "dueSoon": [
     {
       "id": "6g9RjjJX748JQh7x",
@@ -413,10 +407,5 @@
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gFqW3Cccm9hpjwx"
     }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-26-morning.md",
-    "eod": null
-  }
+  ]
 }
