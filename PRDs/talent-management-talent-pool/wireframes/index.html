@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Pool — CultureMonkey</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    // ---- Mock Data ----
+
+    const MOCK_CYCLES = [
+      { id: 1, name: 'Talent Pool 2025 — Annual', status: 'Closed', sent: 'Oct 15, 2025', closed: 'Nov 1, 2025', invited: 340, responded: 287 },
+      { id: 2, name: 'Q1 2026 Intent Refresh', status: 'Active', sent: 'Mar 10, 2026', closed: null, invited: 340, responded: 142 },
+    ];
+
+    const MOCK_EMPLOYEES = [
+      { id: 1, name: 'Priya Menon', dept: 'Engineering', location: 'Bangalore', tenure: '3–5 yrs', relocation: 'Yes', promotion: 'Ready now', track: 'People Management', completed: 'Mar 12, 2026',
+        responses: [
+          { q: 'Are you open to relocating for a new role?', a: 'Yes' },
+          { q: 'How would you describe your promotion readiness?', a: 'Ready now' },
+          { q: 'Which career track interests you most?', a: 'People Management' },
+          { q: 'Describe your ideal next role in 2–3 sentences.', a: 'I am looking for a team lead role where I can mentor junior engineers and drive delivery.' },
+        ],
+        priorChanged: { relocation: { from: 'No', to: 'Yes' } },
+      },
+      { id: 2, name: 'Arjun Shah', dept: 'Operations', location: 'Chennai', tenure: '1–3 yrs', relocation: 'No', promotion: 'Ready in 6–12 months', track: 'Individual Contributor', completed: 'Mar 11, 2026',
+        responses: [
+          { q: 'Are you open to relocating for a new role?', a: 'No' },
+          { q: 'Why not? (conditional)', a: 'Family commitments and child schooling make relocation difficult in the next 2 years.' },
+          { q: 'How would you describe your promotion readiness?', a: 'Ready in 6–12 months' },
+          { q: 'Which career track interests you most?', a: 'Individual Contributor' },
+          { q: 'Describe your ideal next role in 2–3 sentences.', a: 'Senior analyst role with more ownership of end-to-end process design.' },
+        ],
+        priorChanged: null,
+      },
+      { id: 3, name: 'Lakshmi Nair', dept: 'HR', location: 'Mumbai', tenure: '5+ yrs', relocation: 'Conditionally', promotion: 'Ready now', track: 'Cross-functional', completed: 'Mar 10, 2026',
+        responses: [
+          { q: 'Are you open to relocating for a new role?', a: 'Conditionally' },
+          { q: 'How would you describe your promotion readiness?', a: 'Ready now' },
+          { q: 'Which career track interests you most?', a: 'Cross-functional' },
+          { q: 'Describe your ideal next role in 2–3 sentences.', a: 'An HRBP role with P&L exposure and cross-business unit scope.' },
+        ],
+        priorChanged: { promotion: { from: 'Ready in 6–12 months', to: 'Ready now' } },
+      },
+      { id: 4, name: 'Rahul Verma', dept: 'Engineering', location: 'Hyderabad', tenure: '1–3 yrs', relocation: 'Yes', promotion: 'Not ready', track: 'Technical Specialist', completed: 'Mar 13, 2026',
+        responses: [
+          { q: 'Are you open to relocating for a new role?', a: 'Yes' },
+          { q: 'How would you describe your promotion readiness?', a: 'Not ready' },
+          { q: 'Which career track interests you most?', a: 'Technical Specialist' },
+          { q: 'Describe your ideal next role in 2–3 sentences.', a: 'Deep specialist in distributed systems — no management interest right now.' },
+        ],
+        priorChanged: null,
+      },
+      { id: 5, name: 'Deepa Krishnan', dept: 'Sales', location: 'Delhi', tenure: '3–5 yrs', relocation: 'No', promotion: 'Not interested', track: 'Individual Contributor', completed: 'Mar 12, 2026',
+        responses: [
+          { q: 'Are you open to relocating for a new role?', a: 'No' },
+          { q: 'Why not? (conditional)', a: 'Happy with current location and team.' },
+          { q: 'How would you describe your promotion readiness?', a: 'Not interested' },
+          { q: 'Which career track interests you most?', a: 'Individual Contributor' },
+          { q: 'Describe your ideal next role in 2–3 sentences.', a: 'Senior individual contributor with expanded territory — no management responsibilities.' },
+        ],
+        priorChanged: null,
+      },
+    ];
+
+    const INITIAL_QUESTIONS = [
+      { id: 1, text: 'Are you open to relocating for a new role?', type: 'single-select', options: ['Yes', 'No', 'Conditionally'], required: true,
+        branch: { triggerOption: 'No', followUp: { id: 'f1', text: 'What are the primary reasons for your hesitation to relocate?', type: 'free-text' } } },
+      { id: 2, text: 'How would you describe your promotion readiness?', type: 'single-select', options: ['Ready now', 'Ready in 6–12 months', 'Not ready', 'Not interested'], required: true, branch: null },
+      { id: 3, text: 'Which career track interests you most?', type: 'multi-select', options: ['Individual Contributor', 'People Management', 'Technical Specialist', 'Cross-functional'], required: true, branch: null },
+      { id: 4, text: 'Describe your ideal next role in 2–3 sentences.', type: 'free-text', options: [], required: false, branch: null },
+    ];
+
+    // ---- Atoms ----
+
+    const STATUS_COLORS = { Active: '#28a745', Closed: '#6c757d', Draft: '#ffc107' };
+
+    function StatusBadge({ status }) {
+      return (
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: STATUS_COLORS[status] || '#aaa', display: 'inline-block' }} />
+          <span style={{ fontSize: 12, color: '#373A3C' }}>{status}</span>
+        </span>
+      );
+    }
+
+    function KPICard({ label, value, sub }) {
+      return (
+        <div style={{ background: '#fff', border: '1px solid #e9ecef', borderRadius: 4, padding: '18px 22px', minWidth: 150 }}>
+          <div style={{ fontSize: 11, color: '#6c757d', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 0.5 }}>{label}</div>
+          <div style={{ fontSize: 26, fontWeight: 500, color: '#343a40' }}>{value}</div>
+          {sub && <div style={{ fontSize: 11, color: '#6c757d', marginTop: 3 }}>{sub}</div>}
+        </div>
+      );
+    }
+
+    function EmptyState({ icon, message, subtext, ctaLabel, onCta }) {
+      return (
+        <div style={{ textAlign: 'center', padding: '52px 24px' }}>
+          <div style={{ fontSize: 36, marginBottom: 14 }}>{icon || '📋'}</div>
+          <div style={{ fontWeight: 500, fontSize: 14, marginBottom: 6 }}>{message}</div>
+          {subtext && <div style={{ color: '#6c757d', fontSize: 13, marginBottom: 18 }}>{subtext}</div>}
+          {ctaLabel && (
+            <button onClick={onCta} style={{ background: '#55ce97', color: '#fff', border: 'none', borderRadius: 3, padding: '9px 18px', fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit', fontSize: 13 }}>
+              {ctaLabel}
+            </button>
+          )}
+        </div>
+      );
+    }
+
+    function Btn({ children, variant = 'primary', onClick, disabled, small }) {
+      const base = { border: 'none', borderRadius: 3, cursor: disabled ? 'not-allowed' : 'pointer', fontFamily: 'inherit', fontWeight: 500, fontSize: small ? 12 : 13, padding: small ? '5px 10px' : '9px 18px', opacity: disabled ? 0.45 : 1, transition: 'background 0.15s' };
+      const variants = {
+        primary:   { background: '#55ce97', color: '#fff' },
+        secondary: { background: '#f7f7f7', color: '#414248', border: '1px solid #dee2e6' },
+        danger:    { background: 'transparent', color: '#dc3545', border: '1px solid #dc3545' },
+        outline:   { background: 'transparent', color: '#55ce97', border: '1px solid #55ce97' },
+        ghost:     { background: 'transparent', color: '#6c757d', border: '1px solid #dee2e6' },
+      };
+      return <button onClick={!disabled ? onClick : undefined} style={{ ...base, ...variants[variant] }}>{children}</button>;
+    }
+
+    // ---- Layout ----
+
+    function TopNav() {
+      return (
+        <div style={{ height: 56, background: '#F8FDFA', borderBottom: '1px solid #e9ecef', display: 'flex', alignItems: 'center', padding: '0 24px', justifyContent: 'space-between', position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <span style={{ fontWeight: 600, color: '#55ce97', fontSize: 15 }}>CultureMonkey</span>
+            <span style={{ color: '#dee2e6' }}>|</span>
+            <span style={{ color: '#6c757d', fontSize: 12 }}>Talent Management</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <div style={{ background: '#e9ecef', borderRadius: 20, padding: '4px 12px', fontSize: 12, color: '#6c757d' }}>Search</div>
+            <div style={{ width: 30, height: 30, borderRadius: '50%', background: '#dee2e6', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, color: '#6c757d', fontWeight: 500 }}>SA</div>
+          </div>
+        </div>
+      );
+    }
+
+    function Sidebar({ currentView, onNavigate }) {
+      const items = [
+        { id: 'landing',         label: 'Talent Pool Surveys',   icon: '📋' },
+        { id: 'dashboard',       label: 'Talent Pool Dashboard', icon: '📊' },
+        { id: 'employee-survey', label: 'Employee View ↗',       icon: '👤' },
+      ];
+      return (
+        <div style={{ width: 236, background: '#F8FDFA', borderRight: '1px solid #e9ecef', position: 'fixed', top: 56, bottom: 0, overflowY: 'auto', padding: '14px 0' }}>
+          <div style={{ padding: '6px 16px 10px', fontSize: 10, fontWeight: 600, color: '#6c757d', letterSpacing: 1, textTransform: 'uppercase' }}>Talent Management</div>
+          {items.map(item => (
+            <div key={item.id} onClick={() => onNavigate(item.id)}
+              style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 16px', cursor: 'pointer',
+                background: currentView === item.id ? '#55ce97' : 'transparent',
+                color: currentView === item.id ? '#fff' : '#373A3C',
+                fontSize: 13, fontWeight: currentView === item.id ? 500 : 400 }}>
+              <span>{item.icon}</span>
+              <span>{item.label}</span>
+            </div>
+          ))}
+          <div style={{ margin: '20px 16px 8px', paddingTop: 16, borderTop: '1px solid #e9ecef', fontSize: 10, fontWeight: 600, color: '#6c757d', letterSpacing: 1, textTransform: 'uppercase' }}>Other Modules</div>
+          {['Skill Gap Analysis', '9-Box Grid'].map(m => (
+            <div key={m} style={{ padding: '9px 16px', fontSize: 12, color: '#6c757d', cursor: 'default' }}>{m}</div>
+          ))}
+        </div>
+      );
+    }
+
+    // ---- Talent Pool Landing ----
+
+    function CycleRow({ cycle, onViewDashboard }) {
+      const pct = Math.round((cycle.responded / cycle.invited) * 100);
+      return (
+        <tr style={{ borderBottom: '1px solid #f0f0f0' }}>
+          <td style={{ padding: '14px 16px' }}>
+            <div style={{ fontWeight: 500, fontSize: 13 }}>{cycle.name}</div>
+            <div style={{ fontSize: 11, color: '#6c757d', marginTop: 2 }}>Sent {cycle.sent}{cycle.closed ? ` · Closed ${cycle.closed}` : ''}</div>
+          </td>
+          <td style={{ padding: '14px 16px' }}><StatusBadge status={cycle.status} /></td>
+          <td style={{ padding: '14px 16px', minWidth: 160 }}>
+            <div style={{ fontSize: 12, marginBottom: 4 }}>{cycle.responded} / {cycle.invited} responded</div>
+            <div style={{ height: 4, background: '#e9ecef', borderRadius: 2 }}>
+              <div style={{ width: `${pct}%`, height: '100%', background: '#55ce97', borderRadius: 2 }} />
+            </div>
+          </td>
+          <td style={{ padding: '14px 16px' }}>
+            <div style={{ display: 'flex', gap: 6 }}>
+              <Btn variant="ghost" small onClick={onViewDashboard}>View Dashboard</Btn>
+              <Btn variant="ghost" small>Send Reminder</Btn>
+              {cycle.status === 'Active' && <Btn variant="ghost" small>Close Cycle</Btn>}
+            </div>
+          </td>
+        </tr>
+      );
+    }
+
+    function TalentPoolLanding({ cycles, onNewSurvey, onViewDashboard }) {
+      return (
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
+            <div>
+              <h1 style={{ fontSize: 20, fontWeight: 500 }}>Talent Pool</h1>
+              <p style={{ color: '#6c757d', fontSize: 13, marginTop: 4 }}>Capture employee career intent via targeted surveys. Build and filter your internal talent pool.</p>
+            </div>
+            <Btn onClick={onNewSurvey}>+ New Survey</Btn>
+          </div>
+          {cycles.length === 0 ? (
+            <div style={{ background: '#fff', border: '1px solid #e9ecef', borderRadius: 4 }}>
+              <EmptyState icon="📋" message="No Talent Pool surveys yet" subtext="Create your first survey to start building your internal talent pool." ctaLabel="Create First Survey" onCta={onNewSurvey} />
+            </div>
+          ) : (
+            <div style={{ background: '#fff', border: '1px solid #e9ecef', borderRadius: 4 }}>
+              <div style={{ padding: '12px 16px', borderBottom: '1px solid #f0f0f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontSize: 13, fontWeight: 500 }}>Survey Cycles</span>
+                <span style={{ fontSize: 11, color: '#6c757d' }}>{cycles.length} cycles</span>
+              </div>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr style={{ background: '#f7f7f7', borderBottom: '1px solid #e9ecef' }}>
+                    {['Survey Name', 'Status', 'Responses', 'Actions'].map(h => (
+                      <th key={h} style={{ padding: '9px 16px', textAlign: 'left', fontSize: 11, fontWeight: 500, color: '#6c757d' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {cycles.map(c => <CycleRow key={c.id} cycle={c} onViewDashboard={onViewDashboard} />)}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ---- Survey Builder ----
+
+    function WizardProgress({ step }) {
+      const steps = ['Name & Description', 'Questions', 'Audience & Distribution'];
+      return (
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 28 }}>
+          {steps.map((s, i) => (
+            <React.Fragment key={i}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 26, height: 26, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 500,
+                  background: i <= step ? '#55ce97' : '#e9ecef', color: i <= step ? '#fff' : '#6c757d' }}>
+                  {i < step ? '✓' : i + 1}
+                </div>
+                <span style={{ fontSize: 13, fontWeight: i === step ? 500 : 400, color: i === step ? '#343a40' : '#6c757d' }}>{s}</span>
+              </div>
+              {i < steps.length - 1 && <div style={{ flex: 1, height: 1, background: i < step ? '#55ce97' : '#e9ecef', margin: '0 10px' }} />}
+            </React.Fragment>
+          ))}
+        </div>
+      );
+    }
+
+    function Step1NameDesc({ data, onChange }) {
+      return (
+        <div style={{ maxWidth: 540 }}>
+          <h2 style={{ fontSize: 15, fontWeight: 500, marginBottom: 18 }}>Survey Details</h2>
+          <div style={{ marginBottom: 14 }}>
+            <label style={{ display: 'block', fontSize: 12, fontWeight: 500, marginBottom: 5 }}>Survey Name *</label>
+            <input value={data.name} onChange={e => onChange({ ...data, name: e.target.value })}
+              placeholder="e.g. Q2 2026 Career Intent Survey"
+              style={{ width: '100%', padding: '9px 11px', border: '1px solid #CAD1D7', borderRadius: 3, fontFamily: 'inherit', fontSize: 13 }} />
+          </div>
+          <div>
+            <label style={{ display: 'block', fontSize: 12, fontWeight: 500, marginBottom: 5 }}>
+              Description <span style={{ color: '#6c757d', fontWeight: 400 }}>(optional)</span>
+            </label>
+            <textarea value={data.description} onChange={e => onChange({ ...data, description: e.target.value })}
+              placeholder="Briefly describe the purpose of this survey for your records."
+              rows={3}
+              style={{ width: '100%', padding: '9px 11px', border: '1px solid #CAD1D7', borderRadius: 3, fontFamily: 'inherit', fontSize: 13, resize: 'vertical' }} />
+          </div>
+        </div>
+      );
+    }
+
+    function QuestionCard({ q, index, onUpdate, onRemove }) {
+      const [branchOpen, setBranchOpen] = useState(!!q.branch);
+      return (
+        <div style={{ background: '#fff', border: '1px solid #dee2e6', borderRadius: 4, padding: 16, marginBottom: 10 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+            <span style={{ fontSize: 11, color: '#6c757d', fontWeight: 500 }}>Q{index + 1}</span>
+            <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: '#6c757d', cursor: 'pointer' }}>
+                <input type="checkbox" checked={q.required} onChange={() => onUpdate({ ...q, required: !q.required })} style={{ accentColor: '#55ce97' }} />
+                Required
+              </label>
+              <span style={{ fontSize: 11, color: '#dc3545', cursor: 'pointer' }} onClick={onRemove}>Remove</span>
+            </div>
+          </div>
+          <input value={q.text} onChange={e => onUpdate({ ...q, text: e.target.value })}
+            placeholder="Enter question text..."
+            style={{ width: '100%', padding: '7px 10px', border: '1px solid #CAD1D7', borderRadius: 3, fontFamily: 'inherit', fontSize: 13, marginBottom: 10 }} />
+          <div style={{ display: 'flex', gap: 6, marginBottom: 10 }}>
+            {['free-text', 'single-select', 'multi-select', 'rating'].map(t => (
+              <button key={t} onClick={() => onUpdate({ ...q, type: t })}
+                style={{ padding: '3px 9px', fontSize: 11, border: '1px solid', borderColor: q.type === t ? '#55ce97' : '#dee2e6',
+                  background: q.type === t ? '#f0fbf6' : '#fff', color: q.type === t ? '#55ce97' : '#6c757d',
+                  borderRadius: 3, cursor: 'pointer', fontFamily: 'inherit' }}>
+                {t}
+              </button>
+            ))}
+          </div>
+          {(q.type === 'single-select' || q.type === 'multi-select') && (
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ fontSize: 11, color: '#6c757d', marginBottom: 6 }}>Options</div>
+              {q.options.map((opt, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                  <div style={{ width: 14, height: 14, border: '1px solid #dee2e6', borderRadius: q.type === 'single-select' ? '50%' : 2, flexShrink: 0 }} />
+                  <input value={opt} onChange={e => { const o = [...q.options]; o[i] = e.target.value; onUpdate({ ...q, options: o }); }}
+                    style={{ flex: 1, padding: '3px 7px', border: '1px solid #e9ecef', borderRadius: 3, fontFamily: 'inherit', fontSize: 12 }} />
+                  <span style={{ fontSize: 11, color: '#dc3545', cursor: 'pointer' }} onClick={() => onUpdate({ ...q, options: q.options.filter((_, j) => j !== i) })}>✕</span>
+                </div>
+              ))}
+              <button onClick={() => onUpdate({ ...q, options: [...q.options, ''] })}
+                style={{ fontSize: 11, color: '#55ce97', background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0' }}>
+                + Add option
+              </button>
+            </div>
+          )}
+          {(q.type === 'single-select' || q.type === 'multi-select') && (
+            <div>
+              <div style={{ fontSize: 11, color: '#6c757d', display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }} onClick={() => setBranchOpen(!branchOpen)}>
+                <span>{branchOpen ? '▼' : '▶'}</span>
+                <span>Conditional branching</span>
+                {q.branch && <span style={{ background: '#e8f7f1', color: '#55ce97', padding: '1px 6px', borderRadius: 10, fontSize: 10 }}>Configured</span>}
+              </div>
+              {branchOpen && (
+                <div style={{ marginTop: 10, padding: 12, background: '#f8f9fa', borderRadius: 3, borderLeft: '3px solid #55ce97' }}>
+                  <div style={{ fontSize: 11, color: '#6c757d', marginBottom: 6 }}>Show follow-up when respondent selects:</div>
+                  <select style={{ padding: '4px 8px', border: '1px solid #dee2e6', borderRadius: 3, fontFamily: 'inherit', fontSize: 12, marginBottom: 8, width: 210 }}
+                    value={q.branch?.triggerOption || ''}
+                    onChange={e => onUpdate({ ...q, branch: e.target.value
+                      ? { triggerOption: e.target.value, followUp: q.branch?.followUp || { id: `f${q.id}`, text: '', type: 'free-text' } }
+                      : null })}>
+                    <option value="">— No branching —</option>
+                    {q.options.map(o => <option key={o} value={o}>{o}</option>)}
+                  </select>
+                  {q.branch && (
+                    <div style={{ marginLeft: 14, paddingLeft: 10, borderLeft: '2px dashed #dee2e6' }}>
+                      <div style={{ fontSize: 11, color: '#6c757d', marginBottom: 4 }}>Conditional on: <strong>{q.branch.triggerOption}</strong></div>
+                      <input value={q.branch.followUp.text}
+                        onChange={e => onUpdate({ ...q, branch: { ...q.branch, followUp: { ...q.branch.followUp, text: e.target.value } } })}
+                        placeholder="Follow-up question text..."
+                        style={{ width: '100%', padding: '6px 8px', border: '1px solid #CAD1D7', borderRadius: 3, fontFamily: 'inherit', fontSize: 12 }} />
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    function Step2Questions({ questions, onUpdate }) {
+      const addQ = () => onUpdate([...questions, { id: Date.now(), text: '', type: 'single-select', options: [''], required: false, branch: null }]);
+      const updateQ = (i, q) => { const qs = [...questions]; qs[i] = q; onUpdate(qs); };
+      const removeQ = (i) => onUpdate(questions.filter((_, j) => j !== i));
+      return (
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
+            <h2 style={{ fontSize: 15, fontWeight: 500 }}>Questions <span style={{ fontSize: 12, color: '#6c757d', fontWeight: 400 }}>({questions.length})</span></h2>
+            <Btn variant="outline" small onClick={addQ}>+ Add Question</Btn>
+          </div>
+          {questions.length === 0
+            ? <EmptyState icon="❓" message="No questions yet" subtext='Click "Add Question" to start building your survey.' />
+            : questions.map((q, i) => <QuestionCard key={q.id} q={q} index={i} onUpdate={u => updateQ(i, u)} onRemove={() => removeQ(i)} />)
+          }
+        </div>
+      );
+    }
+
+    function Step3Audience({ data, onChange }) {
+      const depts = ['Engineering', 'Operations', 'HR', 'Sales', 'Finance'];
+      const estimate = data.audience === 'Selected departments' ? (data.depts?.length || 0) * 58 : 340;
+      return (
+        <div style={{ maxWidth: 540 }}>
+          <h2 style={{ fontSize: 15, fontWeight: 500, marginBottom: 18 }}>Audience & Distribution</h2>
+          <div style={{ marginBottom: 18 }}>
+            <label style={{ display: 'block', fontSize: 12, fontWeight: 500, marginBottom: 8 }}>Send to</label>
+            {['All employees', 'Selected departments'].map(opt => (
+              <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, cursor: 'pointer', fontSize: 13 }}>
+                <input type="radio" name="audience" value={opt} checked={data.audience === opt} onChange={() => onChange({ ...data, audience: opt })} />
+                {opt}
+              </label>
+            ))}
+            {data.audience === 'Selected departments' && (
+              <div style={{ marginLeft: 22, marginTop: 8, padding: 12, background: '#f8f9fa', borderRadius: 3 }}>
+                {depts.map(d => (
+                  <label key={d} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, cursor: 'pointer', fontSize: 13 }}>
+                    <input type="checkbox" checked={(data.depts || []).includes(d)}
+                      onChange={e => { const prev = data.depts || []; onChange({ ...data, depts: e.target.checked ? [...prev, d] : prev.filter(x => x !== d) }); }}
+                      style={{ accentColor: '#55ce97' }} />
+                    {d}
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+          <div style={{ marginBottom: 20 }}>
+            <label style={{ display: 'block', fontSize: 12, fontWeight: 500, marginBottom: 5 }}>
+              Response Deadline <span style={{ color: '#6c757d', fontWeight: 400 }}>(optional)</span>
+            </label>
+            <input type="date" value={data.deadline || ''} onChange={e => onChange({ ...data, deadline: e.target.value })}
+              style={{ padding: '7px 11px', border: '1px solid #CAD1D7', borderRadius: 3, fontFamily: 'inherit', fontSize: 13 }} />
+            <div style={{ fontSize: 11, color: '#6c757d', marginTop: 4 }}>Deadline is a soft reminder. Survey stays open until admin manually closes the cycle.</div>
+          </div>
+          <div style={{ background: '#f0fbf6', border: '1px solid #c3e6cb', borderRadius: 4, padding: 16 }}>
+            <div style={{ fontSize: 12, fontWeight: 500, color: '#155724', marginBottom: 4 }}>Estimated recipients</div>
+            <div style={{ fontSize: 24, fontWeight: 500 }}>{estimate}</div>
+            <div style={{ fontSize: 11, color: '#6c757d' }}>employees will receive this Talent Pool cycle survey</div>
+          </div>
+        </div>
+      );
+    }
+
+    function SurveyPreviewModal({ questions, onClose }) {
+      const [answers, setAnswers] = useState({});
+      return (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 500, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ background: '#fff', borderRadius: 6, width: 580, maxHeight: '88vh', overflow: 'auto', boxShadow: '0 8px 28px rgba(0,0,0,0.15)' }}>
+            <div style={{ padding: '14px 20px', borderBottom: '1px solid #e9ecef', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, background: '#fff' }}>
+              <span style={{ fontWeight: 500, fontSize: 14 }}>Preview — Employee View</span>
+              <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 18, color: '#6c757d', lineHeight: 1 }}>✕</button>
+            </div>
+            <div style={{ padding: '20px 24px' }}>
+              <div style={{ background: '#f8f9fa', borderRadius: 4, padding: '14px 16px', marginBottom: 20 }}>
+                <div style={{ fontWeight: 500, fontSize: 14, marginBottom: 4 }}>Q1 2026 Career Intent Survey</div>
+                <div style={{ fontSize: 12, color: '#6c757d' }}>Your responses help us match you to the right opportunities and development paths.</div>
+                <div style={{ fontSize: 11, color: '#6c757d', marginTop: 6 }}>Est. 5 min · {questions.length} questions</div>
+              </div>
+              {questions.map((q, i) => {
+                const triggered = q.branch && answers[q.id] === q.branch.triggerOption;
+                return (
+                  <div key={q.id} style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 8 }}>
+                      {i + 1}. {q.text || '(No question text)'} {q.required && <span style={{ color: '#dc3545' }}>*</span>}
+                    </div>
+                    {q.type === 'free-text' && (
+                      <textarea rows={2} placeholder="Type your answer..." style={{ width: '100%', padding: '7px 9px', border: '1px solid #CAD1D7', borderRadius: 3, fontFamily: 'inherit', fontSize: 12, resize: 'vertical' }} />
+                    )}
+                    {(q.type === 'single-select' || q.type === 'multi-select') && q.options.map(opt => (
+                      <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 6, cursor: 'pointer', fontSize: 13 }}>
+                        <input type={q.type === 'single-select' ? 'radio' : 'checkbox'} name={`pq${q.id}`}
+                          checked={answers[q.id] === opt}
+                          onChange={() => setAnswers(a => ({ ...a, [q.id]: opt }))} />
+                        {opt}
+                      </label>
+                    ))}
+                    {q.type === 'rating' && (
+                      <div style={{ display: 'flex', gap: 6 }}>
+                        {[1,2,3,4,5].map(n => <button key={n} style={{ width: 34, height: 34, border: '1px solid #dee2e6', borderRadius: 3, background: '#fff', cursor: 'pointer', fontSize: 13 }}>{n}</button>)}
+                      </div>
+                    )}
+                    {triggered && (
+                      <div style={{ marginTop: 10, marginLeft: 14, paddingLeft: 12, borderLeft: '3px solid #55ce97' }}>
+                        <div style={{ fontSize: 12, fontWeight: 500, marginBottom: 6, color: '#373A3C' }}>{q.branch.followUp.text || '(Follow-up question)'}</div>
+                        <textarea rows={2} placeholder="Type your answer..." style={{ width: '100%', padding: '7px 9px', border: '1px solid #CAD1D7', borderRadius: 3, fontFamily: 'inherit', fontSize: 12, resize: 'vertical' }} />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+              <Btn>Submit Responses</Btn>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function ActiveCycleWarningModal({ onCancel, onConfirm }) {
+      return (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 500, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ background: '#fff', borderRadius: 6, width: 460, padding: 24, boxShadow: '0 8px 24px rgba(0,0,0,0.15)' }}>
+            <div style={{ fontWeight: 500, fontSize: 14, marginBottom: 10 }}>⚠️ Active Talent Pool Cycle Running</div>
+            <div style={{ fontSize: 13, color: '#6c757d', marginBottom: 20, lineHeight: 1.6 }}>
+              An active Talent Pool cycle is already running. Sending a new cycle will not close the active one — employees may receive two surveys. Do you want to continue?
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+              <Btn variant="secondary" onClick={onCancel}>Cancel</Btn>
+              <Btn onClick={onConfirm}>Yes, Send Anyway</Btn>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function SurveyBuilder({ onBack, onSend, hasActiveCycle }) {
+      const [step, setStep] = useState(0);
+      const [nameData, setNameData] = useState({ name: '', description: '' });
+      const [questions, setQuestions] = useState(INITIAL_QUESTIONS);
+      const [audienceData, setAudienceData] = useState({ audience: 'All employees', depts: [], deadline: '' });
+      const [showPreview, setShowPreview] = useState(false);
+      const [showWarning, setShowWarning] = useState(false);
+
+      const canNext = step === 0 ? nameData.name.trim().length > 0 : step === 1 ? questions.length > 0 : true;
+
+      return (
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 22 }}>
+            <button onClick={onBack} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#6c757d', fontSize: 13 }}>← Back</button>
+            <h1 style={{ fontSize: 20, fontWeight: 500 }}>New Talent Pool Survey</h1>
+          </div>
+          <div style={{ background: '#fff', border: '1px solid #e9ecef', borderRadius: 4, padding: 24 }}>
+            <WizardProgress step={step} />
+            {step === 0 && <Step1NameDesc data={nameData} onChange={setNameData} />}
+            {step === 1 && <Step2Questions questions={questions} onUpdate={setQuestions} />}
+            {step === 2 && <Step3Audience data={audienceData} onChange={setAudienceData} />}
+            <div style={{ marginTop: 24, paddingTop: 14, borderTop: '1px solid #e9ecef', display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {step > 0 && <Btn variant="secondary" onClick={() => setStep(step - 1)}>Back</Btn>}
+                <Btn variant="secondary" onClick={onBack}>Save as Draft</Btn>
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {step === 1 && <Btn variant="outline" onClick={() => setShowPreview(true)}>Preview Survey</Btn>}
+                {step < 2
+                  ? <Btn onClick={() => canNext && setStep(step + 1)} disabled={!canNext}>Next →</Btn>
+                  : <Btn onClick={() => hasActiveCycle ? setShowWarning(true) : onSend()}>Send Survey</Btn>
+                }
+              </div>
+            </div>
+          </div>
+          {showPreview && <SurveyPreviewModal questions={questions} onClose={() => setShowPreview(false)} />}
+          {showWarning && <ActiveCycleWarningModal onCancel={() => setShowWarning(false)} onConfirm={() => { setShowWarning(false); onSend(); }} />}
+        </div>
+      );
+    }
+
+    // ---- Employee Survey ----
+
+    function EmployeeSurvey() {
+      const [started, setStarted] = useState(false);
+      const [answers, setAnswers] = useState({});
+      const [submitted, setSubmitted] = useState(false);
+
+      if (submitted) {
+        return (
+          <div style={{ maxWidth: 540, margin: '0 auto' }}>
+            <div style={{ background: '#fff', border: '1px solid #e9ecef', borderRadius: 4, padding: 48, textAlign: 'center' }}>
+              <div style={{ fontSize: 44, marginBottom: 14 }}>✅</div>
+              <h2 style={{ fontSize: 18, fontWeight: 500, marginBottom: 8 }}>Responses Submitted</h2>
+              <p style={{ color: '#6c757d', fontSize: 13 }}>Thank you. Your responses have been submitted successfully.</p>
+            </div>
+          </div>
+        );
+      }
+
+      if (!started) {
+        return (
+          <div style={{ maxWidth: 540, margin: '0 auto' }}>
+            <div style={{ background: '#f0fbf6', border: '1px solid #c3e6cb', borderRadius: 3, padding: '8px 14px', fontSize: 11, color: '#155724', marginBottom: 14 }}>
+              This is the employee-facing view — what employees see when they click the survey link.
+            </div>
+            <div style={{ background: '#fff', border: '1px solid #e9ecef', borderRadius: 4, padding: 36 }}>
+              <h2 style={{ fontSize: 18, fontWeight: 500, marginBottom: 8 }}>Q1 2026 Career Intent Survey</h2>
+              <p style={{ color: '#6c757d', fontSize: 13, marginBottom: 6 }}>Your responses help us match you to the right opportunities and development paths.</p>
+              <div style={{ fontSize: 12, color: '#6c757d', marginBottom: 24 }}>Est. 5 minutes · {INITIAL_QUESTIONS.length} questions</div>
+              <Btn onClick={() => setStarted(true)}>Start Survey</Btn>
+            </div>
+          </div>
+        );
+      }
+
+      const answered = Object.keys(answers).length;
+      const total = INITIAL_QUESTIONS.length;
+
+      return (
+        <div style={{ maxWidth: 540, margin: '0 auto' }}>
+          <div style={{ background: '#fff', border: '1px solid #e9ecef', borderRadius: 4, padding: 28 }}>
+            <div style={{ marginBottom: 22 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#6c757d', marginBottom: 4 }}>
+                <span>Progress</span><span>{answered} of {total}</span>
+              </div>
+              <div style={{ height: 4, background: '#e9ecef', borderRadius: 2 }}>
+                <div style={{ width: `${(answered / total) * 100}%`, height: '100%', background: '#55ce97', borderRadius: 2, transition: 'width 0.2s' }} />
+              </div>
+            </div>
+            {INITIAL_QUESTIONS.map((q, i) => {
+              const triggered = q.branch && answers[q.id] === q.branch.triggerOption;
+              return (
+                <div key={q.id} style={{ marginBottom: 22, paddingBottom: 22, borderBottom: i < INITIAL_QUESTIONS.length - 1 ? '1px solid #f0f0f0' : 'none' }}>
+                  <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 10 }}>
+                    {i + 1}. {q.text} {q.required && <span style={{ color: '#dc3545' }}>*</span>}
+                  </div>
+                  {q.type === 'free-text' && (
+                    <textarea rows={3} placeholder="Type your answer..." value={answers[q.id] || ''}
+                      onChange={e => setAnswers(a => ({ ...a, [q.id]: e.target.value }))}
+                      style={{ width: '100%', padding: '8px 10px', border: '1px solid #CAD1D7', borderRadius: 3, fontFamily: 'inherit', fontSize: 13, resize: 'vertical' }} />
+                  )}
+                  {(q.type === 'single-select' || q.type === 'multi-select') && q.options.map(opt => (
+                    <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, cursor: 'pointer', fontSize: 13 }}>
+                      <input type={q.type === 'single-select' ? 'radio' : 'checkbox'} name={`eq${q.id}`}
+                        checked={answers[q.id] === opt} onChange={() => setAnswers(a => ({ ...a, [q.id]: opt }))}
+                        style={{ accentColor: '#55ce97' }} />
+                      {opt}
+                    </label>
+                  ))}
+                  {triggered && (
+                    <div style={{ marginTop: 12, marginLeft: 14, paddingLeft: 12, borderLeft: '3px solid #55ce97' }}>
+                      <div style={{ fontSize: 12, fontWeight: 500, marginBottom: 8 }}>{q.branch.followUp.text}</div>
+                      <textarea rows={3} placeholder="Type your answer..."
+                        style={{ width: '100%', padding: '8px 10px', border: '1px solid #CAD1D7', borderRadius: 3, fontFamily: 'inherit', fontSize: 13, resize: 'vertical' }} />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#6c757d', fontSize: 12 }}>Save and continue later</button>
+              <Btn onClick={() => setSubmitted(true)}>Submit Responses</Btn>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ---- Dashboard ----
+
+    function FilterPanel({ filters, onChange }) {
+      const sections = [
+        { key: 'relocation', label: 'Relocation Willingness', opts: ['Yes', 'No', 'Conditionally'] },
+        { key: 'promotion',  label: 'Promotion Readiness',    opts: ['Ready now', 'Ready in 6–12 months', 'Not ready', 'Not interested'] },
+        { key: 'track',      label: 'Career Track',           opts: ['Individual Contributor', 'People Management', 'Technical Specialist', 'Cross-functional'] },
+        { key: 'dept',       label: 'Department',             opts: ['Engineering', 'Operations', 'HR', 'Sales'] },
+        { key: 'location',   label: 'Location',               opts: ['Bangalore', 'Chennai', 'Mumbai', 'Hyderabad', 'Delhi'] },
+        { key: 'tenure',     label: 'Tenure Band',            opts: ['1–3 yrs', '3–5 yrs', '5+ yrs'] },
+      ];
+      const toggle = (key, val) => {
+        const prev = filters[key] || [];
+        onChange({ ...filters, [key]: prev.includes(val) ? prev.filter(x => x !== val) : [...prev, val] });
+      };
+      const activeCount = Object.values(filters).flat().length;
+      return (
+        <div style={{ width: 214, flexShrink: 0, background: '#fff', border: '1px solid #e9ecef', borderRadius: 4, padding: 14, height: 'fit-content' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+            <span style={{ fontSize: 12, fontWeight: 500 }}>Filters {activeCount > 0 && <span style={{ background: '#55ce97', color: '#fff', borderRadius: 10, padding: '1px 6px', fontSize: 10 }}>{activeCount}</span>}</span>
+            {activeCount > 0 && <button onClick={() => onChange({})} style={{ fontSize: 11, color: '#55ce97', background: 'none', border: 'none', cursor: 'pointer' }}>Clear all</button>}
+          </div>
+          {sections.map(({ key, label, opts }) => (
+            <div key={key} style={{ marginBottom: 14 }}>
+              <div style={{ fontSize: 10, fontWeight: 600, color: '#6c757d', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 7 }}>{label}</div>
+              {opts.map(opt => (
+                <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 5, cursor: 'pointer' }}>
+                  <input type="checkbox" checked={(filters[key] || []).includes(opt)} onChange={() => toggle(key, opt)} style={{ accentColor: '#55ce97' }} />
+                  <span style={{ fontSize: 12 }}>{opt}</span>
+                </label>
+              ))}
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    function EmployeeProfileDrawer({ employee, onClose }) {
+      const [showPrior, setShowPrior] = useState(false);
+      if (!employee) return null;
+      const relColor = employee.relocation === 'Yes' ? { bg: '#d4edda', text: '#155724' } : employee.relocation === 'No' ? { bg: '#f8d7da', text: '#721c24' } : { bg: '#fff3cd', text: '#856404' };
+      return (
+        <div style={{ position: 'fixed', right: 0, top: 56, bottom: 0, width: 400, background: '#fff', borderLeft: '1px solid #e9ecef', zIndex: 200, overflow: 'auto', boxShadow: '-4px 0 16px rgba(0,0,0,0.08)' }}>
+          <div style={{ padding: '14px 18px', borderBottom: '1px solid #e9ecef', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, background: '#fff' }}>
+            <span style={{ fontWeight: 500, fontSize: 14 }}>Talent Profile</span>
+            <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 18, color: '#6c757d', lineHeight: 1 }}>✕</button>
+          </div>
+          <div style={{ padding: '18px 20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: '#e9ecef', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, color: '#6c757d', fontSize: 15 }}>
+                {employee.name.split(' ').map(n => n[0]).join('')}
+              </div>
+              <div>
+                <div style={{ fontWeight: 500, fontSize: 15 }}>{employee.name}</div>
+                <div style={{ fontSize: 12, color: '#6c757d' }}>{employee.dept} · {employee.location} · {employee.tenure}</div>
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap', marginBottom: 18 }}>
+              <span style={{ padding: '3px 9px', borderRadius: 10, fontSize: 11, background: relColor.bg, color: relColor.text }}>Relocation: {employee.relocation}</span>
+              <span style={{ padding: '3px 9px', borderRadius: 10, fontSize: 11, background: '#e9ecef', color: '#373A3C' }}>{employee.promotion}</span>
+              <span style={{ padding: '3px 9px', borderRadius: 10, fontSize: 11, background: '#e9ecef', color: '#373A3C' }}>{employee.track}</span>
+            </div>
+            <div style={{ fontSize: 11, fontWeight: 600, color: '#6c757d', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 12 }}>Survey Responses — Q1 2026</div>
+            {employee.responses.map((r, i) => (
+              <div key={i} style={{ marginBottom: 14, paddingBottom: 14, borderBottom: i < employee.responses.length - 1 ? '1px solid #f0f0f0' : 'none' }}>
+                <div style={{ fontSize: 11, color: '#6c757d', marginBottom: 3 }}>{r.q}</div>
+                <div style={{ fontSize: 13, fontWeight: 500 }}>{r.a}</div>
+              </div>
+            ))}
+            {employee.priorChanged && (
+              <div style={{ marginTop: 8 }}>
+                <button onClick={() => setShowPrior(!showPrior)}
+                  style={{ fontSize: 12, color: '#55ce97', background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: 5 }}>
+                  <span>{showPrior ? '▼' : '▶'}</span> Prior cycle: Talent Pool 2025 — Annual
+                </button>
+                {showPrior && (
+                  <div style={{ marginTop: 10, padding: 12, background: '#f8f9fa', borderRadius: 4 }}>
+                    <div style={{ fontSize: 11, color: '#6c757d', marginBottom: 8 }}>Changed responses since Oct 2025</div>
+                    {Object.entries(employee.priorChanged).map(([field, { from, to }]) => (
+                      <div key={field} style={{ fontSize: 12, background: '#fff3cd', border: '1px solid #ffeeba', borderRadius: 3, padding: '4px 10px', display: 'inline-flex', gap: 6, alignItems: 'center' }}>
+                        <span style={{ color: '#6c757d', textTransform: 'capitalize' }}>{field}:</span>
+                        <span style={{ textDecoration: 'line-through', color: '#856404' }}>{from}</span>
+                        <span>→</span>
+                        <strong style={{ color: '#155724' }}>{to}</strong>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    function TalentPoolDashboard({ cycles }) {
+      const [selectedCycleId, setSelectedCycleId] = useState(2);
+      const [filters, setFilters] = useState({});
+      const [selectedEmployee, setSelectedEmployee] = useState(null);
+      const [exportOpen, setExportOpen] = useState(false);
+
+      const cycle = cycles.find(c => c.id === selectedCycleId) || cycles[0];
+      const filtered = MOCK_EMPLOYEES.filter(e => {
+        if (filters.relocation?.length && !filters.relocation.includes(e.relocation)) return false;
+        if (filters.promotion?.length  && !filters.promotion.includes(e.promotion))  return false;
+        if (filters.track?.length      && !filters.track.includes(e.track))          return false;
+        if (filters.dept?.length       && !filters.dept.includes(e.dept))            return false;
+        if (filters.location?.length   && !filters.location.includes(e.location))    return false;
+        if (filters.tenure?.length     && !filters.tenure.includes(e.tenure))        return false;
+        return true;
+      });
+      const activeFiltersCount = Object.values(filters).flat().length;
+      const relColor = r => r === 'Yes' ? { bg: '#d4edda', fg: '#155724' } : r === 'No' ? { bg: '#f8d7da', fg: '#721c24' } : { bg: '#fff3cd', fg: '#856404' };
+
+      return (
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 18 }}>
+            <div>
+              <h1 style={{ fontSize: 20, fontWeight: 500 }}>Talent Pool Dashboard</h1>
+              <p style={{ color: '#6c757d', fontSize: 13, marginTop: 4 }}>Filter and identify internal candidates based on declared career intent.</p>
+            </div>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+              <select value={selectedCycleId} onChange={e => { setSelectedCycleId(Number(e.target.value)); setSelectedEmployee(null); }}
+                style={{ padding: '7px 10px', border: '1px solid #dee2e6', borderRadius: 3, fontFamily: 'inherit', fontSize: 12, background: '#fff' }}>
+                {cycles.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+              </select>
+              <div style={{ position: 'relative' }}>
+                <Btn variant="outline" onClick={() => setExportOpen(!exportOpen)}>Export ▾</Btn>
+                {exportOpen && (
+                  <div style={{ position: 'absolute', right: 0, top: '110%', background: '#fff', border: '1px solid #dee2e6', borderRadius: 3, zIndex: 50, minWidth: 140, boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+                    {['Export as CSV', 'Export as XLSX'].map(f => (
+                      <div key={f} onClick={() => setExportOpen(false)}
+                        style={{ padding: '8px 14px', fontSize: 12, cursor: 'pointer', color: '#373A3C' }}
+                        onMouseEnter={e => e.target.style.background = '#f8f9fa'}
+                        onMouseLeave={e => e.target.style.background = '#fff'}>
+                        {f}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {cycle && (
+            <div style={{ background: '#f0fbf6', border: '1px solid #c3e6cb', borderRadius: 4, padding: '10px 16px', marginBottom: 18, display: 'flex', alignItems: 'center', gap: 10 }}>
+              <StatusBadge status={cycle.status} />
+              <span style={{ fontSize: 13, fontWeight: 500 }}>{cycle.name}</span>
+              <span style={{ fontSize: 12, color: '#6c757d' }}>· {cycle.responded} of {cycle.invited} responded ({Math.round((cycle.responded / cycle.invited) * 100)}%)</span>
+              {cycle.status === 'Active' && <Btn variant="ghost" small>Send Reminder</Btn>}
+              {cycle.status === 'Active' && <Btn variant="ghost" small>Close Cycle</Btn>}
+            </div>
+          )}
+
+          <div style={{ display: 'flex', gap: 10, marginBottom: 18 }}>
+            <KPICard label="Total Respondents" value={cycle?.responded || 0} sub={`of ${cycle?.invited || 0} invited`} />
+            <KPICard label="Response Rate" value={cycle ? `${Math.round((cycle.responded / cycle.invited) * 100)}%` : '—'} sub="current cycle" />
+            <KPICard label="Filtered Results" value={filtered.length} sub={activeFiltersCount > 0 ? `${activeFiltersCount} filter(s) active` : 'no filters applied'} />
+          </div>
+
+          <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+            <FilterPanel filters={filters} onChange={f => { setFilters(f); setSelectedEmployee(null); }} />
+            <div style={{ flex: 1, minWidth: 0 }}>
+              {filtered.length === 0 ? (
+                <div style={{ background: '#fff', border: '1px solid #e9ecef', borderRadius: 4 }}>
+                  <EmptyState icon="🔍" message="No employees match the selected filters" ctaLabel="Clear filters" onCta={() => setFilters({})} />
+                </div>
+              ) : (
+                <div style={{ background: '#fff', border: '1px solid #e9ecef', borderRadius: 4 }}>
+                  <div style={{ padding: '10px 14px', borderBottom: '1px solid #f0f0f0', fontSize: 12, color: '#6c757d', display: 'flex', alignItems: 'center', gap: 8 }}>
+                    Showing {filtered.length} employee{filtered.length !== 1 ? 's' : ''}
+                    {activeFiltersCount > 0 && <button onClick={() => setFilters({})} style={{ color: '#55ce97', background: 'none', border: 'none', cursor: 'pointer', fontSize: 11 }}>Clear filters</button>}
+                  </div>
+                  <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 700 }}>
+                      <thead>
+                        <tr style={{ background: '#f7f7f7', borderBottom: '1px solid #e9ecef' }}>
+                          {['Employee', 'Dept', 'Location', 'Tenure', 'Relocation', 'Promotion Readiness', 'Career Track', 'Completed'].map(h => (
+                            <th key={h} style={{ padding: '9px 13px', textAlign: 'left', fontSize: 11, fontWeight: 500, color: '#6c757d', whiteSpace: 'nowrap' }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {filtered.map((e, i) => {
+                          const rc = relColor(e.relocation);
+                          return (
+                            <tr key={e.id} onClick={() => setSelectedEmployee(e)}
+                              style={{ borderBottom: '1px solid #f0f0f0', background: i % 2 === 0 ? '#fff' : '#f7f7f7', cursor: 'pointer' }}
+                              onMouseEnter={ev => ev.currentTarget.style.background = '#f0fbf6'}
+                              onMouseLeave={ev => ev.currentTarget.style.background = i % 2 === 0 ? '#fff' : '#f7f7f7'}>
+                              <td style={{ padding: '11px 13px', fontWeight: 500, fontSize: 13 }}>{e.name}</td>
+                              <td style={{ padding: '11px 13px', fontSize: 12 }}>{e.dept}</td>
+                              <td style={{ padding: '11px 13px', fontSize: 12 }}>{e.location}</td>
+                              <td style={{ padding: '11px 13px', fontSize: 12 }}>{e.tenure}</td>
+                              <td style={{ padding: '11px 13px' }}>
+                                <span style={{ padding: '2px 8px', borderRadius: 10, fontSize: 11, background: rc.bg, color: rc.fg }}>{e.relocation}</span>
+                              </td>
+                              <td style={{ padding: '11px 13px', fontSize: 12 }}>{e.promotion}</td>
+                              <td style={{ padding: '11px 13px', fontSize: 12 }}>{e.track}</td>
+                              <td style={{ padding: '11px 13px', fontSize: 11, color: '#6c757d' }}>{e.completed}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+          {selectedEmployee && <EmployeeProfileDrawer employee={selectedEmployee} onClose={() => setSelectedEmployee(null)} />}
+        </div>
+      );
+    }
+
+    // ---- App Root ----
+
+    function App() {
+      const [view, setView] = useState('landing');
+      const [cycles, setCycles] = useState(MOCK_CYCLES);
+
+      const hasActiveCycle = cycles.some(c => c.status === 'Active');
+
+      const handleSend = () => {
+        setCycles(prev => [...prev, { id: Date.now(), name: 'New Talent Pool Cycle', status: 'Active', sent: 'Mar 26, 2026', closed: null, invited: 340, responded: 0 }]);
+        setView('landing');
+      };
+
+      const renderMain = () => {
+        if (view === 'builder')         return <SurveyBuilder onBack={() => setView('landing')} onSend={handleSend} hasActiveCycle={hasActiveCycle} />;
+        if (view === 'dashboard')       return <TalentPoolDashboard cycles={cycles} />;
+        if (view === 'employee-survey') return <EmployeeSurvey />;
+        return <TalentPoolLanding cycles={cycles} onNewSurvey={() => setView('builder')} onViewDashboard={() => setView('dashboard')} />;
+      };
+
+      return (
+        <div>
+          <style>{`
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            body { font-family: 'IBM Plex Sans', sans-serif; background: #f8f9fa; color: #373A3C; font-size: 14px; }
+            input, textarea, select, button { font-family: inherit; }
+            @keyframes spin { to { transform: rotate(360deg); } }
+          `}</style>
+          <TopNav />
+          <Sidebar currentView={view} onNavigate={setView} />
+          <div style={{ marginLeft: 236, marginTop: 56, padding: 26, minHeight: 'calc(100vh - 56px)' }}>
+            {renderMain()}
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

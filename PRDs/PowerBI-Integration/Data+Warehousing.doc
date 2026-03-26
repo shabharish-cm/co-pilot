@@ -1,0 +1,472 @@
+Date: Thu, 26 Mar 2026 09:56:22 +0000 (UTC)
+Message-ID: <407974325.51.1774518982551@92a398d4cf1f>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_50_436656447.1774518982551"
+
+------=_Part_50_436656447.1774518982551
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Data Warehousing</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Data Warehousing</h1>
+    <div class=3D"Section1">
+        <h1 id=3D"DataWarehousing-ClickHouseDataWarehouse&amp;ExportIntegra=
+tion=E2=80=93Architecture&amp;ImplementationGuide">ClickHouse Data Warehous=
+e &amp; Export Integration =E2=80=93 Architecture &amp; Implementation Guid=
+e</h1>
+<p><strong>Owner:</strong> Data Platform Team<br><strong>Prepared for:</str=
+ong> Siva / CultureMonkey engineering<br><strong>Last updated:</strong> 202=
+5=E2=80=9109=E2=80=9102</p>
+<hr>
+<h2 id=3D"DataWarehousing-1)ExecutiveSummary">1) Executive Summary</h2>
+<p>This document proposes a production=E2=80=91grade data warehousing solut=
+ion on <strong>ClickHouse</strong> that powers analytics and customer-facin=
+g data exports (CSV/Parquet feeds, S3 drops, Kafka streams, and JDBC/ODBC f=
+or BI tools). It includes multi=E2=80=91tenant isolation, scalable ingestio=
+n, transformations, performance tuning, security, and a reference =E2=80=9C=
+Export Service=E2=80=9D design to deliver per-tenant datasets on demand or =
+on schedule.</p>
+<hr>
+<h2 id=3D"DataWarehousing-2)Goals&amp;Non=E2=80=91Goals">2) Goals &amp; Non=
+=E2=80=91Goals</h2>
+<p><strong>Goals</strong></p>
+<ul>
+<li>
+<p>Centralize survey/feedback data (200K+ employees, 120K+ feedback/day bur=
+sts) in ClickHouse.</p></li>
+<li>
+<p>Sub=E2=80=91second analytics for dashboards; batch exports within minute=
+s.</p></li>
+<li>
+<p>Multi=E2=80=91tenant isolation with row policies and schema design.</p><=
+/li>
+<li>
+<p>Turnkey export channels: CSV/Parquet to S3, JDBC/ODBC for BI, and push f=
+eeds via Kafka.</p></li>
+<li>
+<p>Cost=E2=80=91efficient storage with S3 integration, tiering, and partiti=
+oning.</p></li>
+</ul>
+<p><strong>Non=E2=80=91Goals</strong></p>
+<ul>
+<li>
+<p>Full replacement of OLTP systems.</p></li>
+<li>
+<p>Advanced ML feature store (can be layered later).</p></li>
+</ul>
+<hr>
+<h2 id=3D"DataWarehousing-3)High=E2=80=91LevelArchitecture">3) High=E2=80=
+=91Level Architecture</h2>
+<ul>
+<li>
+<p><strong>Sources:</strong> App DBs (Postgres/MySQL), event streams (Kafka=
+), files (CSV/Parquet), 3rd=E2=80=91party tools.</p></li>
+<li>
+<p><strong>Ingestion:</strong></p>
+<ul>
+<li>
+<p><em>Change Data Capture (CDC):</em> Debezium =E2=86=92 Kafka (Avro/JSON)=
+ =E2=86=92 ClickHouse <code>Kafka</code> engine.</p></li>
+<li>
+<p><em>Batch Loads:</em> Parquet in S3 =E2=86=92 <code>s3</code> table func=
+tion / <code>S3</code> engine =E2=86=92 <code>INSERT SELECT</code>.</p></li=
+>
+<li>
+<p><em>Direct:</em> HTTP <code>INSERT</code> for small/real=E2=80=91time re=
+cords.</p></li>
+</ul></li>
+<li>
+<p><strong>Landing (Raw):</strong> <code>MergeTree</code>/<code>ReplacingMe=
+rgeTree</code> per domain table partitioned by month.</p></li>
+<li>
+<p><strong>Transform:</strong> Materialized Views (MVs) build columnar, que=
+ry=E2=80=91optimized marts.</p></li>
+<li>
+<p><strong>Serving:</strong></p>
+<ul>
+<li>
+<p>Ad=E2=80=91hoc/OLAP queries via ClickHouse.</p></li>
+<li>
+<p>Export Service for CSV/Parquet generation and managed sharing.</p></li>
+<li>
+<p>Kafka topics for push feeds to customers.</p></li>
+<li>
+<p>JDBC/ODBC for BI tools (Tableau, Power BI).</p></li>
+</ul></li>
+<li>
+<p><strong>Storage:</strong> Local NVMe for hot parts; S3 for cold parts vi=
+a <code>S3</code>/<code>S3ObjectStorage</code> and tiering.</p></li>
+<li>
+<p><strong>Orchestration:</strong> Airflow/Dagster (batch) + Kafka streamin=
+g (real=E2=80=91time).</p></li>
+<li>
+<p><strong>Security:</strong> RBAC users/roles, Row Policies by <code>tenan=
+t_id</code>, TLS, customer=E2=80=91scoped credentials.</p></li>
+</ul>
+<h2 id=3D"DataWarehousing-4)DataModel(SurveyDomain=E2=80=93Reference)">4) D=
+ata Model (Survey Domain =E2=80=93 Reference)</h2>
+<h3 id=3D"DataWarehousing-4.1CoreEntities">4.1 Core Entities</h3>
+<ul>
+<li>
+<p><strong>tenants</strong>(tenant_id, name, status, plan, created_at)</p><=
+/li>
+<li>
+<p><strong>employees</strong>(tenant_id, employee_id, email, manager_id, at=
+tributes=E2=80=A6)</p></li>
+<li>
+<p><strong>surveys</strong>(tenant_id, survey_id, name, type, language, lau=
+nched_at)</p></li>
+<li>
+<p><strong>questions</strong>(tenant_id, survey_id, question_id, type, text=
+, options_json)</p></li>
+<li>
+<p><strong>submissions</strong>(tenant_id, submission_id, survey_id, employ=
+ee_id, submitted_at, channel, device)</p></li>
+<li>
+<p><strong>answers</strong>(tenant_id, submission_id, question_id, answer_v=
+alue, answer_text, answer_json)</p></li>
+<li>
+<p><strong>sentiment</strong>(tenant_id, submission_id, score, magnitude, t=
+opics_array, model_version)</p></li>
+</ul>
+<h3 id=3D"DataWarehousing-4.2ClickHouseStorageEngines">4.2 ClickHouse Stora=
+ge Engines</h3>
+<ul>
+<li>
+<p><code>MergeTree</code> for immutable facts (submissions, answers) with m=
+onthly partitions.</p></li>
+<li>
+<p><code>ReplacingMergeTree(version)</code> when late updates or correction=
+s are possible.</p></li>
+<li>
+<p><code>AggregatingMergeTree</code> for pre=E2=80=91aggregated marts (ENPS=
+ by segment, time).</p></li>
+</ul>
+<p></p>
+<h2 id=3D"DataWarehousing-5)IngestionPatterns">5) Ingestion Patterns</h2>
+<h3 id=3D"DataWarehousing-5.1StreamingviaKafka">5.1 Streaming via Kafka</h3=
+>
+<ul>
+<li>
+<p><strong>CDC:</strong> Debezium on Postgres =E2=86=92 Kafka topics (<code=
+>survey.submissions</code>, <code>survey.answers</code>).</p></li>
+<li>
+<p><strong>ClickHouse:</strong> <code>Kafka</code> engine tables + MVs to l=
+and in <code>MergeTree</code>.</p></li>
+</ul>
+<h3 id=3D"DataWarehousing-5.2BatchviaS3Parquet">5.2 Batch via S3 Parquet</h=
+3>
+<ul>
+<li>
+<p>Land hourly/daily Parquet files in <code>s3://cm-raw/survey/answers/ym=
+=3DYYYYMM/=E2=80=A6</code>.</p></li>
+<li>
+<p>Load using <code>INSERT SELECT</code>:</p></li>
+</ul>
+<h3 id=3D"DataWarehousing-5.3DirectHTTPInserts(micro-events)">5.3 Direct HT=
+TP Inserts (micro-events)</h3>
+<ul>
+<li>
+<p>For small, real=E2=80=91time streams where Kafka is overkill.</p></li>
+<li>
+<p><code>POST /?query=3DINSERT INTO cm_dw.events FORMAT JSONEachRow</code> =
+with auth &amp; TLS.</p></li>
+</ul>
+<p></p>
+<h2 id=3D"DataWarehousing-6)Multi=E2=80=91TenantIsolation&amp;Security">6) =
+Multi=E2=80=91Tenant Isolation &amp; Security</h2>
+<h3 id=3D"DataWarehousing-6.1RBAC&amp;RowPolicies">6.1 RBAC &amp; Row Polic=
+ies</h3>
+<ul>
+<li>
+<p>Use <strong>separate users/roles per tenant</strong> for direct BI/JDBC =
+access.</p></li>
+<li>
+<p>Optionally add <strong>column masking</strong> for PII (e.g., hash email=
+s) via views.</p></li>
+</ul>
+<h3 id=3D"DataWarehousing-6.2Network&amp;Auth">6.2 Network &amp; Auth</h3>
+<ul>
+<li>
+<p>TLS for client =E2=86=92 server.</p></li>
+<li>
+<p>mTLS for internal services; IP allowlists for customer connections.</p><=
+/li>
+<li>
+<p>Secrets in Vault/SSM; short=E2=80=91lived creds where possible.</p></li>
+</ul>
+<h3 id=3D"DataWarehousing-6.3Compliance">6.3 Compliance</h3>
+<ul>
+<li>
+<p>Tag PII columns; encrypt at rest (disk + S3).</p></li>
+<li>
+<p>Data subject deletion =3D delete/overwrite in OLTP =E2=86=92 emit CDC to=
+mbstones =E2=86=92 propagate to CH with Replacing/Collapsing strategy.</p><=
+/li>
+</ul>
+<p></p>
+<h2 id=3D"DataWarehousing-7)ExportIntegrationOptions">7) Export Integration=
+ Options</h2>
+<h3 id=3D"DataWarehousing-7.1Self=E2=80=91ServeBI(Pull)">7.1 Self=E2=80=91S=
+erve BI (Pull)</h3>
+<ul>
+<li>
+<p><strong>JDBC/ODBC</strong>: Provision tenant=E2=80=91scoped users/roles =
++ Row Policies.</p></li>
+<li>
+<p><strong>Tools:</strong> Tableau, Power BI, Superset, Metabase.</p></li>
+<li>
+<p><strong>Pros:</strong> zero data movement. <strong>Cons:</strong> live q=
+uery cost &amp; governance.</p></li>
+</ul>
+<h3 id=3D"DataWarehousing-7.2ManagedFileExports(PushorOn=E2=80=91Demand)">7=
+.2 Managed File Exports (Push or On=E2=80=91Demand)</h3>
+<ul>
+<li>
+<p><strong>Formats:</strong> CSV, Parquet (recommended), JSONLines.</p></li=
+>
+<li>
+<p><strong>Delivery:</strong></p>
+<ul>
+<li>
+<p>Write to internal S3 bucket then <strong>share via pre=E2=80=91signed UR=
+L</strong> or cross=E2=80=91account S3 access.</p></li>
+<li>
+<p>Optional delivery to customer SFTP.</p></li>
+</ul></li>
+<li>
+<p><strong>Implementation:</strong> Export Service (below) or <code>clickho=
+use-local</code> for big, offline extracts.</p></li>
+</ul>
+<h3 id=3D"DataWarehousing-7.3StreamingFeeds(Push)">7.3 Streaming Feeds (Pus=
+h)</h3>
+<ul>
+<li>
+<p>Publish curated topics (e.g., <code>export.enps_monthly</code>, <code>ex=
+port.answers</code>) to <strong>Kafka</strong>; customers consume and load =
+to their DW.</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_50_436656447.1774518982551--
