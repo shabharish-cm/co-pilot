@@ -222,3 +222,35 @@ Evidence basis: transcript-backed (3 calls, all deal-blocking)
 > *"The survey must reach employees before their last day due to email access loss after exit."* — Michelle Bacon, BrainLabs
 
 → [Full digest: pulse/weekly/2026-W12.md](../weekly/2026-W12.md)
+
+---
+
+## 2026-W13 — March 19–26, 2026
+
+**Transcripts:** 18 | **Calls:** BrainLabs (lifecycle/exit), Yahoo (audit + candidate module live), RocRich (discovery), Ummeed Housing Finance (product tour), Bausch Health (pre-launch access), PopClub (demo), Tarento (eval), GBSS Australia (demo), Certis Belchim (reporting), Aloha (demo), Xebia (onboarding), URUS (reporting/UAT), Cerence (pre-launch), Inga Group (setup), Banpu Thailand (UAT), Reverie (churn/cancellation)
+
+### Key Themes
+
+- **Executive & custom reporting — active delivery pressure** — Certis Belchim (April 17 hard deadline; country + department-level data, comparative slides, thematic analysis) and URUS (April 10–15; 400 managers, 55% participation target) are both in delivery-execution mode. Report generation delays directly threaten leadership trust.
+- **Sub-admin access & role governance — new emerging pattern** — Bausch Health (incorrect sub-admin assignments pre-launch), URUS (manager reports-only, no platform access), and Banpu Thailand (exact team/location/BU matching required for access; 24 Thailand locations) all surfaced sub-admin friction independently this week. Distinct from pre-sale HRIS gap — this is post-sale configuration friction.
+- **BrainLabs lifecycle/exit — continuing from W12** — Daily SFTP feed agreed; data mapping update committed for March 24; custom attributes expansion coming. Exit email-loss race condition still the structural constraint; no permanent fix confirmed.
+- **New demo pipeline — 4 accounts** — PopClub (200 employees, April target, urgent approval), Aloha (150 employees, INR 380k/year, 1-week launch target), GBSS Australia (336 employees, $7k/year, retention-focused), Tarento (evaluation-stage). All demos show positive pricing acceptance.
+- **Implementation heavy week** — Yahoo audit passed (1 minor error only; candidate surveys live; HM training in 1–2 weeks), Cerence (test phase imminent, QR codes confirmed), Xebia (Zoho People sync confirmed, onboarding lifecycle live), Inga Group (May launch target, domain whitelist in progress), Banpu Thailand (UAT must close before April 1 committee meeting).
+- **Ask Cooper / AI resonance** — Ummeed Housing Finance competitive comparison vs. Infido Amber: standardized questions cited as data reliability differentiator. Flight-risk detection feature communicated as mid-Q2 roadmap commitment. Aloha also responded positively to AI action plans.
+- **Churn signal — Reverie (HIGH)** — Contract termination April 1 due to merger/downsizing (200 → 38 employees). INR 1.8 lakh contract. Structural/M&A churn; no product dissatisfaction. Goodwill preservation approach agreed; credit note for remainder under discussion.
+
+### Feature Gaps / Implementation Issues
+
+- Sub-admin role configuration — pre-launch validation gap (Bausch Health, URUS, Banpu Thailand) → consider automated access verification step
+- Exit survey email-loss trigger timing — BrainLabs, no ETA on permanent fix
+- Custom attributes not universally available in sub-admin views — fix reportedly in progress (BrainLabs)
+- Flight-risk detection feature — communicated as mid-Q2 ETA to Ummeed Housing Finance; ensure product alignment
+
+### Deal Pipeline Highlights
+
+- **Closing this week:** PopClub (hot — early next-week contract target), Aloha (1-week launch window)
+- **Active go-lives:** Yahoo, Cerence, Banpu Thailand (April 1 UAT deadline)
+- **Active delivery commitments:** Certis Belchim (April 17), URUS (April 10–15)
+- **Churn:** Reverie — settlement by March 31
+
+→ [Full digest: pulse/weekly/2026-W13.md](../weekly/2026-W13.md)
