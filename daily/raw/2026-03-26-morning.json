@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-26",
+  "fetchedAt": "2026-03-26T02:30:00.000Z",
+  "sourceStatus": {
+    "todoist": "fresh",
+    "googleCalendar": "fresh"
+  },
+  "openTasks": [
+    { "id": "6gC7GmvfXQ7FVVmx", "content": "Send info to UGG regarding workers logic", "due": "2026-03-24", "priority": 1, "priorityLabel": "normal", "sectionName": "effy", "isOverdue": true, "dueSoon": false },
+    { "id": "6gCJx6qQ8r3wcv8Q", "content": "Feedback based prioritisation agent", "due": "2026-03-31", "priority": 3, "priorityLabel": "high", "sectionName": "CM", "isOverdue": false, "dueSoon": false },
+    { "id": "6gCJxJcmvpjWP3gQ", "content": "Build Dashboard Frontend", "due": null, "priority": 1, "priorityLabel": "normal", "sectionName": "CM", "isOverdue": false, "dueSoon": false },
+    { "id": "6gCJxJgfR2JRqm6Q", "content": "Automate and Scale", "due": null, "priority": 1, "priorityLabel": "normal", "sectionName": "CM", "isOverdue": false, "dueSoon": false },
+    { "id": "6gCJxqR95722Cw7Q", "content": "Feedback based prioritisation agent — MVP", "due": "2026-03-25", "priority": 3, "priorityLabel": "high", "sectionName": "CM", "isOverdue": true, "dueSoon": false },
+    { "id": "6gCJxJQhxwMMjH5Q", "content": "Create CSV State Storage", "due": null, "priority": 1, "priorityLabel": "normal", "sectionName": "CM", "isOverdue": false, "dueSoon": false },
+    { "id": "6gCJxJQpgjfRXpGQ", "content": "Build Backend Agent (Claude)", "due": null, "priority": 1, "priorityLabel": "normal", "sectionName": "CM", "isOverdue": false, "dueSoon": false },
+    { "id": "6gCJxJWqg3mcGV5Q", "content": "Test Prototype", "due": null, "priority": 1, "priorityLabel": "normal", "sectionName": "CM", "isOverdue": false, "dueSoon": false },
+    { "id": "6gFGR8hWxfmHR9vQ", "content": "Yahoo - candidate surveys needs to be published - follow up with Saran", "due": null, "priority": 1, "priorityLabel": "normal", "sectionName": "Engg asks", "isOverdue": false, "dueSoon": false },
+    { "id": "6gFXGM9WpQhr3Wxx", "content": "Overtime Analysis — Sub-admin and Manager access", "due": null, "priority": 1, "priorityLabel": "normal", "sectionName": "Unknown", "isOverdue": false, "dueSoon": false },
+    { "id": "6gCM8HFVqx8WHHHx", "content": "Build feature landing page — Flexible time-range filtering", "due": null, "priority": 3, "priorityLabel": "high", "sectionName": "CM", "isOverdue": false, "dueSoon": false },
+    { "id": "6g9RjjJX748JQh7x", "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch", "due": "2026-03-27", "priority": 2, "priorityLabel": "medium", "sectionName": "Features", "isOverdue": false, "dueSoon": true },
+    { "id": "6gCM8HJ7MH6MfmVQ", "content": "Write blog posts on flexible time-range filtering availability (AEO/GEO counter-narrative)", "due": null, "priority": 3, "priorityLabel": "high", "sectionName": "CM", "isOverdue": false, "dueSoon": false },
+    { "id": "6gC7xJM8267RxRpx", "content": "Section Rules MVP — dev completion", "due": "2026-04-10", "priority": 1, "priorityLabel": "normal", "sectionName": "Features", "isOverdue": false, "dueSoon": false },
+    { "id": "6gCM8gVrX92jF9mQ", "content": "Align with marketing on time-range filtering content strategy (landing page + blog)", "due": null, "priority": 3, "priorityLabel": "high", "sectionName": "CM", "isOverdue": false, "dueSoon": false },
+    { "id": "6gCM8H6FfcgmFgGx", "content": "Build flexible time-range filtering (over-time analysis)", "due": null, "priority": 3, "priorityLabel": "high", "sectionName": "Features", "isOverdue": false, "dueSoon": false },
+    { "id": "6gF6Hv3WXcqQWpcx", "content": "Confidentiality report for Yahoo Candidates", "due": "2026-03-25", "priority": 1, "priorityLabel": "normal", "sectionName": "CS Requests", "isOverdue": true, "dueSoon": false },
+    { "id": "6gFGQp8gx45CcQ4x", "content": "Sprinto - segregate security docs", "due": "2026-03-25", "priority": 1, "priorityLabel": "normal", "sectionName": "CM", "isOverdue": true, "dueSoon": false },
+    { "id": "6gFJVxxjQvQpxc9x", "content": "Get Totanga access from Gowtham", "due": "2026-03-25", "priority": 1, "priorityLabel": "normal", "sectionName": "CM", "isOverdue": true, "dueSoon": false },
+    { "id": "6gFJqg379HmwQ4hx", "content": "PRD: Talent Management — Talent Pool Management", "due": null, "priority": 3, "priorityLabel": "high", "sectionName": "Features", "isOverdue": false, "dueSoon": false },
+    { "id": "6gFJW48w452Xxv2x", "content": "Get Churn notes from Gowtham", "due": "2026-03-26", "priority": 1, "priorityLabel": "normal", "sectionName": "CM", "isOverdue": false, "dueSoon": true },
+    { "id": "6gFJqg32CGPJJmwQ", "content": "PRD: Talent Management — 9-Box Grid", "due": null, "priority": 3, "priorityLabel": "high", "sectionName": "Features", "isOverdue": false, "dueSoon": false },
+    { "id": "6gFJqg2c5cgvCgjQ", "content": "PRD: Talent Management — Skill Gap Analysis", "due": "2026-03-25", "priority": 2, "priorityLabel": "medium", "sectionName": "Features", "isOverdue": true, "dueSoon": false },
+    { "id": "6gFWFHC7CJ3pCF3x", "content": "Validate release notes", "due": "2026-03-25", "priority": 4, "priorityLabel": "urgent", "sectionName": "CM", "isOverdue": true, "dueSoon": false },
+    { "id": "6gFc9HxFVVgqwHjQ", "content": "Write release notes skill", "due": "2026-03-26", "priority": 1, "priorityLabel": "normal", "sectionName": "CM", "isOverdue": false, "dueSoon": true }
+  ],
+  "todayMeetings": []
+}

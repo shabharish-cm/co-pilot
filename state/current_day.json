@@ -1,7 +1,7 @@
 {
-  "date": "2026-03-25",
+  "date": "2026-03-26",
   "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-25T05:46:01.000Z",
+  "lastMorningSyncAt": "2026-03-26T02:30:00.000Z",
   "lastEveningSyncAt": "2026-03-24T14:41:56.293Z",
   "sourceStatus": {
     "todoist": "fresh",
@@ -14,9 +14,7 @@
       "due": "2026-03-24",
       "priority": 1,
       "priorityLabel": "normal",
-      "labels": [
-        "status:in-progress"
-      ],
+      "labels": ["status:in-progress"],
       "sectionId": "6g9QcvpjJw2cFmCx",
       "sectionName": "effy",
       "isOverdue": true,
@@ -64,15 +62,15 @@
     },
     {
       "id": "6gCJxqR95722Cw7Q",
-      "content": "Feedback based prioritisation agent \u2014 MVP",
+      "content": "Feedback based prioritisation agent — MVP",
       "due": "2026-03-25",
       "priority": 3,
       "priorityLabel": "high",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
-      "isOverdue": false,
-      "dueSoon": true,
+      "isOverdue": true,
+      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCJxqR95722Cw7Q"
     },
     {
@@ -128,32 +126,21 @@
       "url": "https://todoist.com/showTask?id=6gFGR8hWxfmHR9vQ"
     },
     {
-      "id": "6gFHmpvPXj6F5xPQ",
-      "content": "Connect with KN for Alumil",
-      "due": "2026-03-24",
-      "priority": 3,
-      "priorityLabel": "high",
-      "labels": [],
-      "isOverdue": true,
-      "dueSoon": false,
-      "url": "https://todoist.com/showTask?id=6gFHmpvPXj6F5xPQ"
-    },
-    {
-      "id": "6gC8VJWpV65C4wrQ",
-      "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
-      "due": "2026-03-25",
+      "id": "6gFXGM9WpQhr3Wxx",
+      "content": "Overtime Analysis — Sub-admin and Manager access",
+      "due": null,
       "priority": 1,
       "priorityLabel": "normal",
       "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
+      "sectionId": null,
+      "sectionName": "Unknown",
       "isOverdue": false,
-      "dueSoon": true,
-      "url": "https://todoist.com/showTask?id=6gC8VJWpV65C4wrQ"
+      "dueSoon": false,
+      "url": "https://todoist.com/showTask?id=6gFXGM9WpQhr3Wxx"
     },
     {
       "id": "6gCM8HFVqx8WHHHx",
-      "content": "Build feature landing page \u2014 Flexible time-range filtering",
+      "content": "Build feature landing page — Flexible time-range filtering",
       "due": null,
       "priority": 3,
       "priorityLabel": "high",
@@ -170,11 +157,7 @@
       "due": "2026-03-27",
       "priority": 2,
       "priorityLabel": "medium",
-      "labels": [
-        "follow-up",
-        "research",
-        "status:up-next"
-      ],
+      "labels": ["follow-up", "research", "status:up-next"],
       "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
       "isOverdue": false,
@@ -196,7 +179,7 @@
     },
     {
       "id": "6gC7xJM8267RxRpx",
-      "content": "Section Rules MVP \u2014 dev completion",
+      "content": "Section Rules MVP — dev completion",
       "due": "2026-04-10",
       "priority": 1,
       "priorityLabel": "normal",
@@ -242,8 +225,8 @@
       "labels": [],
       "sectionId": "6g8x4HVHxpWVfVHQ",
       "sectionName": "CS Requests",
-      "isOverdue": false,
-      "dueSoon": true,
+      "isOverdue": true,
+      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
     },
     {
@@ -255,8 +238,8 @@
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
-      "isOverdue": false,
-      "dueSoon": true,
+      "isOverdue": true,
+      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFGQp8gx45CcQ4x"
     },
     {
@@ -268,13 +251,13 @@
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
-      "isOverdue": false,
-      "dueSoon": true,
+      "isOverdue": true,
+      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFJVxxjQvQpxc9x"
     },
     {
       "id": "6gFJqg379HmwQ4hx",
-      "content": "PRD: Talent Management \u2014 Talent Pool Management",
+      "content": "PRD: Talent Management — Talent Pool Management",
       "due": null,
       "priority": 3,
       "priorityLabel": "high",
@@ -300,7 +283,7 @@
     },
     {
       "id": "6gFJqg32CGPJJmwQ",
-      "content": "PRD: Talent Management \u2014 9-Box Grid",
+      "content": "PRD: Talent Management — 9-Box Grid",
       "due": null,
       "priority": 3,
       "priorityLabel": "high",
@@ -313,109 +296,58 @@
     },
     {
       "id": "6gFJqg2c5cgvCgjQ",
-      "content": "PRD: Talent Management \u2014 Skill Gap Analysis",
+      "content": "PRD: Talent Management — Skill Gap Analysis",
       "due": "2026-03-25",
       "priority": 2,
       "priorityLabel": "medium",
       "labels": [],
       "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
-      "isOverdue": false,
-      "dueSoon": true,
+      "isOverdue": true,
+      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFJqg2c5cgvCgjQ"
     },
     {
       "id": "6gFWFHC7CJ3pCF3x",
-      "content": "Validate release notesx",
+      "content": "Validate release notes",
       "due": "2026-03-25",
       "priority": 4,
       "priorityLabel": "urgent",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "isOverdue": true,
+      "dueSoon": false,
+      "url": "https://todoist.com/showTask?id=6gFWFHC7CJ3pCF3x"
+    },
+    {
+      "id": "6gFc9HxFVVgqwHjQ",
+      "content": "Write release notes skill",
+      "due": "2026-03-26",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
       "isOverdue": false,
       "dueSoon": true,
-      "url": "https://todoist.com/showTask?id=6gFWFHC7CJ3pCF3x"
+      "url": "https://todoist.com/showTask?id=6gFc9HxFVVgqwHjQ"
     }
   ],
-  "completedToday": [
-    {
-      "id": "6gCMFmVR5J66X4Gx",
-      "content": "Yahoo \u2014 trigger HM survey for 3 candidates, check with Engg and update CS",
-      "due": "2026-03-24",
-      "priority": 1,
-      "sectionName": "CS Requests",
-      "completedVia": "manual",
-      "completedAt": "2026-03-24T14:41:56.293Z"
-    }
-  ],
+  "completedToday": [],
   "dueSoon": [
-    {
-      "id": "6gFWFHC7CJ3pCF3x",
-      "content": "Validate release notesx",
-      "due": "2026-03-25",
-      "priority": 4,
-      "priorityLabel": "urgent",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
-    {
-      "id": "6gCJxqR95722Cw7Q",
-      "content": "Feedback based prioritisation agent \u2014 MVP",
-      "due": "2026-03-25",
-      "priority": 3,
-      "priorityLabel": "high",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
-    {
-      "id": "6gFJqg2c5cgvCgjQ",
-      "content": "PRD: Talent Management \u2014 Skill Gap Analysis",
-      "due": "2026-03-25",
-      "priority": 2,
-      "priorityLabel": "medium",
-      "sectionName": "Features",
-      "isOverdue": false
-    },
-    {
-      "id": "6gF6Hv3WXcqQWpcx",
-      "content": "Confidentiality report for Yahoo Candidates",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CS Requests",
-      "isOverdue": false
-    },
-    {
-      "id": "6gFGQp8gx45CcQ4x",
-      "content": "Sprinto - segregate security docs",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
-    {
-      "id": "6gFJVxxjQvQpxc9x",
-      "content": "Get Totanga access from Gowtham",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
-    {
-      "id": "6gC8VJWpV65C4wrQ",
-      "content": "Check regarding Section visibility example from KAG with Yugi on Friday",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CS Requests",
-      "isOverdue": false
-    },
     {
       "id": "6gFJW48w452Xxv2x",
       "content": "Get Churn notes from Gowtham",
+      "due": "2026-03-26",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "sectionName": "CM",
+      "isOverdue": false
+    },
+    {
+      "id": "6gFc9HxFVVgqwHjQ",
+      "content": "Write release notes skill",
       "due": "2026-03-26",
       "priority": 1,
       "priorityLabel": "normal",
@@ -434,7 +366,7 @@
   ],
   "todayMeetings": [],
   "digestPaths": {
-    "morning": "daily/digests/2026-03-25-morning.md",
+    "morning": "daily/digests/2026-03-26-morning.md",
     "eod": null
   }
 }
