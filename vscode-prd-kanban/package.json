@@ -1,0 +1,53 @@
+{
+  "name": "prd-kanban-board",
+  "displayName": "PRD Kanban Board",
+  "description": "Kanban board for /research -> /jtbd -> /prd -> /wireframe workflows on PRD folders.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "private": true,
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:prdKanban.openBoard"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "prdKanban.openBoard",
+        "title": "PRD Kanban: Open Workflow Board"
+      }
+    ],
+    "configuration": {
+      "title": "PRD Kanban",
+      "properties": {
+        "prdKanban.claudeCliPath": {
+          "type": "string",
+          "default": "/opt/homebrew/bin/claude",
+          "description": "Absolute path to Claude CLI binary."
+        },
+        "prdKanban.cliArgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "--dangerously-skip-permissions",
+            "-p"
+          ],
+          "description": "Arguments passed to Claude CLI when running slash commands."
+        },
+        "prdKanban.timeoutMs": {
+          "type": "number",
+          "default": 600000,
+          "minimum": 30000,
+          "description": "Maximum time for each stage run in milliseconds."
+        }
+      }
+    }
+  }
+}

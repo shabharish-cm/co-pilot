@@ -7,30 +7,27 @@ Generate an end-of-day summary and carry-forward recommendations.
 - **Haiku** for final digest drafting.
 - **Sonnet** only if reasoning is needed to detect missed commitments or blockers.
 
-## Step 0 — Pull latest state
-Run `git pull` once at the start to pick up any updates committed by the evening sync (GitHub Actions runs at 19:00 IST and writes `completedToday` to `state/current_day.json`).
+## Step 0 — Fetch live state
+Always fetch live from Todoist MCP — do not rely on cached state for tasks, as tasks are completed directly in Todoist throughout the day.
+- Call `get_tasks_list` with `project_id: 6g8q49QQxHrFxRFx` → open tasks
+- Call `get_completed_tasks` with `project_id: 6g8q49QQxHrFxRFx` → filter to tasks completed today (IST)
+- Read `state/current_day.json` for meetings context only (`todayMeetings`)
 
 ## Inputs
-1. `state/current_day.json` — completed tasks, open tasks, due-soon tasks
-
-## Freshness Check
-Read `state/last_sync.json`. Check `morningSync.ranAt`.
-- If `ranAt` is null or the date is not today: show banner:
-  > ⚠ Morning digest was not run today — completed task data may be incomplete.
-- If `eveningSync.ranAt` is null or older than 12 hours: show banner:
-  > ⚠ Evening sync has not run yet — `completedToday` may not reflect all completions.
+1. Todoist MCP (always live) — open tasks + completed today
+2. `state/current_day.json` — meetings context only
 
 ## Output Structure
 
 ### 1. Completed Today
-List all entries in `completedToday`. Count and congratulate if meaningful.
-If empty: note that the evening sync may not have run yet.
+List tasks completed today from the live `get_completed_tasks` fetch. Count and congratulate if meaningful.
+If empty: note it (no fallback to stale state).
 
 ### 2. Carry-Forward Tasks
-List all open tasks that were due today or earlier and are still incomplete.
+List open tasks from the live `get_tasks_list` fetch that were due today or earlier and are still open.
 
 ### 3. Due Soon (Next 3 Days)
-List tasks in `dueSoon`. Highlight any that look at risk given today's carry-forward.
+From the live open tasks, list tasks due within the next 3 days. Highlight any that look at risk given today's carry-forward.
 
 ### 4. Missed Commitments or Likely Blockers
 Flag tasks that were overdue and remain open, or any pattern suggesting a blocker.

@@ -7,17 +7,15 @@ Surface 5–7 high-signal tasks to focus on right now. Not a full task dump.
 - **Sonnet**
 
 ## Inputs
-1. `state/current_day.json`
+1. Todoist MCP (always live)
+2. `state/current_day.json` (for meetings context only)
 
 ## Behavior
 
-### Check state freshness
-Read `lastMorningSyncAt` from `state/current_day.json`.
-- If the date of `lastMorningSyncAt` is today: use `openTasks` from the state file.
-- If the date is prior to today (stale): fetch live from Todoist MCP instead:
-  - Call `get_tasks_list` with `project_id: 6g8q49QQxHrFxRFx`
-  - Normalize results (isOverdue, priority mapping) as defined in `/morning`
-  - Show a note: `(live data — run /morning to persist)`
+### Fetch live tasks
+Always fetch live from Todoist MCP — do not use cached state for tasks, as tasks are completed directly in Todoist throughout the day.
+- Call `get_tasks_list` with `project_id: 6g8q49QQxHrFxRFx`
+- Normalize results: mark `isOverdue` if due date is before today; map priority (4=urgent, 3=high, 2=medium, 1=normal)
 
 ### Rank and filter
 1. Sort by: overdue first → priority (4 highest) → due date ascending.
