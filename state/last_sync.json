@@ -4,13 +4,13 @@
     "status": "success"
   },
   "eveningSync": {
-    "ranAt": "2026-03-25T14:42:57.743Z",
+    "ranAt": "2026-03-26T14:49:09.024Z",
     "status": "success"
   },
   "dailyFirefliesSync": {
-    "ranAt": "2026-03-25T20:02:06.167Z",
+    "ranAt": "2026-03-26T20:01:38.844Z",
     "status": "success",
-    "dayKey": "2026-03-25"
+    "dayKey": "2026-03-26"
   },
   "weeklyCustomerPulseDigest": {
     "ranAt": "2026-03-20T07:20:00.000Z",
