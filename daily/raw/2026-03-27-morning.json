@@ -1,0 +1,200 @@
+{
+  "date": "2026-03-27",
+  "fetchedAt": "2026-03-27T03:00:00.000Z",
+  "sourceStatus": {
+    "todoist": "fresh",
+    "googleCalendar": "fresh"
+  },
+  "openTasks": [
+    {
+      "id": "6gC7GmvfXQ7FVVmx",
+      "content": "Send info to UGG regarding workers logic",
+      "due": "2026-03-24",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": ["status:in-progress"],
+      "sectionId": "6g9QcvpjJw2cFmCx",
+      "sectionName": "effy",
+      "isOverdue": true,
+      "dueSoon": false
+    },
+    {
+      "id": "6gCJx6qQ8r3wcv8Q",
+      "content": "Feedback based prioritisation agent",
+      "due": "2026-03-31",
+      "priority": 3,
+      "priorityLabel": "high",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": false,
+      "dueSoon": false
+    },
+    {
+      "id": "6gCJxqR95722Cw7Q",
+      "content": "Feedback based prioritisation agent — MVP",
+      "due": "2026-03-25",
+      "priority": 3,
+      "priorityLabel": "high",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": true,
+      "dueSoon": false
+    },
+    {
+      "id": "6gFGR8hWxfmHR9vQ",
+      "content": "Yahoo - candidate surveys needs to be published - follow up with Saran",
+      "due": null,
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4MgXR2q68fgQ",
+      "sectionName": "Engg asks",
+      "isOverdue": false,
+      "dueSoon": false
+    },
+    {
+      "id": "6gG34VcVrRGFhRgQ",
+      "content": "[ The pending items for Yahoo](https://culturemonkey.slack.com/archives/C0AHVTPDTME/p1774587315469189)",
+      "due": null,
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": null,
+      "sectionName": "Unknown",
+      "isOverdue": false,
+      "dueSoon": false
+    },
+    {
+      "id": "6g9RjjJX748JQh7x",
+      "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
+      "due": "2026-03-27",
+      "priority": 2,
+      "priorityLabel": "medium",
+      "labels": ["follow-up", "research", "status:up-next"],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
+      "isOverdue": false,
+      "dueSoon": true
+    },
+    {
+      "id": "6gC7xJM8267RxRpx",
+      "content": "Section Rules MVP — dev completion",
+      "due": "2026-04-10",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
+      "isOverdue": false,
+      "dueSoon": false
+    },
+    {
+      "id": "6gF6Hv3WXcqQWpcx",
+      "content": "Confidentiality report for Yahoo Candidates",
+      "due": "2026-03-25",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "isOverdue": true,
+      "dueSoon": false
+    },
+    {
+      "id": "6gFGQp8gx45CcQ4x",
+      "content": "Sprinto - segregate security docs",
+      "due": "2026-03-25",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": true,
+      "dueSoon": false
+    },
+    {
+      "id": "6gFJVxxjQvQpxc9x",
+      "content": "Get Totanga access from Gowtham",
+      "due": "2026-03-25",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": true,
+      "dueSoon": false
+    },
+    {
+      "id": "6gG36Fj8Qv5QqhHx",
+      "content": "Yahoo issue",
+      "due": "2026-03-27",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "isOverdue": false,
+      "dueSoon": true
+    },
+    {
+      "id": "6gFJW48w452Xxv2x",
+      "content": "Get Churn notes from Gowtham",
+      "due": "2026-03-26",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": true,
+      "dueSoon": false
+    },
+    {
+      "id": "6gFqg9VpJQXQJpRx",
+      "content": "Summary of Power BI Integration",
+      "due": "2026-03-26",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
+      "isOverdue": true,
+      "dueSoon": false
+    },
+    {
+      "id": "6gFc9HxFVVgqwHjQ",
+      "content": "Write release notes skill",
+      "due": "2026-03-26",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": true,
+      "dueSoon": false
+    },
+    {
+      "id": "6gFqW3Cccm9hpjwx",
+      "content": "Create a Slack workflow for feedback form",
+      "due": "2026-03-27",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": false,
+      "dueSoon": true
+    }
+  ],
+  "todayMeetings": [
+    {
+      "id": "646akp0pm6kj18d1djfmr75n3f_20260327T093000Z",
+      "title": "Customer Pulse",
+      "startTime": "2026-03-27T15:00:00+05:30",
+      "endTime": "2026-03-27T15:45:00+05:30",
+      "attendees": ["shabharish.v@culturemonkey.io", "dhamodharan@culturemonkey.io"],
+      "attendeeCount": 2
+    }
+  ]
+}

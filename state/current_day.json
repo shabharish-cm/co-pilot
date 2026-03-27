@@ -1,7 +1,7 @@
 {
-  "date": "2026-03-26",
+  "date": "2026-03-27",
   "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-26T02:30:00.000Z",
+  "lastMorningSyncAt": "2026-03-27T03:00:00.000Z",
   "lastEveningSyncAt": "2026-03-25T14:42:57.743Z",
   "sourceStatus": {
     "todoist": "fresh",
@@ -127,7 +127,7 @@
     },
     {
       "id": "6gFXGM9WpQhr3Wxx",
-      "content": "Overtime Analysis — Sub-admin and Manager access",
+      "content": "[Overtime Analysis- Sub-admin and Manager access](https://culturemonkey.slack.com/archives/D07LHMZ7ZK2/p1774426712585589)",
       "due": null,
       "priority": 1,
       "priorityLabel": "normal",
@@ -150,6 +150,19 @@
       "isOverdue": false,
       "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCM8HFVqx8WHHHx"
+    },
+    {
+      "id": "6gG34VcVrRGFhRgQ",
+      "content": "[ The pending items for Yahoo](https://culturemonkey.slack.com/archives/C0AHVTPDTME/p1774587315469189)",
+      "due": null,
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": null,
+      "sectionName": "Unknown",
+      "isOverdue": false,
+      "dueSoon": false,
+      "url": "https://todoist.com/showTask?id=6gG34VcVrRGFhRgQ"
     },
     {
       "id": "6g9RjjJX748JQh7x",
@@ -269,6 +282,19 @@
       "url": "https://todoist.com/showTask?id=6gFJqg379HmwQ4hx"
     },
     {
+      "id": "6gG36Fj8Qv5QqhHx",
+      "content": "Yahoo issue",
+      "due": "2026-03-27",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "isOverdue": false,
+      "dueSoon": true,
+      "url": "https://todoist.com/showTask?id=6gG36Fj8Qv5QqhHx"
+    },
+    {
       "id": "6gFJW48w452Xxv2x",
       "content": "Get Churn notes from Gowtham",
       "due": "2026-03-26",
@@ -277,8 +303,8 @@
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
-      "isOverdue": false,
-      "dueSoon": true,
+      "isOverdue": true,
+      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFJW48w452Xxv2x"
     },
     {
@@ -295,35 +321,35 @@
       "url": "https://todoist.com/showTask?id=6gFJqg32CGPJJmwQ"
     },
     {
-      "id": "6gFJqg2c5cgvCgjQ",
-      "content": "PRD: Talent Management — Skill Gap Analysis",
-      "due": "2026-03-25",
-      "priority": 2,
-      "priorityLabel": "medium",
+      "id": "6gFqg9VpJQXQJpRx",
+      "content": "Summary of Power BI Integration",
+      "due": "2026-03-26",
+      "priority": 1,
+      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
       "isOverdue": true,
       "dueSoon": false,
-      "url": "https://todoist.com/showTask?id=6gFJqg2c5cgvCgjQ"
-    },
-    {
-      "id": "6gFWFHC7CJ3pCF3x",
-      "content": "Validate release notes",
-      "due": "2026-03-25",
-      "priority": 4,
-      "priorityLabel": "urgent",
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "isOverdue": true,
-      "dueSoon": false,
-      "url": "https://todoist.com/showTask?id=6gFWFHC7CJ3pCF3x"
+      "url": "https://todoist.com/showTask?id=6gFqg9VpJQXQJpRx"
     },
     {
       "id": "6gFc9HxFVVgqwHjQ",
       "content": "Write release notes skill",
       "due": "2026-03-26",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": true,
+      "dueSoon": false,
+      "url": "https://todoist.com/showTask?id=6gFc9HxFVVgqwHjQ"
+    },
+    {
+      "id": "6gFqW3Cccm9hpjwx",
+      "content": "Create a Slack workflow for feedback form",
+      "due": "2026-03-27",
       "priority": 1,
       "priorityLabel": "normal",
       "labels": [],
@@ -331,29 +357,11 @@
       "sectionName": "CM",
       "isOverdue": false,
       "dueSoon": true,
-      "url": "https://todoist.com/showTask?id=6gFc9HxFVVgqwHjQ"
+      "url": "https://todoist.com/showTask?id=6gFqW3Cccm9hpjwx"
     }
   ],
   "completedToday": [],
   "dueSoon": [
-    {
-      "id": "6gFJW48w452Xxv2x",
-      "content": "Get Churn notes from Gowtham",
-      "due": "2026-03-26",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
-    {
-      "id": "6gFc9HxFVVgqwHjQ",
-      "content": "Write release notes skill",
-      "due": "2026-03-26",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CM",
-      "isOverdue": false
-    },
     {
       "id": "6g9RjjJX748JQh7x",
       "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
@@ -362,11 +370,38 @@
       "priorityLabel": "medium",
       "sectionName": "Features",
       "isOverdue": false
+    },
+    {
+      "id": "6gG36Fj8Qv5QqhHx",
+      "content": "Yahoo issue",
+      "due": "2026-03-27",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "sectionName": "CS Requests",
+      "isOverdue": false
+    },
+    {
+      "id": "6gFqW3Cccm9hpjwx",
+      "content": "Create a Slack workflow for feedback form",
+      "due": "2026-03-27",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "sectionName": "CM",
+      "isOverdue": false
     }
   ],
-  "todayMeetings": [],
+  "todayMeetings": [
+    {
+      "id": "646akp0pm6kj18d1djfmr75n3f_20260327T093000Z",
+      "title": "Customer Pulse",
+      "startTime": "2026-03-27T15:00:00+05:30",
+      "endTime": "2026-03-27T15:45:00+05:30",
+      "attendees": ["shabharish.v@culturemonkey.io", "dhamodharan@culturemonkey.io"],
+      "attendeeCount": 2
+    }
+  ],
   "digestPaths": {
-    "morning": "daily/digests/2026-03-26-morning.md",
+    "morning": "daily/digests/2026-03-27-morning.md",
     "eod": null
   }
 }
