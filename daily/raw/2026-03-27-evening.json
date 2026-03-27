@@ -1,12 +1,36 @@
 {
   "date": "2026-03-27",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-27T03:00:00.000Z",
-  "lastEveningSyncAt": "2026-03-27T14:32:27.901Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-27T14:32:27.901Z",
+  "completedToday": [
+    {
+      "id": "6gG36Fj8Qv5QqhHx",
+      "content": "Yahoo issue",
+      "due": "2026-03-27",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "isOverdue": false,
+      "dueSoon": true,
+      "completedVia": "manual",
+      "completedAt": "2026-03-27T14:32:27.901Z"
+    },
+    {
+      "id": "6gFqg9VpJQXQJpRx",
+      "content": "Summary of Power BI Integration",
+      "due": "2026-03-26",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
+      "isOverdue": true,
+      "dueSoon": false,
+      "completedVia": "manual",
+      "completedAt": "2026-03-27T14:32:27.901Z"
+    }
+  ],
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -360,53 +384,6 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gFqW3Cccm9hpjwx"
-    }
-  ],
-  "todayMeetings": [
-    {
-      "id": "646akp0pm6kj18d1djfmr75n3f_20260327T093000Z",
-      "title": "Customer Pulse",
-      "startTime": "2026-03-27T15:00:00+05:30",
-      "endTime": "2026-03-27T15:45:00+05:30",
-      "attendees": [
-        "shabharish.v@culturemonkey.io",
-        "dhamodharan@culturemonkey.io"
-      ],
-      "attendeeCount": 2
-    }
-  ],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-27-morning.md",
-    "eod": null
-  },
-  "completedToday": [
-    {
-      "id": "6gG36Fj8Qv5QqhHx",
-      "content": "Yahoo issue",
-      "due": "2026-03-27",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "isOverdue": false,
-      "dueSoon": true,
-      "completedVia": "manual",
-      "completedAt": "2026-03-27T14:32:27.901Z"
-    },
-    {
-      "id": "6gFqg9VpJQXQJpRx",
-      "content": "Summary of Power BI Integration",
-      "due": "2026-03-26",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "labels": [],
-      "sectionId": "6g8x4JxwH876pgGQ",
-      "sectionName": "Features",
-      "isOverdue": true,
-      "dueSoon": false,
-      "completedVia": "manual",
-      "completedAt": "2026-03-27T14:32:27.901Z"
     }
   ]
 }
