@@ -1,12 +1,7 @@
 {
-  "date": "2026-03-27",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-27T03:00:00.000Z",
-  "lastEveningSyncAt": "2026-03-28T14:04:12.986Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "date": "2026-03-28",
+  "fetchedAt": "2026-03-28T14:04:12.986Z",
+  "completedToday": [],
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -345,23 +340,5 @@
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
     }
-  ],
-  "todayMeetings": [
-    {
-      "id": "646akp0pm6kj18d1djfmr75n3f_20260327T093000Z",
-      "title": "Customer Pulse",
-      "startTime": "2026-03-27T15:00:00+05:30",
-      "endTime": "2026-03-27T15:45:00+05:30",
-      "attendees": [
-        "shabharish.v@culturemonkey.io",
-        "dhamodharan@culturemonkey.io"
-      ],
-      "attendeeCount": 2
-    }
-  ],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-27-morning.md",
-    "eod": null
-  },
-  "completedToday": []
+  ]
 }
