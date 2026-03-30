@@ -1,24 +1,49 @@
 {
-  "date": "2026-03-30",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-30T00:30:00.000+05:30",
-  "lastEveningSyncAt": "2026-03-29T14:06:11.350Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "date": "2026-03-27",
+  "fetchedAt": "2026-03-27T14:32:27.901Z",
+  "completedToday": [
+    {
+      "id": "6gG36Fj8Qv5QqhHx",
+      "content": "Yahoo issue",
+      "due": "2026-03-27",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4HVHxpWVfVHQ",
+      "sectionName": "CS Requests",
+      "isOverdue": false,
+      "dueSoon": true,
+      "completedVia": "manual",
+      "completedAt": "2026-03-27T14:32:27.901Z"
+    },
+    {
+      "id": "6gFqg9VpJQXQJpRx",
+      "content": "Summary of Power BI Integration",
+      "due": "2026-03-26",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
+      "isOverdue": true,
+      "dueSoon": false,
+      "completedVia": "manual",
+      "completedAt": "2026-03-27T14:32:27.901Z"
+    }
+  ],
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
       "content": "Send info to UGG regarding workers logic",
       "due": "2026-03-24",
       "priority": 1,
-      "priorityLabel": "normal",
-      "labels": ["status:in-progress"],
+      "labels": [
+        "status:in-progress"
+      ],
       "sectionId": "6g9QcvpjJw2cFmCx",
       "sectionName": "effy",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": true,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gC7GmvfXQ7FVVmx"
     },
     {
@@ -26,38 +51,37 @@
       "content": "Feedback based prioritisation agent",
       "due": "2026-03-31",
       "priority": 3,
-      "priorityLabel": "high",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": true,
       "url": "https://todoist.com/showTask?id=6gCJx6qQ8r3wcv8Q"
     },
     {
       "id": "6gCJxJcmvpjWP3gQ",
       "content": "Build Dashboard Frontend",
+      "description": "- Create a UI showing feedback categories and account size context\n- Enable filtering by high-value accounts or critical issues\n- Add timeline (what trending, solved, pending)",
       "due": null,
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCJxJcmvpjWP3gQ"
     },
     {
       "id": "6gCJxJgfR2JRqm6Q",
       "content": "Automate and Scale",
+      "description": "- Once validated, scale feedback intake and automate prioritization\n- Regularly review and update dashboard for founders",
       "due": null,
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCJxJgfR2JRqm6Q"
     },
     {
@@ -65,51 +89,50 @@
       "content": "Feedback based prioritisation agent — MVP",
       "due": "2026-03-25",
       "priority": 3,
-      "priorityLabel": "high",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": true,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCJxqR95722Cw7Q"
     },
     {
       "id": "6gCJxJQhxwMMjH5Q",
       "content": "Create CSV State Storage",
+      "description": "- Design CSV structure (e.g., columns: account, size, churn risk)\n- Set process to keep it updated",
       "due": null,
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCJxJQhxwMMjH5Q"
     },
     {
       "id": "6gCJxJQpgjfRXpGQ",
       "content": "Build Backend Agent (Claude)",
+      "description": "- Gather feedback from all sources into one repository\n- Use Claude to synthesize feedback into categories: bugs, features, UX\n- Tag each feedback with account context from CSV",
       "due": null,
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCJxJQpgjfRXpGQ"
     },
     {
       "id": "6gCJxJWqg3mcGV5Q",
       "content": "Test Prototype",
+      "description": "- Run a small batch of feedback through tagging and prioritization\n- Validate if prioritization aligns with expectations",
       "due": null,
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCJxJWqg3mcGV5Q"
     },
     {
@@ -117,25 +140,21 @@
       "content": "Yahoo - candidate surveys needs to be published - follow up with Saran",
       "due": null,
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g8x4MgXR2q68fgQ",
       "sectionName": "Engg asks",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFGR8hWxfmHR9vQ"
     },
     {
       "id": "6gFXGM9WpQhr3Wxx",
-      "content": "Overtime Analysis — Sub-admin and Manager access",
+      "content": "[Overtime Analysis- Sub-admin and Manager access](https://culturemonkey.slack.com/archives/D07LHMZ7ZK2/p1774426712585589)",
       "due": null,
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
-      "sectionId": null,
-      "sectionName": "Unknown",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFXGM9WpQhr3Wxx"
     },
     {
@@ -143,17 +162,16 @@
       "content": "Build feature landing page — Flexible time-range filtering",
       "due": null,
       "priority": 3,
-      "priorityLabel": "high",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCM8HFVqx8WHHHx"
     },
     {
       "id": "6gG34VcVrRGFhRgQ",
-      "content": "The pending items for Yahoo",
+      "content": "[ The pending items for Yahoo](https://culturemonkey.slack.com/archives/C0AHVTPDTME/p1774587315469189)",
       "due": null,
       "priority": 1,
       "labels": [],
@@ -166,12 +184,15 @@
       "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
       "due": "2026-03-27",
       "priority": 2,
-      "priorityLabel": "medium",
-      "labels": ["follow-up", "research", "status:up-next"],
+      "labels": [
+        "follow-up",
+        "research",
+        "status:up-next"
+      ],
       "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
-      "isOverdue": true,
-      "dueSoon": false,
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6g9RjjJX748JQh7x"
     },
     {
@@ -179,12 +200,11 @@
       "content": "Write blog posts on flexible time-range filtering availability (AEO/GEO counter-narrative)",
       "due": null,
       "priority": 3,
-      "priorityLabel": "high",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCM8HJ7MH6MfmVQ"
     },
     {
@@ -192,38 +212,37 @@
       "content": "Section Rules MVP — dev completion",
       "due": "2026-04-10",
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gC7xJM8267RxRpx"
     },
     {
       "id": "6gCM8gVrX92jF9mQ",
       "content": "Align with marketing on time-range filtering content strategy (landing page + blog)",
+      "description": "Get marketing team to build feature landing page and blog posts covering availability of flexible time-range filtering. Goal: counter G2 review narrative (\"does not support over-time analysis\") via AEO/GEO-indexed content.\n\nRelated tasks:\n- Build feature landing page — Flexible time-range filtering\n- Write blog posts on flexible time-range filtering availability (AEO/GEO counter-narrative)",
       "due": null,
       "priority": 3,
-      "priorityLabel": "high",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCM8gVrX92jF9mQ"
     },
     {
       "id": "6gCM8H6FfcgmFgGx",
       "content": "Build flexible time-range filtering (over-time analysis)",
+      "description": "Dev in progress. Trends over time are viewable; date-range filters not yet available. PRD: PRDs/Overtime Analysis/Overtime Analysis Revamp PRD.docx",
       "due": null,
       "priority": 3,
-      "priorityLabel": "high",
       "labels": [],
       "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCM8H6FfcgmFgGx"
     },
     {
@@ -231,12 +250,11 @@
       "content": "Confidentiality report for Yahoo Candidates",
       "due": "2026-03-30",
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g8x4HVHxpWVfVHQ",
       "sectionName": "CS Requests",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": true,
       "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
     },
     {
@@ -244,12 +262,11 @@
       "content": "Sprinto - segregate security docs",
       "due": "2026-03-25",
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": true,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFGQp8gx45CcQ4x"
     },
     {
@@ -257,25 +274,24 @@
       "content": "Get Totanga access from Gowtham",
       "due": "2026-03-25",
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": true,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFJVxxjQvQpxc9x"
     },
     {
       "id": "6gFJqg379HmwQ4hx",
       "content": "PRD: Talent Management — Talent Pool Management",
+      "description": "Talent pool management for Alumil. Includes: dynamic survey (branch questions) for promotion/relocation willingness, separate dashboard to filter by skills and willingness to relocate, export support.\n\nPRD folder: PRDs/talent-management-talent-pool/",
       "due": null,
       "priority": 3,
-      "priorityLabel": "high",
       "labels": [],
       "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFJqg379HmwQ4hx"
     },
     {
@@ -283,7 +299,6 @@
       "content": "Get Churn notes from Gowtham",
       "due": "2026-03-26",
       "priority": 1,
-      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
@@ -294,14 +309,14 @@
     {
       "id": "6gFJqg32CGPJJmwQ",
       "content": "PRD: Talent Management — 9-Box Grid",
+      "description": "9-box grid for performance vs potential analysis. Includes a global formula for performance analysis, persona-based access (HRBP, Managers, Super Admins).\n\nPRD folder: PRDs/talent-management-9-box-grid/",
       "due": null,
       "priority": 3,
-      "priorityLabel": "high",
       "labels": [],
       "sectionId": "6g8x4JxwH876pgGQ",
       "sectionName": "Features",
+      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFJqg32CGPJJmwQ"
     },
     {
@@ -324,32 +339,27 @@
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
-      "isOverdue": true,
-      "dueSoon": false,
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gFqW3Cccm9hpjwx"
     }
   ],
-  "completedToday": [],
   "dueSoon": [
     {
-      "id": "6gF6Hv3WXcqQWpcx",
-      "content": "Confidentiality report for Yahoo Candidates",
-      "due": "2026-03-30",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CS Requests",
-      "isOverdue": false
-    },
-    {
-      "id": "6gCJx6qQ8r3wcv8Q",
-      "content": "Feedback based prioritisation agent",
-      "due": "2026-03-31",
-      "priority": 3,
-      "priorityLabel": "high",
-      "sectionName": "CM",
+      "id": "6g9RjjJX748JQh7x",
+      "content": "Check if Sentiment Analysis has improved - gather customer feedback post-launch",
+      "due": "2026-03-27",
+      "priority": 2,
+      "labels": [
+        "follow-up",
+        "research",
+        "status:up-next"
+      ],
+      "sectionId": "6g8x4JxwH876pgGQ",
+      "sectionName": "Features",
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gCJx6qQ8r3wcv8Q"
+      "url": "https://todoist.com/showTask?id=6g9RjjJX748JQh7x"
     },
     {
       "id": "6gF6Hv3WXcqQWpcx",
@@ -362,11 +372,18 @@
       "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
+    },
+    {
+      "id": "6gFqW3Cccm9hpjwx",
+      "content": "Create a Slack workflow for feedback form",
+      "due": "2026-03-27",
+      "priority": 1,
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "projectId": "6g8q49QQxHrFxRFx",
+      "isOverdue": false,
+      "url": "https://todoist.com/showTask?id=6gFqW3Cccm9hpjwx"
     }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-30-morning.md",
-    "eod": null
-  }
+  ]
 }
