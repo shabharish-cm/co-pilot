@@ -1,12 +1,36 @@
 {
   "date": "2026-03-30",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-30T00:30:00.000+05:30",
-  "lastEveningSyncAt": "2026-03-30T14:50:33.871Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "fetchedAt": "2026-03-30T14:50:33.871Z",
+  "completedToday": [
+    {
+      "id": "6gFJVxxjQvQpxc9x",
+      "content": "Get Totanga access from Gowtham",
+      "due": "2026-03-25",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": true,
+      "dueSoon": false,
+      "completedVia": "manual",
+      "completedAt": "2026-03-30T14:50:33.871Z"
+    },
+    {
+      "id": "6gFc9HxFVVgqwHjQ",
+      "content": "Write release notes skill",
+      "due": "2026-03-26",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": true,
+      "dueSoon": false,
+      "completedVia": "manual",
+      "completedAt": "2026-03-30T14:50:33.871Z"
+    }
+  ],
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -319,36 +343,6 @@
       "url": "https://todoist.com/showTask?id=6gGmXm74RpR3Gvmx"
     }
   ],
-  "completedToday": [
-    {
-      "id": "6gFJVxxjQvQpxc9x",
-      "content": "Get Totanga access from Gowtham",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "isOverdue": true,
-      "dueSoon": false,
-      "completedVia": "manual",
-      "completedAt": "2026-03-30T14:50:33.871Z"
-    },
-    {
-      "id": "6gFc9HxFVVgqwHjQ",
-      "content": "Write release notes skill",
-      "due": "2026-03-26",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "isOverdue": true,
-      "dueSoon": false,
-      "completedVia": "manual",
-      "completedAt": "2026-03-30T14:50:33.871Z"
-    }
-  ],
   "dueSoon": [
     {
       "id": "6gCJx6qQ8r3wcv8Q",
@@ -387,10 +381,5 @@
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gGmXm74RpR3Gvmx"
     }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-30-morning.md",
-    "eod": null
-  }
+  ]
 }
