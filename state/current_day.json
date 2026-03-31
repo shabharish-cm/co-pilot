@@ -1,7 +1,7 @@
 {
-  "date": "2026-03-30",
+  "date": "2026-03-31",
   "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-30T00:30:00.000+05:30",
+  "lastMorningSyncAt": "2026-03-31T06:00:00.000+05:30",
   "lastEveningSyncAt": "2026-03-29T14:06:11.350Z",
   "sourceStatus": {
     "todoist": "fresh",
@@ -127,7 +127,7 @@
     },
     {
       "id": "6gFXGM9WpQhr3Wxx",
-      "content": "Overtime Analysis — Sub-admin and Manager access",
+      "content": "[Overtime Analysis- Sub-admin and Manager access]",
       "due": null,
       "priority": 1,
       "priorityLabel": "normal",
@@ -156,9 +156,12 @@
       "content": "The pending items for Yahoo",
       "due": null,
       "priority": 1,
+      "priorityLabel": "normal",
       "labels": [],
-      "projectId": "6g8q49QQxHrFxRFx",
+      "sectionId": null,
+      "sectionName": "Unknown",
       "isOverdue": false,
+      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gG34VcVrRGFhRgQ"
     },
     {
@@ -186,6 +189,19 @@
       "isOverdue": false,
       "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gCM8HJ7MH6MfmVQ"
+    },
+    {
+      "id": "6gGpJ8jpJX4Jxg3Q",
+      "content": "[Yahoo candidate survey data now coming through — pending items]",
+      "due": null,
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": null,
+      "sectionName": "Unknown",
+      "isOverdue": false,
+      "dueSoon": false,
+      "url": "https://todoist.com/showTask?id=6gGpJ8jpJX4Jxg3Q"
     },
     {
       "id": "6gC7xJM8267RxRpx",
@@ -235,8 +251,8 @@
       "labels": [],
       "sectionId": "6g8x4HVHxpWVfVHQ",
       "sectionName": "CS Requests",
-      "isOverdue": false,
-      "dueSoon": true,
+      "isOverdue": true,
+      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
     },
     {
@@ -251,19 +267,6 @@
       "isOverdue": true,
       "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFGQp8gx45CcQ4x"
-    },
-    {
-      "id": "6gFJVxxjQvQpxc9x",
-      "content": "Get Totanga access from Gowtham",
-      "due": "2026-03-25",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "isOverdue": true,
-      "dueSoon": false,
-      "url": "https://todoist.com/showTask?id=6gFJVxxjQvQpxc9x"
     },
     {
       "id": "6gFJqg379HmwQ4hx",
@@ -287,8 +290,8 @@
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
-      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": true,
+      "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFJW48w452Xxv2x"
     },
     {
@@ -305,41 +308,34 @@
       "url": "https://todoist.com/showTask?id=6gFJqg32CGPJJmwQ"
     },
     {
-      "id": "6gFc9HxFVVgqwHjQ",
-      "content": "Write release notes skill",
-      "due": "2026-03-26",
-      "priority": 1,
-      "labels": [],
-      "sectionId": "6g9wjjpVgppgxJwQ",
-      "sectionName": "CM",
-      "projectId": "6g8q49QQxHrFxRFx",
-      "isOverdue": true,
-      "url": "https://todoist.com/showTask?id=6gFc9HxFVVgqwHjQ"
-    },
-    {
       "id": "6gFqW3Cccm9hpjwx",
       "content": "Create a Slack workflow for feedback form",
       "due": "2026-03-27",
       "priority": 1,
+      "priorityLabel": "normal",
       "labels": [],
       "sectionId": "6g9wjjpVgppgxJwQ",
       "sectionName": "CM",
       "isOverdue": true,
       "dueSoon": false,
       "url": "https://todoist.com/showTask?id=6gFqW3Cccm9hpjwx"
+    },
+    {
+      "id": "6gGmXm74RpR3Gvmx",
+      "content": "Talk to Dhamo and set Release notes flow in JIRA",
+      "due": "2026-03-31",
+      "priority": 1,
+      "priorityLabel": "normal",
+      "labels": [],
+      "sectionId": "6g9wjjpVgppgxJwQ",
+      "sectionName": "CM",
+      "isOverdue": false,
+      "dueSoon": true,
+      "url": "https://todoist.com/showTask?id=6gGmXm74RpR3Gvmx"
     }
   ],
   "completedToday": [],
   "dueSoon": [
-    {
-      "id": "6gF6Hv3WXcqQWpcx",
-      "content": "Confidentiality report for Yahoo Candidates",
-      "due": "2026-03-30",
-      "priority": 1,
-      "priorityLabel": "normal",
-      "sectionName": "CS Requests",
-      "isOverdue": false
-    },
     {
       "id": "6gCJx6qQ8r3wcv8Q",
       "content": "Feedback based prioritisation agent",
@@ -347,26 +343,23 @@
       "priority": 3,
       "priorityLabel": "high",
       "sectionName": "CM",
-      "projectId": "6g8q49QQxHrFxRFx",
       "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gCJx6qQ8r3wcv8Q"
+      "dueSoon": true
     },
     {
-      "id": "6gF6Hv3WXcqQWpcx",
-      "content": "Confidentiality report for Yahoo Candidates",
-      "due": "2026-03-30",
+      "id": "6gGmXm74RpR3Gvmx",
+      "content": "Talk to Dhamo and set Release notes flow in JIRA",
+      "due": "2026-03-31",
       "priority": 1,
-      "labels": [],
-      "sectionId": "6g8x4HVHxpWVfVHQ",
-      "sectionName": "CS Requests",
-      "projectId": "6g8q49QQxHrFxRFx",
+      "priorityLabel": "normal",
+      "sectionName": "CM",
       "isOverdue": false,
-      "url": "https://todoist.com/showTask?id=6gF6Hv3WXcqQWpcx"
+      "dueSoon": true
     }
   ],
   "todayMeetings": [],
   "digestPaths": {
-    "morning": "daily/digests/2026-03-30-morning.md",
+    "morning": "daily/digests/2026-03-31-morning.md",
     "eod": null
   }
 }
