@@ -1,12 +1,7 @@
 {
-  "date": "2026-03-31",
-  "timezone": "Asia/Kolkata",
-  "lastMorningSyncAt": "2026-03-31T06:00:00.000+05:30",
-  "lastEveningSyncAt": "2026-04-01T14:50:17.245Z",
-  "sourceStatus": {
-    "todoist": "fresh",
-    "googleCalendar": "fresh"
-  },
+  "date": "2026-04-01",
+  "fetchedAt": "2026-04-01T14:50:17.245Z",
+  "completedToday": [],
   "openTasks": [
     {
       "id": "6gC7GmvfXQ7FVVmx",
@@ -320,11 +315,5 @@
       "isOverdue": false,
       "url": "https://todoist.com/showTask?id=6gH9rHPxGpwqJCGx"
     }
-  ],
-  "todayMeetings": [],
-  "digestPaths": {
-    "morning": "daily/digests/2026-03-31-morning.md",
-    "eod": null
-  },
-  "completedToday": []
+  ]
 }
